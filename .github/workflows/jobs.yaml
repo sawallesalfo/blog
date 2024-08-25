@@ -12,6 +12,7 @@ on:
 env:
   IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/blogs_mkdocs
   IMAGE_TAG: latest
+  GIT_PYTHON_REFRESH: quiet
 
 jobs:
   build-and-deploy:
