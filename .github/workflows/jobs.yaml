@@ -1,42 +1,43 @@
-name: Scripts jobs
+name: Build and Deploy MkDocs Site
 
 on:
   push:
     branches:
-      - main                    # Only run on push to the main branch
+      - main  # Trigger the workflow on push to the main branch
   pull_request:
     branches:
-      - main                    # Only run on pull requests to the main branch
-  workflow_dispatch:            # Allows manual triggering of the workflow
+      - main  # Trigger the workflow on pull requests to the main branch
+  workflow_dispatch:  # Allow manual triggering of the workflow
 
 env:
-  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/imetrix_bi
-  IMAGE_TAG: latest
-  PYTHONPATH: ${{ github.workspace }}
+  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/blogs_mkdocs  # Custom Docker image name
+  IMAGE_TAG: latest  # Docker image tag
+  SITE_DIR: site  # Output directory for the MkDocs build
 
 jobs:
-  run-jobs:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        script_path:
-          - bi_dashboard/scripts/simulate_database/job.py
-          - bi_dashboard/scripts/inventory_metrics/job.py
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3  # Checkout the latest code from the repository
 
       - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin  # Login to Docker Hub
 
       - name: Pull Docker image
-        run: docker pull ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+        run: docker pull ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}  # Pull your custom Docker image
 
-      - name: Ensure Directory Permissions
+      - name: Build MkDocs site
         run: docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
-          mkdir -p /app/bi_dashboard/database && chmod 777 /app/bi_dashboard/database && ls -ld /app/bi_dashboard/database"
+          mkdocs build --verbose --site-dir ${{ env.SITE_DIR }}"  # Build the MkDocs site using your custom Docker image
 
-      - name: Run Python script inside Docker
-        run: docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
-          python /app/bi_dashboard/scripts/simulate_database/job.py"
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'  # Deploy only from the main branch
+        run: |
+          docker run --rm -v ${{ github.workspace }}/site:/site alpine:latest /bin/sh -c "
+            apk add --no-cache git gh-pages &&
+            gh-pages --dist /site --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"  # Deploy the built site to GitHub Pages
+
+      - name: Clean up Docker resources
+        run: docker system prune -f  # Clean up any dangling Docker resources to save space
