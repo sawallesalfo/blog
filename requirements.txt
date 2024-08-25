@@ -1,0 +1,112 @@
+
+# Thème moderne pour MkDocs avec de nombreuses fonctionnalités
+mkdocs-material==9.5
+
+# Générateur de site statique pour la documentation
+mkdocs
+
+# Plugin pour afficher la date de révision Git dans la documentation
+mkdocs-git-revision-date-localized-plugin
+
+# Plugin pour afficher des images et vidéos dans une lightbox
+mkdocs-glightbox
+
+# Extensions pour améliorer les fonctionnalités du thème MkDocs Material
+mkdocs-material-extensions
+
+# Plugin pour générer automatiquement la navigation basée sur les titres
+mkdocs-literate-nav
+
+# Extension Markdown pour gérer correctement les listes imbriquées
+mdx-truly-sane-lists
+
+# Plugin pour ajouter des macros personnalisées dans MkDocs
+mkdocs-macros-plugin
+
+# Bibliothèque pour la localisation et l'internationalisation (traduction, formats de dates, etc.)
+Babel
+
+# Bibliothèque pour extraire des données de fichiers HTML/XML
+beautifulsoup4
+
+# Extension pour la correspondance de modèles avancée avec des expressions entre accolades
+bracex
+
+# Bibliothèque pour créer des interfaces en ligne de commande
+click
+
+# Ajoute des couleurs au texte affiché dans le terminal
+colorama
+
+# Utilitaire pour publier des fichiers générés sur GitHub Pages
+ghp-import
+
+# Bibliothèque pour accéder aux objets Git de base
+gitdb
+
+# Bibliothèque pour interagir avec des dépôts Git dans Python (commits, branches, etc.)
+GitPython
+
+# Accès aux métadonnées des paquets installés (backport pour les anciennes versions de Python)
+importlib-metadata
+
+# Moteur de templates pour générer du texte dynamique comme du HTML ou XML
+Jinja2
+
+# Implémentation en Python du langage Markdown
+Markdown
+
+# Bibliothèque pour échapper les caractères dangereux dans le texte destiné à être rendu en HTML/XML
+MarkupSafe
+
+# Extension Markdown pour gérer correctement les listes imbriquées (alternative pour mdx_truly_sane_lists)
+mdx_truly_sane_lists
+
+# Outil pour effectuer des fusions profondes de dictionnaires
+mergedeep
+
+# Bibliothèque pour trier les listes de chaînes alphanumériques de manière naturelle
+natsort
+
+# Bibliothèque pour gérer les versions et dépendances des paquets Python
+packaging
+
+# Moteur de coloration syntaxique pour divers langages de programmation
+Pygments
+
+# Extensions Markdown pour ajouter des fonctionnalités comme des emojis et des notes de bas de page
+pymdown-extensions
+
+# Bibliothèque pour définir et analyser des grammaires de texte
+pyparsing
+
+# Bibliothèque pour la manipulation des dates et heures en Python
+python-dateutil
+
+# Bibliothèque pour gérer les fuseaux horaires
+pytz
+
+# Bibliothèque pour lire et écrire des fichiers YAML
+PyYAML
+
+# Extension pour injecter des variables d'environnement dans les fichiers YAML
+pyyaml_env_tag
+
+# Bibliothèque de compatibilité entre Python 2 et 3
+six
+
+# Bibliothèque pour accéder aux mappages de mémoire utilisés par Git
+smmap
+
+# Bibliothèque pour effectuer des sélections CSS sur des documents HTML/XML
+soupsieve
+
+# Bibliothèque pour surveiller les changements de fichiers en temps réel
+watchdog
+
+# Extension des modules glob et fnmatch pour la correspondance de fichiers avancée
+wcmatch
+
+# Backport de zipfile.Path pour naviguer dans les fichiers ZIP plus facilement
+zipp
+

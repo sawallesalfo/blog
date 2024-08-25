@@ -1,0 +1,84 @@
+# Site metadata
+site_name: "ssawadogo-blog"  # Name of  blog
+copyright: "Copyright © @sawallesalfo August 2024"  # Custom copyright notice
+
+# Theme configuration
+
+theme:
+    name: material  # Using the popular Material theme for MkDocs
+    palette:
+        - scheme: default
+          primary: deep purple
+          accent: amber
+          toggle:
+            icon: material/brightness-7
+            name: Switch to dark mode
+        - scheme: slate
+          primary: deep purple
+          accent: amber
+          toggle:
+            icon: material/brightness-4
+            name: Switch to light mode
+    features:
+        - navigation.instant  # Instant navigation without page reloads
+        - content.tabs  # Add tabs to sections for better organization
+        - content.code.annotate  # Allow annotations on code blocks
+        - search.suggest  # Provide search suggestions
+        - search.highlight  # Highlight search results
+        - search.share  # Allow sharing of search results
+    icon:
+        repo: fontawesome/brands/github  
+
+plugins:
+  - blog:
+        blog_dir: . 
+  - glightbox
+  - search
+  - git-revision-date-localized:
+      type: iso_date
+      fallback_to_build_date: true
+
+markdown_extensions:
+    - abbr
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences:
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_code_format
+    - attr_list
+    - meta
+    - md_in_html
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.emoji:
+        emoji_index: !!python/name:material.extensions.emoji.twemoji
+        emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    - pymdownx.critic
+    - pymdownx.caret
+    - pymdownx.keys
+    - pymdownx.mark
+    - pymdownx.tilde
+    - footnotes
+    - mdx_truly_sane_lists
+    - tables
+    - def_list
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - codehilite:
+        guess_lang: false
+    - toc:
+        permalink: true
+    - pymdownx.arithmatex:
+        generic: true
+
+# Additional JavaScript files
+extra_javascript:
+  - javascripts/mathjax.js  # Custom MathJax configuration for rendering math equations
+  - https://polyfill.io/v3/polyfill.min.js?features=es6  # Polyfill for older browsers
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js  # MathJax library for LaTeX math rendering

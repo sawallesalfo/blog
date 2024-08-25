@@ -1,0 +1,42 @@
+name: Scripts jobs
+
+on:
+  push:
+    branches:
+      - main                    # Only run on push to the main branch
+  pull_request:
+    branches:
+      - main                    # Only run on pull requests to the main branch
+  workflow_dispatch:            # Allows manual triggering of the workflow
+
+env:
+  IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/imetrix_bi
+  IMAGE_TAG: latest
+  PYTHONPATH: ${{ github.workspace }}
+
+jobs:
+  run-jobs:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        script_path:
+          - bi_dashboard/scripts/simulate_database/job.py
+          - bi_dashboard/scripts/inventory_metrics/job.py
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Pull Docker image
+        run: docker pull ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+
+      - name: Ensure Directory Permissions
+        run: docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
+          mkdir -p /app/bi_dashboard/database && chmod 777 /app/bi_dashboard/database && ls -ld /app/bi_dashboard/database"
+
+      - name: Run Python script inside Docker
+        run: docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
+          python /app/bi_dashboard/scripts/simulate_database/job.py"
