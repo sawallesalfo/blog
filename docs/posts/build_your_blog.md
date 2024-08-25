@@ -6,19 +6,18 @@ categories:
     - CI/CD
     - documentation
 ---
-## Building and Deploying a Blog with MkDocs with CI
+### Building and Deploying a Blog with MkDocs with CI
 
-### Introduction
 
 Welcome! In this guide, you’ll learn how to build and deploy a blog using MkDocs, a tool that makes it easy to create beautiful documentation. We’ll cover each step to help you get your blog online.
 
-### What You Need
+#### What You Need
 
 1. **GitHub Account**: You need a GitHub account to store and deploy your blog.
 2. **Basic Knowledge**: Familiarity with GitHub, Docker, and some command line basics will be helpful.
 <!-- more -->
 
-### Step 1: Setting Up Your Blog
+#### Step 1: Setting Up Your Blog
 
 1. **Create a GitHub Repository**:
    - Visit [GitHub](https://github.com) and log in.
@@ -56,7 +55,7 @@ Welcome! In this guide, you’ll learn how to build and deploy a blog using MkDo
 
    - Add content by editing `index.md` or creating new Markdown files in the `docs` folder.
 
-### Step 2: Build and Deploy Using Docker
+#### Step 2: Build and Deploy Using Docker
 
 1. **Create a Docker Image**:
    - Write a Dockerfile to include MkDocs and necessary tools.
@@ -125,7 +124,7 @@ Welcome! In this guide, you’ll learn how to build and deploy a blog using MkDo
              run: docker system prune -f
      ```
 
-### Final Steps
+#### Final Steps
 
 1. **Push Your Changes**:
    - Commit and push your changes to GitHub:
