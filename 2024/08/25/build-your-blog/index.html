@@ -9,8 +9,8 @@
       
       
       
+        <link rel="prev" href="../iam-for-eks/">
       
-        <link rel="next" href="../build-your-blog/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -18,7 +18,7 @@
     
     
       
-        <title>Iam for eks - ssawadogo-blog</title>
+        <title>Build your blog - ssawadogo-blog</title>
       
     
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#understanding-iam-roles-and-users-in-aws-with-a-practical-example-running-an-application-on-eks" class="md-skip">
+        <a href="#building-and-deploying-a-blog-with-mkdocs-with-ci" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Iam for eks
+              Build your blog
             
           </span>
         </div>
@@ -467,37 +467,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#understanding-iam-roles-and-users-in-aws-with-a-practical-example-running-an-application-on-eks" class="md-nav__link">
+  <a href="#building-and-deploying-a-blog-with-mkdocs-with-ci" class="md-nav__link">
     <span class="md-ellipsis">
-      Understanding IAM Roles and Users in AWS with a Practical Example: Running an Application on EKS
+      Building and Deploying a Blog with MkDocs with CI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Understanding IAM Roles and Users in AWS with a Practical Example: Running an Application on EKS">
+    <nav class="md-nav" aria-label="Building and Deploying a Blog with MkDocs with CI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-iam-role-vs-iam-user" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      1. IAM Role vs. IAM User
+      Introduction
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-practical-scenario-deploying-an-application-on-eks" class="md-nav__link">
+  <a href="#what-you-need" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Practical Scenario: Deploying an Application on EKS
+      What You Need
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-iam-roles-in-aws-console-options" class="md-nav__link">
+  <a href="#step-1-setting-up-your-blog" class="md-nav__link">
     <span class="md-ellipsis">
-      3. IAM Roles in AWS Console Options
+      Step 1: Setting Up Your Blog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-build-and-deploy-using-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Build and Deploy Using Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Steps
     </span>
   </a>
   
@@ -584,7 +602,8 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/aws/">AWS</a></span>
+                              <a href="../../../../category/cicd/">CI/CD</a>, 
+                              <a href="../../../../category/documentation/">documentation</a></span>
                         </div>
                       </li>
                     
@@ -595,7 +614,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              4 min read
+                              3 min read
                             
                           </span>
                         </div>
@@ -615,131 +634,183 @@
         
 
 
-  <h1>Iam for eks</h1>
+  <h1>Build your blog</h1>
 
-<h3 id="understanding-iam-roles-and-users-in-aws-with-a-practical-example-running-an-application-on-eks">Understanding IAM Roles and Users in AWS with a Practical Example: Running an Application on EKS<a class="headerlink" href="#understanding-iam-roles-and-users-in-aws-with-a-practical-example-running-an-application-on-eks" title="Permanent link">&para;</a></h3>
-<p><strong>AWS Identity and Access Management (IAM)</strong> is a cornerstone of security and access control in AWS environments. IAM allows you to manage users, groups, and roles, and to specify their permissions to access AWS resources. In this article, we will explore the differences between IAM roles and IAM users, provide a practical scenario of deploying an application on Amazon EKS (Elastic Kubernetes Service), and clarify how IAM roles relate to specific AWS console options.</p>
+<h2 id="building-and-deploying-a-blog-with-mkdocs-with-ci">Building and Deploying a Blog with MkDocs with CI<a class="headerlink" href="#building-and-deploying-a-blog-with-mkdocs-with-ci" title="Permanent link">&para;</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
+<p>Welcome! In this guide, you’ll learn how to build and deploy a blog using MkDocs, a tool that makes it easy to create beautiful documentation. We’ll cover each step to help you get your blog online.</p>
+<h3 id="what-you-need">What You Need<a class="headerlink" href="#what-you-need" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>GitHub Account</strong>: You need a GitHub account to store and deploy your blog.</li>
+<li><strong>Basic Knowledge</strong>: Familiarity with GitHub, Docker, and some command line basics will be helpful.</li>
+</ol>
 <!-- more -->
 
-<h4 id="1-iam-role-vs-iam-user"><strong>1. IAM Role vs. IAM User</strong><a class="headerlink" href="#1-iam-role-vs-iam-user" title="Permanent link">&para;</a></h4>
-<p><strong>IAM User:</strong>
-- An IAM user is an entity that represents a person or application that interacts with AWS resources. Each IAM user has a unique set of credentials (username and password or access keys).
-- IAM users are generally assigned permissions directly or through group memberships.
-- Example: A developer who needs access to specific AWS resources and can authenticate using their IAM user credentials.</p>
-<p><strong>IAM Role:</strong>
-- An IAM role is an AWS identity with specific permissions that can be assumed by entities like AWS services, EC2 instances, or even IAM users.
-- Roles are temporary and are assumed by entities that need to perform specific actions. They do not have permanent credentials; instead, they provide temporary security credentials.
-- Example: An EC2 instance running a containerized application that needs to pull images from Amazon ECR.</p>
-<h4 id="2-practical-scenario-deploying-an-application-on-eks"><strong>2. Practical Scenario: Deploying an Application on EKS</strong><a class="headerlink" href="#2-practical-scenario-deploying-an-application-on-eks" title="Permanent link">&para;</a></h4>
-<p>Let’s walk through an example of deploying an application, such as Gradio, on Amazon EKS. Gradio is a popular library for creating machine learning demos.</p>
-<p><strong>Steps for Deployment:</strong></p>
+<h3 id="step-1-setting-up-your-blog">Step 1: Setting Up Your Blog<a class="headerlink" href="#step-1-setting-up-your-blog" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
-<p><strong>Set Up IAM Roles for EKS:</strong></p>
+<p><strong>Create a GitHub Repository</strong>:</p>
 <ul>
-<li><strong>Cluster Role:</strong> Create an IAM role that the EKS cluster will use. This role allows EKS to manage the underlying EC2 instances and perform other operations.</li>
-<li><strong>Node Instance Role:</strong> Create another IAM role for EC2 instances that will run the Kubernetes worker nodes. This role allows the instances to interact with other AWS services, like pulling images from ECR or writing logs to CloudWatch.</li>
+<li>Visit <a href="https://github.com">GitHub</a> and log in.</li>
+<li>Click on <strong>New</strong> to create a repository.</li>
+<li>Name your repository, for example, <code>my-blog</code>.</li>
+<li>Choose <strong>Public</strong> or <strong>Private</strong> based on your preference.</li>
+<li>Click <strong>Create repository</strong>.</li>
 </ul>
-<p><strong>Example IAM Policy for Node Instance Role:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">                </span><span class="s2">&quot;ec2:DescribeInstances&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">                </span><span class="s2">&quot;ec2:DescribeTags&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                </span><span class="s2">&quot;ecr:GetAuthorizationToken&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">                </span><span class="s2">&quot;ecr:BatchCheckLayerAvailability&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">                </span><span class="s2">&quot;ecr:GetDownloadUrlForLayer&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">                </span><span class="s2">&quot;ecr:BatchGetImage&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">                </span><span class="s2">&quot;logs:CreateLogStream&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">                </span><span class="s2">&quot;logs:PutLogEvents&quot;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="p">],</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">]</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span>
+</li>
+<li>
+<p><strong>Install MkDocs Locally</strong>:</p>
+<ul>
+<li>Open your terminal or command line.</li>
+<li>Install MkDocs with pip:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Set Up Your Blog</strong>:</p>
+<ul>
+<li>Navigate to the folder where you want to create your blog.</li>
+<li>Run:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdocs<span class="w"> </span>new<span class="w"> </span>my-blog
+</code></pre></div></li>
+<li>This creates a folder named <code>my-blog</code> with the basic files for your blog.</li>
+</ul>
+</li>
+<li>
+<p><strong>Customize Your Blog</strong>:</p>
+<ul>
+<li>Open the <code>mkdocs.yml</code> file in your blog's folder. This is where you set your blog’s name and theme.</li>
+<li>
+<p>Modify the <code>mkdocs.yml</code> file to look like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My Blog</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">theme</span><span class="p">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">nav</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
 </code></pre></div>
 </li>
-<li>
-<p><strong>Create an EKS Cluster:</strong></p>
-<ul>
-<li>Go to the EKS Console.</li>
-<li>Create a new EKS cluster and associate it with the IAM cluster role created earlier.</li>
 </ul>
-</li>
-<li>
-<p><strong>Launch EC2 Instances for Kubernetes Nodes:</strong></p>
 <ul>
-<li>Launch EC2 instances and associate them with the IAM node instance role. Ensure these instances are part of the EKS node group.</li>
+<li>Add content by editing <code>index.md</code> or creating new Markdown files in the <code>docs</code> folder.</li>
 </ul>
-</li>
-<li>
-<p><strong>Deploy Gradio Application:</strong></p>
-<ul>
-<li>Package your Gradio application into a Docker container and push the image to Amazon ECR.</li>
-<li>Create a Kubernetes deployment YAML file specifying the container image from ECR and deploy it to your EKS cluster.</li>
-</ul>
-<p><strong>Example Kubernetes Deployment YAML:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gradio-app</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gradio</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gradio</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gradio-container</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your-ecr-repository-url&gt;/gradio-app:latest</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7860</span>
-</code></pre></div>
-</li>
-<li>
-<p><strong>Expose the Application:</strong></p>
-<ul>
-<li>Create a Kubernetes Service to expose the Gradio application to the internet.</li>
-</ul>
-<p><strong>Example Service YAML:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gradio-service</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gradio</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7860</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span>
-</code></pre></div>
 </li>
 </ol>
-<h4 id="3-iam-roles-in-aws-console-options"><strong>3. IAM Roles in AWS Console Options</strong><a class="headerlink" href="#3-iam-roles-in-aws-console-options" title="Permanent link">&para;</a></h4>
-<p>You mentioned having different console options: <code>DATAengROLE</code>, <code>DATASCIENC</code>, and <code>DATAANALYST</code>. These are IAM roles configured for various teams or purposes. Here’s how they might be used:</p>
+<h3 id="step-2-build-and-deploy-using-docker">Step 2: Build and Deploy Using Docker<a class="headerlink" href="#step-2-build-and-deploy-using-docker" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Create a Docker Image</strong>:</p>
 <ul>
-<li><strong>DATAengROLE:</strong> This role could be configured to provide access to data engineering tools and resources, like Apache Airflow, for data engineers. If you have access to Airflow with this role, it means that <code>DATAengROLE</code> includes permissions to view and manage Airflow resources.</li>
+<li>Write a Dockerfile to include MkDocs and necessary tools.</li>
+<li>
+<p>Here’s a basic Dockerfile:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Use Python 3.12 image</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c"># Set the working directory</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c"># Install MkDocs and plugins</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>ghp-import
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c"># Copy blog files into Docker image</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/app
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c"># Set command to build MkDocs</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mkdocs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--verbose&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--site-dir&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;site&quot;</span><span class="p">]</span>
+</code></pre></div>
+</li>
 </ul>
 <ul>
-<li><strong>DATASCIENC:</strong> This role might be tailored for data scientists, granting access to tools and resources pertinent to data analysis and modeling. The specific permissions and services available to this role would depend on the policies attached.</li>
+<li>Build the Docker image with:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my-blog-image<span class="w"> </span>.
+</code></pre></div></li>
 </ul>
+</li>
+<li>
+<p><strong>Deploy Your Blog</strong>:</p>
 <ul>
-<li><strong>DATAANALYST:</strong> This role could be for data analysts, providing access to reporting tools or datasets but not necessarily the same resources as the other roles.</li>
+<li>
+<p>Create a GitHub Actions workflow file to automate deployment. Save the following as <code>.github/workflows/deploy.yml</code> in your repository:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and Deploy MkDocs Site</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">on</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nt">env</span><span class="p">:</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="nt">IMAGE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-blog-image</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">  </span><span class="nt">IMAGE_TAG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nt">jobs</span><span class="p">:</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span><span class="nt">build-and-deploy</span><span class="p">:</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout code</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build MkDocs site</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">          </span><span class="no">docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} mkdocs build --verbose --site-dir site</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.ref == &#39;refs/heads/main&#39;</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">          </span><span class="no">docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c &quot;</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">            </span><span class="no">ghp-import -n -p -f site -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git -b gh-pages&quot;</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Clean up Docker resources</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker system prune -f</span>
+</code></pre></div>
+</li>
 </ul>
-<p><strong>Role-Based Access:</strong>
-In your case, when using the <code>DATAengROLE</code>, you have access to Airflow because this role has the necessary permissions configured. Conversely, the <code>DATAANALYST</code> role might not have the same permissions, hence the lack of access to Airflow.</p>
-<h4 id="conclusion"><strong>Conclusion</strong><a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h4>
-<p>Understanding the difference between IAM roles and IAM users is fundamental for managing access and permissions in AWS. IAM roles are particularly useful for granting temporary access and managing permissions for AWS services and resources, while IAM users are suited for individuals requiring direct access.</p>
-<p>In the context of deploying an application like Gradio on Amazon EKS, properly configuring IAM roles ensures that your EKS cluster and EC2 instances have the appropriate permissions to interact with other AWS services. Additionally, understanding IAM roles in relation to different AWS console options helps in managing access based on specific roles and responsibilities within your organization.</p>
+</li>
+</ol>
+<h3 id="final-steps">Final Steps<a class="headerlink" href="#final-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Push Your Changes</strong>:</p>
+<ul>
+<li>Commit and push your changes to GitHub:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Set up MkDocs site&quot;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Ensure Correct Permissions for Deployment</strong>:</p>
+<ul>
+<li>To avoid permission issues with GitHub Actions, ensure that the <code>GITHUB_TOKEN</code> has the necessary permissions.</li>
+<li><strong>Check Repository Settings</strong>:<ul>
+<li>Go to your repository on GitHub.</li>
+<li>Navigate to <strong>Settings</strong> &gt; <strong>Actions</strong> &gt; <strong>General</strong>.</li>
+<li>Under <strong>Workflow permissions</strong>, ensure <strong>Read and write permissions</strong> are selected.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Verify Deployment</strong>:</p>
+<ul>
+<li>Go to your GitHub repository.</li>
+<li>Navigate to <strong>Settings</strong> &gt; <strong>Pages</strong>.</li>
+<li>Ensure the source is set to the <code>gh-pages</code> branch.</li>
+</ul>
+<p>Your blog should now be live! Visit the URL provided in the GitHub Pages settings to see your site.</p>
+</li>
+</ol>
+<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
+<p>Congratulations! You’ve built and deployed a blog using MkDocs and Docker. This guide aimed to simplify the process, so you can easily share your content online. Happy blogging!</p>
+<p>For a complete example, check out my project: <a href="https://github.com/sawadogosalif/blog">GitHub Repository</a>.</p>
+<hr />
+<p>This version of the guide simplifies the instructions and organizes the steps clearly to help you get started with building and deploying your blog.</p>
 
 
 
