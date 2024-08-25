@@ -1,14 +1,11 @@
 ---
-
-**date:** 2024-08-25  
-**authors:**  
-- ssawadogo  
-**categories:**  
-- CI/CD  
-- documentation  
-
+date: 2024-08-25
+authors:
+    - ssawadogo
+categories: 
+    - CI/CD
+    - documentation
 ---
-
 ## Building and Deploying a Blog with MkDocs with CI
 
 ### Introduction
@@ -19,6 +16,7 @@ Welcome! In this guide, you’ll learn how to build and deploy a blog using MkDo
 
 1. **GitHub Account**: You need a GitHub account to store and deploy your blog.
 2. **Basic Knowledge**: Familiarity with GitHub, Docker, and some command line basics will be helpful.
+<!-- more -->
 
 ### Step 1: Setting Up Your Blog
 
