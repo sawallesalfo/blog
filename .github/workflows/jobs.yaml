@@ -3,11 +3,11 @@ name: Build and Deploy MkDocs Site
 on:
   push:
     branches:
-      - main
+      - main  # Trigger on push to the main branch
   pull_request:
     branches:
-      - main
-  workflow_dispatch:
+      - main  # Trigger on pull request to the main branch
+  workflow_dispatch:  # Allows manual triggering of the workflow
 
 env:
   IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/blogs_mkdocs
@@ -20,23 +20,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+        with:
+          fetch-depth: 0  # Ensure the full history is fetched to avoid issues with ghp-import
 
       - name: Build MkDocs site
         run: |
           docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} mkdocs build --verbose --site-dir site
 
-      - name: Copy Git repo into Docker container
-        run: |
-          docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "cp -r /app/.git /app/"
-
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
         run: |
-          docker run --rm -v ${{ github.workspace }}/site:/site -v ${{ github.workspace }}:/app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
-            ghp-import -n -p -f /site"
+          docker run --rm -v ${{ github.workspace }}/site:/site -w /site ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ghp-import -n -p -f .
 
       - name: Clean up Docker resources
         run: docker system prune -f
