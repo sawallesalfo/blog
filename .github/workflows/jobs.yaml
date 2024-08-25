@@ -35,3 +35,5 @@ jobs:
             ghp-import -n -p -f site"
       - name: Clean up Docker resources
         run: docker system prune -f
+
+# https://github.com/ad-m/github-push-action/issues/96 / ENSURE permissions
