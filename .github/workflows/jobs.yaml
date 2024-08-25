@@ -28,10 +28,15 @@ jobs:
         run: |
           docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} mkdocs build --verbose --site-dir site
 
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main'  # Deploy only from the main branch
+      - name: Copy Git repo into Docker container
         run: |
-          docker run --rm -v ${{ github.workspace }}/site:/site ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ghp-import -n -p -f /site
+          docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "cp -r /app/.git /app/"
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        run: |
+          docker run --rm -v ${{ github.workspace }}/site:/site -v ${{ github.workspace }}:/app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
+            ghp-import -n -p -f /site"
 
       - name: Clean up Docker resources
-        run: docker system prune -f  # Clean up any dangling Docker resources to save space
+        run: docker system prune -f
