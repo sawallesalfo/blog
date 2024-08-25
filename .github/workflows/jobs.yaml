@@ -30,7 +30,8 @@ jobs:
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
         run: |
-          docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ghp-import -n -p -f site
-
+          docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
+            git config --global --add safe.directory /app &&
+            ghp-import -n -p -f site"
       - name: Clean up Docker resources
         run: docker system prune -f
