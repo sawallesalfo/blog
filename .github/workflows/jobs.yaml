@@ -35,9 +35,8 @@ jobs:
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'  # Deploy only from the main branch
         run: |
-          docker run --rm -v ${{ github.workspace }}/site:/site alpine:latest /bin/sh -c "
-            apk add --no-cache git gh-pages &&
-            gh-pages --dist /site --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"  # Deploy the built site to GitHub Pages
+          docker run --rm -v ${{ github.workspace }}/site:/site ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
+            gh-pages --dist /site --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
 
       - name: Clean up Docker resources
         run: docker system prune -f  # Clean up any dangling Docker resources to save space
