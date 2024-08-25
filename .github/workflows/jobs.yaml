@@ -27,10 +27,10 @@ jobs:
       - name: Pull Docker image
         run: docker pull ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
 
-      - name: Copy codebase and .git directory
+      - name: Build MkDocs site
         run: |
           docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
-          cp -r /app/.git /app/ && mkdocs build --verbose --site-dir site"
+          mkdocs build --verbose --site-dir site"
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'  # Deploy only from the main branch
