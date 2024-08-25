@@ -7,11 +7,11 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 env:
   IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/blogs_mkdocs
   IMAGE_TAG: latest
-  GIT_PYTHON_REFRESH: quiet
 
 jobs:
   build-and-deploy:
@@ -24,19 +24,14 @@ jobs:
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
-      - name: Pull Docker image
-        run: docker pull ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-
       - name: Build MkDocs site
         run: |
-          docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
-          mkdocs build --verbose --site-dir site"
+          docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} mkdocs build --verbose --site-dir site
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'  # Deploy only from the main branch
         run: |
-          docker run --rm -v ${{ github.workspace }}/site:/site ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c "
-            gh-pages --dist /site --repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          docker run --rm -v ${{ github.workspace }}/site:/site ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} ghp-import -n -p -f /site
 
       - name: Clean up Docker resources
         run: docker system prune -f  # Clean up any dangling Docker resources to save space
