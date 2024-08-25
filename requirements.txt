@@ -110,3 +110,4 @@ wcmatch
 # Backport de zipfile.Path pour naviguer dans les fichiers ZIP plus facilement
 zipp
 
+ghpages
