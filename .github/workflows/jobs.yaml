@@ -21,7 +21,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensure the full history is fetched to avoid issues with ghp-impo
+          fetch-depth: 0  # Ensure the full history is fetche to avoid issues with ghp-impo
 
       - name: Build MkDocs site
         run: |
