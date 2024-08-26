@@ -18,7 +18,7 @@
     
     
       
-        <title>CICD for data scientist - ssawadogo-blog</title>
+        <title>CI/CD pour les Data Scientists : Quand le Code Se Met à Danser - ssawadogo-blog</title>
       
     
     
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CICD for data scientist
+              CI/CD pour les Data Scientists : Quand le Code Se Met à Danser
             
           </span>
         </div>
@@ -620,6 +620,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -628,16 +630,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser" class="md-nav__link">
-    <span class="md-ellipsis">
-      CI/CD pour les Data Scientists : Quand le Code Se Met à Danser
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CI/CD pour les Data Scientists : Quand le Code Se Met à Danser">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#quest-ce-que-la-cicd" class="md-nav__link">
     <span class="md-ellipsis">
       Qu'est-ce que la CI/CD ?
@@ -645,8 +637,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#cicd-pour-les-data-scientists-pourquoi" class="md-nav__link">
     <span class="md-ellipsis">
       CI/CD pour les Data Scientists : Pourquoi ?
@@ -678,8 +670,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#exemple-de-cicd-pour-un-projet-data-science" class="md-nav__link">
     <span class="md-ellipsis">
       Exemple de CI/CD pour un Projet Data Science
@@ -701,7 +693,7 @@
           <li class="md-nav__item">
   <a href="#exemple-avec-gitlab" class="md-nav__link">
     <span class="md-ellipsis">
-      exemple avec gitlab
+      Exemple avec gitlab
     </span>
   </a>
   
@@ -711,8 +703,8 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#utiliser-des-git-hooks" class="md-nav__link">
     <span class="md-ellipsis">
       Utiliser des Git Hooks
@@ -720,18 +712,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -834,13 +821,11 @@
         
 
 
-  <h1>CICD for data scientist</h1>
-
-<h3 id="cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser">CI/CD pour les Data Scientists : Quand le Code Se Met à Danser<a class="headerlink" href="#cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser" title="Permanent link">&para;</a></h3>
+<h1 id="cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser">CI/CD pour les Data Scientists : Quand le Code Se Met à Danser<a class="headerlink" href="#cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser" title="Permanent link">&para;</a></h1>
 <p>La collaboration entre data scientists et développeurs peut parfois ressembler à une partie de ping-pong chaotique : chacun fait rebondir des idées et des bouts de code, mais rien ne semble vraiment s'assembler correctement. Heureusement, il existe une solution pour rendre cette danse collaborative plus harmonieuse : la CI/CD (Continuous Integration/Continuous Deployment). Oui, même pour les data scientists ! Alors, prenez vos notebooks, ajustez vos lunettes, et découvrons comment transformer cette pagaille en une symphonie bien orchestrée :)</p>
 <!-- more -->
 
-<h4 id="quest-ce-que-la-cicd">Qu'est-ce que la CI/CD ?<a class="headerlink" href="#quest-ce-que-la-cicd" title="Permanent link">&para;</a></h4>
+<h2 id="quest-ce-que-la-cicd">Qu'est-ce que la CI/CD ?<a class="headerlink" href="#quest-ce-que-la-cicd" title="Permanent link">&para;</a></h2>
 <p>Avant de plonger dans les détails, clarifions ce que signifie CI/CD, surtout pour ceux qui, parmi nous, passent plus de temps à jongler des notebooks qu’à jongler avec des pipelines. Ou travaillent :
 generalement en nombre reduits au près des metiers:</p>
 <ul>
@@ -849,13 +834,13 @@ generalement en nombre reduits au près des metiers:</p>
 <ul>
 <li><strong>Continuous Deployment (CD)</strong>: c' est comme la cerise sur le gâteau. Ici, chaque modification validée (après les tests de CI) est automatiquement déployée en production. Oui, vous avez bien entendu : plus besoin d'appuyer sur un bouton pour déployer, c'est comme si votre code se déployait tout seul, un peu comme une machine à café qui se prépare elle-même une nouvelle tasse de café dès que vous avez terminé la précédente. Le rêve, non ?</li>
 </ul>
-<h4 id="cicd-pour-les-data-scientists-pourquoi">CI/CD pour les Data Scientists : Pourquoi ?<a class="headerlink" href="#cicd-pour-les-data-scientists-pourquoi" title="Permanent link">&para;</a></h4>
+<h2 id="cicd-pour-les-data-scientists-pourquoi">CI/CD pour les Data Scientists : Pourquoi ?<a class="headerlink" href="#cicd-pour-les-data-scientists-pourquoi" title="Permanent link">&para;</a></h2>
 <p>Pendant longtemps, la cicd etait propre aux developpeurs : Bonne pratique de developpement (devops). Avec le developpement de la data science et la volonté de maturer les projets data, on a donc commencer à entendre parler de MLOPS. Disons que la CICD est une composante pour faire du MlOps.</p>
 <p>En tant que data scientist, vous pourriez vous demander : "Pourquoi devrais-je me préoccuper de tout ce bazar ? Mes notebooks fonctionnent très bien tels quels !" Certes, mais imaginez la scène : vous travaillez sur un modèle hyper complexe, vous l’entraînez pendant des heures (ou des jours), et puis… Oups, un autre membre de l'équipe modifie le code d'importation des données, et votre magnifique modèle ne fonctionne plus. Catastrophe.
 Ou plus simplement, vous voudriez suivre l'historique d'un code. Le code marchait -il avant? Difficilement de repondre à ces questions à priori sans CICD</p>
-<h5 id="les-enjeux-de-la-collaboration">Les Enjeux de la Collaboration<a class="headerlink" href="#les-enjeux-de-la-collaboration" title="Permanent link">&para;</a></h5>
+<h3 id="les-enjeux-de-la-collaboration">Les Enjeux de la Collaboration<a class="headerlink" href="#les-enjeux-de-la-collaboration" title="Permanent link">&para;</a></h3>
 <p>La collaboration entre plusieurs data scientists (et développeurs) sur un même projet peut vite devenir compliquée. Chacun a son style, ses méthodes, et son code. Comme une recette de cuisine où chaque cuisinier ajoute ses propres ingrédients sans se concerter avec les autres, le résultat peut être… surprenant, pour ne pas dire immangeable. </p>
-<h5 id="la-solution-cicd-pour-data-scientists">La Solution : CI/CD pour Data Scientists<a class="headerlink" href="#la-solution-cicd-pour-data-scientists" title="Permanent link">&para;</a></h5>
+<h3 id="la-solution-cicd-pour-data-scientists">La Solution : CI/CD pour Data Scientists<a class="headerlink" href="#la-solution-cicd-pour-data-scientists" title="Permanent link">&para;</a></h3>
 <p>Implémenter une chaîne CI/CD dans vos projets de data science permet d'assurer que :</p>
 <ol>
 <li>
@@ -873,10 +858,10 @@ Ou plus simplement, vous voudriez suivre l'historique d'un code. Le code marchai
 </ol>
 <p>C'est quoi git , gitlab ou github dans tout ça?
 Je vous invite à faire un tour sur cet article au cas où vous n'etes pas tres familier avec des trois mots: <a href="/All_things_start_git.md">github vs gitlab vs git</a></p>
-<h4 id="exemple-de-cicd-pour-un-projet-data-science">Exemple de CI/CD pour un Projet Data Science<a class="headerlink" href="#exemple-de-cicd-pour-un-projet-data-science" title="Permanent link">&para;</a></h4>
+<h2 id="exemple-de-cicd-pour-un-projet-data-science">Exemple de CI/CD pour un Projet Data Science<a class="headerlink" href="#exemple-de-cicd-pour-un-projet-data-science" title="Permanent link">&para;</a></h2>
 <p>Dans ce guide, nous allons créer un pipeline CI/CD pour un projet de data science sur GitLab. Nous aborderons la structure du projet, la configuration du pipeline avec GitLab CI/CD, les tests, le déploiement d'une application Dash, et un bonus sur l'utilisation des “git hooks” pour tester localement avant de pousser les changements.
 Avant tout parlons de </p>
-<h5 id="structure-du-projet">Structure du Projet<a class="headerlink" href="#structure-du-projet" title="Permanent link">&para;</a></h5>
+<h3 id="structure-du-projet">Structure du Projet<a class="headerlink" href="#structure-du-projet" title="Permanent link">&para;</a></h3>
 <p>Voici une structure typique pour un projet de data science utilisant GitLab CI/CD :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mon_projet_data_science/
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│
@@ -904,7 +889,7 @@ Avant tout parlons de </p>
 <a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    ├── exploration.ipynb # Notebook pour l&#39;exploration des données
 <a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    └── analysis.ipynb    # Notebook pour l&#39;analyse des résultats
 </code></pre></div>
-<h5 id="exemple-avec-gitlab">exemple avec gitlab<a class="headerlink" href="#exemple-avec-gitlab" title="Permanent link">&para;</a></h5>
+<h3 id="exemple-avec-gitlab">Exemple avec gitlab<a class="headerlink" href="#exemple-avec-gitlab" title="Permanent link">&para;</a></h3>
 <p>Cela revient à configurer le fichier <code>.gitlab-ci.yml</code>
 Voici un exemple de configuration pour le pipeline CI/CD :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">stages</span><span class="p">:</span>
@@ -962,7 +947,7 @@ Voici un exemple de configuration pour le pipeline CI/CD :</p>
 <li><strong>Train Stage</strong> : Lance l'entraînement du modèle de machine learning en exécutant le script <code>train_model.py</code>.</li>
 <li><strong>Deploy Stage</strong> : Déploie l'application Dash sur un serveur distant. Cette étape est déclenchée uniquement pour la branche <code>main</code>.</li>
 </ol>
-<h4 id="utiliser-des-git-hooks">Utiliser des Git Hooks<a class="headerlink" href="#utiliser-des-git-hooks" title="Permanent link">&para;</a></h4>
+<h2 id="utiliser-des-git-hooks">Utiliser des Git Hooks<a class="headerlink" href="#utiliser-des-git-hooks" title="Permanent link">&para;</a></h2>
 <p>Dans le cas où vous ne disposer pas de serveur distant pour lancer vos codes, vous pourriez utiliser  <strong>git hooks</strong> pour exécuter les tests locaux. Par exemple, un hook <code>pre-push</code> peut être utilisé pour exécuter les tests avant chaque <code>git push</code>.</p>
 <ol>
 <li>
@@ -989,11 +974,13 @@ Voici un exemple de configuration pour le pipeline CI/CD :</p>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tests réussis. Push en cours...&quot;</span>
 </code></pre></div>
 Avec ce hook en place, chaque tentative de git push exécutera les tests locaux. Si les tests échouent, le push sera annulé, garantissant ainsi que seul le code valide est poussé vers le dépôt distant.</p>
-<h4 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h4>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <p>En somme, intégrer la CI/CD dans vos projets de data science est comme apprendre à danser le tango avec vos collègues : c'est au début un peu maladroit, mais une fois que vous avez le rythme, vous ne pouvez plus vous en passer. Cela transforme votre façon de travailler, rend vos collaborations plus fluides, et garantit que vos modèles sont toujours au top de leur forme.</p>
 <p>Alors, chers data scientists, prêts à chausser vos chaussures de danse et à adopter la CI/CD ? Parce qu’une fois que vous y aurez goûté, vous ne reviendrez jamais en arrière. Promis, juré.</p>
-<p>References:
-- https://martinfowler.com/articles/continuousIntegration.html</p>
+<p>References:</p>
+<ul>
+<li>https://martinfowler.com/articles/continuousIntegration.html</li>
+</ul>
 <ul>
 <li>https://martinfowler.com/books/duvall.html</li>
 </ul>
