@@ -1,0 +1,1205 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="../iam-for-eks/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.0">
+    
+    
+      
+        <title>Comment Créer et Configurer un Cluster Amazon EMR sur EC2 - ssawadogo-blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.45e1311d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#comment-creer-et-configurer-un-cluster-amazon-emr-sur-ec2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="ssawadogo-blog" class="md-header__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ssawadogo-blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Comment Créer et Configurer un Cluster Amazon EMR sur EC2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ssawadogo-blog" class="md-nav__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    ssawadogo-blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/aws/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/cicd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/ec2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EC2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EKS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/emr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EMR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/iam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IAM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/spark/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spark
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-creer-un-role-emr-avec-les-permissions-necessaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Créer un Rôle EMR avec les Permissions Nécessaires
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Créer un Rôle EMR avec les Permissions Nécessaires">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-est-ce-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi est-ce important?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-1-creation-dun-role-emr-pour-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 1: Création d'un Rôle EMR pour EC2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-creer-une-cle-ssh-pour-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Créer une Clé SSH pour EC2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Créer une Clé SSH pour EC2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-en-avez-vous-besoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi en avez-vous besoin?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-2-creation-dune-paire-de-cles-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 2: Création d'une Paire de Clés SSH
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-creation-et-configuration-du-cluster-emr" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Création et Configuration du Cluster EMR
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Création et Configuration du Cluster EMR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-cette-etape-est-elle-cruciale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi cette étape est-elle cruciale?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-3-creer-un-cluster-emr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 3: Créer un Cluster EMR
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configuration-du-tunnel-ssh-vers-le-nud-maitre" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configuration du Tunnel SSH vers le Nœud Maître
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Configuration du Tunnel SSH vers le Nœud Maître">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-configurer-un-tunnel-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi configurer un tunnel SSH?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-4-creation-du-tunnel-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 4: Création du Tunnel SSH
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 4: Création du Tunnel SSH">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-ouverture-du-port-22" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Ouverture du Port 22
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-etablissement-du-tunnel-ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Établissement du Tunnel SSH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-configuration-de-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Configuration de Switch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-connexion-a-jupyterhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Connexion à JupyterHub
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Connexion à JupyterHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etape-5-acceder-a-jupyterhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 5: Accéder à JupyterHub
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Salif SAWADOGO
+                        
+                      </strong>
+                      <br>
+                      End-to-end Data Scientist
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                        <time datetime="2024-08-25 00:00:00" class="md-ellipsis">August 25, 2024</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/aws/">AWS</a>, 
+                              <a href="../../../../category/cloud/">Cloud</a>, 
+                              <a href="../../../../category/ec2/">EC2</a>, 
+                              <a href="../../../../category/emr/">EMR</a>, 
+                              <a href="../../../../category/spark/">Spark</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              7 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+<h1 id="comment-creer-et-configurer-un-cluster-amazon-emr-sur-ec2">Comment Créer et Configurer un Cluster Amazon EMR sur EC2<a class="headerlink" href="#comment-creer-et-configurer-un-cluster-amazon-emr-sur-ec2" title="Permanent link">&para;</a></h1>
+<p>Créer un cluster EMR (Elastic MapReduce) sur EC2 peut sembler complexe, surtout si vous vous lancez pour la première fois. Dans cet article, je vais vous guider à travers chaque étape, depuis la création des rôles jusqu’à la connexion à JupyterHub via un tunnel SSH. Ce guide est conçu pour vous fournir des explications claires et détaillées afin que vous puissiez configurer votre cluster sans difficulté. Nous nous concentrerons spécifiquement sur EMR sur EC2. La petite histoire est que j'ai passé des heures à expliquer cela à plusieurs étudiants intéressés par EMR. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à comprendre et à configurer un cluster EMR de manière efficace. EMR ne faisant pas partie des services gratuit du compte tier, il faut prevoir entre 1 à 5 euros de facture sur aws.</p>
+<!-- more -->
+
+<h2 id="1-creer-un-role-emr-avec-les-permissions-necessaires">1. Créer un Rôle EMR avec les Permissions Nécessaires<a class="headerlink" href="#1-creer-un-role-emr-avec-les-permissions-necessaires" title="Permanent link">&para;</a></h2>
+<h3 id="pourquoi-est-ce-important">Pourquoi est-ce important?<a class="headerlink" href="#pourquoi-est-ce-important" title="Permanent link">&para;</a></h3>
+<p>Avant de pouvoir créer un cluster EMR, vous devez configurer les rôles et permissions nécessaires pour permettre à Amazon Web Services (AWS) de gérer votre cluster en toute sécurité. Ces rôles permettent à votre cluster d’interagir avec d'autres services AWS comme S3, EC2, et EMR lui-même.</p>
+<h3 id="etape-1-creation-dun-role-emr-pour-ec2">Étape 1: Création d'un Rôle EMR pour EC2<a class="headerlink" href="#etape-1-creation-dun-role-emr-pour-ec2" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Accéder à la console IAM:</strong>
+   Connectez-vous à votre compte AWS et rendez-vous sur la console IAM. IAM (Identity and Access Management) est l'endroit où vous gérez les permissions et les rôles pour vos services AWS.</p>
+</li>
+<li>
+<p><strong>Créer un nouveau rôle:</strong></p>
+<ul>
+<li>Cliquez sur <strong>Rôles</strong> dans le menu de gauche, puis sur <strong>Créer un rôle</strong>.</li>
+<li>Sélectionnez <strong>EMR</strong> comme type de rôle, puis choisissez <strong>EC2</strong> comme service. Cela signifie que vous créez un rôle qui sera utilisé par les instances EC2 dans votre cluster EMR.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ajouter les politiques de permissions:</strong></p>
+<ul>
+<li><strong>AmazonS3FullAccess</strong> : Permet à votre cluster de lire et d’écrire dans des buckets S3, essentiel pour stocker les données et les journaux de votre cluster.</li>
+<li><strong>AmazonEC2FullAccess</strong> : Permet à EMR de gérer les instances EC2 (démarrage, arrêt, configuration).</li>
+<li><strong>AmazonElasticMapReduceFullAccess</strong> : Donne à EMR un accès complet pour gérer toutes les opérations liées à votre cluster.</li>
+</ul>
+</li>
+</ol>
+<p>Lorsque vous configurerez votre cluster, sélectionnez ce rôle sous <strong>EC2 instance profile</strong> pour permettre à votre cluster d’utiliser ces permissions.</p>
+<p><a class="glightbox" href="../../../../emr/emr_roles.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Rôle EMR IAM" src="../../../../emr/emr_roles.PNG" /></a></p>
+<blockquote>
+<p><strong>Astuce:</strong> Les permissions sont cruciales pour la sécurité. Accordez les permissions minimales nécessaires pour accomplir vos tâches.</p>
+</blockquote>
+<h2 id="2-creer-une-cle-ssh-pour-ec2">2. Créer une Clé SSH pour EC2<a class="headerlink" href="#2-creer-une-cle-ssh-pour-ec2" title="Permanent link">&para;</a></h2>
+<h3 id="pourquoi-en-avez-vous-besoin">Pourquoi en avez-vous besoin?<a class="headerlink" href="#pourquoi-en-avez-vous-besoin" title="Permanent link">&para;</a></h3>
+<p>Une clé SSH est nécessaire pour se connecter à distance aux instances EC2 de votre cluster. Cette connexion vous permet d'administrer les nœuds du cluster, d’installer des logiciels supplémentaires ou de déboguer directement sur le serveur.</p>
+<h3 id="etape-2-creation-dune-paire-de-cles-ssh">Étape 2: Création d'une Paire de Clés SSH<a class="headerlink" href="#etape-2-creation-dune-paire-de-cles-ssh" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Accéder à la console EC2:</strong>
+   Dans la console AWS, accédez à la section <strong>EC2</strong> pour gérer vos instances et autres ressources liées à EC2.</p>
+</li>
+<li>
+<p><strong>Créer une paire de clés:</strong></p>
+<ul>
+<li>Dans le menu de gauche, sélectionnez <strong>Key Pairs</strong> sous la section <strong>Network &amp; Security</strong>.</li>
+<li>Cliquez sur <strong>Create Key Pair</strong>.</li>
+<li>Donnez un nom à votre clé et choisissez le format souhaité (PEM pour Linux/Mac, PPK pour Windows avec PuTTY).</li>
+<li>Téléchargez la clé. Cette clé vous permettra de vous connecter en SSH à vos instances EC2.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Gardez cette clé en sécurité. Si vous la perdez, vous ne pourrez pas vous reconnecter à votre instance.</p>
+</blockquote>
+<h2 id="3-creation-et-configuration-du-cluster-emr">3. Création et Configuration du Cluster EMR<a class="headerlink" href="#3-creation-et-configuration-du-cluster-emr" title="Permanent link">&para;</a></h2>
+<h3 id="pourquoi-cette-etape-est-elle-cruciale">Pourquoi cette étape est-elle cruciale?<a class="headerlink" href="#pourquoi-cette-etape-est-elle-cruciale" title="Permanent link">&para;</a></h3>
+<p>La configuration du cluster est le cœur de l’opération. C’est ici que vous choisissez les logiciels que vous voulez installer, les types d'instances à utiliser, et les options de mise en réseau.</p>
+<h3 id="etape-3-creer-un-cluster-emr">Étape 3: Créer un Cluster EMR<a class="headerlink" href="#etape-3-creer-un-cluster-emr" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Créer le cluster:</strong></p>
+<ul>
+<li>Allez sur la console EMR et cliquez sur <strong>Create cluster</strong>.</li>
+<li>Donnez un nom à votre cluster. Par exemple, "Cluster-DataScience".</li>
+</ul>
+</li>
+<li>
+<p><strong>Choisir les composants logiciels:</strong></p>
+<ul>
+<li>EMR propose plusieurs logiciels que vous pouvez installer directement lors de la création du cluster. Pour un environnement de science des données, incluez <strong>TensorFlow</strong>, <strong>JupyterHub</strong> (pour gérer vos notebooks), et <strong>Zeppelin</strong>.
+ <a class="glightbox" href="../../../../emr/cluster_definition.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Définition du Cluster" src="../../../../emr/cluster_definition.PNG" /></a></li>
+</ul>
+</li>
+<li>
+<p><strong>Choisir les types d'instances:</strong></p>
+<ul>
+<li><strong>Master node:</strong> Le nœud maître coordonne toutes les tâches du cluster. Une instance <code>m5.xlarge</code> est un bon choix pour équilibrer coût et performance.</li>
+<li><strong>Core nodes:</strong> Ces nœuds exécutent les tâches. Vous pouvez opter pour des instances plus économiques si vous avez un budget serré.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configurer le volume EBS:</strong></p>
+<ul>
+<li>Par défaut, EMR vous propose un volume racine EBS pour chaque instance. Vous pouvez généralement accepter cette valeur par défaut.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configurer le réseau (VPC et sous-réseau):</strong></p>
+<ul>
+<li>Assurez-vous de sélectionner un sous-réseau public pour accéder à votre cluster via SSH et Web. Si vous n'avez pas de VPC disponible, créez-le ainsi:
+ <a class="glightbox" href="../../../../emr/create_vpc.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Création du VPC" src="../../../../emr/create_vpc.PNG" /></a></li>
+</ul>
+</li>
+<li>
+<p><strong>Ajouter des actions Bootstrap:</strong></p>
+<ul>
+<li>Les actions Bootstrap sont des scripts exécutés sur chaque nœud lors du démarrage. Créez un fichier avec l'extension <code>.sh</code> que vous garderez dans votre S3 et fournissez-le à EMR via son URI :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash -xe</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>awscli<span class="w">            </span><span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>boto3<span class="w">             </span><span class="se">\</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>wheel<span class="w">             </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>s3fs<span class="w">              </span><span class="se">\</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span>fsspec<span class="w">            </span><span class="se">\</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span>pyarrow
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>pandas<span class="w"> </span>pillow<span class="w"> </span>scikit-learn<span class="w"> </span>tensorflow
+</code></pre></div></li>
+<li>Ce script installe des bibliothèques Python couramment utilisées dans le traitement de données. Il est essentiel de réaliser ces actions à cette étape pour que les packages soient installés sur l'ensemble des machines du cluster, et non uniquement sur le driver (comme ce serait le cas si vous exécutiez ces commandes directement dans le notebook JupyterHub ou dans la console EMR).</li>
+</ul>
+</li>
+<li>
+<p><strong>Configurer la persistance des notebooks Jupyter:</strong></p>
+<ul>
+<li>Configurez JupyterHub pour qu’il sauvegarde automatiquement vos notebooks sur un bucket S3 en ajoutant ce paramètre dans <strong>Software settings</strong>:
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nt">&quot;Classification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jupyter-s3-conf&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="nt">&quot;Properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">            </span><span class="nt">&quot;s3.persistence.enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">            </span><span class="nt">&quot;s3.persistence.bucket&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MyJupyterBackups&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">]</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><strong>Configurer les journaux du cluster:</strong></p>
+<ul>
+<li>Assurez-vous que les journaux du cluster sont publiés sur S3. Cela vous aidera à diagnostiquer tout problème après coup.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Rappel:</strong> La création du cluster peut prendre entre 5 et 10 minutes, et vous commencerez à être facturé dès que le cluster démarre.</p>
+</blockquote>
+<p>Une fois prêt, vous verrez vos applications listées, mais elles ne seront pas encore accessibles.
+<a class="glightbox" href="../../../../emr/application.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Applications du Cluster" src="../../../../emr/application.PNG" /></a></p>
+<h2 id="4-configuration-du-tunnel-ssh-vers-le-nud-maitre">4. Configuration du Tunnel SSH vers le Nœud Maître<a class="headerlink" href="#4-configuration-du-tunnel-ssh-vers-le-nud-maitre" title="Permanent link">&para;</a></h2>
+<h3 id="pourquoi-configurer-un-tunnel-ssh">Pourquoi configurer un tunnel SSH?<a class="headerlink" href="#pourquoi-configurer-un-tunnel-ssh" title="Permanent link">&para;</a></h3>
+<p>Le nœud maître de votre cluster est protégé derrière un pare-feu, et les applications comme JupyterHub ne sont accessibles que via le réseau local du cluster. Le tunnel SSH vous permet de contourner cette restriction en créant un pont sécurisé entre votre machine locale et le nœud maître.</p>
+<h3 id="etape-4-creation-du-tunnel-ssh">Étape 4: Création du Tunnel SSH<a class="headerlink" href="#etape-4-creation-du-tunnel-ssh" title="Permanent link">&para;</a></h3>
+<h4 id="41-ouverture-du-port-22">4.1 Ouverture du Port 22<a class="headerlink" href="#41-ouverture-du-port-22" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Configurer les autorisations:</strong></p>
+<ul>
+<li>Sur la console EC2, allez dans <strong>Security Groups</strong>.</li>
+<li>Modifiez le groupe de sécurité attaché au nœud maître de votre cluster.</li>
+<li>Ajoutez une règle pour autoriser les connexions SSH (port 22) depuis n'importe quelle IP, ou restreignez-la à votre IP pour plus de sécurité. Modifiez le groupe de sécurité associé aux <code>master</code>. Il ressemblera à ceci :
+ <a class="glightbox" href="../../../../emr/security_group1.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Groupe de Sécurité" src="../../../../emr/security_group1.PNG" /></a></li>
+</ul>
+<p>À la fin, vous devriez avoir des règles qui ressemblent à ceci :
+ <a class="glightbox" href="../../../../emr/security_group2.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Règles de Sécurité" src="../../../../emr/security_group2.PNG" /></a></p>
+</li>
+</ol>
+<h4 id="42-etablissement-du-tunnel-ssh">4.2 Établissement du Tunnel SSH<a class="headerlink" href="#42-etablissement-du-tunnel-ssh" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Récupérer les informations de connexion:</strong></p>
+<ul>
+<li>Sur la console EMR, accédez à l’onglet <strong>Summary</strong> de votre cluster.</li>
+<li>Cliquez sur <strong>Enable Web Connection</strong> pour générer la commande SSH nécessaire pour établir le tunnel.</li>
+</ul>
+</li>
+<li>
+<p><strong>Utilisation de PuTTY pour Windows:</strong></p>
+<ul>
+<li>Si vous êtes sur Windows, utilisez PuTTY pour établir le tunnel SSH en configurant les paramètres avec votre clé <code>.ppk</code>.</li>
+<li>Suivez les étapes indiquées sur la console AWS.
+ <a class="glightbox" href="../../../../emr/ssh_putty_window.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Configuration SSH avec PuTTY" src="../../../../emr/ssh_putty_window.PNG" /></a></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Astuce:</strong> Si vous utilisez Linux ou macOS, exécutez simplement la commande SSH dans votre terminal.</p>
+</blockquote>
+<p>Si votre connexion SSH a réussi, vous verrez cette fenêtre :
+<a class="glightbox" href="../../../../emr/putty_works.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Connexion Réussie" src="../../../../emr/putty_works.png" /></a></p>
+<h4 id="43-configuration-de-switch">4.3 Configuration de Switch<a class="headerlink" href="#43-configuration-de-switch" title="Permanent link">&para;</a></h4>
+<p>yOmega ou FoxyProxy</p>
+<ol>
+<li>
+<p><strong>Installation de SwitchyOmega:</strong></p>
+<ul>
+<li>Pour accéder aux applications via le tunnel SSH, configurez votre navigateur pour utiliser ce tunnel. Installez l’extension SwitchyOmega pour Chrome et configurez-la en suivant les instructions détaillées dans la documentation <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-proxy.html">AWS</a>.</li>
+</ul>
+<p>Si cela vous semble compliqué, référez-vous aux vidéos YouTube suivantes :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=fpGAnXgBZe0">Vidéo 1</a> (À partir de 5:10)</li>
+<li><a href="https://www.youtube.com/watch?v=hGTSghZcDdk&amp;t=60s">Vidéo 2</a> (À partir de 8:00)</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Parfois, il peut être nécessaire de redémarrer le navigateur ou attendre quelques minutes pour que l'extension fonctionne correctement.</p>
+</blockquote>
+<h2 id="5-connexion-a-jupyterhub">5. Connexion à JupyterHub<a class="headerlink" href="#5-connexion-a-jupyterhub" title="Permanent link">&para;</a></h2>
+<h3 id="etape-5-acceder-a-jupyterhub">Étape 5: Accéder à JupyterHub<a class="headerlink" href="#etape-5-acceder-a-jupyterhub" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Connexion à JupyterHub:</strong></p>
+<ul>
+<li>Une fois le tunnel SSH configuré et votre navigateur paramétré, vous devriez voir <strong>JupyterHub</strong> listé parmi les applications disponibles sur votre cluster EMR.</li>
+<li>Cliquez sur <strong>JupyterHub</strong> pour ouvrir l’interface de connexion.
+ <a class="glightbox" href="../../../../emr/jupyter.jpeg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Connexion à JupyterHub" src="../../../../emr/jupyter.jpeg" /></a></li>
+</ul>
+<ul>
+<li>Utilisez les identifiants par défaut (login: <code>jovyan</code>, password: <code>jupyter</code>) pour vous connecter.</li>
+</ul>
+</li>
+</ol>
+<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h1>
+<p>Félicitations! Vous avez maintenant un cluster EMR pleinement opérationnel, avec JupyterHub configuré et accessible via un tunnel SSH sécurisé. Vous êtes prêt à tirer parti de la puissance de calcul d'Amazon EMR pour vos projets de science des données, d’analyse, ou de machine learning.</p>
+<p>Si vous avez des questions ou des difficultés, n'hésitez pas à me contacter. Bonne chance avec votre cluster EMR et n'oubliez pas de l'éteindre une fois terminé!</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-26</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © @sawallesalfo August 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "content.tabs", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
