@@ -16,18 +16,16 @@ La collaboration entre data scientists et développeurs peut parfois ressembler 
 
 #### Qu'est-ce que la CI/CD ?
 
-Avant de plonger dans les détails, clarifions ce que signifie CI/CD, surtout pour ceux qui, parmi nous, passent plus de temps à jongler des notebooks qu’à jongler avec des pipelines. Ou travaillent generalement en nombre reduits au près des metiers.
+Avant de plonger dans les détails, clarifions ce que signifie CI/CD, surtout pour ceux qui, parmi nous, passent plus de temps à jongler des notebooks qu’à jongler avec des pipelines. Ou travaillent :
+generalement en nombre reduits au près des metiers:
 
-##### Continuous Integration (CI)
+-  **Continuous Integration (CI)**: une pratique qui consiste à intégrer régulièrement les modifications du code dans un dépôt central, où elles sont automatiquement testées. Imaginez un petit robot qui vérifie si chaque ligne de code que vous ajoutez fonctionne bien avec le reste du code, comme un danseur de tango qui s'assure que chaque pas est en harmonie avec le rythme. L'idée est de détecter rapidement les erreurs afin qu'elles ne s'accumulent pas comme une pile de vaisselle sale (vous savez, celle qu’on promet de faire plus tard, mais qui finit par devenir un Everest inébranlable).
 
-La **Continuous Integration (CI)** est une pratique qui consiste à intégrer régulièrement les modifications du code dans un dépôt central, où elles sont automatiquement testées. Imaginez un petit robot qui vérifie si chaque ligne de code que vous ajoutez fonctionne bien avec le reste du code, comme un danseur de tango qui s'assure que chaque pas est en harmonie avec le rythme. L'idée est de détecter rapidement les erreurs afin qu'elles ne s'accumulent pas comme une pile de vaisselle sale (vous savez, celle qu’on promet de faire plus tard, mais qui finit par devenir un Everest inébranlable).
-
-##### Continuous Deployment (CD)
-
-Ensuite, il y a la **Continuous Deployment (CD)**, qui est comme la cerise sur le gâteau. Ici, chaque modification validée (après les tests de CI) est automatiquement déployée en production. Oui, vous avez bien entendu : plus besoin d'appuyer sur un bouton pour déployer, c'est comme si votre code se déployait tout seul, un peu comme une machine à café qui se prépare elle-même une nouvelle tasse de café dès que vous avez terminé la précédente. Le rêve, non ?
+- **Continuous Deployment (CD)**: c' est comme la cerise sur le gâteau. Ici, chaque modification validée (après les tests de CI) est automatiquement déployée en production. Oui, vous avez bien entendu : plus besoin d'appuyer sur un bouton pour déployer, c'est comme si votre code se déployait tout seul, un peu comme une machine à café qui se prépare elle-même une nouvelle tasse de café dès que vous avez terminé la précédente. Le rêve, non ?
 
 #### CI/CD pour les Data Scientists : Pourquoi ?
 Pendant longtemps, la cicd etait propre aux developpeurs : Bonne pratique de developpement (devops). Avec le developpement de la data science et la volonté de maturer les projets data, on a donc commencer à entendre parler de MLOPS. Disons que la CICD est une composante pour faire du MlOps.
+
 En tant que data scientist, vous pourriez vous demander : "Pourquoi devrais-je me préoccuper de tout ce bazar ? Mes notebooks fonctionnent très bien tels quels !" Certes, mais imaginez la scène : vous travaillez sur un modèle hyper complexe, vous l’entraînez pendant des heures (ou des jours), et puis… Oups, un autre membre de l'équipe modifie le code d'importation des données, et votre magnifique modèle ne fonctionne plus. Catastrophe.
 Ou plus simplement, vous voudriez suivre l'historique d'un code. Le code marchait -il avant? Difficilement de repondre à ces questions à priori sans CICD
 
@@ -143,7 +141,7 @@ deploy:
     - main
 ```
 
-### Explications des Étapes du Pipeline :
+Explications des Étapes du Pipeline :
 
 1. **Install Stage** : Installe les dépendances Python définies dans `requirements.txt`.
 2. **Test Stage** : Exécute les tests unitaires avec `pytest` pour s'assurer que chaque composant fonctionne correctement.
@@ -162,13 +160,7 @@ Dans le cas où vous ne disposer pas de serveur distant pour lancer vos codes, v
    ```bash
    touch .git/hooks/pre-push
    ```
-
 2. **Rendre le Hook Exécutable :**
-
-   ```bash
-   chmod +x .git/hooks/pre-push
-   ```
-
 3. **Ajouter le Script pour Exécuter les Tests :**
 
    Ouvrez le fichier `pre-push` et ajoutez le script suivant :
@@ -189,7 +181,12 @@ echo "Tests réussis. Push en cours..."
 ```
 Avec ce hook en place, chaque tentative de git push exécutera les tests locaux. Si les tests échouent, le push sera annulé, garantissant ainsi que seul le code valide est poussé vers le dépôt distant.
 
+#### Conclusion
+En somme, intégrer la CI/CD dans vos projets de data science est comme apprendre à danser le tango avec vos collègues : c'est au début un peu maladroit, mais une fois que vous avez le rythme, vous ne pouvez plus vous en passer. Cela transforme votre façon de travailler, rend vos collaborations plus fluides, et garantit que vos modèles sont toujours au top de leur forme.
+
+Alors, chers data scientists, prêts à chausser vos chaussures de danse et à adopter la CI/CD ? Parce qu’une fois que vous y aurez goûté, vous ne reviendrez jamais en arrière. Promis, juré.
 
 References:
-+ https://martinfowler.com/articles/continuousIntegration.html
-+ https://martinfowler.com/books/duvall.html
+- https://martinfowler.com/articles/continuousIntegration.html
+
+- https://martinfowler.com/books/duvall.html

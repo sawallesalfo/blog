@@ -56,7 +56,7 @@ GitLab est une plateforme similaire à GitHub, mais avec un ensemble d'outils en
 
 #### Fonctionnement de la CI/CD avec GitLab et GitHub
 
-##### GitHub Actions (CI/CD)
+1. **GitHub Actions (CI/CD)**
 
 GitHub Actions vous permet de créer des workflows pour automatiser les processus de développement. Ces workflows sont définis dans un fichier YAML au sein du dépôt.
 
@@ -85,7 +85,7 @@ jobs:
         run: pytest
 ```
 
-#### GitLab CI/CD
+2. **GitLab CI/CD**
 
 GitLab CI/CD utilise un fichier `.gitlab-ci.yml` pour définir les pipelines. Ce fichier décrit les étapes que GitLab doit suivre pour tester, construire, et déployer le code.
 
@@ -113,17 +113,17 @@ deploy:
     - scp dist/* user@server:/path/to/deploy/
 ```
 
-##### Visualisation du Processus CI/CD
+3.  Visualisation du Processus CI/CD
 
 Pour mieux comprendre le processus CI/CD avec Git, GitHub, et GitLab, voici une visualisation avec Mermaid :
 
 ```mermaid
 graph LR
-    A[Push du Code sur GitLab/GitHub] --> B[Pipeline CI/CD Démarré]
-    B --> C[Test Unitaire et Intégration]
+    A[Push du Code] --> B[Pipeline CI/CD Démarré]
+    B --> C[Tests]
     C --> D{Tests Réussis?}
     D -->|Oui| E[Build de l'Application]
-    E --> F[Déploiement sur Environnement de Production]
+    E --> F[Déploiement sur Environnement de ProD]
     D -->|Non| G[Retourne les Erreurs au Développeur]
 ```
 
