@@ -7,14 +7,14 @@ categories:
     - MlOps
 ---
 
-### CI/CD pour les Data Scientists : Quand le Code Se Met à Danser
+# CI/CD pour les Data Scientists : Quand le Code Se Met à Danser
 
 La collaboration entre data scientists et développeurs peut parfois ressembler à une partie de ping-pong chaotique : chacun fait rebondir des idées et des bouts de code, mais rien ne semble vraiment s'assembler correctement. Heureusement, il existe une solution pour rendre cette danse collaborative plus harmonieuse : la CI/CD (Continuous Integration/Continuous Deployment). Oui, même pour les data scientists ! Alors, prenez vos notebooks, ajustez vos lunettes, et découvrons comment transformer cette pagaille en une symphonie bien orchestrée :)
 
 <!-- more -->
 
 
-#### Qu'est-ce que la CI/CD ?
+## Qu'est-ce que la CI/CD ?
 
 Avant de plonger dans les détails, clarifions ce que signifie CI/CD, surtout pour ceux qui, parmi nous, passent plus de temps à jongler des notebooks qu’à jongler avec des pipelines. Ou travaillent :
 generalement en nombre reduits au près des metiers:
@@ -23,17 +23,17 @@ generalement en nombre reduits au près des metiers:
 
 - **Continuous Deployment (CD)**: c' est comme la cerise sur le gâteau. Ici, chaque modification validée (après les tests de CI) est automatiquement déployée en production. Oui, vous avez bien entendu : plus besoin d'appuyer sur un bouton pour déployer, c'est comme si votre code se déployait tout seul, un peu comme une machine à café qui se prépare elle-même une nouvelle tasse de café dès que vous avez terminé la précédente. Le rêve, non ?
 
-#### CI/CD pour les Data Scientists : Pourquoi ?
+## CI/CD pour les Data Scientists : Pourquoi ?
 Pendant longtemps, la cicd etait propre aux developpeurs : Bonne pratique de developpement (devops). Avec le developpement de la data science et la volonté de maturer les projets data, on a donc commencer à entendre parler de MLOPS. Disons que la CICD est une composante pour faire du MlOps.
 
 En tant que data scientist, vous pourriez vous demander : "Pourquoi devrais-je me préoccuper de tout ce bazar ? Mes notebooks fonctionnent très bien tels quels !" Certes, mais imaginez la scène : vous travaillez sur un modèle hyper complexe, vous l’entraînez pendant des heures (ou des jours), et puis… Oups, un autre membre de l'équipe modifie le code d'importation des données, et votre magnifique modèle ne fonctionne plus. Catastrophe.
 Ou plus simplement, vous voudriez suivre l'historique d'un code. Le code marchait -il avant? Difficilement de repondre à ces questions à priori sans CICD
 
-##### Les Enjeux de la Collaboration
+### Les Enjeux de la Collaboration
 
 La collaboration entre plusieurs data scientists (et développeurs) sur un même projet peut vite devenir compliquée. Chacun a son style, ses méthodes, et son code. Comme une recette de cuisine où chaque cuisinier ajoute ses propres ingrédients sans se concerter avec les autres, le résultat peut être… surprenant, pour ne pas dire immangeable. 
 
-##### La Solution : CI/CD pour Data Scientists
+### La Solution : CI/CD pour Data Scientists
 
 Implémenter une chaîne CI/CD dans vos projets de data science permet d'assurer que :
 
@@ -50,12 +50,12 @@ Je vous invite à faire un tour sur cet article au cas où vous n'etes pas tres 
 
 
 
-#### Exemple de CI/CD pour un Projet Data Science
+## Exemple de CI/CD pour un Projet Data Science
 
 Dans ce guide, nous allons créer un pipeline CI/CD pour un projet de data science sur GitLab. Nous aborderons la structure du projet, la configuration du pipeline avec GitLab CI/CD, les tests, le déploiement d'une application Dash, et un bonus sur l'utilisation des “git hooks” pour tester localement avant de pousser les changements.
 Avant tout parlons de 
 
-##### Structure du Projet
+### Structure du Projet
 
 Voici une structure typique pour un projet de data science utilisant GitLab CI/CD :
 
@@ -87,7 +87,7 @@ mon_projet_data_science/
     └── analysis.ipynb    # Notebook pour l'analyse des résultats
 ```
 
-##### exemple avec gitlab
+### Exemple avec gitlab
 
 Cela revient à configurer le fichier `.gitlab-ci.yml`
 Voici un exemple de configuration pour le pipeline CI/CD :
@@ -149,7 +149,7 @@ Explications des Étapes du Pipeline :
 4. **Train Stage** : Lance l'entraînement du modèle de machine learning en exécutant le script `train_model.py`.
 5. **Deploy Stage** : Déploie l'application Dash sur un serveur distant. Cette étape est déclenchée uniquement pour la branche `main`.
 
-#### Utiliser des Git Hooks
+## Utiliser des Git Hooks
 
 Dans le cas où vous ne disposer pas de serveur distant pour lancer vos codes, vous pourriez utiliser  **git hooks** pour exécuter les tests locaux. Par exemple, un hook `pre-push` peut être utilisé pour exécuter les tests avant chaque `git push`.
 
@@ -181,12 +181,14 @@ echo "Tests réussis. Push en cours..."
 ```
 Avec ce hook en place, chaque tentative de git push exécutera les tests locaux. Si les tests échouent, le push sera annulé, garantissant ainsi que seul le code valide est poussé vers le dépôt distant.
 
-#### Conclusion
+## Conclusion
+
 En somme, intégrer la CI/CD dans vos projets de data science est comme apprendre à danser le tango avec vos collègues : c'est au début un peu maladroit, mais une fois que vous avez le rythme, vous ne pouvez plus vous en passer. Cela transforme votre façon de travailler, rend vos collaborations plus fluides, et garantit que vos modèles sont toujours au top de leur forme.
 
 Alors, chers data scientists, prêts à chausser vos chaussures de danse et à adopter la CI/CD ? Parce qu’une fois que vous y aurez goûté, vous ne reviendrez jamais en arrière. Promis, juré.
 
 References:
+
 - https://martinfowler.com/articles/continuousIntegration.html
 
 - https://martinfowler.com/books/duvall.html
