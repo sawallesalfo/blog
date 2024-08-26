@@ -20,7 +20,7 @@
     
     
       
-        <title>All things start git - ssawadogo-blog</title>
+        <title>All things start with git - ssawadogo-blog</title>
       
     
     
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              All things start git
+              All things start with git
             
           </span>
         </div>
@@ -712,45 +712,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Fonctionnement de la CI/CD avec GitLab et GitHub">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#github-actions-cicd" class="md-nav__link">
-    <span class="md-ellipsis">
-      GitHub Actions (CI/CD)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gitlab-cicd" class="md-nav__link">
-    <span class="md-ellipsis">
-      GitLab CI/CD
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GitLab CI/CD">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#visualisation-du-processus-cicd" class="md-nav__link">
-    <span class="md-ellipsis">
-      Visualisation du Processus CI/CD
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -866,7 +827,7 @@
         
 
 
-  <h1>All things start git</h1>
+  <h1>All things start with git</h1>
 
 <h3 id="git-gitlab-et-github-pour-le-cicd">Git, GitLab et GitHub pour le CI/CD<a class="headerlink" href="#git-gitlab-et-github-pour-le-cicd" title="Permanent link">&para;</a></h3>
 <p>Dans cet article, nous allons explorer comment Git, GitLab, et GitHub sont utilisés pour implémenter des pipelines CI/CD (Intégration Continue et Déploiement Continu). Ces outils sont devenus essentiels pour automatiser et gérer les processus de développement logiciel. Comment vous pouvez les utiliser pour améliorer votre flux de travail.</p>
@@ -903,7 +864,9 @@
 <h5 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h5>
 <p>GitLab est une plateforme similaire à GitHub, mais avec un ensemble d'outils encore plus complet pour le DevOps. GitLab CI/CD est une fonctionnalité intégrée qui permet de créer des pipelines pour automatiser les tests, les builds, et les déploiements directement depuis le dépôt GitLab.</p>
 <h4 id="fonctionnement-de-la-cicd-avec-gitlab-et-github">Fonctionnement de la CI/CD avec GitLab et GitHub<a class="headerlink" href="#fonctionnement-de-la-cicd-avec-gitlab-et-github" title="Permanent link">&para;</a></h4>
-<h5 id="github-actions-cicd">GitHub Actions (CI/CD)<a class="headerlink" href="#github-actions-cicd" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>GitHub Actions (CI/CD)</strong></li>
+</ol>
 <p>GitHub Actions vous permet de créer des workflows pour automatiser les processus de développement. Ces workflows sont définis dans un fichier YAML au sein du dépôt.</p>
 <p>Exemple de workflow pour GitHub Actions :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI/CD Pipeline</span>
@@ -927,7 +890,9 @@
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
 </code></pre></div>
-<h4 id="gitlab-cicd">GitLab CI/CD<a class="headerlink" href="#gitlab-cicd" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>GitLab CI/CD</strong></li>
+</ol>
 <p>GitLab CI/CD utilise un fichier <code>.gitlab-ci.yml</code> pour définir les pipelines. Ce fichier décrit les étapes que GitLab doit suivre pour tester, construire, et déployer le code.</p>
 <p>Exemple de pipeline pour GitLab CI/CD :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">stages</span><span class="p">:</span>
@@ -950,14 +915,16 @@
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scp dist/* user@server:/path/to/deploy/</span>
 </code></pre></div>
-<h5 id="visualisation-du-processus-cicd">Visualisation du Processus CI/CD<a class="headerlink" href="#visualisation-du-processus-cicd" title="Permanent link">&para;</a></h5>
+<ol>
+<li>Visualisation du Processus CI/CD</li>
+</ol>
 <p>Pour mieux comprendre le processus CI/CD avec Git, GitHub, et GitLab, voici une visualisation avec Mermaid :</p>
 <pre class="mermaid"><code>graph LR
-    A[Push du Code sur GitLab/GitHub] --&gt; B[Pipeline CI/CD Démarré]
-    B --&gt; C[Test Unitaire et Intégration]
+    A[Push du Code] --&gt; B[Pipeline CI/CD Démarré]
+    B --&gt; C[Tests]
     C --&gt; D{Tests Réussis?}
     D --&gt;|Oui| E[Build de l'Application]
-    E --&gt; F[Déploiement sur Environnement de Production]
+    E --&gt; F[Déploiement sur Environnement de ProD]
     D --&gt;|Non| G[Retourne les Erreurs au Développeur]</code></pre>
 <p>Étapes du Processus CI/CD</p>
 <ol>
