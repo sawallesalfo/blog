@@ -10,7 +10,7 @@ categories:
     - Spark
 ---
 
-# Comment Créer et Configurer un Cluster Amazon EMR sur EC2
+## Comment Créer et Configurer un Cluster  EMR on EC2
 
 
 Créer un cluster EMR (Elastic MapReduce) sur EC2 peut sembler complexe, surtout si vous vous lancez pour la première fois. Dans cet article, je vais vous guider à travers chaque étape, depuis la création des rôles jusqu’à la connexion à JupyterHub via un tunnel SSH. Ce guide est conçu pour vous fournir des explications claires et détaillées afin que vous puissiez configurer votre cluster sans difficulté. Nous nous concentrerons spécifiquement sur EMR sur EC2. La petite histoire est que j'ai passé des heures à expliquer cela à plusieurs étudiants intéressés par EMR. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à comprendre et à configurer un cluster EMR de manière efficace. 
@@ -20,13 +20,13 @@ Créer un cluster EMR (Elastic MapReduce) sur EC2 peut sembler complexe, surtout
 EMR ne faisant pas partie des services gratuit du compte tier, il faut prevoir entre 1 à 5 euros de facture sur aws.
 
 
-## 1. Créer un Rôle EMR avec les Permissions Nécessaires
+### 1. Créer un Rôle EMR avec les Permissions Nécessaires
 
-### Pourquoi est-ce important?
+#### Pourquoi est-ce important?
 
 Avant de pouvoir créer un cluster EMR, vous devez configurer les rôles et permissions nécessaires pour permettre à Amazon Web Services (AWS) de gérer votre cluster en toute sécurité. Ces rôles permettent à votre cluster d’interagir avec d'autres services AWS comme S3, EC2, et EMR lui-même.
 
-### Étape 1: Création d'un Rôle EMR pour EC2
+#### Étape 1: Création d'un Rôle EMR pour EC2
 
 1. **Accéder à la console IAM:**
    Connectez-vous à votre compte AWS et rendez-vous sur la console IAM. IAM (Identity and Access Management) est l'endroit où vous gérez les permissions et les rôles pour vos services AWS.
@@ -46,13 +46,13 @@ Lorsque vous configurerez votre cluster, sélectionnez ce rôle sous **EC2 insta
 
 > **Astuce:** Les permissions sont cruciales pour la sécurité. Accordez les permissions minimales nécessaires pour accomplir vos tâches.
 
-## 2. Créer une Clé SSH pour EC2
+### 2. Créer une Clé SSH pour EC2
 
-### Pourquoi en avez-vous besoin?
+#### Pourquoi en avez-vous besoin?
 
 Une clé SSH est nécessaire pour se connecter à distance aux instances EC2 de votre cluster. Cette connexion vous permet d'administrer les nœuds du cluster, d’installer des logiciels supplémentaires ou de déboguer directement sur le serveur.
 
-### Étape 2: Création d'une Paire de Clés SSH
+#### Étape 2: Création d'une Paire de Clés SSH
 
 1. **Accéder à la console EC2:**
    Dans la console AWS, accédez à la section **EC2** pour gérer vos instances et autres ressources liées à EC2.
@@ -65,13 +65,13 @@ Une clé SSH est nécessaire pour se connecter à distance aux instances EC2 de 
 
 > **Note:** Gardez cette clé en sécurité. Si vous la perdez, vous ne pourrez pas vous reconnecter à votre instance.
 
-## 3. Création et Configuration du Cluster EMR
+### 3. Création et Configuration du Cluster EMR
 
-### Pourquoi cette étape est-elle cruciale?
+#### Pourquoi cette étape est-elle cruciale?
 
 La configuration du cluster est le cœur de l’opération. C’est ici que vous choisissez les logiciels que vous voulez installer, les types d'instances à utiliser, et les options de mise en réseau.
 
-### Étape 3: Créer un Cluster EMR
+#### Étape 3: Créer un Cluster EMR
 
 1. **Créer le cluster:**
    - Allez sur la console EMR et cliquez sur **Create cluster**.
@@ -129,15 +129,15 @@ La configuration du cluster est le cœur de l’opération. C’est ici que vous
 Une fois prêt, vous verrez vos applications listées, mais elles ne seront pas encore accessibles.
 ![Applications du Cluster](emr/application.PNG)
 
-## 4. Configuration du Tunnel SSH vers le Nœud Maître
+### 4. Configuration du Tunnel SSH vers le Nœud Maître
 
-### Pourquoi configurer un tunnel SSH?
+#### Pourquoi configurer un tunnel SSH?
 
 Le nœud maître de votre cluster est protégé derrière un pare-feu, et les applications comme JupyterHub ne sont accessibles que via le réseau local du cluster. Le tunnel SSH vous permet de contourner cette restriction en créant un pont sécurisé entre votre machine locale et le nœud maître.
 
-### Étape 4: Création du Tunnel SSH
+#### Étape 4: Création du Tunnel SSH
 
-#### 4.1 Ouverture du Port 22
+##### 4.1 Ouverture du Port 22
 
 1. **Configurer les autorisations:**
    - Sur la console EC2, allez dans **Security Groups**.
@@ -148,7 +148,7 @@ Le nœud maître de votre cluster est protégé derrière un pare-feu, et les ap
    À la fin, vous devriez avoir des règles qui ressemblent à ceci :
    ![Règles de Sécurité](emr/security_group2.PNG)
 
-#### 4.2 Établissement du Tunnel SSH
+##### 4.2 Établissement du Tunnel SSH
 
 1. **Récupérer les informations de connexion:**
    - Sur la console EMR, accédez à l’onglet **Summary** de votre cluster.
@@ -164,7 +164,7 @@ Le nœud maître de votre cluster est protégé derrière un pare-feu, et les ap
 Si votre connexion SSH a réussi, vous verrez cette fenêtre :
 ![Connexion Réussie](emr/putty_works.png)
 
-#### 4.3 Configuration de SwitchOmega ou FoxyProxy
+##### 4.3 Configuration de SwitchOmega ou FoxyProxy
 
 1. **Installation de SwitchyOmega:**
    - Pour accéder aux applications via le tunnel SSH, configurez votre navigateur pour utiliser ce tunnel. Installez l’extension SwitchyOmega pour Chrome et configurez-la en suivant les instructions détaillées dans la documentation [AWS](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-proxy.html).
@@ -176,9 +176,9 @@ Si votre connexion SSH a réussi, vous verrez cette fenêtre :
 
 > **Note:** Parfois, il peut être nécessaire de redémarrer le navigateur ou attendre quelques minutes pour que l'extension fonctionne correctement.
 
-## 5. Connexion à JupyterHub
+### 5. Connexion à JupyterHub
 
-### Étape 5: Accéder à JupyterHub
+#### Étape 5: Accéder à JupyterHub
 
 1. **Connexion à JupyterHub:**
    - Une fois le tunnel SSH configuré et votre navigateur paramétré, vous devriez voir **JupyterHub** listé parmi les applications disponibles sur votre cluster EMR.
@@ -187,7 +187,7 @@ Si votre connexion SSH a réussi, vous verrez cette fenêtre :
 
    - Utilisez les identifiants par défaut (login: `jovyan`, password: `jupyter`) pour vous connecter.
 
-# Conclusion
+## Conclusion
 
 Félicitations! Vous avez maintenant un cluster EMR pleinement opérationnel, avec JupyterHub configuré et accessible via un tunnel SSH sécurisé. Vous êtes prêt à tirer parti de la puissance de calcul d'Amazon EMR pour vos projets de science des données, d’analyse, ou de machine learning.
 
