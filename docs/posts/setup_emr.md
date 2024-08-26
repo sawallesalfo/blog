@@ -161,9 +161,7 @@ Le nœud maître de votre cluster est protégé derrière un pare-feu, et les ap
 Si votre connexion SSH a réussi, vous verrez cette fenêtre :
 ![Connexion Réussie](emr/putty_works.png)
 
-#### 4.3 Configuration de Switch
-
-yOmega ou FoxyProxy
+#### 4.3 Configuration de SwitchOmega ou FoxyProxy
 
 1. **Installation de SwitchyOmega:**
    - Pour accéder aux applications via le tunnel SSH, configurez votre navigateur pour utiliser ce tunnel. Installez l’extension SwitchyOmega pour Chrome et configurez-la en suivant les instructions détaillées dans la documentation [AWS](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-proxy.html).
