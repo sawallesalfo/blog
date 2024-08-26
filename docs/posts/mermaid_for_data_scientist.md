@@ -10,6 +10,9 @@ categories:
 
 La documentation est une étape cruciale dans tout projet de développement, mais soyons honnêtes, ce n'est pas toujours la plus amusante. Pourtant, quand il s'agit de clarifier des concepts complexes ou de représenter des processus, rien ne vaut un bon diagramme. Beaucoup de gens se tournent vers Word ou PowerPoint, voire des logiciels spécialisés comme Lucidchart, pour créer ces illustrations. Mais pour nous, développeurs, qui aimons le code et l'automatisation, il existe un outil qui pourrait bien changer la donne : **Mermaid**.
 
+<!-- more -->
+
+
 Mermaid permet de créer des diagrammes et des flowcharts directement à partir de texte, ce qui vous permet de rester dans votre éditeur de code préféré. Si vous avez toujours voulu documenter vos projets avec des diagrammes sans quitter votre environnement de développement, ce guide est fait pour vous. Découvrez comment Mermaid peut transformer votre approche de la documentation.
 
 #### Préparer votre Environnement

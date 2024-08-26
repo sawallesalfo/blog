@@ -9,7 +9,9 @@ categories:
 
 ### Git, GitLab et GitHub pour le CI/CD
 
-Dans cet article, nous allons explorer comment Git, GitLab, et GitHub sont utilisés pour implémenter des pipelines CI/CD (Intégration Continue et Déploiement Continu). Ces outils sont devenus essentiels pour automatiser et gérer les processus de développement logiciel. Nous allons décomposer chaque composant pour comprendre comment ils interagissent et comment vous pouvez les utiliser pour améliorer votre flux de travail.
+Dans cet article, nous allons explorer comment Git, GitLab, et GitHub sont utilisés pour implémenter des pipelines CI/CD (Intégration Continue et Déploiement Continu). Ces outils sont devenus essentiels pour automatiser et gérer les processus de développement logiciel. Comment vous pouvez les utiliser pour améliorer votre flux de travail.
+
+<!-- more -->
 
 #### Qu'est-ce que Git ?
 
