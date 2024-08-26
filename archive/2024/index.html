@@ -544,6 +544,29 @@
   
   
     <li class="md-nav__item">
+      <a href="../../category/mlops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MlOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
       <a href="../../category/spark/" class="md-nav__link">
         
   
@@ -620,6 +643,350 @@
       <header class="md-typeset">
         <h1 id="2024">2024<a class="headerlink" href="#2024" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-08-25 00:00:00">August 25, 2024</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/cicd/" class="md-meta__link">CI/CD</a>, 
+              <a href="../../category/mlops/" class="md-meta__link">MlOps</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              5 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="cicd-for-data-scientist"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/">CICD for data scientist</a></h2>
+<h4 id="cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser">CI/CD pour les Data Scientists : Quand le Code Se Met à Danser</a></h4>
+<p>La collaboration entre data scientists et développeurs peut parfois ressembler à une partie de ping-pong chaotique : chacun fait rebondir des idées et des bouts de code, mais rien ne semble vraiment s'assembler correctement. Heureusement, il existe une solution pour rendre cette danse collaborative plus harmonieuse : la CI/CD (Continuous Integration/Continuous Deployment). Oui, même pour les data scientists ! Alors, prenez vos notebooks, ajustez vos lunettes, et découvrons comment transformer cette pagaille en une symphonie bien orchestrée :)</p>
+<h5 id="quest-ce-que-la-cicd"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#quest-ce-que-la-cicd">Qu'est-ce que la CI/CD ?</a></h5>
+<p>Avant de plonger dans les détails, clarifions ce que signifie CI/CD, surtout pour ceux qui, parmi nous, passent plus de temps à jongler des notebooks qu’à jongler avec des pipelines. Ou travaillent generalement en nombre reduits au près des metiers.</p>
+<h6 id="continuous-integration-ci"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#continuous-integration-ci">Continuous Integration (CI)</a></h6>
+<p>La <strong>Continuous Integration (CI)</strong> est une pratique qui consiste à intégrer régulièrement les modifications du code dans un dépôt central, où elles sont automatiquement testées. Imaginez un petit robot qui vérifie si chaque ligne de code que vous ajoutez fonctionne bien avec le reste du code, comme un danseur de tango qui s'assure que chaque pas est en harmonie avec le rythme. L'idée est de détecter rapidement les erreurs afin qu'elles ne s'accumulent pas comme une pile de vaisselle sale (vous savez, celle qu’on promet de faire plus tard, mais qui finit par devenir un Everest inébranlable).</p>
+<h6 id="continuous-deployment-cd"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#continuous-deployment-cd">Continuous Deployment (CD)</a></h6>
+<p>Ensuite, il y a la <strong>Continuous Deployment (CD)</strong>, qui est comme la cerise sur le gâteau. Ici, chaque modification validée (après les tests de CI) est automatiquement déployée en production. Oui, vous avez bien entendu : plus besoin d'appuyer sur un bouton pour déployer, c'est comme si votre code se déployait tout seul, un peu comme une machine à café qui se prépare elle-même une nouvelle tasse de café dès que vous avez terminé la précédente. Le rêve, non ?</p>
+<h5 id="cicd-pour-les-data-scientists-pourquoi"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#cicd-pour-les-data-scientists-pourquoi">CI/CD pour les Data Scientists : Pourquoi ?</a></h5>
+<p>Pendant longtemps, la cicd etait propre aux developpeurs : Bonne pratique de developpement (devops). Avec le developpement de la data science et la volonté de maturer les projets data, on a donc commencer à entendre parler de MLOPS. Disons que la CICD est une composante pour faire du MlOps.
+En tant que data scientist, vous pourriez vous demander : "Pourquoi devrais-je me préoccuper de tout ce bazar ? Mes notebooks fonctionnent très bien tels quels !" Certes, mais imaginez la scène : vous travaillez sur un modèle hyper complexe, vous l’entraînez pendant des heures (ou des jours), et puis… Oups, un autre membre de l'équipe modifie le code d'importation des données, et votre magnifique modèle ne fonctionne plus. Catastrophe.
+Ou plus simplement, vous voudriez suivre l'historique d'un code. Le code marchait -il avant? Difficilement de repondre à ces questions à priori sans CICD</p>
+<h6 id="les-enjeux-de-la-collaboration"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#les-enjeux-de-la-collaboration">Les Enjeux de la Collaboration</a></h6>
+<p>La collaboration entre plusieurs data scientists (et développeurs) sur un même projet peut vite devenir compliquée. Chacun a son style, ses méthodes, et son code. Comme une recette de cuisine où chaque cuisinier ajoute ses propres ingrédients sans se concerter avec les autres, le résultat peut être… surprenant, pour ne pas dire immangeable. </p>
+<h6 id="la-solution-cicd-pour-data-scientists"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#la-solution-cicd-pour-data-scientists">La Solution : CI/CD pour Data Scientists</a></h6>
+<p>Implémenter une chaîne CI/CD dans vos projets de data science permet d'assurer que :</p>
+<ol>
+<li>
+<p><strong>Tous les changements sont testés</strong> : Vous évitez le fameux "ça marche sur ma machine !" en vous assurant que chaque modification est testée dans un environnement standardisé.</p>
+</li>
+<li>
+<p><strong>Le code est toujours prêt pour la production</strong> : Vous pouvez déployer vos modèles en production rapidement et en toute confiance, sans avoir à passer des jours à les vérifier manuellement.</p>
+</li>
+<li>
+<p><strong>La documentation et le versionning sont automatiques</strong> : Chaque modification est documentée, et vous pouvez facilement revenir en arrière en cas de problème (comme une machine à remonter le temps pour votre code).</p>
+</li>
+<li>
+<p>Tout developpeur ou data scientist pourrait reprendre vos travaux sans perdre les cheveux.</p>
+</li>
+</ol>
+<p>C'est quoi git , gitlab ou github dans tout ça?
+Je vous invite à faire un tour sur cet article au cas où vous n'etes pas tres familier avec des trois mots: <a href="/All_things_start_git.md">github vs gitlab vs git</a></p>
+<h5 id="exemple-de-cicd-pour-un-projet-data-science"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#exemple-de-cicd-pour-un-projet-data-science">Exemple de CI/CD pour un Projet Data Science</a></h5>
+<p>Dans ce guide, nous allons créer un pipeline CI/CD pour un projet de data science sur GitLab. Nous aborderons la structure du projet, la configuration du pipeline avec GitLab CI/CD, les tests, le déploiement d'une application Dash, et un bonus sur l'utilisation des “git hooks” pour tester localement avant de pousser les changements.
+Avant tout parlons de </p>
+<h6 id="structure-du-projet"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#structure-du-projet">Structure du Projet</a></h6>
+<p>Voici une structure typique pour un projet de data science utilisant GitLab CI/CD :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>mon_projet_data_science/
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>│
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>├── .gitlab-ci.yml        # Fichier de configuration pour le pipeline CI/CD
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>├── requirements.txt      # Fichier listant les dépendances Python
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>├── README.md             # Documentation du projet
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>├── setup.py              # Script d&#39;installation pour le projet
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>│
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>├── data/                 # Répertoire contenant les données
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>│   ├── raw/              # Données brutes non traitées
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>│   └── processed/        # Données pré-traitées
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>│
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>├── src/                  # Répertoire du code source principal
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>│   ├── __init__.py       # Fichier d&#39;initialisation du package Python
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>│   ├── data_loader.py    # Script pour charger et traiter les données
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>│   ├── model.py          # Définition du modèle de machine learning
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>│   └── train_model.py    # Script pour l&#39;entraînement du modèle
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>│
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>├── tests/                # Répertoire contenant les tests
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>│   ├── __init__.py       # Fichier d&#39;initialisation du package de tests
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>│   ├── test_data_loader.py  # Tests pour le chargement des données
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>│   └── test_model.py     # Tests pour le modèle de machine learning
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>│
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>└── notebooks/            # Répertoire pour les notebooks Jupyter
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>    ├── exploration.ipynb # Notebook pour l&#39;exploration des données
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    └── analysis.ipynb    # Notebook pour l&#39;analyse des résultats
+</code></pre></div>
+<h6 id="exemple-avec-gitlab"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#exemple-avec-gitlab">exemple avec gitlab</a></h6>
+<p>Cela revient à configurer le fichier <code>.gitlab-ci.yml</code>
+Voici un exemple de configuration pour le pipeline CI/CD :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">stages</span><span class="p">:</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nt">variables</span><span class="p">:</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="nt">VENV_PATH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.venv</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nt">before_script</span><span class="p">:</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m venv $VENV_PATH</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source $VENV_PATH/bin/activate</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install --upgrade pip</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="nt">install</span><span class="p">:</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">  </span><span class="nt">cache</span><span class="p">:</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$VENV_PATH</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="nt">test</span><span class="p">:</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest tests/</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="nt">lint</span><span class="p">:</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flake8 .</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="nt">train</span><span class="p">:</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/train_model.py</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="nt">deploy</span><span class="p">:</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Déploiement de l&#39;application Dash sur le serveur de production...&quot;</span>
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scp -r * user@server:/path/to/deployment</span>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a><span class="w">  </span><span class="nt">only</span><span class="p">:</span>
+<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+</code></pre></div>
+<h4 id="explications-des-etapes-du-pipeline"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#explications-des-etapes-du-pipeline">Explications des Étapes du Pipeline :</a></h4>
+<ol>
+<li><strong>Install Stage</strong> : Installe les dépendances Python définies dans <code>requirements.txt</code>.</li>
+<li><strong>Test Stage</strong> : Exécute les tests unitaires avec <code>pytest</code> pour s'assurer que chaque composant fonctionne correctement.</li>
+<li><strong>Lint Stage</strong> : Utilise <code>flake8</code> pour vérifier la qualité du code et s'assurer qu'il respecte les bonnes pratiques de codage.</li>
+<li><strong>Train Stage</strong> : Lance l'entraînement du modèle de machine learning en exécutant le script <code>train_model.py</code>.</li>
+<li><strong>Deploy Stage</strong> : Déploie l'application Dash sur un serveur distant. Cette étape est déclenchée uniquement pour la branche <code>main</code>.</li>
+</ol>
+<h5 id="utiliser-des-git-hooks"><a class="toclink" href="../../2024/08/25/cicd-for-data-scientist/#utiliser-des-git-hooks">Utiliser des Git Hooks</a></h5>
+<p>Dans le cas où vous ne disposer pas de serveur distant pour lancer vos codes, vous pourriez utiliser  <strong>git hooks</strong> pour exécuter les tests locaux. Par exemple, un hook <code>pre-push</code> peut être utilisé pour exécuter les tests avant chaque <code>git push</code>.</p>
+<ol>
+<li>
+<p><strong>Créer un Hook <code>pre-push</code> :</strong></p>
+<p>Dans le répertoire <code>.git/hooks</code>, créez un fichier nommé <code>pre-push</code> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>touch<span class="w"> </span>.git/hooks/pre-push
+</code></pre></div>
+</li>
+<li>
+<p><strong>Rendre le Hook Exécutable :</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>.git/hooks/pre-push
+</code></pre></div>
+</li>
+<li>
+<p><strong>Ajouter le Script pour Exécuter les Tests :</strong></p>
+<p>Ouvrez le fichier <code>pre-push</code> et ajoutez le script suivant :</p>
+</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Exécution des tests locaux avant le push...&quot;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>pytest<span class="w"> </span>tests/
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Échec des tests. Annulation du push.&quot;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="k">fi</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tests réussis. Push en cours...&quot;</span>
+</code></pre></div>
+Avec ce hook en place, chaque tentative de git push exécutera les tests locaux. Si les tests échouent, le push sera annulé, garantissant ainsi que seul le code valide est poussé vers le dépôt distant.</p>
+<p>References:
++ https://martinfowler.com/articles/continuousIntegration.html
++ https://martinfowler.com/books/duvall.html</p>
+    <nav class="md-post__action">
+      <a href="../../2024/08/25/cicd-for-data-scientist/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-08-24 00:00:00">August 24, 2024</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/cicd/" class="md-meta__link">CI/CD</a>, 
+              <a href="../../category/mlops/" class="md-meta__link">MlOps</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="all-things-start-git"><a class="toclink" href="../../2024/08/24/all-things-start-git/">All things start git</a></h2>
+<h4 id="git-gitlab-et-github-pour-le-cicd"><a class="toclink" href="../../2024/08/24/all-things-start-git/#git-gitlab-et-github-pour-le-cicd">Git, GitLab et GitHub pour le CI/CD</a></h4>
+<p>Dans cet article, nous allons explorer comment Git, GitLab, et GitHub sont utilisés pour implémenter des pipelines CI/CD (Intégration Continue et Déploiement Continu). Ces outils sont devenus essentiels pour automatiser et gérer les processus de développement logiciel. Nous allons décomposer chaque composant pour comprendre comment ils interagissent et comment vous pouvez les utiliser pour améliorer votre flux de travail.</p>
+<h5 id="quest-ce-que-git"><a class="toclink" href="../../2024/08/24/all-things-start-git/#quest-ce-que-git">Qu'est-ce que Git ?</a></h5>
+<p>Git est un système de gestion de version distribué. Cela signifie qu'il permet à plusieurs développeurs de travailler sur un projet de manière simultanée sans se marcher sur les pieds. Voici quelques concepts de base de Git :</p>
+<ul>
+<li><strong>Repository (Dépôt)</strong> : C'est un espace de stockage où l'historique de votre projet est enregistré. Il contient tous les fichiers et l'historique des modifications.</li>
+<li><strong>Branch (Branche)</strong> : Une branche est une version parallèle du code sur laquelle vous pouvez travailler indépendamment. Une branche peut être fusionnée avec la branche principale (<code>main</code> ou <code>master</code>) après approbation.</li>
+<li><strong>Commit</strong> : Un commit est un enregistrement de changements dans le dépôt. Chaque commit a un identifiant unique qui permet de revenir en arrière ou de fusionner des modifications.</li>
+<li><strong>Merge</strong> : C'est l'action de fusionner les changements d'une branche dans une autre.</li>
+</ul>
+<h6 id="comment-fonctionne-git"><a class="toclink" href="../../2024/08/24/all-things-start-git/#comment-fonctionne-git">Comment fonctionne Git ?</a></h6>
+<p>Voici une illustration simple du fonctionnement de Git avec un exemple de flux de travail :</p>
+<pre class="mermaid"><code>graph TD;
+    A[Clone du dépôt] --&gt; B[Création d'une branche];
+    B --&gt; C[Modification du code];
+    C --&gt; D[Commit des changements];
+    D --&gt; E[Fusion de la branche];
+    E --&gt; F[Push vers le dépôt distant];</code></pre>
+<h6 id="explication-du-processus-git"><a class="toclink" href="../../2024/08/24/all-things-start-git/#explication-du-processus-git">Explication du Processus Git</a></h6>
+<ol>
+<li><strong>Clone du Dépôt</strong> : Vous commencez par cloner un dépôt existant depuis GitHub ou GitLab vers votre machine locale.</li>
+<li><strong>Création d'une Branche</strong> : Vous créez une nouvelle branche pour travailler sur une fonctionnalité ou une correction de bug.</li>
+<li><strong>Modification du Code</strong> : Vous faites les changements nécessaires dans votre code.</li>
+<li><strong>Commit des Changements</strong> : Vous enregistrez vos modifications dans le dépôt local avec un message de commit.</li>
+<li><strong>Fusion de la Branche</strong> : Une fois les modifications prêtes, vous fusionnez votre branche dans la branche principale.</li>
+<li><strong>Push vers le Dépôt Distant</strong> : Enfin, vous poussez vos changements vers le dépôt distant pour les partager avec les autres développeurs.</li>
+</ol>
+<h5 id="quest-ce-que-gitlab-et-github"><a class="toclink" href="../../2024/08/24/all-things-start-git/#quest-ce-que-gitlab-et-github">Qu'est-ce que GitLab et GitHub ?</a></h5>
+<h6 id="github"><a class="toclink" href="../../2024/08/24/all-things-start-git/#github">GitHub</a></h6>
+<p>GitHub est une plateforme de développement collaboratif qui repose sur Git. Elle est principalement utilisée pour héberger des dépôts Git et permet de collaborer sur des projets de manière transparente. GitHub offre également des fonctionnalités de CI/CD via <strong>GitHub Actions</strong>, qui permettent d'automatiser les tests, les builds, et les déploiements.</p>
+<h6 id="gitlab"><a class="toclink" href="../../2024/08/24/all-things-start-git/#gitlab">GitLab</a></h6>
+<p>GitLab est une plateforme similaire à GitHub, mais avec un ensemble d'outils encore plus complet pour le DevOps. GitLab CI/CD est une fonctionnalité intégrée qui permet de créer des pipelines pour automatiser les tests, les builds, et les déploiements directement depuis le dépôt GitLab.</p>
+<h5 id="fonctionnement-de-la-cicd-avec-gitlab-et-github"><a class="toclink" href="../../2024/08/24/all-things-start-git/#fonctionnement-de-la-cicd-avec-gitlab-et-github">Fonctionnement de la CI/CD avec GitLab et GitHub</a></h5>
+<h6 id="github-actions-cicd"><a class="toclink" href="../../2024/08/24/all-things-start-git/#github-actions-cicd">GitHub Actions (CI/CD)</a></h6>
+<p>GitHub Actions vous permet de créer des workflows pour automatiser les processus de développement. Ces workflows sont définis dans un fichier YAML au sein du dépôt.</p>
+<p>Exemple de workflow pour GitHub Actions :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI/CD Pipeline</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">on</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nt">jobs</span><span class="p">:</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout code</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
+</code></pre></div>
+<h5 id="gitlab-cicd"><a class="toclink" href="../../2024/08/24/all-things-start-git/#gitlab-cicd">GitLab CI/CD</a></h5>
+<p>GitLab CI/CD utilise un fichier <code>.gitlab-ci.yml</code> pour définir les pipelines. Ce fichier décrit les étapes que GitLab doit suivre pour tester, construire, et déployer le code.</p>
+<p>Exemple de pipeline pour GitLab CI/CD :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">stages</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nt">test</span><span class="p">:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nt">build</span><span class="p">:</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python setup.py sdist</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="nt">deploy</span><span class="p">:</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scp dist/* user@server:/path/to/deploy/</span>
+</code></pre></div>
+<h6 id="visualisation-du-processus-cicd"><a class="toclink" href="../../2024/08/24/all-things-start-git/#visualisation-du-processus-cicd">Visualisation du Processus CI/CD</a></h6>
+<p>Pour mieux comprendre le processus CI/CD avec Git, GitHub, et GitLab, voici une visualisation avec Mermaid :</p>
+<pre class="mermaid"><code>graph LR
+    A[Push du Code sur GitLab/GitHub] --&gt; B[Pipeline CI/CD Démarré]
+    B --&gt; C[Test Unitaire et Intégration]
+    C --&gt; D{Tests Réussis?}
+    D --&gt;|Oui| E[Build de l'Application]
+    E --&gt; F[Déploiement sur Environnement de Production]
+    D --&gt;|Non| G[Retourne les Erreurs au Développeur]</code></pre>
+<p>Étapes du Processus CI/CD</p>
+<ol>
+<li><strong>Push du Code</strong> : Le développeur pousse son code vers GitLab ou GitHub.</li>
+<li><strong>Pipeline CI/CD Démarré</strong> : Le push déclenche automatiquement un pipeline CI/CD.</li>
+<li><strong>Tests</strong> : Le code est testé pour détecter les erreurs ou les bugs.</li>
+<li><strong>Build</strong> : Si les tests réussissent, l'application est construite (compilation, packaging, etc.).</li>
+<li><strong>Déploiement</strong> : Enfin, l'application est déployée sur l'environnement de production. Si les tests échouent, les erreurs sont retournées au développeur pour correction.</li>
+</ol>
+<h5 id="conclusion"><a class="toclink" href="../../2024/08/24/all-things-start-git/#conclusion">Conclusion</a></h5>
+<p>Git, GitLab, et GitHub sont des outils puissants pour gérer et automatiser le développement logiciel. En utilisant Git pour le contrôle de version et GitLab/GitHub pour le CI/CD, vous pouvez créer un flux de travail robuste qui assure que votre code est testé, validé, et déployé automatiquement à chaque changement. Ces pratiques vous permettent de livrer du code de qualité plus rapidement et plus efficacement.</p>
+    <nav class="md-post__action">
+      <a href="../../2024/08/24/all-things-start-git/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
@@ -766,6 +1133,170 @@
 
     <nav class="md-post__action">
       <a href="../../2024/08/04/setup-emr/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2024-07-29 00:00:00">July 29, 2024</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/documentation/" class="md-meta__link">documentation</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="mermaid-for-data-scientist"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/">Mermaid for data scientist</a></h2>
+<h4 id="mermaid-pour-documenter-vos-projets"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#mermaid-pour-documenter-vos-projets">Mermaid pour documenter vos projets</a></h4>
+<p>La documentation est une étape cruciale dans tout projet de développement, mais soyons honnêtes, ce n'est pas toujours la plus amusante. Pourtant, quand il s'agit de clarifier des concepts complexes ou de représenter des processus, rien ne vaut un bon diagramme. Beaucoup de gens se tournent vers Word ou PowerPoint, voire des logiciels spécialisés comme Lucidchart, pour créer ces illustrations. Mais pour nous, développeurs, qui aimons le code et l'automatisation, il existe un outil qui pourrait bien changer la donne : <strong>Mermaid</strong>.</p>
+<p>Mermaid permet de créer des diagrammes et des flowcharts directement à partir de texte, ce qui vous permet de rester dans votre éditeur de code préféré. Si vous avez toujours voulu documenter vos projets avec des diagrammes sans quitter votre environnement de développement, ce guide est fait pour vous. Découvrez comment Mermaid peut transformer votre approche de la documentation.</p>
+<h5 id="preparer-votre-environnement"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#preparer-votre-environnement">Préparer votre Environnement</a></h5>
+<p>Avant de plonger dans la création de diagrammes avec Mermaid, vous devez configurer votre environnement de travail.</p>
+<h6 id="extensions-recommandees-pour-vscode"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#extensions-recommandees-pour-vscode">Extensions Recommandées pour VSCode</a></h6>
+<p>Pour une expérience optimale avec Mermaid, nous vous recommandons d'installer les extensions suivantes dans Visual Studio Code :</p>
+<ul>
+<li><strong>Markdown Preview Mermaid Support</strong> : Permet d'afficher un aperçu en temps réel de vos diagrammes Mermaid directement dans VSCode avec la commande <code>Ctrl + K V</code>.</li>
+<li><strong>Markdown PDF</strong> : Permet d'exporter vos diagrammes Mermaid en PDF avec la commande <code>Ctrl + Shift + P</code>.</li>
+</ul>
+<p>Une fois ces extensions en place, vous êtes prêt à créer vos premiers diagrammes avec Mermaid !</p>
+<h5 id="etape-1-definir-les-nuds-et-les-relations"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#etape-1-definir-les-nuds-et-les-relations">Étape 1 : Définir les Nœuds et les Relations</a></h5>
+<p>Créer un diagramme avec Mermaid commence par la définition des nœuds (ou étapes) et des relations entre eux. Voici comment procéder :</p>
+<h6 id="nuds"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#nuds">Nœuds</a></h6>
+<p>Les nœuds représentent différentes étapes ou entités dans votre processus. Chaque nœud est identifié par un identifiant unique et peut avoir une étiquette optionnelle. Voici un exemple simple :</p>
+<pre class="mermaid"><code>graph LR
+    data --&gt; clean;   
+    clean --&gt; explore;   
+    explore --&gt; preprocess; </code></pre>
+<p>Dans cet exemple, <code>data</code>, <code>clean</code>, <code>explore</code>, et <code>preprocess</code> sont des identifiants de nœuds. Les flèches (<code>--&gt;</code>) indiquent les relations entre eux. Ce diagramme montre un flux de gauche à droite grâce à la directive <code>graph LR</code>.</p>
+<h6 id="relations"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#relations">Relations</a></h6>
+<p>Les relations définissent la séquence ou la connexion entre les nœuds. Voici quelques types de relations que vous pouvez utiliser :</p>
+<ul>
+<li><code>--&gt;</code> : Relation directionnelle de gauche à droite.</li>
+<li><code>---</code> : Relation horizontale sans flèche.</li>
+<li><code>==&gt;</code> : Relation bidirectionnelle.</li>
+<li><code>==&gt;|label|</code> : Relation directionnelle avec un label.</li>
+</ul>
+<p>Un exemple avec des relations plus complexes et des labels :</p>
+<pre class="mermaid"><code>graph LR
+    data --&gt; clean;       
+    clean &lt;---&gt; explore;       
+    explore ==&gt; preprocess;       
+    preprocess ==&gt;|split| Model; </code></pre>
+<h5 id="etape-2-personnaliser-les-formes-et-les-couleurs"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#etape-2-personnaliser-les-formes-et-les-couleurs">Étape 2 : Personnaliser les Formes et les Couleurs</a></h5>
+<p>Mermaid offre une variété de formes pour vos nœuds. Voici un aperçu des formes les plus couramment utilisées :</p>
+<table>
+<thead>
+<tr>
+<th>Forme</th>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rectangle</td>
+<td><code>[(...)]</code></td>
+<td>Nœud rectangulaire standard</td>
+</tr>
+<tr>
+<td>Rectangle arrondi</td>
+<td><code>[[...]]</code></td>
+<td>Nœud avec des bords arrondis</td>
+</tr>
+<tr>
+<td>Cylindre</td>
+<td><code>[(...)]</code></td>
+<td>Nœud en forme de cylindre</td>
+</tr>
+<tr>
+<td>Cercle</td>
+<td><code>((...))</code></td>
+<td>Nœud en forme de cercle</td>
+</tr>
+</tbody>
+</table>
+<p>Utilisez ces formes pour personnaliser vos diagrammes en fonction de vos besoins. Par exemple, pour créer un flux de travail de data science :</p>
+<pre class="mermaid"><code>graph LR
+    data[(Data Collection)] --&gt; clean([Data Cleaning]);
+    clean --&gt; explore([Exploratory Data Analysis]);
+    explore --&gt; preprocess([Data Preprocessing]);
+    preprocess --&gt; split([Train/Test Split]);
+    split --&gt; model([Model Training]);
+    model --&gt; evaluate([Model Evaluation]);
+    evaluate --&gt; tune([Model Tuning]);
+    tune --&gt; model; 
+    evaluate --&gt; deploy([Model Deployment]);</code></pre>
+<h5 id="etape-3-ajuster-la-direction-et-le-style"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#etape-3-ajuster-la-direction-et-le-style">Étape 3 : Ajuster la Direction et le Style</a></h5>
+<p>Mermaid vous permet de contrôler la direction et le style de vos diagrammes grâce à quelques mots-clés simples.</p>
+<h6 id="direction-du-flux"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#direction-du-flux">Direction du Flux</a></h6>
+<p>Vous pouvez ajuster la direction du flux avec les options suivantes :</p>
+<ul>
+<li><code>LR</code> : De gauche à droite (Left to Right).</li>
+<li><code>TB</code> : De haut en bas (Top to Bottom).</li>
+<li><code>RL</code> : De droite à gauche (Right to Left).</li>
+<li><code>BT</code> : De bas en haut (Bottom to Top).</li>
+</ul>
+<h6 id="style-des-nuds"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#style-des-nuds">Style des Nœuds</a></h6>
+<p>Pour personnaliser l'apparence des nœuds, vous pouvez utiliser :</p>
+<ul>
+<li><code>fill</code> : Couleur de fond du nœud.</li>
+<li><code>stroke</code> : Couleur de la bordure du nœud.</li>
+<li><code>color</code> : Couleur du texte à l'intérieur du nœud.</li>
+</ul>
+<p>Voici un exemple combinant direction et style :</p>
+<pre class="mermaid"><code>graph TB
+
+    data((Data Sources))-. DHA .-&gt;DHA_data[Environmental Data];
+    data-. OpenData .-&gt;OpenData[Satellites Imagery];
+    data-. CSV files .-&gt;CSV_files[Operational Data];
+
+    DHA_data--&gt;|Preparation| Store[(Feature Store)];
+    OpenData--&gt;|Preparation| Store[(Feature Store)];
+    CSV_files--&gt;|Preparation| Store[(Feature Store)];
+
+    Store--&gt;|Modeling|Modeling_1[Airports Severity];
+
+    style data fill:#ddd,stroke:#fff,stroke-width:4px,color:#000;
+    style Modeling_1 fill:#9f9,stroke:#000,stroke-width:0px;</code></pre>
+<p>Ce diagramme utilise un flux de haut en bas (TB) et applique des styles personnalisés aux nœuds pour les mettre en valeur visuellement.</p>
+<h5 id="ressources-utiles"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#ressources-utiles">Ressources Utiles</a></h5>
+<p>Pour aller plus loin avec Mermaid, voici quelques liens utiles :</p>
+<ul>
+<li><a href="https://mermaid-js.github.io/mermaid/">Documentation officielle de Mermaid</a></li>
+<li><a href="https://mermaid.js.org/syntax/flowchart.html">Guide de syntaxe Mermaid pour les flowcharts</a></li>
+<li><a href="https://mermaid.live/edit#">Éditeur en ligne Mermaid</a></li>
+</ul>
+<h5 id="conclusion"><a class="toclink" href="../../2024/07/29/mermaid-for-data-scientist/#conclusion">Conclusion</a></h5>
+<p>Avec Mermaid, documenter vos projets devient non seulement plus simple, mais aussi plus amusant. Fini les allers-retours entre plusieurs outils : vous pouvez créer, personnaliser et intégrer des diagrammes directement depuis votre code. Que vous soyez en train de planifier un projet, de documenter un processus ou de clarifier une architecture, Mermaid est un atout précieux pour tout développeur. Essayez-le, et vous ne reviendrez plus en arrière !</p>
+    <nav class="md-post__action">
+      <a href="../../2024/07/29/mermaid-for-data-scientist/">
         Continue reading
       </a>
     </nav>
