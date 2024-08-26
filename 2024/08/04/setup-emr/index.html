@@ -18,7 +18,7 @@
     
     
       
-        <title>Comment Créer et Configurer un Cluster Amazon EMR sur EC2 - ssawadogo-blog</title>
+        <title>Setup emr - ssawadogo-blog</title>
       
     
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#comment-creer-et-configurer-un-cluster-amazon-emr-sur-ec2" class="md-skip">
+        <a href="#comment-creer-et-configurer-un-cluster-emr-on-ec2" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Comment Créer et Configurer un Cluster Amazon EMR sur EC2
+              Setup emr
             
           </span>
         </div>
@@ -597,8 +597,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -607,6 +605,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#comment-creer-et-configurer-un-cluster-emr-on-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comment Créer et Configurer un Cluster EMR on EC2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comment Créer et Configurer un Cluster EMR on EC2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1-creer-un-role-emr-avec-les-permissions-necessaires" class="md-nav__link">
     <span class="md-ellipsis">
       1. Créer un Rôle EMR avec les Permissions Nécessaires
@@ -638,8 +646,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#2-creer-une-cle-ssh-pour-ec2" class="md-nav__link">
     <span class="md-ellipsis">
       2. Créer une Clé SSH pour EC2
@@ -671,8 +679,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#3-creation-et-configuration-du-cluster-emr" class="md-nav__link">
     <span class="md-ellipsis">
       3. Création et Configuration du Cluster EMR
@@ -704,8 +712,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#4-configuration-du-tunnel-ssh-vers-le-nud-maitre" class="md-nav__link">
     <span class="md-ellipsis">
       4. Configuration du Tunnel SSH vers le Nœud Maître
@@ -770,8 +778,8 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#5-connexion-a-jupyterhub" class="md-nav__link">
     <span class="md-ellipsis">
       5. Connexion à JupyterHub
@@ -792,6 +800,20 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
   
 </li>
       
@@ -897,15 +919,17 @@
         
 
 
-<h1 id="comment-creer-et-configurer-un-cluster-amazon-emr-sur-ec2">Comment Créer et Configurer un Cluster Amazon EMR sur EC2<a class="headerlink" href="#comment-creer-et-configurer-un-cluster-amazon-emr-sur-ec2" title="Permanent link">&para;</a></h1>
+  <h1>Setup emr</h1>
+
+<h2 id="comment-creer-et-configurer-un-cluster-emr-on-ec2">Comment Créer et Configurer un Cluster  EMR on EC2<a class="headerlink" href="#comment-creer-et-configurer-un-cluster-emr-on-ec2" title="Permanent link">&para;</a></h2>
 <p>Créer un cluster EMR (Elastic MapReduce) sur EC2 peut sembler complexe, surtout si vous vous lancez pour la première fois. Dans cet article, je vais vous guider à travers chaque étape, depuis la création des rôles jusqu’à la connexion à JupyterHub via un tunnel SSH. Ce guide est conçu pour vous fournir des explications claires et détaillées afin que vous puissiez configurer votre cluster sans difficulté. Nous nous concentrerons spécifiquement sur EMR sur EC2. La petite histoire est que j'ai passé des heures à expliquer cela à plusieurs étudiants intéressés par EMR. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à comprendre et à configurer un cluster EMR de manière efficace. </p>
 <!-- more -->
 
 <p>EMR ne faisant pas partie des services gratuit du compte tier, il faut prevoir entre 1 à 5 euros de facture sur aws.</p>
-<h2 id="1-creer-un-role-emr-avec-les-permissions-necessaires">1. Créer un Rôle EMR avec les Permissions Nécessaires<a class="headerlink" href="#1-creer-un-role-emr-avec-les-permissions-necessaires" title="Permanent link">&para;</a></h2>
-<h3 id="pourquoi-est-ce-important">Pourquoi est-ce important?<a class="headerlink" href="#pourquoi-est-ce-important" title="Permanent link">&para;</a></h3>
+<h3 id="1-creer-un-role-emr-avec-les-permissions-necessaires">1. Créer un Rôle EMR avec les Permissions Nécessaires<a class="headerlink" href="#1-creer-un-role-emr-avec-les-permissions-necessaires" title="Permanent link">&para;</a></h3>
+<h4 id="pourquoi-est-ce-important">Pourquoi est-ce important?<a class="headerlink" href="#pourquoi-est-ce-important" title="Permanent link">&para;</a></h4>
 <p>Avant de pouvoir créer un cluster EMR, vous devez configurer les rôles et permissions nécessaires pour permettre à Amazon Web Services (AWS) de gérer votre cluster en toute sécurité. Ces rôles permettent à votre cluster d’interagir avec d'autres services AWS comme S3, EC2, et EMR lui-même.</p>
-<h3 id="etape-1-creation-dun-role-emr-pour-ec2">Étape 1: Création d'un Rôle EMR pour EC2<a class="headerlink" href="#etape-1-creation-dun-role-emr-pour-ec2" title="Permanent link">&para;</a></h3>
+<h4 id="etape-1-creation-dun-role-emr-pour-ec2">Étape 1: Création d'un Rôle EMR pour EC2<a class="headerlink" href="#etape-1-creation-dun-role-emr-pour-ec2" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p><strong>Accéder à la console IAM:</strong>
@@ -932,10 +956,10 @@
 <blockquote>
 <p><strong>Astuce:</strong> Les permissions sont cruciales pour la sécurité. Accordez les permissions minimales nécessaires pour accomplir vos tâches.</p>
 </blockquote>
-<h2 id="2-creer-une-cle-ssh-pour-ec2">2. Créer une Clé SSH pour EC2<a class="headerlink" href="#2-creer-une-cle-ssh-pour-ec2" title="Permanent link">&para;</a></h2>
-<h3 id="pourquoi-en-avez-vous-besoin">Pourquoi en avez-vous besoin?<a class="headerlink" href="#pourquoi-en-avez-vous-besoin" title="Permanent link">&para;</a></h3>
+<h3 id="2-creer-une-cle-ssh-pour-ec2">2. Créer une Clé SSH pour EC2<a class="headerlink" href="#2-creer-une-cle-ssh-pour-ec2" title="Permanent link">&para;</a></h3>
+<h4 id="pourquoi-en-avez-vous-besoin">Pourquoi en avez-vous besoin?<a class="headerlink" href="#pourquoi-en-avez-vous-besoin" title="Permanent link">&para;</a></h4>
 <p>Une clé SSH est nécessaire pour se connecter à distance aux instances EC2 de votre cluster. Cette connexion vous permet d'administrer les nœuds du cluster, d’installer des logiciels supplémentaires ou de déboguer directement sur le serveur.</p>
-<h3 id="etape-2-creation-dune-paire-de-cles-ssh">Étape 2: Création d'une Paire de Clés SSH<a class="headerlink" href="#etape-2-creation-dune-paire-de-cles-ssh" title="Permanent link">&para;</a></h3>
+<h4 id="etape-2-creation-dune-paire-de-cles-ssh">Étape 2: Création d'une Paire de Clés SSH<a class="headerlink" href="#etape-2-creation-dune-paire-de-cles-ssh" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p><strong>Accéder à la console EC2:</strong>
@@ -954,10 +978,10 @@
 <blockquote>
 <p><strong>Note:</strong> Gardez cette clé en sécurité. Si vous la perdez, vous ne pourrez pas vous reconnecter à votre instance.</p>
 </blockquote>
-<h2 id="3-creation-et-configuration-du-cluster-emr">3. Création et Configuration du Cluster EMR<a class="headerlink" href="#3-creation-et-configuration-du-cluster-emr" title="Permanent link">&para;</a></h2>
-<h3 id="pourquoi-cette-etape-est-elle-cruciale">Pourquoi cette étape est-elle cruciale?<a class="headerlink" href="#pourquoi-cette-etape-est-elle-cruciale" title="Permanent link">&para;</a></h3>
+<h3 id="3-creation-et-configuration-du-cluster-emr">3. Création et Configuration du Cluster EMR<a class="headerlink" href="#3-creation-et-configuration-du-cluster-emr" title="Permanent link">&para;</a></h3>
+<h4 id="pourquoi-cette-etape-est-elle-cruciale">Pourquoi cette étape est-elle cruciale?<a class="headerlink" href="#pourquoi-cette-etape-est-elle-cruciale" title="Permanent link">&para;</a></h4>
 <p>La configuration du cluster est le cœur de l’opération. C’est ici que vous choisissez les logiciels que vous voulez installer, les types d'instances à utiliser, et les options de mise en réseau.</p>
-<h3 id="etape-3-creer-un-cluster-emr">Étape 3: Créer un Cluster EMR<a class="headerlink" href="#etape-3-creer-un-cluster-emr" title="Permanent link">&para;</a></h3>
+<h4 id="etape-3-creer-un-cluster-emr">Étape 3: Créer un Cluster EMR<a class="headerlink" href="#etape-3-creer-un-cluster-emr" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p><strong>Créer le cluster:</strong></p>
@@ -1038,11 +1062,11 @@
 </blockquote>
 <p>Une fois prêt, vous verrez vos applications listées, mais elles ne seront pas encore accessibles.
 <a class="glightbox" href="../../../../emr/application.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Applications du Cluster" src="../../../../emr/application.PNG" /></a></p>
-<h2 id="4-configuration-du-tunnel-ssh-vers-le-nud-maitre">4. Configuration du Tunnel SSH vers le Nœud Maître<a class="headerlink" href="#4-configuration-du-tunnel-ssh-vers-le-nud-maitre" title="Permanent link">&para;</a></h2>
-<h3 id="pourquoi-configurer-un-tunnel-ssh">Pourquoi configurer un tunnel SSH?<a class="headerlink" href="#pourquoi-configurer-un-tunnel-ssh" title="Permanent link">&para;</a></h3>
+<h3 id="4-configuration-du-tunnel-ssh-vers-le-nud-maitre">4. Configuration du Tunnel SSH vers le Nœud Maître<a class="headerlink" href="#4-configuration-du-tunnel-ssh-vers-le-nud-maitre" title="Permanent link">&para;</a></h3>
+<h4 id="pourquoi-configurer-un-tunnel-ssh">Pourquoi configurer un tunnel SSH?<a class="headerlink" href="#pourquoi-configurer-un-tunnel-ssh" title="Permanent link">&para;</a></h4>
 <p>Le nœud maître de votre cluster est protégé derrière un pare-feu, et les applications comme JupyterHub ne sont accessibles que via le réseau local du cluster. Le tunnel SSH vous permet de contourner cette restriction en créant un pont sécurisé entre votre machine locale et le nœud maître.</p>
-<h3 id="etape-4-creation-du-tunnel-ssh">Étape 4: Création du Tunnel SSH<a class="headerlink" href="#etape-4-creation-du-tunnel-ssh" title="Permanent link">&para;</a></h3>
-<h4 id="41-ouverture-du-port-22">4.1 Ouverture du Port 22<a class="headerlink" href="#41-ouverture-du-port-22" title="Permanent link">&para;</a></h4>
+<h4 id="etape-4-creation-du-tunnel-ssh">Étape 4: Création du Tunnel SSH<a class="headerlink" href="#etape-4-creation-du-tunnel-ssh" title="Permanent link">&para;</a></h4>
+<h5 id="41-ouverture-du-port-22">4.1 Ouverture du Port 22<a class="headerlink" href="#41-ouverture-du-port-22" title="Permanent link">&para;</a></h5>
 <ol>
 <li>
 <p><strong>Configurer les autorisations:</strong></p>
@@ -1056,7 +1080,7 @@
  <a class="glightbox" href="../../../../emr/security_group2.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Règles de Sécurité" src="../../../../emr/security_group2.PNG" /></a></p>
 </li>
 </ol>
-<h4 id="42-etablissement-du-tunnel-ssh">4.2 Établissement du Tunnel SSH<a class="headerlink" href="#42-etablissement-du-tunnel-ssh" title="Permanent link">&para;</a></h4>
+<h5 id="42-etablissement-du-tunnel-ssh">4.2 Établissement du Tunnel SSH<a class="headerlink" href="#42-etablissement-du-tunnel-ssh" title="Permanent link">&para;</a></h5>
 <ol>
 <li>
 <p><strong>Récupérer les informations de connexion:</strong></p>
@@ -1079,7 +1103,7 @@
 </blockquote>
 <p>Si votre connexion SSH a réussi, vous verrez cette fenêtre :
 <a class="glightbox" href="../../../../emr/putty_works.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Connexion Réussie" src="../../../../emr/putty_works.png" /></a></p>
-<h4 id="43-configuration-de-switchomega-ou-foxyproxy">4.3 Configuration de SwitchOmega ou FoxyProxy<a class="headerlink" href="#43-configuration-de-switchomega-ou-foxyproxy" title="Permanent link">&para;</a></h4>
+<h5 id="43-configuration-de-switchomega-ou-foxyproxy">4.3 Configuration de SwitchOmega ou FoxyProxy<a class="headerlink" href="#43-configuration-de-switchomega-ou-foxyproxy" title="Permanent link">&para;</a></h5>
 <ol>
 <li>
 <p><strong>Installation de SwitchyOmega:</strong></p>
@@ -1096,8 +1120,8 @@
 <blockquote>
 <p><strong>Note:</strong> Parfois, il peut être nécessaire de redémarrer le navigateur ou attendre quelques minutes pour que l'extension fonctionne correctement.</p>
 </blockquote>
-<h2 id="5-connexion-a-jupyterhub">5. Connexion à JupyterHub<a class="headerlink" href="#5-connexion-a-jupyterhub" title="Permanent link">&para;</a></h2>
-<h3 id="etape-5-acceder-a-jupyterhub">Étape 5: Accéder à JupyterHub<a class="headerlink" href="#etape-5-acceder-a-jupyterhub" title="Permanent link">&para;</a></h3>
+<h3 id="5-connexion-a-jupyterhub">5. Connexion à JupyterHub<a class="headerlink" href="#5-connexion-a-jupyterhub" title="Permanent link">&para;</a></h3>
+<h4 id="etape-5-acceder-a-jupyterhub">Étape 5: Accéder à JupyterHub<a class="headerlink" href="#etape-5-acceder-a-jupyterhub" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p><strong>Connexion à JupyterHub:</strong></p>
@@ -1111,7 +1135,7 @@
 </ul>
 </li>
 </ol>
-<h1 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h1>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <p>Félicitations! Vous avez maintenant un cluster EMR pleinement opérationnel, avec JupyterHub configuré et accessible via un tunnel SSH sécurisé. Vous êtes prêt à tirer parti de la puissance de calcul d'Amazon EMR pour vos projets de science des données, d’analyse, ou de machine learning.</p>
 <p>Si vous avez des questions ou des difficultés, n'hésitez pas à me contacter. Bonne chance avec votre cluster EMR et n'oubliez pas de l'éteindre une fois terminé!</p>
 
