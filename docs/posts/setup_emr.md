@@ -183,7 +183,7 @@ Si votre connexion SSH a réussi, vous verrez cette fenêtre :
 1. **Connexion à JupyterHub:**
    - Une fois le tunnel SSH configuré et votre navigateur paramétré, vous devriez voir **JupyterHub** listé parmi les applications disponibles sur votre cluster EMR.
    - Cliquez sur **JupyterHub** pour ouvrir l’interface de connexion.
-   ![Connexion à JupyterHub](emr/jupyter.jpeg)
+   ![Connexion à JupyterHub](emr/jupyter.jpg)
 
    - Utilisez les identifiants par défaut (login: `jovyan`, password: `jupyter`) pour vous connecter.
 
