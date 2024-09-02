@@ -705,15 +705,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#comment-ca-fonctionne" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comment ça Fonctionne ?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#exemple-de-code" class="md-nav__link">
     <span class="md-ellipsis">
       Exemple de Code
@@ -750,17 +741,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#script-principal-mainpy" class="md-nav__link">
     <span class="md-ellipsis">
       Script Principal main.py :
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -884,7 +875,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              9 min read
+                              8 min read
                             
                           </span>
                         </div>
@@ -906,11 +897,9 @@
 
 <h1 id="mlflow-best-practices">MLflow &amp; best practices<a class="headerlink" href="#mlflow-best-practices" title="Permanent link">&para;</a></h1>
 <h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
-<p>Dans un projet de machine learning, gérer les expérimentations et les modèles peut rapidement devenir un casse-tête. Imaginez : l'équipe s'agrandit, les données évoluent, les exigences fusent de toutes parts… et là, votre chef de projet débarque avec une demande spéciale : "Dis, tu te souviens de ce modèle super performant qu'on a testé en avril ? On aimerait le comparer avec nos résultats actuels."</p>
+<p>Dans un projet de machine learning, gérer les expérimentations et les modèles peut rapidement devenir un casse-tête. Imaginez : l'équipe s'agrandit, les exigences fusent de toutes parts… et là, votre chef de projet débarque avec une demande spéciale : "Dis, tu te souviens de ce modèle super performant qu'on a testé en avril ? On aimerait le comparer avec nos résultats actuels."À ce moment précis, à moins d'avoir une mémoire digne d'un éléphant, vous vous retrouvez à naviguer frénétiquement dans des fichiers Excel. Entre nous, c'est le genre de situation où l'on se dit : "Pourquoi je n’ai pas tout noté quelque part de façon plus propre ?!"C’est justement là qu’<strong>MLflow</strong> entre en scène.</p>
 <!-- more -->
 
-<p>À ce moment précis, à moins d'avoir une mémoire digne d'un éléphant, vous vous retrouvez à naviguer frénétiquement dans des fichiers Excel, des notes éparpillées ou même des post-its collés sur votre écran. Entre nous, c'est le genre de situation où l'on se dit : "Pourquoi je n’ai pas tout noté quelque part de façon plus propre ?!"</p>
-<p>C’est justement là qu’<strong>MLflow</strong> entre en scène.</p>
 <h2 id="les-composantes-de-mlflow">Les Composantes de MLflow<a class="headerlink" href="#les-composantes-de-mlflow" title="Permanent link">&para;</a></h2>
 <p><a class="glightbox" href="../../../../mlflow/mlflow_definition.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MLflow Definition" src="../../../../mlflow/mlflow_definition.png" /></a></p>
 <p>MLflow est une plateforme open source qui gère tout le cycle de vie de vos modèles de machine learning. Voici ses principales fonctionnalités pour rendre votre vie (et celle de votre chef de projet) beaucoup plus simple :</p>
@@ -999,19 +988,6 @@
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    ├── plot_utils.py      # Fonctions utilitaires pour les graphiques
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    └── mlflow_utils.py    # Fonctions spécifiques à MLflow pour enregistrer les résultats
 </code></pre></div>
-<h3 id="comment-ca-fonctionne">Comment ça Fonctionne ?<a class="headerlink" href="#comment-ca-fonctionne" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><code>main.py</code></strong> : Le script principal qui s’occupe de la préparation des données, de l’entraînement du modèle et de l’appel aux fonctions utilitaires. À la fin du script, MLflow captera les résultats.</li>
-</ul>
-<ul>
-<li><strong><code>src/modeling.py</code></strong> : Contient le code pour l’entraînement et l’évaluation des modèles. MLflow reste en coulisse pour ne pas encombrer votre code avec des appels au tracking.</li>
-</ul>
-<ul>
-<li><strong><code>src/plot_utils.py</code></strong> : Gère la visualisation, que ce soit des courbes de performance ou des graphiques d’erreurs.</li>
-</ul>
-<ul>
-<li><strong><code>src/mlflow_utils.py</code></strong> : Ce fichier contient uniquement du code MLflow pour enregistrer les paramètres, les métriques, les artefacts, et le modèle. Il suit simplement ce que vous lui donnez sans interférer avec le reste.</li>
-</ul>
 <h3 id="exemple-de-code">Exemple de Code<a class="headerlink" href="#exemple-de-code" title="Permanent link">&para;</a></h3>
 <h4 id="srcmlflow_utilspy"><code>src/mlflow_utils.py</code><a class="headerlink" href="#srcmlflow_utilspy" title="Permanent link">&para;</a></h4>
 <p>Voici un exemple de fonction pour enregistrer les artefacts avec MLflow :</p>
@@ -1110,7 +1086,7 @@
 <a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="n">r2</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 <a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="k">return</span> <span class="n">y_pred</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;mse&quot;</span><span class="p">:</span> <span class="n">mse</span><span class="p">,</span> <span class="s2">&quot;r2&quot;</span><span class="p">:</span> <span class="n">r2</span><span class="p">}</span>
 </code></pre></div></p>
-<h3 id="script-principal-mainpy">Script Principal main.py :<a class="headerlink" href="#script-principal-mainpy" title="Permanent link">&para;</a></h3>
+<h4 id="script-principal-mainpy">Script Principal <code>main.py</code> :<a class="headerlink" href="#script-principal-mainpy" title="Permanent link">&para;</a></h4>
 <p>Le script principal utilise log_artifacts pour intégrer MLflow et suivre l'entraînement et l'évaluation du modèle.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">loguru</span> <span class="kn">import</span> <span class="n">logger</span> 
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">import</span> <span class="nn">argparse</span>
@@ -1166,11 +1142,9 @@
 <ol>
 <li>
 <p><strong>Configuration du PYTHONPATH :</strong><br />
-   Avant d'exécuter le script principal, configurez le <code>PYTHONPATH</code> pour que Python reconnaisse correctement les modules de votre projet. Sans cette configuration, vous pourriez être amené à utiliser des chemins relatifs dans le code, ce qui peut compliquer les choses. Configurez <code>PYTHONPATH</code> avec la commande suivante dans un terminal :</p>
+   Avant d'exécuter le script principal, configurez le <code>PYTHONPATH</code> pour que Python reconnaisse correctement les modules de votre projet. Sans cette configuration, vous pourriez être amené à utiliser des chemins relatifs dans le code, ce qui peut compliquer les choses. ’utilisation de PYTHONPATH permet de spécifier le répertoire racine de vos modules Python, évitant ainsi les chemins relatifs compliqués dans votre code. Cela simplifie l'importation des modules et rend le code plus propre et plus maintenable. Configurez <code>PYTHONPATH</code> avec la commande suivante dans un terminal :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span><span class="s2">&quot;src/&quot;</span>
 </code></pre></div>
-<p><strong>Pourquoi utiliser <code>PYTHONPATH</code> ?</strong><br />
- L’utilisation de <code>PYTHONPATH</code> permet de spécifier le répertoire racine de vos modules Python, évitant ainsi les chemins relatifs compliqués dans votre code. Cela simplifie l'importation des modules et rend le code plus propre et plus maintenable.</p>
 </li>
 <li>
 <p><strong>Exécution du Script Principal :</strong><br />
