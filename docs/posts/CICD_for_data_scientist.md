@@ -50,7 +50,7 @@ Je vous invite à faire un tour sur cet article au cas où vous n'etes pas tres 
 
 
 
-## Exemple de CI/CD pour un Projet Data Science
+## Exemple pour un Projet Data Science
 
 Dans ce guide, nous allons créer un pipeline CI/CD pour un projet de data science sur GitLab. Nous aborderons la structure du projet, la configuration du pipeline avec GitLab CI/CD, les tests, le déploiement d'une application Dash, et un bonus sur l'utilisation des “git hooks” pour tester localement avant de pousser les changements.
 Avant tout parlons de 
@@ -187,8 +187,7 @@ En somme, intégrer la CI/CD dans vos projets de data science est comme apprendr
 
 Alors, chers data scientists, prêts à chausser vos chaussures de danse et à adopter la CI/CD ? Parce qu’une fois que vous y aurez goûté, vous ne reviendrez jamais en arrière. Promis, juré.
 
-References:
-
+References :
 - https://martinfowler.com/articles/continuousIntegration.html
 
 - https://martinfowler.com/books/duvall.html
