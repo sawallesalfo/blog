@@ -9,7 +9,6 @@ categories:
 
 # MLflow & best practices
 
-### Introduction
 
 Dans un projet de machine learning, gérer les expérimentations et les modèles peut rapidement devenir un casse-tête. Imaginez : l'équipe s'agrandit, les exigences fusent de toutes parts… et là, votre chef de projet débarque avec une demande spéciale : "Dis, tu te souviens de ce modèle super performant qu'on a testé en avril ? On aimerait le comparer avec nos résultats actuels."À ce moment précis, à moins d'avoir une mémoire digne d'un éléphant, vous vous retrouvez à naviguer frénétiquement dans des fichiers Excel. Entre nous, c'est le genre de situation où l'on se dit : "Pourquoi je n’ai pas tout noté quelque part de façon plus propre ?!"C’est justement là qu’**MLflow** entre en scène.
 
@@ -299,4 +298,4 @@ Alors, la prochaine fois que quelqu’un vous demande de retrouver des resulats 
 
 ### Références: 
 + https://mlflow.org/docs/latest/index.html
-
++ https://mlflow.org/docs/latest/tracking.html#quickstart
