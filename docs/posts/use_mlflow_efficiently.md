@@ -65,7 +65,7 @@ pip install mlflow
 
 Pour des pratiques plus MLOps, MLflow est généralement hébergé sur un serveur spécifique, soit sur une machine virtuelle (via conteneur) ou sur le cloud. Vous pouvez consulter [ce projet GitHub](https://github.com/sawadogosalif/DS-backbone) pour un exemple de configuration de MLflow.
 
-![Tracking Setup Overview](tracking-setup-overview.png)
+![Tracking Setup Overview](mlflow/tracking-setup-overview.png)
 
 | **Configuration**                     | **Développement solo avec Localhost**                                                                                                                | **Développement solo avec Base de Données Locale**                                                                                                      | **Développement en Équipe avec Serveur MLflow**                                                                                                                   |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
