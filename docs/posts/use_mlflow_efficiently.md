@@ -11,13 +11,10 @@ categories:
 
 ### Introduction
 
-Dans un projet de machine learning, gérer les expérimentations et les modèles peut rapidement devenir un casse-tête. Imaginez : l'équipe s'agrandit, les données évoluent, les exigences fusent de toutes parts… et là, votre chef de projet débarque avec une demande spéciale : "Dis, tu te souviens de ce modèle super performant qu'on a testé en avril ? On aimerait le comparer avec nos résultats actuels."
+Dans un projet de machine learning, gérer les expérimentations et les modèles peut rapidement devenir un casse-tête. Imaginez : l'équipe s'agrandit, les exigences fusent de toutes parts… et là, votre chef de projet débarque avec une demande spéciale : "Dis, tu te souviens de ce modèle super performant qu'on a testé en avril ? On aimerait le comparer avec nos résultats actuels."À ce moment précis, à moins d'avoir une mémoire digne d'un éléphant, vous vous retrouvez à naviguer frénétiquement dans des fichiers Excel. Entre nous, c'est le genre de situation où l'on se dit : "Pourquoi je n’ai pas tout noté quelque part de façon plus propre ?!"C’est justement là qu’**MLflow** entre en scène.
 
 <!-- more -->
 
-À ce moment précis, à moins d'avoir une mémoire digne d'un éléphant, vous vous retrouvez à naviguer frénétiquement dans des fichiers Excel, des notes éparpillées ou même des post-its collés sur votre écran. Entre nous, c'est le genre de situation où l'on se dit : "Pourquoi je n’ai pas tout noté quelque part de façon plus propre ?!"
-
-C’est justement là qu’**MLflow** entre en scène.
 
 ## Les Composantes de MLflow
 
@@ -87,16 +84,6 @@ project/
     ├── plot_utils.py      # Fonctions utilitaires pour les graphiques
     └── mlflow_utils.py    # Fonctions spécifiques à MLflow pour enregistrer les résultats
 ```
-
-### Comment ça Fonctionne ?
-
-- **`main.py`** : Le script principal qui s’occupe de la préparation des données, de l’entraînement du modèle et de l’appel aux fonctions utilitaires. À la fin du script, MLflow captera les résultats.
-
-- **`src/modeling.py`** : Contient le code pour l’entraînement et l’évaluation des modèles. MLflow reste en coulisse pour ne pas encombrer votre code avec des appels au tracking.
-
-- **`src/plot_utils.py`** : Gère la visualisation, que ce soit des courbes de performance ou des graphiques d’erreurs.
-
-- **`src/mlflow_utils.py`** : Ce fichier contient uniquement du code MLflow pour enregistrer les paramètres, les métriques, les artefacts, et le modèle. Il suit simplement ce que vous lui donnez sans interférer avec le reste.
 
 ### Exemple de Code
 
@@ -210,7 +197,7 @@ def evaluate_model(model, X_test, y_test):
 ```
 
 
-### Script Principal main.py :
+#### Script Principal `main.py` :
 
 Le script principal utilise log_artifacts pour intégrer MLflow et suivre l'entraînement et l'évaluation du modèle.
 
@@ -270,14 +257,11 @@ if __name__ == "__main__":
 Pour exécuter le projet et observer les résultats de l'enregistrement des expérimentations avec MLflow, on pourrait utiliser la procédure ci-après:
 
 1. **Configuration du PYTHONPATH :**  
-   Avant d'exécuter le script principal, configurez le `PYTHONPATH` pour que Python reconnaisse correctement les modules de votre projet. Sans cette configuration, vous pourriez être amené à utiliser des chemins relatifs dans le code, ce qui peut compliquer les choses. Configurez `PYTHONPATH` avec la commande suivante dans un terminal :
+   Avant d'exécuter le script principal, configurez le `PYTHONPATH` pour que Python reconnaisse correctement les modules de votre projet. Sans cette configuration, vous pourriez être amené à utiliser des chemins relatifs dans le code, ce qui peut compliquer les choses. ’utilisation de PYTHONPATH permet de spécifier le répertoire racine de vos modules Python, évitant ainsi les chemins relatifs compliqués dans votre code. Cela simplifie l'importation des modules et rend le code plus propre et plus maintenable. Configurez `PYTHONPATH` avec la commande suivante dans un terminal :
 
    ```bash
    export PYTHONPATH="src/"
    ```
-
-   **Pourquoi utiliser `PYTHONPATH` ?**  
-   L’utilisation de `PYTHONPATH` permet de spécifier le répertoire racine de vos modules Python, évitant ainsi les chemins relatifs compliqués dans votre code. Cela simplifie l'importation des modules et rend le code plus propre et plus maintenable.
 
 2. **Exécution du Script Principal :**  
    Utilisez `argparse` pour rendre votre script paramétrable depuis la ligne de commande. Voici comment lancer le script avec différents paramètres :
