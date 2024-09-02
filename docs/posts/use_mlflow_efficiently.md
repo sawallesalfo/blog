@@ -1,4 +1,3 @@
-
 ---
 date: 2024-09-01
 authors:
@@ -8,7 +7,7 @@ categories:
     - MlOps
 ---
 
-# Simplifiez vos expérimentations ML avec MLflow
+# MLflow & best practices
 
 ### Introduction
 
