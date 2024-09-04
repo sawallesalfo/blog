@@ -10,6 +10,8 @@ categories:
 
 Dans cet article, je vais partager avec vous une pratique qui a transformé ma carrière de data scientist end-to-end : tester son code. C'est une étape cruciale dans l'adoption des bonnes pratiques MLOps, mais qui est souvent négligée par beaucoup de data scientists. Je vais explorer les raisons pour lesquelles les tests sont souvent peu utilisés dans ce domaine et comment vous pouvez intégrer des tests efficaces dans le workflow de vos projets de data science. Vous trouverez également un tutoriel pratique pour vous aider à démarrer, en utilisant des outils comme pytest, beartype, pandera, unittest, ou pydantic.
 
+<!-- more -->
+
 ### 1. Les types de tests
 
 Les tests en développement proviennent du génie logiciel. On imagine souvent une pyramide avec différents niveaux de tests, chacun ayant son rôle pour garantir que le logiciel fonctionne correctement. Cependant, la manière dont les tests sont abordés dépend beaucoup des tâches spécifiques que vous réalisez en tant que data scientist. Voici un aperçu des principaux types de tests, illustrés dans le contexte d'un projet de data science.
