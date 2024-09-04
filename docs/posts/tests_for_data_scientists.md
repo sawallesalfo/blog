@@ -8,49 +8,45 @@ categories:
 
 ## Parlons de tests pour data scientists - MLOPS
 
-Dans ce billet de blog, je discute avec vous de quelque chose qui a changé ma vie en tant que data scientist end-to-end : tester son code. C’est un must dans la quête des bonnes pratiques MLOps. Je vais explique pourquoi selon moi les data scientists en font souvent peu, et comment intégrer des tests efficaces dans le workflow d'un projet de data science.
+Dans cet article, je vais partager avec vous une pratique qui a transformé ma carrière de data scientist end-to-end : tester son code. C'est une étape cruciale dans l'adoption des bonnes pratiques MLOps, mais qui est souvent négligée par beaucoup de data scientists. Je vais explorer les raisons pour lesquelles les tests sont souvent peu utilisés dans ce domaine et comment vous pouvez intégrer des tests efficaces dans le workflow de vos projets de data science. Vous trouverez également un tutoriel pratique pour vous aider à démarrer, en utilisant des outils comme pytest, beartype, pandera, unittest, ou pydantic.
 
-### 1. Les types de Tests
+### 1. Les types de tests
 
-En vérité, les tests proviennent du génie logiciel. En data science, on en parle peu parce que la plupart des data scientists viennent de formations quantitatives, comme les statistiques ou les mathématiques ou encore la physique, plutôt que de développement logiciel.
-<!-- more -->
+Les tests en développement proviennent du génie logiciel. On imagine souvent une pyramide avec différents niveaux de tests, chacun ayant son rôle pour garantir que le logiciel fonctionne correctement. Cependant, la manière dont les tests sont abordés dépend beaucoup des tâches spécifiques que vous réalisez en tant que data scientist. Voici un aperçu des principaux types de tests, illustrés dans le contexte d'un projet de data science.
 
-Quand on parle de tests en développement, on imagine souvent une pyramide avec différents niveaux de tests, chacun ayant son rôle pour garantir que le logiciel fait ce qu’on attend de lui. Mais la vérité, c'est que la façon dont tu approches les tests dépend beaucoup de ce que tu fais au quotidien en tant que data scientist. Voici un aperçu des principaux types de tests, en les illustrant avec une solution logicielle de data science.
+#### **Tests unitaires**
 
-#### **Tests Unitaires**
+Les tests unitaires sont à la base de la pyramide des tests. Ils sont utilisés pour vérifier chaque fonction ou composant de manière isolée. En data science, cela peut inclure :
 
-Les tests unitaires sont à la base de la pyramide des tests. Ce sont des tests courts et précis faits par les développeurs pour vérifier chaque fonction ou composant de manière isolée. En data science, cela pourrait signifier :
-
-- Vérifier le format et le type des données (comme s'assurer qu'une colonne est toujours un entier).
-- Tester les paramètres d'un modèle (pour s'assurer qu’ils sont valides).
+- Vérifier le format et le type des données (par exemple, s'assurer qu'une colonne est toujours un entier).
+- Tester les paramètres d'un modèle pour valider leur conformité.
 - Contrôler les variables d'entrée pour détecter les anomalies ou les valeurs hors des plages attendues.
-- Tester les performances d’un modèle sur des jeux de données connus.
+- Tester les performances d’un modèle sur des jeux de données spécifiques.
 
-Ces tests sont idéaux pour les tâches où tu écris beaucoup de code — par exemple, quand tu développes des fonctions de transformation de données ou des algorithmes personnalisés. En automatisant ces tests, tu peux facilement vérifier que ton code reste correct au fil des changements et des nouvelles versions. Cela te permet d'éviter des erreurs dont la source est le mauvais format de données en entrée, par exemple.
+Ces tests sont particulièrement utiles lorsque vous développez des fonctions de transformation de données ou des algorithmes personnalisés. Ils permettent de vérifier la stabilité du code à chaque changement et d'éviter des erreurs fréquentes, comme un format de données incorrect.
 
-#### **Tests d’Intégration**
+#### **Tests d’intégration**
 
-Les tests d'intégration prennent tout leur sens quand tu travailles sur des projets où plusieurs composants doivent collaborer. Le but est de vérifier que ces différents éléments fonctionnent bien ensemble. Si tu bosses sur un pipeline de données complet — de la collecte au prétraitement, jusqu’au modèle et à la production des résultats — c’est ici que les tests d’intégration deviennent essentiels. 
+Les tests d'intégration s'assurent que différents composants fonctionnent correctement ensemble, ce qui est essentiel dans les projets où plusieurs parties du système doivent collaborer. Par exemple, dans un pipeline de données complet (de la collecte au prétraitement jusqu’au modèle et à la production des résultats), ces tests vérifient que toutes les étapes s'enchaînent sans erreur. Souvent, ils sont intégrés dans un cadre de CI/CD (Intégration et Déploiement Continus) pour automatiser et garantir la cohérence des tests.
 
-Ils permettent de s'assurer que toutes les étapes d'un pipeline de données s'enchaînent correctement sans erreurs. Souvent, la CI/CD (Intégration et Déploiement Continus) sert de cadre pour ces tests d'intégration, garantissant que les tests n'échouent pas.
+#### **Tests systèmes**
 
-#### **Tests Systèmes**
+Les tests systèmes, ou tests "boîte noire", évaluent le logiciel dans son ensemble dans des scénarios d'utilisation réels. Ils sont particulièrement utiles pour les projets qui aboutissent à des applications prêtes à être utilisées par des utilisateurs finaux. 
 
-Les tests systèmes, aussi appelés tests "boîte noire", évaluent le logiciel dans son ensemble dans des scénarios d'utilisation réels. Ces tests sont particulièrement utiles si tu travailles sur des projets qui aboutissent à des applications prêtes à être utilisées par des clients ou des utilisateurs finaux.
+- **Exemple** : Vérifier que votre modèle déployé sur une application web fait des prédictions et renvoie les résultats correctement.
 
-- **Exemple** : Valider que ton modèle déployé sur une application web fait des prédictions et renvoie les résultats correctement.
+Ces tests sont souvent effectués par des équipes indépendantes pour garantir une évaluation impartiale de l'ensemble du système.
 
-Ce type de test est souvent géré par des équipes séparées ou des testeurs indépendants pour garantir une évaluation impartiale de l'ensemble du système.
+#### **Tests d’acceptation**
 
-#### **Tests d’Acceptation**
+Au sommet de la pyramide se trouvent les tests d’acceptation, qui vérifient que le produit final répond aux attentes du client ou de l’utilisateur. Ces tests sont généralement réalisés par le Product Owner, le client, ou le sponsor du projet, plutôt que par les développeurs. 
 
-En haut de la pyramide, on trouve les tests d’acceptation. Ici, on s’assure que le produit final correspond bien aux attentes du client ou de l’utilisateur. Ces tests ne sont pas nécessairement réalisés par les développeurs eux-mêmes. Cela peut être le Product Owner (PO), le client, ou même le sponsor du projet qui les exécute. En gros, on vérifie que le produit répond bien aux besoins métiers ou utilisateurs définis en amont.
+- **Exemple** : Pour une application de recommandation, s'assurer que les suggestions fournies aux utilisateurs sont pertinentes et alignées avec les critères définis par le client.
 
-- **Exemple** : Pour une application de recommandation, s’assurer que les suggestions fournies aux utilisateurs sont pertinentes et en accord avec les critères définis par le client.
+Ces tests sont essentiels dans les projets avec des parties prenantes définies (client, Product Owner, sponsor, expert métier) qui doivent valider que le produit répond bien aux besoins spécifiés.
 
-Ces tests sont essentiels si tu travailles sur des projets où il y a un client ou Product Owner, un chef de projet, un sponsor ou un expert métier responsable du besoin.
 
-### 2. Pourquoi les Tests sont Essentiels en Data Science
+### 2. Pourquoi les tests sont essentiels en data science
 
 Faire des tests ou non dépend vraiment de tes tâches quotidiennes. Si tu es en exploration de données ou en phase de recherche, tu pourrais moins sentir le besoin d'automatiser des tests rigoureux. Mais dès que tu commences à mettre des choses en production, les tests deviennent indispensables. Voilà pourquoi :
 
@@ -60,22 +56,24 @@ Faire des tests ou non dépend vraiment de tes tâches quotidiennes. Si tu es en
 
 La documentation est souvent négligée, mais c'est crucial car les data scientists ou les développeurs bougent beaucoup entre les entreprises. Si le code est bien documenté et testé, la personne qui le reprend pourra plus facilement s'approprier le projet.
 
-Bref, l'idée, c'est de s'adapter à ton contexte. Si tu codes régulièrement des fonctions critiques, mets en place des tests unitaires et d'intégration. Si tu développes un produit pour des utilisateurs finaux, pense aux tests systèmes et d'acceptation. Si tu es un data scientist qui fait des études ad hoc ou travaille étroitement avec des métiers, alors les tests d'acceptation suffiront probablement. Mais si tu es un ML engineer ou un AI engineer, les tests deviennent obligatoires.
+Bref, l'idée, c'est de s'adapter à ton contexte. Si tu codes régulièrement des fonctions critiques, mets en place des tests unitaires et d'intégration. Si tu développes un produit pour des utilisateurs finaux, pense aux tests systèmes et d'acceptation. Si tu es un data scientist qui fait des études ad hoc ou travaille étroitement avec des métiers, alors les tests d'acceptation suffiront probablement. Mais si tu es un ML engineer ou un AI engineer, les tests deviennent une necessité.
 
-### 3. Pourquoi les Data Scientists Négligent-ils les Tests ?
+### 3. Pourquoi les data scientists négligent-ils les tests ?
 
 En data science, les tests sont souvent négligés pour plusieurs raisons :
 
 - **Manque d'expérience en ingénierie logicielle** : Beaucoup de data scientists viennent d’un background académique (stats, maths, physique, data) sans formation solide en développement logiciel.
 - **Pression pour produire des résultats rapides** : Les entreprises poussent souvent pour des prototypes rapides, ce qui laisse peu de temps pour les tests rigoureux.
 - **Mauvaise compréhension de la valeur des tests** : Les data scientists ne voient pas toujours comment les tests peuvent faciliter leur travail en production.
-- **Data scientist ≠ développeur** : Même si c'est un débat, je fais partie de ceux qui pensent qu'un data scientist n'a pas nécessairement besoin d'être un bon développeur. Néanmoins, quand tu veux faire les choses bien et livrer des solutions de qualité, coder en respectant les bonnes pratiques devient une nécessité.
+- **Data scientist ≠ développeur** : Même si c'est un débat, je fais partie de ceux qui pensent qu'un data scientist n'a pas nécessairement besoin d'être un bon développeur. Néanmoins, quand tu veux faire du ML engineering ou du end-to-end data science, coder en respectant les bonnes pratiques devient une nécessité.
+N'oublie pas que l'une des premières définitions d'un data scientist a été : "I think of data scientists as knowing more about statistics than computer scientists and more about computer science than statisticians." — Michael O'Connell.
 
-### 4. L'Expérience et les Bonnes Pratiques
+### 4. L'expérience et les bonnes pratiques
 
-En production, les erreurs coûtent cher. Les tests vous permettent d'éviter des bugs répétitifs et d'économiser du temps. En lisant des tests bien écrits, vous comprenez le fonctionnement du système sans documentation supplémentaire.
+En production, les erreurs coûtent cher. Les tests te permettent d'éviter des bugs répétitifs et d'économiser du temps. En lisant des tests bien écrits, tu comprends le fonctionnement du système sans documentation supplémentaire.
 
-Les développeurs se bonifient avec les projets qu'ils font et grâce à leurs collaborations avec d'autres développeurs. Si je fais des tests aujourd'hui, c'est grâce à ces seniors ou développeurs qui ne juraient que par les tests et m'ont obligé à le faire avant de valider mes `merge merquest`. Nous avons besoin de personnes compétentes et expérimentées pour nous mentorer et nous enseigner les bonnes pratiques. Mais il n'y en a pas assez. Donc devenez vite senior compétents si vous etes debutant :)
+
+Les développeurs se bonifient avec les projets qu'ils font et grâce à leurs collaborations avec d'autres développeurs. Si je fais des tests aujourd'hui, c'est grâce à ces seniors ou développeurs qui ne juraient que par les tests et m'ont obligé à le faire avant de valider mes `merge merquest`. 
 
 **Bonnes pratiques :**
 
@@ -84,40 +82,8 @@ Les développeurs se bonifient avec les projets qu'ils font et grâce à leurs c
 - Ne testez pas les bibliothèques tierces ; concentrez-vous sur votre code.
 - Automatisez les tests dans votre pipeline CI/CD ou avec des hooks Git pour détecter les erreurs avant de déployer.
 
-```mermaid
-graph TD
-    A[Rédiger des Tests Efficaces] --> B[Générer des Données Pertinentes pour les Tests]
-    B --> C[Dépister Rapidement les Exemples Falsifiés]
-    C --> D[Produire des Tests Simples et Directs]
 
-    A --> E[Définir des Schémas ou Spécifications de Test Clairs]
-    B --> F[Utiliser des Générateurs de Données ou des Données Fictives]
-    C --> G[Exécuter des Validations et des Assertions]
-    D --> H[Affiner les Tests pour Clarté et Simplicité]
-    F --> I[Prendre en Compte les Cas Limites et les Données Aléatoires]
-
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#bbf,stroke:#333,stroke-width:2px
-    style C fill:#cfc,stroke:#333,stroke-width:2px
-    style D fill:#fea,stroke:#333,stroke-width:2px
-    style E fill:#f9f,stroke:#333,stroke-width:2px
-    style F fill:#bbf,stroke:#333,stroke-width:2px
-    style G fill:#cfc,stroke:#333,stroke-width:2px
-    style H fill:#fea,stroke:#333,stroke-width:2px
-    style I fill:#cfc,stroke:#333,stroke-width:2px
-
-    subgraph J[Facteurs de Qualité du Code]
-        J1[Faciliter la Factorisation du Code]
-        J2[Résoudre les Bugs]
-    end
-
-    A --> J
-    J --> J1
-    J --> J2
-
-```
-
-### 5. Les Tests en Data Science et les Outils Utiles
+### 5. Les tests en data Science et les outils utiles
 
 Pour les data scientists, il existe plusieurs outils pour écrire des tests :
 
@@ -125,7 +91,7 @@ Pour les data scientists, il existe plusieurs outils pour écrire des tests :
 - **Pytest** ou **Unittest** : Pour écrire des tests unitaires et d'intégration.
 - **Beartype** ou **Pydantic** : Pour la validation de types dans vos fonctions.
 
-#### **1. Exemple de Tests Implicites avec Pandera**
+#### **1. Exemple de tests implicites avec pandera**
 
 On travaille le plus souvant avec des dataframe. Nul n'ignore que la gestion des types dans pandas est assez bordelique sur avec le type `object`. Pandera vient à la rescousse pour typer les dataframes et apporter plus de contraintes aux colonnes et schemas attendus.
 
@@ -170,13 +136,15 @@ def process_data(df):
 En appliquant ce code, vous obtenez :
 ![alt text](tests/pandera_valid.PNG)
 
-![alt text](tests/pandera_invalid.PNG)
+![alt text](tests/pandera_invalid.png)
 On peut facilement voir que la fonction a `raise` une erreur de schema dès l'appel. 
 Combiner Pandera avec Pytest permet de valider les données. En data science, il est fréquent de faire passer des DataFrames en entrée de fonction, donc il est préférable de valider les types en entrée et d'éviter tout problème.
 
-#### **2. Exemple de Validation des Types avec Beartype**
+#### **2. Exemple de validation des types avec beartype**
 
-Beartype peut être utilisé pour vérifier les types de données à l'exécution. La documentation est ici : [Beartype](https://beartype.readthedocs.io/en/latest/). Vous pourriez utiliser Pydantic à la place :
+Beartype peut être utilisé pour vérifier les types de données à l'exécution.  Beartype est un validateur de types Python qui vérifie que les valeurs passées à une fonction correspondent bien aux annotations de type définies. C'est une excellente manière de renforcer la robustesse de ton code sans avoir à écrire de tests manuels pour chaque paramètre de fonction.
+
+La documentation est ici : [Beartype](https://beartype.readthedocs.io/en/latest/). Vous pourriez utiliser Pydantic à la place :
 
 ```python
 from beartype import beartype
@@ -190,11 +158,11 @@ def add_numbers(a: int, b: int) -> int:
 
 Comme on le voit, lorsque le type est violé, la fonction lève une erreur.
 
-### 6. Implémentation de Tests Plus Complètes
+### 6. Implémentation de tests plus complètes
 
-#### **1. Organisation du Projet**
-
-Imaginons le projet ci-dessous où PYTHONPATH pointe vers `mypackages` :
+#### **1. Organisation du projet**
+Pour un projet de data science orienté MLOps, une organisation claire et structurée est essentielle pour faciliter le développement, les tests, et la maintenance du code. Un bon schéma de projet permet non seulement de rendre le code plus lisible, mais aussi de simplifier l'intégration des tests à chaque étape du pipeline, depuis le prétraitement des données jusqu'au déploiement des modèles.
+Imaginons le projet ci-dessous où PYTHONPATH pointe vers `mypackages` et  voici une structure typique qui peut servir de base solide :
 
 ```
 project/
@@ -216,7 +184,7 @@ project/
     └── expected_profil_3.json
 ```
 
-#### **2. Simple Test Unitaire**
+#### **2. Simple test unitaire**
 
 Le fichier `test_algo1.py` contient les lignes de test unitaire suivantes :
 
@@ -235,10 +203,10 @@ Avec la commande `pytest`, vous pouvez exécuter ce test unitaire. L'organisatio
 
 #### **3. Plusieurs Tests Unitaires en Un avec `pytest.mark.parametrize`**
 
+`pyest.mark.parametrize` : C'est une fonctionnalité de Pytest qui permet de tester une même fonction avec différents ensembles de données. Cela t'aide à vérifier que ton code fonctionne correctement avec une large variété d'entrées, et c'est particulièrement utile en data science où les variations de données sont fréquentes.
+Dans ce paragraphe, je mets en place un test en utilisant le decorateur pyest.mark.parametrize.
+
 Voici le détail de `test_algo2.py` :
-
-En utilisant Pytest, vous pouvez paramétrer vos tests pour les exécuter avec plusieurs jeux de données :
-
 ```python
 import pytest
 import os
@@ -275,7 +243,7 @@ def test_algorithm_2(input_file, expected_file):
     pd.testing.assert_frame_equal(result, df_expected)
 ```
 
-Comme par magie, en exécutant la commande `pytest`, tout passe :
+Comme par magie, en exécutant la commande `pytest`, tout passe comme vous pouvez le voir dans l'image ci-après :
 ![alt text](tests/unitest_test_run_all.PNG)
 
 ### Conclusion
