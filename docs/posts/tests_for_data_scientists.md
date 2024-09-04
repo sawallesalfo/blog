@@ -93,10 +93,7 @@ Pour les data scientists, il existe plusieurs outils pour écrire des tests :
 
 #### **1. Exemple de tests implicites avec pandera**
 
-On travaille le plus souvant avec des dataframe. Nul n'ignore que la gestion des types dans pandas est assez bordelique sur avec le type `object`. Pandera vient à la rescousse pour typer les dataframes et apporter plus de contraintes aux colonnes et schemas attendus.
-
-
-Voici comment utiliser Pandera pour valider la structure d'un DataFrame ci-dessous.Il y a pas mieux que la documentation officille d'un package. https://beartype.readthedocs.io/en/latest/. L'argument strict permet de valider sur un set de columns qu'on a definie.
+Lorsque l'on travaille avec des DataFrames, il est bien connu que la gestion des types dans pandas peut être problématique, en particulier avec le type `object`. Pandera est une bibliothèque qui facilite la validation des DataFrames en permettant de définir des contraintes sur les colonnes et les schémas attendus. Pour utiliser Pandera pour valider la structure d'un DataFrame, voici un exemple simple. Vous pouvez consulter la documentation officielle pour plus de détails : [Documentation de Pandera](https://pandera.readthedocs.io/en/stable/). L'argument `strict` permet de valider les colonnes spécifiées dans le DataFrame.
 
 ```python
 import pandas as pd
@@ -162,6 +159,7 @@ Comme on le voit, lorsque le type est violé, la fonction lève une erreur.
 
 #### **1. Organisation du projet**
 Pour un projet de data science orienté MLOps, une organisation claire et structurée est essentielle pour faciliter le développement, les tests, et la maintenance du code. Un bon schéma de projet permet non seulement de rendre le code plus lisible, mais aussi de simplifier l'intégration des tests à chaque étape du pipeline, depuis le prétraitement des données jusqu'au déploiement des modèles.
+
 Imaginons le projet ci-dessous où PYTHONPATH pointe vers `mypackages` et  voici une structure typique qui peut servir de base solide :
 
 ```
@@ -201,7 +199,7 @@ def test_algorithm_1():
 
 Avec la commande `pytest`, vous pouvez exécuter ce test unitaire. L'organisation du projet peut varier, chacun s'organise comme il le souhaite.
 
-#### **3. Plusieurs Tests Unitaires en Un avec `pytest.mark.parametrize`**
+#### **3. Plusieurs tests unitaires en Un avec `pytest.mark.parametrize`**
 
 `pyest.mark.parametrize` : C'est une fonctionnalité de Pytest qui permet de tester une même fonction avec différents ensembles de données. Cela t'aide à vérifier que ton code fonctionne correctement avec une large variété d'entrées, et c'est particulièrement utile en data science où les variations de données sont fréquentes.
 Dans ce paragraphe, je mets en place un test en utilisant le decorateur pyest.mark.parametrize.
