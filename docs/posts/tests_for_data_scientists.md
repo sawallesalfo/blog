@@ -1,15 +1,19 @@
-# Tester son Code : Un Passage Obligé pour les Data Scientists en Production
-Voici une version corrigée et formatée de ton article. J'ai ajusté les fautes d'orthographe, les erreurs de syntaxe, et reformulé certaines phrases pour améliorer la lisibilité tout en préservant ton style et tes idées.
-
+---
+date: 2024-09-01
+authors:
+    - ssawadogo
+categories: 
+    - MlOps
 ---
 
-# Tester son Code : Un Passage Obligé pour les Data Scientists en Production
+## Parlons de tests pour data scientists - MLOPS
 
-Dans ce billet de blog, je discute avec vous de quelque chose qui a changé ma vie en tant que data scientist end-to-end : tester son code. C’est un must dans la quête des bonnes pratiques MLOps. Je vais expliquer pourquoi les tests sont cruciaux en développement, pourquoi selon moi les data scientists en font souvent peu, et comment intégrer des tests efficaces dans le workflow d'un projet de data science.
+Dans ce billet de blog, je discute avec vous de quelque chose qui a changé ma vie en tant que data scientist end-to-end : tester son code. C’est un must dans la quête des bonnes pratiques MLOps. Je vais explique pourquoi selon moi les data scientists en font souvent peu, et comment intégrer des tests efficaces dans le workflow d'un projet de data science.
 
-### 1. Les Différents Types de Tests
+### 1. Les types de Tests
 
-En vérité, les tests proviennent du génie logiciel. En data science, on en parle peu parce que la plupart des data scientists viennent de formations quantitatives, comme les statistiques ou les mathématiques, plutôt que de développement logiciel.
+En vérité, les tests proviennent du génie logiciel. En data science, on en parle peu parce que la plupart des data scientists viennent de formations quantitatives, comme les statistiques ou les mathématiques ou encore la physique, plutôt que de développement logiciel.
+<!-- more -->
 
 Quand on parle de tests en développement, on imagine souvent une pyramide avec différents niveaux de tests, chacun ayant son rôle pour garantir que le logiciel fait ce qu’on attend de lui. Mais la vérité, c'est que la façon dont tu approches les tests dépend beaucoup de ce que tu fais au quotidien en tant que data scientist. Voici un aperçu des principaux types de tests, en les illustrant avec une solution logicielle de data science.
 
@@ -276,6 +280,6 @@ Comme par magie, en exécutant la commande `pytest`, tout passe :
 
 ### Conclusion
 
-Les tests sont une compétence essentielle pour les data scientists, surtout ceux qui visent à mettre leurs modèles en production ou livrent leur projects à d'autres dev. Commencez petit, concentrez-vous sur les parties critiques, et faites des tests une habitude dans vos projets. Les outils comme Pandera, Pytest, Beartype, et Pydantic sont là pour vous aider à améliorer la qualité et la fiabilité de votre code. C'est un investissement qui paie à long terme, vous évitant de nombreux soucis et vous permettant de livrer des modèles plus robustes et maintenables.
+Les tests sont une compétence essentielle pour les data scientists, surtout ceux qui visent à mettre leurs modèles en production ou livrent leur projects à d'autres dev. Commencez petit, concentrez-vous sur les parties critiques, et faites des tests une habituddans vos projets. Les outils comme Pandera, Pytest, Beartype, et Pydantic sont là pour vous aider à améliorer la qualité et la fiabilité de votre code. C'est un investissement qui paie à long terme, vous évitant de nombreux soucis et vous permettant de livrer des modèles plus robustes et maintenables.
 
 Prêt à ajouter des tests à vos projets de data science ? Commençons dès maintenant !
