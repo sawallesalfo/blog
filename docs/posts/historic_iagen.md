@@ -10,6 +10,8 @@ categories:
 
 Aujourd’hui, on plonge dans l’univers fascinant de l’IA générative. On va retracer les grandes étapes qui ont marqué son évolution. Pas de panique, on ne va pas s’embourber dans une liste exhaustive – on va plutôt se concentrer sur les moments clés qui ont façonné l’IA telle qu’on la connaît aujourd'hui. J’avais depuis un moment envie de faire le point sur les avancées dans ce domaine, mais avec le rythme effréné des innovations, je ne savais pas comment illustrer cela jusqu'à ce que je tombe sur les travaux de l'Innovation Makers Alliance.
 
+<!-- more -->
+
 Comme vous l'avez bien remarqué, j'adore schématiser avant de décrire. Donc voici un schéma chronologique qui résume tout.  
 ![image](iagen_evolution/chronologie_1.PNG)  
 ![image](iagen_evolution/chronologie_2.PNG)  
