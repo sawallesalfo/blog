@@ -7,7 +7,7 @@ catégories :
   - documentation
 ---
 
-# Construire et Déployer un Blog avec MkDocs et CI
+# Faire son Blog avec MkDocs et github actions
 
 Bienvenue ! Dans ce guide, tu apprendras à créer et déployer un blog en utilisant MkDocs, un outil qui facilite la création de belles documentations. Nous allons couvrir chaque étape pour t'aider à mettre ton blog en ligne.
 
