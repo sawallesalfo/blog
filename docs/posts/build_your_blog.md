@@ -1,90 +1,90 @@
 ---
-date: 2024-08-18
-authors:
-    - ssawadogo
-categories: 
-    - CI/CD
-    - documentation
+date : 2024-08-18  
+auteurs : 
+  - ssawadogo  
+catégories : 
+  - CI/CD
+  - documentation
 ---
-### Building and Deploying a Blog with MkDocs with CI
 
+# Construire et Déployer un Blog avec MkDocs et CI
 
-Welcome! In this guide, you’ll learn how to build and deploy a blog using MkDocs, a tool that makes it easy to create beautiful documentation. We’ll cover each step to help you get your blog online.
+Bienvenue ! Dans ce guide, tu apprendras à créer et déployer un blog en utilisant MkDocs, un outil qui facilite la création de belles documentations. Nous allons couvrir chaque étape pour t'aider à mettre ton blog en ligne.
 
-#### What You Need
+#### Ce Dont Tu As Besoin
 
-1. **GitHub Account**: You need a GitHub account to store and deploy your blog.
-2. **Basic Knowledge**: Familiarity with GitHub, Docker, and some command line basics will be helpful.
+1. **Compte GitHub** : Tu auras besoin d’un compte GitHub pour stocker et déployer ton blog.
+2. **Connaissances de Base** : Une familiarité avec GitHub, Docker et quelques bases de la ligne de commande sera utile.
 <!-- more -->
 
-#### Step 1: Setting Up Your Blog
+#### Étape 1 : Configuration de Ton Blog
 
-1. **Create a GitHub Repository**:
-   - Visit [GitHub](https://github.com) and log in.
-   - Click on **New** to create a repository.
-   - Name your repository, for example, `my-blog`.
-   - Choose **Public** or **Private** based on your preference.
-   - Click **Create repository**.
+1. **Créer un Répertoire GitHub** :
+   - Va sur [GitHub](https://github.com) et connecte-toi.
+   - Clique sur **New** pour créer un nouveau répertoire.
+   - Nomme ton répertoire, par exemple `mon-blog`.
+   - Choisis **Public** ou **Private** selon ta préférence.
+   - Clique sur **Create repository**.
 
-2. **Install MkDocs Locally**:
-   - Open your terminal or command line.
-   - Install MkDocs with pip:
+2. **Installer MkDocs Localement** :
+   - Ouvre ton terminal ou la ligne de commande.
+   - Installe MkDocs avec pip :
      ```bash
      pip install mkdocs
      ```
 
-3. **Set Up Your Blog**:
-   - Navigate to the folder where you want to create your blog.
-   - Run:
+3. **Configurer Ton Blog** :
+   - Navigue jusqu’au dossier où tu souhaites créer ton blog.
+   - Exécute :
      ```bash
-     mkdocs new my-blog
+     mkdocs new mon-blog
      ```
-   - This creates a folder named `my-blog` with the basic files for your blog.
+   - Cela crée un dossier nommé `mon-blog` avec les fichiers de base pour ton blog.
 
-4. **Customize Your Blog**:
-   - Open the `mkdocs.yml` file in your blog's folder. This is where you set your blog’s name and theme.
-   - Modify the `mkdocs.yml` file to look like this:
+4. **Personnaliser Ton Blog** :
+   - Ouvre le fichier `mkdocs.yml` dans le dossier de ton blog. C’est ici que tu définis le nom et le thème de ton blog.
+   - Modifie le fichier `mkdocs.yml` pour qu’il ressemble à ceci :
 
      ```yaml
-     site_name: My Blog
+     site_name: Mon Blog
      theme:
        name: material
      nav:
-       - Home: index.md
+       - Accueil: index.md
      ```
 
-   - Add content by editing `index.md` or creating new Markdown files in the `docs` folder.
+   - Ajoute du contenu en modifiant `index.md` ou en créant de nouveaux fichiers Markdown dans le dossier `docs`.
 
-#### Step 2: Build and Deploy Using Docker
+#### Étape 2 : Construire et Déployer avec Docker
 
-1. **Create a Docker Image**:
-   - Write a Dockerfile to include MkDocs and necessary tools.
-   - Here’s a basic Dockerfile:
+1. **Créer une Image Docker** :
+   - Rédige un Dockerfile pour inclure MkDocs et les outils nécessaires.
+   - Voici un Dockerfile de base :
 
      ```Dockerfile
-     # Use Python 3.12 image
+     # Utiliser l'image Python 3.12
      FROM python:3.12-slim
 
-     # Set the working directory
+     # Définir le répertoire de travail
      WORKDIR /app
 
-     # Install MkDocs and plugins
+     # Installer MkDocs et les plugins
      RUN pip install mkdocs mkdocs-material ghp-import
 
-     # Copy blog files into Docker image
+     # Copier les fichiers du blog dans l'image Docker
      COPY . /app
 
-     # Set command to build MkDocs
+     # Définir la commande pour construire MkDocs
      CMD ["mkdocs", "build", "--verbose", "--site-dir", "site"]
      ```
 
-   - Build the Docker image with:
+   - Construis l'image Docker avec :
      ```bash
-     docker build -t my-blog-image .
+     docker build -t mon-blog-image .
      ```
 
-2. **Deploy Your Blog**:
-   - Create a GitHub Actions workflow file to automate deployment. Save the following as `.github/workflows/deploy.yml` in your repository:
+2. **Déployer Ton Blog** :
+   - Crée un fichier workflow GitHub Actions pour automatiser le déploiement. Sauvegarde le fichier suivant sous `.github/workflows/deploy.yml` dans ton répertoire :
 
      ```yaml
      name: Build and Deploy MkDocs Site
@@ -99,7 +99,7 @@ Welcome! In this guide, you’ll learn how to build and deploy a blog using MkDo
        workflow_dispatch:
 
      env:
-       IMAGE_NAME: my-blog-image
+       IMAGE_NAME: mon-blog-image
        IMAGE_TAG: latest
 
      jobs:
@@ -124,36 +124,35 @@ Welcome! In this guide, you’ll learn how to build and deploy a blog using MkDo
              run: docker system prune -f
      ```
 
-#### Final Steps
+#### Étapes Finales
 
-1. **Push Your Changes**:
-   - Commit and push your changes to GitHub:
+1. **Pousser Tes Modifications** :
+   - Commit et pousse tes modifications vers GitHub :
      ```bash
      git add .
-     git commit -m "Set up MkDocs site"
+     git commit -m "Configuration du site MkDocs"
      git push origin main
      ```
 
-2. **Ensure Correct Permissions for Deployment**:
-   - To avoid permission issues with GitHub Actions, ensure that the `GITHUB_TOKEN` has the necessary permissions.
-   - **Check Repository Settings**:
-     - Go to your repository on GitHub.
-     - Navigate to **Settings** > **Actions** > **General**.
-     - Under **Workflow permissions**, ensure **Read and write permissions** are selected.
+2. **Assurer les Permissions Correctes pour le Déploiement** :
+   - Pour éviter les problèmes de permission avec GitHub Actions, assure-toi que le `GITHUB_TOKEN` dispose des permissions nécessaires.
+   - **Vérifie les Paramètres du Répertoire** :
+     - Va sur ton répertoire GitHub.
+     - Navigue vers **Settings** > **Actions** > **General**.
+     - Sous **Workflow permissions**, assure-toi que **Read and write permissions** sont sélectionnées.
 
-3. **Verify Deployment**:
-   - Go to your GitHub repository.
-   - Navigate to **Settings** > **Pages**.
-   - Ensure the source is set to the `gh-pages` branch.
+3. **Vérifier le Déploiement** :
+   - Va sur ton répertoire GitHub.
+   - Navigue vers **Settings** > **Pages**.
+   - Assure-toi que la source est définie sur la branche `gh-pages`.
 
-   Your blog should now be live! Visit the URL provided in the GitHub Pages settings to see your site.
+   Ton blog devrait maintenant être en ligne ! Visite l’URL fournie dans les paramètres de GitHub Pages pour voir ton site.
 
-### Conclusion
+#### Conclusion
 
-Congratulations! You’ve built and deployed a blog using MkDocs and Docker. This guide aimed to simplify the process, so you can easily share your content online. Happy blogging!
+Félicitations ! Tu as construit et déployé un blog en utilisant MkDocs et Docker. Ce guide vise à simplifier le processus pour que tu puisses facilement partager ton contenu en ligne. Bon blogging !
 
-For a complete example, check out my project: [GitHub Repository](https://github.com/sawadogosalif/blog).
+Pour un exemple complet, jette un œil à mon projet : [Répertoire GitHub](https://github.com/sawadogosalif/blog).
 
----
-
-This version of the guide simplifies the instructions and organizes the steps clearly to help you get started with building and deploying your blog.
+#### MAJ
++ 09/09/2024 : Traduire en français
