@@ -155,4 +155,4 @@ Félicitations ! Tu as construit et déployé un blog en utilisant MkDocs et Doc
 Pour un exemple complet, jette un œil à mon projet : [Répertoire GitHub](https://github.com/sawadogosalif/blog).
 
 #### MAJ
-+ 09/09/2024 : Traduire en français
++ 08/09/2024 : Traduire en français
