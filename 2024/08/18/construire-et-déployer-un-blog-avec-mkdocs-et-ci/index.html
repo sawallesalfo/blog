@@ -20,7 +20,7 @@
     
     
       
-        <title>Build your blog - ssawadogo-blog</title>
+        <title>Construire et Déployer un Blog avec MkDocs et CI - ssawadogo-blog</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#building-and-deploying-a-blog-with-mkdocs-with-ci" class="md-skip">
+        <a href="#construire-et-deployer-un-blog-avec-mkdocs-et-ci" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Build your blog
+              Construire et Déployer un Blog avec MkDocs et CI
             
           </span>
         </div>
@@ -645,6 +645,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -653,53 +655,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#building-and-deploying-a-blog-with-mkdocs-with-ci" class="md-nav__link">
+  <a href="#ce-dont-tu-as-besoin" class="md-nav__link">
     <span class="md-ellipsis">
-      Building and Deploying a Blog with MkDocs with CI
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Building and Deploying a Blog with MkDocs with CI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-you-need" class="md-nav__link">
-    <span class="md-ellipsis">
-      What You Need
+      Ce Dont Tu As Besoin
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-1-setting-up-your-blog" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#etape-1-configuration-de-ton-blog" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Setting Up Your Blog
+      Étape 1 : Configuration de Ton Blog
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-build-and-deploy-using-docker" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#etape-2-construire-et-deployer-avec-docker" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Build and Deploy Using Docker
+      Étape 2 : Construire et Déployer avec Docker
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#final-steps" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#etapes-finales" class="md-nav__link">
     <span class="md-ellipsis">
-      Final Steps
+      Étapes Finales
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -707,6 +694,15 @@
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maj" class="md-nav__link">
+    <span class="md-ellipsis">
+      MAJ
     </span>
   </a>
   
@@ -737,25 +733,6 @@
               </div>
             </div>
             
-              <div class="md-post__authors md-typeset">
-                
-                  <div class="md-profile md-post__profile">
-                    <span class="md-author md-author--long">
-                      <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-                    </span>
-                    <span class="md-profile__description">
-                      <strong>
-                        
-                          Salif SAWADOGO
-                        
-                      </strong>
-                      <br>
-                      End-to-end Data Scientist
-                    </span>
-                  </div>
-                
-              </div>
-            
             <ul class="md-post__meta md-nav__list">
               <li class="md-nav__item md-nav__item--section">
                 <div class="md-post__title">
@@ -772,17 +749,6 @@
                       </div>
                     </li>
                     
-                    
-                      <li class="md-nav__item">
-                        <div class="md-nav__link">
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
-                          <span class="md-ellipsis">
-                            in
-                            
-                              <a href="../../../../category/cicd/">CI/CD</a>, 
-                              <a href="../../../../category/documentation/">documentation</a></span>
-                        </div>
-                      </li>
                     
                     
                       
@@ -811,103 +777,101 @@
         
 
 
-  <h1>Build your blog</h1>
-
-<h3 id="building-and-deploying-a-blog-with-mkdocs-with-ci">Building and Deploying a Blog with MkDocs with CI<a class="headerlink" href="#building-and-deploying-a-blog-with-mkdocs-with-ci" title="Permanent link">&para;</a></h3>
-<p>Welcome! In this guide, you’ll learn how to build and deploy a blog using MkDocs, a tool that makes it easy to create beautiful documentation. We’ll cover each step to help you get your blog online.</p>
-<h4 id="what-you-need">What You Need<a class="headerlink" href="#what-you-need" title="Permanent link">&para;</a></h4>
+<h1 id="construire-et-deployer-un-blog-avec-mkdocs-et-ci">Construire et Déployer un Blog avec MkDocs et CI<a class="headerlink" href="#construire-et-deployer-un-blog-avec-mkdocs-et-ci" title="Permanent link">&para;</a></h1>
+<p>Bienvenue ! Dans ce guide, tu apprendras à créer et déployer un blog en utilisant MkDocs, un outil qui facilite la création de belles documentations. Nous allons couvrir chaque étape pour t'aider à mettre ton blog en ligne.</p>
+<h4 id="ce-dont-tu-as-besoin">Ce Dont Tu As Besoin<a class="headerlink" href="#ce-dont-tu-as-besoin" title="Permanent link">&para;</a></h4>
 <ol>
-<li><strong>GitHub Account</strong>: You need a GitHub account to store and deploy your blog.</li>
-<li><strong>Basic Knowledge</strong>: Familiarity with GitHub, Docker, and some command line basics will be helpful.</li>
+<li><strong>Compte GitHub</strong> : Tu auras besoin d’un compte GitHub pour stocker et déployer ton blog.</li>
+<li><strong>Connaissances de Base</strong> : Une familiarité avec GitHub, Docker et quelques bases de la ligne de commande sera utile.</li>
 </ol>
 <!-- more -->
 
-<h4 id="step-1-setting-up-your-blog">Step 1: Setting Up Your Blog<a class="headerlink" href="#step-1-setting-up-your-blog" title="Permanent link">&para;</a></h4>
+<h4 id="etape-1-configuration-de-ton-blog">Étape 1 : Configuration de Ton Blog<a class="headerlink" href="#etape-1-configuration-de-ton-blog" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
-<p><strong>Create a GitHub Repository</strong>:</p>
+<p><strong>Créer un Répertoire GitHub</strong> :</p>
 <ul>
-<li>Visit <a href="https://github.com">GitHub</a> and log in.</li>
-<li>Click on <strong>New</strong> to create a repository.</li>
-<li>Name your repository, for example, <code>my-blog</code>.</li>
-<li>Choose <strong>Public</strong> or <strong>Private</strong> based on your preference.</li>
-<li>Click <strong>Create repository</strong>.</li>
+<li>Va sur <a href="https://github.com">GitHub</a> et connecte-toi.</li>
+<li>Clique sur <strong>New</strong> pour créer un nouveau répertoire.</li>
+<li>Nomme ton répertoire, par exemple <code>mon-blog</code>.</li>
+<li>Choisis <strong>Public</strong> ou <strong>Private</strong> selon ta préférence.</li>
+<li>Clique sur <strong>Create repository</strong>.</li>
 </ul>
 </li>
 <li>
-<p><strong>Install MkDocs Locally</strong>:</p>
+<p><strong>Installer MkDocs Localement</strong> :</p>
 <ul>
-<li>Open your terminal or command line.</li>
-<li>Install MkDocs with pip:
+<li>Ouvre ton terminal ou la ligne de commande.</li>
+<li>Installe MkDocs avec pip :
    <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs
 </code></pre></div></li>
 </ul>
 </li>
 <li>
-<p><strong>Set Up Your Blog</strong>:</p>
+<p><strong>Configurer Ton Blog</strong> :</p>
 <ul>
-<li>Navigate to the folder where you want to create your blog.</li>
-<li>Run:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdocs<span class="w"> </span>new<span class="w"> </span>my-blog
+<li>Navigue jusqu’au dossier où tu souhaites créer ton blog.</li>
+<li>Exécute :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdocs<span class="w"> </span>new<span class="w"> </span>mon-blog
 </code></pre></div></li>
-<li>This creates a folder named <code>my-blog</code> with the basic files for your blog.</li>
+<li>Cela crée un dossier nommé <code>mon-blog</code> avec les fichiers de base pour ton blog.</li>
 </ul>
 </li>
 <li>
-<p><strong>Customize Your Blog</strong>:</p>
+<p><strong>Personnaliser Ton Blog</strong> :</p>
 <ul>
-<li>Open the <code>mkdocs.yml</code> file in your blog's folder. This is where you set your blog’s name and theme.</li>
+<li>Ouvre le fichier <code>mkdocs.yml</code> dans le dossier de ton blog. C’est ici que tu définis le nom et le thème de ton blog.</li>
 <li>
-<p>Modify the <code>mkdocs.yml</code> file to look like this:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">My Blog</span>
+<p>Modifie le fichier <code>mkdocs.yml</code> pour qu’il ressemble à ceci :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mon Blog</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">theme</span><span class="p">:</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">nav</span><span class="p">:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Home</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Accueil</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
 </code></pre></div>
 </li>
 </ul>
 <ul>
-<li>Add content by editing <code>index.md</code> or creating new Markdown files in the <code>docs</code> folder.</li>
+<li>Ajoute du contenu en modifiant <code>index.md</code> ou en créant de nouveaux fichiers Markdown dans le dossier <code>docs</code>.</li>
 </ul>
 </li>
 </ol>
-<h4 id="step-2-build-and-deploy-using-docker">Step 2: Build and Deploy Using Docker<a class="headerlink" href="#step-2-build-and-deploy-using-docker" title="Permanent link">&para;</a></h4>
+<h4 id="etape-2-construire-et-deployer-avec-docker">Étape 2 : Construire et Déployer avec Docker<a class="headerlink" href="#etape-2-construire-et-deployer-avec-docker" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
-<p><strong>Create a Docker Image</strong>:</p>
+<p><strong>Créer une Image Docker</strong> :</p>
 <ul>
-<li>Write a Dockerfile to include MkDocs and necessary tools.</li>
+<li>Rédige un Dockerfile pour inclure MkDocs et les outils nécessaires.</li>
 <li>
-<p>Here’s a basic Dockerfile:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Use Python 3.12 image</span>
+<p>Voici un Dockerfile de base :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Utiliser l&#39;image Python 3.12</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c"># Set the working directory</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c"># Définir le répertoire de travail</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c"># Install MkDocs and plugins</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c"># Installer MkDocs et les plugins</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>ghp-import
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c"># Copy blog files into Docker image</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c"># Copier les fichiers du blog dans l&#39;image Docker</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/app
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c"># Set command to build MkDocs</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c"># Définir la commande pour construire MkDocs</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mkdocs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--verbose&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--site-dir&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;site&quot;</span><span class="p">]</span>
 </code></pre></div>
 </li>
 </ul>
 <ul>
-<li>Build the Docker image with:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>my-blog-image<span class="w"> </span>.
+<li>Construis l'image Docker avec :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>mon-blog-image<span class="w"> </span>.
 </code></pre></div></li>
 </ul>
 </li>
 <li>
-<p><strong>Deploy Your Blog</strong>:</p>
+<p><strong>Déployer Ton Blog</strong> :</p>
 <ul>
 <li>
-<p>Create a GitHub Actions workflow file to automate deployment. Save the following as <code>.github/workflows/deploy.yml</code> in your repository:</p>
+<p>Crée un fichier workflow GitHub Actions pour automatiser le déploiement. Sauvegarde le fichier suivant sous <code>.github/workflows/deploy.yml</code> dans ton répertoire :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and Deploy MkDocs Site</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">on</span><span class="p">:</span>
@@ -920,7 +884,7 @@
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
 <a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nt">env</span><span class="p">:</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="nt">IMAGE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-blog-image</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="nt">IMAGE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mon-blog-image</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">  </span><span class="nt">IMAGE_TAG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
 <a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nt">jobs</span><span class="p">:</span>
@@ -948,45 +912,47 @@
 </ul>
 </li>
 </ol>
-<h4 id="final-steps">Final Steps<a class="headerlink" href="#final-steps" title="Permanent link">&para;</a></h4>
+<h4 id="etapes-finales">Étapes Finales<a class="headerlink" href="#etapes-finales" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
-<p><strong>Push Your Changes</strong>:</p>
+<p><strong>Pousser Tes Modifications</strong> :</p>
 <ul>
-<li>Commit and push your changes to GitHub:
+<li>Commit et pousse tes modifications vers GitHub :
    <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Set up MkDocs site&quot;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Configuration du site MkDocs&quot;</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </code></pre></div></li>
 </ul>
 </li>
 <li>
-<p><strong>Ensure Correct Permissions for Deployment</strong>:</p>
+<p><strong>Assurer les Permissions Correctes pour le Déploiement</strong> :</p>
 <ul>
-<li>To avoid permission issues with GitHub Actions, ensure that the <code>GITHUB_TOKEN</code> has the necessary permissions.</li>
-<li><strong>Check Repository Settings</strong>:<ul>
-<li>Go to your repository on GitHub.</li>
-<li>Navigate to <strong>Settings</strong> &gt; <strong>Actions</strong> &gt; <strong>General</strong>.</li>
-<li>Under <strong>Workflow permissions</strong>, ensure <strong>Read and write permissions</strong> are selected.</li>
+<li>Pour éviter les problèmes de permission avec GitHub Actions, assure-toi que le <code>GITHUB_TOKEN</code> dispose des permissions nécessaires.</li>
+<li><strong>Vérifie les Paramètres du Répertoire</strong> :<ul>
+<li>Va sur ton répertoire GitHub.</li>
+<li>Navigue vers <strong>Settings</strong> &gt; <strong>Actions</strong> &gt; <strong>General</strong>.</li>
+<li>Sous <strong>Workflow permissions</strong>, assure-toi que <strong>Read and write permissions</strong> sont sélectionnées.</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>Verify Deployment</strong>:</p>
+<p><strong>Vérifier le Déploiement</strong> :</p>
 <ul>
-<li>Go to your GitHub repository.</li>
-<li>Navigate to <strong>Settings</strong> &gt; <strong>Pages</strong>.</li>
-<li>Ensure the source is set to the <code>gh-pages</code> branch.</li>
+<li>Va sur ton répertoire GitHub.</li>
+<li>Navigue vers <strong>Settings</strong> &gt; <strong>Pages</strong>.</li>
+<li>Assure-toi que la source est définie sur la branche <code>gh-pages</code>.</li>
 </ul>
-<p>Your blog should now be live! Visit the URL provided in the GitHub Pages settings to see your site.</p>
+<p>Ton blog devrait maintenant être en ligne ! Visite l’URL fournie dans les paramètres de GitHub Pages pour voir ton site.</p>
 </li>
 </ol>
-<h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
-<p>Congratulations! You’ve built and deployed a blog using MkDocs and Docker. This guide aimed to simplify the process, so you can easily share your content online. Happy blogging!</p>
-<p>For a complete example, check out my project: <a href="https://github.com/sawadogosalif/blog">GitHub Repository</a>.</p>
-<hr />
-<p>This version of the guide simplifies the instructions and organizes the steps clearly to help you get started with building and deploying your blog.</p>
+<h4 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h4>
+<p>Félicitations ! Tu as construit et déployé un blog en utilisant MkDocs et Docker. Ce guide vise à simplifier le processus pour que tu puisses facilement partager ton contenu en ligne. Bon blogging !</p>
+<p>Pour un exemple complet, jette un œil à mon projet : <a href="https://github.com/sawadogosalif/blog">Répertoire GitHub</a>.</p>
+<h4 id="maj">MAJ<a class="headerlink" href="#maj" title="Permanent link">&para;</a></h4>
+<ul>
+<li>09/09/2024 : Traduire en français</li>
+</ul>
 
 
 
