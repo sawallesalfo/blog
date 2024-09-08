@@ -725,6 +725,161 @@ Pour évaluer et comparer efficacement leur intelligence, divers benchmarks sont
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
+          <time datetime="2024-09-07 00:00:00">September 7, 2024</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/iagen/" class="md-meta__link">IAGen</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="ia-generative-une-evolution-plutot-que-revolution"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/">IA générative : une Évolution plutôt que Révolution</a></h2>
+<p>Aujourd’hui, on plonge dans l’univers fascinant de l’IA générative. On va retracer les grandes étapes qui ont marqué son évolution. Pas de panique, on ne va pas s’embourber dans une liste exhaustive – on va plutôt se concentrer sur les moments clés qui ont façonné l’IA telle qu’on la connaît aujourd'hui. J’avais depuis un moment envie de faire le point sur les avancées dans ce domaine, mais avec le rythme effréné des innovations, je ne savais pas comment illustrer cela jusqu'à ce que je tombe sur les travaux de l'Innovation Makers Alliance.</p>
+<p>Comme vous l'avez bien remarqué, j'adore schématiser avant de décrire. Donc voici un schéma chronologique qui résume tout.<br />
+<img alt="image" src="iagen_evolution/chronologie_1.PNG" /><br />
+<img alt="image" src="iagen_evolution/chronologie_2.PNG" />  </p>
+<h5 id="1950-1960-les-premiers-pas-avec-le-bag-of-words"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#1950-1960-les-premiers-pas-avec-le-bag-of-words"><strong>1950-1960 : Les Premiers Pas avec le "Bag of Words"</strong></a></h5>
+<p>L'histoire de l'IA commence dans les années 1950 avec le modèle "Bag of Words". Cette approche traite le texte comme une collection de mots indépendants, sans tenir compte de leur ordre ou de leur contexte.</p>
+<p><strong>Représentation Matricielle :</strong></p>
+<p>Le modèle Bag of Words convertit le texte en une matrice où chaque ligne représente un document et chaque colonne un mot unique. Les valeurs indiquent la fréquence des mots dans chaque document.</p>
+<p>Exemple :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>IA</th>
+<th>est</th>
+<th>l'</th>
+<th>avenir</th>
+<th>façonnera</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Doc 1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Doc 2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TF-IDF :</strong></p>
+<p>La méthode TF-IDF (Term Frequency-Inverse Document Frequency) évalue l'importance d'un mot dans un document en comparant sa fréquence à celle dans l'ensemble des documents :</p>
+<div class="arithmatex">\[
+\text{TF-IDF}(t, d) = \text{TF}(t, d) \times \text{IDF}(t)
+\]</div>
+<p>Où :
+- <strong>TF (Term Frequency)</strong> mesure combien de fois un terme apparaît dans un document :</p>
+<div class="arithmatex">\[
+\text{TF}(t, d) = \frac{\text{Nombre de fois que le terme } t \text{ apparaît dans le document } d}{\text{Nombre total de termes dans le document } d}
+\]</div>
+<ul>
+<li><strong>IDF (Inverse Document Frequency)</strong> évalue l'importance d'un terme dans tous les documents :</li>
+</ul>
+<div class="arithmatex">\[
+\text{IDF}(t) = \log \frac{\text{Nombre total de documents}}{\text{Nombre de documents contenant le terme } t}
+\]</div>
+<p>TF-IDF et le Bag of Words ont longtemps dominé l'analyse de texte (d'ailleurs toujours utilisés pour des analyses textuelles), mais ils présentent des limites majeures : ils ignorent le contexte et l'ordre des mots, produisent des vecteurs très grands et sparses, et ne capturent pas les relations sémantiques entre les termes. Ces approches ne permettent pas de saisir les nuances du langage, comme les relations de longue portée ou les variations de sens. Ces insuffisances ont conduit au développement des réseaux de neurones.</p>
+<h5 id="1986-reseaux-de-neurones-recurrents-rnns"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#1986-reseaux-de-neurones-recurrents-rnns"><strong>1986 : Réseaux de Neurones Récurrents (RNNs)</strong></a></h5>
+<p>En 1986, les RNNs offrent une solution pour traiter les données séquentielles comme le texte et la parole. Ils se souviennent des informations des étapes précédentes, mais ont des difficultés avec les dépendances à long terme en raison du problème du "gradient qui s’évanouit".</p>
+<h5 id="1997-les-reseaux-a-long-terme-lstm"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#1997-les-reseaux-a-long-terme-lstm"><strong>1997 : Les Réseaux à Long Terme (LSTM)</strong></a></h5>
+<p>Pour remédier aux limitations des RNNs, les réseaux LSTM, introduits en 1997, améliorent la capture des dépendances à long terme. Malgré cette avancée, ils restent complexes à entraîner et difficiles à paralléliser.</p>
+<h5 id="2012-la-revolution-des-gpus-avec-alexnet"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#2012-la-revolution-des-gpus-avec-alexnet"><strong>2012 : La Révolution des GPUs avec AlexNet</strong></a></h5>
+<p>En 2012, l'utilisation des GPUs pour entraîner les modèles devient une révolution avec AlexNet, développé par Ilya Sutskever, Alex Krizhevsky et Geoffrey Hinton. AlexNet réduit drastiquement le temps d'entraînement et améliore les performances dans la vision par ordinateur.</p>
+<h5 id="2013-word2vec-et-la-representation-vectorielle-des-mots"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#2013-word2vec-et-la-representation-vectorielle-des-mots"><strong>2013 : Word2Vec et la Représentation Vectorielle des Mots</strong></a></h5>
+<p>En 2013, Word2Vec introduit une avancée majeure en améliorant la représentation vectorielle des mots avec les techniques CBOW et Skip-gram. Il montre que les mots apparaissant dans des contextes similaires ont des vecteurs proches, améliorant l'apprentissage sémantique.</p>
+<h5 id="2017-lessor-des-transformers"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#2017-lessor-des-transformers"><strong>2017 : L’Essor des Transformers</strong></a></h5>
+<p>L'année 2017 marque l'introduction des Transformers par Google avec "Attention is All You Need". Les Transformers intègrent un mécanisme d'attention qui permet de capturer les relations complexes entre les mots, indépendamment de leur position. Cette architecture facilite le traitement parallèle des données et pave la voie aux grands modèles comme GPT. J'ai d'ailleurs commencé à réfléchir comment illustrer les différents types de Transformers qui existent de nos jours.</p>
+<h5 id="2018-2022-les-grands-modeles-de-langage"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#2018-2022-les-grands-modeles-de-langage"><strong>2018-2022 : Les Grands Modèles de Langage</strong></a></h5>
+<p>Après l’arrivée des Transformers, les grands modèles de langage se développent rapidement :</p>
+<ul>
+<li><strong>GPT-3 (2020) :</strong> Développé par OpenAI, GPT-3, avec ses 175 milliards de paramètres, est capable de générer du texte avec une cohérence impressionnante et de réaliser diverses tâches sans formation spécifique. Il représente une avancée majeure en augmentant la taille des modèles.</li>
+</ul>
+<ul>
+<li><strong>DALL-E (2021) :</strong> DALL-E, également d'OpenAI, génère des images à partir de descriptions textuelles, fusionnant créativité et technique.</li>
+</ul>
+<ul>
+<li><strong>Midjourney (2022) :</strong> Ce modèle se concentre sur la création artistique d’images, permettant aux utilisateurs de concevoir des œuvres uniques à partir de prompts.</li>
+</ul>
+<ul>
+<li><strong>ChatGPT (fin 2022) :</strong> Basé sur l’architecture GPT et InstructGPT, ChatGPT offre des capacités de dialogue interactives, un tournant majeur des potentialités de l'IA générative. C’est à ce moment précis que le grand public commence à se rendre compte des dernières avancées en IA et deep learning.</li>
+</ul>
+<h5 id="2023-les-nouveaux-acteurs-en-plus-de-openai"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#2023-les-nouveaux-acteurs-en-plus-de-openai"><strong>2023 : Les Nouveaux Acteurs en Plus de OpenAI</strong></a></h5>
+<ul>
+<li><strong>LLaMA (2023) :</strong> Meta introduit la série LLaMA pour fournir des alternatives efficaces avec différentes tailles de paramètres, favorisant une recherche plus accessible et performante. Ainsi, la porte à l'open source est ouverte.</li>
+</ul>
+<ul>
+<li>Juste après LLaMA, OpenAI entre encore en jeu avec <strong>DALL-E 3</strong> et <strong>GPT-4</strong>, qui est, jusqu'à nos jours, l'un des modèles les plus performants, bien que très coûteux.</li>
+</ul>
+<ul>
+<li><strong>Mistral 7B (2023) :</strong> Un modèle LLM français avec 7 milliards de paramètres, conçu pour répondre aux besoins spécifiques tout en offrant une performance de haut niveau.</li>
+</ul>
+<ul>
+<li><strong>Claude 3 (2023) :</strong> La famille Claude 3 d'Anthropic, comprenant Claude 3 Haiku, Claude 3 Sonnet, et Claude 3 Opu, établit de nouveaux standards pour les tâches cognitives complexes.</li>
+</ul>
+<ul>
+<li><strong>Bard puis Gemini (2023) :</strong> Google rattrape son retard en annonçant Gemini, un LLM multimodal intégrant des capacités avancées pour le texte, les images, et le son, après un premier Bard qui n'a pas convaincu.</li>
+</ul>
+<h5 id="2024-les-dernieres-innovations"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#2024-les-dernieres-innovations"><strong>2024 : Les Dernières Innovations</strong></a></h5>
+<ul>
+<li><strong>Mistral Large (février 2024) :</strong> Ce modèle, nativement multilingue, améliore les capacités de traitement et d'interaction dans plusieurs langues. La France ne veut pas rester en reste de cette course.</li>
+</ul>
+<ul>
+<li><strong>GPT-4O (mai 2024) :</strong> Ce modèle "omnimodal" de OpenAI intègre des capacités avancées pour le texte, les images, et le son. Il représente un progrès significatif en matière d'IA générative.</li>
+</ul>
+<ul>
+<li><strong>SearchGPT (2024) :</strong> Un prototype de moteur de recherche d'OpenAI, lancé le 26 juillet, combinant fonctionnalités traditionnelles et capacités d'IA générative pour une expérience de recherche enrichie.</li>
+</ul>
+<ul>
+<li><strong>NVIDIA Blackwell (2024) :</strong> Annoncé en juillet, ce processeur accélère les calculs nécessaires pour l'entraînement des modèles d'IA, facilitant les avancées technologiques. NVIDIA se montre prêt à épauler cette course vers l'IAG (Intelligence Artificielle Généralisée).</li>
+</ul>
+<h5 id="conclusion"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/#conclusion">Conclusion</a></h5>
+<p>Désormais, les data scientists, ou si vous préférez, AI engineers ou LLM engineers (on est toujours très doués pour inventer de nouveaux titres, rires), dans les différentes entreprises s'approprient ces technologies pour accélérer la création de nouvelles sources de croissance, tout comme ils le faisaient déjà avec la data. Mais cette fois-ci, le traitement des données non structurées devient à la fois plus simple et plus stimulant grâce aux nouvelles opportunités. L'IA générative continuera ainsi de transformer les industries avec des cas d'usage comme les chatbots, ou centre d'aide ou encore d'un centre de base de connaissance, les moteurs de recherche vectoriels, et bien d'autres.</p>
+<p>If you're a data scientist unfamiliar with AI, all of a sudden you're going to have to step up your game in to iagen.</p>
+    <nav class="md-post__action">
+      <a href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
           <time datetime="2024-09-01 00:00:00">September 1, 2024</time></li>
         
           <li class="md-meta__item">
