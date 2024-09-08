@@ -9,31 +9,31 @@ catégories :
 
 # Faire son Blog avec MkDocs et github actions
 
-Bienvenue ! Dans ce guide, tu apprendras à créer et déployer un blog en utilisant MkDocs, un outil qui facilite la création de belles documentations. Nous allons couvrir chaque étape pour t'aider à mettre ton blog en ligne.
+Dans ce billet de blog, j'essayerai de retracer  créer et déployer un blog en utilisant MkDocs, un outil qui facilite la création de belles documentations grâce à des fichiers `markdown`. Nous allons couvrir chaque étape pour t'aider à mettre ton blog en ligne.
 
-#### Ce Dont Tu As Besoin
+#### Ce dont tu as besoin
 
 1. **Compte GitHub** : Tu auras besoin d’un compte GitHub pour stocker et déployer ton blog.
 2. **Connaissances de Base** : Une familiarité avec GitHub, Docker et quelques bases de la ligne de commande sera utile.
 <!-- more -->
 
-#### Étape 1 : Configuration de Ton Blog
+#### Étape 1 : Configuration de ton blog
 
-1. **Créer un Répertoire GitHub** :
+1. **Créer un répertoire gitHub** :
    - Va sur [GitHub](https://github.com) et connecte-toi.
    - Clique sur **New** pour créer un nouveau répertoire.
    - Nomme ton répertoire, par exemple `mon-blog`.
    - Choisis **Public** ou **Private** selon ta préférence.
    - Clique sur **Create repository**.
 
-2. **Installer MkDocs Localement** :
+2. **Installer MkDocs localement** :
    - Ouvre ton terminal ou la ligne de commande.
    - Installe MkDocs avec pip :
      ```bash
      pip install mkdocs
      ```
 
-3. **Configurer Ton Blog** :
+3. **Configurer ton blog** :
    - Navigue jusqu’au dossier où tu souhaites créer ton blog.
    - Exécute :
      ```bash
@@ -55,7 +55,7 @@ Bienvenue ! Dans ce guide, tu apprendras à créer et déployer un blog en utili
 
    - Ajoute du contenu en modifiant `index.md` ou en créant de nouveaux fichiers Markdown dans le dossier `docs`.
 
-#### Étape 2 : Construire et Déployer avec Docker
+#### Étape 2 : Construire et déployer avec docker
 
 1. **Créer une Image Docker** :
    - Rédige un Dockerfile pour inclure MkDocs et les outils nécessaires.
@@ -83,7 +83,7 @@ Bienvenue ! Dans ce guide, tu apprendras à créer et déployer un blog en utili
      docker build -t mon-blog-image .
      ```
 
-2. **Déployer Ton Blog** :
+2. **Déployer ton blog** :
    - Crée un fichier workflow GitHub Actions pour automatiser le déploiement. Sauvegarde le fichier suivant sous `.github/workflows/deploy.yml` dans ton répertoire :
 
      ```yaml
@@ -124,9 +124,9 @@ Bienvenue ! Dans ce guide, tu apprendras à créer et déployer un blog en utili
              run: docker system prune -f
      ```
 
-#### Étapes Finales
+#### Étapes finales
 
-1. **Pousser Tes Modifications** :
+1. **Pousser tes modifications** :
    - Commit et pousse tes modifications vers GitHub :
      ```bash
      git add .
@@ -134,14 +134,14 @@ Bienvenue ! Dans ce guide, tu apprendras à créer et déployer un blog en utili
      git push origin main
      ```
 
-2. **Assurer les Permissions Correctes pour le Déploiement** :
+2. **Assurer les permissions correctes pour le déploiement** :
    - Pour éviter les problèmes de permission avec GitHub Actions, assure-toi que le `GITHUB_TOKEN` dispose des permissions nécessaires.
-   - **Vérifie les Paramètres du Répertoire** :
+   - **Vérifie les paramètres du répertoire** :
      - Va sur ton répertoire GitHub.
      - Navigue vers **Settings** > **Actions** > **General**.
      - Sous **Workflow permissions**, assure-toi que **Read and write permissions** sont sélectionnées.
 
-3. **Vérifier le Déploiement** :
+3. **Vérifier le déploiement** :
    - Va sur ton répertoire GitHub.
    - Navigue vers **Settings** > **Pages**.
    - Assure-toi que la source est définie sur la branche `gh-pages`.
