@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../../07/29/mermaid-for-data-scientist/">
+        <link rel="prev" href="../../01/tests-for-data-scientists/">
       
-      
-        <link rel="next" href="../../11/iam-for-eks/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Setup emr - ssawadogo-blog</title>
+        <title>Évaluer les Capacités des LLMs : les benchmarks - ssawadogo-blog</title>
       
     
     
@@ -81,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#comment-creer-et-configurer-un-cluster-emr-on-ec2" class="md-skip">
+        <a href="#evaluer-les-capacites-des-llms-les-benchmarks" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Setup emr
+              Évaluer les Capacités des LLMs : les benchmarks
             
           </span>
         </div>
@@ -645,6 +643,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -653,38 +653,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#comment-creer-et-configurer-un-cluster-emr-on-ec2" class="md-nav__link">
+  <a href="#concepts-clees" class="md-nav__link">
     <span class="md-ellipsis">
-      Comment Créer et Configurer un Cluster EMR on EC2
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Comment Créer et Configurer un Cluster EMR on EC2">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-creer-un-role-emr-avec-les-permissions-necessaires" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Créer un Rôle EMR avec les Permissions Nécessaires
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. Créer un Rôle EMR avec les Permissions Nécessaires">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#pourquoi-est-ce-important" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pourquoi est-ce important?
+      Concepts clées :
     </span>
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#les-principaux-benchmarks-pour-evaluer-les-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les Principaux Benchmarks pour Évaluer les LLMs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Les Principaux Benchmarks pour Évaluer les LLMs">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#etape-1-creation-dun-role-emr-pour-ec2" class="md-nav__link">
+  <a href="#1-mmlu-massive-multitask-language-understanding" class="md-nav__link">
     <span class="md-ellipsis">
-      Étape 1: Création d'un Rôle EMR pour EC2
+      1. MMLU (Massive Multitask Language Understanding)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. MMLU (Massive Multitask Language Understanding)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#details-techniques" class="md-nav__link">
+    <span class="md-ellipsis">
+      Détails Techniques
     </span>
   </a>
   
@@ -696,28 +696,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-creer-une-cle-ssh-pour-ec2" class="md-nav__link">
+  <a href="#2-hellaswag" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Créer une Clé SSH pour EC2
+      2. HellaSwag
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Créer une Clé SSH pour EC2">
+    <nav class="md-nav" aria-label="2. HellaSwag">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pourquoi-en-avez-vous-besoin" class="md-nav__link">
+  <a href="#details-techniques_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Pourquoi en avez-vous besoin?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-2-creation-dune-paire-de-cles-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 2: Création d'une Paire de Clés SSH
+      Détails Techniques
     </span>
   </a>
   
@@ -729,28 +720,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-creation-et-configuration-du-cluster-emr" class="md-nav__link">
+  <a href="#3-big-bench-hard-beyond-the-imitation-game-benchmark" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Création et Configuration du Cluster EMR
+      3. BIG-Bench Hard (Beyond the Imitation Game Benchmark)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. Création et Configuration du Cluster EMR">
+    <nav class="md-nav" aria-label="3. BIG-Bench Hard (Beyond the Imitation Game Benchmark)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pourquoi-cette-etape-est-elle-cruciale" class="md-nav__link">
+  <a href="#details-techniques_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Pourquoi cette étape est-elle cruciale?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-3-creer-un-cluster-emr" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 3: Créer un Cluster EMR
+      Détails Techniques
     </span>
   </a>
   
@@ -762,56 +744,19 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-configuration-du-tunnel-ssh-vers-le-nud-maitre" class="md-nav__link">
+  <a href="#4-humaneval" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Configuration du Tunnel SSH vers le Nœud Maître
+      4. HumanEval
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Configuration du Tunnel SSH vers le Nœud Maître">
+    <nav class="md-nav" aria-label="4. HumanEval">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pourquoi-configurer-un-tunnel-ssh" class="md-nav__link">
+  <a href="#details-techniques_3" class="md-nav__link">
     <span class="md-ellipsis">
-      Pourquoi configurer un tunnel SSH?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#etape-4-creation-du-tunnel-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      Étape 4: Création du Tunnel SSH
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Étape 4: Création du Tunnel SSH">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-ouverture-du-port-22" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.1 Ouverture du Port 22
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42-etablissement-du-tunnel-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.2 Établissement du Tunnel SSH
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#43-configuration-de-switchomega-ou-foxyproxy" class="md-nav__link">
-    <span class="md-ellipsis">
-      4.3 Configuration de SwitchOmega ou FoxyProxy
+      Détails Techniques
     </span>
   </a>
   
@@ -822,25 +767,44 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#5-mt-bench" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. MT-Bench
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. MT-Bench">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#details-techniques_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Détails Techniques
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-connexion-a-jupyterhub" class="md-nav__link">
+  <a href="#6-drop-discrete-reasoning-over-paragraphs" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Connexion à JupyterHub
+      6. DROP (Discrete Reasoning Over Paragraphs)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. Connexion à JupyterHub">
+    <nav class="md-nav" aria-label="6. DROP (Discrete Reasoning Over Paragraphs)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#etape-5-acceder-a-jupyterhub" class="md-nav__link">
+  <a href="#details-techniques_5" class="md-nav__link">
     <span class="md-ellipsis">
-      Étape 5: Accéder à JupyterHub
+      Détails Techniques
     </span>
   </a>
   
@@ -860,6 +824,15 @@
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Références:
     </span>
   </a>
   
@@ -921,7 +894,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2024-08-04 00:00:00" class="md-ellipsis">August 4, 2024</time>
+                        <time datetime="2024-09-08 00:00:00" class="md-ellipsis">September 8, 2024</time>
                       </div>
                     </li>
                     
@@ -932,11 +905,7 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/aws/">AWS</a>, 
-                              <a href="../../../../category/cloud/">Cloud</a>, 
-                              <a href="../../../../category/ec2/">EC2</a>, 
-                              <a href="../../../../category/emr/">EMR</a>, 
-                              <a href="../../../../category/spark/">Spark</a></span>
+                              <a href="../../../../category/iagen/">IAGen</a></span>
                         </div>
                       </li>
                     
@@ -947,7 +916,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              7 min read
+                              5 min read
                             
                           </span>
                         </div>
@@ -967,225 +936,101 @@
         
 
 
-  <h1>Setup emr</h1>
-
-<h2 id="comment-creer-et-configurer-un-cluster-emr-on-ec2">Comment Créer et Configurer un Cluster  EMR on EC2<a class="headerlink" href="#comment-creer-et-configurer-un-cluster-emr-on-ec2" title="Permanent link">&para;</a></h2>
-<p>Créer un cluster EMR (Elastic MapReduce) sur EC2 peut sembler complexe, surtout si vous vous lancez pour la première fois. Dans cet article, je vais vous guider à travers chaque étape, depuis la création des rôles jusqu’à la connexion à JupyterHub via un tunnel SSH. Ce guide est conçu pour vous fournir des explications claires et détaillées afin que vous puissiez configurer votre cluster sans difficulté. Nous nous concentrerons spécifiquement sur EMR sur EC2. La petite histoire est que j'ai passé des heures à expliquer cela à plusieurs étudiants intéressés par EMR. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à comprendre et à configurer un cluster EMR de manière efficace. </p>
+<h1 id="evaluer-les-capacites-des-llms-les-benchmarks">Évaluer les Capacités des LLMs : les benchmarks<a class="headerlink" href="#evaluer-les-capacites-des-llms-les-benchmarks" title="Permanent link">&para;</a></h1>
+<p>Les modèles de langage (LLMs) ont réalisé des avancées spectaculaires, démontrant des compétences impressionnantes dans des tâches variées, telles que la rédaction, la conversation, et la programmation.
+Pour évaluer et comparer efficacement leur intelligence, divers benchmarks sont utilisés, mesurant des capacités allant des connaissances académiques (comme MMLU) au raisonnement complexe (GPQA), en passant par des compétences spécifiques telles que les mathématiques de base (GSM8K) ou la génération de code (HumanEval).
+Ces évaluations permettent de mieux cerner la portée des capacités des LLMs, bien que certains benchmarks se concentrent encore principalement sur des questions fermées avec des réponses courtes, limitant ainsi une évaluation complète de leurs aptitudes.</p>
 <!-- more -->
 
-<p>EMR ne faisant pas partie des services gratuit du compte tier, il faut prevoir entre 1 à 5 euros de facture sur aws.</p>
-<h3 id="1-creer-un-role-emr-avec-les-permissions-necessaires">1. Créer un Rôle EMR avec les Permissions Nécessaires<a class="headerlink" href="#1-creer-un-role-emr-avec-les-permissions-necessaires" title="Permanent link">&para;</a></h3>
-<h4 id="pourquoi-est-ce-important">Pourquoi est-ce important?<a class="headerlink" href="#pourquoi-est-ce-important" title="Permanent link">&para;</a></h4>
-<p>Avant de pouvoir créer un cluster EMR, vous devez configurer les rôles et permissions nécessaires pour permettre à Amazon Web Services (AWS) de gérer votre cluster en toute sécurité. Ces rôles permettent à votre cluster d’interagir avec d'autres services AWS comme S3, EC2, et EMR lui-même.</p>
-<h4 id="etape-1-creation-dun-role-emr-pour-ec2">Étape 1: Création d'un Rôle EMR pour EC2<a class="headerlink" href="#etape-1-creation-dun-role-emr-pour-ec2" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p><strong>Accéder à la console IAM:</strong>
-   Connectez-vous à votre compte AWS et rendez-vous sur la console IAM. IAM (Identity and Access Management) est l'endroit où vous gérez les permissions et les rôles pour vos services AWS.</p>
-</li>
-<li>
-<p><strong>Créer un nouveau rôle:</strong></p>
+<p>Pour mieux comprendre comment les LLMs se comparent entre eux, il est essentiel d'examiner ces benchmarks en détail. Le tableau ci-dessous, extrait du site d'Anthropic, illustre une comparaison des performances de leur modèle Claude face à d'autres LLMs leaders, soulignant comment Opus surpasse ses pairs dans la plupart des évaluations :
+<a class="glightbox" href="../../../../llm_evaluation/comparaison_llms.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Comparaison" src="../../../../llm_evaluation/comparaison_llms.webp" /></a><br />
+<em>Source : <a href="https://www.anthropic.com/news/claude-3-family">Site Anthropic</a></em></p>
+<h2 id="concepts-clees">Concepts clées :<a class="headerlink" href="#concepts-clees" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Cliquez sur <strong>Rôles</strong> dans le menu de gauche, puis sur <strong>Créer un rôle</strong>.</li>
-<li>Sélectionnez <strong>EMR</strong> comme type de rôle, puis choisissez <strong>EC2</strong> comme service. Cela signifie que vous créez un rôle qui sera utilisé par les instances EC2 dans votre cluster EMR.</li>
+<li><strong>SOTA (State-of-the-Art) :</strong> Se réfère aux modèles, algorithmes ou techniques les plus performants actuellement dans un domaine d'étude spécifique.</li>
+<li><strong>STEM :</strong> Acronyme pour Science, Technology, Engineering, and Mathematics, représentant des disciplines clés souvent utilisées pour tester les capacités des LLMs en matière de compréhension et de raisonnement scientifique.</li>
 </ul>
-</li>
-<li>
-<p><strong>Ajouter les politiques de permissions:</strong></p>
+<h2 id="les-principaux-benchmarks-pour-evaluer-les-llms">Les Principaux Benchmarks pour Évaluer les LLMs<a class="headerlink" href="#les-principaux-benchmarks-pour-evaluer-les-llms" title="Permanent link">&para;</a></h2>
+<h3 id="1-mmlu-massive-multitask-language-understanding">1. <strong>MMLU (Massive Multitask Language Understanding)</strong><a class="headerlink" href="#1-mmlu-massive-multitask-language-understanding" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>AmazonS3FullAccess</strong> : Permet à votre cluster de lire et d’écrire dans des buckets S3, essentiel pour stocker les données et les journaux de votre cluster.</li>
-<li><strong>AmazonEC2FullAccess</strong> : Permet à EMR de gérer les instances EC2 (démarrage, arrêt, configuration).</li>
-<li><strong>AmazonElasticMapReduceFullAccess</strong> : Donne à EMR un accès complet pour gérer toutes les opérations liées à votre cluster.</li>
+<li><strong>Publication :</strong> 2021</li>
+<li><strong>Liens :</strong> <a href="https://github.com/hendrycks/test">Code</a> | <a href="https://huggingface.co/datasets/lukaemon/mmlu">Dataset</a> | <a href="https://arxiv.org/abs/2009.03300">Papier</a></li>
 </ul>
-</li>
-</ol>
-<p>Lorsque vous configurerez votre cluster, sélectionnez ce rôle sous <strong>EC2 instance profile</strong> pour permettre à votre cluster d’utiliser ces permissions.</p>
-<p><a class="glightbox" href="../../../../emr/emr_roles.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Rôle EMR IAM" src="../../../../emr/emr_roles.PNG" /></a></p>
-<blockquote>
-<p><strong>Astuce:</strong> Les permissions sont cruciales pour la sécurité. Accordez les permissions minimales nécessaires pour accomplir vos tâches.</p>
-</blockquote>
-<h3 id="2-creer-une-cle-ssh-pour-ec2">2. Créer une Clé SSH pour EC2<a class="headerlink" href="#2-creer-une-cle-ssh-pour-ec2" title="Permanent link">&para;</a></h3>
-<h4 id="pourquoi-en-avez-vous-besoin">Pourquoi en avez-vous besoin?<a class="headerlink" href="#pourquoi-en-avez-vous-besoin" title="Permanent link">&para;</a></h4>
-<p>Une clé SSH est nécessaire pour se connecter à distance aux instances EC2 de votre cluster. Cette connexion vous permet d'administrer les nœuds du cluster, d’installer des logiciels supplémentaires ou de déboguer directement sur le serveur.</p>
-<h4 id="etape-2-creation-dune-paire-de-cles-ssh">Étape 2: Création d'une Paire de Clés SSH<a class="headerlink" href="#etape-2-creation-dune-paire-de-cles-ssh" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p><strong>Accéder à la console EC2:</strong>
-   Dans la console AWS, accédez à la section <strong>EC2</strong> pour gérer vos instances et autres ressources liées à EC2.</p>
-</li>
-<li>
-<p><strong>Créer une paire de clés:</strong></p>
+<p>Le MMLU évalue les modèles en se basant sur les connaissances acquises lors de la pré-formation, en se concentrant sur les réglages zéro-shot et few-shot. Ce benchmark couvre 57 sujets, incluant les STEM, les sciences humaines et sociales, avec des niveaux de difficulté allant de l'élémentaire à l'avancé. </p>
+<h4 id="details-techniques">Détails Techniques<a class="headerlink" href="#details-techniques" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Dans le menu de gauche, sélectionnez <strong>Key Pairs</strong> sous la section <strong>Network &amp; Security</strong>.</li>
-<li>Cliquez sur <strong>Create Key Pair</strong>.</li>
-<li>Donnez un nom à votre clé et choisissez le format souhaité (PEM pour Linux/Mac, PPK pour Windows avec PuTTY).</li>
-<li>Téléchargez la clé. Cette clé vous permettra de vous connecter en SSH à vos instances EC2.</li>
+<li><strong>Type de données :</strong> Questions à choix multiples</li>
+<li><strong>Critère de scoring :</strong> Proportion de réponses correctes exactes (par exemple, 'A', 'B', etc.).</li>
+<li><strong>Environnement d'évaluation :</strong> Conçu pour des configurations zéro-shot et few-shot pour tester les capacités générales des LLMs sans ajustement spécifique aux tâches.</li>
 </ul>
-</li>
-</ol>
-<blockquote>
-<p><strong>Note:</strong> Gardez cette clé en sécurité. Si vous la perdez, vous ne pourrez pas vous reconnecter à votre instance.</p>
-</blockquote>
-<h3 id="3-creation-et-configuration-du-cluster-emr">3. Création et Configuration du Cluster EMR<a class="headerlink" href="#3-creation-et-configuration-du-cluster-emr" title="Permanent link">&para;</a></h3>
-<h4 id="pourquoi-cette-etape-est-elle-cruciale">Pourquoi cette étape est-elle cruciale?<a class="headerlink" href="#pourquoi-cette-etape-est-elle-cruciale" title="Permanent link">&para;</a></h4>
-<p>La configuration du cluster est le cœur de l’opération. C’est ici que vous choisissez les logiciels que vous voulez installer, les types d'instances à utiliser, et les options de mise en réseau.</p>
-<h4 id="etape-3-creer-un-cluster-emr">Étape 3: Créer un Cluster EMR<a class="headerlink" href="#etape-3-creer-un-cluster-emr" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p><strong>Créer le cluster:</strong></p>
+<p><a class="glightbox" href="../../../../llm_evaluation/mmlu.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple MMLU" src="../../../../llm_evaluation/mmlu.PNG" /></a>
+<em>Source : <a href="https://arxiv.org/abs/2009.03300">Papier original MMLU</a></em></p>
+<h3 id="2-hellaswag">2. <strong>HellaSwag</strong><a class="headerlink" href="#2-hellaswag" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Allez sur la console EMR et cliquez sur <strong>Create cluster</strong>.</li>
-<li>Donnez un nom à votre cluster. Par exemple, "Cluster-DataScience".</li>
+<li><strong>Publication :</strong> 2019</li>
+<li><strong>Liens :</strong> <a href="https://github.com/rowanz/hellaswag">Code</a> | <a href="https://huggingface.co/datasets/Rowan/hellaswag">Dataset</a> | <a href="https://arxiv.org/abs/1905.07830">Papier</a></li>
 </ul>
-</li>
-<li>
-<p><strong>Choisir les composants logiciels:</strong></p>
+<p>HellaSwag évalue les capacités de raisonnement des LLMs à travers des tâches de complétion de phrases. Il teste si les modèles peuvent sélectionner la fin appropriée parmi un ensemble de quatre choix pour 10 000 phrases. </p>
+<h4 id="details-techniques_1">Détails Techniques<a class="headerlink" href="#details-techniques_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li>EMR propose plusieurs logiciels que vous pouvez installer directement lors de la création du cluster. Pour un environnement de science des données, incluez <strong>TensorFlow</strong>, <strong>JupyterHub</strong> (pour gérer vos notebooks), et <strong>Zeppelin</strong>.
- <a class="glightbox" href="../../../../emr/cluster_definition.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Définition du Cluster" src="../../../../emr/cluster_definition.PNG" /></a></li>
+<li><strong>Métrique utilisée :</strong> Proportion de réponses correctes exactes.</li>
+<li><strong>Spécificité :</strong> Met l'accent sur le raisonnement de bon sens, un domaine où de nombreux modèles échouent encore.</li>
+<li><strong>Structure des tâches :</strong> Les tâches sont des complétions de phrases où les choix sont construits de manière à sembler plausibles pour tester les limites du modèle.</li>
 </ul>
-</li>
-<li>
-<p><strong>Choisir les types d'instances:</strong></p>
+<p><a class="glightbox" href="../../../../llm_evaluation/hellaswag.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple HellaSwag" src="../../../../llm_evaluation/hellaswag.PNG" /></a>
+<em>Source : <a href="https://arxiv.org/abs/1905.07830">Papier original HellaSwag</a></em></p>
+<h3 id="3-big-bench-hard-beyond-the-imitation-game-benchmark">3. <strong>BIG-Bench Hard (Beyond the Imitation Game Benchmark)</strong><a class="headerlink" href="#3-big-bench-hard-beyond-the-imitation-game-benchmark" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Master node:</strong> Le nœud maître coordonne toutes les tâches du cluster. Une instance <code>m5.xlarge</code> est un bon choix pour équilibrer coût et performance.</li>
-<li><strong>Core nodes:</strong> Ces nœuds exécutent les tâches. Vous pouvez opter pour des instances plus économiques si vous avez un budget serré.</li>
+<li><strong>Publication :</strong> 2022</li>
+<li><strong>Liens :</strong> <a href="https://github.com/suzgunmirac/BIG-Bench-Hard">Code</a> | <a href="https://huggingface.co/datasets/maveriq/bigbenchhard">Dataset</a> | <a href="https://arxiv.org/abs/2210.09261">Papier</a></li>
 </ul>
-</li>
-<li>
-<p><strong>Configurer le volume EBS:</strong></p>
+<p>BIG-Bench Hard sélectionne 23 tâches difficiles du <a href="https://github.com/google/BIG-bench">BIG-Bench suite</a>, un ensemble diversifié de 204 tâches conçues pour dépasser les capacités des modèles de langage. </p>
+<h4 id="details-techniques_2">Détails Techniques<a class="headerlink" href="#details-techniques_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Par défaut, EMR vous propose un volume racine EBS pour chaque instance. Vous pouvez généralement accepter cette valeur par défaut.</li>
+<li><strong>Caractéristiques uniques :</strong> Inclut des tâches qui dépassent les capacités des modèles de langage actuels, nécessitant souvent un raisonnement avancé ou des réponses multi-pas.</li>
+<li><strong>Méthodologie :</strong> Utilisation de Chain-of-Thought (CoT) prompting pour améliorer les performances des LLMs sur des tâches complexes.</li>
 </ul>
-</li>
-<li>
-<p><strong>Configurer le réseau (VPC et sous-réseau):</strong></p>
+<h3 id="4-humaneval">4. <strong>HumanEval</strong><a class="headerlink" href="#4-humaneval" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Assurez-vous de sélectionner un sous-réseau public pour accéder à votre cluster via SSH et Web. Si vous n'avez pas de VPC disponible, créez-le ainsi:
- <a class="glightbox" href="../../../../emr/create_vpc.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Création du VPC" src="../../../../emr/create_vpc.PNG" /></a></li>
+<li><strong>Publication :</strong> 2021</li>
+<li><strong>Liens :</strong> <a href="https://github.com/openai/human-eval">Code</a> | <a href="https://paperswithcode.com/dataset/humaneval">Dataset</a> | <a href="https://arxiv.org/abs/2107.03374">Papier</a></li>
 </ul>
-</li>
-<li>
-<p><strong>Ajouter des actions Bootstrap:</strong></p>
+<p>HumanEval consiste en 164 tâches de programmation uniques pour évaluer les capacités de génération de code des modèles. Ces tâches couvrent un large spectre, des algorithmes à la compréhension des langages de programmation. </p>
+<h4 id="details-techniques_3">Détails Techniques<a class="headerlink" href="#details-techniques_3" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Les actions Bootstrap sont des scripts exécutés sur chaque nœud lors du démarrage. Créez un fichier avec l'extension <code>.sh</code> que vous garderez dans votre S3 et fournissez-le à EMR via son URI :
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash -xe</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>awscli<span class="w">            </span><span class="se">\</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span>boto3<span class="w">             </span><span class="se">\</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>wheel<span class="w">             </span><span class="se">\</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>s3fs<span class="w">              </span><span class="se">\</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span>fsspec<span class="w">            </span><span class="se">\</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span>pyarrow
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>sudo<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>pandas<span class="w"> </span>pillow<span class="w"> </span>scikit-learn<span class="w"> </span>tensorflow
-</code></pre></div></li>
-<li>Ce script installe des bibliothèques Python couramment utilisées dans le traitement de données. Il est essentiel de réaliser ces actions à cette étape pour que les packages soient installés sur l'ensemble des machines du cluster, et non uniquement sur le driver (comme ce serait le cas si vous exécutiez ces commandes directement dans le notebook JupyterHub ou dans la console EMR).</li>
+<li><strong>Types de tâches :</strong> Algorithmes, manipulation de données, compréhension syntaxique.</li>
+<li><strong>Métrique d'évaluation :</strong> Capacité du modèle à générer du code correct sans intervention humaine. Les sorties doivent être correctes au premier essai.</li>
 </ul>
-</li>
-<li>
-<p><strong>Configurer la persistance des notebooks Jupyter:</strong></p>
+<h3 id="5-mt-bench">5. <strong>MT-Bench</strong><a class="headerlink" href="#5-mt-bench" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Configurez JupyterHub pour qu’il sauvegarde automatiquement vos notebooks sur un bucket S3 en ajoutant ce paramètre dans <strong>Software settings</strong>:
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">[</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="nt">&quot;Classification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jupyter-s3-conf&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="nt">&quot;Properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">            </span><span class="nt">&quot;s3.persistence.enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">            </span><span class="nt">&quot;s3.persistence.bucket&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MyJupyterBackups&quot;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">]</span>
-</code></pre></div></li>
+<li><strong>Publication :</strong> 2021</li>
+<li><strong>Liens :</strong> <a href="https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/README.md">Code</a> | <a href="https://huggingface.co/spaces/lmsys/mt-bench">Dataset</a> | <a href="https://arxiv.org/pdf/2306.05685v4.pdf">Papier</a></li>
 </ul>
-</li>
-<li>
-<p><strong>Configurer les journaux du cluster:</strong></p>
+<p>MT-Bench évalue la qualité des assistants de chat en les soumettant à une série de questions ouvertes et multi-turn, en utilisant des LLMs comme juges. </p>
+<h4 id="details-techniques_4">Détails Techniques<a class="headerlink" href="#details-techniques_4" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Assurez-vous que les journaux du cluster sont publiés sur S3. Cela vous aidera à diagnostiquer tout problème après coup.</li>
+<li><strong>Structure :</strong> 80 questions multi-turn pour évaluer la conversation et le suivi d'instructions.</li>
+<li><strong>Critère de scoring :</strong> Utilise GPT-4 pour noter chaque interaction sur une échelle de 1 à 10. Le score final est la moyenne de toutes les évaluations.</li>
 </ul>
-</li>
-</ol>
-<blockquote>
-<p><strong>Rappel:</strong> La création du cluster peut prendre entre 5 et 10 minutes, et vous commencerez à être facturé dès que le cluster démarre.</p>
-</blockquote>
-<p>Une fois prêt, vous verrez vos applications listées, mais elles ne seront pas encore accessibles.
-<a class="glightbox" href="../../../../emr/application.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Applications du Cluster" src="../../../../emr/application.PNG" /></a></p>
-<h3 id="4-configuration-du-tunnel-ssh-vers-le-nud-maitre">4. Configuration du Tunnel SSH vers le Nœud Maître<a class="headerlink" href="#4-configuration-du-tunnel-ssh-vers-le-nud-maitre" title="Permanent link">&para;</a></h3>
-<h4 id="pourquoi-configurer-un-tunnel-ssh">Pourquoi configurer un tunnel SSH?<a class="headerlink" href="#pourquoi-configurer-un-tunnel-ssh" title="Permanent link">&para;</a></h4>
-<p>Le nœud maître de votre cluster est protégé derrière un pare-feu, et les applications comme JupyterHub ne sont accessibles que via le réseau local du cluster. Le tunnel SSH vous permet de contourner cette restriction en créant un pont sécurisé entre votre machine locale et le nœud maître.</p>
-<h4 id="etape-4-creation-du-tunnel-ssh">Étape 4: Création du Tunnel SSH<a class="headerlink" href="#etape-4-creation-du-tunnel-ssh" title="Permanent link">&para;</a></h4>
-<h5 id="41-ouverture-du-port-22">4.1 Ouverture du Port 22<a class="headerlink" href="#41-ouverture-du-port-22" title="Permanent link">&para;</a></h5>
-<ol>
-<li>
-<p><strong>Configurer les autorisations:</strong></p>
+<p><a class="glightbox" href="../../../../llm_evaluation/mt_bench_example.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple MT-Bench" src="../../../../llm_evaluation/mt_bench_example.PNG" /></a>
+<em>Source : <a href="https://arxiv.org/pdf/2306.05685v4.pdf">Papier original MT-Bench</a></em></p>
+<h3 id="6-drop-discrete-reasoning-over-paragraphs">6. <strong>DROP (Discrete Reasoning Over Paragraphs)</strong><a class="headerlink" href="#6-drop-discrete-reasoning-over-paragraphs" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Sur la console EC2, allez dans <strong>Security Groups</strong>.</li>
-<li>Modifiez le groupe de sécurité attaché au nœud maître de votre cluster.</li>
-<li>Ajoutez une règle pour autoriser les connexions SSH (port 22) depuis n'importe quelle IP, ou restreignez-la à votre IP pour plus de sécurité. Modifiez le groupe de sécurité associé aux <code>master</code>. Il ressemblera à ceci :
- <a class="glightbox" href="../../../../emr/security_group1.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Groupe de Sécurité" src="../../../../emr/security_group1.PNG" /></a></li>
+<li><strong>Publication :</strong> 2019</li>
+<li><strong>Liens :</strong> <a href="https://github.com/allenai/drop">Code</a> | <a href="https://huggingface.co/datasets/drop">Dataset</a> | <a href="https://arxiv.org/abs/1903.00161">Papier</a></li>
 </ul>
-<p>À la fin, vous devriez avoir des règles qui ressemblent à ceci :
- <a class="glightbox" href="../../../../emr/security_group2.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Règles de Sécurité" src="../../../../emr/security_group2.PNG" /></a></p>
-</li>
-</ol>
-<h5 id="42-etablissement-du-tunnel-ssh">4.2 Établissement du Tunnel SSH<a class="headerlink" href="#42-etablissement-du-tunnel-ssh" title="Permanent link">&para;</a></h5>
-<ol>
-<li>
-<p><strong>Récupérer les informations de connexion:</strong></p>
+<p>DROP teste les capacités des LLMs à effectuer des raisonnements complexes et discrets en fonction des informations contenues dans un paragraphe. Les tâches incluent des questions nécessitant des calculs, des comparaisons et des extractions de texte.</p>
+<h4 id="details-techniques_5">Détails Techniques<a class="headerlink" href="#details-techniques_5" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Sur la console EMR, accédez à l’onglet <strong>Summary</strong> de votre cluster.</li>
-<li>Cliquez sur <strong>Enable Web Connection</strong> pour générer la commande SSH nécessaire pour établir le tunnel.</li>
+<li><strong>Type de données :</strong> Questions à réponse ouverte nécessitant des calculs ou des comparaisons.</li>
+<li><strong>Critère de scoring :</strong> Utilisation du F1 Score, qui combine la précision et le rappel pour mesurer la capacité des modèles à générer des réponses exactes.</li>
 </ul>
-</li>
-<li>
-<p><strong>Utilisation de PuTTY pour Windows:</strong></p>
-<ul>
-<li>Si vous êtes sur Windows, utilisez PuTTY pour établir le tunnel SSH en configurant les paramètres avec votre clé <code>.ppk</code>.</li>
-<li>Suivez les étapes indiquées sur la console AWS.
- <a class="glightbox" href="../../../../emr/ssh_putty_window.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Configuration SSH avec PuTTY" src="../../../../emr/ssh_putty_window.PNG" /></a></li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p><strong>Astuce:</strong> Si vous utilisez Linux ou macOS, exécutez simplement la commande SSH dans votre terminal.</p>
-</blockquote>
-<p>Si votre connexion SSH a réussi, vous verrez cette fenêtre :
-<a class="glightbox" href="../../../../emr/putty_works.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Connexion Réussie" src="../../../../emr/putty_works.png" /></a></p>
-<h5 id="43-configuration-de-switchomega-ou-foxyproxy">4.3 Configuration de SwitchOmega ou FoxyProxy<a class="headerlink" href="#43-configuration-de-switchomega-ou-foxyproxy" title="Permanent link">&para;</a></h5>
-<ol>
-<li>
-<p><strong>Installation de SwitchyOmega:</strong></p>
-<ul>
-<li>Pour accéder aux applications via le tunnel SSH, configurez votre navigateur pour utiliser ce tunnel. Installez l’extension SwitchyOmega pour Chrome et configurez-la en suivant les instructions détaillées dans la documentation <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-proxy.html">AWS</a>.</li>
-</ul>
-<p>Si cela vous semble compliqué, référez-vous aux vidéos YouTube suivantes :</p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=fpGAnXgBZe0">Vidéo 1</a> (À partir de 5:10)</li>
-<li><a href="https://www.youtube.com/watch?v=hGTSghZcDdk&amp;t=60s">Vidéo 2</a> (À partir de 8:00)</li>
-</ul>
-</li>
-</ol>
-<blockquote>
-<p><strong>Note:</strong> Parfois, il peut être nécessaire de redémarrer le navigateur ou attendre quelques minutes pour que l'extension fonctionne correctement.</p>
-</blockquote>
-<h3 id="5-connexion-a-jupyterhub">5. Connexion à JupyterHub<a class="headerlink" href="#5-connexion-a-jupyterhub" title="Permanent link">&para;</a></h3>
-<h4 id="etape-5-acceder-a-jupyterhub">Étape 5: Accéder à JupyterHub<a class="headerlink" href="#etape-5-acceder-a-jupyterhub" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p><strong>Connexion à JupyterHub:</strong></p>
-<ul>
-<li>Une fois le tunnel SSH configuré et votre navigateur paramétré, vous devriez voir <strong>JupyterHub</strong> listé parmi les applications disponibles sur votre cluster EMR.</li>
-<li>Cliquez sur <strong>JupyterHub</strong> pour ouvrir l’interface de connexion.
- <a class="glightbox" href="../../../../emr/jupyter.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Connexion à JupyterHub" src="../../../../emr/jupyter.jpg" /></a></li>
-</ul>
-<ul>
-<li>Utilisez les identifiants par défaut (login: <code>jovyan</code>, password: <code>jupyter</code>) pour vous connecter.</li>
-</ul>
-</li>
-</ol>
+<p><a class="glightbox" href="llm_evaluation/drop_example.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple-drop" src="llm_evaluation/drop_example.PNG" /></a>
+<em>Source : <a href="https://arxiv.org/pdf/2306.05685v4.pdf">Papier original MT-Bench</a></em></p>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>Félicitations! Vous avez maintenant un cluster EMR pleinement opérationnel, avec JupyterHub configuré et accessible via un tunnel SSH sécurisé. Vous êtes prêt à tirer parti de la puissance de calcul d'Amazon EMR pour vos projets de science des données, d’analyse, ou de machine learning.</p>
-<p>Si vous avez des questions ou des difficultés, n'hésitez pas à me contacter. Bonne chance avec votre cluster EMR et n'oubliez pas de l'éteindre une fois terminé!</p>
+<p>Les benchmarks comme MMLU, HellaSwag, BIG-Bench Hard, HumanEval, MT-Bench, DROP et l'utilisation du F1 Score offrent des évaluations précieuses pour mesurer les capacités des LLMs dans divers domaines tels que la compréhension du langage, le raisonnement, la programmation et la conversation. Ces benchmarks, combinés à des scores et métriques spécifiques, aident à identifier les forces et les faiblesses des modèles, ouvrant ainsi la voie à des améliorations continues dans le domaine des LLMs.</p>
+<h2 id="references">Références:<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p>https://github.com/leobeeson/llm_benchmarks</p>
 
 
 
