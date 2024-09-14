@@ -85,7 +85,7 @@ La différence principale entre un **Filter Pipeline** et un **Pipe (ou Manifold
 
 ### 3. Implémentation de pipelines
 
-#### 3.1. Pipeline simple :
+#### 3.1. Pipeline simple
 Voici un exemple d'implémentation d'un pipeline basique, qui utilise l'API OpenAI pour répondre aux messages utilisateur.
 
 ```python
@@ -121,8 +121,8 @@ class Pipeline:
             payload.pop(key, None)
 ```
 
-#### 3.2 Pipeline manifold (multi-modèle) :
-Un pipeline manifold permet de gérer plusieurs modèles d'IA en parallèle. Voici un exemple qui inclut plusieurs modèles d'OpenAI.
+#### 3.2 Pipeline manifold
+Un pipeline manifold (multi-modèle) permet de gérer plusieurs modèles d'IA en parallèle. Voici un exemple qui inclut plusieurs modèles d'OpenAI. Desormais, je peux utiliser mon pipeline et avoir accès à n'importe quel modèle d'openai.
 
 ```python
 from typing import List, Union, Generator, Iterator
@@ -202,7 +202,7 @@ Parfois, des pipelines sont déjà disponibles et vous pouvez vous inspirer des 
 
 #### 4.2. Exemple de `docker-compose.yml` :
 ```yaml
-ervices:
+services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
