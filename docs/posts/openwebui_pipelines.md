@@ -200,7 +200,7 @@ Cependant, la connexion n’est pas toujours aussi simple 😅. La documentation
 
 Parfois, des pipelines sont déjà disponibles et vous pouvez vous inspirer des exemples ici : [Pipelines Exemples](https://github.com/open-webui/pipelines/tree/main/examples). Cependant, l’intégration est une autre affaire. Après plusieurs essais, j’ai réussi à connecter les deux services en ajustant des variables clés comme **REQUIREMENTS_PATH**, **PYTHONPATH**, et d'autres, grâce à des volumes de copie pour les pipelines.
 
-#### 4.2. Exemple de `docker-compose.yml` :
+#### 4.2. Exemple de solution avec docker-compose
 ```yaml
 services:
   open-webui:
