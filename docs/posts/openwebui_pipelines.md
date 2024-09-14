@@ -35,8 +35,11 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 
 #### 2.2. Concept de Filter 
 Un **Filter Pipeline** est principalement utilisé pour intercepter le message avant qu'il ne soit envoyé au LLM, ou après avoir reçu la réponse du LLM mais avant de l'envoyer à l'utilisateur. L'idée derrière le **Filter Pipeline** est d’ajouter des étapes **avant** ou **après** l'appel au modèle. Il sert donc principalement à :
+
 - **Récupérer des informations externes (RAG)** pour enrichir le contexte du message avant l'envoi au LLM.
+
 - **Exécuter des outils** qui ajoutent des données supplémentaires nécessaires au LLM.
+
 - **Appliquer des filtres de sécurité** ou d'autres types de transformation avant que la réponse ne soit affichée à l'utilisateur.
 
 ```mermaid
@@ -60,8 +63,11 @@ Voici un diagramme pour illustrer le flux d'un **Filter Pipeline** :
 
 ### 2.3 Concept de Pipe 
 Un **Pipe Pipeline** prend **entièrement en charge** le traitement des messages. Il remplace ou enrichit la manière dont le message est géré par le LLM. Au lieu de simplement ajouter des informations autour du message, comme dans un **Filter Pipeline**, le **Pipe Pipeline** contrôle **tout** le processus. Cela inclut :
+
 - **Appeler différents modèles LLM** (comme GPT-4, GPT-3.5, Mistral, etc.) pour répondre directement au message.
+
 - **Construire des workflows** complexes qui peuvent intégrer de nouvelles fonctionnalités, comme exécuter du code, consulter des bases de données, ou récupérer des informations.
+
 - **RAG (Retrieve and Generate)** : Créer un système complet où les informations sont non seulement récupérées mais aussi générées par un modèle choisi.
 
 *Exemple* :
