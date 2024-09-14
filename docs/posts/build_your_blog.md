@@ -2,7 +2,7 @@
 date : 2024-08-18  
 auteurs : 
   - ssawadogo  
-catégories : 
+categories : 
   - CI/CD
   - documentation
 ---
