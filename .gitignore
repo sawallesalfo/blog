@@ -3,4 +3,6 @@
 *.db
 **/env/**
 **/venv/**
-**/*.egg-info
+**/*.egg-info"
+**/*.pptx
+
