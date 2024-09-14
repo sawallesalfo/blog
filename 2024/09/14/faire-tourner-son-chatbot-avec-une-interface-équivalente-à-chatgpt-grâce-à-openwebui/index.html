@@ -780,9 +780,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42-exemple-de-docker-composeyml" class="md-nav__link">
+  <a href="#42-exemple-de-solution-avec-docker-compose" class="md-nav__link">
     <span class="md-ellipsis">
-      4.2. Exemple de docker-compose.yml :
+      4.2. Exemple de solution avec docker-compose
     </span>
   </a>
   
@@ -1017,7 +1017,7 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 </ul>
 <p>Cependant, la connexion n’est pas toujours aussi simple 😅. La documentation n’est pas encore optimale. Je vous conseille de bien explorer <strong>Pipelines</strong> sur le site et de comprendre comment l’interaction entre les deux services devrait se faire pour améliorer la communication.</p>
 <p>Parfois, des pipelines sont déjà disponibles et vous pouvez vous inspirer des exemples ici : <a href="https://github.com/open-webui/pipelines/tree/main/examples">Pipelines Exemples</a>. Cependant, l’intégration est une autre affaire. Après plusieurs essais, j’ai réussi à connecter les deux services en ajustant des variables clés comme <strong>REQUIREMENTS_PATH</strong>, <strong>PYTHONPATH</strong>, et d'autres, grâce à des volumes de copie pour les pipelines.</p>
-<h4 id="42-exemple-de-docker-composeyml">4.2. Exemple de <code>docker-compose.yml</code> :<a class="headerlink" href="#42-exemple-de-docker-composeyml" title="Permanent link">&para;</a></h4>
+<h4 id="42-exemple-de-solution-avec-docker-compose">4.2. Exemple de solution avec docker-compose<a class="headerlink" href="#42-exemple-de-solution-avec-docker-compose" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">services</span><span class="p">:</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">open-webui</span><span class="p">:</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/open-webui/open-webui:main</span>
