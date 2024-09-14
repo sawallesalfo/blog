@@ -97,7 +97,7 @@ DROP teste les capacités des LLMs à effectuer des raisonnements complexes et d
 - **Type de données :** Questions à réponse ouverte nécessitant des calculs ou des comparaisons.
 - **Critère de scoring :** Utilisation du F1 Score, qui combine la précision et le rappel pour mesurer la capacité des modèles à générer des réponses exactes.
 
-![Exemple-drop](llm_evaluation/drop_example.PNG)
+![Exemple-drop](llm_evaluation/drop_example.png)
 *Source : [Papier original MT-Bench](https://arxiv.org/pdf/2306.05685v4.pdf)*
 
 
