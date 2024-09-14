@@ -31,7 +31,7 @@ Les valves jouent un rôle de régulation dans le pipeline, autorisant ou bloqua
 Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus souvent, c’est l'endroit où sont passés les credentials clés et paramètres des modèles.
 
 
-#### 2.2. Concept de Filter (Filtre)
+#### 2.2. Concept de Filter 
 Un **Filter Pipeline** est principalement utilisé pour intercepter le message avant qu'il ne soit envoyé au LLM, ou après avoir reçu la réponse du LLM mais avant de l'envoyer à l'utilisateur. L'idée derrière le **Filter Pipeline** est d’ajouter des étapes **avant** ou **après** l'appel au modèle. Il sert donc principalement à :
 - **Récupérer des informations externes (RAG)** pour enrichir le contexte du message avant l'envoi au LLM.
 - **Exécuter des outils** qui ajoutent des données supplémentaires nécessaires au LLM.
@@ -56,7 +56,7 @@ Si l'utilisateur demande *"Quelle est la météo à Paris ?"*, le Filter Pipelin
 
 Voici un diagramme pour illustrer le flux d'un **Filter Pipeline** :
 
-### 2.3 **Concept de Pipe (ou Manifold Pipeline)**
+### 2.3 Concept de Pipe 
 Un **Pipe Pipeline** prend **entièrement en charge** le traitement des messages. Il remplace ou enrichit la manière dont le message est géré par le LLM. Au lieu de simplement ajouter des informations autour du message, comme dans un **Filter Pipeline**, le **Pipe Pipeline** contrôle **tout** le processus. Cela inclut :
 - **Appeler différents modèles LLM** (comme GPT-4, GPT-3.5, Mistral, etc.) pour répondre directement au message.
 - **Construire des workflows** complexes qui peuvent intégrer de nouvelles fonctionnalités, comme exécuter du code, consulter des bases de données, ou récupérer des informations.
@@ -78,14 +78,14 @@ graph LR;
     end
 ```
 
-On parle de pipelines manifold lorsque l’on a un pipe qui sait gérer plusieurs modèles. En gros, c’est la même logique d'implémentation, mais le LLM utilisé pour le chat va différer. Un peu plus bas, j'ai implémenté un pipe qui sert de ChatGPT, où je peux choisir quel modèle utiliser entre GPT-3.5, GPT-4, ou GPT-mini.
+On parle de **pipelines manifold** lorsque l’on a un pipe qui sait gérer plusieurs modèles. En gros, c’est la même logique d'implémentation, mais le LLM utilisé pour le chat va différer. Un peu plus bas, j'ai implémenté un pipe qui sert de ChatGPT, où je peux choisir quel modèle utiliser entre GPT-3.5, GPT-4, ou GPT-mini.
 
 #### 2.4. Différences
 La différence principale entre un **Filter Pipeline** et un **Pipe (ou Manifold) Pipeline** repose sur le **moment** et la **manière** dont les données sont traitées avant ou après l'appel à un modèle de langage (LLM).
 
 ### 3. Implémentation de pipelines
 
-#### 3.1. Exemple de pipeline simple :
+#### 3.1. Pipeline simple :
 Voici un exemple d'implémentation d'un pipeline basique, qui utilise l'API OpenAI pour répondre aux messages utilisateur.
 
 ```python
@@ -121,7 +121,7 @@ class Pipeline:
             payload.pop(key, None)
 ```
 
-#### 3.2 Exemple de pipeline manifold (multi-modèle) :
+#### 3.2 Pipeline manifold (multi-modèle) :
 Un pipeline manifold permet de gérer plusieurs modèles d'IA en parallèle. Voici un exemple qui inclut plusieurs modèles d'OpenAI.
 
 ```python
@@ -201,7 +201,8 @@ Cependant, la connexion n’est pas toujours aussi simple 😅. La documentation
 Parfois, des pipelines sont déjà disponibles et vous pouvez vous inspirer des exemples ici : [Pipelines Exemples](https://github.com/open-webui/pipelines/tree/main/examples). Cependant, l’intégration est une autre affaire. Après plusieurs essais, j’ai réussi à connecter les deux services en ajustant des variables clés comme **REQUIREMENTS_PATH**, **PYTHONPATH**, et d'autres, grâce à des volumes de copie pour les pipelines.
 
 #### 4.2. Exemple de `docker-compose.yml` :
-```ervices:
+```yaml
+ervices:
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
@@ -243,9 +244,9 @@ volumes:
 ```
 
 
-Comme vous travaillez avec Docker, vous pouvez facilement inspecter ce qui se passe et vérifier si tout fonctionne correctement ou non. Le service UI (**OpenWebUI**) fonctionne généralement très bien ; cependant, il faut porter une attention particulière à **Pipelines**. Pour déboguer, vous pouvez exécuter une commande comme `docker ps` ou `docker logs pipelines`.
+Comme vous travaillez avec Docker, vous pouvez facilement inspecter ce qui se passe et vérifier si tout fonctionne correctement ou non. Le service UI (**OpenWebUI**) fonctionne généralement très bien ; cependant, il faut porter une attention particulière à **Pipelines**. 
 
-Si vous utilisez Docker Desktop, vous devriez voir quelque chose de similaire à ceci, montrant que vos deux conteneurs sont en cours d'exécution :
+Pour déboguer, vous pouvez exécuter une commande comme `docker ps` ou `docker logs pipelines`. Si vous utilisez Docker Desktop, vous devriez voir quelque chose de similaire à ceci, montrant que vos deux conteneurs sont en cours d'exécution :
 
 ![image](openwebui_pipelines/docker_view.PNG)
 
