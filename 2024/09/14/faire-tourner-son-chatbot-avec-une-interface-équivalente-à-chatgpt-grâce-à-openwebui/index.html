@@ -689,15 +689,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#exemple" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exemple :
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -712,15 +703,6 @@
   
     <nav class="md-nav" aria-label="2.3 Concept de Pipe (ou Manifold Pipeline)">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exemple_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exemple :
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#24-differences" class="md-nav__link">
@@ -890,13 +872,9 @@
 
 
 <h1 id="faire-tourner-son-chatbot-avec-une-interface-equivalente-a-chatgpt-grace-a-openwebui">Faire tourner son chatbot avec une interface équivalente à ChatGPT grâce à OpenWebUI<a class="headerlink" href="#faire-tourner-son-chatbot-avec-une-interface-equivalente-a-chatgpt-grace-a-openwebui" title="Permanent link">&para;</a></h1>
-<p>L'ère des assistants conversationnels est en pleine expansion, et grâce à des outils comme <strong>OpenWebUI</strong>, il est désormais possible de créer son propre UI conversationnel avec des fonctionnalités similaires à celles de ChatGPT sans beaucoup d'effort. On suppose que vous avez déjà un chatbot qui fonctionne correctement et que vous souhaitez une meilleure interface utilisateur. Cet article vous guidera dans la mise en place d'une architecture pipeline pour un chatbot, en utilisant Docker Compose pour automatiser le déploiement.</p>
+<p>L'ère des assistants conversationnels est en pleine expansion, et grâce à des outils comme <strong>OpenWebUI</strong>, il est désormais possible de créer son propre UI conversationnel avec des fonctionnalités similaires à celles de ChatGPT sans beaucoup d'effort. On suppose que vous avez déjà un chatbot qui fonctionne correctement et que vous souhaitez une meilleure interface utilisateur. Cet article vous guidera dans la mise en place de cette UI.</p>
 <!-- more -->
 
-<p>Nous aborderons les points suivants :
-1. Qu'est-ce qu'OpenWebUI ?
-2. Concepts clés : valves, pipes, filtres
-3. Construire votre stack avec Docker Compose</p>
 <h3 id="1-quest-ce-quopenwebui">1. Qu’est-ce qu’OpenWebUI ?<a class="headerlink" href="#1-quest-ce-quopenwebui" title="Permanent link">&para;</a></h3>
 <p><strong>OpenWebUI</strong> est conçu pour être une solution flexible d’interface utilisateur (UI) open-source qui facilite l’interaction avec les LLM comme GPT-3.5 ou GPT-4. Il repose sur deux composants principaux :
 - <strong>Le composant OpenWebUI proprement dit</strong> : C’est l’interface utilisateur qui permet de gérer les interactions entre l'utilisateur et le modèle.
@@ -904,10 +882,10 @@
 <p>Bon, comme vous le savez , une image vaut mieux milles vaux. Voici la magie que nous propose openwebui
 <a class="glightbox" href="../../../../openwebui_pipelines/presentation.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../../openwebui_pipelines/presentation.png" /></a></p>
 <h3 id="2-concepts-de-pipelines">2. Concepts de Pipelines<a class="headerlink" href="#2-concepts-de-pipelines" title="Permanent link">&para;</a></h3>
+<p>Pour comprendre l'outil pipelines, il faut s’intéresser aux valves, filtres (filters) et pipes.</p>
 <h4 id="21-concepts-de-valves">2.1. Concepts de Valves<a class="headerlink" href="#21-concepts-de-valves" title="Permanent link">&para;</a></h4>
 <p>Les valves jouent un rôle de régulation dans le pipeline, autorisant ou bloquant le passage de certaines données.<br />
 Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus souvent, c’est l'endroit où sont passés les credentials clés et paramètres des modèles.</p>
-<p>Pour comprendre l'outil pipelines, il faut s’intéresser aux valves, filtres (filters) et pipes.</p>
 <h4 id="22-concept-de-filter-filtre">2.2. Concept de Filter (Filtre)<a class="headerlink" href="#22-concept-de-filter-filtre" title="Permanent link">&para;</a></h4>
 <p>Un <strong>Filter Pipeline</strong> est principalement utilisé pour intercepter le message avant qu'il ne soit envoyé au LLM, ou après avoir reçu la réponse du LLM mais avant de l'envoyer à l'utilisateur. L'idée derrière le <strong>Filter Pipeline</strong> est d’ajouter des étapes <strong>avant</strong> ou <strong>après</strong> l'appel au modèle. Il sert donc principalement à :
 - <strong>Récupérer des informations externes (RAG)</strong> pour enrichir le contexte du message avant l'envoi au LLM.
@@ -923,7 +901,7 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
         B--&gt;C;
         C--&gt;D;
     end</code></pre>
-<h4 id="exemple">Exemple :<a class="headerlink" href="#exemple" title="Permanent link">&para;</a></h4>
+<p><em>Exemple</em> :</p>
 <p>Si l'utilisateur demande <em>"Quelle est la météo à Paris ?"</em>, le Filter Pipeline peut intercepter la requête avant de l’envoyer au LLM, appeler une API météo pour obtenir la température, et ensuite ajouter cette information dans le message contextuel envoyé au modèle.</p>
 <p>Voici un diagramme pour illustrer le flux d'un <strong>Filter Pipeline</strong> :</p>
 <h3 id="23-concept-de-pipe-ou-manifold-pipeline">2.3 <strong>Concept de Pipe (ou Manifold Pipeline)</strong><a class="headerlink" href="#23-concept-de-pipe-ou-manifold-pipeline" title="Permanent link">&para;</a></h3>
@@ -931,7 +909,7 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 - <strong>Appeler différents modèles LLM</strong> (comme GPT-4, GPT-3.5, Mistral, etc.) pour répondre directement au message.
 - <strong>Construire des workflows</strong> complexes qui peuvent intégrer de nouvelles fonctionnalités, comme exécuter du code, consulter des bases de données, ou récupérer des informations.
 - <strong>RAG (Retrieve and Generate)</strong> : Créer un système complet où les informations sont non seulement récupérées mais aussi générées par un modèle choisi.</p>
-<h4 id="exemple_1">Exemple :<a class="headerlink" href="#exemple_1" title="Permanent link">&para;</a></h4>
+<p><em>Exemple</em> :</p>
 <p>Dans un <strong>Pipe Pipeline</strong>, si l'utilisateur demande <em>"Raconte-moi une histoire"</em>, ce pipeline pourrait décider quel modèle LLM utiliser (GPT-4, Claude, etc.) et créer une réponse en fonction du workflow configuré. </p>
 <p>Voici un diagramme pour illustrer le flux d'un <strong>Pipe Pipeline</strong> :</p>
 <pre class="mermaid"><code>graph LR;
