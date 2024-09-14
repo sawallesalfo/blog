@@ -154,5 +154,9 @@ Félicitations ! Tu as construit et déployé un blog en utilisant MkDocs et Doc
 
 Pour un exemple complet, jette un œil à mon projet : [Répertoire GitHub](https://github.com/sawadogosalif/blog).
 
+#### Références:
++  https://squidfunk.github.io/mkdocs-material/getting-started/
+
 #### MAJ
 + 08/09/2024 : Traduire en français
++ 14/09/2024 : Ajout de références
