@@ -3,10 +3,8 @@ date: 2024-08-11
 authors:
     - ssawadogo
 categories: 
-    - AWS
+    - MLOps
     - Cloud
-    - EKS
-    - IAM
 ---
 
 ### Understanding IAM Roles and Users in AWS with a Practical Example: Running an Application on EKS

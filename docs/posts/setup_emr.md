@@ -3,11 +3,8 @@ date: 2024-08-04
 authors:
     - ssawadogo
 categories: 
-    - AWS
+    - MLOps
     - Cloud
-    - EC2
-    - EMR
-    - Spark
 ---
 
 ## Comment Créer et Configurer un Cluster  EMR on EC2

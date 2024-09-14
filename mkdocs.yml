@@ -32,11 +32,13 @@ theme:
 plugins:
   - blog:
         blog_dir: . 
+        pagination_per_page: 20
+
   - glightbox
   - search
   - git-revision-date-localized:
       type: iso_date
-      fallback_to_build_date: true
+      fallback_to_build_date: false # date de revison
 
 markdown_extensions:
     - abbr
@@ -82,3 +84,18 @@ extra_javascript:
   - javascripts/mathjax.js  # Custom MathJax configuration for rendering math equations
   - https://polyfill.io/v3/polyfill.min.js?features=es6  # Polyfill for older browsers
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js  # MathJax library for LaTeX math rendering
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      name: My GitHub
+      link: https://github.com/sawadogosalif
+    - icon: fontawesome/brands/twitter
+      name: My Twitter
+      link: https://x.com/sawallesalfo
+    - icon: fontawesome/brands/linkedin
+      name: My LinkedIn
+      link: https://www.linkedin.com/in/alif-sawadogo-statistician
+    - icon: /fontawesome/regular/envelope
+      name: send me an email
+      link: mailto:<salif.sawadogo.pro@gmail.com>
