@@ -6,6 +6,8 @@ copyright: "Copyright © @sawallesalfo August 2024"  # Custom copyright notice
 
 theme:
     name: material  # Using the popular Material theme for MkDocs
+    custom_dir: overrides # commentaire et conversion
+
     palette:
         - scheme: default
           primary: deep purple
