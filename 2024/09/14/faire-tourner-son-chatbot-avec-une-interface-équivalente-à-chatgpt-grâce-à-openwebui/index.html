@@ -731,16 +731,16 @@
           <li class="md-nav__item">
   <a href="#31-pipeline-simple" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1. Pipeline simple :
+      3.1. Pipeline simple
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-pipeline-manifold-multi-modele" class="md-nav__link">
+  <a href="#32-pipeline-manifold" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2 Pipeline manifold (multi-modèle) :
+      3.2 Pipeline manifold
     </span>
   </a>
   
@@ -923,7 +923,7 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 <h4 id="24-differences">2.4. Différences<a class="headerlink" href="#24-differences" title="Permanent link">&para;</a></h4>
 <p>La différence principale entre un <strong>Filter Pipeline</strong> et un <strong>Pipe (ou Manifold) Pipeline</strong> repose sur le <strong>moment</strong> et la <strong>manière</strong> dont les données sont traitées avant ou après l'appel à un modèle de langage (LLM).</p>
 <h3 id="3-implementation-de-pipelines">3. Implémentation de pipelines<a class="headerlink" href="#3-implementation-de-pipelines" title="Permanent link">&para;</a></h3>
-<h4 id="31-pipeline-simple">3.1. Pipeline simple :<a class="headerlink" href="#31-pipeline-simple" title="Permanent link">&para;</a></h4>
+<h4 id="31-pipeline-simple">3.1. Pipeline simple<a class="headerlink" href="#31-pipeline-simple" title="Permanent link">&para;</a></h4>
 <p>Voici un exemple d'implémentation d'un pipeline basique, qui utilise l'API OpenAI pour répondre aux messages utilisateur.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Iterator</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -956,8 +956,8 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys_to_remove</span><span class="p">:</span>
 <a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>            <span class="n">payload</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="32-pipeline-manifold-multi-modele">3.2 Pipeline manifold (multi-modèle) :<a class="headerlink" href="#32-pipeline-manifold-multi-modele" title="Permanent link">&para;</a></h4>
-<p>Un pipeline manifold permet de gérer plusieurs modèles d'IA en parallèle. Voici un exemple qui inclut plusieurs modèles d'OpenAI.</p>
+<h4 id="32-pipeline-manifold">3.2 Pipeline manifold<a class="headerlink" href="#32-pipeline-manifold" title="Permanent link">&para;</a></h4>
+<p>Un pipeline manifold (multi-modèle) permet de gérer plusieurs modèles d'IA en parallèle. Voici un exemple qui inclut plusieurs modèles d'OpenAI. Desormais, je peux utiliser mon pipeline et avoir accès à n'importe quel modèle d'openai.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Iterator</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">os</span>
@@ -1018,7 +1018,7 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 <p>Cependant, la connexion n’est pas toujours aussi simple 😅. La documentation n’est pas encore optimale. Je vous conseille de bien explorer <strong>Pipelines</strong> sur le site et de comprendre comment l’interaction entre les deux services devrait se faire pour améliorer la communication.</p>
 <p>Parfois, des pipelines sont déjà disponibles et vous pouvez vous inspirer des exemples ici : <a href="https://github.com/open-webui/pipelines/tree/main/examples">Pipelines Exemples</a>. Cependant, l’intégration est une autre affaire. Après plusieurs essais, j’ai réussi à connecter les deux services en ajustant des variables clés comme <strong>REQUIREMENTS_PATH</strong>, <strong>PYTHONPATH</strong>, et d'autres, grâce à des volumes de copie pour les pipelines.</p>
 <h4 id="42-exemple-de-docker-composeyml">4.2. Exemple de <code>docker-compose.yml</code> :<a class="headerlink" href="#42-exemple-de-docker-composeyml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">ervices</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">services</span><span class="p">:</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">open-webui</span><span class="p">:</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/open-webui/open-webui:main</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">open-webui</span>
