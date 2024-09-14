@@ -876,9 +876,13 @@
 <!-- more -->
 
 <h3 id="1-quest-ce-quopenwebui">1. Qu’est-ce qu’OpenWebUI ?<a class="headerlink" href="#1-quest-ce-quopenwebui" title="Permanent link">&para;</a></h3>
-<p><strong>OpenWebUI</strong> est conçu pour être une solution flexible d’interface utilisateur (UI) open-source qui facilite l’interaction avec les LLM comme GPT-3.5 ou GPT-4. Il repose sur deux composants principaux :
-- <strong>Le composant OpenWebUI proprement dit</strong> : C’est l’interface utilisateur qui permet de gérer les interactions entre l'utilisateur et le modèle.
-- <strong>Le composant Pipelines</strong> : Cette composante s’occupe de la logique LLM. Elle permet d'intercepter, traiter et modifier les prompts utilisateurs avant de les envoyer au modèle final.</p>
+<p><strong>OpenWebUI</strong> est conçu pour être une solution flexible d’interface utilisateur (UI) open-source qui facilite l’interaction avec les LLM comme GPT-3.5 ou GPT-4. Il repose sur deux composants principaux :</p>
+<ul>
+<li><strong>Le composant OpenWebUI proprement dit</strong> : C’est l’interface utilisateur qui permet de gérer les interactions entre l'utilisateur et le modèle.</li>
+</ul>
+<ul>
+<li><strong>Le composant Pipelines</strong> : Cette composante s’occupe de la logique LLM. Elle permet d'intercepter, traiter et modifier les prompts utilisateurs avant de les envoyer au modèle final.</li>
+</ul>
 <p>Bon, comme vous le savez , une image vaut mieux milles vaux. Voici la magie que nous propose openwebui
 <a class="glightbox" href="../../../../openwebui_pipelines/presentation.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../../openwebui_pipelines/presentation.png" /></a></p>
 <h3 id="2-concepts-de-pipelines">2. Concepts de Pipelines<a class="headerlink" href="#2-concepts-de-pipelines" title="Permanent link">&para;</a></h3>
@@ -997,8 +1001,7 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 <a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>            <span class="n">payload</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="33-pour-aller-plus-loin">3.3 Pour aller plus loin :<a class="headerlink" href="#33-pour-aller-plus-loin" title="Permanent link">&para;</a></h4>
-<p>Il n'y a rien de mieux que la documentation officielle. Vous y trouverez une pléthore d'exemples d'implémentation de pipelines que vous pourriez personnaliser. Vous trouverez plus d'une cinquantaine d'exemples ici :<br />
-<a href="https://github.com/open-webui/pipelines/tree/main/examples/">exemples de pipelines</a></p>
+<p>Il n'y a rien de mieux que la documentation officielle. Vous y trouverez une pléthore d'exemples d'implémentation de pipelines que vous pourriez personnaliser. Vous trouverez plus d'une cinquantaine d'exemples ici : <a href="https://github.com/open-webui/pipelines/tree/main/examples/">exemples de pipelines</a></p>
 <h3 id="4-construire-votre-stack-avec-docker-compose">4. Construire votre stack avec Docker Compose<a class="headerlink" href="#4-construire-votre-stack-avec-docker-compose" title="Permanent link">&para;</a></h3>
 <h4 id="41-motivation">4.1. Motivation<a class="headerlink" href="#41-motivation" title="Permanent link">&para;</a></h4>
 <p>L'une des manières les plus efficaces de mettre en place cette architecture est d’utiliser <strong>Docker Compose</strong>. Voici un exemple de configuration pour orchestrer les services nécessaires au fonctionnement de votre chatbot.</p>
