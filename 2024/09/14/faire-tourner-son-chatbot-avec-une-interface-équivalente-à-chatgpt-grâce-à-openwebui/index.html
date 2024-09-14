@@ -891,10 +891,16 @@
 <p>Les valves jouent un rôle de régulation dans le pipeline, autorisant ou bloquant le passage de certaines données.<br />
 Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus souvent, c’est l'endroit où sont passés les credentials clés et paramètres des modèles.</p>
 <h4 id="22-concept-de-filter">2.2. Concept de Filter<a class="headerlink" href="#22-concept-de-filter" title="Permanent link">&para;</a></h4>
-<p>Un <strong>Filter Pipeline</strong> est principalement utilisé pour intercepter le message avant qu'il ne soit envoyé au LLM, ou après avoir reçu la réponse du LLM mais avant de l'envoyer à l'utilisateur. L'idée derrière le <strong>Filter Pipeline</strong> est d’ajouter des étapes <strong>avant</strong> ou <strong>après</strong> l'appel au modèle. Il sert donc principalement à :
-- <strong>Récupérer des informations externes (RAG)</strong> pour enrichir le contexte du message avant l'envoi au LLM.
-- <strong>Exécuter des outils</strong> qui ajoutent des données supplémentaires nécessaires au LLM.
-- <strong>Appliquer des filtres de sécurité</strong> ou d'autres types de transformation avant que la réponse ne soit affichée à l'utilisateur.</p>
+<p>Un <strong>Filter Pipeline</strong> est principalement utilisé pour intercepter le message avant qu'il ne soit envoyé au LLM, ou après avoir reçu la réponse du LLM mais avant de l'envoyer à l'utilisateur. L'idée derrière le <strong>Filter Pipeline</strong> est d’ajouter des étapes <strong>avant</strong> ou <strong>après</strong> l'appel au modèle. Il sert donc principalement à :</p>
+<ul>
+<li><strong>Récupérer des informations externes (RAG)</strong> pour enrichir le contexte du message avant l'envoi au LLM.</li>
+</ul>
+<ul>
+<li><strong>Exécuter des outils</strong> qui ajoutent des données supplémentaires nécessaires au LLM.</li>
+</ul>
+<ul>
+<li><strong>Appliquer des filtres de sécurité</strong> ou d'autres types de transformation avant que la réponse ne soit affichée à l'utilisateur.</li>
+</ul>
 <pre class="mermaid"><code>graph LR;
     A[Chat Request] --&gt; B[Inlet];
     B --&gt; C[LLM Model];
@@ -909,10 +915,16 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 <p>Si l'utilisateur demande <em>"Quelle est la météo à Paris ?"</em>, le Filter Pipeline peut intercepter la requête avant de l’envoyer au LLM, appeler une API météo pour obtenir la température, et ensuite ajouter cette information dans le message contextuel envoyé au modèle.</p>
 <p>Voici un diagramme pour illustrer le flux d'un <strong>Filter Pipeline</strong> :</p>
 <h3 id="23-concept-de-pipe">2.3 Concept de Pipe<a class="headerlink" href="#23-concept-de-pipe" title="Permanent link">&para;</a></h3>
-<p>Un <strong>Pipe Pipeline</strong> prend <strong>entièrement en charge</strong> le traitement des messages. Il remplace ou enrichit la manière dont le message est géré par le LLM. Au lieu de simplement ajouter des informations autour du message, comme dans un <strong>Filter Pipeline</strong>, le <strong>Pipe Pipeline</strong> contrôle <strong>tout</strong> le processus. Cela inclut :
-- <strong>Appeler différents modèles LLM</strong> (comme GPT-4, GPT-3.5, Mistral, etc.) pour répondre directement au message.
-- <strong>Construire des workflows</strong> complexes qui peuvent intégrer de nouvelles fonctionnalités, comme exécuter du code, consulter des bases de données, ou récupérer des informations.
-- <strong>RAG (Retrieve and Generate)</strong> : Créer un système complet où les informations sont non seulement récupérées mais aussi générées par un modèle choisi.</p>
+<p>Un <strong>Pipe Pipeline</strong> prend <strong>entièrement en charge</strong> le traitement des messages. Il remplace ou enrichit la manière dont le message est géré par le LLM. Au lieu de simplement ajouter des informations autour du message, comme dans un <strong>Filter Pipeline</strong>, le <strong>Pipe Pipeline</strong> contrôle <strong>tout</strong> le processus. Cela inclut :</p>
+<ul>
+<li><strong>Appeler différents modèles LLM</strong> (comme GPT-4, GPT-3.5, Mistral, etc.) pour répondre directement au message.</li>
+</ul>
+<ul>
+<li><strong>Construire des workflows</strong> complexes qui peuvent intégrer de nouvelles fonctionnalités, comme exécuter du code, consulter des bases de données, ou récupérer des informations.</li>
+</ul>
+<ul>
+<li><strong>RAG (Retrieve and Generate)</strong> : Créer un système complet où les informations sont non seulement récupérées mais aussi générées par un modèle choisi.</li>
+</ul>
 <p><em>Exemple</em> :</p>
 <p>Dans un <strong>Pipe Pipeline</strong>, si l'utilisateur demande <em>"Raconte-moi une histoire"</em>, ce pipeline pourrait décider quel modèle LLM utiliser (GPT-4, Claude, etc.) et créer une réponse en fonction du workflow configuré. </p>
 <p>Voici un diagramme pour illustrer le flux d'un <strong>Pipe Pipeline</strong> :</p>
