@@ -9,13 +9,10 @@ catégories :
 
 # Faire tourner son chatbot avec une interface équivalente à ChatGPT grâce à OpenWebUI
 
-L'ère des assistants conversationnels est en pleine expansion, et grâce à des outils comme **OpenWebUI**, il est désormais possible de créer son propre UI conversationnel avec des fonctionnalités similaires à celles de ChatGPT sans beaucoup d'effort. On suppose que vous avez déjà un chatbot qui fonctionne correctement et que vous souhaitez une meilleure interface utilisateur. Cet article vous guidera dans la mise en place d'une architecture pipeline pour un chatbot, en utilisant Docker Compose pour automatiser le déploiement.
+L'ère des assistants conversationnels est en pleine expansion, et grâce à des outils comme **OpenWebUI**, il est désormais possible de créer son propre UI conversationnel avec des fonctionnalités similaires à celles de ChatGPT sans beaucoup d'effort. On suppose que vous avez déjà un chatbot qui fonctionne correctement et que vous souhaitez une meilleure interface utilisateur. Cet article vous guidera dans la mise en place de cette UI.
 <!-- more -->
 
-Nous aborderons les points suivants :
-1. Qu'est-ce qu'OpenWebUI ?
-2. Concepts clés : valves, pipes, filtres
-3. Construire votre stack avec Docker Compose
+
 
 ### 1. Qu’est-ce qu’OpenWebUI ?
 **OpenWebUI** est conçu pour être une solution flexible d’interface utilisateur (UI) open-source qui facilite l’interaction avec les LLM comme GPT-3.5 ou GPT-4. Il repose sur deux composants principaux :
@@ -27,11 +24,12 @@ Bon, comme vous le savez , une image vaut mieux milles vaux. Voici la magie que 
 
 ### 2. Concepts de Pipelines
 
+Pour comprendre l'outil pipelines, il faut s’intéresser aux valves, filtres (filters) et pipes.
+
 #### 2.1. Concepts de Valves
 Les valves jouent un rôle de régulation dans le pipeline, autorisant ou bloquant le passage de certaines données.  
 Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus souvent, c’est l'endroit où sont passés les credentials clés et paramètres des modèles.
 
-Pour comprendre l'outil pipelines, il faut s’intéresser aux valves, filtres (filters) et pipes.
 
 #### 2.2. Concept de Filter (Filtre)
 Un **Filter Pipeline** est principalement utilisé pour intercepter le message avant qu'il ne soit envoyé au LLM, ou après avoir reçu la réponse du LLM mais avant de l'envoyer à l'utilisateur. L'idée derrière le **Filter Pipeline** est d’ajouter des étapes **avant** ou **après** l'appel au modèle. Il sert donc principalement à :
@@ -52,7 +50,8 @@ graph LR;
     end
 ```
 
-#### Exemple :
+*Exemple* :
+
 Si l'utilisateur demande *"Quelle est la météo à Paris ?"*, le Filter Pipeline peut intercepter la requête avant de l’envoyer au LLM, appeler une API météo pour obtenir la température, et ensuite ajouter cette information dans le message contextuel envoyé au modèle.
 
 Voici un diagramme pour illustrer le flux d'un **Filter Pipeline** :
@@ -63,7 +62,8 @@ Un **Pipe Pipeline** prend **entièrement en charge** le traitement des messages
 - **Construire des workflows** complexes qui peuvent intégrer de nouvelles fonctionnalités, comme exécuter du code, consulter des bases de données, ou récupérer des informations.
 - **RAG (Retrieve and Generate)** : Créer un système complet où les informations sont non seulement récupérées mais aussi générées par un modèle choisi.
 
-#### Exemple :
+*Exemple* :
+
 Dans un **Pipe Pipeline**, si l'utilisateur demande *"Raconte-moi une histoire"*, ce pipeline pourrait décider quel modèle LLM utiliser (GPT-4, Claude, etc.) et créer une réponse en fonction du workflow configuré. 
 
 Voici un diagramme pour illustrer le flux d'un **Pipe Pipeline** :
