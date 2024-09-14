@@ -16,7 +16,9 @@ L'ère des assistants conversationnels est en pleine expansion, et grâce à des
 
 ### 1. Qu’est-ce qu’OpenWebUI ?
 **OpenWebUI** est conçu pour être une solution flexible d’interface utilisateur (UI) open-source qui facilite l’interaction avec les LLM comme GPT-3.5 ou GPT-4. Il repose sur deux composants principaux :
+
 - **Le composant OpenWebUI proprement dit** : C’est l’interface utilisateur qui permet de gérer les interactions entre l'utilisateur et le modèle.
+
 - **Le composant Pipelines** : Cette composante s’occupe de la logique LLM. Elle permet d'intercepter, traiter et modifier les prompts utilisateurs avant de les envoyer au modèle final.
 
 Bon, comme vous le savez , une image vaut mieux milles vaux. Voici la magie que nous propose openwebui
@@ -165,8 +167,7 @@ class Pipeline:
 ```
 
 #### 3.3 Pour aller plus loin :
-Il n'y a rien de mieux que la documentation officielle. Vous y trouverez une pléthore d'exemples d'implémentation de pipelines que vous pourriez personnaliser. Vous trouverez plus d'une cinquantaine d'exemples ici :  
-[exemples de pipelines](https://github.com/open-webui/pipelines/tree/main/examples/)
+Il n'y a rien de mieux que la documentation officielle. Vous y trouverez une pléthore d'exemples d'implémentation de pipelines que vous pourriez personnaliser. Vous trouverez plus d'une cinquantaine d'exemples ici : [exemples de pipelines](https://github.com/open-webui/pipelines/tree/main/examples/)
 
 ### 4. Construire votre stack avec Docker Compose
 
