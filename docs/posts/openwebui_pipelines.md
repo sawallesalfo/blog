@@ -1,10 +1,10 @@
 ---
-date : 2024-09-14  
-auteurs : 
-    - ssawadogo  
-catégories : 
-    - IAGen
+date: 2024-09-14
+authors:
+    - ssawadogo
+categories: 
     - MlOps
+    - IAgen
 ---
 
 # Faire tourner son chatbot avec une interface équivalente à ChatGPT grâce à OpenWebUI
