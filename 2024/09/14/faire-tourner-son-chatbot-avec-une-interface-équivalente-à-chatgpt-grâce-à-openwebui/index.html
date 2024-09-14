@@ -681,9 +681,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#22-concept-de-filter-filtre" class="md-nav__link">
+  <a href="#22-concept-de-filter" class="md-nav__link">
     <span class="md-ellipsis">
-      2.2. Concept de Filter (Filtre)
+      2.2. Concept de Filter
     </span>
   </a>
   
@@ -695,13 +695,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#23-concept-de-pipe-ou-manifold-pipeline" class="md-nav__link">
+  <a href="#23-concept-de-pipe" class="md-nav__link">
     <span class="md-ellipsis">
-      2.3 Concept de Pipe (ou Manifold Pipeline)
+      2.3 Concept de Pipe
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2.3 Concept de Pipe (ou Manifold Pipeline)">
+    <nav class="md-nav" aria-label="2.3 Concept de Pipe">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -729,18 +729,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#31-exemple-de-pipeline-simple" class="md-nav__link">
+  <a href="#31-pipeline-simple" class="md-nav__link">
     <span class="md-ellipsis">
-      3.1. Exemple de pipeline simple :
+      3.1. Pipeline simple :
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-exemple-de-pipeline-manifold-multi-modele" class="md-nav__link">
+  <a href="#32-pipeline-manifold-multi-modele" class="md-nav__link">
     <span class="md-ellipsis">
-      3.2 Exemple de pipeline manifold (multi-modèle) :
+      3.2 Pipeline manifold (multi-modèle) :
     </span>
   </a>
   
@@ -886,7 +886,7 @@
 <h4 id="21-concepts-de-valves">2.1. Concepts de Valves<a class="headerlink" href="#21-concepts-de-valves" title="Permanent link">&para;</a></h4>
 <p>Les valves jouent un rôle de régulation dans le pipeline, autorisant ou bloquant le passage de certaines données.<br />
 Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus souvent, c’est l'endroit où sont passés les credentials clés et paramètres des modèles.</p>
-<h4 id="22-concept-de-filter-filtre">2.2. Concept de Filter (Filtre)<a class="headerlink" href="#22-concept-de-filter-filtre" title="Permanent link">&para;</a></h4>
+<h4 id="22-concept-de-filter">2.2. Concept de Filter<a class="headerlink" href="#22-concept-de-filter" title="Permanent link">&para;</a></h4>
 <p>Un <strong>Filter Pipeline</strong> est principalement utilisé pour intercepter le message avant qu'il ne soit envoyé au LLM, ou après avoir reçu la réponse du LLM mais avant de l'envoyer à l'utilisateur. L'idée derrière le <strong>Filter Pipeline</strong> est d’ajouter des étapes <strong>avant</strong> ou <strong>après</strong> l'appel au modèle. Il sert donc principalement à :
 - <strong>Récupérer des informations externes (RAG)</strong> pour enrichir le contexte du message avant l'envoi au LLM.
 - <strong>Exécuter des outils</strong> qui ajoutent des données supplémentaires nécessaires au LLM.
@@ -904,7 +904,7 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 <p><em>Exemple</em> :</p>
 <p>Si l'utilisateur demande <em>"Quelle est la météo à Paris ?"</em>, le Filter Pipeline peut intercepter la requête avant de l’envoyer au LLM, appeler une API météo pour obtenir la température, et ensuite ajouter cette information dans le message contextuel envoyé au modèle.</p>
 <p>Voici un diagramme pour illustrer le flux d'un <strong>Filter Pipeline</strong> :</p>
-<h3 id="23-concept-de-pipe-ou-manifold-pipeline">2.3 <strong>Concept de Pipe (ou Manifold Pipeline)</strong><a class="headerlink" href="#23-concept-de-pipe-ou-manifold-pipeline" title="Permanent link">&para;</a></h3>
+<h3 id="23-concept-de-pipe">2.3 Concept de Pipe<a class="headerlink" href="#23-concept-de-pipe" title="Permanent link">&para;</a></h3>
 <p>Un <strong>Pipe Pipeline</strong> prend <strong>entièrement en charge</strong> le traitement des messages. Il remplace ou enrichit la manière dont le message est géré par le LLM. Au lieu de simplement ajouter des informations autour du message, comme dans un <strong>Filter Pipeline</strong>, le <strong>Pipe Pipeline</strong> contrôle <strong>tout</strong> le processus. Cela inclut :
 - <strong>Appeler différents modèles LLM</strong> (comme GPT-4, GPT-3.5, Mistral, etc.) pour répondre directement au message.
 - <strong>Construire des workflows</strong> complexes qui peuvent intégrer de nouvelles fonctionnalités, comme exécuter du code, consulter des bases de données, ou récupérer des informations.
@@ -919,11 +919,11 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
     subgraph Pipe Pipeline
         B;
     end</code></pre>
-<p>On parle de pipelines manifold lorsque l’on a un pipe qui sait gérer plusieurs modèles. En gros, c’est la même logique d'implémentation, mais le LLM utilisé pour le chat va différer. Un peu plus bas, j'ai implémenté un pipe qui sert de ChatGPT, où je peux choisir quel modèle utiliser entre GPT-3.5, GPT-4, ou GPT-mini.</p>
+<p>On parle de <strong>pipelines manifold</strong> lorsque l’on a un pipe qui sait gérer plusieurs modèles. En gros, c’est la même logique d'implémentation, mais le LLM utilisé pour le chat va différer. Un peu plus bas, j'ai implémenté un pipe qui sert de ChatGPT, où je peux choisir quel modèle utiliser entre GPT-3.5, GPT-4, ou GPT-mini.</p>
 <h4 id="24-differences">2.4. Différences<a class="headerlink" href="#24-differences" title="Permanent link">&para;</a></h4>
 <p>La différence principale entre un <strong>Filter Pipeline</strong> et un <strong>Pipe (ou Manifold) Pipeline</strong> repose sur le <strong>moment</strong> et la <strong>manière</strong> dont les données sont traitées avant ou après l'appel à un modèle de langage (LLM).</p>
 <h3 id="3-implementation-de-pipelines">3. Implémentation de pipelines<a class="headerlink" href="#3-implementation-de-pipelines" title="Permanent link">&para;</a></h3>
-<h4 id="31-exemple-de-pipeline-simple">3.1. Exemple de pipeline simple :<a class="headerlink" href="#31-exemple-de-pipeline-simple" title="Permanent link">&para;</a></h4>
+<h4 id="31-pipeline-simple">3.1. Pipeline simple :<a class="headerlink" href="#31-pipeline-simple" title="Permanent link">&para;</a></h4>
 <p>Voici un exemple d'implémentation d'un pipeline basique, qui utilise l'API OpenAI pour répondre aux messages utilisateur.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Iterator</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -956,7 +956,7 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys_to_remove</span><span class="p">:</span>
 <a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>            <span class="n">payload</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
-<h4 id="32-exemple-de-pipeline-manifold-multi-modele">3.2 Exemple de pipeline manifold (multi-modèle) :<a class="headerlink" href="#32-exemple-de-pipeline-manifold-multi-modele" title="Permanent link">&para;</a></h4>
+<h4 id="32-pipeline-manifold-multi-modele">3.2 Pipeline manifold (multi-modèle) :<a class="headerlink" href="#32-pipeline-manifold-multi-modele" title="Permanent link">&para;</a></h4>
 <p>Un pipeline manifold permet de gérer plusieurs modèles d'IA en parallèle. Voici un exemple qui inclut plusieurs modèles d'OpenAI.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Generator</span><span class="p">,</span> <span class="n">Iterator</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -1018,46 +1018,48 @@ Pour qu'un pipeline soit fonctionnel, on doit avoir une classe valves. Le plus s
 <p>Cependant, la connexion n’est pas toujours aussi simple 😅. La documentation n’est pas encore optimale. Je vous conseille de bien explorer <strong>Pipelines</strong> sur le site et de comprendre comment l’interaction entre les deux services devrait se faire pour améliorer la communication.</p>
 <p>Parfois, des pipelines sont déjà disponibles et vous pouvez vous inspirer des exemples ici : <a href="https://github.com/open-webui/pipelines/tree/main/examples">Pipelines Exemples</a>. Cependant, l’intégration est une autre affaire. Après plusieurs essais, j’ai réussi à connecter les deux services en ajustant des variables clés comme <strong>REQUIREMENTS_PATH</strong>, <strong>PYTHONPATH</strong>, et d'autres, grâce à des volumes de copie pour les pipelines.</p>
 <h4 id="42-exemple-de-docker-composeyml">4.2. Exemple de <code>docker-compose.yml</code> :<a class="headerlink" href="#42-exemple-de-docker-composeyml" title="Permanent link">&para;</a></h4>
-<p>```ervices:
-  open-webui:
-    image: ghcr.io/open-webui/open-webui:main
-    container_name: open-webui
-    volumes:
-      - open-webui:/app/backend/data
-    ports:
-      - ${OPEN_WEBUI_PORT-3000}:8080
-    environment:
-      - WEBUI_SECRET_KEY=
-      - OPENAI_API_BASE_URL=http://pipelines:9099
-      - OPENAI_API_KEY=0p3n-w3bu!
-      - ENABLE_OLLAMA_API=false
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    restart: unless-stopped</p>
-<p>pipelines:
-    image: ghcr.io/open-webui/pipelines:main
-    container_name: pipelines
-    volumes:
-      - ./chat_pipelines/pipelines:/app/pipelines
-      - ./chat_pipelines/openwebui_utils:/app/openwebui_utils
-      - ./src/onepiece_bot:/app/onepiece_bot
-      - ./requirements.txt:/app/requirements_custom.txt
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    environment:
-      - OPENAI_API_KEY=<span PIPELINES_DIR="PIPELINES_DIR" class="arithmatex">\({OPENAI_API_KEY}
-      - PIPELINES_DIR=\)</span>
-      - RESET_PIPELINES_DIR=<span PIPELINES_REQUIREMENTS_PATH="PIPELINES_REQUIREMENTS_PATH" class="arithmatex">\({RESET_PIPELINES_DIR}
-      - PIPELINES_REQUIREMENTS_PATH=\)</span>
-      - PYTHONPATH=/app
-    restart: unless-stopped
-    ports:
-      - 9099:9099</p>
-<p>volumes:
-  open-webui:
-```</p>
-<p>Comme vous travaillez avec Docker, vous pouvez facilement inspecter ce qui se passe et vérifier si tout fonctionne correctement ou non. Le service UI (<strong>OpenWebUI</strong>) fonctionne généralement très bien ; cependant, il faut porter une attention particulière à <strong>Pipelines</strong>. Pour déboguer, vous pouvez exécuter une commande comme <code>docker ps</code> ou <code>docker logs pipelines</code>.</p>
-<p>Si vous utilisez Docker Desktop, vous devriez voir quelque chose de similaire à ceci, montrant que vos deux conteneurs sont en cours d'exécution :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">ervices</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">open-webui</span><span class="p">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/open-webui/open-webui:main</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">open-webui</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">open-webui:/app/backend/data</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${OPEN_WEBUI_PORT-3000}:8080</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WEBUI_SECRET_KEY=</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_BASE_URL=http://pipelines:9099</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_KEY=0p3n-w3bu!</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENABLE_OLLAMA_API=false</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nt">extra_hosts</span><span class="p">:</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host.docker.internal:host-gateway</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span><span class="nt">pipelines</span><span class="p">:</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/open-webui/pipelines:main</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pipelines</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./chat_pipelines/pipelines:/app/pipelines</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./chat_pipelines/openwebui_utils:/app/openwebui_utils</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./src/onepiece_bot:/app/onepiece_bot</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./requirements.txt:/app/requirements_custom.txt</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">    </span><span class="nt">extra_hosts</span><span class="p">:</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">host.docker.internal:host-gateway</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OPENAI_API_KEY=${OPENAI_API_KEY}</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PIPELINES_DIR=${PIPELINES_DIR}</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RESET_PIPELINES_DIR=${RESET_PIPELINES_DIR}</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PIPELINES_REQUIREMENTS_PATH=${PIPELINES_REQUIREMENTS_PATH}</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PYTHONPATH=/app</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9099:9099</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">  </span><span class="nt">open-webui</span><span class="p">:</span>
+</code></pre></div>
+<p>Comme vous travaillez avec Docker, vous pouvez facilement inspecter ce qui se passe et vérifier si tout fonctionne correctement ou non. Le service UI (<strong>OpenWebUI</strong>) fonctionne généralement très bien ; cependant, il faut porter une attention particulière à <strong>Pipelines</strong>. </p>
+<p>Pour déboguer, vous pouvez exécuter une commande comme <code>docker ps</code> ou <code>docker logs pipelines</code>. Si vous utilisez Docker Desktop, vous devriez voir quelque chose de similaire à ceci, montrant que vos deux conteneurs sont en cours d'exécution :</p>
 <p><a class="glightbox" href="../../../../openwebui_pipelines/docker_view.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../../openwebui_pipelines/docker_view.PNG" /></a></p>
 <p>Les logs sont disponibles en cliquant sur les noms de chaque service :</p>
 <p><a class="glightbox" href="../../../../openwebui_pipelines/docker_pipelines_log_if_setup_ok.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../../openwebui_pipelines/docker_pipelines_log_if_setup_ok.PNG" /></a></p>
