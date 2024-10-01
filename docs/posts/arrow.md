@@ -1,11 +1,10 @@
 ---
-date: 2024-21-08 
-authors:  
-    - ssawadogo  
-categories:  
-    - Processing  
+date: 2024-08-21
+authors:
+    - ssawadogo
+categories: 
+    - Processing
 ---
-
 
 # Apache Arrow pour l'optimisation du traitement des données
 
