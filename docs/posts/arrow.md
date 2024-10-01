@@ -6,7 +6,6 @@ categories:
     - Processing  
 ---
 
-
 # Apache Arrow pour l'optimisation du traitement des données
 
 La gestion des données en mémoire ressemble parfois à un tatonnement. Les  data engineers, scientists et analysts se retrouvent souvent à jongler entre différents formats de données, calculs intensifs et besoins de performance. Jusqu’à récemment, nous étions limités par des outils et formats conçus pour des volumes et des vitesses bien inférieurs à ceux d’aujourd'hui. C’est là qu’**Apache Arrow** entre en scène, tel un champion prêt à transformer ce marathon en un sprint maîtrisé.
@@ -31,7 +30,6 @@ Il existe deux façons principales de l’organiser en mémoire dans un logiciel
 
   ![Columnar](./arrows/columns.PNG)
 
----
 
 ### En pratique : stockage sur disque
 La manière dont ces formats sont implémentés peut avoir un impact majeur sur les performances d'analyse. Prenons l'exemple d'un data scientist travaillant sur de grands ensembles de données.
@@ -54,7 +52,6 @@ Les formats **columnar** sont optimisés pour les performances lors des analyses
 
 - **Feather** : Format simplifié pour les échanges rapides de données entre langages, comme Python et R. Il permet un accès extrêmement rapide et réduit le temps d'E/S grâce à des buffers efficaces.
 
----
 
 ## Backends Arrow vs NumPy Array
 
