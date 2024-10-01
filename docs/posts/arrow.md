@@ -1,5 +1,5 @@
 ---
-date: 2024-08-21
+date: 2024-09-21
 authors:
     - ssawadogo
 categories: 
@@ -95,10 +95,15 @@ Apache Arrow, quant à lui, a émergé comme un standard pour le traitement en m
 Pour illustrer les différences entre NumPy et Apache Arrow, générons des données similaires à celles que nous avons utilisées précédemment. 
 
 Imaginons que nous avons une colonne avec les chaînes suivantes :
+
 - `"numpy"`
+
 - `"data"`
+
 - `"analysis"`
+
 - `null`
+
 - `"performance"`
 
 ### NumPy Backend
