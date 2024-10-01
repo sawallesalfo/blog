@@ -9,8 +9,7 @@ categories:
 # Apache Arrow pour l'optimisation du traitement des données
 
 La gestion des données en mémoire ressemble parfois à un tatonnement. Les  data engineers, scientists et analysts se retrouvent souvent à jongler entre différents formats de données, calculs intensifs et besoins de performance. Jusqu’à récemment, nous étions limités par des outils et formats conçus pour des volumes et des vitesses bien inférieurs à ceux d’aujourd'hui. C’est là qu’**Apache Arrow** entre en scène, tel un champion prêt à transformer ce marathon en un sprint maîtrisé.
-Dans ce billet de blog, on ne va parler de données, comment python gère les dataframes en backend.
-
+Dans ce billet de blog, on ne va parler que de données. Comment python gère les dataframes en backend?
 <!-- more -->
 
 ## Représentation tabulaire des données
