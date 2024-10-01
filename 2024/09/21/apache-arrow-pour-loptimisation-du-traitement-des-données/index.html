@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../18/faire-son-blog-avec-mkdocs-et-github-actions/">
+        <link rel="prev" href="../../14/faire-tourner-son-chatbot-avec-une-interface-%C3%A9quivalente-%C3%A0-chatgpt-gr%C3%A2ce-%C3%A0-openwebui/">
       
-      
-        <link rel="next" href="../../24/all-things-start-with-git/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -736,7 +734,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2024-08-21 00:00:00" class="md-ellipsis">August 21, 2024</time>
+                        <time datetime="2024-09-21 00:00:00" class="md-ellipsis">September 21, 2024</time>
                       </div>
                     </li>
                     
@@ -842,12 +840,22 @@ Dans ce billet de blog, on ne va parler de données, comment python gère les da
 <p>Apache Arrow, quant à lui, a émergé comme un standard pour le traitement en mémoire. Il permet de centraliser les données, éliminant la nécessité de conversions coûteuses entre différents formats de stockage. Cela améliore considérablement les performances des analyses.</p>
 <h2 id="fonctionnement-des-backends-arrow-et-numpy">Fonctionnement des backends Arrow et NumPy<a class="headerlink" href="#fonctionnement-des-backends-arrow-et-numpy" title="Permanent link">&para;</a></h2>
 <p>Pour illustrer les différences entre NumPy et Apache Arrow, générons des données similaires à celles que nous avons utilisées précédemment. </p>
-<p>Imaginons que nous avons une colonne avec les chaînes suivantes :
-- <code>"numpy"</code>
-- <code>"data"</code>
-- <code>"analysis"</code>
-- <code>null</code>
-- <code>"performance"</code></p>
+<p>Imaginons que nous avons une colonne avec les chaînes suivantes :</p>
+<ul>
+<li><code>"numpy"</code></li>
+</ul>
+<ul>
+<li><code>"data"</code></li>
+</ul>
+<ul>
+<li><code>"analysis"</code></li>
+</ul>
+<ul>
+<li><code>null</code></li>
+</ul>
+<ul>
+<li><code>"performance"</code></li>
+</ul>
 <h3 id="numpy-backend">NumPy Backend<a class="headerlink" href="#numpy-backend" title="Permanent link">&para;</a></h3>
 <p>Avec NumPy, on stockerait ces chaînes en utilisant un tableau de taille fixe, souvent moins optimal pour les chaînes de caractères.</p>
 <ul>
