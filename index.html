@@ -564,6 +564,149 @@
     <div class="md-post__meta md-meta">
       <ul class="md-meta__list">
         <li class="md-meta__item">
+          <time datetime="2024-09-28 00:00:00">September 28, 2024</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/processing/" class="md-meta__link">Processing</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              8 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="faites-du-dask-plutot-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donnees"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/">Faites du Dask plutôt que du Spark si vous avez juste de grosses tables de données</a></h2>
+<p>Dans le monde actuel des données, traiter de grands volumes nécessite des solutions performantes et évolutives. Le calcul distribué permet de gérer efficacement ces données en les répartissant sur plusieurs machines. Cependant, toutes les entreprises n'ont pas besoin d'une infrastructure lourde et coûteuse telle qu'un cluster Spark. <strong>Dask</strong>, un framework Python, est une alternative légère et flexible, particulièrement adaptée aux environnements déjà basés sur Python.</p>
+<p>Ce billet de blog explore pourquoi Dask est une excellente option pour les data scientists qui manipulent de gros volumes de données, sans pour autant entrer dans la catégorie du Big Data.</p>
+<h4 id="prerequis"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#prerequis">Prérequis</a></h4>
+<p>Si vous ne les avez pas déjà installés, vous aurez besoin des paquets suivants :
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>dask<span class="o">[</span>distributed<span class="o">]</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;bokeh&gt;=3.1.0&quot;</span><span class="w">  </span><span class="c1"># Pour visualiser le tableau de bord du cluster</span>
+</code></pre></div></p>
+<h4 id="1-donnees-volumineuses-et-le-besoin-de-calcul-distribue"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#1-donnees-volumineuses-et-le-besoin-de-calcul-distribue">1. Données volumineuses et le besoin de calcul distribué</a></h4>
+<p>Lorsque le volume de données devient trop important pour être traité en mémoire sur une seule machine, les performances diminuent rapidement. Des tâches courantes comme l'entraînement de modèles de machine learning, l'analyse de données, ou encore la création de visualisations interactives peuvent être ralenties. À ce stade, le besoin de <strong>calcul distribué</strong> devient critique. Le principe est simple : répartir la charge de travail sur plusieurs machines pour paralléliser les calculs, et ainsi réduire considérablement le temps de traitement. Lorsqu'on ne possède pas de serveur, il s'agit de paralléliser sur le nombre de cœurs du PC.</p>
+<h4 id="2-deux-frameworks-de-calcul-distribue-spark-et-dask"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#2-deux-frameworks-de-calcul-distribue-spark-et-dask">2. Deux frameworks de calcul distribué : Spark et Dask</a></h4>
+<p>Pour répondre à ces défis, deux frameworks majeurs sont souvent utilisés : <strong>Spark</strong> et <strong>Dask</strong>. Alors que Spark a gagné en popularité dans les infrastructures Big Data, Dask est particulièrement apprécié dans les environnements Python. Voici un tableau comparatif pour mieux comprendre leurs différences :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>| <span class="gs">**Caractéristiques**</span>         | <span class="gs">**Spark**</span>                           | <span class="gs">**Dask**</span>                              |
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>|------------------------------|-------------------------------------|---------------------------------------|
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>| <span class="gs">**Langage de programmation**</span>  | Majoritairement <span class="gs">**Scala**</span> et <span class="gs">**Java**</span> | <span class="gs">**Python**</span>                            |
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>| <span class="gs">**API de haut niveau**</span>        | DataFrame API                       | Dask DataFrame                        |
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>| <span class="gs">**Scalabilité**</span>               | Hautement scalable, conçu pour le <span class="gs">**Big Data**</span> | Scalabilité adaptée aux workflows Python |
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>| <span class="gs">**Type de cluster**</span>           | Clusters distribués (Hadoop, Kubernetes) | Clusters distribués ou local sur une machine |
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>| <span class="gs">**Écosystème**</span>                | Intégré avec des outils Big Data (HDFS, Hive) | Intégré avec <span class="gs">**NumPy**</span>, <span class="gs">**Pandas**</span>, <span class="gs">**Scikit-learn**</span> |
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>| <span class="gs">**Simplicité d&#39;installation**</span> | Plus complexe, nécessite souvent un cluster Hadoop | Plus simple, peut être exécuté localement |
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>| <span class="gs">**Machine Learning**</span>          | Bibliothèque intégrée (<span class="gs">**MLlib**</span>)   | Intégré avec <span class="gs">**Scikit-learn**</span>, <span class="gs">**XGBoost**</span>, etc. |
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>| <span class="gs">**Taille des données**</span>        | Conçu pour des pétaoctets           | Convient pour des volumes moyens à grands |
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>| <span class="gs">**Maturité**</span>                  | Plus mature, utilisé à grande échelle | Moins mature, mais en pleine expansion |
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>| <span class="gs">**Coût**</span>                  | Très cher à mettre en place un cluster spark | Pas besoin de cluster dédié pour le faire tourner efficacement |
+</code></pre></div>
+<h4 id="3-attention-tout-nest-pas-du-big-data"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#3-attention-tout-nest-pas-du-big-data">3. Attention, tout n'est pas du Big Data</a></h4>
+<p>Il ne faut pas confondre données volumineuses et <strong>Big Data</strong>. Beaucoup d'entreprises ont de gros ensembles de données, mais cela ne suffit pas pour dire qu'elles font du Big Data. Pour mériter ce titre, il faut répondre aux critères des <strong>5V</strong> :</p>
+<ul>
+<li><strong>Volume</strong> : Une quantité massive de données.</li>
+<li><strong>Vélocité</strong> : La vitesse à laquelle ces données sont générées.</li>
+<li><strong>Variété</strong> : Différents types de données (structurées, non structurées, semi-structurées).</li>
+<li><strong>Véracité</strong> : La qualité et la fiabilité des données.</li>
+<li><strong>Valeur</strong> : Les insights et bénéfices que l'on peut tirer de ces données.</li>
+</ul>
+<p>Les géants comme <strong>Google</strong>, <strong>Amazon</strong>, et <strong>Netflix</strong> opèrent véritablement dans le domaine du Big Data. Ils gèrent des volumes immenses, des flux continus de données, et disposent d'une infrastructure optimisée pour tout ce traitement de masse. Cependant, si une entreprise a quelques dizaines de millions de lignes avec une vingtaine de colonnes, elle n’a pas nécessairement besoin d’un cluster Spark. Souvent, une solution comme Dask, plus légère et flexible, est beaucoup mieux adaptée à ses besoins.</p>
+<h4 id="4-le-cluster-dask"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#4-le-cluster-dask">4. Le Cluster Dask</a></h4>
+<p>Dask est un outil hyper flexible qui s'adapte aussi bien sur ta machine locale que sur un cluster distribué. Cela signifie que tu peux commencer avec une configuration légère et évoluer au fur et à mesure que tes besoins augmentent. Le noyau de sa magie réside dans le <strong>Dask Scheduler</strong>, qui gère l’exécution des calculs de manière dynamique, même sur plusieurs machines.</p>
+<p>Les clusters Dask sont faciles à déployer sur des services comme Kubernetes, AWS, ou même avec un simple SSH sur des machines distantes. Comparé à des solutions plus lourdes comme Spark, cette flexibilité aide à réduire les coûts d’infrastructure. Dans mon projet, je l'exécute en local, mais ce n’est pas une obligation. Cela permet de suivre de manière efficace les ressources utilisées.</p>
+<p>Lorsque tu crées ton client Dask, un lien vers le tableau de bord s'affiche. Je te conseille de le garder ouvert d’un côté de ton écran pendant que tu travailles sur ton notebook, même si c’est parfois un peu compliqué de jongler avec les fenêtres. C’est extrêmement utile lorsque tu commences à apprendre à utiliser Dask.</p>
+<p>Voici comment cela fonctionne en local :
+<img alt="alt text" src="dask_spark/introduction_dask_client.PNG" /></p>
+<p>On peut voir comment le client est configuré et où le dashboard tourne. Je recommande d’y jeter un œil pour voir comment les workers exécutent ton code en coulisses.
+<img alt="alt text" src="dask_spark/client_dashboard.PNG" /></p>
+<p>Encore une fois, ce n’est pas obligatoire, mais c’est surtout pratique pour suivre les tâches, particulièrement lorsqu'on veut monitorer des processus ETL.</p>
+<h4 id="5-composant-dataframes-dask"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#5-composant-dataframes-dask">5. Composant DataFrames Dask</a></h4>
+<p>Le <strong>Dask DataFrame</strong> est la version parallèle du célèbre <strong>Pandas DataFrame</strong>. Donc, si tu maîtrises déjà Pandas, tu n'auras besoin que de petits ajustements pour te mettre à Dask. Ce qui est cool, c’est qu’il est conçu pour gérer des datasets plus gros que ce que Pandas peut traiter en mémoire, tout en gardant une interface familière.</p>
+<p>Pandas charge tout en mémoire, ce qui n’est pas toujours idéal. Dask, en revanche, divise tes données en partitions, traitées en parallèle. Résultat, tu peux travailler avec des datasets plus volumineux que ta RAM sans trop de stress, tout en continuant d'utiliser des opérations classiques comme <strong>groupby</strong>, <strong>merge</strong>, ou <strong>apply</strong>. Un DataFrame Dask est essentiellement un ensemble de DataFrames Pandas.</p>
+<p><img alt="alt text" src="dask_spark/dask_dataframe.jpg" /></p>
+<p><em>Une Petite Histoire...</em></p>
+<p>Pour l'anecdote, une amie statisticienne se battait avec un fichier CSV de 7 gigas sur son PC avec 64 gigas de RAM. Elle souhaitait préparer ses données pour de la modélisation statistique, mais le traitement prenait 4 heures. Avec Dask, nous avons pu réduire ce temps à... 19 minutes ! Elle était abasourdie. La clé était d'utiliser Dask pour son ETL, puis de sauvegarder sa table intermédiaire en format Parquet. Avec suffisamment de RAM et de cœurs, nous avons pu exécuter tout cela directement sur son PC.</p>
+<p>Regarde mon code ci-dessous :
+<img alt="alt text" src="dask_spark/introduction_dask_dataframe.PNG" /></p>
+<p>Comme tu vois, c’est du Pandas classique, non ? La seule différence, c’est que les résultats ne s'affichent qu'après avoir appelé la méthode <code>.compute()</code>. Pourquoi ? Parce que Dask fonctionne en mode "lazy execution". Il prépare toutes les opérations, et c’est seulement quand tu appelles <code>.compute()</code> qu’il exécute tout d'un coup, optimisant ainsi le processus.</p>
+<p>Ce calcul était dix fois plus rapide qu’avec du Pandas classique. Impressionnant, non ? Si tu veux en savoir plus, jette un œil ici : <a href="https://examples.dask.org/dataframe.html">Dask DataFrame Examples</a>.</p>
+<h4 id="6-dask-et-lapprentissage-automatique-flexibilite-et-integration"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#6-dask-et-lapprentissage-automatique-flexibilite-et-integration">6. Dask et l'Apprentissage Automatique : Flexibilité et Intégration</a></h4>
+<p>Dask ne propose pas de bibliothèque intégrée comme <strong>MLlib</strong> dans Spark, mais il s’intègre parfaitement avec les bibliothèques populaires de machine learning de l’écosystème Python, telles que <strong>Scikit-learn</strong>, <strong>XGBoost</strong>, et <strong>TensorFlow</strong>. Grâce au module <strong>Dask-ML</strong>, tu peux étendre l’entraînement de modèles sur plusieurs machines, ce qui facilite le traitement de datasets volumineux sans forcément recourir à des solutions lourdes.</p>
+<p>Dans un environnement classique, <strong>Scikit-learn</strong> utilise <code>joblib</code> pour le parallélisme sur une seule machine. Cela permet d'entraîner la plupart des estimateurs (ceux qui acceptent un paramètre <code>n_jobs</code>) en utilisant tous les cœurs de ton ordinateur portable ou de ta station de travail. Mais avec Dask, tu peux aller plus loin.</p>
+<p>Dask te permet de paralléliser ton code Scikit-learn sur un cluster sans avoir à modifier significativement ton code existant. Par exemple, des fonctions comme <strong>GridSearchCV</strong> ou <strong>RandomizedSearchCV</strong>, très utilisées pour la recherche d’hyperparamètres, peuvent être parallélisées avec Dask. Résultat : tu gagnes en efficacité tout en gardant le même code que celui que tu exécuterais localement.</p>
+<p>Voici un exemple avec <strong>XGBoost</strong> et Dask :
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">dask_xgboost</span> <span class="k">as</span> <span class="nn">dxgb</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">dask.dataframe</span> <span class="k">as</span> <span class="nn">dd</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span> <span class="nn">dask_ml.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Définir les paramètres</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;objective&#39;</span><span class="p">:</span> <span class="s1">&#39;binary:logistic&#39;</span><span class="p">,</span> <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> 
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>          <span class="s1">&#39;eta&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span> <span class="s1">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;min_child_weight&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">}</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Charger les données</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">df</span> <span class="o">=</span> <span class="n">dd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data*.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">bst</span> <span class="o">=</span> <span class="n">dxgb</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">num_boost_round</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="n">y_hat</span> <span class="o">=</span> <span class="n">dxgb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">bst</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">persist</span><span class="p">()</span>
+</code></pre></div></p>
+<p>Ce qui est intéressant, c’est que tout ce code peut tourner sur un cluster distribué, ce qui booste la vitesse et la performance lorsque tu traites de gros datasets. Plus besoin de se battre contre les limites d'une seule machine.</p>
+<p>Dask-ML offre aussi des extensions pour distribuer les modèles sur plusieurs machines. Que tu utilises <strong>Scikit-learn</strong>, <strong>TensorFlow</strong>, ou <strong>XGBoost</strong>, tu peux profiter de cette intégration fluide pour accélérer ton travail de data science. La flexibilité est vraiment l’atout majeur de Dask, surtout si tu évolues déjà dans un environnement Python.</p>
+<p>Pour plus de détails et d'exemples sur l'utilisation de Dask avec le machine learning, consulte le guide officiel : <a href="https://examples.dask.org/machine-learning/xgboost.html">Dask XGBoost Example</a>.</p>
+<h5 id="autres-composantes-de-dask"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#autres-composantes-de-dask">Autres composantes de Dask</a></h5>
+<p>Dask est composé de plusieurs API :</p>
+<ul>
+<li><strong>Arrays</strong> (s’appuie sur NumPy)</li>
+<li><strong>DataFrames</strong> (repose sur Pandas)</li>
+<li><strong>Bag</strong> (suit map/filter/groupby/reduce)</li>
+<li><strong>Dask-ML</strong> (fonctionne avec Scikit-Learn)</li>
+<li><strong>Delayed</strong> (couvre de manière générale Python)</li>
+</ul>
+<p>Puisque ce sont les API les plus probables d’être utilisées pour la data science, j'ai décidé de parler de Dask.dataframe et de Dask-ML. Pour plus de références, consultez les liens suivants :</p>
+<h4 id="conclusion"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#conclusion">Conclusion</a></h4>
+<p>En conclusion, <strong>Dask</strong> est un excellent choix pour les entreprises souhaitant intégrer le calcul distribué dans leur workflow de data science, tout en restant dans un écosystème Python. Pour celles qui ne font pas du véritable Big Data et qui n'ont pas besoin de l'infrastructure massive d'un cluster Spark, Dask représente une solution plus légère, facile à déployer, et suffisamment puissante pour traiter de grandes quantités de données dans un environnement distribué.</p>
+<h4 id="references"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/#references">Références</a></h4>
+<ul>
+<li><a href="https://tutorial.dask.org/00_overview.html">Dask Overview</a></li>
+<li><a href="https://natsunami.github.io/website/2020-11-19-Parallel-computing-with-Dask/">Parallel Computing with Dask</a></li>
+<li><a href="https://examples.dask.org/machine-learning/xgboost.html">Dask XGBoost Example</a></li>
+<li><a href="https://examples.dask.org/dataframes/03-from-pandas-to-dask.html#Dask-Dataframe-vs-Pandas-Dataframe">From Pandas to Dask</a></li>
+</ul>
+    <nav class="md-post__action">
+      <a href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/">
+        Continue reading
+      </a>
+    </nav>
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+      <nav class="md-post__authors md-typeset">
+        
+          <span class="md-author">
+            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+          </span>
+        
+      </nav>
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
           <time datetime="2024-09-21 00:00:00">September 21, 2024</time></li>
         
           <li class="md-meta__item">
