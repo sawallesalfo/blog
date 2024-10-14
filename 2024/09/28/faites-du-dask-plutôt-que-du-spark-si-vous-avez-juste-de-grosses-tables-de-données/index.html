@@ -598,21 +598,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="6. Dask et l'Apprentissage Automatique : Flexibilité et Intégration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#autres-composantes-de-dask" class="md-nav__link">
-    <span class="md-ellipsis">
-      Autres composantes de Dask
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -732,7 +717,7 @@
 
 
 <h1 id="faites-du-dask-plutot-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donnees">Faites du Dask plutôt que du Spark si vous avez juste de grosses tables de données<a class="headerlink" href="#faites-du-dask-plutot-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donnees" title="Permanent link">&para;</a></h1>
-<p>Dans le monde actuel des données, traiter de grands volumes nécessite des solutions performantes et évolutives. Le calcul distribué permet de gérer efficacement ces données en les répartissant sur plusieurs machines. Cependant, toutes les entreprises n'ont pas besoin d'une infrastructure lourde et coûteuse telle qu'un cluster Spark. <strong>Dask</strong>, un framework Python, est une alternative légère et flexible, particulièrement adaptée aux environnements déjà basés sur Python.</p>
+<p>Dans le monde actuel des données, traiter de grands volumes nécessite des solutions performantes et évolutives. Le calcul distribué permet de gérer efficacement ces données en les répartissant sur plusieurs machines/cores/workers (selon votre cas). Cependant, toutes les entreprises n'ont pas besoin d'une infrastructure lourde et coûteuse telle qu'un cluster Spark. <strong>Dask</strong>, un framework Python, est une alternative légère et flexible, particulièrement adaptée aux environnements déjà basés sur Python.</p>
 <!-- more -->
 
 <p>Ce billet de blog explore pourquoi Dask est une excellente option pour les data scientists qui manipulent de gros volumes de données, sans pour autant entrer dans la catégorie du Big Data.</p>
@@ -767,7 +752,17 @@
 <li><strong>Véracité</strong> : La qualité et la fiabilité des données.</li>
 <li><strong>Valeur</strong> : Les insights et bénéfices que l'on peut tirer de ces données.</li>
 </ul>
-<p>Les géants comme <strong>Google</strong>, <strong>Amazon</strong>, et <strong>Netflix</strong> opèrent véritablement dans le domaine du Big Data. Ils gèrent des volumes immenses, des flux continus de données, et disposent d'une infrastructure optimisée pour tout ce traitement de masse. Cependant, si une entreprise a quelques dizaines de millions de lignes avec une vingtaine de colonnes, elle n’a pas nécessairement besoin d’un cluster Spark. Souvent, une solution comme Dask, plus légère et flexible, est beaucoup mieux adaptée à ses besoins.</p>
+<p>Les géants comme <strong>Google</strong>, <strong>Amazon</strong>, et <strong>Netflix</strong> opèrent véritablement dans le domaine du Big Data. Ils gèrent des volumes immenses, des flux continus de données, et disposent d'une infrastructure optimisée pour tout ce traitement de masse. Cependant, si une entreprise a quelques dizaines de millions de lignes avec une vingtaine de colonnes, elle n’a pas nécessairement besoin d’un cluster Spark. Souvent, une solution comme Dask, plus légère et flexible, est beaucoup mieux adaptée à ses besoins.
+Vous avez compris déjà. Dans ce billet de blog, je ne veux pas vous convaincre d'utiliser Spark. Je vous presenterai plutôt Dask.</p>
+<p>Dask est composé de plusieurs API :</p>
+<ul>
+<li><strong>Arrays</strong> (s’appuie sur NumPy)</li>
+<li><strong>DataFrames</strong> (repose sur Pandas)</li>
+<li><strong>Bag</strong> (suit map/filter/groupby/reduce)</li>
+<li><strong>Dask-ML</strong> (fonctionne avec Scikit-Learn)</li>
+<li><strong>Delayed</strong> (couvre de manière générale Python)</li>
+</ul>
+<p>Puisque nous sommes en data science, on parlera de dataframe et de Dask-ML. Pour plus de références, consultez les liens dans les références.</p>
 <h3 id="4-le-cluster-dask">4. Le Cluster Dask<a class="headerlink" href="#4-le-cluster-dask" title="Permanent link">&para;</a></h3>
 <p>Dask est un outil hyper flexible qui s'adapte aussi bien sur ta machine locale que sur un cluster distribué. Cela signifie que tu peux commencer avec une configuration légère et évoluer au fur et à mesure que tes besoins augmentent. Le noyau de sa magie réside dans le <strong>Dask Scheduler</strong>, qui gère l’exécution des calculs de manière dynamique, même sur plusieurs machines.</p>
 <p>Les clusters Dask sont faciles à déployer sur des services comme Kubernetes, AWS, ou même avec un simple SSH sur des machines distantes. Comparé à des solutions plus lourdes comme Spark, cette flexibilité aide à réduire les coûts d’infrastructure. Dans mon projet, je l'exécute en local, mais ce n’est pas une obligation. Cela permet de suivre de manière efficace les ressources utilisées.</p>
@@ -815,16 +810,6 @@
 <p>Ce qui est intéressant, c’est que tout ce code peut tourner sur un cluster distribué, ce qui booste la vitesse et la performance lorsque tu traites de gros datasets. Plus besoin de se battre contre les limites d'une seule machine.</p>
 <p>Dask-ML offre aussi des extensions pour distribuer les modèles sur plusieurs machines. Que tu utilises <strong>Scikit-learn</strong>, <strong>TensorFlow</strong>, ou <strong>XGBoost</strong>, tu peux profiter de cette intégration fluide pour accélérer ton travail de data science. La flexibilité est vraiment l’atout majeur de Dask, surtout si tu évolues déjà dans un environnement Python.</p>
 <p>Pour plus de détails et d'exemples sur l'utilisation de Dask avec le machine learning, consulte le guide officiel : <a href="https://examples.dask.org/machine-learning/xgboost.html">Dask XGBoost Example</a>.</p>
-<h4 id="autres-composantes-de-dask">Autres composantes de Dask<a class="headerlink" href="#autres-composantes-de-dask" title="Permanent link">&para;</a></h4>
-<p>Dask est composé de plusieurs API :</p>
-<ul>
-<li><strong>Arrays</strong> (s’appuie sur NumPy)</li>
-<li><strong>DataFrames</strong> (repose sur Pandas)</li>
-<li><strong>Bag</strong> (suit map/filter/groupby/reduce)</li>
-<li><strong>Dask-ML</strong> (fonctionne avec Scikit-Learn)</li>
-<li><strong>Delayed</strong> (couvre de manière générale Python)</li>
-</ul>
-<p>Puisque ce sont les API les plus probables d’être utilisées pour la data science, j'ai décidé de parler de Dask.dataframe et de Dask-ML. Pour plus de références, consultez les liens suivants :</p>
 <h3 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h3>
 <p>En conclusion, <strong>Dask</strong> est un excellent choix pour les entreprises souhaitant intégrer le calcul distribué dans leur workflow de data science, tout en restant dans un écosystème Python. Pour celles qui ne font pas du véritable Big Data et qui n'ont pas besoin de l'infrastructure massive d'un cluster Spark, Dask représente une solution plus légère, facile à déployer, et suffisamment puissante pour traiter de grandes quantités de données dans un environnement distribué.</p>
 <h3 id="references">Références<a class="headerlink" href="#references" title="Permanent link">&para;</a></h3>
@@ -854,7 +839,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-14</span>
   </span>
 
     
