@@ -10,7 +10,7 @@ categories:
 # Faites du Dask plutôt que du Spark si vous avez juste de grosses tables de données
 
 
-Dans le monde actuel des données, traiter de grands volumes nécessite des solutions performantes et évolutives. Le calcul distribué permet de gérer efficacement ces données en les répartissant sur plusieurs machines. Cependant, toutes les entreprises n'ont pas besoin d'une infrastructure lourde et coûteuse telle qu'un cluster Spark. **Dask**, un framework Python, est une alternative légère et flexible, particulièrement adaptée aux environnements déjà basés sur Python.
+Dans le monde actuel des données, traiter de grands volumes nécessite des solutions performantes et évolutives. Le calcul distribué permet de gérer efficacement ces données en les répartissant sur plusieurs machines/cores/workers (selon votre cas). Cependant, toutes les entreprises n'ont pas besoin d'une infrastructure lourde et coûteuse telle qu'un cluster Spark. **Dask**, un framework Python, est une alternative légère et flexible, particulièrement adaptée aux environnements déjà basés sur Python.
 
 <!-- more -->
 
