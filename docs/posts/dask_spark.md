@@ -58,6 +58,17 @@ Il ne faut pas confondre données volumineuses et **Big Data**. Beaucoup d'entre
 - **Valeur** : Les insights et bénéfices que l'on peut tirer de ces données.
 
 Les géants comme **Google**, **Amazon**, et **Netflix** opèrent véritablement dans le domaine du Big Data. Ils gèrent des volumes immenses, des flux continus de données, et disposent d'une infrastructure optimisée pour tout ce traitement de masse. Cependant, si une entreprise a quelques dizaines de millions de lignes avec une vingtaine de colonnes, elle n’a pas nécessairement besoin d’un cluster Spark. Souvent, une solution comme Dask, plus légère et flexible, est beaucoup mieux adaptée à ses besoins.
+Vous avez compris déjà. Dans ce billet de blog, je ne veux pas vous convaincre d'utiliser Spark. Je vous presenterai plutôt Dask.
+
+Dask est composé de plusieurs API :
+
+- **Arrays** (s’appuie sur NumPy)
+- **DataFrames** (repose sur Pandas)
+- **Bag** (suit map/filter/groupby/reduce)
+- **Dask-ML** (fonctionne avec Scikit-Learn)
+- **Delayed** (couvre de manière générale Python)
+
+Puisque nous sommes en data science, on parlera de dataframe et de Dask-ML. Pour plus de références, consultez les liens dans les références.
 
 ### 4. Le Cluster Dask
 
@@ -131,16 +142,7 @@ Dask-ML offre aussi des extensions pour distribuer les modèles sur plusieurs ma
 
 Pour plus de détails et d'exemples sur l'utilisation de Dask avec le machine learning, consulte le guide officiel : [Dask XGBoost Example](https://examples.dask.org/machine-learning/xgboost.html).
 
-#### Autres composantes de Dask
-Dask est composé de plusieurs API :
 
-- **Arrays** (s’appuie sur NumPy)
-- **DataFrames** (repose sur Pandas)
-- **Bag** (suit map/filter/groupby/reduce)
-- **Dask-ML** (fonctionne avec Scikit-Learn)
-- **Delayed** (couvre de manière générale Python)
-
-Puisque ce sont les API les plus probables d’être utilisées pour la data science, j'ai décidé de parler de Dask.dataframe et de Dask-ML. Pour plus de références, consultez les liens suivants :
 
 ### Conclusion
 
