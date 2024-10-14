@@ -31,7 +31,6 @@ Lorsque le volume de données devient trop important pour être traité en mémo
 
 Pour répondre à ces défis, deux frameworks majeurs sont souvent utilisés : **Spark** et **Dask**. Alors que Spark a gagné en popularité dans les infrastructures Big Data, Dask est particulièrement apprécié dans les environnements Python. Voici un tableau comparatif pour mieux comprendre leurs différences :
 
-```markdown
 | **Caractéristiques**         | **Spark**                           | **Dask**                              |
 |------------------------------|-------------------------------------|---------------------------------------|
 | **Langage de programmation**  | Majoritairement **Scala** et **Java** | **Python**                            |
@@ -45,7 +44,6 @@ Pour répondre à ces défis, deux frameworks majeurs sont souvent utilisés : *
 | **Maturité**                  | Plus mature, utilisé à grande échelle | Moins mature, mais en pleine expansion |
 | **Coût**                  | Très cher à mettre en place un cluster spark | Pas besoin de cluster dédié pour le faire tourner efficacement |
 
-```
 
 ### 3. Attention, tout n'est pas du Big Data
 
