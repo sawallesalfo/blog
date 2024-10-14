@@ -58,9 +58,8 @@ Il ne faut pas confondre données volumineuses et **Big Data**. Beaucoup d'entre
 - **Valeur** : Les insights et bénéfices que l'on peut tirer de ces données.
 
 Les géants comme **Google**, **Amazon**, et **Netflix** opèrent véritablement dans le domaine du Big Data. Ils gèrent des volumes immenses, des flux continus de données, et disposent d'une infrastructure optimisée pour tout ce traitement de masse. Cependant, si une entreprise a quelques dizaines de millions de lignes avec une vingtaine de colonnes, elle n’a pas nécessairement besoin d’un cluster Spark. Souvent, une solution comme Dask, plus légère et flexible, est beaucoup mieux adaptée à ses besoins.
-Vous avez compris déjà. Dans ce billet de blog, je ne veux pas vous convaincre d'utiliser Spark. Je vous presenterai plutôt Dask.
 
-Dask est composé de plusieurs API :
+Vous avez compris déjà. Dans ce billet de blog, je ne veux pas vous convaincre d'utiliser Spark. Je vous presenterai plutôt Dask. Ce dernier est composé de plusieurs API :
 
 - **Arrays** (s’appuie sur NumPy)
 - **DataFrames** (repose sur Pandas)
@@ -119,11 +118,9 @@ import dask_xgboost as dxgb
 import dask.dataframe as dd
 from dask_ml.model_selection import train_test_split
 
-# Définir les paramètres
 params = {'objective': 'binary:logistic', 'max_depth': 4, 
           'eta': 0.01, 'subsample': 0.5, 'min_child_weight': 0.5}
 
-# Charger les données
 df = dd.read_csv('data*.csv')
 
 X = df.drop('target', axis=1)
