@@ -592,9 +592,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-dask-et-lapprentissage-automatique-flexibilite-et-integration" class="md-nav__link">
+  <a href="#6-composant-dask-ml" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Dask et l'Apprentissage Automatique : Flexibilité et Intégration
+      6. Composant Dask-ML
     </span>
   </a>
   
@@ -782,7 +782,7 @@ Vous avez compris déjà. Dans ce billet de blog, je ne veux pas vous convaincre
 <a class="glightbox" href="../../../../dask_spark/introduction_dask_dataframe.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../dask_spark/introduction_dask_dataframe.PNG" /></a></p>
 <p>Comme tu vois, c’est du Pandas classique, non ? La seule différence, c’est que les résultats ne s'affichent qu'après avoir appelé la méthode <code>.compute()</code>. Pourquoi ? Parce que Dask fonctionne en mode "lazy execution". Il prépare toutes les opérations, et c’est seulement quand tu appelles <code>.compute()</code> qu’il exécute tout d'un coup, optimisant ainsi le processus.</p>
 <p>Ce calcul était dix fois plus rapide qu’avec du Pandas classique. Impressionnant, non ? Si tu veux en savoir plus, jette un œil ici : <a href="https://examples.dask.org/dataframe.html">Dask DataFrame Examples</a>.</p>
-<h3 id="6-dask-et-lapprentissage-automatique-flexibilite-et-integration">6. Dask et l'Apprentissage Automatique : Flexibilité et Intégration<a class="headerlink" href="#6-dask-et-lapprentissage-automatique-flexibilite-et-integration" title="Permanent link">&para;</a></h3>
+<h3 id="6-composant-dask-ml">6. Composant Dask-ML<a class="headerlink" href="#6-composant-dask-ml" title="Permanent link">&para;</a></h3>
 <p>Dask ne propose pas de bibliothèque intégrée comme <strong>MLlib</strong> dans Spark, mais il s’intègre parfaitement avec les bibliothèques populaires de machine learning de l’écosystème Python, telles que <strong>Scikit-learn</strong>, <strong>XGBoost</strong>, et <strong>TensorFlow</strong>. Grâce au module <strong>Dask-ML</strong>, tu peux étendre l’entraînement de modèles sur plusieurs machines, ce qui facilite le traitement de datasets volumineux sans forcément recourir à des solutions lourdes.</p>
 <p>Dans un environnement classique, <strong>Scikit-learn</strong> utilise <code>joblib</code> pour le parallélisme sur une seule machine. Cela permet d'entraîner la plupart des estimateurs (ceux qui acceptent un paramètre <code>n_jobs</code>) en utilisant tous les cœurs de ton ordinateur portable ou de ta station de travail. Mais avec Dask, tu peux aller plus loin.</p>
 <p>Dask te permet de paralléliser ton code Scikit-learn sur un cluster sans avoir à modifier significativement ton code existant. Par exemple, des fonctions comme <strong>GridSearchCV</strong> ou <strong>RandomizedSearchCV</strong>, très utilisées pour la recherche d’hyperparamètres, peuvent être parallélisées avec Dask. Résultat : tu gagnes en efficacité tout en gardant le même code que celui que tu exécuterais localement.</p>
