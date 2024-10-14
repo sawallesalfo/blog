@@ -105,7 +105,7 @@ Comme tu vois, c’est du Pandas classique, non ? La seule différence, c’est 
 
 Ce calcul était dix fois plus rapide qu’avec du Pandas classique. Impressionnant, non ? Si tu veux en savoir plus, jette un œil ici : [Dask DataFrame Examples](https://examples.dask.org/dataframe.html).
 
-### 6. Dask et l'Apprentissage Automatique : Flexibilité et Intégration
+### 6. Composant Dask-ML
 
 Dask ne propose pas de bibliothèque intégrée comme **MLlib** dans Spark, mais il s’intègre parfaitement avec les bibliothèques populaires de machine learning de l’écosystème Python, telles que **Scikit-learn**, **XGBoost**, et **TensorFlow**. Grâce au module **Dask-ML**, tu peux étendre l’entraînement de modèles sur plusieurs machines, ce qui facilite le traitement de datasets volumineux sans forcément recourir à des solutions lourdes.
 
