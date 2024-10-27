@@ -161,17 +161,17 @@ Cela n'est pas toujours du goût des statisticiens ! Ils ont donc introduit l'en
 + Les coefficients des catégories sont alors interprétés comme la variation de la moyenne du target pour chaque catégorie par rapport à cette moyenne générale.
 
 ### Mathématiquement
-Pour des catégories $ C = \{ C_1, C_2, \ldots, C_n \} $, si nous choisissons $ C_k $ comme catégorie de référence, une observation appartenant à $ C_i $ (où $ i \neq k $) se représente par :
+Pour des catégories $C = \{ C_1, C_2, \ldots, C_n \}$, si nous choisissons $C_k$ comme catégorie de référence, une observation appartenant à $C_i$ (où $ i \neq k $) se représente par :
 
 $$
 \mathbf{x} = \begin{bmatrix} 1 & 0 & \ldots & -1 & -1 \end{bmatrix}
 $$
 
 où les valeurs sont :
--  $ 1  $ pour la catégorie $ C_1 $ 
--  $ 1  $ pour la catégorie $ C_2 $ 
--  $ -1  $ pour la catégorie de référence $ C_k $ 
--  $ 0  $ pour les autres catégories.
+-  $1$ pour la catégorie $C_1$ 
+-  $1$ pour la catégorie $C_2$ 
+-  $-1$ pour la catégorie de référence $C_k$ 
+-  $0$ pour les autres catégories.
 
 ### Pratiquement
 Pour appliquer l'encodage Sum avec Pandas, on pourrait le faire directement, mais je vous conseille d'utiliser le package category_encoders, notamment la classe [SumEncoder](https://contrib.scikit-learn.org/category_encoders/sum.html).
@@ -215,13 +215,13 @@ Le target encoder est une technique de transformation de variables catégorielle
 
 Avant d’explorer les formules, voici quelques notations cruciales :
 
-- **$ y $ et $ y^+ $** : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).
-- **$ x_i, y_i $** : La valeur de la catégorie et du target pour l'observation $ i $.
-- **$ n $ et $ n^+ $** : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.
-- **$ a $** : Un hyperparamètre de régularisation.
-- **$ prior $** : La valeur moyenne du target sur l'ensemble du dataset.
+- $y $ et $ y^+$ : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).
+- $x_i, y_i$ : La valeur de la catégorie et du target pour l'observation $ i $.
+- $n $ et $ n^+$ : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.
+- $a$ : Un hyperparamètre de régularisation.
+- $prior$ : La valeur moyenne du target sur l'ensemble du dataset.
 
-1. **Calcul du Paramètre de lissage ($ s $)**
+1. **Calcul du Paramètre de lissage ($s$)**
 
    Le paramètre de lissage est utilisé pour équilibrer la contribution entre la moyenne générale (prior) et la moyenne par catégorie :
    $$
@@ -240,9 +240,9 @@ Avant d’explorer les formules, voici quelques notations cruciales :
    $$
 
    où :
-   - $ prior $ est la moyenne globale du target,
-   - $ s $ est le paramètre de lissage calculé,
-   - $\frac{n^+}{n} $ est la moyenne des cibles positives pour la catégorie $ k $.
+   - $prior$ est la moyenne globale du target,
+   - $s$ est le paramètre de lissage calculé,
+   - $\frac{n^+}{n}$ est la moyenne des cibles positives pour la catégorie $k$.
 
 #### Pratiquement
 On utilisera encore le package category_encoders, avec les valeurs par défaut :
@@ -287,10 +287,10 @@ $$
 $$
 
 où :
-- $ n^+ $ : nombre de valeurs positives pour la catégorie $ k $,
-- $ n $ : nombre total d'observations pour la catégorie $ k $,
+- $n^+$ : nombre de valeurs positives pour la catégorie $k$,
+- $n$ : nombre total d'observations pour la catégorie $k$,
 - *prior* : moyenne globale du target,
-- $ m $ : paramètre de lissage.
+- $m$ : paramètre de lissage.
 
 #### Pratiquement
 Voici comment on peut implémenter ce type d'encoding en Python :
@@ -341,7 +341,7 @@ L'idée est de calculer la **moyenne du target** pour chaque catégorie, mais sa
    x^k = \frac{\sum y_j \cdot (x_j == k)}{\sum (x_j == k)}
    $$
 
-### Pratiquement
+#### Pratiquement
 
 ```python
 import pandas as pd
@@ -364,27 +364,27 @@ Nous allons expliquer les calculs.
 1. **Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.**
 2. **Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.**
 
-#### Observation 1 (index 0, catégorie "B") :
+ Observation 1 (index 0, catégorie "B") :
 - On exclut la première observation et on calcule la moyenne des cibles `y` pour les autres occurrences :
   - Cibles des autres "B" : [0, 0]
   -moyenne du target : $\frac{0 + 0}{2} = 0 $
 
-#### Observation 2 (index 1, catégorie "A") :
+Observation 2 (index 1, catégorie "A") :
 - On exclut cette observation et on fait de même :
   - Cibles des autres "A" : [0, 0, 0]
   - Moyenne : $\frac{0 + 0 + 0}{3} = 0 $
 
-#### Observation 3 (index 2, catégorie "A") :
+Observation 3 (index 2, catégorie "A") :
 - On exclut :
   - Cibles des autres "A" : [1, 0, 0]
   - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
 
-#### Observation 4 (index 3, catégorie "C") :
+Observation 4 (index 3, catégorie "C") :
 - Similaires :
   - Cibles des autres "C" : [1, 2]
   - Moyenne : $\frac{1 + 2}{2} = 1.5 $
 
-#### Observation 5 (index 4, catégorie "A") :
+Observation 5 (index 4, catégorie "A") :
 - On exclut :
   - Cibles des autres "A" : [1, 0, 0]
   - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
@@ -403,9 +403,9 @@ Chaque observation est maintenant encodée avec la moyenne des cibles des autres
 
 ---
 
-## 5. James-Stein encoding
+### 5. James-Stein encoding
 
-### Description
+#### Description
 L'encoding James-Stein est un encodeur basé sur des cibles. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $ k $ selon la formule suivante :
 
  $$
@@ -414,13 +414,13 @@ JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
 
 où : 
 - $ JS_i $ est l’estimation pour la catégorie $C_i$,
-- $\text{mean}(y_i) $ est la moyenne des valeurs cibles pour la catégorie $C_i$,
-- $\text{mean}(y) $ est la moyenne générale des cibles,
+- $\text{mean}(y_i)$ est la moyenne des valeurs cibles pour la catégorie $C_i$,
+- $\text{mean}(y)$ est la moyenne générale des cibles,
 - $ B $ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.
 
 Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.
 
-#### Problématique du poids $ B $
+#### Mathématiquement
 Le poids $ B $ est défini par :
 
  $$
@@ -429,7 +429,6 @@ B = \frac{\text{var}(y_i)}{\text{var}(y_i) + \text{var}(y)}
 
 On se demande quel devrait être ce poids. Si on accorde trop de poids à la moyenne conditionnelle, on risque le surajustement, tandis qu'en privilégiant la moyenne globale, on peut sous-ajuster. Une approche canonique en apprentissage machine serait de passer par une validation croisée. Cependant, Charles Stein a proposé une solution en forme fermée. L'idée : ajuster la qualité des estimations selon la variance.
 
-#### Limitations de l'estimateur James-Stein
 Cet estimateur est limité aux distributions normales, ce qui ne convient pas à toutes les tâches de classification. Ainsi, on retrouve :
 
  $$
@@ -446,7 +445,7 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 $$
 
 #### Application pour la classification binaire
-Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ <0,1> $ en remplaçant $\text{mean}(y) $ par le ratio des cotes logarithmique :
+Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ <0,1> $ en remplaçant $\text{mean}(y)$ par le ratio des cotes logarithmique :
 $$
 \text{log-odds\_ratio}_i = \log\left(\frac{\text{mean}(y_i)}{\text{mean}(y_{\text{not} \, i})}\right)
 $$
@@ -482,13 +481,16 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 
 ### 4. CatBoost Encoding
 ---
+
+#### Description
 Il s'agit  d'une méthode d'encodage basée sur la cible, développée à l'origine pour être utilisée avec l'algorithme CatBoost, mais qui est applicable à d'autres modèles. Cet encodeur utilise une méthode particulière pour éviter la fuite d'information tout en exploitant les relations entre les catégories et ld target y.
 
-### Principe du CatBoost encoder
 
 L'idée principale est d'utiliser les informations du target de manière ordonnée. Plutôt que de déterminer la moyenne du target pour chaque catégorie sur l'ensemble des données (qui peut introduire des fuites), CatBoost effectue une mise à jour de l'encodage de manière **séquentielle**.
 
-### Étapes du catBoost encoder
+#### Mathématiquement
+
+Le calcul se fait en deux etapes.
 
 1. **Ordre des observations**
    - L'algorithme parcourt les données de manière ordonnée.
@@ -508,7 +510,7 @@ L'idée principale est d'utiliser les informations du target de manière ordonn�
 3. **Encodage des données de test**
    - Pour les données de test, l'encodage est basé sur les moyennes calculées à partir des données d'entraînement, sans fuite d'information.
 
-### Pourquoi CatBoost encoder est-il Efficace ?
+#### Pourquoi CatBoost encoder est-il Efficace ?
 
 L'encodeur CatBoost réduit efficacement la fuite d'information grâce à sa méthode de calcul séquentiel. Voici quelques atouts :
 - **Séquentiel et Progressif** : En n'utilisant que les observations précédentes, il évite que la valeur actuelle influence son encodage.
