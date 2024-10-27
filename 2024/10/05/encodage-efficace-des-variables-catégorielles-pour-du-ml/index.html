@@ -899,13 +899,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-james-stein-encoding" class="md-nav__link">
+  <a href="#5-james-stein-encoder" class="md-nav__link">
     <span class="md-ellipsis">
-      5. James-Stein encoding
+      5. James-Stein encoder
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="5. James-Stein encoding">
+    <nav class="md-nav" aria-label="5. James-Stein encoder">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1317,7 +1317,7 @@ $$</p>
 </ol>
 <p>Avant d’explorer les formules, voici quelques notations cruciales :</p>
 <ul>
-<li><span class="arithmatex">\(y\)</span> et <span class="arithmatex">\(y^+\)</span> : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).</li>
+<li><span class="arithmatex">\(y\)</span> et <span class="arithmatex">\(y^+\)</span> : Le nombre total d'observations et le nombre total d'observations positives (où <span class="arithmatex">\(y = 1\)</span>).</li>
 <li><span class="arithmatex">\(x_i, y_i\)</span> : La valeur de la catégorie et du target pour l'observation $ i $.</li>
 <li><span class="arithmatex">\(n\)</span> et <span class="arithmatex">\(n^+\)</span> : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.</li>
 <li><span class="arithmatex">\(a\)</span> : Un hyperparamètre de régularisation.</li>
@@ -1505,17 +1505,17 @@ Chaque observation est maintenant encodée avec la moyenne des cibles des autres
 </tr>
 </tbody>
 </table>
-<h3 id="5-james-stein-encoding">5. James-Stein encoding<a class="headerlink" href="#5-james-stein-encoding" title="Permanent link">&para;</a></h3>
+<h3 id="5-james-stein-encoder">5. James-Stein encoder<a class="headerlink" href="#5-james-stein-encoder" title="Permanent link">&para;</a></h3>
 <h4 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h4>
-<p>L'encoding James-Stein est un encodeur basé sur des cibles. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $ k $ selon la formule suivante :</p>
+<p>James-Stein encoder est  basé sur le target. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée <span class="arithmatex">\(k\)</span> selon la formule suivante :</p>
 <div class="arithmatex">\[
 JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
 \]</div>
 <p>où : 
-   - <span class="arithmatex">\(JS_i\)</span> est l’estimation pour la catégorie <span class="arithmatex">\(C_i\)</span>,
-   - <span class="arithmatex">\(\text{mean}(y_i)\)</span> est la moyenne des valeurs cibles pour la catégorie <span class="arithmatex">\(C_i\)</span>,
-   - <span class="arithmatex">\(\text{mean}(y)\)</span> est la moyenne générale des cibles,
-   - <span class="arithmatex">\(B\)</span> est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.</p>
+   - <span class="arithmatex">\(JS_i\)</span> est l’estimation pour la catégorie <span class="arithmatex">\(C_i\)</span></p>
+<p>- <span class="arithmatex">\(\text{mean}(y_i)\)</span> est la moyenne des valeurs cibles pour la catégorie <span class="arithmatex">\(C_i\)</span></p>
+<p>- <span class="arithmatex">\(\text{mean}(y)\)</span> est la moyenne générale des cibles</p>
+<p>- <span class="arithmatex">\(B\)</span> est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.</p>
 <p>Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.</p>
 <h4 id="mathematiquement_5">Mathématiquement<a class="headerlink" href="#mathematiquement_5" title="Permanent link">&para;</a></h4>
 <p>Le poids $ B $ est défini par :</p>
