@@ -1233,12 +1233,14 @@ $$ </p>
 <p>où : 
 - <span class="arithmatex">\(\text{position}(C_i)\)</span> représente la position ordinale de la catégorie $ C_i $ dans l'ordre naturel. Si <span class="arithmatex">\(C_1\)</span> est la première, alors <span class="arithmatex">\(\text{position}(C_1) = 1\)</span> et ainsi de suite.</p>
 <h4 id="pratiquement_1">Pratiquement<a class="headerlink" href="#pratiquement_1" title="Permanent link">&para;</a></h4>
-<p>Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes :
-- C → Faible 
-- B → Moyen 
-- A → Élevé </p>
-<p>Si l'ordre naturel est <em>Faible &lt; Moyen &lt; Élevé</em>, alors l'encodage ordinal sera : 
-   - C → 0 
+<p>Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes :</p>
+<ul>
+<li>C → Faible </li>
+<li>B → Moyen </li>
+<li>A → Élevé </li>
+</ul>
+<p>Si l'ordre naturel est <em>Faible &lt; Moyen &lt; Élevé</em>, alors l'encodage ordinal sera : </p>
+<p>- C → 0 
    - B → 1 
    - A → 2</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span>
@@ -1273,12 +1275,20 @@ $$</p>
 <p>Les encodeurs de contraste transforment les variables catégorielles en format numérique en créant des codes de contraste qui permettent aux algorithmes d'interpréter efficacement les resultats des modèles de regression. Voici quelques méthodes courantes pour encoder les contrastes :</p>
 <h3 id="1-sum-encoder">1. Sum Encoder<a class="headerlink" href="#1-sum-encoder" title="Permanent link">&para;</a></h3>
 <h4 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h4>
-<p>Cette méthode encode les variables de manière à ce que la somme des vecteurs encodés soit égale à zéro, évitant ainsi la multicolinéarité. Dans un modèle One Hot Encoding, on doit supprimer une catégorie et la garder comme référence. Ainsi :
-+ Dans ce modèle, l'intercept représente la moyenne de la condition de référence.
-+ Les coefficients représentent les effets simples, c'est-à-dire la différence entre une condition particulière et la condition de référence.</p>
-<p>Cela n'est pas toujours du goût des statisticiens ! Ils ont donc introduit l'encodage par somme. Dans les modèles de régression :
-+ L'intercept représente la moyenne générale du target à travers toutes les conditions.
-+ Les coefficients des catégories sont alors interprétés comme la variation de la moyenne du target pour chaque catégorie par rapport à cette moyenne générale.</p>
+<p>Cette méthode encode les variables de manière à ce que la somme des vecteurs encodés soit égale à zéro, évitant ainsi la multicolinéarité. Dans un modèle One Hot Encoding, on doit supprimer une catégorie et la garder comme référence. Ainsi :</p>
+<ul>
+<li>Dans ce modèle, l'intercept représente la moyenne de la condition de référence.</li>
+</ul>
+<ul>
+<li>Les coefficients représentent les effets simples, c'est-à-dire la différence entre une condition particulière et la condition de référence.</li>
+</ul>
+<p>Cela n'est pas toujours du goût des statisticiens ! Ils ont donc introduit l'encodage par somme. Dans les modèles de régression :</p>
+<ul>
+<li>L'intercept représente la moyenne générale du target à travers toutes les conditions.</li>
+</ul>
+<ul>
+<li>Les coefficients des catégories sont alors interprétés comme la variation de la moyenne du target pour chaque catégorie par rapport à cette moyenne générale.</li>
+</ul>
 <h4 id="mathematiquement_1">Mathématiquement<a class="headerlink" href="#mathematiquement_1" title="Permanent link">&para;</a></h4>
 <p>Pour des catégories <span class="arithmatex">\(C = \{ C_1, C_2, \ldots, C_n \}\)</span>, si nous choisissons <span class="arithmatex">\(C_k\)</span> comme catégorie de référence, une observation appartenant à <span class="arithmatex">\(C_i\)</span> (où $ i \neq k $) se représente par :</p>
 <div class="arithmatex">\[
@@ -1383,7 +1393,7 @@ $$</p>
 </tbody>
 </table>
 <h3 id="2-m-estimate-coding">2. M-Estimate coding<a class="headerlink" href="#2-m-estimate-coding" title="Permanent link">&para;</a></h3>
-<p>L'M-Estimate encoder est une version simplifiée du target encoder qui a un seul paramètre de lissage, ce qui facilite sa mise en place et son ajustement. Conçu pour estimer la probabilité d'appartenance à une catégorie en utilisant une moyenne pondérée.</p>
+<p>M-Estimate encoder est une version simplifiée du target encoder qui a un seul paramètre de lissage, ce qui facilite sa mise en place et son ajustement. Conçu pour estimer la probabilité d'appartenance à une catégorie en utilisant une moyenne pondérée.</p>
 <h4 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h4>
 <p>M-Estimate coding est une technique simplifiée qui utilise un seul paramètre de lissage, facilitant son adaptation. Il est destiné à estimer la probabilité d'appartenance à une catégorie en s'appuyant sur une moyenne pondérée.</p>
 <h4 id="mathematiquement_3">Mathématiquement<a class="headerlink" href="#mathematiquement_3" title="Permanent link">&para;</a></h4>
