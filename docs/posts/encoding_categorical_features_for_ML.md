@@ -240,12 +240,12 @@ Le target encoder est une technique de transformation de variables catégorielle
    $$
 
    où :
-   - $s$ est le paramètre de lissage calculé,
-   - $\frac{n^+}{n}$ est la moyenne des cibles positives pour la catégorie $k$.
+      - $s$ est le paramètre de lissage calculé,
+      - $\frac{n^+}{n}$ est la moyenne des cibles positives pour la catégorie $k$.
 
 #### Pratiquement
 On utilisera encore le package category_encoders, avec les valeurs par défaut :
-![alt text](/encoding_categorical_features_for_ML/target_encoder.PNG)
+![alt text](./encoding_categorical_features_for_ML/target_encoder.PNG)
 
 ```python
 from category_encoders import TargetEncoder
@@ -261,19 +261,14 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 | 6.4  | 3.2  | 5.3  | 0.628721 |
 | 5.1  | 3.8  | 1.6  | 0.458005 |
 
-#### Désavantages et avantages
 
-L'encoding par cible a ses avantages, mais attention à un **inconvénient majeur** : le surajustement potentiel, surtout pour les catégories avec peu de données. Le mécanisme de régularisation aide, mais il faut bien affiner les hyperparamètres pour ne pas qu'il surapprenne les relations spécifiques aux catégories rares.
+| **Avantages**                                    | **Inconvénient**                                   |
+|--------------------------------------------------|----------------------------------------------------|
+| Capture la relation avec le target : Directement intégrée, permettant d'améliorer la performance. | Surajustement potentiel : Surtout pour les catégories avec peu de données. |
+| Réduit la dimensionnalité : Évite une explosion de dimensions comparé à l'encoding one-hot. | Le mécanisme de régularisation aide, mais nécessite un bon ajustement des hyperparamètres pour éviter le surapprentissage. |
+| Gère les catégories rares : Le lissage minimise le risque de surajustement pour les valeurs peu fréquentes. |                                                    |
+| Facile à interpréter : Les valeurs encodées reflètent des probabilités moyennes pondérées, simplifiant l'analyse. |                                                    |
 
-Pour les **Avantages** :
-
-1. **Capture la relation avec le target :** Directement intégrée, permettant d'améliorer la performance.
-
-2. **Réduit la dimensionnalité :** Évite une explosion de dimensions comparé à l'encoding one-hot.
-
-3. **Gère les catégories Rares :** Le lissage minimise le risque de surajustement pour les valeurs peu fréquentes.
-
-4. **Facile à interpréter :** Les valeurs encodées reflètent des probabilités moyennes pondérées, ce qui simplifie l'analyse.
 
 ### 2. M-Estimate coding
 
@@ -311,14 +306,12 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 
 #### Avantages et inconvénients
 
-Avantages :
-   1. Simple et efficace : Un seul paramètre de lissage à ajuster.
-   2. Réduction du surajustement : Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.
-   3. Performance élevée : Pratique à implémenter et efficace pour les cibles binaires et continues.
+| **Avantages**                                    | **Inconvénients**                                    |
+|--------------------------------------------------|-----------------------------------------------------|
+| Simple et efficace : Un seul paramètre de lissage à ajuster. | Régularisation limitée : Moins flexible que le target encoder classique. |
+| Réduction du surajustement : Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares. | Pas idéal pour les cibles catégorielles multiples : Un wrapper polynomial est nécessaire, complexifiant la méthode. |
+| Performance élevée : Pratique à implémenter et efficace pour les cibles binaires et continues. |                                                     |
 
-Inconvénients :
-   1. Régularisation limitée : Moins flexible que target encoder classique.
-   2. Pas idéal pour les cibles catégorielles multiples : Pour les cibles à plusieurs classes, un wrapper polynomial est nécessaire, complexifiant la méthode.
 
 ### 3. Leave-One-Out encoder
 Le Leave-One-Out encoder (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.
@@ -389,15 +382,12 @@ Observation 3 (index 2, catégorie "A") :
 
 Chaque observation est maintenant encodée avec la moyenne des cibles des autres observations de la même catégorie.
 
-#### Avantages et Inconvénients
 
-- **Avantages :**
-  - **Réduction de la fuite d'information** : Sa méthode minimise les risques de biais.
-  - **Capture des relations complexes** : Comme target encoder, utile pour des relations non linéaires.
+| **Avantages**                                    | **Inconvénients**                                    |
+|--------------------------------------------------|-----------------------------------------------------|
+| Réduction de la fuite d'information : Sa méthode minimise les risques de biais. | Complexité : Peut être coûteux en calculs sur de grands ensembles de données. |
+| Capture des relations complexes : Comme target encoder, utile pour des relations non linéaires. | Variabilité : Peut introduire de la variance avec de petites catégories, nécessitant une régularisation supplémentaire. |
 
-- **Inconvénients :**
-  - **Complexité** : Peut être coûteux en calculs sur de grands ensembles de données.
-  - **Variabilité** : Peut introduire de la variance avec de petites catégories, nécessitant une régularisation supplémentaire.
 
 
 
