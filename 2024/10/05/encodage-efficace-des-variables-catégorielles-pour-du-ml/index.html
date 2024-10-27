@@ -1614,10 +1614,10 @@ $$</p>
 \hat{x}^k = \frac{n^+ + \text{prior} \cdot m}{n + m}
 \]</div>
 <p>où :
-- <span class="arithmatex">\(n^+\)</span> : nombre de valeurs positives pour la catégorie <span class="arithmatex">\(k\)</span>,
-- <span class="arithmatex">\(n\)</span> : nombre total d'observations pour la catégorie <span class="arithmatex">\(k\)</span>,
-- <em>prior</em> : moyenne globale du target,
-- <span class="arithmatex">\(m\)</span> : paramètre de lissage.</p>
+   - <span class="arithmatex">\(n^+\)</span> : nombre de valeurs positives pour la catégorie <span class="arithmatex">\(k\)</span>,
+   - <span class="arithmatex">\(n\)</span> : nombre total d'observations pour la catégorie <span class="arithmatex">\(k\)</span>,
+   - <em>prior</em> : moyenne globale du target,
+   - <span class="arithmatex">\(m\)</span> : paramètre de lissage.</p>
 <h4 id="pratiquement_5">Pratiquement<a class="headerlink" href="#pratiquement_5" title="Permanent link">&para;</a></h4>
 <p>Voici comment on peut implémenter ce type d'encoding en Python :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">MEstimateEncoder</span>
