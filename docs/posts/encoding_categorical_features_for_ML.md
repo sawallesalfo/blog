@@ -359,27 +359,17 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 
 Décomposons le calcul pour chaque observation dans la colonne `x4` :
 
-Nous allons expliquer les calculs:
-
-1. Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.
-2. Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.
-
-Observation 1 (index 0, catégorie "B") :
-   - On exclut la première observation et on calcule la moyenne des cibles `y` pour les autres occurrences :
-   - Cibles des autres "B" : [0, 0]
-   -moyenne du target : $\frac{0 + 0}{2} = 0 $
-
-Observation 2 (index 1, catégorie "A") :
-   - On exclut cette observation et on fait de même :
-   - Cibles des autres "A" : [0, 0, 0]
-   - Moyenne : $\frac{0 + 0 + 0}{3} = 0 $
-
-Observation 3 (index 2, catégorie "A") :
-   - On exclut 
-   - Cibles des autres "A" : [1, 0, 0]
-   - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
+Nous allons expliquer les calculs dans le tableau ci-dessous pour les trois premières lignes : Calculer la moyenne du target pour chaque catégorie en excluant l'observation actuelle. La valeur trouvée est la nouvelle valeur.
 
 
+
+| Index | Catégorie | Cibles (sans l'observation actuelle) | Moyenne du target        |
+|-------|-----------|--------------------------------------|---------------------------|
+| 0     | B         | [0, 0]                               | $\frac{0 + 0}{2} = 0$     |
+| 1     | A         | [0, 0, 0]                           | $\frac{0 + 0 + 0}{3} = 0$ |
+| 2     | A         | [1, 0, 0]                           | $\frac{1 + 0 + 0}{3} \approx 0.33$ |
+
+Si tu as besoin de modifications ou d'ajouts, n'hésite pas à me le faire savoir !
 Chaque observation est maintenant encodée avec la moyenne des cibles des autres observations de la même catégorie.
 
 
