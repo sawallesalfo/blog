@@ -205,19 +205,22 @@ Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder
 
 4. **Cas d'Utilisation** : L'encoding cible bayésien est particulièrement préconisé pour les variables catégorielles à forte cardinalité, où l'encoding one-hot entraînerait trop de caractéristiques.
 
+Avant d’explorer les formules, voici quelques notations cruciales :
+
+- $y $ et $ y^+$ : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).
+- $x_i, y_i$ : La valeur de la catégorie et du target pour l'observation $ i $.
+- $n$ et $n^+$ : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.
+- $a$ : Un hyperparamètre de régularisation.
+- $prior$ : La valeur moyenne du target sur l'ensemble du dataset.
+-  $x^k_i$ est la valeur encodée pour l'observation $i$ de la catégorie $k$
+
 ### 1. Target encoder
 
 Le target encoder est une technique de transformation de variables catégorielles fondée sur la variable cible, souvent utilisée dans les modèles de machine learning supervisé. L'idée est de remplacer chaque catégorie par une valeur calculée à partir de la moyenne du target, avec un mécanisme de lissage pour prévenir le surajustement.
 
 #### Mathématiquement
 
-Avant d’explorer les formules, voici quelques notations cruciales :
 
-- $y $ et $ y^+$ : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).
-- $x_i, y_i$ : La valeur de la catégorie et du target pour l'observation $ i $.
-- $n $ et $ n^+$ : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.
-- $a$ : Un hyperparamètre de régularisation.
-- $prior$ : La valeur moyenne du target sur l'ensemble du dataset.
 
 1. **Calcul du Paramètre de lissage ($s$)**
 
@@ -227,8 +230,7 @@ Avant d’explorer les formules, voici quelques notations cruciales :
    $$
 
    où :
-   - $ mdl $ est la valeur minimale de données par feuille,
-   - $ a $ est le paramètre de lissage, qui ajuste la régularisation.
+      - $mdl$ est la valeur minimale de données par feuille,
 
 2. **Calcul de la valeur encodée ($ \hat{x}^k $)**
    
@@ -238,7 +240,6 @@ Avant d’explorer les formules, voici quelques notations cruciales :
    $$
 
    où :
-   - $prior$ est la moyenne globale du target,
    - $s$ est le paramètre de lissage calculé,
    - $\frac{n^+}{n}$ est la moyenne des cibles positives pour la catégorie $k$.
 
@@ -289,9 +290,6 @@ $$
 $$
 
 où :
-   - $n^+$ : nombre de valeurs positives pour la catégorie $k$,
-   - $n$ : nombre total d'observations pour la catégorie $k$,
-   - *prior* : moyenne globale du target,
    - $m$ : paramètre de lissage.
 
 #### Pratiquement
@@ -506,11 +504,7 @@ Le calcul se fait en deux etapes.
    $$
    x^k_i = \frac{\sum_{j < i} (y_j \cdot (x_j == k)) + \text{prior} \cdot \alpha}{\sum_{j < i} (x_j == k) + \alpha}
    $$
-   où :
-   -  $x^k_i$ est la valeur encodée pour l'observation $i$ de la catégorie $k$,
-   -  $y_j$ est la valeur cible pour l'observation $j$,
-   -  $\text{prior}$ est une valeur moyenne générale du target,
-   -  $\alpha$ est un paramètre de lissage pour éviter les divisions par zéro.
+   
 
 3. **Encodage des données de test**
    - Pour les données de test, l'encodage est basé sur les moyennes calculées à partir des données d'entraînement, sans fuite d'information.
