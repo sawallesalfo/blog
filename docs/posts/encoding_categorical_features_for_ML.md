@@ -142,9 +142,10 @@ On peut jouer avec pas mal de paramètres. Pour les modèles statistiques, on a 
 https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html
 
 ### Autres encodeurs
-Je vous encourage aussi à jeter un œil sur deux encodeurs intéressants:
-- [Hashing encoder] (https://contrib.scikit-learn.org/category_encoders/hashing.html) 
+Je vous encourage aussi à jeter un œil sur deux encodeurs intéressants :
+- [Hashing encoder](https://contrib.scikit-learn.org/category_encoders/hashing.html) 
 - [Count encoder](https://contrib.scikit-learn.org/category_encoders/count.html)
+
 
 ## II. Contrast Encoder
 Les encodeurs de contraste transforment les variables catégorielles en format numérique en créant des codes de contraste qui permettent aux algorithmes d'interpréter efficacement les resultats des modèles de regression. Voici quelques méthodes courantes pour encoder les contrastes :
