@@ -1286,10 +1286,10 @@ $$ </p>
 <p>où : 
 - <span class="arithmatex">\(\text{position}(C_i)\)</span> représente la position ordinale de la catégorie $ C_i $ dans l'ordre naturel. Si <span class="arithmatex">\(C_1\)</span> est la première, alors <span class="arithmatex">\(\text{position}(C_1) = 1\)</span> et ainsi de suite.</p>
 <h4 id="pratiquement_1">Pratiquement<a class="headerlink" href="#pratiquement_1" title="Permanent link">&para;</a></h4>
-<p>Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes : 
-   - C → Faible 
-   - B → Moyen 
-   - A → Élevé </p>
+<p>Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes :
+- C → Faible 
+- B → Moyen 
+- A → Élevé </p>
 <p>Si l'ordre naturel est <em>Faible &lt; Moyen &lt; Élevé</em>, alors l'encodage ordinal sera : 
    - C → 0 
    - B → 1 
@@ -1431,9 +1431,9 @@ $$</p>
 <p>On peut jouer avec pas mal de paramètres. Pour les modèles statistiques, on a souvent tendance à fixer <code>drop_first=True</code> afin d'éviter le problème de colinéarité parfaite. Vous l'avez vu, on a transformé la variable x4 en plusieurs nouvelles caractéristiques. Cela peut poser problème si on a un grand nombre de catégories, ce qui pourrait mener à des matrices creuses. Dans une situation de ML training, cela peut entraîner du surapprentissage. Parfois, une sélection de caractéristiques devient alors inévitable.</p>
 <p>https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html</p>
 <h3 id="autres-encodeurs">Autres encodeurs<a class="headerlink" href="#autres-encodeurs" title="Permanent link">&para;</a></h3>
-<p>Je vous encourage aussi à jeter un œil sur deux encodeurs intéressants :
-- Hashing encoder (https://contrib.scikit-learn.org/category_encoders/hashing.html) 
-- Count encoder  (https://contrib.scikit-learn.org/category_encoders/count.html)</p>
+<p>Je vous encourage aussi à jeter un œil sur deux encodeurs intéressants:
+- [Hashing encoder] (https://contrib.scikit-learn.org/category_encoders/hashing.html) 
+- <a href="https://contrib.scikit-learn.org/category_encoders/count.html">Count encoder</a></p>
 <h2 id="ii-contrast-encoder">II. Contrast Encoder<a class="headerlink" href="#ii-contrast-encoder" title="Permanent link">&para;</a></h2>
 <p>Les encodeurs de contraste transforment les variables catégorielles en format numérique en créant des codes de contraste qui permettent aux algorithmes d'interpréter efficacement les resultats des modèles de regression. Voici quelques méthodes courantes pour encoder les contrastes :</p>
 <h3 id="1-sum-encoder">1. Sum Encoder<a class="headerlink" href="#1-sum-encoder" title="Permanent link">&para;</a></h3>
