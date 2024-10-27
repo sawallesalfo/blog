@@ -800,15 +800,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#desavantages-et-avantages" class="md-nav__link">
-    <span class="md-ellipsis">
-      Désavantages et avantages
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -897,15 +888,6 @@
   <a href="#pratiquement_6" class="md-nav__link">
     <span class="md-ellipsis">
       Pratiquement
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#avantages-et-inconvenients_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Avantages et Inconvénients
     </span>
   </a>
   
@@ -1533,13 +1515,13 @@ $$</p>
  \hat{x}^k = prior \cdot (1 - s) + s \cdot \frac{n^+}{n}
  $$</p>
 <p>où :
- - <span class="arithmatex">\(s\)</span> est le paramètre de lissage calculé,
- - <span class="arithmatex">\(\frac{n^+}{n}\)</span> est la moyenne des cibles positives pour la catégorie <span class="arithmatex">\(k\)</span>.</p>
+    - <span class="arithmatex">\(s\)</span> est le paramètre de lissage calculé,
+    - <span class="arithmatex">\(\frac{n^+}{n}\)</span> est la moyenne des cibles positives pour la catégorie <span class="arithmatex">\(k\)</span>.</p>
 </li>
 </ol>
 <h4 id="pratiquement_4">Pratiquement<a class="headerlink" href="#pratiquement_4" title="Permanent link">&para;</a></h4>
 <p>On utilisera encore le package category_encoders, avec les valeurs par défaut :
-<a class="glightbox" href="/encoding_categorical_features_for_ML/target_encoder.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="/encoding_categorical_features_for_ML/target_encoder.PNG" /></a></p>
+<a class="glightbox" href="../../../../encoding_categorical_features_for_ML/target_encoder.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../encoding_categorical_features_for_ML/target_encoder.PNG" /></a></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">TargetEncoder</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">TargetEncoder</span><span class="p">()</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]),</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1586,23 +1568,32 @@ $$</p>
 </tr>
 </tbody>
 </table>
-<h4 id="desavantages-et-avantages">Désavantages et avantages<a class="headerlink" href="#desavantages-et-avantages" title="Permanent link">&para;</a></h4>
-<p>L'encoding par cible a ses avantages, mais attention à un <strong>inconvénient majeur</strong> : le surajustement potentiel, surtout pour les catégories avec peu de données. Le mécanisme de régularisation aide, mais il faut bien affiner les hyperparamètres pour ne pas qu'il surapprenne les relations spécifiques aux catégories rares.</p>
-<p>Pour les <strong>Avantages</strong> :</p>
-<ol>
-<li>
-<p><strong>Capture la relation avec le target :</strong> Directement intégrée, permettant d'améliorer la performance.</p>
-</li>
-<li>
-<p><strong>Réduit la dimensionnalité :</strong> Évite une explosion de dimensions comparé à l'encoding one-hot.</p>
-</li>
-<li>
-<p><strong>Gère les catégories Rares :</strong> Le lissage minimise le risque de surajustement pour les valeurs peu fréquentes.</p>
-</li>
-<li>
-<p><strong>Facile à interpréter :</strong> Les valeurs encodées reflètent des probabilités moyennes pondérées, ce qui simplifie l'analyse.</p>
-</li>
-</ol>
+<table>
+<thead>
+<tr>
+<th><strong>Avantages</strong></th>
+<th><strong>Inconvénient</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capture la relation avec le target : Directement intégrée, permettant d'améliorer la performance.</td>
+<td>Surajustement potentiel : Surtout pour les catégories avec peu de données.</td>
+</tr>
+<tr>
+<td>Réduit la dimensionnalité : Évite une explosion de dimensions comparé à l'encoding one-hot.</td>
+<td>Le mécanisme de régularisation aide, mais nécessite un bon ajustement des hyperparamètres pour éviter le surapprentissage.</td>
+</tr>
+<tr>
+<td>Gère les catégories rares : Le lissage minimise le risque de surajustement pour les valeurs peu fréquentes.</td>
+<td></td>
+</tr>
+<tr>
+<td>Facile à interpréter : Les valeurs encodées reflètent des probabilités moyennes pondérées, simplifiant l'analyse.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="2-m-estimate-coding">2. M-Estimate coding<a class="headerlink" href="#2-m-estimate-coding" title="Permanent link">&para;</a></h3>
 <p>L'M-Estimate encoder est une version simplifiée du target encoder qui a un seul paramètre de lissage, ce qui facilite sa mise en place et son ajustement. Conçu pour estimer la probabilité d'appartenance à une catégorie en utilisant une moyenne pondérée.</p>
 <h4 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h4>
@@ -1663,13 +1654,28 @@ $$</p>
 </tbody>
 </table>
 <h4 id="avantages-et-inconvenients">Avantages et inconvénients<a class="headerlink" href="#avantages-et-inconvenients" title="Permanent link">&para;</a></h4>
-<p>Avantages :
-   1. Simple et efficace : Un seul paramètre de lissage à ajuster.
-   2. Réduction du surajustement : Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.
-   3. Performance élevée : Pratique à implémenter et efficace pour les cibles binaires et continues.</p>
-<p>Inconvénients :
-   1. Régularisation limitée : Moins flexible que target encoder classique.
-   2. Pas idéal pour les cibles catégorielles multiples : Pour les cibles à plusieurs classes, un wrapper polynomial est nécessaire, complexifiant la méthode.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Avantages</strong></th>
+<th><strong>Inconvénients</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple et efficace : Un seul paramètre de lissage à ajuster.</td>
+<td>Régularisation limitée : Moins flexible que le target encoder classique.</td>
+</tr>
+<tr>
+<td>Réduction du surajustement : Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.</td>
+<td>Pas idéal pour les cibles catégorielles multiples : Un wrapper polynomial est nécessaire, complexifiant la méthode.</td>
+</tr>
+<tr>
+<td>Performance élevée : Pratique à implémenter et efficace pour les cibles binaires et continues.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="3-leave-one-out-encoder">3. Leave-One-Out encoder<a class="headerlink" href="#3-leave-one-out-encoder" title="Permanent link">&para;</a></h3>
 <p>Le Leave-One-Out encoder (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.</p>
 <h4 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h4>
@@ -1760,21 +1766,24 @@ $$</p>
    - Cibles des autres "A" : [1, 0, 0]
    - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $</p>
 <p>Chaque observation est maintenant encodée avec la moyenne des cibles des autres observations de la même catégorie.</p>
-<h4 id="avantages-et-inconvenients_1">Avantages et Inconvénients<a class="headerlink" href="#avantages-et-inconvenients_1" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Avantages :</strong><ul>
-<li><strong>Réduction de la fuite d'information</strong> : Sa méthode minimise les risques de biais.</li>
-<li><strong>Capture des relations complexes</strong> : Comme target encoder, utile pour des relations non linéaires.</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><strong>Inconvénients :</strong><ul>
-<li><strong>Complexité</strong> : Peut être coûteux en calculs sur de grands ensembles de données.</li>
-<li><strong>Variabilité</strong> : Peut introduire de la variance avec de petites catégories, nécessitant une régularisation supplémentaire.</li>
-</ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Avantages</strong></th>
+<th><strong>Inconvénients</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Réduction de la fuite d'information : Sa méthode minimise les risques de biais.</td>
+<td>Complexité : Peut être coûteux en calculs sur de grands ensembles de données.</td>
+</tr>
+<tr>
+<td>Capture des relations complexes : Comme target encoder, utile pour des relations non linéaires.</td>
+<td>Variabilité : Peut introduire de la variance avec de petites catégories, nécessitant une régularisation supplémentaire.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="5-james-stein-encoding">5. James-Stein encoding<a class="headerlink" href="#5-james-stein-encoding" title="Permanent link">&para;</a></h3>
 <h4 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h4>
 <p>L'encoding James-Stein est un encodeur basé sur des cibles. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $ k $ selon la formule suivante :</p>
