@@ -65,14 +65,15 @@ N’oublions pas l’inconvénient : cela peut introduire des valeurs qui n’on
 #### Description
 Il arrive que certaines catégories aient un sens d'ordre. Dans ce cas, un Label Encoder ne sera pas très utile et pourrait même causer des dommages dans les données. L'encodage ordinal attribue aussi un entier unique à chaque catégorie, mais cela se fait lorsque les catégories ont un ordre naturel. Pensez à des catégories telles que faible, moyen, et élevé ; cet ordre doit être respecté.
 
-#### Expression Mathématique
+#### Mathématiquement
 Pour des catégories ordonnées $C_1, C_2, \ldots, C_n$ où l'ordre naturel est $C_1 < C_2 < \ldots < C_n$, l'encodage ordinal se fait par : 
 $$ 
 \text{Valeur Encodée} = \text{position}(C_i) \quad \text{pour} \; i = 1, 2, \ldots, n 
 $$ 
 
 où : 
-- $\text{position}(C_i)$ représente la position ordinale de la catégorie $ C_i $ dans l'ordre naturel. Si $C_1$ est la première, alors $\text{position}(C_1) = 1$ et ainsi de suite.
+
+- $\text{position}(C_i)$ représente la position ordinale de la catégorie $C_i$ dans l'ordre naturel. Si $C_1$ est la première, alors $\text{position}(C_1) = 1$ et ainsi de suite.
 
 #### Pratiquement
 Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes :
@@ -83,9 +84,9 @@ Pour une variable catégorielle x4 représentant "Niveau de risque", avec les ca
 
 Si l'ordre naturel est *Faible < Moyen < Élevé*, alors l'encodage ordinal sera : 
 
-   - C → 0 
-   - B → 1 
-   - A → 2
+- C → 0 
+- B → 1 
+- A → 2
 
 ```python
 from sklearn.preprocessing import OrdinalEncoder
@@ -458,3 +459,6 @@ Et voilà ! Pour appliquer l'encodeur CatBoost à la variable catégorielle `x4`
 
 Le choix de la meilleure méthode dépendra de votre cas d'utilisation et de la cardinalité des catégories. Est-on à la recherche d'un modèle explicatif ou prédictif ?  Dans le billet de blog de la semaine prochaine, je vais essayer de mesurer les performances de ces méthodes avec un modèle simple et voir qui s’en sort le mieux.
 
+## Références
+
+[doc officiel de category_encoder](https://contrib.scikit-learn.org/category_encoders/)
