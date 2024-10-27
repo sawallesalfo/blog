@@ -1092,7 +1092,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              15 min read
+                              14 min read
                             
                           </span>
                         </div>
@@ -1748,24 +1748,39 @@ $$</p>
 </tbody>
 </table>
 <p>Décomposons le calcul pour chaque observation dans la colonne <code>x4</code> :</p>
-<p>Nous allons expliquer les calculs:</p>
-<ol>
-<li>Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.</li>
-<li>Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.</li>
-</ol>
-<p>Observation 1 (index 0, catégorie "B") :
-   - On exclut la première observation et on calcule la moyenne des cibles <code>y</code> pour les autres occurrences :
-   - Cibles des autres "B" : [0, 0]
-   -moyenne du target : $\frac{0 + 0}{2} = 0 $</p>
-<p>Observation 2 (index 1, catégorie "A") :
-   - On exclut cette observation et on fait de même :
-   - Cibles des autres "A" : [0, 0, 0]
-   - Moyenne : $\frac{0 + 0 + 0}{3} = 0 $</p>
-<p>Observation 3 (index 2, catégorie "A") :
-   - On exclut 
-   - Cibles des autres "A" : [1, 0, 0]
-   - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $</p>
-<p>Chaque observation est maintenant encodée avec la moyenne des cibles des autres observations de la même catégorie.</p>
+<p>Nous allons expliquer les calculs dans le tableau ci-dessous pour les trois premières lignes : Calculer la moyenne du target pour chaque catégorie en excluant l'observation actuelle. La valeur trouvée est la nouvelle valeur.</p>
+<table>
+<thead>
+<tr>
+<th>Index</th>
+<th>Catégorie</th>
+<th>Cibles (sans l'observation actuelle)</th>
+<th>Moyenne du target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>B</td>
+<td>[0, 0]</td>
+<td><span class="arithmatex">\(\frac{0 + 0}{2} = 0\)</span></td>
+</tr>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>[0, 0, 0]</td>
+<td><span class="arithmatex">\(\frac{0 + 0 + 0}{3} = 0\)</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>[1, 0, 0]</td>
+<td><span class="arithmatex">\(\frac{1 + 0 + 0}{3} \approx 0.33\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Si tu as besoin de modifications ou d'ajouts, n'hésite pas à me le faire savoir !
+Chaque observation est maintenant encodée avec la moyenne des cibles des autres observations de la même catégorie.</p>
 <table>
 <thead>
 <tr>
