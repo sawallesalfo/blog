@@ -1800,42 +1800,42 @@ $$</p>
 <h3 id="5-james-stein-encoding">5. James-Stein encoding<a class="headerlink" href="#5-james-stein-encoding" title="Permanent link">&para;</a></h3>
 <h4 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h4>
 <p>L'encoding James-Stein est un encodeur basé sur des cibles. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $ k $ selon la formule suivante :</p>
-<p>$$
+<div class="arithmatex">\[
 JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
- $$</p>
+\]</div>
 <p>où : 
-- $ JS_i $ est l’estimation pour la catégorie <span class="arithmatex">\(C_i\)</span>,
+- <span class="arithmatex">\(JS_i\)</span> est l’estimation pour la catégorie <span class="arithmatex">\(C_i\)</span>,
 - <span class="arithmatex">\(\text{mean}(y_i)\)</span> est la moyenne des valeurs cibles pour la catégorie <span class="arithmatex">\(C_i\)</span>,
 - <span class="arithmatex">\(\text{mean}(y)\)</span> est la moyenne générale des cibles,
-- $ B $ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.</p>
+- <span class="arithmatex">\(B\)</span> est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.</p>
 <p>Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.</p>
 <h4 id="mathematiquement_5">Mathématiquement<a class="headerlink" href="#mathematiquement_5" title="Permanent link">&para;</a></h4>
 <p>Le poids $ B $ est défini par :</p>
-<p>$$
+<div class="arithmatex">\[
 B = \frac{\text{var}(y_i)}{\text{var}(y_i) + \text{var}(y)}
- $$</p>
+\]</div>
 <p>On se demande quel devrait être ce poids. Si on accorde trop de poids à la moyenne conditionnelle, on risque le surajustement, tandis qu'en privilégiant la moyenne globale, on peut sous-ajuster. Une approche canonique en apprentissage machine serait de passer par une validation croisée. Cependant, Charles Stein a proposé une solution en forme fermée. L'idée : ajuster la qualité des estimations selon la variance.</p>
 <p>Cet estimateur est limité aux distributions normales, ce qui ne convient pas à toutes les tâches de classification. Ainsi, on retrouve :</p>
-<p>$$
+<div class="arithmatex">\[
 SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
- $$</p>
+\]</div>
 <p>Un défi majeur est que nous ne connaissons pas <span class="arithmatex">\(\text{var}(y)\)</span>. Il nous faudra donc estimer ces variances. Voici quelques solutions :</p>
 <ol>
 <li>
 <p><strong>Modèle Pooled</strong> : Si toutes les observations sont semblables et prennent un nombre commun d'observations pour chaque valeur.</p>
 </li>
 <li>
-<p><strong>Modèle Indépendant</strong> : Si les comptes d'observation diffèrent, il est plus judicieux de remplacer les variances par des erreurs standard, pénalisant ainsi les petites observations :
-$$
-SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
-$$</p>
+<p><strong>Modèle Indépendant</strong> : Si les comptes d'observation diffèrent, il est plus judicieux de remplacer les variances par des erreurs standard, pénalisant ainsi les petites observations :</p>
 </li>
 </ol>
+<div class="arithmatex">\[
+SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
+\]</div>
 <h4 id="application-pour-la-classification-binaire">Application pour la classification binaire<a class="headerlink" href="#application-pour-la-classification-binaire" title="Permanent link">&para;</a></h4>
-<p>Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ &lt;0,1&gt; $ en remplaçant <span class="arithmatex">\(\text{mean}(y)\)</span> par le ratio des cotes logarithmique :
-$$
-\text{log-odds_ratio}<em _text_not="\text{not">i = \log\left(\frac{\text{mean}(y_i)}{\text{mean}(y</em>\right)
-$$} \, i})</p>
+<p>Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que <span class="arithmatex">\(0\)</span> ou <span class="arithmatex">\(1\)</span>. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné <span class="arithmatex">\(&lt;0,1&gt;\)</span> en remplaçant <span class="arithmatex">\(\text{mean}(y)\)</span> par le ratio des cotes logarithmique :</p>
+<div class="arithmatex">\[
+\text{log-odds\_ratio}_i = \log\left(\frac{\text{mean}(y_i)}{\text{mean}(y_{\text{not} \, i})}\right)
+\]</div>
 <p>Cela s'appelle <strong>modèle binaire</strong>. C’est délicat d'estimer les paramètres de ce modèle, et parfois cela échoue. Il est souvent plus judicieux de recourir à un <strong>modèle bêta</strong>, souvent plus stable malgré une précision légèrement inférieure.</p>
 <h4 id="pratiquement_7">Pratiquement<a class="headerlink" href="#pratiquement_7" title="Permanent link">&para;</a></h4>
 <p>Pour utiliser l'encodeur James-Stein, allez-y avec la classe <code>JamesSteinEncoder</code> de <code>category_encoders</code> :</p>
