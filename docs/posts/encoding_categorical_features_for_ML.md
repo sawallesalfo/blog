@@ -1,5 +1,5 @@
 ---
-date: 2024-09-28
+date: 2024-10-05
 authors:
     - ssawadogo
 categories: 
@@ -8,14 +8,17 @@ categories:
 
 # Encodage efficace des variables catégorielles pour du ML
 
-Les variables catégorielles, vous savez, elles sont omniprésentes dans nos ensembles de données, mais souvent, elles ne peuvent pas être utilisées telles quelles dans les algorithmes d'apprentissage automatique qui exigent des données numériques. Dans ce billet, nous allons explorer plusieurs techniques d'encodage pour transformer ces variables, le tout agrémenté d'explications claires, de formulations mathématiques, et quelques exemples pratiques. Nous aborderons aussi les avantages et les limites de chaque technique, que ce soit les "Classic Encoders", le "Contrast Encoder", ou les "Bayesian Encoders".
+Les variables catégorielles, on les croise partout dans nos datasets, mais les algorithmes de machine learning, eux, préfèrent les chiffres. Dans ce billet, nous allons explorer plusieurs techniques d'encodage pour transformer ces variables, le tout agrémenté d'explications claires, de formulations mathématiques, et quelques exemples pratiques. Nous aborderons aussi les avantages et les limites de chaque technique, que ce soit les "Classic Encoders", le "Contrast Encoder", ou les "Bayesian Encoders".
+<!-- more -->
 
-## Exigences
-Il faudra avoir **pandas** sous la main, et n'oubliez pas **scikit-learn** ainsi que **category_encoders**.
+## Prérequis
+
+Assurez-vous d'avoir pandas, scikit-learn, et category_encoders installés.
+
 
 ## Données
 
-Pour cet article, nous utiliserons le sous-ensemble de données ci-dessous :
+Pour illustrer nos exemples, voici un petit jeu de données :
 
 | x1  | x2  | x3  | x4 | y |
 |-----|-----|-----|----|---|
@@ -193,7 +196,7 @@ Première remarque : il n’y a pas de catégorie de référence, car par défau
 Pour plus de détails, consultez ce [lien](https://contrib.scikit-learn.org/category_encoders/helmert.html).
 
 ## Bayesian Target Encoders
-Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder les variables catégorielles en tenant compte de la distribution du target. Cette approche intègre des informations a priori sur la variable cible, ce qui la rend particulièrement efficace pour améliorer la performance des modèles d'apprentissage automatique. Voici un aperçu :
+Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder les variables catégorielles en tenant compte de la distribution du target. Cette approche intègre des informations a priori sur la variable cible, ce qui la rend particulièrement efficace pour améliorer la performance des modèles d'apprentissage automatique.
 
 ### Caractéristiques clés:
 
@@ -508,7 +511,7 @@ L'idée principale est d'utiliser les informations du target de manière ordonn�
 3. **Encodage des données de test**
    - Pour les données de test, l'encodage est basé sur les moyennes calculées à partir des données d'entraînement, sans fuite d'information.
 
-### Pourquoi CatBoost Encoder est-il Efficace ?
+### Pourquoi CatBoost encoder est-il Efficace ?
 
 L'encodeur CatBoost réduit efficacement la fuite d'information grâce à sa méthode de calcul séquentiel. Voici quelques atouts :
 - **Séquentiel et Progressif** : En n'utilisant que les observations précédentes, il évite que la valeur actuelle influence son encodage.
