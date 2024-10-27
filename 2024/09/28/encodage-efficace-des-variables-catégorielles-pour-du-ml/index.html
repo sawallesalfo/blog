@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../../21/apache-arrow-pour-loptimisation-du-traitement-des-donn%C3%A9es/">
       
-        <link rel="next" href="category/cicd/">
+      
+        <link rel="next" href="../faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.0">
     
     
       
-        <title>ssawadogo-blog</title>
+        <title>Encodage efficace des variables catégorielles pour du ML - ssawadogo-blog</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.45e1311d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.45e1311d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,14 +46,14 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -60,7 +62,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -79,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#personal-blog" class="md-skip">
+        <a href="#encodage-efficace-des-variables-categorielles-pour-du-ml" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +97,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="ssawadogo-blog" class="md-header__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+    <a href="../../../.." title="ssawadogo-blog" class="md-header__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -115,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Personal blog
+              Encodage efficace des variables catégorielles pour du ML
             
           </span>
         </div>
@@ -214,7 +216,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -223,7 +227,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="ssawadogo-blog" class="md-nav__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+    <a href="../../../.." title="ssawadogo-blog" class="md-nav__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -242,19 +246,10 @@
   
   
     
-      
-    
   
   
     <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -263,7 +258,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -314,7 +308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="archive/2024/" class="md-nav__link">
+      <a href="../../../../archive/2024/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -381,7 +375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/cicd/" class="md-nav__link">
+      <a href="../../../../category/cicd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -404,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/cloud/" class="md-nav__link">
+      <a href="../../../../category/cloud/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -427,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/iagen/" class="md-nav__link">
+      <a href="../../../../category/iagen/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -450,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/mlops/" class="md-nav__link">
+      <a href="../../../../category/mlops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -473,7 +467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/processing/" class="md-nav__link">
+      <a href="../../../../category/processing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -496,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/documentation/" class="md-nav__link">
+      <a href="../../../../category/documentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -525,6 +519,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -537,6 +533,593 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exigences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exigences
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#donnees" class="md-nav__link">
+    <span class="md-ellipsis">
+      Données
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classic-encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classic Encoders
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classic Encoders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-label-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Label Encoding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Label Encoding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expression-mathematique" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expression Mathématique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratiquement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pratiquement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ordinal-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Ordinal Encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Ordinal Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expression-mathematique_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expression Mathématique
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratiquement_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pratiquement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-one-hot-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. One-Hot Encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. One-Hot Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematiquement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathématiquement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratiquement_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pratiquement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autres-encodeurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Autres encodeurs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contrast-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contrast Encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contrast Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sum-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sum Encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Sum Encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematiquement_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathématiquement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratiquement_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pratiquement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-helmert-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Helmert Coding
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bayesian-target-encoders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bayesian Target Encoders
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bayesian Target Encoders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristiques-cles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caractéristiques clés:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-target-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Target encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Target encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathematiquement_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathématiquement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratiquement_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pratiquement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#desavantages-et-avantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Désavantages et avantages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-m-estimate-coding" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. M-Estimate coding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. M-Estimate coding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematiquement_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathématiquement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratiquement_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pratiquement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avantages-et-inconvenients" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avantages et inconvénients
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-leave-one-out-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Leave-One-Out encoder
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Leave-One-Out encoder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematiquement_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathématiquement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratiquement_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pratiquement
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pratiquement">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observation-1-index-0-categorie-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observation 1 (index 0, catégorie "B") :
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-2-index-1-categorie-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observation 2 (index 1, catégorie "A") :
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-3-index-2-categorie-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observation 3 (index 2, catégorie "A") :
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-4-index-3-categorie-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observation 4 (index 3, catégorie "C") :
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#observation-5-index-4-categorie-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      Observation 5 (index 4, catégorie "A") :
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avantages-et-inconvenients_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avantages et Inconvénients
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-james-stein-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. James-Stein encoding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. James-Stein encoding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problematique-du-poids-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problématique du poids $ B $
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-de-lestimateur-james-stein" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations de l'estimateur James-Stein
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-pour-la-classification-binaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application pour la classification binaire
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pratiquement_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pratiquement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-catboost-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. CatBoost Encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principe-du-catboost-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Principe du CatBoost encoder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapes-du-catboost-encoder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étapes du catBoost encoder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-catboost-encoder-est-il-efficace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi CatBoost Encoder est-il Efficace ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pourquoi CatBoost Encoder est-il Efficace ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pratiquement_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pratiquement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -544,96 +1127,100 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="personal-blog">Personal blog<a class="headerlink" href="#personal-blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-28 00:00:00">September 28, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
             
-              <a href="category/processing/" class="md-meta__link">Processing</a></li>
-        
-        
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Salif SAWADOGO
+                        
+                      </strong>
+                      <br>
+                      End-to-end Data Scientist
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                        <time datetime="2024-09-28 00:00:00" class="md-ellipsis">September 28, 2024</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/processing/">Processing</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              15 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
           
-          <li class="md-meta__item">
-            
-              8 min read
-            
-          </li>
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="faites-du-dask-plutot-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donnees"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/">Faites du Dask plutôt que du Spark si vous avez juste de grosses tables de données</a></h2>
-<p>Dans le monde actuel des données, traiter de grands volumes nécessite des solutions performantes et évolutives. Le calcul distribué permet de gérer efficacement ces données en les répartissant sur plusieurs machines/cores/workers (selon votre cas). Cependant, toutes les entreprises n'ont pas besoin d'une infrastructure lourde et coûteuse telle qu'un cluster Spark. <strong>Dask</strong>, un framework Python, est une alternative légère et flexible, particulièrement adaptée aux environnements déjà basés sur Python.</p>
+    <article class="md-content__inner md-typeset">
+      
+        
 
-    <nav class="md-post__action">
-      <a href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-28 00:00:00">September 28, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/processing/" class="md-meta__link">Processing</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              15 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="encodage-efficace-des-variables-categorielles-pour-du-ml"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/">Encodage efficace des variables catégorielles pour du ML</a></h2>
+
+<h1 id="encodage-efficace-des-variables-categorielles-pour-du-ml">Encodage efficace des variables catégorielles pour du ML<a class="headerlink" href="#encodage-efficace-des-variables-categorielles-pour-du-ml" title="Permanent link">&para;</a></h1>
 <p>Les variables catégorielles, vous savez, elles sont omniprésentes dans nos ensembles de données, mais souvent, elles ne peuvent pas être utilisées telles quelles dans les algorithmes d'apprentissage automatique qui exigent des données numériques. Dans ce billet, nous allons explorer plusieurs techniques d'encodage pour transformer ces variables, le tout agrémenté d'explications claires, de formulations mathématiques, et quelques exemples pratiques. Nous aborderons aussi les avantages et les limites de chaque technique, que ce soit les "Classic Encoders", le "Contrast Encoder", ou les "Bayesian Encoders".</p>
-<h3 id="exigences"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#exigences">Exigences</a></h3>
+<h2 id="exigences">Exigences<a class="headerlink" href="#exigences" title="Permanent link">&para;</a></h2>
 <p>Il faudra avoir <strong>pandas</strong> sous la main, et n'oubliez pas <strong>scikit-learn</strong> ainsi que <strong>category_encoders</strong>.</p>
-<h3 id="donnees"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#donnees">Données</a></h3>
+<h2 id="donnees">Données<a class="headerlink" href="#donnees" title="Permanent link">&para;</a></h2>
 <p>Pour cet article, nous utiliserons le sous-ensemble de données ci-dessous :</p>
 <table>
 <thead>
@@ -719,17 +1306,17 @@
 </tbody>
 </table>
 <p>Pour modéliser cette table de données, il nous faut transformer la colonne x4 en variable numérique. En gros, nous allons discuter des différentes approches qui s'offrent à nous.</p>
-<h3 id="classic-encoders"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#classic-encoders">Classic Encoders</a></h3>
-<h4 id="1-label-encoding"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#1-label-encoding">1. Label Encoding</a></h4>
-<h5 id="description"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#description">Description</a></h5>
+<h2 id="classic-encoders">Classic Encoders<a class="headerlink" href="#classic-encoders" title="Permanent link">&para;</a></h2>
+<h3 id="1-label-encoding">1. Label Encoding<a class="headerlink" href="#1-label-encoding" title="Permanent link">&para;</a></h3>
+<h4 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h4>
 <p>L'encodage par étiquette attribue un entier unique à chaque catégorie d'une variable catégorielle. Cependant, attention ! Cette méthode peut insuffler une notion d'ordre qui pourrait être inappropriée pour des données purement nominales.</p>
-<h5 id="expression-mathematique"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#expression-mathematique">Expression Mathématique</a></h5>
+<h4 id="expression-mathematique">Expression Mathématique<a class="headerlink" href="#expression-mathematique" title="Permanent link">&para;</a></h4>
 <p>Pour des catégories $ C_1, C_2, \ldots, C_n $, l'encodage se fait comme suit :
 $$
 \text{Valeur Encodée} = \text{index}(C_i) \quad \text{pour} \; i = 1, 2, \ldots, n
 $$
 où $ \text{index}(C_i) $ représente un entier unique associé à chaque catégorie.</p>
-<h5 id="pratiquement"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pratiquement">Pratiquement</a></h5>
+<h4 id="pratiquement">Pratiquement<a class="headerlink" href="#pratiquement" title="Permanent link">&para;</a></h4>
 <p>Voici un petit extrait de code :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
@@ -791,17 +1378,17 @@ où $ \text{index}(C_i) $ représente un entier unique associé à chaque catég
 </tbody>
 </table>
 <p>N’oublions pas l’inconvénient : cela peut introduire des valeurs qui n’ont pas de sens statistique.</p>
-<h4 id="2-ordinal-encoder"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#2-ordinal-encoder">2. Ordinal Encoder</a></h4>
-<h5 id="description_1"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#description_1">Description</a></h5>
+<h3 id="2-ordinal-encoder">2. Ordinal Encoder<a class="headerlink" href="#2-ordinal-encoder" title="Permanent link">&para;</a></h3>
+<h4 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h4>
 <p>Il arrive que certaines catégories aient un sens d'ordre. Dans ce cas, un Label Encoder ne sera pas très utile et pourrait même causer des dommages dans les données. L'encodage ordinal attribue aussi un entier unique à chaque catégorie, mais cela se fait lorsque les catégories ont un ordre naturel. Pensez à des catégories telles que faible, moyen, et élevé ; cet ordre doit être respecté.</p>
-<h5 id="expression-mathematique_1"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#expression-mathematique_1">Expression Mathématique</a></h5>
+<h4 id="expression-mathematique_1">Expression Mathématique<a class="headerlink" href="#expression-mathematique_1" title="Permanent link">&para;</a></h4>
 <p>Pour des catégories ordonnées $ C_1, C_2, \ldots, C_n $ où l'ordre naturel est $ C_1 &lt; C_2 &lt; \ldots &lt; C_n $, l'encodage ordinal se fait par : 
 $$ 
 \text{Valeur Encodée} = \text{position}(C_i) \quad \text{pour} \; i = 1, 2, \ldots, n 
 $$ </p>
 <p>où : 
 - $ \text{position}(C_i) $ représente la position ordinale de la catégorie $ C_i $ dans l'ordre naturel. Si $ C_1 $ est la première, alors $ \text{position}(C_1) = 1 $ et ainsi de suite.</p>
-<h5 id="pratiquement_1"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pratiquement_1">Pratiquement</a></h5>
+<h4 id="pratiquement_1">Pratiquement<a class="headerlink" href="#pratiquement_1" title="Permanent link">&para;</a></h4>
 <p>Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes : 
 - C → Faible 
 - B → Moyen 
@@ -870,15 +1457,15 @@ $$ </p>
 </tbody>
 </table>
 <p>Cette méthode préserve l'ordre des catégories, crucial pour certaines analyses statistiques. En revanche, il faut s'assurer que cet ordre est bien défini dans le code <code>OrdinalEncoder(categories=[['C', 'B', 'A']])</code>.</p>
-<h4 id="3-one-hot-encoder"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#3-one-hot-encoder">3. One-Hot Encoder</a></h4>
-<h5 id="description_2"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#description_2">Description</a></h5>
+<h3 id="3-one-hot-encoder">3. One-Hot Encoder<a class="headerlink" href="#3-one-hot-encoder" title="Permanent link">&para;</a></h3>
+<h4 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h4>
 <p>Ce procédé crée des colonnes binaires, ou indicatrices, pour chaque catégorie. Pour chaque observation, la colonne correspondant à la catégorie présente prend la valeur 1, et les autres sont à 0.</p>
-<h5 id="mathematiquement"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#mathematiquement">Mathématiquement</a></h5>
+<h4 id="mathematiquement">Mathématiquement<a class="headerlink" href="#mathematiquement" title="Permanent link">&para;</a></h4>
 <p>Soit $ C = { C_1, C_2, ..., C_n } $ les catégories d'une variable. Une observation appartenant à $ C_i $ est représentée par :
 $$
 \mathbf{x} = [0, 0, \ldots, 1, \ldots, 0] \quad \text{où la position } i \text{ est à 1}
 $$</p>
-<h5 id="pratiquement_2"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pratiquement_2">Pratiquement</a></h5>
+<h4 id="pratiquement_2">Pratiquement<a class="headerlink" href="#pratiquement_2" title="Permanent link">&para;</a></h4>
 <p>Il existe plusieurs outils, mais restons simples avec la méthode <code>get_dummies</code> de pandas, que je trouve bien pratique.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x4&quot;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;x4_OneHotEncoder&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
@@ -946,21 +1533,21 @@ $$</p>
 </table>
 <p>On peut jouer avec pas mal de paramètres. Pour les modèles statistiques, on a souvent tendance à fixer <code>drop_first=True</code> afin d'éviter le problème de colinéarité parfaite. Vous l'avez vu, on a transformé la variable x4 en plusieurs nouvelles caractéristiques. Cela peut poser problème si on a un grand nombre de catégories, ce qui pourrait mener à des matrices creuses. Dans une situation de ML training, cela peut entraîner du surapprentissage. Parfois, une sélection de caractéristiques devient alors inévitable.</p>
 <p>https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html</p>
-<h4 id="autres-encodeurs"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#autres-encodeurs">Autres encodeurs</a></h4>
+<h3 id="autres-encodeurs">Autres encodeurs<a class="headerlink" href="#autres-encodeurs" title="Permanent link">&para;</a></h3>
 <p>Je vous encourage aussi à jeter un œil sur deux encodeurs intéressants :
 - Hashing encoder (https://contrib.scikit-learn.org/category_encoders/hashing.html) 
 - Count encoder  (https://contrib.scikit-learn.org/category_encoders/count.html)</p>
-<h3 id="contrast-encoder"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#contrast-encoder">Contrast Encoder</a></h3>
+<h2 id="contrast-encoder">Contrast Encoder<a class="headerlink" href="#contrast-encoder" title="Permanent link">&para;</a></h2>
 <p>Les encodeurs de contraste transforment les variables catégorielles en format numérique en créant des codes de contraste qui permettent aux algorithmes d'interpréter efficacement les resultats des modèles de regression. Voici quelques méthodes courantes pour encoder les contrastes :</p>
-<h4 id="1-sum-encoder"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#1-sum-encoder">1. Sum Encoder</a></h4>
-<h5 id="description_3"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#description_3">Description</a></h5>
+<h3 id="1-sum-encoder">1. Sum Encoder<a class="headerlink" href="#1-sum-encoder" title="Permanent link">&para;</a></h3>
+<h4 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h4>
 <p>Cette méthode encode les variables de manière à ce que la somme des vecteurs encodés soit égale à zéro, évitant ainsi la multicolinéarité. Dans un modèle One Hot Encoding, on doit supprimer une catégorie et la garder comme référence. Ainsi :
 + Dans ce modèle, l'intercept représente la moyenne de la condition de référence.
 + Les coefficients représentent les effets simples, c'est-à-dire la différence entre une condition particulière et la condition de référence.</p>
 <p>Cela n'est pas toujours du goût des statisticiens ! Ils ont donc introduit l'encodage par somme. Dans les modèles de régression :
 + L'intercept représente la moyenne générale du target à travers toutes les conditions.
 + Les coefficients des catégories sont alors interprétés comme la variation de la moyenne du target pour chaque catégorie par rapport à cette moyenne générale.</p>
-<h4 id="mathematiquement_1"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#mathematiquement_1">Mathématiquement</a></h4>
+<h3 id="mathematiquement_1">Mathématiquement<a class="headerlink" href="#mathematiquement_1" title="Permanent link">&para;</a></h3>
 <p>Pour des catégories $ C = { C_1, C_2, \ldots, C_n } $, si nous choisissons $ C_k $ comme catégorie de référence, une observation appartenant à $ C_i $ (où $ i \neq k $) se représente par :</p>
 <div class="arithmatex">\[
 \mathbf{x} = \begin{bmatrix} 1 &amp; 0 &amp; \ldots &amp; -1 &amp; -1 \end{bmatrix}
@@ -970,7 +1557,7 @@ $$</p>
 -  $ 1  $ pour la catégorie $ C_2 $ 
 -  $ -1  $ pour la catégorie de référence $ C_k $ 
 -  $ 0  $ pour les autres catégories.</p>
-<h4 id="pratiquement_3"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pratiquement_3">Pratiquement</a></h4>
+<h3 id="pratiquement_3">Pratiquement<a class="headerlink" href="#pratiquement_3" title="Permanent link">&para;</a></h3>
 <p>Pour appliquer l'encodage Sum avec Pandas, on pourrait le faire directement, mais je vous conseille d'utiliser le package category_encoders, notamment la classe <a href="https://contrib.scikit-learn.org/category_encoders/sum.html">SumEncoder</a>.</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">category_encoders.sum_coding</span> <span class="kn">import</span> <span class="n">SumEncoder</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">SE_encoder</span> <span class="o">=</span> <span class="n">SumEncoder</span><span class="p">(</span><span class="n">drop_invariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -984,11 +1571,11 @@ $$</p>
 |  6.4 |  3.2 |  5.3 |   -1.0 |   -1.0 |   1 |
 |  5.1 |  3.8 |  1.6 |    0.0 |    1.0 |   0 |</p>
 <p>Première remarque : il n’y a pas de catégorie de référence, car par défaut, c’est la dernière par ordre alphabétique. On ne peut pas choisir la catégorie de référence directement ici, mais une fois que l’on a compris le principe, on peut s’en charger par nous-mêmes. Pour obtenir les coefficients de la catégorie de référence, il suffit de prendre -1 et -1 pour <code>x4_0</code> et <code>x4_1</code>.</p>
-<h4 id="2-helmert-coding"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#2-helmert-coding">2. Helmert Coding</a></h4>
+<h3 id="2-helmert-coding">2. Helmert Coding<a class="headerlink" href="#2-helmert-coding" title="Permanent link">&para;</a></h3>
 <p>Pour plus de détails, consultez ce <a href="https://contrib.scikit-learn.org/category_encoders/helmert.html">lien</a>.</p>
-<h3 id="bayesian-target-encoders"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#bayesian-target-encoders">Bayesian Target Encoders</a></h3>
+<h2 id="bayesian-target-encoders">Bayesian Target Encoders<a class="headerlink" href="#bayesian-target-encoders" title="Permanent link">&para;</a></h2>
 <p>Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder les variables catégorielles en tenant compte de la distribution du target. Cette approche intègre des informations a priori sur la variable cible, ce qui la rend particulièrement efficace pour améliorer la performance des modèles d'apprentissage automatique. Voici un aperçu :</p>
-<h4 id="caracteristiques-cles"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#caracteristiques-cles">Caractéristiques clés:</a></h4>
+<h3 id="caracteristiques-cles">Caractéristiques clés:<a class="headerlink" href="#caracteristiques-cles" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p><strong>Cadre Bayésien</strong> : Cette méthode recourt à l’approche bayésienne pour estimer la moyenne du target pour chaque catégorie tout en considérant les informations provenant de l'ensemble de données global. Cela aide à atténuer les soucis liés au surajustement, surtout quand les catégories ont peu d'observations.</p>
@@ -1003,9 +1590,9 @@ $$</p>
 <p><strong>Cas d'Utilisation</strong> : L'encoding cible bayésien est particulièrement préconisé pour les variables catégorielles à forte cardinalité, où l'encoding one-hot entraînerait trop de caractéristiques.</p>
 </li>
 </ol>
-<h4 id="1-target-encoder"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#1-target-encoder">1. Target encoder</a></h4>
+<h3 id="1-target-encoder">1. Target encoder<a class="headerlink" href="#1-target-encoder" title="Permanent link">&para;</a></h3>
 <p>Le target encoder est une technique de transformation de variables catégorielles fondée sur la variable cible, souvent utilisée dans les modèles de machine learning supervisé. L'idée est de remplacer chaque catégorie par une valeur calculée à partir de la moyenne du target, avec un mécanisme de lissage pour prévenir le surajustement.</p>
-<h5 id="mathematiquement_2"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#mathematiquement_2">Mathématiquement</a></h5>
+<h4 id="mathematiquement_2">Mathématiquement<a class="headerlink" href="#mathematiquement_2" title="Permanent link">&para;</a></h4>
 <p>Avant d’explorer les formules, voici quelques notations cruciales :</p>
 <ul>
 <li><strong>$ y $ et $ y^+ $</strong> : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).</li>
@@ -1037,9 +1624,9 @@ $$</p>
  - $ \frac{n^+}{n} $ est la moyenne des cibles positives pour la catégorie $ k $.</p>
 </li>
 </ol>
-<h5 id="pratiquement_4"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pratiquement_4">Pratiquement</a></h5>
+<h4 id="pratiquement_4">Pratiquement<a class="headerlink" href="#pratiquement_4" title="Permanent link">&para;</a></h4>
 <p>On utilisera encore le package category_encoders, avec les valeurs par défaut :
-<img alt="alt text" src="/encoding_categorical_features_for_ML/target_encoder.PNG" /></p>
+<a class="glightbox" href="/encoding_categorical_features_for_ML/target_encoder.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="/encoding_categorical_features_for_ML/target_encoder.PNG" /></a></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">TargetEncoder</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">TargetEncoder</span><span class="p">()</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]),</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1086,18 +1673,18 @@ $$</p>
 </tr>
 </tbody>
 </table>
-<h5 id="desavantages-et-avantages"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#desavantages-et-avantages">Désavantages et avantages</a></h5>
+<h4 id="desavantages-et-avantages">Désavantages et avantages<a class="headerlink" href="#desavantages-et-avantages" title="Permanent link">&para;</a></h4>
 <p>L'encoding par cible a ses avantages, mais attention à un <strong>inconvénient majeur</strong> : le surajustement potentiel, surtout pour les catégories avec peu de données. Le mécanisme de régularisation aide, mais il faut bien affiner les hyperparamètres pour ne pas qu'il surapprenne les relations spécifiques aux catégories rares.</p>
 <p>Pour les <strong>Avantages</strong> :
 1. <strong>Capture la relation avec le target :</strong> Directement intégrée, permettant d'améliorer la performance.
 2. <strong>Réduit la dimensionnalité :</strong> Évite une explosion de dimensions comparé à l'encoding one-hot.
 3. <strong>Gère les catégories Rares :</strong> Le lissage minimise le risque de surajustement pour les valeurs peu fréquentes.
 4. <strong>Facile à interpréter :</strong> Les valeurs encodées reflètent des probabilités moyennes pondérées, ce qui simplifie l'analyse.</p>
-<h4 id="2-m-estimate-coding"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#2-m-estimate-coding">2. M-Estimate coding</a></h4>
+<h3 id="2-m-estimate-coding">2. M-Estimate coding<a class="headerlink" href="#2-m-estimate-coding" title="Permanent link">&para;</a></h3>
 <p>L'M-Estimate encoder est une version simplifiée du target encoder qui a un seul paramètre de lissage, ce qui facilite sa mise en place et son ajustement. Conçu pour estimer la probabilité d'appartenance à une catégorie en utilisant une moyenne pondérée.</p>
-<h5 id="description_4"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#description_4">Description</a></h5>
+<h4 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h4>
 <p>M-Estimate coding est une technique simplifiée qui utilise un seul paramètre de lissage, facilitant son adaptation. Il est destiné à estimer la probabilité d'appartenance à une catégorie en s'appuyant sur une moyenne pondérée.</p>
-<h5 id="mathematiquement_3"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#mathematiquement_3">Mathématiquement</a></h5>
+<h4 id="mathematiquement_3">Mathématiquement<a class="headerlink" href="#mathematiquement_3" title="Permanent link">&para;</a></h4>
 <p>La formule de  M-Estimate coding est :</p>
 <div class="arithmatex">\[
 \hat{x}^k = \frac{n^+ + \text{prior} \cdot m}{n + m}
@@ -1107,7 +1694,7 @@ $$</p>
 - $ n $ : nombre total d'observations pour la catégorie $ k $,
 - <em>prior</em> : moyenne globale du target,
 - $ m $ : paramètre de lissage.</p>
-<h5 id="pratiquement_5"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pratiquement_5">Pratiquement</a></h5>
+<h4 id="pratiquement_5">Pratiquement<a class="headerlink" href="#pratiquement_5" title="Permanent link">&para;</a></h4>
 <p>Voici comment on peut implémenter ce type d'encoding en Python :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">MEstimateEncoder</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">MEstimateEncoder</span><span class="p">()</span>
@@ -1155,7 +1742,7 @@ $$</p>
 </tr>
 </tbody>
 </table>
-<h5 id="avantages-et-inconvenients"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#avantages-et-inconvenients">Avantages et inconvénients</a></h5>
+<h4 id="avantages-et-inconvenients">Avantages et inconvénients<a class="headerlink" href="#avantages-et-inconvenients" title="Permanent link">&para;</a></h4>
 <p><strong>Avantages :</strong>
 1. <strong>Simple et efficace :</strong> Un seul paramètre de lissage à ajuster.
 2. <strong>Réduction du surajustement :</strong> Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.
@@ -1163,11 +1750,11 @@ $$</p>
 <p><strong>Inconvénients :</strong>
 1. <strong>Régularisation limitée :</strong> Moins flexible que target encoder classique.
 2. <strong>Pas idéal pour les cibles catégorielles multiples :</strong> Pour les cibles à plusieurs classes, un wrapper polynomial est nécessaire, complexifiant la méthode.</p>
-<h4 id="3-leave-one-out-encoder"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#3-leave-one-out-encoder">3. Leave-One-Out encoder</a></h4>
+<h3 id="3-leave-one-out-encoder">3. Leave-One-Out encoder<a class="headerlink" href="#3-leave-one-out-encoder" title="Permanent link">&para;</a></h3>
 <p>L'<strong>Leave-One-Out encoder</strong> (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.</p>
-<h5 id="description_5"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#description_5">Description</a></h5>
+<h4 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h4>
 <p>L'idée est de calculer la <strong>moyenne du target</strong> pour chaque catégorie, mais sans inclure l'observation actuelle. Cela aide à limiter la fuite d'information puisque la valeur cible de l'observation en cours n'est pas intégrée dans sa propre transformation.</p>
-<h5 id="mathematiquement_4"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#mathematiquement_4">Mathématiquement</a></h5>
+<h4 id="mathematiquement_4">Mathématiquement<a class="headerlink" href="#mathematiquement_4" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p><strong>Calcul de la moyenne du target en Excluant l'Observation Actuelle</strong>
@@ -1185,7 +1772,7 @@ $$</p>
    $$</p>
 </li>
 </ol>
-<h4 id="pratiquement_6"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pratiquement_6">Pratiquement</a></h4>
+<h3 id="pratiquement_6">Pratiquement<a class="headerlink" href="#pratiquement_6" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">LeaveOneOutEncoder</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">LeaveOneOutEncoder</span><span class="p">()</span>
@@ -1237,7 +1824,7 @@ $$</p>
 <p>Nous allons expliquer les calculs.
 1. <strong>Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.</strong>
 2. <strong>Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.</strong></p>
-<h5 id="observation-1-index-0-categorie-b"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#observation-1-index-0-categorie-b">Observation 1 (index 0, catégorie "B") :</a></h5>
+<h4 id="observation-1-index-0-categorie-b">Observation 1 (index 0, catégorie "B") :<a class="headerlink" href="#observation-1-index-0-categorie-b" title="Permanent link">&para;</a></h4>
 <ul>
 <li>On exclut la première observation et on calcule la moyenne des cibles <code>y</code> pour les autres occurrences :<ul>
 <li>Cibles des autres "B" : [0, 0]
@@ -1245,7 +1832,7 @@ $$</p>
 </ul>
 </li>
 </ul>
-<h5 id="observation-2-index-1-categorie-a"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#observation-2-index-1-categorie-a">Observation 2 (index 1, catégorie "A") :</a></h5>
+<h4 id="observation-2-index-1-categorie-a">Observation 2 (index 1, catégorie "A") :<a class="headerlink" href="#observation-2-index-1-categorie-a" title="Permanent link">&para;</a></h4>
 <ul>
 <li>On exclut cette observation et on fait de même :<ul>
 <li>Cibles des autres "A" : [0, 0, 0]</li>
@@ -1253,7 +1840,7 @@ $$</p>
 </ul>
 </li>
 </ul>
-<h5 id="observation-3-index-2-categorie-a"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#observation-3-index-2-categorie-a">Observation 3 (index 2, catégorie "A") :</a></h5>
+<h4 id="observation-3-index-2-categorie-a">Observation 3 (index 2, catégorie "A") :<a class="headerlink" href="#observation-3-index-2-categorie-a" title="Permanent link">&para;</a></h4>
 <ul>
 <li>On exclut :<ul>
 <li>Cibles des autres "A" : [1, 0, 0]</li>
@@ -1261,7 +1848,7 @@ $$</p>
 </ul>
 </li>
 </ul>
-<h5 id="observation-4-index-3-categorie-c"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#observation-4-index-3-categorie-c">Observation 4 (index 3, catégorie "C") :</a></h5>
+<h4 id="observation-4-index-3-categorie-c">Observation 4 (index 3, catégorie "C") :<a class="headerlink" href="#observation-4-index-3-categorie-c" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Similaires :<ul>
 <li>Cibles des autres "C" : [1, 2]</li>
@@ -1269,7 +1856,7 @@ $$</p>
 </ul>
 </li>
 </ul>
-<h5 id="observation-5-index-4-categorie-a"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#observation-5-index-4-categorie-a">Observation 5 (index 4, catégorie "A") :</a></h5>
+<h4 id="observation-5-index-4-categorie-a">Observation 5 (index 4, catégorie "A") :<a class="headerlink" href="#observation-5-index-4-categorie-a" title="Permanent link">&para;</a></h4>
 <ul>
 <li>On exclut :<ul>
 <li>Cibles des autres "A" : [1, 0, 0]</li>
@@ -1278,7 +1865,7 @@ $$</p>
 </li>
 </ul>
 <p>Chaque observation est maintenant encodée avec la moyenne des cibles des autres observations de la même catégorie.</p>
-<h5 id="avantages-et-inconvenients_1"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#avantages-et-inconvenients_1">Avantages et Inconvénients</a></h5>
+<h4 id="avantages-et-inconvenients_1">Avantages et Inconvénients<a class="headerlink" href="#avantages-et-inconvenients_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Avantages :</strong><ul>
 <li><strong>Réduction de la fuite d'information</strong> : Sa méthode minimise les risques de biais.</li>
@@ -1294,8 +1881,8 @@ $$</p>
 </li>
 </ul>
 <hr />
-<h3 id="5-james-stein-encoding"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#5-james-stein-encoding">5. James-Stein encoding</a></h3>
-<h4 id="description_6"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#description_6">Description</a></h4>
+<h2 id="5-james-stein-encoding">5. James-Stein encoding<a class="headerlink" href="#5-james-stein-encoding" title="Permanent link">&para;</a></h2>
+<h3 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h3>
 <p>L'encoding James-Stein est un encodeur basé sur des cibles. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $ k $ selon la formule suivante :</p>
 <p>$$
 JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
@@ -1306,13 +1893,13 @@ JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
 - $ \text{mean}(y) $ est la moyenne générale des cibles,
 - $ B $ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.</p>
 <p>Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.</p>
-<h5 id="problematique-du-poids-b"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#problematique-du-poids-b">Problématique du poids $ B $</a></h5>
+<h4 id="problematique-du-poids-b">Problématique du poids $ B $<a class="headerlink" href="#problematique-du-poids-b" title="Permanent link">&para;</a></h4>
 <p>Le poids $ B $ est défini par :</p>
 <p>$$
 B = \frac{\text{var}(y_i)}{\text{var}(y_i) + \text{var}(y)}
  $$</p>
 <p>On se demande quel devrait être ce poids. Si on accorde trop de poids à la moyenne conditionnelle, on risque le surajustement, tandis qu'en privilégiant la moyenne globale, on peut sous-ajuster. Une approche canonique en apprentissage machine serait de passer par une validation croisée. Cependant, Charles Stein a proposé une solution en forme fermée. L'idée : ajuster la qualité des estimations selon la variance.</p>
-<h5 id="limitations-de-lestimateur-james-stein"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#limitations-de-lestimateur-james-stein">Limitations de l'estimateur James-Stein</a></h5>
+<h4 id="limitations-de-lestimateur-james-stein">Limitations de l'estimateur James-Stein<a class="headerlink" href="#limitations-de-lestimateur-james-stein" title="Permanent link">&para;</a></h4>
 <p>Cet estimateur est limité aux distributions normales, ce qui ne convient pas à toutes les tâches de classification. Ainsi, on retrouve :</p>
 <p>$$
 SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
@@ -1329,13 +1916,13 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 <p>$$
 SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
  $$</p>
-<h5 id="application-pour-la-classification-binaire"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#application-pour-la-classification-binaire">Application pour la classification binaire</a></h5>
+<h4 id="application-pour-la-classification-binaire">Application pour la classification binaire<a class="headerlink" href="#application-pour-la-classification-binaire" title="Permanent link">&para;</a></h4>
 <p>Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ &lt;0,1&gt; $ en remplaçant $ \text{mean}(y) $ par le ratio des cotes logarithmique :</p>
 <p>$$
 \text{log-odds_ratio}<em _text_not="\text{not">i = \log\left(\frac{\text{mean}(y_i)}{\text{mean}(y</em>\right)
  $$} \, i})</p>
 <p>Cela s'appelle <strong>modèle binaire</strong>. C’est délicat d'estimer les paramètres de ce modèle, et parfois cela échoue. Il est souvent plus judicieux de recourir à un <strong>modèle bêta</strong>, souvent plus stable malgré une précision légèrement inférieure.</p>
-<h5 id="pratiquement_7"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pratiquement_7">Pratiquement</a></h5>
+<h4 id="pratiquement_7">Pratiquement<a class="headerlink" href="#pratiquement_7" title="Permanent link">&para;</a></h4>
 <p>Pour utiliser l'encodeur James-Stein, allez-y avec la classe <code>JamesSteinEncoder</code> de <code>category_encoders</code> :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">JamesSteinEncoder</span>
@@ -1427,12 +2014,12 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 </tbody>
 </table>
 <hr />
-<h4 id="4-catboost-encoding"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#4-catboost-encoding">4. CatBoost Encoding</a></h4>
+<h3 id="4-catboost-encoding">4. CatBoost Encoding<a class="headerlink" href="#4-catboost-encoding" title="Permanent link">&para;</a></h3>
 <hr />
 <p>Il s'agit  d'une méthode d'encodage basée sur la cible, développée à l'origine pour être utilisée avec l'algorithme CatBoost, mais qui est applicable à d'autres modèles. Cet encodeur utilise une méthode particulière pour éviter la fuite d'information tout en exploitant les relations entre les catégories et ld target y.</p>
-<h4 id="principe-du-catboost-encoder"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#principe-du-catboost-encoder">Principe du CatBoost encoder</a></h4>
+<h3 id="principe-du-catboost-encoder">Principe du CatBoost encoder<a class="headerlink" href="#principe-du-catboost-encoder" title="Permanent link">&para;</a></h3>
 <p>L'idée principale est d'utiliser les informations du target de manière ordonnée. Plutôt que de déterminer la moyenne du target pour chaque catégorie sur l'ensemble des données (qui peut introduire des fuites), CatBoost effectue une mise à jour de l'encodage de manière <strong>séquentielle</strong>.</p>
-<h4 id="etapes-du-catboost-encoder"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#etapes-du-catboost-encoder">Étapes du catBoost encoder</a></h4>
+<h3 id="etapes-du-catboost-encoder">Étapes du catBoost encoder<a class="headerlink" href="#etapes-du-catboost-encoder" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
 <p><strong>Ordre des observations</strong></p>
@@ -1462,11 +2049,11 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 </ul>
 </li>
 </ol>
-<h4 id="pourquoi-catboost-encoder-est-il-efficace"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pourquoi-catboost-encoder-est-il-efficace">Pourquoi CatBoost Encoder est-il Efficace ?</a></h4>
+<h3 id="pourquoi-catboost-encoder-est-il-efficace">Pourquoi CatBoost Encoder est-il Efficace ?<a class="headerlink" href="#pourquoi-catboost-encoder-est-il-efficace" title="Permanent link">&para;</a></h3>
 <p>L'encodeur CatBoost réduit efficacement la fuite d'information grâce à sa méthode de calcul séquentiel. Voici quelques atouts :
 - <strong>Séquentiel et Progressif</strong> : En n'utilisant que les observations précédentes, il évite que la valeur actuelle influence son encodage.
 - <strong>Régularisation</strong> : L'ajout d'un terme de régularisation permet de contrôler la variance.</p>
-<h5 id="pratiquement_8"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#pratiquement_8">Pratiquement</a></h5>
+<h4 id="pratiquement_8">Pratiquement<a class="headerlink" href="#pratiquement_8" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">CatBoostEncoder</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">CatBoostEncoder</span><span class="p">()</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]),</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
@@ -1544,578 +2131,60 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 </tbody>
 </table>
 <p>Et voilà ! Pour appliquer l'encodeur CatBoost à la variable catégorielle <code>x4</code>, nous avons vu le calcul étape par étape. </p>
-<h3 id="conclusion"><a class="toclink" href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/#conclusion">Conclusion</a></h3>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <p>Le choix de la meilleure méthode dépendra de votre cas d'utilisation et de la cardinalité des catégories. Est-on à la recherche d'un modèle explicatif ou prédictif ?  Dans le billet de blog de la semaine prochaine, je vais essayer de mesurer les performances de ces méthodes avec un modèle simple et voir qui s’en sort le mieux.</p>
-    <nav class="md-post__action">
-      <a href="2024/09/28/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-21 00:00:00">September 21, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/processing/" class="md-meta__link">Processing</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="apache-arrow-pour-loptimisation-du-traitement-des-donnees"><a class="toclink" href="2024/09/21/apache-arrow-pour-loptimisation-du-traitement-des-donn%C3%A9es/">Apache Arrow pour l'optimisation du traitement des données</a></h2>
-<p>La gestion des données en mémoire ressemble parfois à un tatonnement. Les  data engineers, scientists et analysts se retrouvent souvent à jongler entre différents formats de données, calculs intensifs et besoins de performance. Jusqu’à récemment, nous étions limités par des outils et formats conçus pour des volumes et des vitesses bien inférieurs à ceux d’aujourd'hui. C’est là qu’<strong>Apache Arrow</strong> entre en scène, tel un champion prêt à transformer ce marathon en un sprint maîtrisé.
-Dans ce billet de blog, on ne va parler que de données. Comment python gère les dataframes en backend?</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/21/apache-arrow-pour-loptimisation-du-traitement-des-donn%C3%A9es/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-14 00:00:00">September 14, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a>, 
-              <a href="category/iagen/" class="md-meta__link">IAgen</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              8 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="faire-tourner-son-chatbot-avec-une-interface-equivalente-a-chatgpt-grace-a-openwebui"><a class="toclink" href="2024/09/14/faire-tourner-son-chatbot-avec-une-interface-%C3%A9quivalente-%C3%A0-chatgpt-gr%C3%A2ce-%C3%A0-openwebui/">Faire tourner son chatbot avec une interface équivalente à ChatGPT grâce à OpenWebUI</a></h2>
-<p>L'ère des assistants conversationnels est en pleine expansion, et grâce à des outils comme <strong>OpenWebUI</strong>, il est désormais possible de créer son propre UI conversationnel avec des fonctionnalités similaires à celles de ChatGPT sans beaucoup d'effort. On suppose que vous avez déjà un chatbot qui fonctionne correctement et que vous souhaitez une meilleure interface utilisateur. Cet article vous guidera dans la mise en place de cette UI.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/14/faire-tourner-son-chatbot-avec-une-interface-%C3%A9quivalente-%C3%A0-chatgpt-gr%C3%A2ce-%C3%A0-openwebui/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-08 00:00:00">September 8, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/iagen/" class="md-meta__link">IAgen</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="evaluer-les-capacites-des-llms-les-benchmarks"><a class="toclink" href="2024/09/08/%C3%A9valuer-les-capacit%C3%A9s-des-llms--les-benchmarks/">Évaluer les Capacités des LLMs : les benchmarks</a></h2>
-<p>Les modèles de langage (LLMs) ont réalisé des avancées spectaculaires dans des tâches variées, telles que la rédaction, la conversation, et la programmation.
-Pour évaluer et comparer efficacement leur intelligence, divers benchmarks sont utilisés, mesurant des capacités allant des connaissances académiques (comme MMLU) au raisonnement complexe (GPQA), en passant par des compétences spécifiques telles que les mathématiques de base (GSM8K) ou la génération de code (HumanEval). </p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/08/%C3%A9valuer-les-capacit%C3%A9s-des-llms--les-benchmarks/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-07 00:00:00">September 7, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/iagen/" class="md-meta__link">IAgen</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="ia-generative-une-evolution-plutot-que-revolution"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/">IA générative : une Évolution plutôt que Révolution</a></h2>
-<p>Aujourd’hui, on plonge dans l’univers fascinant de l’IA générative. On va retracer les grandes étapes qui ont marqué son évolution. Pas de panique, on ne va pas s’embourber dans une liste exhaustive – on va plutôt se concentrer sur les moments clés qui ont façonné l’IA telle qu’on la connaît aujourd'hui. J’avais depuis un moment envie de faire le point sur les avancées dans ce domaine, mais avec le rythme effréné des innovations, je ne savais pas comment illustrer cela jusqu'à ce que je tombe sur les travaux de l'Innovation Makers Alliance.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-01 00:00:00">September 1, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              9 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="tests-for-data-scientists"><a class="toclink" href="2024/09/01/tests-for-data-scientists/">Tests for data scientists</a></h2>
-<h3 id="parlons-de-tests-pour-data-scientists-mlops"><a class="toclink" href="2024/09/01/tests-for-data-scientists/#parlons-de-tests-pour-data-scientists-mlops">Parlons de tests pour data scientists - MLOPS</a></h3>
-<p>Dans cet article, je vais partager avec vous une pratique qui a transformé ma carrière de data scientist end-to-end : tester son code. C'est une étape cruciale dans l'adoption des bonnes pratiques MLOps, mais qui est souvent négligée par beaucoup de data scientists. Je vais explorer les raisons pour lesquelles les tests sont souvent peu utilisés dans ce domaine et comment vous pouvez intégrer des tests efficaces dans le workflow de vos projets de data science. Vous trouverez également un tutoriel pratique pour vous aider à démarrer, en utilisant des outils comme pytest, beartype, pandera, unittest, ou pydantic.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/01/tests-for-data-scientists/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-01 00:00:00">September 1, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              9 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="mlflow-best-practices"><a class="toclink" href="2024/09/01/mlflow--best-practices/">MLflow &amp; best practices</a></h2>
-<p>Dans un projet de machine learning, gérer les expérimentations et les modèles peut rapidement devenir un casse-tête. Imaginez : l'équipe s'agrandit, les exigences fusent de toutes parts… et là, votre chef de projet débarque avec une demande spéciale : "Dis, tu te souviens de ce modèle super performant qu'on a testé en avril ? On aimerait le comparer avec nos résultats actuels."À ce moment précis, à moins d'avoir une mémoire digne d'un éléphant, vous vous retrouvez à naviguer frénétiquement dans des fichiers Excel. Entre nous, c'est le genre de situation où l'on se dit : "Pourquoi je n’ai pas tout noté quelque part de façon plus propre ?!"C’est justement là qu’<strong>MLflow</strong> entre en scène.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/01/mlflow--best-practices/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-25 00:00:00">August 25, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/cicd/" class="md-meta__link">CI/CD</a>, 
-              <a href="category/mlops/" class="md-meta__link">MlOps</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser"><a class="toclink" href="2024/08/25/cicd-pour-les-data-scientists--quand-le-code-se-met-%C3%A0-danser/">CI/CD pour les Data Scientists : Quand le Code Se Met à Danser</a></h2>
-<p>La collaboration entre data scientists et développeurs peut parfois ressembler à une partie de ping-pong chaotique : chacun fait rebondir des idées et des bouts de code, mais rien ne semble vraiment s'assembler correctement. Heureusement, il existe une solution pour rendre cette danse collaborative plus harmonieuse : la CI/CD (Continuous Integration/Continuous Deployment). Oui, même pour les data scientists ! Alors, prenez vos notebooks, ajustez vos lunettes, et découvrons comment transformer cette pagaille en une symphonie bien orchestrée :)</p>
-
-    <nav class="md-post__action">
-      <a href="2024/08/25/cicd-pour-les-data-scientists--quand-le-code-se-met-%C3%A0-danser/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-24 00:00:00">August 24, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/cicd/" class="md-meta__link">CI/CD</a>, 
-              <a href="category/mlops/" class="md-meta__link">MlOps</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="all-things-start-with-git"><a class="toclink" href="2024/08/24/all-things-start-with-git/">All things start with git</a></h2>
-<h4 id="git-gitlab-et-github-pour-le-cicd"><a class="toclink" href="2024/08/24/all-things-start-with-git/#git-gitlab-et-github-pour-le-cicd">Git, GitLab et GitHub pour le CI/CD</a></h4>
-<p>Dans cet article, nous allons explorer comment Git, GitLab, et GitHub sont utilisés pour implémenter des pipelines CI/CD (Intégration Continue et Déploiement Continu). Ces outils sont devenus essentiels pour automatiser et gérer les processus de développement logiciel. Comment vous pouvez les utiliser pour améliorer votre flux de travail.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/08/24/all-things-start-with-git/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-18 00:00:00">August 18, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/cicd/" class="md-meta__link">CI/CD</a>, 
-              <a href="category/documentation/" class="md-meta__link">documentation</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="faire-son-blog-avec-mkdocs-et-github-actions"><a class="toclink" href="2024/08/18/faire-son-blog-avec-mkdocs-et-github-actions/">Faire son Blog avec MkDocs et github actions</a></h2>
-<p>Dans ce billet de blog, j'essayerai de retracer  créer et déployer un blog en utilisant MkDocs, un outil qui facilite la création de belles documentations grâce à des fichiers <code>markdown</code>. Nous allons couvrir chaque étape pour t'aider à mettre ton blog en ligne.</p>
-<h5 id="ce-dont-tu-as-besoin"><a class="toclink" href="2024/08/18/faire-son-blog-avec-mkdocs-et-github-actions/#ce-dont-tu-as-besoin">Ce dont tu as besoin</a></h5>
-<ol>
-<li><strong>Compte GitHub</strong> : Tu auras besoin d’un compte GitHub pour stocker et déployer ton blog.</li>
-<li><strong>Connaissances de Base</strong> : Une familiarité avec GitHub, Docker et quelques bases de la ligne de commande sera utile.</li>
-</ol>
-
-    <nav class="md-post__action">
-      <a href="2024/08/18/faire-son-blog-avec-mkdocs-et-github-actions/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-11 00:00:00">August 11, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a>, 
-              <a href="category/cloud/" class="md-meta__link">Cloud</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="iam-for-eks"><a class="toclink" href="2024/08/11/iam-for-eks/">Iam for eks</a></h2>
-<h4 id="understanding-iam-roles-and-users-in-aws-with-a-practical-example-running-an-application-on-eks"><a class="toclink" href="2024/08/11/iam-for-eks/#understanding-iam-roles-and-users-in-aws-with-a-practical-example-running-an-application-on-eks">Understanding IAM Roles and Users in AWS with a Practical Example: Running an Application on EKS</a></h4>
-<p><strong>AWS Identity and Access Management (IAM)</strong> is a cornerstone of security and access control in AWS environments. IAM allows you to manage users, groups, and roles, and to specify their permissions to access AWS resources. In this article, we will explore the differences between IAM roles and IAM users, provide a practical scenario of deploying an application on Amazon EKS (Elastic Kubernetes Service), and clarify how IAM roles relate to specific AWS console options.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/08/11/iam-for-eks/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-04 00:00:00">August 4, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a>, 
-              <a href="category/cloud/" class="md-meta__link">Cloud</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              7 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="setup-emr"><a class="toclink" href="2024/08/04/setup-emr/">Setup emr</a></h2>
-<h3 id="comment-creer-et-configurer-un-cluster-emr-on-ec2"><a class="toclink" href="2024/08/04/setup-emr/#comment-creer-et-configurer-un-cluster-emr-on-ec2">Comment Créer et Configurer un Cluster  EMR on EC2</a></h3>
-<p>Créer un cluster EMR (Elastic MapReduce) sur EC2 peut sembler complexe, surtout si vous vous lancez pour la première fois. Dans cet article, je vais vous guider à travers chaque étape, depuis la création des rôles jusqu’à la connexion à JupyterHub via un tunnel SSH. Ce guide est conçu pour vous fournir des explications claires et détaillées afin que vous puissiez configurer votre cluster sans difficulté. Nous nous concentrerons spécifiquement sur EMR sur EC2. La petite histoire est que j'ai passé des heures à expliquer cela à plusieurs étudiants intéressés par EMR. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à comprendre et à configurer un cluster EMR de manière efficace. </p>
-
-    <nav class="md-post__action">
-      <a href="2024/08/04/setup-emr/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-07-29 00:00:00">July 29, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/documentation/" class="md-meta__link">documentation</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="mermaid-for-data-scientist"><a class="toclink" href="2024/07/29/mermaid-for-data-scientist/">Mermaid for data scientist</a></h2>
-<h4 id="mermaid-pour-documenter-vos-projets"><a class="toclink" href="2024/07/29/mermaid-for-data-scientist/#mermaid-pour-documenter-vos-projets">Mermaid pour documenter vos projets</a></h4>
-<p>La documentation est une étape cruciale dans tout projet de développement, mais soyons honnêtes, ce n'est pas toujours la plus amusante. Pourtant, quand il s'agit de clarifier des concepts complexes ou de représenter des processus, rien ne vaut un bon diagramme. Beaucoup de gens se tournent vers Word ou PowerPoint, voire des logiciels spécialisés comme Lucidchart, pour créer ces illustrations. Mais pour nous, développeurs, qui aimons le code et l'automatisation, il existe un outil qui pourrait bien changer la donne : <strong>Mermaid</strong>.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/07/29/mermaid-for-data-scientist/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-      
-        
-          
 
 
 
-<nav class="md-pagination">
+
+
+
+
   
-</nav>
-        
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
       
-    </div>
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-10-27</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="sawadogosalif/blog"
+        data-repo-id="R_kgDOMoC7jQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMoC7jc4CiecW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="fr"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    </article>
   </div>
 
           
@@ -2188,12 +2257,12 @@ Pour évaluer et comparer efficacement leur intelligence, divers benchmarks sont
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "content.tabs", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "content.tabs", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
