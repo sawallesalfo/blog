@@ -41,7 +41,7 @@ Pour modéliser cette table de données, il nous faut transformer la colonne x4 
 L'encodage par étiquette attribue un entier unique à chaque catégorie d'une variable catégorielle. Cependant, attention ! Cette méthode peut insuffler une notion d'ordre qui pourrait être inappropriée pour des données purement nominales.
 
 #### Expression Mathématique
-Pour des catégories $ C_1, C_2, \ldots, C_n $, l'encodage se fait comme suit :
+Pour des catégories $C_1, C_2, \ldots, C_n$, l'encodage se fait comme suit :
 $$
 \text{Valeur Encodée} = \text{index}(C_i) \quad \text{pour} \; i = 1, 2, \ldots, n
 $$
