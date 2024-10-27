@@ -1599,11 +1599,21 @@ $$</p>
 </table>
 <h4 id="desavantages-et-avantages">Désavantages et avantages<a class="headerlink" href="#desavantages-et-avantages" title="Permanent link">&para;</a></h4>
 <p>L'encoding par cible a ses avantages, mais attention à un <strong>inconvénient majeur</strong> : le surajustement potentiel, surtout pour les catégories avec peu de données. Le mécanisme de régularisation aide, mais il faut bien affiner les hyperparamètres pour ne pas qu'il surapprenne les relations spécifiques aux catégories rares.</p>
-<p>Pour les <strong>Avantages</strong> :
-1. <strong>Capture la relation avec le target :</strong> Directement intégrée, permettant d'améliorer la performance.
-2. <strong>Réduit la dimensionnalité :</strong> Évite une explosion de dimensions comparé à l'encoding one-hot.
-3. <strong>Gère les catégories Rares :</strong> Le lissage minimise le risque de surajustement pour les valeurs peu fréquentes.
-4. <strong>Facile à interpréter :</strong> Les valeurs encodées reflètent des probabilités moyennes pondérées, ce qui simplifie l'analyse.</p>
+<p>Pour les <strong>Avantages</strong> :</p>
+<ol>
+<li>
+<p><strong>Capture la relation avec le target :</strong> Directement intégrée, permettant d'améliorer la performance.</p>
+</li>
+<li>
+<p><strong>Réduit la dimensionnalité :</strong> Évite une explosion de dimensions comparé à l'encoding one-hot.</p>
+</li>
+<li>
+<p><strong>Gère les catégories Rares :</strong> Le lissage minimise le risque de surajustement pour les valeurs peu fréquentes.</p>
+</li>
+<li>
+<p><strong>Facile à interpréter :</strong> Les valeurs encodées reflètent des probabilités moyennes pondérées, ce qui simplifie l'analyse.</p>
+</li>
+</ol>
 <h3 id="2-m-estimate-coding">2. M-Estimate coding<a class="headerlink" href="#2-m-estimate-coding" title="Permanent link">&para;</a></h3>
 <p>L'M-Estimate encoder est une version simplifiée du target encoder qui a un seul paramètre de lissage, ce qui facilite sa mise en place et son ajustement. Conçu pour estimer la probabilité d'appartenance à une catégorie en utilisant une moyenne pondérée.</p>
 <h4 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h4>
@@ -1745,15 +1755,17 @@ $$</p>
 </tbody>
 </table>
 <p>Décomposons le calcul pour chaque observation dans la colonne <code>x4</code> :</p>
-<p>Nous allons expliquer les calculs.
-1. <strong>Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.</strong>
-2. <strong>Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.</strong></p>
+<p>Nous allons expliquer les calculs:</p>
+<ol>
+<li>Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.</li>
+<li>Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.</li>
+</ol>
 <p>Observation 1 (index 0, catégorie "B") :
-- On exclut la première observation et on calcule la moyenne des cibles <code>y</code> pour les autres occurrences :
+   - On exclut la première observation et on calcule la moyenne des cibles <code>y</code> pour les autres occurrences :
   - Cibles des autres "B" : [0, 0]
   -moyenne du target : $\frac{0 + 0}{2} = 0 $</p>
 <p>Observation 2 (index 1, catégorie "A") :
-- On exclut cette observation et on fait de même :
+   - On exclut cette observation et on fait de même :
   - Cibles des autres "A" : [0, 0, 0]
   - Moyenne : $\frac{0 + 0 + 0}{3} = 0 $</p>
 <p>Observation 3 (index 2, catégorie "A") :
@@ -1940,10 +1952,10 @@ $$} \, i})</p>
  x^k_i = \frac{\sum_{j &lt; i} (y_j \cdot (x_j == k)) + \text{prior} \cdot \alpha}{\sum_{j &lt; i} (x_j == k) + \alpha}
  $$
  où :</li>
-<li>$ x^k_i $ est la valeur encodée pour l'observation <span class="arithmatex">\(i\)</span> de la catégorie $ k $,</li>
-<li>$ y_j $ est la valeur cible pour l'observation <span class="arithmatex">\(j\)</span>,</li>
-<li>$\text{prior} $ est une valeur moyenne générale du target,</li>
-<li>$\alpha $ est un paramètre de lissage pour éviter les divisions par zéro.</li>
+<li><span class="arithmatex">\(x^k_i\)</span> est la valeur encodée pour l'observation <span class="arithmatex">\(i\)</span> de la catégorie <span class="arithmatex">\(k\)</span>,</li>
+<li><span class="arithmatex">\(y_j\)</span> est la valeur cible pour l'observation <span class="arithmatex">\(j\)</span>,</li>
+<li><span class="arithmatex">\(\text{prior}\)</span> est une valeur moyenne générale du target,</li>
+<li><span class="arithmatex">\(\alpha\)</span> est un paramètre de lissage pour éviter les divisions par zéro.</li>
 </ul>
 </li>
 <li>
