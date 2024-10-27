@@ -902,61 +902,10 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#pratiquement_6" class="md-nav__link">
     <span class="md-ellipsis">
       Pratiquement
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Pratiquement">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#observation-1-index-0-categorie-b" class="md-nav__link">
-    <span class="md-ellipsis">
-      Observation 1 (index 0, catégorie "B") :
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#observation-2-index-1-categorie-a" class="md-nav__link">
-    <span class="md-ellipsis">
-      Observation 2 (index 1, catégorie "A") :
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#observation-3-index-2-categorie-a" class="md-nav__link">
-    <span class="md-ellipsis">
-      Observation 3 (index 2, catégorie "A") :
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#observation-4-index-3-categorie-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      Observation 4 (index 3, catégorie "C") :
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#observation-5-index-4-categorie-a" class="md-nav__link">
-    <span class="md-ellipsis">
-      Observation 5 (index 4, catégorie "A") :
     </span>
   </a>
   
@@ -976,12 +925,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#5-james-stein-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       5. James-Stein encoding
@@ -998,22 +942,12 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Description">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#problematique-du-poids-b" class="md-nav__link">
-    <span class="md-ellipsis">
-      Problématique du poids $ B $
-    </span>
-  </a>
-  
 </li>
         
           <li class="md-nav__item">
-  <a href="#limitations-de-lestimateur-james-stein" class="md-nav__link">
+  <a href="#mathematiquement_5" class="md-nav__link">
     <span class="md-ellipsis">
-      Limitations de l'estimateur James-Stein
+      Mathématiquement
     </span>
   </a>
   
@@ -1049,21 +983,22 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="4. CatBoost Encoding">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#principe-du-catboost-encoder" class="md-nav__link">
+  <a href="#description_7" class="md-nav__link">
     <span class="md-ellipsis">
-      Principe du CatBoost encoder
+      Description
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#etapes-du-catboost-encoder" class="md-nav__link">
+  <a href="#mathematiquement_6" class="md-nav__link">
     <span class="md-ellipsis">
-      Étapes du catBoost encoder
+      Mathématiquement
     </span>
   </a>
   
@@ -1076,8 +1011,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pourquoi CatBoost encoder est-il Efficace ?">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#pratiquement_8" class="md-nav__link">
@@ -1538,15 +1472,15 @@ $$</p>
 + L'intercept représente la moyenne générale du target à travers toutes les conditions.
 + Les coefficients des catégories sont alors interprétés comme la variation de la moyenne du target pour chaque catégorie par rapport à cette moyenne générale.</p>
 <h3 id="mathematiquement_1">Mathématiquement<a class="headerlink" href="#mathematiquement_1" title="Permanent link">&para;</a></h3>
-<p>Pour des catégories $ C = { C_1, C_2, \ldots, C_n } $, si nous choisissons $ C_k $ comme catégorie de référence, une observation appartenant à $ C_i $ (où $ i \neq k $) se représente par :</p>
+<p>Pour des catégories <span class="arithmatex">\(C = \{ C_1, C_2, \ldots, C_n \}\)</span>, si nous choisissons <span class="arithmatex">\(C_k\)</span> comme catégorie de référence, une observation appartenant à <span class="arithmatex">\(C_i\)</span> (où $ i \neq k $) se représente par :</p>
 <div class="arithmatex">\[
 \mathbf{x} = \begin{bmatrix} 1 &amp; 0 &amp; \ldots &amp; -1 &amp; -1 \end{bmatrix}
 \]</div>
 <p>où les valeurs sont :
--  $ 1  $ pour la catégorie $ C_1 $ 
--  $ 1  $ pour la catégorie $ C_2 $ 
--  $ -1  $ pour la catégorie de référence $ C_k $ 
--  $ 0  $ pour les autres catégories.</p>
+-  <span class="arithmatex">\(1\)</span> pour la catégorie <span class="arithmatex">\(C_1\)</span> 
+-  <span class="arithmatex">\(1\)</span> pour la catégorie <span class="arithmatex">\(C_2\)</span> 
+-  <span class="arithmatex">\(-1\)</span> pour la catégorie de référence <span class="arithmatex">\(C_k\)</span> 
+-  <span class="arithmatex">\(0\)</span> pour les autres catégories.</p>
 <h3 id="pratiquement_3">Pratiquement<a class="headerlink" href="#pratiquement_3" title="Permanent link">&para;</a></h3>
 <p>Pour appliquer l'encodage Sum avec Pandas, on pourrait le faire directement, mais je vous conseille d'utiliser le package category_encoders, notamment la classe <a href="https://contrib.scikit-learn.org/category_encoders/sum.html">SumEncoder</a>.</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">category_encoders.sum_coding</span> <span class="kn">import</span> <span class="n">SumEncoder</span>
@@ -1585,15 +1519,15 @@ $$</p>
 <h4 id="mathematiquement_2">Mathématiquement<a class="headerlink" href="#mathematiquement_2" title="Permanent link">&para;</a></h4>
 <p>Avant d’explorer les formules, voici quelques notations cruciales :</p>
 <ul>
-<li><strong>$ y $ et $ y^+ $</strong> : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).</li>
-<li><strong>$ x_i, y_i $</strong> : La valeur de la catégorie et du target pour l'observation $ i $.</li>
-<li><strong>$ n $ et $ n^+ $</strong> : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.</li>
-<li><strong>$ a $</strong> : Un hyperparamètre de régularisation.</li>
-<li><strong>$ prior $</strong> : La valeur moyenne du target sur l'ensemble du dataset.</li>
+<li>$y $ et $ y^+$ : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).</li>
+<li><span class="arithmatex">\(x_i, y_i\)</span> : La valeur de la catégorie et du target pour l'observation $ i $.</li>
+<li>$n $ et $ n^+$ : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.</li>
+<li><span class="arithmatex">\(a\)</span> : Un hyperparamètre de régularisation.</li>
+<li><span class="arithmatex">\(prior\)</span> : La valeur moyenne du target sur l'ensemble du dataset.</li>
 </ul>
 <ol>
 <li>
-<p><strong>Calcul du Paramètre de lissage ($ s $)</strong></p>
+<p><strong>Calcul du Paramètre de lissage (<span class="arithmatex">\(s\)</span>)</strong></p>
 <p>Le paramètre de lissage est utilisé pour équilibrer la contribution entre la moyenne générale (prior) et la moyenne par catégorie :
  $$
  s = \frac{1}{1 + \exp\left(-\frac{n - mdl}{a}\right)}
@@ -1609,9 +1543,9 @@ $$</p>
  \hat{x}^k = prior \cdot (1 - s) + s \cdot \frac{n^+}{n}
  $$</p>
 <p>où :
- - $ prior $ est la moyenne globale du target,
- - $ s $ est le paramètre de lissage calculé,
- - $\frac{n^+}{n} $ est la moyenne des cibles positives pour la catégorie $ k $.</p>
+ - <span class="arithmatex">\(prior\)</span> est la moyenne globale du target,
+ - <span class="arithmatex">\(s\)</span> est le paramètre de lissage calculé,
+ - <span class="arithmatex">\(\frac{n^+}{n}\)</span> est la moyenne des cibles positives pour la catégorie <span class="arithmatex">\(k\)</span>.</p>
 </li>
 </ol>
 <h4 id="pratiquement_4">Pratiquement<a class="headerlink" href="#pratiquement_4" title="Permanent link">&para;</a></h4>
@@ -1680,10 +1614,10 @@ $$</p>
 \hat{x}^k = \frac{n^+ + \text{prior} \cdot m}{n + m}
 \]</div>
 <p>où :
-- $ n^+ $ : nombre de valeurs positives pour la catégorie $ k $,
-- $ n $ : nombre total d'observations pour la catégorie $ k $,
+- <span class="arithmatex">\(n^+\)</span> : nombre de valeurs positives pour la catégorie <span class="arithmatex">\(k\)</span>,
+- <span class="arithmatex">\(n\)</span> : nombre total d'observations pour la catégorie <span class="arithmatex">\(k\)</span>,
 - <em>prior</em> : moyenne globale du target,
-- $ m $ : paramètre de lissage.</p>
+- <span class="arithmatex">\(m\)</span> : paramètre de lissage.</p>
 <h4 id="pratiquement_5">Pratiquement<a class="headerlink" href="#pratiquement_5" title="Permanent link">&para;</a></h4>
 <p>Voici comment on peut implémenter ce type d'encoding en Python :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">MEstimateEncoder</span>
@@ -1762,7 +1696,7 @@ $$</p>
    $$</p>
 </li>
 </ol>
-<h3 id="pratiquement_6">Pratiquement<a class="headerlink" href="#pratiquement_6" title="Permanent link">&para;</a></h3>
+<h4 id="pratiquement_6">Pratiquement<a class="headerlink" href="#pratiquement_6" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span> <span class="nn">category_encoders</span> <span class="kn">import</span> <span class="n">LeaveOneOutEncoder</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">LeaveOneOutEncoder</span><span class="p">()</span>
@@ -1814,46 +1748,26 @@ $$</p>
 <p>Nous allons expliquer les calculs.
 1. <strong>Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.</strong>
 2. <strong>Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.</strong></p>
-<h4 id="observation-1-index-0-categorie-b">Observation 1 (index 0, catégorie "B") :<a class="headerlink" href="#observation-1-index-0-categorie-b" title="Permanent link">&para;</a></h4>
-<ul>
-<li>On exclut la première observation et on calcule la moyenne des cibles <code>y</code> pour les autres occurrences :<ul>
-<li>Cibles des autres "B" : [0, 0]
--moyenne du target : $\frac{0 + 0}{2} = 0 $</li>
-</ul>
-</li>
-</ul>
-<h4 id="observation-2-index-1-categorie-a">Observation 2 (index 1, catégorie "A") :<a class="headerlink" href="#observation-2-index-1-categorie-a" title="Permanent link">&para;</a></h4>
-<ul>
-<li>On exclut cette observation et on fait de même :<ul>
-<li>Cibles des autres "A" : [0, 0, 0]</li>
-<li>Moyenne : $\frac{0 + 0 + 0}{3} = 0 $</li>
-</ul>
-</li>
-</ul>
-<h4 id="observation-3-index-2-categorie-a">Observation 3 (index 2, catégorie "A") :<a class="headerlink" href="#observation-3-index-2-categorie-a" title="Permanent link">&para;</a></h4>
-<ul>
-<li>On exclut :<ul>
-<li>Cibles des autres "A" : [1, 0, 0]</li>
-<li>Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $</li>
-</ul>
-</li>
-</ul>
-<h4 id="observation-4-index-3-categorie-c">Observation 4 (index 3, catégorie "C") :<a class="headerlink" href="#observation-4-index-3-categorie-c" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Similaires :<ul>
-<li>Cibles des autres "C" : [1, 2]</li>
-<li>Moyenne : $\frac{1 + 2}{2} = 1.5 $</li>
-</ul>
-</li>
-</ul>
-<h4 id="observation-5-index-4-categorie-a">Observation 5 (index 4, catégorie "A") :<a class="headerlink" href="#observation-5-index-4-categorie-a" title="Permanent link">&para;</a></h4>
-<ul>
-<li>On exclut :<ul>
-<li>Cibles des autres "A" : [1, 0, 0]</li>
-<li>Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $</li>
-</ul>
-</li>
-</ul>
+<p>Observation 1 (index 0, catégorie "B") :
+- On exclut la première observation et on calcule la moyenne des cibles <code>y</code> pour les autres occurrences :
+  - Cibles des autres "B" : [0, 0]
+  -moyenne du target : $\frac{0 + 0}{2} = 0 $</p>
+<p>Observation 2 (index 1, catégorie "A") :
+- On exclut cette observation et on fait de même :
+  - Cibles des autres "A" : [0, 0, 0]
+  - Moyenne : $\frac{0 + 0 + 0}{3} = 0 $</p>
+<p>Observation 3 (index 2, catégorie "A") :
+- On exclut :
+  - Cibles des autres "A" : [1, 0, 0]
+  - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $</p>
+<p>Observation 4 (index 3, catégorie "C") :
+- Similaires :
+  - Cibles des autres "C" : [1, 2]
+  - Moyenne : $\frac{1 + 2}{2} = 1.5 $</p>
+<p>Observation 5 (index 4, catégorie "A") :
+- On exclut :
+  - Cibles des autres "A" : [1, 0, 0]
+  - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $</p>
 <p>Chaque observation est maintenant encodée avec la moyenne des cibles des autres observations de la même catégorie.</p>
 <h4 id="avantages-et-inconvenients_1">Avantages et Inconvénients<a class="headerlink" href="#avantages-et-inconvenients_1" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1871,25 +1785,24 @@ $$</p>
 </li>
 </ul>
 <hr />
-<h2 id="5-james-stein-encoding">5. James-Stein encoding<a class="headerlink" href="#5-james-stein-encoding" title="Permanent link">&para;</a></h2>
-<h3 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h3>
+<h3 id="5-james-stein-encoding">5. James-Stein encoding<a class="headerlink" href="#5-james-stein-encoding" title="Permanent link">&para;</a></h3>
+<h4 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h4>
 <p>L'encoding James-Stein est un encodeur basé sur des cibles. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $ k $ selon la formule suivante :</p>
 <p>$$
 JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
  $$</p>
 <p>où : 
 - $ JS_i $ est l’estimation pour la catégorie <span class="arithmatex">\(C_i\)</span>,
-- $\text{mean}(y_i) $ est la moyenne des valeurs cibles pour la catégorie <span class="arithmatex">\(C_i\)</span>,
-- $\text{mean}(y) $ est la moyenne générale des cibles,
+- <span class="arithmatex">\(\text{mean}(y_i)\)</span> est la moyenne des valeurs cibles pour la catégorie <span class="arithmatex">\(C_i\)</span>,
+- <span class="arithmatex">\(\text{mean}(y)\)</span> est la moyenne générale des cibles,
 - $ B $ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.</p>
 <p>Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.</p>
-<h4 id="problematique-du-poids-b">Problématique du poids $ B $<a class="headerlink" href="#problematique-du-poids-b" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement_5">Mathématiquement<a class="headerlink" href="#mathematiquement_5" title="Permanent link">&para;</a></h4>
 <p>Le poids $ B $ est défini par :</p>
 <p>$$
 B = \frac{\text{var}(y_i)}{\text{var}(y_i) + \text{var}(y)}
  $$</p>
 <p>On se demande quel devrait être ce poids. Si on accorde trop de poids à la moyenne conditionnelle, on risque le surajustement, tandis qu'en privilégiant la moyenne globale, on peut sous-ajuster. Une approche canonique en apprentissage machine serait de passer par une validation croisée. Cependant, Charles Stein a proposé une solution en forme fermée. L'idée : ajuster la qualité des estimations selon la variance.</p>
-<h4 id="limitations-de-lestimateur-james-stein">Limitations de l'estimateur James-Stein<a class="headerlink" href="#limitations-de-lestimateur-james-stein" title="Permanent link">&para;</a></h4>
 <p>Cet estimateur est limité aux distributions normales, ce qui ne convient pas à toutes les tâches de classification. Ainsi, on retrouve :</p>
 <p>$$
 SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
@@ -1907,7 +1820,7 @@ $$</p>
 </li>
 </ol>
 <h4 id="application-pour-la-classification-binaire">Application pour la classification binaire<a class="headerlink" href="#application-pour-la-classification-binaire" title="Permanent link">&para;</a></h4>
-<p>Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ &lt;0,1&gt; $ en remplaçant $\text{mean}(y) $ par le ratio des cotes logarithmique :
+<p>Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ &lt;0,1&gt; $ en remplaçant <span class="arithmatex">\(\text{mean}(y)\)</span> par le ratio des cotes logarithmique :
 $$
 \text{log-odds_ratio}<em _text_not="\text{not">i = \log\left(\frac{\text{mean}(y_i)}{\text{mean}(y</em>\right)
 $$} \, i})</p>
@@ -2006,10 +1919,11 @@ $$} \, i})</p>
 <hr />
 <h3 id="4-catboost-encoding">4. CatBoost Encoding<a class="headerlink" href="#4-catboost-encoding" title="Permanent link">&para;</a></h3>
 <hr />
+<h4 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h4>
 <p>Il s'agit  d'une méthode d'encodage basée sur la cible, développée à l'origine pour être utilisée avec l'algorithme CatBoost, mais qui est applicable à d'autres modèles. Cet encodeur utilise une méthode particulière pour éviter la fuite d'information tout en exploitant les relations entre les catégories et ld target y.</p>
-<h3 id="principe-du-catboost-encoder">Principe du CatBoost encoder<a class="headerlink" href="#principe-du-catboost-encoder" title="Permanent link">&para;</a></h3>
 <p>L'idée principale est d'utiliser les informations du target de manière ordonnée. Plutôt que de déterminer la moyenne du target pour chaque catégorie sur l'ensemble des données (qui peut introduire des fuites), CatBoost effectue une mise à jour de l'encodage de manière <strong>séquentielle</strong>.</p>
-<h3 id="etapes-du-catboost-encoder">Étapes du catBoost encoder<a class="headerlink" href="#etapes-du-catboost-encoder" title="Permanent link">&para;</a></h3>
+<h4 id="mathematiquement_6">Mathématiquement<a class="headerlink" href="#mathematiquement_6" title="Permanent link">&para;</a></h4>
+<p>Le calcul se fait en deux etapes.</p>
 <ol>
 <li>
 <p><strong>Ordre des observations</strong></p>
@@ -2039,7 +1953,7 @@ $$} \, i})</p>
 </ul>
 </li>
 </ol>
-<h3 id="pourquoi-catboost-encoder-est-il-efficace">Pourquoi CatBoost encoder est-il Efficace ?<a class="headerlink" href="#pourquoi-catboost-encoder-est-il-efficace" title="Permanent link">&para;</a></h3>
+<h4 id="pourquoi-catboost-encoder-est-il-efficace">Pourquoi CatBoost encoder est-il Efficace ?<a class="headerlink" href="#pourquoi-catboost-encoder-est-il-efficace" title="Permanent link">&para;</a></h4>
 <p>L'encodeur CatBoost réduit efficacement la fuite d'information grâce à sa méthode de calcul séquentiel. Voici quelques atouts :
 - <strong>Séquentiel et Progressif</strong> : En n'utilisant que les observations précédentes, il évite que la valeur actuelle influence son encodage.
 - <strong>Régularisation</strong> : L'ajout d'un terme de régularisation permet de contrôler la variance.</p>
