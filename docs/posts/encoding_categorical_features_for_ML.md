@@ -182,7 +182,7 @@ Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder
 
 Avant d’explorer les formules, voici quelques notations cruciales :
 
-- $y$ et $y^+$ : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).
+- $y$ et $y^+$ : Le nombre total d'observations et le nombre total d'observations positives (où $y = 1$).
 - $x_i, y_i$ : La valeur de la catégorie et du target pour l'observation $ i $.
 - $n$ et $n^+$ : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.
 - $a$ : Un hyperparamètre de régularisation.
@@ -335,19 +335,23 @@ Chaque observation est maintenant encodée avec la moyenne des cibles des autres
 
 
 
-### 5. James-Stein encoding
+### 5. James-Stein encoder
 
 #### Description
-L'encoding James-Stein est un encodeur basé sur des cibles. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $ k $ selon la formule suivante :
+
+James-Stein encoder est  basé sur le target. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $k$ selon la formule suivante :
 
 $$
 JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
 $$
 
 où : 
-   - $JS_i$ est l’estimation pour la catégorie $C_i$,
-   - $\text{mean}(y_i)$ est la moyenne des valeurs cibles pour la catégorie $C_i$,
-   - $\text{mean}(y)$ est la moyenne générale des cibles,
+   - $JS_i$ est l’estimation pour la catégorie $C_i$
+
+   - $\text{mean}(y_i)$ est la moyenne des valeurs cibles pour la catégorie $C_i$
+
+   - $\text{mean}(y)$ est la moyenne générale des cibles
+   
    - $B$ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.
 
 Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.
