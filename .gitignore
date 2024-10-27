@@ -5,4 +5,5 @@
 **/venv/**
 **/*.egg-info"
 **/*.pptx
+**/*.ipynb
 
