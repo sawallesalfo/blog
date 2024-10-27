@@ -547,13 +547,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#classic-encoders" class="md-nav__link">
+  <a href="#i-classic-encoders" class="md-nav__link">
     <span class="md-ellipsis">
-      Classic Encoders
+      I. Classic Encoders
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Classic Encoders">
+    <nav class="md-nav" aria-label="I. Classic Encoders">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -697,13 +697,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#contrast-encoder" class="md-nav__link">
+  <a href="#ii-contrast-encoder" class="md-nav__link">
     <span class="md-ellipsis">
-      Contrast Encoder
+      II. Contrast Encoder
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Contrast Encoder">
+    <nav class="md-nav" aria-label="II. Contrast Encoder">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -725,11 +725,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#mathematiquement_1" class="md-nav__link">
     <span class="md-ellipsis">
@@ -748,6 +743,11 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#2-helmert-coding" class="md-nav__link">
     <span class="md-ellipsis">
@@ -763,23 +763,14 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bayesian-target-encoders" class="md-nav__link">
+  <a href="#iii-bayesian-target-encoders" class="md-nav__link">
     <span class="md-ellipsis">
-      Bayesian Target Encoders
+      III. Bayesian Target Encoders
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Bayesian Target Encoders">
+    <nav class="md-nav" aria-label="III. Bayesian Target Encoders">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#caracteristiques-cles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Caractéristiques clés:
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#1-target-encoder" class="md-nav__link">
@@ -1230,7 +1221,7 @@
 </tbody>
 </table>
 <p>Pour modéliser cette table de données, il nous faut transformer la colonne x4 en variable numérique. En gros, nous allons discuter des différentes approches qui s'offrent à nous.</p>
-<h2 id="classic-encoders">Classic Encoders<a class="headerlink" href="#classic-encoders" title="Permanent link">&para;</a></h2>
+<h2 id="i-classic-encoders">I. Classic Encoders<a class="headerlink" href="#i-classic-encoders" title="Permanent link">&para;</a></h2>
 <h3 id="1-label-encoding">1. Label Encoding<a class="headerlink" href="#1-label-encoding" title="Permanent link">&para;</a></h3>
 <h4 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h4>
 <p>L'encodage par étiquette attribue un entier unique à chaque catégorie d'une variable catégorielle. Cependant, attention ! Cette méthode peut insuffler une notion d'ordre qui pourrait être inappropriée pour des données purement nominales.</p>
@@ -1461,7 +1452,7 @@ $$</p>
 <p>Je vous encourage aussi à jeter un œil sur deux encodeurs intéressants :
 - Hashing encoder (https://contrib.scikit-learn.org/category_encoders/hashing.html) 
 - Count encoder  (https://contrib.scikit-learn.org/category_encoders/count.html)</p>
-<h2 id="contrast-encoder">Contrast Encoder<a class="headerlink" href="#contrast-encoder" title="Permanent link">&para;</a></h2>
+<h2 id="ii-contrast-encoder">II. Contrast Encoder<a class="headerlink" href="#ii-contrast-encoder" title="Permanent link">&para;</a></h2>
 <p>Les encodeurs de contraste transforment les variables catégorielles en format numérique en créant des codes de contraste qui permettent aux algorithmes d'interpréter efficacement les resultats des modèles de regression. Voici quelques méthodes courantes pour encoder les contrastes :</p>
 <h3 id="1-sum-encoder">1. Sum Encoder<a class="headerlink" href="#1-sum-encoder" title="Permanent link">&para;</a></h3>
 <h4 id="description_3">Description<a class="headerlink" href="#description_3" title="Permanent link">&para;</a></h4>
@@ -1471,7 +1462,7 @@ $$</p>
 <p>Cela n'est pas toujours du goût des statisticiens ! Ils ont donc introduit l'encodage par somme. Dans les modèles de régression :
 + L'intercept représente la moyenne générale du target à travers toutes les conditions.
 + Les coefficients des catégories sont alors interprétés comme la variation de la moyenne du target pour chaque catégorie par rapport à cette moyenne générale.</p>
-<h3 id="mathematiquement_1">Mathématiquement<a class="headerlink" href="#mathematiquement_1" title="Permanent link">&para;</a></h3>
+<h4 id="mathematiquement_1">Mathématiquement<a class="headerlink" href="#mathematiquement_1" title="Permanent link">&para;</a></h4>
 <p>Pour des catégories <span class="arithmatex">\(C = \{ C_1, C_2, \ldots, C_n \}\)</span>, si nous choisissons <span class="arithmatex">\(C_k\)</span> comme catégorie de référence, une observation appartenant à <span class="arithmatex">\(C_i\)</span> (où $ i \neq k $) se représente par :</p>
 <div class="arithmatex">\[
 \mathbf{x} = \begin{bmatrix} 1 &amp; 0 &amp; \ldots &amp; -1 &amp; -1 \end{bmatrix}
@@ -1481,7 +1472,7 @@ $$</p>
 -  <span class="arithmatex">\(1\)</span> pour la catégorie <span class="arithmatex">\(C_2\)</span> 
 -  <span class="arithmatex">\(-1\)</span> pour la catégorie de référence <span class="arithmatex">\(C_k\)</span> 
 -  <span class="arithmatex">\(0\)</span> pour les autres catégories.</p>
-<h3 id="pratiquement_3">Pratiquement<a class="headerlink" href="#pratiquement_3" title="Permanent link">&para;</a></h3>
+<h4 id="pratiquement_3">Pratiquement<a class="headerlink" href="#pratiquement_3" title="Permanent link">&para;</a></h4>
 <p>Pour appliquer l'encodage Sum avec Pandas, on pourrait le faire directement, mais je vous conseille d'utiliser le package category_encoders, notamment la classe <a href="https://contrib.scikit-learn.org/category_encoders/sum.html">SumEncoder</a>.</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">category_encoders.sum_coding</span> <span class="kn">import</span> <span class="n">SumEncoder</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">SE_encoder</span> <span class="o">=</span> <span class="n">SumEncoder</span><span class="p">(</span><span class="n">drop_invariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1497,9 +1488,8 @@ $$</p>
 <p>Première remarque : il n’y a pas de catégorie de référence, car par défaut, c’est la dernière par ordre alphabétique. On ne peut pas choisir la catégorie de référence directement ici, mais une fois que l’on a compris le principe, on peut s’en charger par nous-mêmes. Pour obtenir les coefficients de la catégorie de référence, il suffit de prendre -1 et -1 pour <code>x4_0</code> et <code>x4_1</code>.</p>
 <h3 id="2-helmert-coding">2. Helmert Coding<a class="headerlink" href="#2-helmert-coding" title="Permanent link">&para;</a></h3>
 <p>Pour plus de détails, consultez ce <a href="https://contrib.scikit-learn.org/category_encoders/helmert.html">lien</a>.</p>
-<h2 id="bayesian-target-encoders">Bayesian Target Encoders<a class="headerlink" href="#bayesian-target-encoders" title="Permanent link">&para;</a></h2>
-<p>Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder les variables catégorielles en tenant compte de la distribution du target. Cette approche intègre des informations a priori sur la variable cible, ce qui la rend particulièrement efficace pour améliorer la performance des modèles d'apprentissage automatique.</p>
-<h3 id="caracteristiques-cles">Caractéristiques clés:<a class="headerlink" href="#caracteristiques-cles" title="Permanent link">&para;</a></h3>
+<h2 id="iii-bayesian-target-encoders">III. Bayesian Target Encoders<a class="headerlink" href="#iii-bayesian-target-encoders" title="Permanent link">&para;</a></h2>
+<p>Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder les variables catégorielles en tenant compte de la distribution du target. Cette approche intègre des informations a priori sur la variable cible, ce qui la rend particulièrement efficace pour améliorer la performance des modèles d'apprentissage automatique. Leurs Caractéristiques clés sont les suivantes.</p>
 <ol>
 <li>
 <p><strong>Cadre Bayésien</strong> : Cette méthode recourt à l’approche bayésienne pour estimer la moyenne du target pour chaque catégorie tout en considérant les informations provenant de l'ensemble de données global. Cela aide à atténuer les soucis liés au surajustement, surtout quand les catégories ont peu d'observations.</p>
@@ -1796,7 +1786,6 @@ $$</p>
 </ul>
 </li>
 </ul>
-<hr />
 <h3 id="5-james-stein-encoding">5. James-Stein encoding<a class="headerlink" href="#5-james-stein-encoding" title="Permanent link">&para;</a></h3>
 <h4 id="description_6">Description<a class="headerlink" href="#description_6" title="Permanent link">&para;</a></h4>
 <p>L'encoding James-Stein est un encodeur basé sur des cibles. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $ k $ selon la formule suivante :</p>
@@ -1928,9 +1917,7 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 </tr>
 </tbody>
 </table>
-<hr />
 <h3 id="4-catboost-encoding">4. CatBoost Encoding<a class="headerlink" href="#4-catboost-encoding" title="Permanent link">&para;</a></h3>
-<hr />
 <h4 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h4>
 <p>Il s'agit  d'une méthode d'encodage basée sur la cible, développée à l'origine pour être utilisée avec l'algorithme CatBoost, mais qui est applicable à d'autres modèles. Cet encodeur utilise une méthode particulière pour éviter la fuite d'information tout en exploitant les relations entre les catégories et ld target y.</p>
 <p>L'idée principale est d'utiliser les informations du target de manière ordonnée. Plutôt que de déterminer la moyenne du target pour chaque catégorie sur l'ensemble des données (qui peut introduire des fuites), CatBoost effectue une mise à jour de l'encodage de manière <strong>séquentielle</strong>.</p>
@@ -1966,7 +1953,7 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 </li>
 </ol>
 <h4 id="pourquoi-catboost-encoder-est-il-efficace">Pourquoi CatBoost encoder est-il Efficace ?<a class="headerlink" href="#pourquoi-catboost-encoder-est-il-efficace" title="Permanent link">&para;</a></h4>
-<p>L'encodeur CatBoost réduit efficacement la fuite d'information grâce à sa méthode de calcul séquentiel. Voici quelques atouts :
+<p>CatBoost encoder réduit efficacement la fuite d'information grâce à sa méthode de calcul séquentiel. Voici quelques atouts :
 - <strong>Séquentiel et Progressif</strong> : En n'utilisant que les observations précédentes, il évite que la valeur actuelle influence son encodage.
 - <strong>Régularisation</strong> : L'ajout d'un terme de régularisation permet de contrôler la variance.</p>
 <h4 id="pratiquement_8">Pratiquement<a class="headerlink" href="#pratiquement_8" title="Permanent link">&para;</a></h4>
