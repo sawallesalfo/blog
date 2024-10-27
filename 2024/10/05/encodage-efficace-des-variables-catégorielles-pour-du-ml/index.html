@@ -1431,8 +1431,8 @@ $$</p>
 <p>On peut jouer avec pas mal de paramètres. Pour les modèles statistiques, on a souvent tendance à fixer <code>drop_first=True</code> afin d'éviter le problème de colinéarité parfaite. Vous l'avez vu, on a transformé la variable x4 en plusieurs nouvelles caractéristiques. Cela peut poser problème si on a un grand nombre de catégories, ce qui pourrait mener à des matrices creuses. Dans une situation de ML training, cela peut entraîner du surapprentissage. Parfois, une sélection de caractéristiques devient alors inévitable.</p>
 <p>https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html</p>
 <h3 id="autres-encodeurs">Autres encodeurs<a class="headerlink" href="#autres-encodeurs" title="Permanent link">&para;</a></h3>
-<p>Je vous encourage aussi à jeter un œil sur deux encodeurs intéressants:
-- [Hashing encoder] (https://contrib.scikit-learn.org/category_encoders/hashing.html) 
+<p>Je vous encourage aussi à jeter un œil sur deux encodeurs intéressants :
+- <a href="https://contrib.scikit-learn.org/category_encoders/hashing.html">Hashing encoder</a> 
 - <a href="https://contrib.scikit-learn.org/category_encoders/count.html">Count encoder</a></p>
 <h2 id="ii-contrast-encoder">II. Contrast Encoder<a class="headerlink" href="#ii-contrast-encoder" title="Permanent link">&para;</a></h2>
 <p>Les encodeurs de contraste transforment les variables catégorielles en format numérique en créant des codes de contraste qui permettent aux algorithmes d'interpréter efficacement les resultats des modèles de regression. Voici quelques méthodes courantes pour encoder les contrastes :</p>
