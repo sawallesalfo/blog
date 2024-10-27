@@ -547,15 +547,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#donnees" class="md-nav__link">
-    <span class="md-ellipsis">
-      Données
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#classic-encoders" class="md-nav__link">
     <span class="md-ellipsis">
       Classic Encoders
@@ -1220,7 +1211,6 @@
 
 <h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
 <p>Assurez-vous d'avoir pandas, scikit-learn, et category_encoders installés.</p>
-<h2 id="donnees">Données<a class="headerlink" href="#donnees" title="Permanent link">&para;</a></h2>
 <p>Pour illustrer nos exemples, voici un petit jeu de données :</p>
 <table>
 <thead>
@@ -1603,7 +1593,7 @@ $$</p>
 </ul>
 <ol>
 <li>
-<p><strong>Calcul du Paramètre de Lissage ($ s $)</strong></p>
+<p><strong>Calcul du Paramètre de lissage ($ s $)</strong></p>
 <p>Le paramètre de lissage est utilisé pour équilibrer la contribution entre la moyenne générale (prior) et la moyenne par catégorie :
  $$
  s = \frac{1}{1 + \exp\left(-\frac{n - mdl}{a}\right)}
@@ -1910,17 +1900,17 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 <p><strong>Modèle Pooled</strong> : Si toutes les observations sont semblables et prennent un nombre commun d'observations pour chaque valeur.</p>
 </li>
 <li>
-<p><strong>Modèle Indépendant</strong> : Si les comptes d'observation diffèrent, il est plus judicieux de remplacer les variances par des erreurs standard, pénalisant ainsi les petites observations :</p>
+<p><strong>Modèle Indépendant</strong> : Si les comptes d'observation diffèrent, il est plus judicieux de remplacer les variances par des erreurs standard, pénalisant ainsi les petites observations :
+$$
+SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
+$$</p>
 </li>
 </ol>
-<p>$$
-SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
- $$</p>
 <h4 id="application-pour-la-classification-binaire">Application pour la classification binaire<a class="headerlink" href="#application-pour-la-classification-binaire" title="Permanent link">&para;</a></h4>
-<p>Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ &lt;0,1&gt; $ en remplaçant $ \text{mean}(y) $ par le ratio des cotes logarithmique :</p>
-<p>$$
+<p>Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ &lt;0,1&gt; $ en remplaçant $ \text{mean}(y) $ par le ratio des cotes logarithmique :
+$$
 \text{log-odds_ratio}<em _text_not="\text{not">i = \log\left(\frac{\text{mean}(y_i)}{\text{mean}(y</em>\right)
- $$} \, i})</p>
+$$} \, i})</p>
 <p>Cela s'appelle <strong>modèle binaire</strong>. C’est délicat d'estimer les paramètres de ce modèle, et parfois cela échoue. Il est souvent plus judicieux de recourir à un <strong>modèle bêta</strong>, souvent plus stable malgré une précision légèrement inférieure.</p>
 <h4 id="pratiquement_7">Pratiquement<a class="headerlink" href="#pratiquement_7" title="Permanent link">&para;</a></h4>
 <p>Pour utiliser l'encodeur James-Stein, allez-y avec la classe <code>JamesSteinEncoder</code> de <code>category_encoders</code> :</p>
