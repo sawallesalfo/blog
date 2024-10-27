@@ -267,9 +267,13 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 L'encoding par cible a ses avantages, mais attention à un **inconvénient majeur** : le surajustement potentiel, surtout pour les catégories avec peu de données. Le mécanisme de régularisation aide, mais il faut bien affiner les hyperparamètres pour ne pas qu'il surapprenne les relations spécifiques aux catégories rares.
 
 Pour les **Avantages** :
+
 1. **Capture la relation avec le target :** Directement intégrée, permettant d'améliorer la performance.
+
 2. **Réduit la dimensionnalité :** Évite une explosion de dimensions comparé à l'encoding one-hot.
+
 3. **Gère les catégories Rares :** Le lissage minimise le risque de surajustement pour les valeurs peu fréquentes.
+
 4. **Facile à interpréter :** Les valeurs encodées reflètent des probabilités moyennes pondérées, ce qui simplifie l'analyse.
 
 ### 2. M-Estimate coding
@@ -360,17 +364,18 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 
 Décomposons le calcul pour chaque observation dans la colonne `x4` :
 
-Nous allons expliquer les calculs.
-1. **Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.**
-2. **Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.**
+Nous allons expliquer les calculs:
+
+1. Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.
+2. Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.
 
  Observation 1 (index 0, catégorie "B") :
-- On exclut la première observation et on calcule la moyenne des cibles `y` pour les autres occurrences :
+   - On exclut la première observation et on calcule la moyenne des cibles `y` pour les autres occurrences :
   - Cibles des autres "B" : [0, 0]
   -moyenne du target : $\frac{0 + 0}{2} = 0 $
 
 Observation 2 (index 1, catégorie "A") :
-- On exclut cette observation et on fait de même :
+   - On exclut cette observation et on fait de même :
   - Cibles des autres "A" : [0, 0, 0]
   - Moyenne : $\frac{0 + 0 + 0}{3} = 0 $
 
@@ -502,10 +507,10 @@ Le calcul se fait en deux etapes.
    x^k_i = \frac{\sum_{j < i} (y_j \cdot (x_j == k)) + \text{prior} \cdot \alpha}{\sum_{j < i} (x_j == k) + \alpha}
    $$
    où :
-   -  $ x^k_i $ est la valeur encodée pour l'observation $i$ de la catégorie $ k $,
-   -  $ y_j $ est la valeur cible pour l'observation $j$,
-   -  $\text{prior} $ est une valeur moyenne générale du target,
-   -  $\alpha $ est un paramètre de lissage pour éviter les divisions par zéro.
+   -  $x^k_i$ est la valeur encodée pour l'observation $i$ de la catégorie $k$,
+   -  $y_j$ est la valeur cible pour l'observation $j$,
+   -  $\text{prior}$ est une valeur moyenne générale du target,
+   -  $\alpha$ est un paramètre de lissage pour éviter les divisions par zéro.
 
 3. **Encodage des données de test**
    - Pour les données de test, l'encodage est basé sur les moyennes calculées à partir des données d'entraînement, sans fuite d'information.
