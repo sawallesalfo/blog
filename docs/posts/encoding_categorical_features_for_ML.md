@@ -272,7 +272,6 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 ```
 ![alt text](./encoding_categorical_features_for_ML/me_tab.PNG)
 
-#### Avantages et inconvénients
 
 | **Avantages**                                    | **Inconvénients**                                    |
 |--------------------------------------------------|-----------------------------------------------------|
