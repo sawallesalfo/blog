@@ -76,11 +76,13 @@ où :
 
 #### Pratiquement
 Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes :
+
 - C → Faible 
 - B → Moyen 
 - A → Élevé 
 
 Si l'ordre naturel est *Faible < Moyen < Élevé*, alors l'encodage ordinal sera : 
+
    - C → 0 
    - B → 1 
    - A → 2
@@ -134,11 +136,15 @@ Les encodeurs de contraste transforment les variables catégorielles en format n
 
 #### Description
 Cette méthode encode les variables de manière à ce que la somme des vecteurs encodés soit égale à zéro, évitant ainsi la multicolinéarité. Dans un modèle One Hot Encoding, on doit supprimer une catégorie et la garder comme référence. Ainsi :
+
 + Dans ce modèle, l'intercept représente la moyenne de la condition de référence.
+
 + Les coefficients représentent les effets simples, c'est-à-dire la différence entre une condition particulière et la condition de référence.
 
 Cela n'est pas toujours du goût des statisticiens ! Ils ont donc introduit l'encodage par somme. Dans les modèles de régression :
+
 + L'intercept représente la moyenne générale du target à travers toutes les conditions.
+
 + Les coefficients des catégories sont alors interprétés comme la variation de la moyenne du target pour chaque catégorie par rapport à cette moyenne générale.
 
 #### Mathématiquement
@@ -240,7 +246,7 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 
 ### 2. M-Estimate coding
 
-L'M-Estimate encoder est une version simplifiée du target encoder qui a un seul paramètre de lissage, ce qui facilite sa mise en place et son ajustement. Conçu pour estimer la probabilité d'appartenance à une catégorie en utilisant une moyenne pondérée.
+M-Estimate encoder est une version simplifiée du target encoder qui a un seul paramètre de lissage, ce qui facilite sa mise en place et son ajustement. Conçu pour estimer la probabilité d'appartenance à une catégorie en utilisant une moyenne pondérée.
 
 #### Description
 M-Estimate coding est une technique simplifiée qui utilise un seul paramètre de lissage, facilitant son adaptation. Il est destiné à estimer la probabilité d'appartenance à une catégorie en s'appuyant sur une moyenne pondérée.
@@ -351,7 +357,7 @@ où :
    - $\text{mean}(y_i)$ est la moyenne des valeurs cibles pour la catégorie $C_i$
 
    - $\text{mean}(y)$ est la moyenne générale des cibles
-   
+
    - $B$ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.
 
 Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.
