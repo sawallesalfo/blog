@@ -56,14 +56,7 @@ encoder = LabelEncoder()
 data["x4_LabelEncoder"] = encoder.fit_transform(data["x4"])
 data.head()
 ```
-
-| x1  | x2  | x3  | x4 | y | x4_LabelEncoder |
-|-----|-----|-----|----|---|-----------------|
-| 5.6 | 3.4 | 1.5 | B  | 0 | 1               |
-| 7.8 | 2.7 | 6.9 | A  | 1 | 0               |
-| 4.9 | 3.1 | 1.5 | A  | 0 | 0               |
-| 6.4 | 3.2 | 5.3 | C  | 1 | 2               |
-| 5.1 | 3.8 | 1.6 | A  | 0 | 0               |
+![alt text](./encoding_categorical_features_for_ML/label_tab.PNG)
 
 N’oublions pas l’inconvénient : cela peut introduire des valeurs qui n’ont pas de sens statistique.
 
@@ -98,14 +91,7 @@ encoder = OrdinalEncoder(categories=[['C', 'B', 'A']])
 data["x4_OrdinalEncoder"] = encoder.fit_transform(data[["x4"]])
 data.head()
 ```
-
-| x1  | x2  | x3  | x4 | y | x4_OrdinalEncoder |
-|-----|-----|-----|----|---|------------------|
-| 5.6 | 3.4 | 1.5 | B  | 0 | 1                |
-| 7.8 | 2.7 | 6.9 | A  | 1 | 2                |
-| 4.9 | 3.1 | 1.5 | A  | 0 | 2                |
-| 6.4 | 3.2 | 5.3 | C  | 1 | 0                |
-| 5.1 | 3.8 | 1.6 | A  | 0 | 2                |
+![alt text](./encoding_categorical_features_for_ML/ordinal_tab.PNG)
 
 Cette méthode préserve l'ordre des catégories, crucial pour certaines analyses statistiques. En revanche, il faut s'assurer que cet ordre est bien défini dans le code `OrdinalEncoder(categories=[['C', 'B', 'A']])`.
 
@@ -129,13 +115,7 @@ data = pd.get_dummies(data, columns=["x4"], drop_first=False, prefix="x4_OneHotE
 data.head()
 ```
 
-| x1  | x2  | x3  | y | x4_OneHotEncoder_A | x4_OneHotEncoder_B | x4_OneHotEncoder_C |
-|-----|-----|-----|---|--------------------|--------------------|--------------------|
-| 5.6 | 3.4 | 1.5 | 0 | 0                  | 1                  | 0                  |
-| 7.8 | 2.7 | 6.9 | 1 | 1                  | 0                  | 0                  |
-| 4.9 | 3.1 | 1.5 | 0 | 1                  | 0                  | 0                  |
-| 6.4 | 3.2 | 5.3 | 1 | 0                  | 0                  | 1                  |
-| 5.1 | 3.8 | 1.6 | 0 | 1                  | 0                  | 0                  |
+![alt text](./encoding_categorical_features_for_ML/ohe_tabPNG.PNG)
 
 On peut jouer avec pas mal de paramètres. Pour les modèles statistiques, on a souvent tendance à fixer `drop_first=True` afin d'éviter le problème de colinéarité parfaite. Vous l'avez vu, on a transformé la variable x4 en plusieurs nouvelles caractéristiques. Cela peut poser problème si on a un grand nombre de catégories, ce qui pourrait mener à des matrices creuses. Dans une situation de ML training, cela peut entraîner du surapprentissage. Parfois, une sélection de caractéristiques devient alors inévitable.
 
@@ -182,13 +162,7 @@ from category_encoders.sum_coding import SumEncoder
 SE_encoder = SumEncoder(drop_invariant=True)
 SE_encoder.fit_transform(data).head()
 ```
-|   x1 |   x2 |   x3 |   x4_0 |   x4_1 |   y |
-|------|------|------|--------|--------|-----|
-|  5.6 |  3.4 |  1.5 |    1.0 |    0.0 |   0 |
-|  7.8 |  2.7 |  6.9 |    0.0 |    1.0 |   1 |
-|  4.9 |  3.1 |  1.5 |    0.0 |    1.0 |   0 |
-|  6.4 |  3.2 |  5.3 |   -1.0 |   -1.0 |   1 |
-|  5.1 |  3.8 |  1.6 |    0.0 |    1.0 |   0 |
+![alt text](./encoding_categorical_features_for_ML/sum_tab.PNG)
 
 Première remarque : il n’y a pas de catégorie de référence, car par défaut, c’est la dernière par ordre alphabétique. On ne peut pas choisir la catégorie de référence directement ici, mais une fois que l’on a compris le principe, on peut s’en charger par nous-mêmes. Pour obtenir les coefficients de la catégorie de référence, il suffit de prendre -1 et -1 pour `x4_0` et `x4_1`.
 
@@ -253,14 +227,7 @@ from category_encoders import TargetEncoder
 encoder = TargetEncoder()
 encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 ```
-
-|  x1  |  x2  |  x3  |    x4    |
-|:----:|:----:|:----:|:--------:|
-| 5.6  | 3.4  | 1.5  | 0.422767 |
-| 7.8  | 2.7  | 6.9  | 0.458005 |
-| 4.9  | 3.1  | 1.5  | 0.458005 |
-| 6.4  | 3.2  | 5.3  | 0.628721 |
-| 5.1  | 3.8  | 1.6  | 0.458005 |
+![alt text](./encoding_categorical_features_for_ML/target_encoder_tab.PNG)
 
 
 | **Avantages**                                    | **Inconvénient**                                   |
@@ -296,14 +263,7 @@ from category_encoders import MEstimateEncoder
 encoder = MEstimateEncoder()
 encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 ```
-
-|   x1 |   x2 |   x3 |   x4 |
-|------|------|------|----|
-|  5.6 |  3.4 |  1.5 | 0.125 |
-|  7.8 |  2.7 |  6.9 | 0.300 |
-|  4.9 |  3.1 |  1.5 | 0.300 |
-|  6.4 |  3.2 |  5.3 | 1.125|
-|  5.1 |  3.8 |  1.6 | 0.300 |
+![alt text](./encoding_categorical_features_for_ML/me_tab.PNG)
 
 #### Avantages et inconvénients
 
@@ -347,16 +307,9 @@ Le calcul se fait en deux etapes.
 import pandas as pd
 from category_encoders import LeaveOneOutEncoder
 encoder = LeaveOneOutEncoder()
-encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
+encoder.fit_transform(data.drop(columns=["y"]), data["y"])
 ```
-
-|   x1 |   x2 |   x3 |   x4 |
-|------|------|------|-----|
-|  5.6 |  3.4 |  1.5 |    0 |
-|  7.8 |  2.7 |  6.9 |    0 |
-|  4.9 |  3.1 |  1.5 | 0.33 |
-|  6.4 |  3.2 |  5.3 | 1.5 |
-|  5.1 |  3.8 |  1.6 | 0.33 |
+![alt text](./encoding_categorical_features_for_ML/loo_tab.PNG)
 
 Décomposons le calcul pour chaque observation dans la colonne `x4` :
 
@@ -443,22 +396,9 @@ import pandas as pd
 from category_encoders import JamesSteinEncoder
 
 encoder = JamesSteinEncoder()
-encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
+encoder.fit_transform(data.drop(columns=["y"]), data["y"])
 ```
-
-|    |   x1 |   x2 |   x3 |   x4      |
-|----|-----|-----|-----|-----------|
-| 0  |  5.6 |  3.4 |  1.5 |  0.000000 |
-| 1  |  7.8 |  2.7 |  6.9 |  0.250000 |
-| 2  |  4.9 |  3.1 |  1.5 |  0.250000 |
-| 3  |  6.4 |  3.2 |  5.3 |  1.333333 |
-| 4  |  5.1 |  3.8 |  1.6 |  0.250000 |
-| 5  |  6.0 |  2.9 |  4.5 |  0.000000 |
-| 6  |  6.5 |  3.0 |  5.8 |  1.333333 |
-| 7  |  5.3 |  3.7 |  1.5 |  0.250000 |
-| 8  |  7.1 |  3.0 |  5.9 |  0.000000 |
-| 9  |  5.9 |  3.0 |  5.1 |  1.333333 |
-
+![alt text](./encoding_categorical_features_for_ML/js_tab.PNG)
 
 ### 4. CatBoost Encoding
 
@@ -498,21 +438,9 @@ CatBoost encoder réduit efficacement la fuite d'information grâce à sa métho
 ```python
 from category_encoders import CatBoostEncoder
 encoder = CatBoostEncoder()
-encoder.fit_transform(data.drop(columns=["y"]), data["y"])
+encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 ```
-
-|   x1  |   x2  |   x3  |    x4    |
-|-------|-------|-------|----------|
-|  5.6  |  3.4  |  1.5  | 0.500000 |
-|  7.8  |  2.7  |  6.9  | 0.500000 |
-|  4.9  |  3.1  |  1.5  | 0.750000 |
-|  6.4  |  3.2  |  5.3  | 0.500000 |
-|  5.1  |  3.8  |  1.6  | 0.500000 |
-|  6.0  |  2.9  |  4.5  | 0.250000 |
-|  6.5  |  3.0  |  5.8  | 0.750000 |
-|  5.3  |  3.7  |  1.5  | 0.375000 |
-|  7.1  |  3.0  |  5.9  | 0.166667 |
-|  5.9  |  3.0  |  5.1  | 0.833333 |
+![alt text](./encoding_categorical_features_for_ML/cat_tab.PNG)
 
 Et voilà ! Pour appliquer l'encodeur CatBoost à la variable catégorielle `x4`, nous avons vu le calcul étape par étape. 
 
