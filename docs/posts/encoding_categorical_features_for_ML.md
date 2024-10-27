@@ -83,14 +83,14 @@ où :
 
 #### Pratiquement
 Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes : 
-- C → Faible 
-- B → Moyen 
-- A → Élevé 
+   - C → Faible 
+   - B → Moyen 
+   - A → Élevé 
 
 Si l'ordre naturel est *Faible < Moyen < Élevé*, alors l'encodage ordinal sera : 
-- *C* → 0 
-- *B* → 1 
-- *A* → 2
+   - C → 0 
+   - B → 1 
+   - A → 2
 
 ```python
 from sklearn.preprocessing import OrdinalEncoder
@@ -312,22 +312,27 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 #### Avantages et inconvénients
 
 **Avantages :**
-1. **Simple et efficace :** Un seul paramètre de lissage à ajuster.
-2. **Réduction du surajustement :** Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.
-3. **Performance élevée :** Pratique à implémenter et efficace pour les cibles binaires et continues.
+   1. **Simple et efficace :** Un seul paramètre de lissage à ajuster.
+   2. **Réduction du surajustement :** Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.
+   3. **Performance élevée :** Pratique à implémenter et efficace pour les cibles binaires et continues.
 
 **Inconvénients :**
-1. **Régularisation limitée :** Moins flexible que target encoder classique.
-2. **Pas idéal pour les cibles catégorielles multiples :** Pour les cibles à plusieurs classes, un wrapper polynomial est nécessaire, complexifiant la méthode.
+   1. **Régularisation limitée :** Moins flexible que target encoder classique.
+   2. **Pas idéal pour les cibles catégorielles multiples :** Pour les cibles à plusieurs classes, un wrapper polynomial est nécessaire, complexifiant la méthode.
 
 ### 3. Leave-One-Out encoder
-L'**Leave-One-Out encoder** (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.
+L'Leave-One-Out encoder (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.
 
 #### Description
-L'idée est de calculer la **moyenne du target** pour chaque catégorie, mais sans inclure l'observation actuelle. Cela aide à limiter la fuite d'information puisque la valeur cible de l'observation en cours n'est pas intégrée dans sa propre transformation.
+L'idée est de calculer la moyenne du target pour chaque catégorie, mais sans inclure l'observation actuelle. Cela aide à limiter la fuite d'information puisque la valeur cible de l'observation en cours n'est pas intégrée dans sa propre transformation.
 
 #### Mathématiquement
-1. **Calcul de la moyenne du target en Excluant l'Observation Actuelle**
+
+Le calcul se fait en deux etapes.
+
+
+1. Calcul de la moyenne du target en excluant l'observation actuelle
+
    Pour chaque observation $ i $ appartenant à la catégorie $ k $, la moyenne est calculée sans l’observation en cours par :
    $$
    x^k_i = \frac{\sum_{j \neq i} (y_j \cdot (x_j == k)) - y_i}{\sum_{j \neq i} (x_j == k)}
@@ -335,8 +340,9 @@ L'idée est de calculer la **moyenne du target** pour chaque catégorie, mais sa
 
    En excluant $ y_i $, on évite que le modèle "voit" sa propre valeur cible, ce qui réduit le risque de surapprentissage.
 
-2. **Encodage des Données de Test**
-   Pour les données de test, chaque catégorie est remplacée par la **moyenne du target** calculée sur l'ensemble des données d'entraînement :
+2. **Encodage des données de test**
+
+   Pour les données de test, chaque catégorie est remplacée par la moyenne du target calculée sur l'ensemble des données d'entraînement :
    $$
    x^k = \frac{\sum y_j \cdot (x_j == k)}{\sum (x_j == k)}
    $$
@@ -414,10 +420,10 @@ JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
 $$
 
 où : 
-- $JS_i$ est l’estimation pour la catégorie $C_i$,
-- $\text{mean}(y_i)$ est la moyenne des valeurs cibles pour la catégorie $C_i$,
-- $\text{mean}(y)$ est la moyenne générale des cibles,
-- $B$ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.
+   - $JS_i$ est l’estimation pour la catégorie $C_i$,
+   - $\text{mean}(y_i)$ est la moyenne des valeurs cibles pour la catégorie $C_i$,
+   - $\text{mean}(y)$ est la moyenne générale des cibles,
+   - $B$ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.
 
 Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.
 
@@ -495,18 +501,18 @@ L'idée principale est d'utiliser les informations du target de manière ordonn�
 
 Le calcul se fait en deux etapes.
 
-1. **Ordre des observations**
+1. Ordre des observations
    - L'algorithme parcourt les données de manière ordonnée.
    - L'encodage pour chaque observation est basé sur les informations des observations **précédentes** seulement, empêchant ainsi la valeur du target actuelle d'affecter son propre encodage.
 
-2. **Calcul progressif de la moyenne du target**
+2. Calcul progressif de la moyenne du target
    - Pour chaque observation $i$ dans la catégorie $ k $, la moyenne du target est calculée avec les observations **précédentes**. La formule est :
    $$
    x^k_i = \frac{\sum_{j < i} (y_j \cdot (x_j == k)) + \text{prior} \cdot \alpha}{\sum_{j < i} (x_j == k) + \alpha}
    $$
    
 
-3. **Encodage des données de test**
+3. Encodage des données de test
    - Pour les données de test, l'encodage est basé sur les moyennes calculées à partir des données d'entraînement, sans fuite d'information.
 
 #### Pourquoi CatBoost encoder est-il Efficace ?
