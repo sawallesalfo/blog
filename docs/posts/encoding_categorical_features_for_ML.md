@@ -413,44 +413,47 @@ Chaque observation est maintenant encodée avec la moyenne des cibles des autres
 #### Description
 L'encoding James-Stein est un encodeur basé sur des cibles. Son idée fondatrice est d'estimer la moyenne du target pour une catégorie donnée $ k $ selon la formule suivante :
 
- $$
+$$
 JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
- $$
+$$
 
 où : 
-- $ JS_i $ est l’estimation pour la catégorie $C_i$,
+- $JS_i$ est l’estimation pour la catégorie $C_i$,
 - $\text{mean}(y_i)$ est la moyenne des valeurs cibles pour la catégorie $C_i$,
 - $\text{mean}(y)$ est la moyenne générale des cibles,
-- $ B $ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.
+- $B$ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.
 
 Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.
 
 #### Mathématiquement
 Le poids $ B $ est défini par :
 
- $$
+$$
 B = \frac{\text{var}(y_i)}{\text{var}(y_i) + \text{var}(y)}
- $$
+$$
 
 On se demande quel devrait être ce poids. Si on accorde trop de poids à la moyenne conditionnelle, on risque le surajustement, tandis qu'en privilégiant la moyenne globale, on peut sous-ajuster. Une approche canonique en apprentissage machine serait de passer par une validation croisée. Cependant, Charles Stein a proposé une solution en forme fermée. L'idée : ajuster la qualité des estimations selon la variance.
 
 Cet estimateur est limité aux distributions normales, ce qui ne convient pas à toutes les tâches de classification. Ainsi, on retrouve :
 
- $$
+$$
 SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
- $$
+$$
 
 Un défi majeur est que nous ne connaissons pas $\text{var}(y)$. Il nous faudra donc estimer ces variances. Voici quelques solutions :
 
 1. **Modèle Pooled** : Si toutes les observations sont semblables et prennent un nombre commun d'observations pour chaque valeur.
 
 2. **Modèle Indépendant** : Si les comptes d'observation diffèrent, il est plus judicieux de remplacer les variances par des erreurs standard, pénalisant ainsi les petites observations :
+
 $$
 SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 $$
 
 #### Application pour la classification binaire
-Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ <0,1> $ en remplaçant $\text{mean}(y)$ par le ratio des cotes logarithmique :
+
+Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $0$ ou $1$. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $<0,1>$ en remplaçant $\text{mean}(y)$ par le ratio des cotes logarithmique :
+
 $$
 \text{log-odds\_ratio}_i = \log\left(\frac{\text{mean}(y_i)}{\text{mean}(y_{\text{not} \, i})}\right)
 $$
