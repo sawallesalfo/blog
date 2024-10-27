@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../21/apache-arrow-pour-loptimisation-du-traitement-des-donn%C3%A9es/">
+        <link rel="prev" href="../../../09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/">
       
-      
-        <link rel="next" href="../faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -540,9 +538,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#exigences" class="md-nav__link">
+  <a href="#prerequis" class="md-nav__link">
     <span class="md-ellipsis">
-      Exigences
+      Prérequis
     </span>
   </a>
   
@@ -1083,11 +1081,11 @@
           <li class="md-nav__item">
   <a href="#pourquoi-catboost-encoder-est-il-efficace" class="md-nav__link">
     <span class="md-ellipsis">
-      Pourquoi CatBoost Encoder est-il Efficace ?
+      Pourquoi CatBoost encoder est-il Efficace ?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pourquoi CatBoost Encoder est-il Efficace ?">
+    <nav class="md-nav" aria-label="Pourquoi CatBoost encoder est-il Efficace ?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1174,7 +1172,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2024-09-28 00:00:00" class="md-ellipsis">September 28, 2024</time>
+                        <time datetime="2024-10-05 00:00:00" class="md-ellipsis">October 5, 2024</time>
                       </div>
                     </li>
                     
@@ -1217,11 +1215,13 @@
 
 
 <h1 id="encodage-efficace-des-variables-categorielles-pour-du-ml">Encodage efficace des variables catégorielles pour du ML<a class="headerlink" href="#encodage-efficace-des-variables-categorielles-pour-du-ml" title="Permanent link">&para;</a></h1>
-<p>Les variables catégorielles, vous savez, elles sont omniprésentes dans nos ensembles de données, mais souvent, elles ne peuvent pas être utilisées telles quelles dans les algorithmes d'apprentissage automatique qui exigent des données numériques. Dans ce billet, nous allons explorer plusieurs techniques d'encodage pour transformer ces variables, le tout agrémenté d'explications claires, de formulations mathématiques, et quelques exemples pratiques. Nous aborderons aussi les avantages et les limites de chaque technique, que ce soit les "Classic Encoders", le "Contrast Encoder", ou les "Bayesian Encoders".</p>
-<h2 id="exigences">Exigences<a class="headerlink" href="#exigences" title="Permanent link">&para;</a></h2>
-<p>Il faudra avoir <strong>pandas</strong> sous la main, et n'oubliez pas <strong>scikit-learn</strong> ainsi que <strong>category_encoders</strong>.</p>
+<p>Les variables catégorielles, on les croise partout dans nos datasets, mais les algorithmes de machine learning, eux, préfèrent les chiffres. Dans ce billet, nous allons explorer plusieurs techniques d'encodage pour transformer ces variables, le tout agrémenté d'explications claires, de formulations mathématiques, et quelques exemples pratiques. Nous aborderons aussi les avantages et les limites de chaque technique, que ce soit les "Classic Encoders", le "Contrast Encoder", ou les "Bayesian Encoders".</p>
+<!-- more -->
+
+<h2 id="prerequis">Prérequis<a class="headerlink" href="#prerequis" title="Permanent link">&para;</a></h2>
+<p>Assurez-vous d'avoir pandas, scikit-learn, et category_encoders installés.</p>
 <h2 id="donnees">Données<a class="headerlink" href="#donnees" title="Permanent link">&para;</a></h2>
-<p>Pour cet article, nous utiliserons le sous-ensemble de données ci-dessous :</p>
+<p>Pour illustrer nos exemples, voici un petit jeu de données :</p>
 <table>
 <thead>
 <tr>
@@ -1574,7 +1574,7 @@ $$</p>
 <h3 id="2-helmert-coding">2. Helmert Coding<a class="headerlink" href="#2-helmert-coding" title="Permanent link">&para;</a></h3>
 <p>Pour plus de détails, consultez ce <a href="https://contrib.scikit-learn.org/category_encoders/helmert.html">lien</a>.</p>
 <h2 id="bayesian-target-encoders">Bayesian Target Encoders<a class="headerlink" href="#bayesian-target-encoders" title="Permanent link">&para;</a></h2>
-<p>Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder les variables catégorielles en tenant compte de la distribution du target. Cette approche intègre des informations a priori sur la variable cible, ce qui la rend particulièrement efficace pour améliorer la performance des modèles d'apprentissage automatique. Voici un aperçu :</p>
+<p>Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder les variables catégorielles en tenant compte de la distribution du target. Cette approche intègre des informations a priori sur la variable cible, ce qui la rend particulièrement efficace pour améliorer la performance des modèles d'apprentissage automatique.</p>
 <h3 id="caracteristiques-cles">Caractéristiques clés:<a class="headerlink" href="#caracteristiques-cles" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
@@ -2049,7 +2049,7 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 </ul>
 </li>
 </ol>
-<h3 id="pourquoi-catboost-encoder-est-il-efficace">Pourquoi CatBoost Encoder est-il Efficace ?<a class="headerlink" href="#pourquoi-catboost-encoder-est-il-efficace" title="Permanent link">&para;</a></h3>
+<h3 id="pourquoi-catboost-encoder-est-il-efficace">Pourquoi CatBoost encoder est-il Efficace ?<a class="headerlink" href="#pourquoi-catboost-encoder-est-il-efficace" title="Permanent link">&para;</a></h3>
 <p>L'encodeur CatBoost réduit efficacement la fuite d'information grâce à sa méthode de calcul séquentiel. Voici quelques atouts :
 - <strong>Séquentiel et Progressif</strong> : En n'utilisant que les observations précédentes, il évite que la valeur actuelle influence son encodage.
 - <strong>Régularisation</strong> : L'ajout d'un terme de régularisation permet de contrôler la variance.</p>
