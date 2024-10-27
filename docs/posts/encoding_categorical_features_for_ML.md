@@ -289,10 +289,10 @@ $$
 $$
 
 où :
-- $n^+$ : nombre de valeurs positives pour la catégorie $k$,
-- $n$ : nombre total d'observations pour la catégorie $k$,
-- *prior* : moyenne globale du target,
-- $m$ : paramètre de lissage.
+   - $n^+$ : nombre de valeurs positives pour la catégorie $k$,
+   - $n$ : nombre total d'observations pour la catégorie $k$,
+   - *prior* : moyenne globale du target,
+   - $m$ : paramètre de lissage.
 
 #### Pratiquement
 Voici comment on peut implémenter ce type d'encoding en Python :
