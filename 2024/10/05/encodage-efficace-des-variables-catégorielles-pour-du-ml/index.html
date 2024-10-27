@@ -1305,13 +1305,13 @@ $$ </p>
 - <span class="arithmatex">\(\text{position}(C_i)\)</span> représente la position ordinale de la catégorie $ C_i $ dans l'ordre naturel. Si <span class="arithmatex">\(C_1\)</span> est la première, alors <span class="arithmatex">\(\text{position}(C_1) = 1\)</span> et ainsi de suite.</p>
 <h4 id="pratiquement_1">Pratiquement<a class="headerlink" href="#pratiquement_1" title="Permanent link">&para;</a></h4>
 <p>Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes : 
-- C → Faible 
-- B → Moyen 
-- A → Élevé </p>
+   - C → Faible 
+   - B → Moyen 
+   - A → Élevé </p>
 <p>Si l'ordre naturel est <em>Faible &lt; Moyen &lt; Élevé</em>, alors l'encodage ordinal sera : 
-- <em>C</em> → 0 
-- <em>B</em> → 1 
-- <em>A</em> → 2</p>
+   - C → 0 
+   - B → 1 
+   - A → 2</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">encoder</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">]])</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">data</span><span class="p">[</span><span class="s2">&quot;x4_OrdinalEncoder&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;x4&quot;</span><span class="p">]])</span>
@@ -1664,32 +1664,33 @@ $$</p>
 </table>
 <h4 id="avantages-et-inconvenients">Avantages et inconvénients<a class="headerlink" href="#avantages-et-inconvenients" title="Permanent link">&para;</a></h4>
 <p><strong>Avantages :</strong>
-1. <strong>Simple et efficace :</strong> Un seul paramètre de lissage à ajuster.
-2. <strong>Réduction du surajustement :</strong> Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.
-3. <strong>Performance élevée :</strong> Pratique à implémenter et efficace pour les cibles binaires et continues.</p>
+   1. <strong>Simple et efficace :</strong> Un seul paramètre de lissage à ajuster.
+   2. <strong>Réduction du surajustement :</strong> Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.
+   3. <strong>Performance élevée :</strong> Pratique à implémenter et efficace pour les cibles binaires et continues.</p>
 <p><strong>Inconvénients :</strong>
-1. <strong>Régularisation limitée :</strong> Moins flexible que target encoder classique.
-2. <strong>Pas idéal pour les cibles catégorielles multiples :</strong> Pour les cibles à plusieurs classes, un wrapper polynomial est nécessaire, complexifiant la méthode.</p>
+   1. <strong>Régularisation limitée :</strong> Moins flexible que target encoder classique.
+   2. <strong>Pas idéal pour les cibles catégorielles multiples :</strong> Pour les cibles à plusieurs classes, un wrapper polynomial est nécessaire, complexifiant la méthode.</p>
 <h3 id="3-leave-one-out-encoder">3. Leave-One-Out encoder<a class="headerlink" href="#3-leave-one-out-encoder" title="Permanent link">&para;</a></h3>
-<p>L'<strong>Leave-One-Out encoder</strong> (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.</p>
+<p>L'Leave-One-Out encoder (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.</p>
 <h4 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h4>
-<p>L'idée est de calculer la <strong>moyenne du target</strong> pour chaque catégorie, mais sans inclure l'observation actuelle. Cela aide à limiter la fuite d'information puisque la valeur cible de l'observation en cours n'est pas intégrée dans sa propre transformation.</p>
+<p>L'idée est de calculer la moyenne du target pour chaque catégorie, mais sans inclure l'observation actuelle. Cela aide à limiter la fuite d'information puisque la valeur cible de l'observation en cours n'est pas intégrée dans sa propre transformation.</p>
 <h4 id="mathematiquement_4">Mathématiquement<a class="headerlink" href="#mathematiquement_4" title="Permanent link">&para;</a></h4>
+<p>Le calcul se fait en deux etapes.</p>
 <ol>
 <li>
-<p><strong>Calcul de la moyenne du target en Excluant l'Observation Actuelle</strong>
-   Pour chaque observation $ i $ appartenant à la catégorie $ k $, la moyenne est calculée sans l’observation en cours par :
-   $$
-   x^k_i = \frac{\sum_{j \neq i} (y_j \cdot (x_j == k)) - y_i}{\sum_{j \neq i} (x_j == k)}
-   $$</p>
+<p>Calcul de la moyenne du target en excluant l'observation actuelle</p>
+<p>Pour chaque observation $ i $ appartenant à la catégorie $ k $, la moyenne est calculée sans l’observation en cours par :
+ $$
+ x^k_i = \frac{\sum_{j \neq i} (y_j \cdot (x_j == k)) - y_i}{\sum_{j \neq i} (x_j == k)}
+ $$</p>
 <p>En excluant $ y_i $, on évite que le modèle "voit" sa propre valeur cible, ce qui réduit le risque de surapprentissage.</p>
 </li>
 <li>
-<p><strong>Encodage des Données de Test</strong>
-   Pour les données de test, chaque catégorie est remplacée par la <strong>moyenne du target</strong> calculée sur l'ensemble des données d'entraînement :
-   $$
-   x^k = \frac{\sum y_j \cdot (x_j == k)}{\sum (x_j == k)}
-   $$</p>
+<p><strong>Encodage des données de test</strong></p>
+<p>Pour les données de test, chaque catégorie est remplacée par la moyenne du target calculée sur l'ensemble des données d'entraînement :
+ $$
+ x^k = \frac{\sum y_j \cdot (x_j == k)}{\sum (x_j == k)}
+ $$</p>
 </li>
 </ol>
 <h4 id="pratiquement_6">Pratiquement<a class="headerlink" href="#pratiquement_6" title="Permanent link">&para;</a></h4>
@@ -1789,10 +1790,10 @@ $$</p>
 JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
 \]</div>
 <p>où : 
-- <span class="arithmatex">\(JS_i\)</span> est l’estimation pour la catégorie <span class="arithmatex">\(C_i\)</span>,
-- <span class="arithmatex">\(\text{mean}(y_i)\)</span> est la moyenne des valeurs cibles pour la catégorie <span class="arithmatex">\(C_i\)</span>,
-- <span class="arithmatex">\(\text{mean}(y)\)</span> est la moyenne générale des cibles,
-- <span class="arithmatex">\(B\)</span> est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.</p>
+   - <span class="arithmatex">\(JS_i\)</span> est l’estimation pour la catégorie <span class="arithmatex">\(C_i\)</span>,
+   - <span class="arithmatex">\(\text{mean}(y_i)\)</span> est la moyenne des valeurs cibles pour la catégorie <span class="arithmatex">\(C_i\)</span>,
+   - <span class="arithmatex">\(\text{mean}(y)\)</span> est la moyenne générale des cibles,
+   - <span class="arithmatex">\(B\)</span> est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.</p>
 <p>Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.</p>
 <h4 id="mathematiquement_5">Mathématiquement<a class="headerlink" href="#mathematiquement_5" title="Permanent link">&para;</a></h4>
 <p>Le poids $ B $ est défini par :</p>
@@ -1921,14 +1922,14 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 <p>Le calcul se fait en deux etapes.</p>
 <ol>
 <li>
-<p><strong>Ordre des observations</strong></p>
+<p>Ordre des observations</p>
 <ul>
 <li>L'algorithme parcourt les données de manière ordonnée.</li>
 <li>L'encodage pour chaque observation est basé sur les informations des observations <strong>précédentes</strong> seulement, empêchant ainsi la valeur du target actuelle d'affecter son propre encodage.</li>
 </ul>
 </li>
 <li>
-<p><strong>Calcul progressif de la moyenne du target</strong></p>
+<p>Calcul progressif de la moyenne du target</p>
 <ul>
 <li>Pour chaque observation <span class="arithmatex">\(i\)</span> dans la catégorie $ k $, la moyenne du target est calculée avec les observations <strong>précédentes</strong>. La formule est :
  $$
@@ -1937,7 +1938,7 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 </ul>
 </li>
 <li>
-<p><strong>Encodage des données de test</strong></p>
+<p>Encodage des données de test</p>
 <ul>
 <li>Pour les données de test, l'encodage est basé sur les moyennes calculées à partir des données d'entraînement, sans fuite d'information.</li>
 </ul>
