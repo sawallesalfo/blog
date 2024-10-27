@@ -16,7 +16,6 @@ Les variables catégorielles, on les croise partout dans nos datasets, mais les 
 Assurez-vous d'avoir pandas, scikit-learn, et category_encoders installés.
 
 
-## Données
 
 Pour illustrer nos exemples, voici un petit jeu de données :
 
@@ -222,7 +221,7 @@ Avant d’explorer les formules, voici quelques notations cruciales :
 - **$ a $** : Un hyperparamètre de régularisation.
 - **$ prior $** : La valeur moyenne du target sur l'ensemble du dataset.
 
-1. **Calcul du Paramètre de Lissage ($ s $)**
+1. **Calcul du Paramètre de lissage ($ s $)**
 
    Le paramètre de lissage est utilisé pour équilibrer la contribution entre la moyenne générale (prior) et la moyenne par catégorie :
    $$
@@ -442,17 +441,15 @@ Un défi majeur est que nous ne connaissons pas $ \text{var}(y) $. Il nous faudr
 1. **Modèle Pooled** : Si toutes les observations sont semblables et prennent un nombre commun d'observations pour chaque valeur.
 
 2. **Modèle Indépendant** : Si les comptes d'observation diffèrent, il est plus judicieux de remplacer les variances par des erreurs standard, pénalisant ainsi les petites observations :
-
- $$
+$$
 SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
- $$
+$$
 
 #### Application pour la classification binaire
 Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ <0,1> $ en remplaçant $ \text{mean}(y) $ par le ratio des cotes logarithmique :
-
- $$
+$$
 \text{log-odds\_ratio}_i = \log\left(\frac{\text{mean}(y_i)}{\text{mean}(y_{\text{not} \, i})}\right)
- $$
+$$
 
 Cela s'appelle **modèle binaire**. C’est délicat d'estimer les paramètres de ce modèle, et parfois cela échoue. Il est souvent plus judicieux de recourir à un **modèle bêta**, souvent plus stable malgré une précision légèrement inférieure.
 
