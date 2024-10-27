@@ -576,9 +576,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#expression-mathematique" class="md-nav__link">
+  <a href="#mathematiquement" class="md-nav__link">
     <span class="md-ellipsis">
-      Expression Mathématique
+      Mathématiquement
     </span>
   </a>
   
@@ -618,7 +618,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mathematiquement" class="md-nav__link">
+  <a href="#mathematiquement_1" class="md-nav__link">
     <span class="md-ellipsis">
       Mathématiquement
     </span>
@@ -660,7 +660,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mathematiquement_1" class="md-nav__link">
+  <a href="#mathematiquement_2" class="md-nav__link">
     <span class="md-ellipsis">
       Mathématiquement
     </span>
@@ -726,7 +726,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mathematiquement_2" class="md-nav__link">
+  <a href="#mathematiquement_3" class="md-nav__link">
     <span class="md-ellipsis">
       Mathématiquement
     </span>
@@ -783,7 +783,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mathematiquement_3" class="md-nav__link">
+  <a href="#mathematiquement_4" class="md-nav__link">
     <span class="md-ellipsis">
       Mathématiquement
     </span>
@@ -825,7 +825,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mathematiquement_4" class="md-nav__link">
+  <a href="#mathematiquement_5" class="md-nav__link">
     <span class="md-ellipsis">
       Mathématiquement
     </span>
@@ -876,7 +876,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mathematiquement_5" class="md-nav__link">
+  <a href="#mathematiquement_6" class="md-nav__link">
     <span class="md-ellipsis">
       Mathématiquement
     </span>
@@ -918,7 +918,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mathematiquement_6" class="md-nav__link">
+  <a href="#mathematiquement_7" class="md-nav__link">
     <span class="md-ellipsis">
       Mathématiquement
     </span>
@@ -969,7 +969,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mathematiquement_7" class="md-nav__link">
+  <a href="#mathematiquement_8" class="md-nav__link">
     <span class="md-ellipsis">
       Mathématiquement
     </span>
@@ -1216,7 +1216,7 @@
 <h3 id="1-label-encoding">1. Label Encoding<a class="headerlink" href="#1-label-encoding" title="Permanent link">&para;</a></h3>
 <h4 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h4>
 <p>L'encodage par étiquette attribue un entier unique à chaque catégorie d'une variable catégorielle. Cependant, attention ! Cette méthode peut insuffler une notion d'ordre qui pourrait être inappropriée pour des données purement nominales.</p>
-<h4 id="expression-mathematique">Expression Mathématique<a class="headerlink" href="#expression-mathematique" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement">Mathématiquement<a class="headerlink" href="#mathematiquement" title="Permanent link">&para;</a></h4>
 <p>Pour des catégories <span class="arithmatex">\(C_1, C_2, \ldots, C_n\)</span>, l'encodage se fait comme suit :
 $$
 \text{Valeur Encodée} = \text{index}(C_i) \quad \text{pour} \; i = 1, 2, \ldots, n
@@ -1234,7 +1234,7 @@ où <span class="arithmatex">\(\text{index}(C_i)\)</span> représente un entier 
 <h3 id="2-ordinal-encoder">2. Ordinal Encoder<a class="headerlink" href="#2-ordinal-encoder" title="Permanent link">&para;</a></h3>
 <h4 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h4>
 <p>Il arrive que certaines catégories aient un sens d'ordre. Dans ce cas, un Label Encoder ne sera pas très utile et pourrait même causer des dommages dans les données. L'encodage ordinal attribue aussi un entier unique à chaque catégorie, mais cela se fait lorsque les catégories ont un ordre naturel. Pensez à des catégories telles que faible, moyen, et élevé ; cet ordre doit être respecté.</p>
-<h4 id="mathematiquement">Mathématiquement<a class="headerlink" href="#mathematiquement" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement_1">Mathématiquement<a class="headerlink" href="#mathematiquement_1" title="Permanent link">&para;</a></h4>
 <p>Pour des catégories ordonnées <span class="arithmatex">\(C_1, C_2, \ldots, C_n\)</span> où l'ordre naturel est <span class="arithmatex">\(C_1 &lt; C_2 &lt; \ldots &lt; C_n\)</span>, l'encodage ordinal se fait par : 
 $$ 
 \text{Valeur Encodée} = \text{position}(C_i) \quad \text{pour} \; i = 1, 2, \ldots, n 
@@ -1266,7 +1266,7 @@ $$ </p>
 <h3 id="3-one-hot-encoder">3. One-Hot Encoder<a class="headerlink" href="#3-one-hot-encoder" title="Permanent link">&para;</a></h3>
 <h4 id="description_2">Description<a class="headerlink" href="#description_2" title="Permanent link">&para;</a></h4>
 <p>Ce procédé crée des colonnes binaires, ou indicatrices, pour chaque catégorie. Pour chaque observation, la colonne correspondant à la catégorie présente prend la valeur 1, et les autres sont à 0.</p>
-<h4 id="mathematiquement_1">Mathématiquement<a class="headerlink" href="#mathematiquement_1" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement_2">Mathématiquement<a class="headerlink" href="#mathematiquement_2" title="Permanent link">&para;</a></h4>
 <p>Soit <span class="arithmatex">\(C = \{ C_1, C_2, ..., C_n \}\)</span> les catégories d'une variable. Une observation appartenant à <span class="arithmatex">\(C_i\)</span> est représentée par :
 $$
 \mathbf{x} = [0, 0, \ldots, 1, \ldots, 0] \quad \text{où la position } i \text{ est à 1}
@@ -1302,7 +1302,7 @@ $$</p>
 <ul>
 <li>Les coefficients des catégories sont alors interprétés comme la variation de la moyenne du target pour chaque catégorie par rapport à cette moyenne générale.</li>
 </ul>
-<h4 id="mathematiquement_2">Mathématiquement<a class="headerlink" href="#mathematiquement_2" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement_3">Mathématiquement<a class="headerlink" href="#mathematiquement_3" title="Permanent link">&para;</a></h4>
 <p>Pour des catégories <span class="arithmatex">\(C = \{ C_1, C_2, \ldots, C_n \}\)</span>, si nous choisissons <span class="arithmatex">\(C_k\)</span> comme catégorie de référence, une observation appartenant à <span class="arithmatex">\(C_i\)</span> (où $ i \neq k $) se représente par :</p>
 <div class="arithmatex">\[
 \mathbf{x} = \begin{bmatrix} 1 &amp; 0 &amp; \ldots &amp; -1 &amp; -1 \end{bmatrix}
@@ -1349,7 +1349,7 @@ $$</p>
 </ul>
 <h3 id="1-target-encoder">1. Target encoder<a class="headerlink" href="#1-target-encoder" title="Permanent link">&para;</a></h3>
 <p>Le target encoder est une technique de transformation de variables catégorielles fondée sur la variable cible, souvent utilisée dans les modèles de machine learning supervisé. L'idée est de remplacer chaque catégorie par une valeur calculée à partir de la moyenne du target, avec un mécanisme de lissage pour prévenir le surajustement.</p>
-<h4 id="mathematiquement_3">Mathématiquement<a class="headerlink" href="#mathematiquement_3" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement_4">Mathématiquement<a class="headerlink" href="#mathematiquement_4" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p><strong>Calcul du Paramètre de lissage (<span class="arithmatex">\(s\)</span>)</strong></p>
@@ -1409,7 +1409,7 @@ $$</p>
 <p>M-Estimate encoder est une version simplifiée du target encoder qui a un seul paramètre de lissage, ce qui facilite sa mise en place et son ajustement. Conçu pour estimer la probabilité d'appartenance à une catégorie en utilisant une moyenne pondérée.</p>
 <h4 id="description_4">Description<a class="headerlink" href="#description_4" title="Permanent link">&para;</a></h4>
 <p>M-Estimate coding est une technique simplifiée qui utilise un seul paramètre de lissage, facilitant son adaptation. Il est destiné à estimer la probabilité d'appartenance à une catégorie en s'appuyant sur une moyenne pondérée.</p>
-<h4 id="mathematiquement_4">Mathématiquement<a class="headerlink" href="#mathematiquement_4" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement_5">Mathématiquement<a class="headerlink" href="#mathematiquement_5" title="Permanent link">&para;</a></h4>
 <p>La formule de  M-Estimate coding est :</p>
 <div class="arithmatex">\[
 \hat{x}^k = \frac{n^+ + \text{prior} \cdot m}{n + m}
@@ -1450,7 +1450,7 @@ $$</p>
 <p>Le Leave-One-Out encoder (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.</p>
 <h4 id="description_5">Description<a class="headerlink" href="#description_5" title="Permanent link">&para;</a></h4>
 <p>L'idée est de calculer la moyenne du target pour chaque catégorie, mais sans inclure l'observation actuelle. Cela aide à limiter la fuite d'information puisque la valeur cible de l'observation en cours n'est pas intégrée dans sa propre transformation.</p>
-<h4 id="mathematiquement_5">Mathématiquement<a class="headerlink" href="#mathematiquement_5" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement_6">Mathématiquement<a class="headerlink" href="#mathematiquement_6" title="Permanent link">&para;</a></h4>
 <p>Le calcul se fait en deux etapes.</p>
 <ol>
 <li>
@@ -1540,7 +1540,7 @@ JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
 <p>- <span class="arithmatex">\(\text{mean}(y)\)</span> est la moyenne générale des cibles</p>
 <p>- <span class="arithmatex">\(B\)</span> est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.</p>
 <p>Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.</p>
-<h4 id="mathematiquement_6">Mathématiquement<a class="headerlink" href="#mathematiquement_6" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement_7">Mathématiquement<a class="headerlink" href="#mathematiquement_7" title="Permanent link">&para;</a></h4>
 <p>Le poids $ B $ est défini par :</p>
 <div class="arithmatex">\[
 B = \frac{\text{var}(y_i)}{\text{var}(y_i) + \text{var}(y)}
@@ -1581,7 +1581,7 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 <h4 id="description_7">Description<a class="headerlink" href="#description_7" title="Permanent link">&para;</a></h4>
 <p>Il s'agit  d'une méthode d'encodage basée sur la cible, développée à l'origine pour être utilisée avec l'algorithme CatBoost, mais qui est applicable à d'autres modèles. Cet encodeur utilise une méthode particulière pour éviter la fuite d'information tout en exploitant les relations entre les catégories et ld target y.</p>
 <p>L'idée principale est d'utiliser les informations du target de manière ordonnée. Plutôt que de déterminer la moyenne du target pour chaque catégorie sur l'ensemble des données (qui peut introduire des fuites), CatBoost effectue une mise à jour de l'encodage de manière <strong>séquentielle</strong>.</p>
-<h4 id="mathematiquement_7">Mathématiquement<a class="headerlink" href="#mathematiquement_7" title="Permanent link">&para;</a></h4>
+<h4 id="mathematiquement_8">Mathématiquement<a class="headerlink" href="#mathematiquement_8" title="Permanent link">&para;</a></h4>
 <p>Le calcul se fait en deux etapes.</p>
 <ol>
 <li>
