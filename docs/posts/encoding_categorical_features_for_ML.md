@@ -34,7 +34,7 @@ Pour illustrer nos exemples, voici un petit jeu de données :
 
 Pour modéliser cette table de données, il nous faut transformer la colonne x4 en variable numérique. En gros, nous allons discuter des différentes approches qui s'offrent à nous.
 
-## Classic Encoders
+## I. Classic Encoders
 ### 1. Label Encoding
 
 #### Description
@@ -146,7 +146,7 @@ Je vous encourage aussi à jeter un œil sur deux encodeurs intéressants :
 - Hashing encoder (https://contrib.scikit-learn.org/category_encoders/hashing.html) 
 - Count encoder  (https://contrib.scikit-learn.org/category_encoders/count.html)
 
-## Contrast Encoder
+## II. Contrast Encoder
 Les encodeurs de contraste transforment les variables catégorielles en format numérique en créant des codes de contraste qui permettent aux algorithmes d'interpréter efficacement les resultats des modèles de regression. Voici quelques méthodes courantes pour encoder les contrastes :
 
 ### 1. Sum Encoder
@@ -160,7 +160,7 @@ Cela n'est pas toujours du goût des statisticiens ! Ils ont donc introduit l'en
 + L'intercept représente la moyenne générale du target à travers toutes les conditions.
 + Les coefficients des catégories sont alors interprétés comme la variation de la moyenne du target pour chaque catégorie par rapport à cette moyenne générale.
 
-### Mathématiquement
+#### Mathématiquement
 Pour des catégories $C = \{ C_1, C_2, \ldots, C_n \}$, si nous choisissons $C_k$ comme catégorie de référence, une observation appartenant à $C_i$ (où $ i \neq k $) se représente par :
 
 $$
@@ -173,7 +173,7 @@ où les valeurs sont :
 -  $-1$ pour la catégorie de référence $C_k$ 
 -  $0$ pour les autres catégories.
 
-### Pratiquement
+#### Pratiquement
 Pour appliquer l'encodage Sum avec Pandas, on pourrait le faire directement, mais je vous conseille d'utiliser le package category_encoders, notamment la classe [SumEncoder](https://contrib.scikit-learn.org/category_encoders/sum.html).
 
 ```python
@@ -194,10 +194,8 @@ Première remarque : il n’y a pas de catégorie de référence, car par défau
 ### 2. Helmert Coding
 Pour plus de détails, consultez ce [lien](https://contrib.scikit-learn.org/category_encoders/helmert.html).
 
-## Bayesian Target Encoders
-Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder les variables catégorielles en tenant compte de la distribution du target. Cette approche intègre des informations a priori sur la variable cible, ce qui la rend particulièrement efficace pour améliorer la performance des modèles d'apprentissage automatique.
-
-### Caractéristiques clés:
+## III. Bayesian Target Encoders
+Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder les variables catégorielles en tenant compte de la distribution du target. Cette approche intègre des informations a priori sur la variable cible, ce qui la rend particulièrement efficace pour améliorer la performance des modèles d'apprentissage automatique. Leurs Caractéristiques clés sont les suivantes.
 
 1. **Cadre Bayésien** : Cette méthode recourt à l’approche bayésienne pour estimer la moyenne du target pour chaque catégorie tout en considérant les informations provenant de l'ensemble de données global. Cela aide à atténuer les soucis liés au surajustement, surtout quand les catégories ont peu d'observations.
 
@@ -406,7 +404,7 @@ Chaque observation est maintenant encodée avec la moyenne des cibles des autres
   - **Complexité** : Peut être coûteux en calculs sur de grands ensembles de données.
   - **Variabilité** : Peut introduire de la variance avec de petites catégories, nécessitant une régularisation supplémentaire.
 
----
+
 
 ### 5. James-Stein encoding
 
@@ -485,10 +483,9 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 | 8  |  7.1 |  3.0 |  5.9 |  0.000000 |
 | 9  |  5.9 |  3.0 |  5.1 |  1.333333 |
 
----
 
 ### 4. CatBoost Encoding
----
+
 
 #### Description
 Il s'agit  d'une méthode d'encodage basée sur la cible, développée à l'origine pour être utilisée avec l'algorithme CatBoost, mais qui est applicable à d'autres modèles. Cet encodeur utilise une méthode particulière pour éviter la fuite d'information tout en exploitant les relations entre les catégories et ld target y.
@@ -520,7 +517,7 @@ Le calcul se fait en deux etapes.
 
 #### Pourquoi CatBoost encoder est-il Efficace ?
 
-L'encodeur CatBoost réduit efficacement la fuite d'information grâce à sa méthode de calcul séquentiel. Voici quelques atouts :
+CatBoost encoder réduit efficacement la fuite d'information grâce à sa méthode de calcul séquentiel. Voici quelques atouts :
 - **Séquentiel et Progressif** : En n'utilisant que les observations précédentes, il évite que la valeur actuelle influence son encodage.
 - **Régularisation** : L'ajout d'un terme de régularisation permet de contrôler la variance.
 
