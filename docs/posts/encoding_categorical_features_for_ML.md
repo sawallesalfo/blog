@@ -207,7 +207,7 @@ Les methodes classées comme Bayesiennes  sont des  technique utile pour encoder
 
 Avant d’explorer les formules, voici quelques notations cruciales :
 
-- $y $ et $ y^+$ : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).
+- $y$ et $y^+$ : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).
 - $x_i, y_i$ : La valeur de la catégorie et du target pour l'observation $ i $.
 - $n$ et $n^+$ : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.
 - $a$ : Un hyperparamètre de régularisation.
@@ -311,17 +311,17 @@ encoder.fit_transform(data.drop(columns=["y"]), data["y"]).head()
 
 #### Avantages et inconvénients
 
-**Avantages :**
-   1. **Simple et efficace :** Un seul paramètre de lissage à ajuster.
-   2. **Réduction du surajustement :** Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.
-   3. **Performance élevée :** Pratique à implémenter et efficace pour les cibles binaires et continues.
+Avantages :
+   1. Simple et efficace : Un seul paramètre de lissage à ajuster.
+   2. Réduction du surajustement : Le paramètre $ m $ stabilise les valeurs, réduisant l'impact des catégories rares.
+   3. Performance élevée : Pratique à implémenter et efficace pour les cibles binaires et continues.
 
-**Inconvénients :**
-   1. **Régularisation limitée :** Moins flexible que target encoder classique.
-   2. **Pas idéal pour les cibles catégorielles multiples :** Pour les cibles à plusieurs classes, un wrapper polynomial est nécessaire, complexifiant la méthode.
+Inconvénients :
+   1. Régularisation limitée : Moins flexible que target encoder classique.
+   2. Pas idéal pour les cibles catégorielles multiples : Pour les cibles à plusieurs classes, un wrapper polynomial est nécessaire, complexifiant la méthode.
 
 ### 3. Leave-One-Out encoder
-L'Leave-One-Out encoder (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.
+Le Leave-One-Out encoder (LOO) est une autre méthode tirée de target encoder, mais avec une variation importante pour minimiser la fuite d'information.
 
 #### Description
 L'idée est de calculer la moyenne du target pour chaque catégorie, mais sans inclure l'observation actuelle. Cela aide à limiter la fuite d'information puisque la valeur cible de l'observation en cours n'est pas intégrée dans sa propre transformation.
@@ -371,30 +371,21 @@ Nous allons expliquer les calculs:
 1. Calculer lamoyenne du target pour chaque catégorie en excluant l'observation actuelle.
 2. Remplacer la valeur de la catégorie par cette moyenne pour chaque observation.
 
- Observation 1 (index 0, catégorie "B") :
+Observation 1 (index 0, catégorie "B") :
    - On exclut la première observation et on calcule la moyenne des cibles `y` pour les autres occurrences :
-  - Cibles des autres "B" : [0, 0]
-  -moyenne du target : $\frac{0 + 0}{2} = 0 $
+   - Cibles des autres "B" : [0, 0]
+   -moyenne du target : $\frac{0 + 0}{2} = 0 $
 
 Observation 2 (index 1, catégorie "A") :
    - On exclut cette observation et on fait de même :
-  - Cibles des autres "A" : [0, 0, 0]
-  - Moyenne : $\frac{0 + 0 + 0}{3} = 0 $
+   - Cibles des autres "A" : [0, 0, 0]
+   - Moyenne : $\frac{0 + 0 + 0}{3} = 0 $
 
 Observation 3 (index 2, catégorie "A") :
-- On exclut :
-  - Cibles des autres "A" : [1, 0, 0]
-  - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
+   - On exclut 
+   - Cibles des autres "A" : [1, 0, 0]
+   - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
 
-Observation 4 (index 3, catégorie "C") :
-- Similaires :
-  - Cibles des autres "C" : [1, 2]
-  - Moyenne : $\frac{1 + 2}{2} = 1.5 $
-
-Observation 5 (index 4, catégorie "A") :
-- On exclut :
-  - Cibles des autres "A" : [1, 0, 0]
-  - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
 
 Chaque observation est maintenant encodée avec la moyenne des cibles des autres observations de la même catégorie.
 
