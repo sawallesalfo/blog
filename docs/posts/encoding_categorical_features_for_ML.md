@@ -45,7 +45,7 @@ Pour des catégories $C_1, C_2, \ldots, C_n$, l'encodage se fait comme suit :
 $$
 \text{Valeur Encodée} = \text{index}(C_i) \quad \text{pour} \; i = 1, 2, \ldots, n
 $$
-où $ \text{index}(C_i) $ représente un entier unique associé à chaque catégorie.
+où $\text{index}(C_i)$ représente un entier unique associé à chaque catégorie.
 
 #### Pratiquement
 Voici un petit extrait de code :
@@ -73,13 +73,13 @@ N’oublions pas l’inconvénient : cela peut introduire des valeurs qui n’on
 Il arrive que certaines catégories aient un sens d'ordre. Dans ce cas, un Label Encoder ne sera pas très utile et pourrait même causer des dommages dans les données. L'encodage ordinal attribue aussi un entier unique à chaque catégorie, mais cela se fait lorsque les catégories ont un ordre naturel. Pensez à des catégories telles que faible, moyen, et élevé ; cet ordre doit être respecté.
 
 #### Expression Mathématique
-Pour des catégories ordonnées $ C_1, C_2, \ldots, C_n $ où l'ordre naturel est $ C_1 < C_2 < \ldots < C_n $, l'encodage ordinal se fait par : 
+Pour des catégories ordonnées $C_1, C_2, \ldots, C_n$ où l'ordre naturel est $C_1 < C_2 < \ldots < C_n$, l'encodage ordinal se fait par : 
 $$ 
 \text{Valeur Encodée} = \text{position}(C_i) \quad \text{pour} \; i = 1, 2, \ldots, n 
 $$ 
 
 où : 
-- $ \text{position}(C_i) $ représente la position ordinale de la catégorie $ C_i $ dans l'ordre naturel. Si $ C_1 $ est la première, alors $ \text{position}(C_1) = 1 $ et ainsi de suite.
+- $\text{position}(C_i)$ représente la position ordinale de la catégorie $ C_i $ dans l'ordre naturel. Si $C_1$ est la première, alors $\text{position}(C_1) = 1$ et ainsi de suite.
 
 #### Pratiquement
 Pour une variable catégorielle x4 représentant "Niveau de risque", avec les catégories suivantes : 
@@ -242,7 +242,7 @@ Avant d’explorer les formules, voici quelques notations cruciales :
    où :
    - $ prior $ est la moyenne globale du target,
    - $ s $ est le paramètre de lissage calculé,
-   - $ \frac{n^+}{n} $ est la moyenne des cibles positives pour la catégorie $ k $.
+   - $\frac{n^+}{n} $ est la moyenne des cibles positives pour la catégorie $ k $.
 
 #### Pratiquement
 On utilisera encore le package category_encoders, avec les valeurs par défaut :
@@ -367,27 +367,27 @@ Nous allons expliquer les calculs.
 #### Observation 1 (index 0, catégorie "B") :
 - On exclut la première observation et on calcule la moyenne des cibles `y` pour les autres occurrences :
   - Cibles des autres "B" : [0, 0]
-  -moyenne du target : $ \frac{0 + 0}{2} = 0 $
+  -moyenne du target : $\frac{0 + 0}{2} = 0 $
 
 #### Observation 2 (index 1, catégorie "A") :
 - On exclut cette observation et on fait de même :
   - Cibles des autres "A" : [0, 0, 0]
-  - Moyenne : $ \frac{0 + 0 + 0}{3} = 0 $
+  - Moyenne : $\frac{0 + 0 + 0}{3} = 0 $
 
 #### Observation 3 (index 2, catégorie "A") :
 - On exclut :
   - Cibles des autres "A" : [1, 0, 0]
-  - Moyenne : $ \frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
+  - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
 
 #### Observation 4 (index 3, catégorie "C") :
 - Similaires :
   - Cibles des autres "C" : [1, 2]
-  - Moyenne : $ \frac{1 + 2}{2} = 1.5 $
+  - Moyenne : $\frac{1 + 2}{2} = 1.5 $
 
 #### Observation 5 (index 4, catégorie "A") :
 - On exclut :
   - Cibles des autres "A" : [1, 0, 0]
-  - Moyenne : $ \frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
+  - Moyenne : $\frac{1 + 0 + 0}{3} = \frac{1}{3} \approx 0.33 $
 
 Chaque observation est maintenant encodée avec la moyenne des cibles des autres observations de la même catégorie.
 
@@ -413,9 +413,9 @@ JS_i = (1-B) \cdot \text{mean}(y_i) + B \cdot \text{mean}(y)
  $$
 
 où : 
-- $ JS_i $ est l’estimation pour la catégorie $ C_i $,
-- $ \text{mean}(y_i) $ est la moyenne des valeurs cibles pour la catégorie $ C_i $,
-- $ \text{mean}(y) $ est la moyenne générale des cibles,
+- $ JS_i $ est l’estimation pour la catégorie $C_i$,
+- $\text{mean}(y_i) $ est la moyenne des valeurs cibles pour la catégorie $C_i$,
+- $\text{mean}(y) $ est la moyenne générale des cibles,
 - $ B $ est un poids calculé qui équilibre l’influence de la moyenne conditionnelle et de la moyenne globale.
 
 Cela semble très sensé. Nous cherchons une estimation qui se situe entre la moyenne de l'échantillon (risquant d'être extrême) et la moyenne globale.
@@ -436,7 +436,7 @@ Cet estimateur est limité aux distributions normales, ce qui ne convient pas à
 SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
  $$
 
-Un défi majeur est que nous ne connaissons pas $ \text{var}(y) $. Il nous faudra donc estimer ces variances. Voici quelques solutions :
+Un défi majeur est que nous ne connaissons pas $\text{var}(y)$. Il nous faudra donc estimer ces variances. Voici quelques solutions :
 
 1. **Modèle Pooled** : Si toutes les observations sont semblables et prennent un nombre commun d'observations pour chaque valeur.
 
@@ -446,7 +446,7 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 $$
 
 #### Application pour la classification binaire
-Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ <0,1> $ en remplaçant $ \text{mean}(y) $ par le ratio des cotes logarithmique :
+Cet estimateur a une limitation pratique dans les modèles de classification binaire, où les cibles ne sont que $ 0 $ ou $ 1 $. Pour l'appliquer, on doit convertir lamoyenne du target dans l'intervalle borné $ <0,1> $ en remplaçant $\text{mean}(y) $ par le ratio des cotes logarithmique :
 $$
 \text{log-odds\_ratio}_i = \log\left(\frac{\text{mean}(y_i)}{\text{mean}(y_{\text{not} \, i})}\right)
 $$
@@ -495,15 +495,15 @@ L'idée principale est d'utiliser les informations du target de manière ordonn�
    - L'encodage pour chaque observation est basé sur les informations des observations **précédentes** seulement, empêchant ainsi la valeur du target actuelle d'affecter son propre encodage.
 
 2. **Calcul progressif de la moyenne du target**
-   - Pour chaque observation $ i $ dans la catégorie $ k $, la moyenne du target est calculée avec les observations **précédentes**. La formule est :
+   - Pour chaque observation $i$ dans la catégorie $ k $, la moyenne du target est calculée avec les observations **précédentes**. La formule est :
    $$
    x^k_i = \frac{\sum_{j < i} (y_j \cdot (x_j == k)) + \text{prior} \cdot \alpha}{\sum_{j < i} (x_j == k) + \alpha}
    $$
    où :
-   -  $ x^k_i $ est la valeur encodée pour l'observation $ i $ de la catégorie $ k $,
-   -  $ y_j $ est la valeur cible pour l'observation $ j $,
-   -  $ \text{prior} $ est une valeur moyenne générale du target,
-   -  $ \alpha $ est un paramètre de lissage pour éviter les divisions par zéro.
+   -  $ x^k_i $ est la valeur encodée pour l'observation $i$ de la catégorie $ k $,
+   -  $ y_j $ est la valeur cible pour l'observation $j$,
+   -  $\text{prior} $ est une valeur moyenne générale du target,
+   -  $\alpha $ est un paramètre de lissage pour éviter les divisions par zéro.
 
 3. **Encodage des données de test**
    - Pour les données de test, l'encodage est basé sur les moyennes calculées à partir des données d'entraînement, sans fuite d'information.
