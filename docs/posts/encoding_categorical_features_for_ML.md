@@ -115,7 +115,7 @@ Cette méthode préserve l'ordre des catégories, crucial pour certaines analyse
 Ce procédé crée des colonnes binaires, ou indicatrices, pour chaque catégorie. Pour chaque observation, la colonne correspondant à la catégorie présente prend la valeur 1, et les autres sont à 0.
 
 #### Mathématiquement
-Soit $ C = \{ C_1, C_2, ..., C_n \} $ les catégories d'une variable. Une observation appartenant à $ C_i $ est représentée par :
+Soit $C = \{ C_1, C_2, ..., C_n \}$ les catégories d'une variable. Une observation appartenant à $C_i$ est représentée par :
 $$
 \mathbf{x} = [0, 0, \ldots, 1, \ldots, 0] \quad \text{où la position } i \text{ est à 1}
 $$
