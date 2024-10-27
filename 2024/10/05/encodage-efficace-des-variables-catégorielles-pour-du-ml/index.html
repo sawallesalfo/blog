@@ -1504,17 +1504,18 @@ $$</p>
 <p><strong>Cas d'Utilisation</strong> : L'encoding cible bayésien est particulièrement préconisé pour les variables catégorielles à forte cardinalité, où l'encoding one-hot entraînerait trop de caractéristiques.</p>
 </li>
 </ol>
-<h3 id="1-target-encoder">1. Target encoder<a class="headerlink" href="#1-target-encoder" title="Permanent link">&para;</a></h3>
-<p>Le target encoder est une technique de transformation de variables catégorielles fondée sur la variable cible, souvent utilisée dans les modèles de machine learning supervisé. L'idée est de remplacer chaque catégorie par une valeur calculée à partir de la moyenne du target, avec un mécanisme de lissage pour prévenir le surajustement.</p>
-<h4 id="mathematiquement_2">Mathématiquement<a class="headerlink" href="#mathematiquement_2" title="Permanent link">&para;</a></h4>
 <p>Avant d’explorer les formules, voici quelques notations cruciales :</p>
 <ul>
 <li>$y $ et $ y^+$ : Le nombre total d'observations et le nombre total d'observations positives (où $ y = 1 $).</li>
 <li><span class="arithmatex">\(x_i, y_i\)</span> : La valeur de la catégorie et du target pour l'observation $ i $.</li>
-<li>$n $ et $ n^+$ : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.</li>
+<li><span class="arithmatex">\(n\)</span> et <span class="arithmatex">\(n^+\)</span> : Le nombre d'observations et le nombre d'observations positives pour une valeur spécifique d'une colonne catégorielle.</li>
 <li><span class="arithmatex">\(a\)</span> : Un hyperparamètre de régularisation.</li>
 <li><span class="arithmatex">\(prior\)</span> : La valeur moyenne du target sur l'ensemble du dataset.</li>
+<li><span class="arithmatex">\(x^k_i\)</span> est la valeur encodée pour l'observation <span class="arithmatex">\(i\)</span> de la catégorie <span class="arithmatex">\(k\)</span></li>
 </ul>
+<h3 id="1-target-encoder">1. Target encoder<a class="headerlink" href="#1-target-encoder" title="Permanent link">&para;</a></h3>
+<p>Le target encoder est une technique de transformation de variables catégorielles fondée sur la variable cible, souvent utilisée dans les modèles de machine learning supervisé. L'idée est de remplacer chaque catégorie par une valeur calculée à partir de la moyenne du target, avec un mécanisme de lissage pour prévenir le surajustement.</p>
+<h4 id="mathematiquement_2">Mathématiquement<a class="headerlink" href="#mathematiquement_2" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p><strong>Calcul du Paramètre de lissage (<span class="arithmatex">\(s\)</span>)</strong></p>
@@ -1523,8 +1524,7 @@ $$</p>
  s = \frac{1}{1 + \exp\left(-\frac{n - mdl}{a}\right)}
  $$</p>
 <p>où :
- - $ mdl $ est la valeur minimale de données par feuille,
- - $ a $ est le paramètre de lissage, qui ajuste la régularisation.</p>
+    - <span class="arithmatex">\(mdl\)</span> est la valeur minimale de données par feuille,</p>
 </li>
 <li>
 <p><strong>Calcul de la valeur encodée ($ \hat{x}^k $)</strong></p>
@@ -1533,7 +1533,6 @@ $$</p>
  \hat{x}^k = prior \cdot (1 - s) + s \cdot \frac{n^+}{n}
  $$</p>
 <p>où :
- - <span class="arithmatex">\(prior\)</span> est la moyenne globale du target,
  - <span class="arithmatex">\(s\)</span> est le paramètre de lissage calculé,
  - <span class="arithmatex">\(\frac{n^+}{n}\)</span> est la moyenne des cibles positives pour la catégorie <span class="arithmatex">\(k\)</span>.</p>
 </li>
@@ -1614,9 +1613,6 @@ $$</p>
 \hat{x}^k = \frac{n^+ + \text{prior} \cdot m}{n + m}
 \]</div>
 <p>où :
-   - <span class="arithmatex">\(n^+\)</span> : nombre de valeurs positives pour la catégorie <span class="arithmatex">\(k\)</span>,
-   - <span class="arithmatex">\(n\)</span> : nombre total d'observations pour la catégorie <span class="arithmatex">\(k\)</span>,
-   - <em>prior</em> : moyenne globale du target,
    - <span class="arithmatex">\(m\)</span> : paramètre de lissage.</p>
 <h4 id="pratiquement_5">Pratiquement<a class="headerlink" href="#pratiquement_5" title="Permanent link">&para;</a></h4>
 <p>Voici comment on peut implémenter ce type d'encoding en Python :</p>
@@ -1937,12 +1933,7 @@ SE^2 = \frac{\text{var}(y)}{\text{count}(y)}
 <li>Pour chaque observation <span class="arithmatex">\(i\)</span> dans la catégorie $ k $, la moyenne du target est calculée avec les observations <strong>précédentes</strong>. La formule est :
  $$
  x^k_i = \frac{\sum_{j &lt; i} (y_j \cdot (x_j == k)) + \text{prior} \cdot \alpha}{\sum_{j &lt; i} (x_j == k) + \alpha}
- $$
- où :</li>
-<li><span class="arithmatex">\(x^k_i\)</span> est la valeur encodée pour l'observation <span class="arithmatex">\(i\)</span> de la catégorie <span class="arithmatex">\(k\)</span>,</li>
-<li><span class="arithmatex">\(y_j\)</span> est la valeur cible pour l'observation <span class="arithmatex">\(j\)</span>,</li>
-<li><span class="arithmatex">\(\text{prior}\)</span> est une valeur moyenne générale du target,</li>
-<li><span class="arithmatex">\(\alpha\)</span> est un paramètre de lissage pour éviter les divisions par zéro.</li>
+ $$</li>
 </ul>
 </li>
 <li>
