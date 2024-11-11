@@ -873,11 +873,19 @@ Comme vous pouvez le voir, la sortie est très verbeuse, et tant mieux, car cela
 <h2 id="5-une-classe-automl-prete-a-lemploi">5. Une Classe AutoML Prête à l'Emploi<a class="headerlink" href="#5-une-classe-automl-prete-a-lemploi" title="Permanent link">&para;</a></h2>
 <p>Pour gagner encore plus de temps, construisons une classe qui va rationaliser tout le flux de travail, du prétraitement à la sélection de caractéristiques, en passant par le réglage des hyperparamètres.</p>
 <h3 id="genericautoml">GenericAutoML<a class="headerlink" href="#genericautoml" title="Permanent link">&para;</a></h3>
-<p>Cette classe va adopter les concepts suivants :
-- <strong>Encodage Catégoriel</strong> : Offrir différentes stratégies d’encodage pour transformer facilement les variables catégorielles.
-- <strong>Sélection de Variables</strong> : Utiliser des techniques pour filtrer automatiquement les caractéristiques les plus pertinentes.
-- <strong>Stratification Personnalisée</strong> : Gérer la validation croisée pour maintenir un équilibre de classe si une colonne spécifique est choisie.
-- <strong>Interprétabilité avec les valeurs SHAP</strong>.</p>
+<p>Cette classe va adopter les concepts suivants :</p>
+<ul>
+<li><strong>Encodage Catégoriel</strong> : Offrir différentes stratégies d’encodage pour transformer facilement les variables catégorielles.</li>
+</ul>
+<ul>
+<li><strong>Sélection de Variables</strong> : Utiliser des techniques pour filtrer automatiquement les caractéristiques les plus pertinentes.</li>
+</ul>
+<ul>
+<li><strong>Stratification Personnalisée</strong> : Gérer la validation croisée pour maintenir un équilibre de classe si une colonne spécifique est choisie.</li>
+</ul>
+<ul>
+<li><strong>Interprétabilité avec les valeurs SHAP</strong>.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">flaml</span> <span class="kn">import</span> <span class="n">AutoML</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">RegressorMixin</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
@@ -1121,7 +1129,7 @@ Comme vous pouvez le voir, la sortie est très verbeuse, et tant mieux, car cela
 </code></pre></div>
 <h3 id="illustration">Illustration<a class="headerlink" href="#illustration" title="Permanent link">&para;</a></h3>
 <p>Pour voir cette classe à l’œuvre, exécutons-la avec table <code>house_prices</code> de sklearn :</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">data</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;house_prices&quot;</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
@@ -1146,15 +1154,15 @@ Comme vous pouvez le voir, la sortie est très verbeuse, et tant mieux, car cela
 <a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">automl_regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" href="./flaml_shap/starting.PNGSS" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="./flaml_shap/starting.PNGSS" /></a>
+<p><a class="glightbox" href="./flaml_shap/starting.PNGSS" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="./flaml_shap/starting.PNGSS" /></a>
 <a class="glightbox" href="../../../../flaml_shap/shap_importance.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../flaml_shap/shap_importance.png" /></a>
-<a class="glightbox" href="../../../../flaml_shap/shape_impact.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../flaml_shap/shape_impact.png" /></a>
-Voici quelques corrections et suggestions d'amélioration pour rendre le texte plus fluide et clair :</p>
+<a class="glightbox" href="../../../../flaml_shap/shape_impact.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../flaml_shap/shape_impact.png" /></a></p>
+<p>Voici quelques corrections et suggestions d'amélioration pour rendre le texte plus fluide et clair :</p>
 <p>Dès le début de l'output, on peut voir que la métrique utilisée est bien personnalisée, et on a recours à une stratification dans la cross-validation. La métrique par défaut que j’ai définie dans la classe est <code>huber_loss</code>, car elle est robuste face aux valeurs aberrantes. L’idée est que, si aucune métrique n’est fournie, on utilise <code>huber_loss</code> par défaut.</p>
 <p>Les graphiques que vous voyez illustrent l'explicabilité avec SHAP (SHapley Additive exPlanations). Les barres représentent l'importance des caractéristiques, tandis que le graphique qui suit met en évidence l'impact des variables. Grâce à ce visuel, on peut déduire si les valeurs de X influencent Y de manière positive ou négative, par exemple.</p>
 <p>Je pense d'ailleurs que je viens d'avoir une idée d'article : expliquer les bases de SHAP et comment interpréter ces visualisations :)</p>
 <p>Le dernier graphique montre simplement l'ajustement de notre modèle, et apparemment, tout semble en ordre !</p>
-<p><a class="glightbox" href="./flaml_shap/eval_pred.PNG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="./flaml_shap/eval_pred.PNG.png" /></a></p>
+<p><a class="glightbox" href="../../../../flaml_shap/eval_pred.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../flaml_shap/eval_pred.PNG" /></a></p>
 <p>On peut varier la liste des estimateurs pour inclure d’autres modèles, mais ce qui est montré ici est largement suffisant pour démarrer. Et si vous voulez aller plus loin et intégrer des learners spécifiques, l'exemple donné plus tôt s'adapte parfaitement !</p>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <p>Cet article vous a fait découvrir comment FLAML et SHAP peuvent travailler main dans la main pour construire des modèles de machine learning à la fois performants et interprétables. FLAML facilite et accélère l’optimisation, tandis que SHAP fournit des outils pour expliquer vos prédictions.</p>
