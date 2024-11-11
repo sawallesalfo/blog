@@ -10,8 +10,8 @@ categories:
 Dans cet article, je vais partager avec vous quelques astuces qui peuvent grandement améliorer votre efficacité en développement : l'utilisation d'alias, la gestion des variables d'environnement, et l'usage du nouveau terminal de Windows. En tant que développeur ou data scientist, vous savez que de nombreuses tâches répétitives peuvent devenir sources de frustration. Par exemple, répéter sans cesse `export LLM_KEY="macle"` pour que votre code récupère la clé via `os.getenv()` peut vite devenir fastidieux.
 
 Voyons comment créer un fichier d'environnement pour centraliser les variables nécessaires et un alias pour accéder rapidement à ce répertoire et exécuter votre script.
+<!-- more -->
 
-### Étapes à suivre
 
 #### 1. Préparer votre terminal
 
@@ -19,7 +19,7 @@ Avant de commencer, assurez-vous d'avoir **Windows Terminal** installé sur votr
 
 > **Conseil :** Windows Terminal est bien plus agréable que CMD ou même l'invite de commande WSL standard. Sa gestion des onglets permet de travailler sur plusieurs fenêtres en parallèle dans une seule interface. Plus besoin de jongler entre plusieurs fenêtres !
 voici à quoi il ressemble :
-![alt text](./alias_scripts_bash/terminal.PNG)
+![alt text](./alias_scripts_bash/terminae.PNG)
 Bon, j'arrète de faire du marketing gratuitement pour microsoft. :)
 
 [Télécharger Windows Terminal](https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&gl=US)
