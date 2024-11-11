@@ -446,7 +446,7 @@ if __name__ == "__main__":
     automl_regressor.plot(y_test, y_pred)
 ```
 
-![alt text](./flaml_shap/starting.PNGSS)
+![alt text](./flaml_shap/starting.PNG)
 ![alt text](./flaml_shap/shap_importance.png)
 ![alt text](./flaml_shap/shape_impact.png)
 
