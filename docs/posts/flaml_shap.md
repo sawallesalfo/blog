@@ -1,57 +1,61 @@
 ---
-date: 2024-10-27
-authors:
-    - ssawadogo
-categories: 
-    - MlOps
+
+date: 2024-10-27  
+authors:  
+- ssawadogo  
+categories:  
+- MLOps  
+
 ---
 
 # Auto ML et Interprétabilité avec FLAML et SHAP
 
-En machine learning, on ne se contente pas de construire des modèles performants : on veut aussi qu'ils soient faciles à interpréter. Imaginez un monde où vous pourriez soumettre une liste de modèles à un framework, et que celui-ci vous dirait quel modèle est le meilleur avec les hyperparamètres qui vont avec. Ce serait le rêve, non ? 
+En machine learning, il ne suffit pas de construire des modèles performants : on veut aussi qu'ils soient faciles à interpréter. Imaginez un monde où vous pourriez soumettre une liste de modèles à un framework, et que celui-ci vous indiquerait quel modèle est le meilleur, avec les hyperparamètres optimaux. Ce serait le rêve, non ?
 
-L’interprétabilité est devenue cruciale, surtout dans des domaines où chaque décision compte, comme la santé ou la finance. Dans ces contextes, comprendre comment les algorithmes fonctionnent est fondamental.
+L'interprétabilité est devenue cruciale, surtout dans des domaines où la réglementation exige une maîtrise des décisions des algorithmes utilisés. Dans ces contextes, comprendre comment les algorithmes fonctionnent est fondamental. D'ailleurs, l'IA Act de l'Union Européenne en fait l'un des piliers de sa stratégie IA de confiance.
 
-Malheureusement, créer des modèles au potentiel interprétable et efficace peut prendre du temps, surtout si on doit jongler avec les hyperparamètres et choisir les bons modèles. C'est là que FLAML (Fast Lightweight AutoML) entre en scène en rendant cet processus archaïque beaucoup plus fluide en automatisant l’optimisation des configurations.
+Malheureusement, créer des modèles interprétables et efficaces peut prendre du temps, surtout si l'on doit jongler avec les hyperparamètres et choisir les bons modèles. C'est là que FLAML (Fast Lightweight AutoML) entre en scène en rendant ce processus fastidieux beaucoup plus fluide grâce à l'automatisation de la recherche des paramètres.
 
-Dans cet article, je vous invite à plonger dans le monde de FLAML et à voir comment on peut allier performance et interprétabilité grâce aux valeurs SHAP (SHapley Additive exPlanations).
+<!-- more -->
 
-Et c'est juste un avant-goût ! Je vous encourage vivement à fouiller la documentation officielle pour découvrir toutes les possibilités.
+Dans cet article, je vous invite à plonger dans le monde de FLAML et à voir comment allier performance et interprétabilité grâce aux valeurs SHAP (SHapley Additive exPlanations).
+
+Et ce n'est qu'un avant-goût ! Je vous encourage vivement à explorer la documentation officielle pour découvrir toutes les possibilités.
 
 ## Exigences
 
-Avant de jeter un œil à FLAML, assurez-vous d’avoir toutes les bibliothèques nécessaires. Pas de panique, voici la commande pour tout installer d'un coup :
+Avant d'explorer FLAML, assurez-vous d'avoir toutes les bibliothèques nécessaires. Pas de panique, voici la commande pour tout installer d'un coup :
 
 ```bash
 pip install flaml[automl]==2.3.3 plotly==5.24.1 loguru==0.7.2 category_encoders==2.6.4 shap matplotlib
 ```
 
-Voilà, avec tout ça, on est prêts à démarrer notre aventure avec FLAML et SHAP !
+Avec tout ça, nous sommes prêts à démarrer notre aventure avec FLAML et SHAP !
 
 ## 1. Présentation de FLAML
 
-FLAML est une bibliothèque AutoML signée Microsoft qui va vous faire gagner un temps fou lors de la configuration de vos modèles de machine learning. Son interface est tellement intuitive qu'elle vous permet d’optimiser rapidement les hyperparamètres tout en restant flexible pour différents types de problèmes.
+FLAML est une bibliothèque AutoML développée par Microsoft, conçue pour vous faire gagner un temps fou dans la configuration de vos modèles de machine learning. Son interface est tellement intuitive qu'elle permet d’optimiser rapidement les hyperparamètres tout en restant flexible pour différents types de problèmes.
 
 ### Caractéristiques Principales de FLAML
 
-- **Optimisation Automatique des Hyperparamètres** : Finies les recherches exhaustives ! FLAML déploie des algorithmes de recherche avancés pour trouver les meilleurs hyperparamètres sans vous faire perdre un temps précieux.
-- **Adaptabilité** : Que ce soit XGBoost ou LightGBM, FLAML supporte de nombreux modèles connus et vous permet même d’y intégrer vos propres modèles.
+- **Optimisation Automatique des Hyperparamètres** : Fini les essais exhaustifs ! FLAML déploie des algorithmes de recherche avancés pour trouver les meilleurs hyperparamètres sans vous faire perdre de temps.
+- **Adaptabilité** : Que ce soit XGBoost ou LightGBM, FLAML supporte de nombreux modèles connus et permet même d’intégrer vos propres modèles.
 - **Support Multi-Tâches** : Que vous soyez dans la classification ou la régression, FLAML s'adapte à vos besoins.
 - **Efficacité en Temps et Coût** : Optimisé pour minimiser le temps d'exécution et les ressources, c’est l’outil idéal pour des expérimentations rapides et efficaces.
 
-Avec tout ça, FLAML se présente comme un compagnon de choix pour vos projets de machine learning !
+Avec tout cela, FLAML se présente comme un allié de choix pour vos projets de machine learning !
 
 ## 2. Interprétabilité avec SHAP
 
-Comprendre pourquoi un modèle fait certaines prédictions est essentiel, surtout quand on se retrouve dans des secteurs avec des attentes réglementaires. Les valeurs SHAP, basées sur la théorie des jeux, offrent une méthode robuste pour rendre le processus des décisions algorithmiques bien plus transparent. Elles permettent de décortiquer l'impact de chaque variable, tout en tenant compte des interactions complexes. Dans la jungle des frameworks d'explication, les valeurs SHAP sont parmi les plus reconnues et logiques.
+Comprendre pourquoi un modèle fait certaines prédictions est essentiel, surtout dans les secteurs avec des attentes réglementaires. Les valeurs SHAP, basées sur la théorie des jeux, offrent une méthode robuste pour rendre le processus décisionnel algorithmique bien plus transparent. Elles permettent de décortiquer l'impact de chaque variable, tout en tenant compte des interactions complexes. Dans la jungle des frameworks d'explication, les valeurs SHAP se distinguent par leur reconnaissance et leur logique.
 
 Voici quelques atouts des valeurs SHAP :
 
-- **Fondement Théorique** : Leur solidité repose sur la théorie des jeux, ce qui leur procure une robustesse solide.
-- **Quantification de l'Impact** : Chaque valeur SHAP révèle comment une variable influence la prédiction, vous aidant à comprendre ce qui agit le plus sur votre modèle.
-- **Visualisations Intuitives** : Les graphiques tels que les diagrammes en barres ou en dispersion rendent l’interprétation des résultats facile, même pour ceux qui ne sont pas des experts.
+- **Fondement Théorique** : Leur solidité repose sur la théorie des jeux, leur procurant une robustesse indéniable.
+- **Quantification de l'Impact** : Chaque valeur SHAP révèle comment une variable influence la prédiction, facilitant la compréhension de ce qui affecte le plus votre modèle.
+- **Visualisations Intuitives** : Les graphiques tels que les diagrammes en barres ou en dispersion rendent l’interprétation des résultats accessible, même pour les non-experts.
 
-En intégrant SHAP, vos modèles deviennent presque transparents, ce qui vous donne une belle vision sur vos données et vos modèles.
+En intégrant SHAP, vos modèles deviennent presque transparents, offrant une vision claire sur vos données et vos modèles.
 
 ## 3. AutoML en Un Coup d'Œil
 
@@ -69,12 +73,12 @@ logger = logging.getLogger()
 
 automl = AutoML()
 settings = {
-    "time_budget": 20,  # temps total d'exécution en secondes
-    "metric": 'r2',  # métrique principale pour la régression
-    "estimator_list": ['lgbm'],  # sélection de modèles ML
-    "task": 'regression',  # type de tâche    
-    "log_file_name": 'houses_experiment.log',  # log de FLAML
-    "seed": 7654321,    # graine aléatoire
+    "time_budget": 20,  # Temps total d'exécution en secondes
+    "metric": 'r2',  # Métrique principale pour la régression
+    "estimator_list": ['lgbm'],  # Sélection de modèles ML
+    "task": 'regression',  # Type de tâche    
+    "log_file_name": 'houses_experiment.log',  # Log de FLAML
+    "seed": 2024,    
 }
 
 data = fetch_california_housing()
@@ -93,13 +97,26 @@ def calculate_metrics(y_pred, y_test):
 
 logger.info(calculate_metrics(y_pred, y_test))
 ```
-Dans ce code, le paramètre `time_budget` définit le temps alloué pour explorer différentes configurations de modèles. Ajustez-le en fonction de vos besoins – en général, 180 secondes fonctionne bien pour les première passes.
 
-Ensuite, on divise nos données en ensembles d’entraînement et de test pour évaluer la performance du modèle. Après l'ajustement, nous utilisons des métriques telles que R², MSE et MAE pour voir comment notre modèle s’en sort.
+Dans ce code, le paramètre `time_budget` définit le temps alloué pour explorer différentes configurations de modèles. Ajustez-le en fonction de vos besoins – en général, 180 secondes fonctionnent bien pour les premiers essais.
+![alt text](./flaml_shap/automl1.PNG)
+![alt text](./flaml_shap/automl2.PNG)
+Comme vous pouvez le voir, la sortie est très verbeuse, et tant mieux, car cela permet de voir comment le framework a fonctionné pour sélectionner les bons hyperparamètres. Après l'ajustement, nous utilisons des métriques telles que R², MSE et MAE pour évaluer les performances du modèle.
+
+Dans ce code, le paramètre `time_budget` définit le temps alloué pour explorer différentes configurations de modèles. Ajustez-le en fonction de vos besoins – en général, 180 secondes fonctionne bien pour les première itérations (dans le cas de données tabulaires avec un nombre de lignes  inferieur à 10 millions mlemeavec une centaine de dvariables on est dans la categorie small)
+
+En général, un budget de 180 secondes fonctionne bien pour les premières itérations, surtout dans le cas de données tabulaires contenant moins de 10 millions de lignes. Même avec une centaine de variables, on reste dans la catégorie "small".
+
+Le choix de `time_budget` repose sur l'expérience. J'ai trouvé une discussion intéressante sur ce sujet : [choix de time_budget](https://github.com/microsoft/FLAML/issues/155). Selon les résultats de l'article de FLAML, le temps nécessaire pour atteindre ou surpasser les meilleures performances rapportées dans le benchmark AutoML peut être considérablement réduit avec FLAML. Voici les temps recommandés pour les différentes catégories de datasets :
+
+- **‘small’** : 1m - 10m
+- **‘medium’** : 10m - 1h
+- **‘large’** : 1h - 4h
 
 ## 4. Ajouter un Learner Personnalisé
 
-Un des points forts de FLAML est sa capacité à intégrer des learners personnalisés, ce qui vous permet d’ajouter des fonctions de perte uniques ou de nouveaux modèles. Voici comment faire :
+Un des atouts de FLAML est la possibilité d'intégrer des learners personnalisés, ce qui permet d’ajouter des fonctions de perte spécifiques ou de nouveaux modèles. Voici comment procéder :
+
 
 ```python
 import numpy as np 
@@ -135,6 +152,7 @@ automl.fit(X_train=X_train, y_train=y_train, **settings)
 
 logger.info(calculate_metrics(y_pred, y_test))
 ```
+![alt text](./flaml_shap/cxustom_learner.PNG)
 
 Ici, la fonction `my_loss_obj` combine différentes approches pour minimiser la perte en jouant sur RMSE et MAE. La classe `MyLGBM` hérite d'un estimateur LGBM, tout en intégrant notre fonction de perte personnalisée.
 
@@ -397,7 +415,7 @@ class AutoMLRegressor(BaseEstimator, RegressorMixin):
 
 ### Illustration
 
-Pour voir cette classe à l’œuvre, exécutons-la avec les prix des maisons :
+Pour voir cette classe à l’œuvre, exécutons-la avec table `house_prices` de sklearn :
 
 ```python
 if __name__ == "__main__":
@@ -420,13 +438,29 @@ if __name__ == "__main__":
     print("Meilleur Modèle :", automl_regressor.best_estimator_)
 
     automl_regressor.compute_shap_values(X_test)
+    automl_regressor.plot_shap(plot_type="feature_importance", max_display=10)
     automl_regressor.plot_shap(plot_type="feature_impact", max_display=10)
     y_pred = automl_regressor.predict(X_test)
     automl_regressor.plot(y_test, y_pred)
-    automl_regressor.plot_shap(plot_type="feature_importance", max_display=10)
 ```
+![alt text](./flaml_shap/starting.PNG.png)
+![alt text](./flaml_shap/shap_importance.png)
+![alt text](./flaml_shap/shape_impact.png.png)
+Voici quelques corrections et suggestions d'amélioration pour rendre le texte plus fluide et clair :
 
-Dans cette partie, j'utilise une métrique de Huber Loss, qui est robuste contre les valeurs aberrantes, si vous trouvez cela pertinent. 
+
+Dès le début de l'output, on peut voir que la métrique utilisée est bien personnalisée, et on a recours à une stratification dans la cross-validation. La métrique par défaut que j’ai définie dans la classe est `huber_loss`, car elle est robuste face aux valeurs aberrantes. L’idée est que, si aucune métrique n’est fournie, on utilise `huber_loss` par défaut.
+
+Les graphiques que vous voyez illustrent l'explicabilité avec SHAP (SHapley Additive exPlanations). Les barres représentent l'importance des caractéristiques, tandis que le graphique qui suit met en évidence l'impact des variables. Grâce à ce visuel, on peut déduire si les valeurs de X influencent Y de manière positive ou négative, par exemple.
+
+Je pense d'ailleurs que je viens d'avoir une idée d'article : expliquer les bases de SHAP et comment interpréter ces visualisations :)
+
+Le dernier graphique montre simplement l'ajustement de notre modèle, et apparemment, tout semble en ordre !
+
+![alt text](./flaml_shap/eval_pred.PNG.png)
+
+
+
 
 On peut varier la liste des estimateurs pour inclure d’autres modèles, mais ce qui est montré ici est largement suffisant pour démarrer. Et si vous voulez aller plus loin et intégrer des learners spécifiques, l'exemple donné plus tôt s'adapte parfaitement !
 
