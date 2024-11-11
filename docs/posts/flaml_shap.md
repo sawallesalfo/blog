@@ -159,9 +159,13 @@ Pour gagner encore plus de temps, construisons une classe qui va rationaliser to
 ### GenericAutoML
 
 Cette classe va adopter les concepts suivants :
+
 - **Encodage Catégoriel** : Offrir différentes stratégies d’encodage pour transformer facilement les variables catégorielles.
+
 - **Sélection de Variables** : Utiliser des techniques pour filtrer automatiquement les caractéristiques les plus pertinentes.
+
 - **Stratification Personnalisée** : Gérer la validation croisée pour maintenir un équilibre de classe si une colonne spécifique est choisie.
+
 - **Interprétabilité avec les valeurs SHAP**.
 
 ```python
@@ -441,9 +445,11 @@ if __name__ == "__main__":
     y_pred = automl_regressor.predict(X_test)
     automl_regressor.plot(y_test, y_pred)
 ```
+
 ![alt text](./flaml_shap/starting.PNGSS)
 ![alt text](./flaml_shap/shap_importance.png)
 ![alt text](./flaml_shap/shape_impact.png)
+
 Voici quelques corrections et suggestions d'amélioration pour rendre le texte plus fluide et clair :
 
 
@@ -455,7 +461,7 @@ Je pense d'ailleurs que je viens d'avoir une idée d'article : expliquer les bas
 
 Le dernier graphique montre simplement l'ajustement de notre modèle, et apparemment, tout semble en ordre !
 
-![alt text](./flaml_shap/eval_pred.PNG.png)
+![alt text](./flaml_shap/eval_pred.PNG)
 
 
 
