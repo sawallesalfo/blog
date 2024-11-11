@@ -614,61 +614,7 @@
     <h2 id="alias-scripts-bash"><a class="toclink" href="../../2024/05/18/alias-scripts-bash/">Alias scripts bash</a></h2>
 <p>Dans cet article, je vais partager avec vous quelques astuces qui peuvent grandement améliorer votre efficacité en développement : l'utilisation d'alias, la gestion des variables d'environnement, et l'usage du nouveau terminal de Windows. En tant que développeur ou data scientist, vous savez que de nombreuses tâches répétitives peuvent devenir sources de frustration. Par exemple, répéter sans cesse <code>export LLM_KEY="macle"</code> pour que votre code récupère la clé via <code>os.getenv()</code> peut vite devenir fastidieux.</p>
 <p>Voyons comment créer un fichier d'environnement pour centraliser les variables nécessaires et un alias pour accéder rapidement à ce répertoire et exécuter votre script.</p>
-<h4 id="etapes-a-suivre"><a class="toclink" href="../../2024/05/18/alias-scripts-bash/#etapes-a-suivre">Étapes à suivre</a></h4>
-<h5 id="1-preparer-votre-terminal"><a class="toclink" href="../../2024/05/18/alias-scripts-bash/#1-preparer-votre-terminal">1. Préparer votre terminal</a></h5>
-<p>Avant de commencer, assurez-vous d'avoir <strong>Windows Terminal</strong> installé sur votre machine si vous travaillez sous Windows. Ce terminal moderne permet d'accéder à des shells comme PowerShell, l'Invite de Commande, et des environnements Linux via le <strong>Windows Subsystem for Linux (WSL)</strong>. Il offre une expérience utilisateur proche de celle d'un shell Bash sous Linux, avec une gestion intuitive des onglets pour éviter la multiplication des fenêtres.</p>
-<blockquote>
-<p><strong>Conseil :</strong> Windows Terminal est bien plus agréable que CMD ou même l'invite de commande WSL standard. Sa gestion des onglets permet de travailler sur plusieurs fenêtres en parallèle dans une seule interface. Plus besoin de jongler entre plusieurs fenêtres !
-voici à quoi il ressemble :
-<img alt="alt text" src="./alias_scripts_bash/terminal.PNG" />
-Bon, j'arrète de faire du marketing gratuitement pour microsoft. :)</p>
-</blockquote>
-<p><a href="https://apps.microsoft.com/detail/9n0dx20hk701?hl=en-US&amp;gl=US">Télécharger Windows Terminal</a></p>
-<h5 id="2-creer-un-fichier-envsh"><a class="toclink" href="../../2024/05/18/alias-scripts-bash/#2-creer-un-fichier-envsh">2. Créer un fichier <code>env.sh</code></a></h5>
-<p>Pour centraliser vos variables d'environnement, créez un fichier <code>env.sh</code> qui pourra être appelé à chaque lancement de projet. Si vous avez un éditeur en ligne de commande comme <code>nano</code> ou <code>vim</code> :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>nano<span class="w"> </span>env.sh
-</code></pre></div>
-<p>Sinon, créez simplement le fichier depuis un éditeur de texte comme Notepad ou Visual Studio Code, et ajoutez-y le contenu suivant :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">MY_VARIABLE</span><span class="o">=</span><span class="s2">&quot;Valeur&quot;</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">API_KEY</span><span class="o">=</span><span class="s2">&quot;VotreCléAPI&quot;</span>
-</code></pre></div>
-<p>Enregistrez le fichier sous le nom <code>env.sh</code> et <strong>rendez-le exécutable</strong> (si vous êtes dans un terminal compatible avec Bash) :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>env.sh
-</code></pre></div>
-<h5 id="3-configurer-un-alias-dans-bash"><a class="toclink" href="../../2024/05/18/alias-scripts-bash/#3-configurer-un-alias-dans-bash">3. Configurer un alias dans Bash</a></h5>
-<p>Créez un alias qui vous permettra de changer de répertoire et de charger vos variables d'environnement en une seule commande.</p>
-<ol>
-<li>
-<p><strong>Éditez votre fichier de configuration Bash</strong> (ou créez-en un si nécessaire) :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>nano<span class="w"> </span>~/.bashrc
-</code></pre></div>
-</li>
-<li>
-<p><strong>Ajoutez l'alias</strong> en bas du fichier, pour faciliter l'accès au dossier et le chargement des variables d'environnement. Ici, je crée un alias local vers mon projet car je trouve fastidieux de taper <code>cd</code> à chaque fois pour me rendre dans le dossier :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">workspace</span><span class="o">=</span><span class="s1">&#39;cd ~/Desktop/&quot;Project X&quot; &amp;&amp; source env.sh&#39;</span>
-</code></pre></div>
-</li>
-</ol>
-<p>Si vous n'avez pas <code>nano</code> ou <code>vim</code>, modifiez simplement le fichier <code>.bashrc</code> dans un éditeur de texte comme Notepad ou Visual Studio Code. Le fichier <code>.bashrc</code> se trouve généralement dans votre répertoire personnel, aux emplacements suivants :
-- Sous Linux et macOS : <code>~/.bashrc</code>
-- Sous Windows avec WSL : <code>/home/nom_utilisateur/.bashrc</code></p>
-<h5 id="4-appliquer-les-modifications"><a class="toclink" href="../../2024/05/18/alias-scripts-bash/#4-appliquer-les-modifications">4. Appliquer les modifications</a></h5>
-<p>Pour que les modifications soient prises en compte, rechargez le fichier de configuration :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</code></pre></div>
-<p>Ou, tout simplement, fermez et relancez un nouveau terminal.</p>
-<h5 id="5-utilisation-pratique"><a class="toclink" href="../../2024/05/18/alias-scripts-bash/#5-utilisation-pratique">5. Utilisation pratique</a></h5>
-<p>Désormais, à chaque fois que vous souhaitez lancer votre projet, il vous suffit de taper :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>workspace
-</code></pre></div>
-<p>Cette commande vous amènera dans le répertoire <code>Project X</code> et exécutera le fichier <code>env.sh</code>, chargeant ainsi vos variables d'environnement.</p>
-<p>Ensuite, pour lancer un script Python, tapez simplement :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>python<span class="w"> </span>votre_script.py
-</code></pre></div>
-<p>Vérifiez que <code>votre_script.py</code> se trouve bien dans le répertoire <code>Project X</code> pour qu'il puisse s'exécuter correctement.</p>
-<h4 id="conclusion"><a class="toclink" href="../../2024/05/18/alias-scripts-bash/#conclusion">Conclusion</a></h4>
-<p>L'utilisation d'alias Bash est une pratique simple mais puissante pour simplifier votre flux de travail et réduire le risque d'erreurs. En quelques commandes, vous pouvez structurer efficacement vos projets et vous concentrer sur l'essentiel. Par exemple, si une commande comme <code>kubectl logs nom_du_pod</code> vous pèse, vous pouvez utiliser un alias <code>k logs nom_du_pod</code> pour simplifier vos appels. Ce petit changement peut sembler anodin, mais combiné à d'autres tâches, il améliore considérablement l'efficacité et rend les sessions terminal plus fluides.</p>
+
     <nav class="md-post__action">
       <a href="../../2024/05/18/alias-scripts-bash/">
         Continue reading
