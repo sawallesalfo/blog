@@ -576,21 +576,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Présentation de FLAML">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#caracteristiques-principales-de-flaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      Caractéristiques Principales de FLAML
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -634,6 +619,15 @@
   <a href="#genericautoml" class="md-nav__link">
     <span class="md-ellipsis">
       GenericAutoML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#illustration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Illustration
     </span>
   </a>
   
@@ -761,13 +755,11 @@
 
 
 <h1 id="auto-ml-et-interpretabilite-avec-flaml-et-shap">Auto ML et Interprétabilité avec FLAML et SHAP<a class="headerlink" href="#auto-ml-et-interpretabilite-avec-flaml-et-shap" title="Permanent link">&para;</a></h1>
-<p>En machine learning, il ne suffit pas de construire des modèles performants : on veut aussi qu'ils soient faciles à interpréter. Imaginez un monde où vous pourriez soumettre une liste de modèles à un framework, et que celui-ci vous indiquerait quel modèle est le meilleur, avec les hyperparamètres optimaux. Ce serait le rêve, non ?</p>
-<p>L'interprétabilité est devenue cruciale, surtout dans des domaines où la réglementation exige une maîtrise des décisions des algorithmes utilisés. Dans ces contextes, comprendre comment les algorithmes fonctionnent est fondamental. D'ailleurs, l'IA Act de l'Union Européenne en fait l'un des piliers de sa stratégie IA de confiance.</p>
-<p>Malheureusement, créer des modèles interprétables et efficaces peut prendre du temps, surtout si l'on doit jongler avec les hyperparamètres et choisir les bons modèles. C'est là que FLAML (Fast Lightweight AutoML) entre en scène en rendant ce processus fastidieux beaucoup plus fluide grâce à l'automatisation de la recherche des paramètres.</p>
+<p>En machine learning, construire des modèles performants ne suffit plus : l'interprétabilité est devenue indispensable, surtout dans des domaines réglementés. Comprendre les décisions de nos modèles est essentiel pour une IA de confiance, un des axes majeurs de l'IA Act de l'Union Européenne.</p>
+<p>Cependant, allier performance et transparence prend du temps, surtout lorsque l’on doit optimiser les hyperparamètres et choisir les bons algorithmes. C’est là que FLAML (Fast Lightweight AutoML) entre en scène pour rendre ce processus fluide en automatisant la recherche de modèles et de paramètres optimaux.</p>
 <!-- more -->
 
-<p>Dans cet article, je vous invite à plonger dans le monde de FLAML et à voir comment allier performance et interprétabilité grâce aux valeurs SHAP (SHapley Additive exPlanations).</p>
-<p>Et ce n'est qu'un avant-goût ! Je vous encourage vivement à explorer la documentation officielle pour découvrir toutes les possibilités.</p>
+<p>Dans cet article, explorons comment FLAML permet de concilier efficacité et interprétabilité, en intégrant les valeurs SHAP (SHapley Additive exPlanations). Cette combinaison rend nos modèles plus compréhensibles, sans compromis sur la performance.</p>
 <h2 id="exigences">Exigences<a class="headerlink" href="#exigences" title="Permanent link">&para;</a></h2>
 <p>Avant d'explorer FLAML, assurez-vous d'avoir toutes les bibliothèques nécessaires. Pas de panique, voici la commande pour tout installer d'un coup :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>flaml<span class="o">[</span>automl<span class="o">]==</span><span class="m">2</span>.3.3<span class="w"> </span><span class="nv">plotly</span><span class="o">==</span><span class="m">5</span>.24.1<span class="w"> </span><span class="nv">loguru</span><span class="o">==</span><span class="m">0</span>.7.2<span class="w"> </span><span class="nv">category_encoders</span><span class="o">==</span><span class="m">2</span>.6.4<span class="w"> </span>shap<span class="w"> </span>matplotlib
@@ -775,7 +767,7 @@
 <p>Avec tout ça, nous sommes prêts à démarrer notre aventure avec FLAML et SHAP !</p>
 <h2 id="1-presentation-de-flaml">1. Présentation de FLAML<a class="headerlink" href="#1-presentation-de-flaml" title="Permanent link">&para;</a></h2>
 <p>FLAML est une bibliothèque AutoML développée par Microsoft, conçue pour vous faire gagner un temps fou dans la configuration de vos modèles de machine learning. Son interface est tellement intuitive qu'elle permet d’optimiser rapidement les hyperparamètres tout en restant flexible pour différents types de problèmes.</p>
-<h3 id="caracteristiques-principales-de-flaml">Caractéristiques Principales de FLAML<a class="headerlink" href="#caracteristiques-principales-de-flaml" title="Permanent link">&para;</a></h3>
+<p>Les Caractéristiques Principales de FLAML:</p>
 <ul>
 <li><strong>Optimisation Automatique des Hyperparamètres</strong> : Fini les essais exhaustifs ! FLAML déploie des algorithmes de recherche avancés pour trouver les meilleurs hyperparamètres sans vous faire perdre de temps.</li>
 <li><strong>Adaptabilité</strong> : Que ce soit XGBoost ou LightGBM, FLAML supporte de nombreux modèles connus et permet même d’intégrer vos propres modèles.</li>
@@ -886,7 +878,7 @@ Comme vous pouvez le voir, la sortie est très verbeuse, et tant mieux, car cela
 - <strong>Sélection de Variables</strong> : Utiliser des techniques pour filtrer automatiquement les caractéristiques les plus pertinentes.
 - <strong>Stratification Personnalisée</strong> : Gérer la validation croisée pour maintenir un équilibre de classe si une colonne spécifique est choisie.
 - <strong>Interprétabilité avec les valeurs SHAP</strong>.</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">flaml</span> <span class="kn">import</span> <span class="n">AutoML</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">flaml</span> <span class="kn">import</span> <span class="n">AutoML</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">RegressorMixin</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">import</span> <span class="nn">shap</span>
@@ -1126,41 +1118,37 @@ Comme vous pouvez le voir, la sortie est très verbeuse, et tant mieux, car cela
 <a id="__codelineno-3-238" name="__codelineno-3-238" href="#__codelineno-3-238"></a>        <span class="n">linear_loss</span> <span class="o">=</span> <span class="n">delta</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">delta</span><span class="p">)</span>
 <a id="__codelineno-3-239" name="__codelineno-3-239" href="#__codelineno-3-239"></a>        <span class="n">huber_loss_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">is_small_error</span><span class="p">,</span> <span class="n">squared_loss</span><span class="p">,</span> <span class="n">linear_loss</span><span class="p">))</span>
 <a id="__codelineno-3-240" name="__codelineno-3-240" href="#__codelineno-3-240"></a>        <span class="k">return</span> <span class="n">huber_loss_value</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;huber_loss&quot;</span><span class="p">:</span> <span class="n">huber_loss_value</span><span class="p">}</span>
-<a id="__codelineno-3-241" name="__codelineno-3-241" href="#__codelineno-3-241"></a>    <span class="err">```</span>
-<a id="__codelineno-3-242" name="__codelineno-3-242" href="#__codelineno-3-242"></a>
-<a id="__codelineno-3-243" name="__codelineno-3-243" href="#__codelineno-3-243"></a><span class="c1">### Illustration</span>
-<a id="__codelineno-3-244" name="__codelineno-3-244" href="#__codelineno-3-244"></a>
-<a id="__codelineno-3-245" name="__codelineno-3-245" href="#__codelineno-3-245"></a><span class="n">Pour</span> <span class="n">voir</span> <span class="n">cette</span> <span class="n">classe</span> <span class="n">à</span> <span class="n">l</span><span class="err">’</span><span class="n">œuvre</span><span class="p">,</span> <span class="n">exécutons</span><span class="o">-</span><span class="n">la</span> <span class="n">avec</span> <span class="n">table</span> <span class="err">`</span><span class="n">house_prices</span><span class="err">`</span> <span class="n">de</span> <span class="n">sklearn</span> <span class="p">:</span>
-<a id="__codelineno-3-246" name="__codelineno-3-246" href="#__codelineno-3-246"></a>
-<a id="__codelineno-3-247" name="__codelineno-3-247" href="#__codelineno-3-247"></a><span class="err">```</span><span class="n">python</span>
-<a id="__codelineno-3-248" name="__codelineno-3-248" href="#__codelineno-3-248"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<a id="__codelineno-3-249" name="__codelineno-3-249" href="#__codelineno-3-249"></a>    <span class="n">data</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;house_prices&quot;</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-3-250" name="__codelineno-3-250" href="#__codelineno-3-250"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
-<a id="__codelineno-3-251" name="__codelineno-3-251" href="#__codelineno-3-251"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
-<a id="__codelineno-3-252" name="__codelineno-3-252" href="#__codelineno-3-252"></a>
-<a id="__codelineno-3-253" name="__codelineno-3-253" href="#__codelineno-3-253"></a>    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<a id="__codelineno-3-254" name="__codelineno-3-254" href="#__codelineno-3-254"></a>
-<a id="__codelineno-3-255" name="__codelineno-3-255" href="#__codelineno-3-255"></a>    <span class="n">custom_settings</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-3-256" name="__codelineno-3-256" href="#__codelineno-3-256"></a>        <span class="s2">&quot;time_budget&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-3-257" name="__codelineno-3-257" href="#__codelineno-3-257"></a>        <span class="s2">&quot;estimator_list&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span> <span class="s2">&quot;rf&quot;</span><span class="p">,</span> <span class="s2">&quot;lgbm&quot;</span><span class="p">,</span> <span class="s2">&quot;extra_tree&quot;</span><span class="p">],</span>
-<a id="__codelineno-3-258" name="__codelineno-3-258" href="#__codelineno-3-258"></a>        <span class="s2">&quot;log_file_name&quot;</span><span class="p">:</span> <span class="s2">&quot;automl.log&quot;</span><span class="p">,</span>
-<a id="__codelineno-3-259" name="__codelineno-3-259" href="#__codelineno-3-259"></a>        <span class="s2">&quot;n_jobs&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
-<a id="__codelineno-3-260" name="__codelineno-3-260" href="#__codelineno-3-260"></a>    <span class="p">}</span>
-<a id="__codelineno-3-261" name="__codelineno-3-261" href="#__codelineno-3-261"></a>
-<a id="__codelineno-3-262" name="__codelineno-3-262" href="#__codelineno-3-262"></a>    <span class="n">automl_regressor</span> <span class="o">=</span> <span class="n">AutoMLRegressor</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">custom_settings</span><span class="p">,</span> <span class="n">encoder_type</span><span class="o">=</span><span class="s2">&quot;catboost&quot;</span><span class="p">,</span> <span class="n">feature_selector</span><span class="o">=</span><span class="s2">&quot;variance&quot;</span><span class="p">,</span> <span class="n">stratify_column</span><span class="o">=</span><span class="s2">&quot;MSZoning&quot;</span><span class="p">)</span>
-<a id="__codelineno-3-263" name="__codelineno-3-263" href="#__codelineno-3-263"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<a id="__codelineno-3-264" name="__codelineno-3-264" href="#__codelineno-3-264"></a>
-<a id="__codelineno-3-265" name="__codelineno-3-265" href="#__codelineno-3-265"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Meilleur Modèle :&quot;</span><span class="p">,</span> <span class="n">automl_regressor</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
-<a id="__codelineno-3-266" name="__codelineno-3-266" href="#__codelineno-3-266"></a>
-<a id="__codelineno-3-267" name="__codelineno-3-267" href="#__codelineno-3-267"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">compute_shap_values</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<a id="__codelineno-3-268" name="__codelineno-3-268" href="#__codelineno-3-268"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">plot_shap</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;feature_importance&quot;</span><span class="p">,</span> <span class="n">max_display</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<a id="__codelineno-3-269" name="__codelineno-3-269" href="#__codelineno-3-269"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">plot_shap</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;feature_impact&quot;</span><span class="p">,</span> <span class="n">max_display</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<a id="__codelineno-3-270" name="__codelineno-3-270" href="#__codelineno-3-270"></a>    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">automl_regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<a id="__codelineno-3-271" name="__codelineno-3-271" href="#__codelineno-3-271"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" href="./flaml_shap/starting.PNG.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="./flaml_shap/starting.PNG.png" /></a>
+<h3 id="illustration">Illustration<a class="headerlink" href="#illustration" title="Permanent link">&para;</a></h3>
+<p>Pour voir cette classe à l’œuvre, exécutons-la avec table <code>house_prices</code> de sklearn :</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">data</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;house_prices&quot;</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">target</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">custom_settings</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="s2">&quot;time_budget&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s2">&quot;estimator_list&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;xgboost&quot;</span><span class="p">,</span> <span class="s2">&quot;rf&quot;</span><span class="p">,</span> <span class="s2">&quot;lgbm&quot;</span><span class="p">,</span> <span class="s2">&quot;extra_tree&quot;</span><span class="p">],</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="s2">&quot;log_file_name&quot;</span><span class="p">:</span> <span class="s2">&quot;automl.log&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>        <span class="s2">&quot;n_jobs&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="p">}</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="n">automl_regressor</span> <span class="o">=</span> <span class="n">AutoMLRegressor</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">custom_settings</span><span class="p">,</span> <span class="n">encoder_type</span><span class="o">=</span><span class="s2">&quot;catboost&quot;</span><span class="p">,</span> <span class="n">feature_selector</span><span class="o">=</span><span class="s2">&quot;variance&quot;</span><span class="p">,</span> <span class="n">stratify_column</span><span class="o">=</span><span class="s2">&quot;MSZoning&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Meilleur Modèle :&quot;</span><span class="p">,</span> <span class="n">automl_regressor</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">compute_shap_values</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">plot_shap</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;feature_importance&quot;</span><span class="p">,</span> <span class="n">max_display</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">plot_shap</span><span class="p">(</span><span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;feature_impact&quot;</span><span class="p">,</span> <span class="n">max_display</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">automl_regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="n">automl_regressor</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</code></pre></div>
+<a class="glightbox" href="./flaml_shap/starting.PNGSS" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="./flaml_shap/starting.PNGSS" /></a>
 <a class="glightbox" href="../../../../flaml_shap/shap_importance.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../flaml_shap/shap_importance.png" /></a>
-<a class="glightbox" href="./flaml_shap/shape_impact.png.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="./flaml_shap/shape_impact.png.png" /></a>
+<a class="glightbox" href="../../../../flaml_shap/shape_impact.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../flaml_shap/shape_impact.png" /></a>
 Voici quelques corrections et suggestions d'amélioration pour rendre le texte plus fluide et clair :</p>
 <p>Dès le début de l'output, on peut voir que la métrique utilisée est bien personnalisée, et on a recours à une stratification dans la cross-validation. La métrique par défaut que j’ai définie dans la classe est <code>huber_loss</code>, car elle est robuste face aux valeurs aberrantes. L’idée est que, si aucune métrique n’est fournie, on utilise <code>huber_loss</code> par défaut.</p>
 <p>Les graphiques que vous voyez illustrent l'explicabilité avec SHAP (SHapley Additive exPlanations). Les barres représentent l'importance des caractéristiques, tandis que le graphique qui suit met en évidence l'impact des variables. Grâce à ce visuel, on peut déduire si les valeurs de X influencent Y de manière positive ou négative, par exemple.</p>
