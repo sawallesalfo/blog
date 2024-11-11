@@ -8,19 +8,15 @@ categories:
 
 ---
 
+
 # Auto ML et Interprétabilité avec FLAML et SHAP
 
-En machine learning, il ne suffit pas de construire des modèles performants : on veut aussi qu'ils soient faciles à interpréter. Imaginez un monde où vous pourriez soumettre une liste de modèles à un framework, et que celui-ci vous indiquerait quel modèle est le meilleur, avec les hyperparamètres optimaux. Ce serait le rêve, non ?
+En machine learning, construire des modèles performants ne suffit plus : l'interprétabilité est devenue indispensable, surtout dans des domaines réglementés. Comprendre les décisions de nos modèles est essentiel pour une IA de confiance, un des axes majeurs de l'IA Act de l'Union Européenne.
 
-L'interprétabilité est devenue cruciale, surtout dans des domaines où la réglementation exige une maîtrise des décisions des algorithmes utilisés. Dans ces contextes, comprendre comment les algorithmes fonctionnent est fondamental. D'ailleurs, l'IA Act de l'Union Européenne en fait l'un des piliers de sa stratégie IA de confiance.
-
-Malheureusement, créer des modèles interprétables et efficaces peut prendre du temps, surtout si l'on doit jongler avec les hyperparamètres et choisir les bons modèles. C'est là que FLAML (Fast Lightweight AutoML) entre en scène en rendant ce processus fastidieux beaucoup plus fluide grâce à l'automatisation de la recherche des paramètres.
-
+Cependant, allier performance et transparence prend du temps, surtout lorsque l’on doit optimiser les hyperparamètres et choisir les bons algorithmes. C’est là que FLAML (Fast Lightweight AutoML) entre en scène pour rendre ce processus fluide en automatisant la recherche de modèles et de paramètres optimaux.
 <!-- more -->
 
-Dans cet article, je vous invite à plonger dans le monde de FLAML et à voir comment allier performance et interprétabilité grâce aux valeurs SHAP (SHapley Additive exPlanations).
-
-Et ce n'est qu'un avant-goût ! Je vous encourage vivement à explorer la documentation officielle pour découvrir toutes les possibilités.
+Dans cet article, explorons comment FLAML permet de concilier efficacité et interprétabilité, en intégrant les valeurs SHAP (SHapley Additive exPlanations). Cette combinaison rend nos modèles plus compréhensibles, sans compromis sur la performance.
 
 ## Exigences
 
@@ -36,7 +32,7 @@ Avec tout ça, nous sommes prêts à démarrer notre aventure avec FLAML et SHAP
 
 FLAML est une bibliothèque AutoML développée par Microsoft, conçue pour vous faire gagner un temps fou dans la configuration de vos modèles de machine learning. Son interface est tellement intuitive qu'elle permet d’optimiser rapidement les hyperparamètres tout en restant flexible pour différents types de problèmes.
 
-### Caractéristiques Principales de FLAML
+Les Caractéristiques Principales de FLAML:
 
 - **Optimisation Automatique des Hyperparamètres** : Fini les essais exhaustifs ! FLAML déploie des algorithmes de recherche avancés pour trouver les meilleurs hyperparamètres sans vous faire perdre de temps.
 - **Adaptabilité** : Que ce soit XGBoost ou LightGBM, FLAML supporte de nombreux modèles connus et permet même d’intégrer vos propres modèles.
@@ -411,7 +407,9 @@ class AutoMLRegressor(BaseEstimator, RegressorMixin):
         linear_loss = delta * (np.abs(error) - 0.5 * delta)
         huber_loss_value = np.mean(np.where(is_small_error, squared_loss, linear_loss))
         return huber_loss_value, {"huber_loss": huber_loss_value}
-	```
+
+```
+
 
 ### Illustration
 
@@ -443,9 +441,9 @@ if __name__ == "__main__":
     y_pred = automl_regressor.predict(X_test)
     automl_regressor.plot(y_test, y_pred)
 ```
-![alt text](./flaml_shap/starting.PNG.png)
+![alt text](./flaml_shap/starting.PNGSS)
 ![alt text](./flaml_shap/shap_importance.png)
-![alt text](./flaml_shap/shape_impact.png.png)
+![alt text](./flaml_shap/shape_impact.png)
 Voici quelques corrections et suggestions d'amélioration pour rendre le texte plus fluide et clair :
 
 
