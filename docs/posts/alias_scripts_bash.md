@@ -7,6 +7,7 @@ categories:
    - Tips  
 ---
 
+# Utilisation d'alias - gestions des variables d'environnement -Windows terminal
 Dans cet article, je vais partager avec vous quelques astuces qui peuvent grandement améliorer votre efficacité en développement : l'utilisation d'alias, la gestion des variables d'environnement, et l'usage du nouveau terminal de Windows. En tant que développeur ou data scientist, vous savez que de nombreuses tâches répétitives peuvent devenir sources de frustration. Par exemple, répéter sans cesse `export LLM_KEY="macle"` pour que votre code récupère la clé via `os.getenv()` peut vite devenir fastidieux.
 
 Voyons comment créer un fichier d'environnement pour centraliser les variables nécessaires et un alias pour accéder rapidement à ce répertoire et exécuter votre script.
