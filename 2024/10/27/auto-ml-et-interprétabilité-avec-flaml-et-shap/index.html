@@ -9,23 +9,23 @@
       
       
       
+        <link rel="prev" href="../../18/utilisation-dalias---gestions-des-variables-denvironnement--windows-terminal/">
       
-        <link rel="next" href="category/cicd/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.0">
     
     
       
-        <title>ssawadogo-blog</title>
+        <title>Auto ML et Interprétabilité avec FLAML et SHAP - ssawadogo-blog</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.45e1311d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.45e1311d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,14 +44,14 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -60,7 +60,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#personal-blog" class="md-skip">
+        <a href="#auto-ml-et-interpretabilite-avec-flaml-et-shap" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="ssawadogo-blog" class="md-header__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+    <a href="../../../.." title="ssawadogo-blog" class="md-header__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Personal blog
+              Auto ML et Interprétabilité avec FLAML et SHAP
             
           </span>
         </div>
@@ -214,7 +214,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -223,7 +225,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="ssawadogo-blog" class="md-nav__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+    <a href="../../../.." title="ssawadogo-blog" class="md-nav__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -242,19 +244,10 @@
   
   
     
-      
-    
   
   
     <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -263,7 +256,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -314,7 +306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="archive/2024/" class="md-nav__link">
+      <a href="../../../../archive/2024/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -381,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/cicd/" class="md-nav__link">
+      <a href="../../../../category/cicd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -404,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/cloud/" class="md-nav__link">
+      <a href="../../../../category/cloud/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -427,7 +419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/iagen/" class="md-nav__link">
+      <a href="../../../../category/iagen/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -450,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/mlops/" class="md-nav__link">
+      <a href="../../../../category/mlops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -473,7 +465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/processing/" class="md-nav__link">
+      <a href="../../../../category/processing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -496,7 +488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/tips/" class="md-nav__link">
+      <a href="../../../../category/tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -519,7 +511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="category/documentation/" class="md-nav__link">
+      <a href="../../../../category/documentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -548,6 +540,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -560,6 +554,116 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exigences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exigences
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-presentation-de-flaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Présentation de FLAML
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Présentation de FLAML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caracteristiques-principales-de-flaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caractéristiques Principales de FLAML
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-interpretabilite-avec-shap" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Interprétabilité avec SHAP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-automl-en-un-coup-dil" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. AutoML en Un Coup d'Œil
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ajouter-un-learner-personnalise" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Ajouter un Learner Personnalisé
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-une-classe-automl-prete-a-lemploi" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Une Classe AutoML Prête à l'Emploi
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Une Classe AutoML Prête à l'Emploi">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genericautoml" class="md-nav__link">
+    <span class="md-ellipsis">
+      GenericAutoML
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Références
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -567,60 +671,109 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="personal-blog">Personal blog<a class="headerlink" href="#personal-blog" title="Permanent link">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-10-27 00:00:00">October 27, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
             
-              <a href="category/mlops/" class="md-meta__link">MlOps</a></li>
-        
-        
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Salif SAWADOGO
+                        
+                      </strong>
+                      <br>
+                      End-to-end Data Scientist
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                        <time datetime="2024-10-27 00:00:00" class="md-ellipsis">October 27, 2024</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/mlops/">MlOps</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              10 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
           
-          <li class="md-meta__item">
-            
-              10 min read
-            
-          </li>
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="auto-ml-et-interpretabilite-avec-flaml-et-shap"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/">Auto ML et Interprétabilité avec FLAML et SHAP</a></h2>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+<h1 id="auto-ml-et-interpretabilite-avec-flaml-et-shap">Auto ML et Interprétabilité avec FLAML et SHAP<a class="headerlink" href="#auto-ml-et-interpretabilite-avec-flaml-et-shap" title="Permanent link">&para;</a></h1>
 <p>En machine learning, on ne se contente pas de construire des modèles performants : on veut aussi qu'ils soient faciles à interpréter. Imaginez un monde où vous pourriez soumettre une liste de modèles à un framework, et que celui-ci vous dirait quel modèle est le meilleur avec les hyperparamètres qui vont avec. Ce serait le rêve, non ? </p>
 <p>L’interprétabilité est devenue cruciale, surtout dans des domaines où chaque décision compte, comme la santé ou la finance. Dans ces contextes, comprendre comment les algorithmes fonctionnent est fondamental.</p>
 <p>Malheureusement, créer des modèles au potentiel interprétable et efficace peut prendre du temps, surtout si on doit jongler avec les hyperparamètres et choisir les bons modèles. C'est là que FLAML (Fast Lightweight AutoML) entre en scène en rendant cet processus archaïque beaucoup plus fluide en automatisant l’optimisation des configurations.</p>
 <p>Dans cet article, je vous invite à plonger dans le monde de FLAML et à voir comment on peut allier performance et interprétabilité grâce aux valeurs SHAP (SHapley Additive exPlanations).</p>
 <p>Et c'est juste un avant-goût ! Je vous encourage vivement à fouiller la documentation officielle pour découvrir toutes les possibilités.</p>
-<h3 id="exigences"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#exigences">Exigences</a></h3>
+<h2 id="exigences">Exigences<a class="headerlink" href="#exigences" title="Permanent link">&para;</a></h2>
 <p>Avant de jeter un œil à FLAML, assurez-vous d’avoir toutes les bibliothèques nécessaires. Pas de panique, voici la commande pour tout installer d'un coup :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>flaml<span class="o">[</span>automl<span class="o">]==</span><span class="m">2</span>.3.3<span class="w"> </span><span class="nv">plotly</span><span class="o">==</span><span class="m">5</span>.24.1<span class="w"> </span><span class="nv">loguru</span><span class="o">==</span><span class="m">0</span>.7.2<span class="w"> </span><span class="nv">category_encoders</span><span class="o">==</span><span class="m">2</span>.6.4<span class="w"> </span>shap<span class="w"> </span>matplotlib
 </code></pre></div>
 <p>Voilà, avec tout ça, on est prêts à démarrer notre aventure avec FLAML et SHAP !</p>
-<h3 id="1-presentation-de-flaml"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#1-presentation-de-flaml">1. Présentation de FLAML</a></h3>
+<h2 id="1-presentation-de-flaml">1. Présentation de FLAML<a class="headerlink" href="#1-presentation-de-flaml" title="Permanent link">&para;</a></h2>
 <p>FLAML est une bibliothèque AutoML signée Microsoft qui va vous faire gagner un temps fou lors de la configuration de vos modèles de machine learning. Son interface est tellement intuitive qu'elle vous permet d’optimiser rapidement les hyperparamètres tout en restant flexible pour différents types de problèmes.</p>
-<h4 id="caracteristiques-principales-de-flaml"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#caracteristiques-principales-de-flaml">Caractéristiques Principales de FLAML</a></h4>
+<h3 id="caracteristiques-principales-de-flaml">Caractéristiques Principales de FLAML<a class="headerlink" href="#caracteristiques-principales-de-flaml" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Optimisation Automatique des Hyperparamètres</strong> : Finies les recherches exhaustives ! FLAML déploie des algorithmes de recherche avancés pour trouver les meilleurs hyperparamètres sans vous faire perdre un temps précieux.</li>
 <li><strong>Adaptabilité</strong> : Que ce soit XGBoost ou LightGBM, FLAML supporte de nombreux modèles connus et vous permet même d’y intégrer vos propres modèles.</li>
@@ -628,7 +781,7 @@
 <li><strong>Efficacité en Temps et Coût</strong> : Optimisé pour minimiser le temps d'exécution et les ressources, c’est l’outil idéal pour des expérimentations rapides et efficaces.</li>
 </ul>
 <p>Avec tout ça, FLAML se présente comme un compagnon de choix pour vos projets de machine learning !</p>
-<h3 id="2-interpretabilite-avec-shap"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#2-interpretabilite-avec-shap">2. Interprétabilité avec SHAP</a></h3>
+<h2 id="2-interpretabilite-avec-shap">2. Interprétabilité avec SHAP<a class="headerlink" href="#2-interpretabilite-avec-shap" title="Permanent link">&para;</a></h2>
 <p>Comprendre pourquoi un modèle fait certaines prédictions est essentiel, surtout quand on se retrouve dans des secteurs avec des attentes réglementaires. Les valeurs SHAP, basées sur la théorie des jeux, offrent une méthode robuste pour rendre le processus des décisions algorithmiques bien plus transparent. Elles permettent de décortiquer l'impact de chaque variable, tout en tenant compte des interactions complexes. Dans la jungle des frameworks d'explication, les valeurs SHAP sont parmi les plus reconnues et logiques.</p>
 <p>Voici quelques atouts des valeurs SHAP :</p>
 <ul>
@@ -637,7 +790,7 @@
 <li><strong>Visualisations Intuitives</strong> : Les graphiques tels que les diagrammes en barres ou en dispersion rendent l’interprétation des résultats facile, même pour ceux qui ne sont pas des experts.</li>
 </ul>
 <p>En intégrant SHAP, vos modèles deviennent presque transparents, ce qui vous donne une belle vision sur vos données et vos modèles.</p>
-<h3 id="3-automl-en-un-coup-dil"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#3-automl-en-un-coup-dil">3. AutoML en Un Coup d'Œil</a></h3>
+<h2 id="3-automl-en-un-coup-dil">3. AutoML en Un Coup d'Œil<a class="headerlink" href="#3-automl-en-un-coup-dil" title="Permanent link">&para;</a></h2>
 <p>Pour illustrer ce que FLAML peut faire, voyons un exemple simple utilisant FLAML pour prédire les prix des maisons en Californie :</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">flaml.ml</span> <span class="kn">import</span> <span class="n">sklearn_metric_loss_score</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -676,7 +829,7 @@
 </code></pre></div>
 Dans ce code, le paramètre <code>time_budget</code> définit le temps alloué pour explorer différentes configurations de modèles. Ajustez-le en fonction de vos besoins – en général, 180 secondes fonctionne bien pour les première passes.</p>
 <p>Ensuite, on divise nos données en ensembles d’entraînement et de test pour évaluer la performance du modèle. Après l'ajustement, nous utilisons des métriques telles que R², MSE et MAE pour voir comment notre modèle s’en sort.</p>
-<h3 id="4-ajouter-un-learner-personnalise"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#4-ajouter-un-learner-personnalise">4. Ajouter un Learner Personnalisé</a></h3>
+<h2 id="4-ajouter-un-learner-personnalise">4. Ajouter un Learner Personnalisé<a class="headerlink" href="#4-ajouter-un-learner-personnalise" title="Permanent link">&para;</a></h2>
 <p>Un des points forts de FLAML est sa capacité à intégrer des learners personnalisés, ce qui vous permet d’ajouter des fonctions de perte uniques ou de nouveaux modèles. Voici comment faire :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
@@ -712,9 +865,9 @@ Dans ce code, le paramètre <code>time_budget</code> définit le temps alloué p
 <a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">calculate_metrics</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
 </code></pre></div>
 <p>Ici, la fonction <code>my_loss_obj</code> combine différentes approches pour minimiser la perte en jouant sur RMSE et MAE. La classe <code>MyLGBM</code> hérite d'un estimateur LGBM, tout en intégrant notre fonction de perte personnalisée.</p>
-<h3 id="5-une-classe-automl-prete-a-lemploi"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#5-une-classe-automl-prete-a-lemploi">5. Une Classe AutoML Prête à l'Emploi</a></h3>
+<h2 id="5-une-classe-automl-prete-a-lemploi">5. Une Classe AutoML Prête à l'Emploi<a class="headerlink" href="#5-une-classe-automl-prete-a-lemploi" title="Permanent link">&para;</a></h2>
 <p>Pour gagner encore plus de temps, construisons une classe qui va rationaliser tout le flux de travail, du prétraitement à la sélection de caractéristiques, en passant par le réglage des hyperparamètres.</p>
-<h4 id="genericautoml"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#genericautoml">GenericAutoML</a></h4>
+<h3 id="genericautoml">GenericAutoML<a class="headerlink" href="#genericautoml" title="Permanent link">&para;</a></h3>
 <p>Cette classe va adopter les concepts suivants :
 - <strong>Encodage Catégoriel</strong> : Offrir différentes stratégies d’encodage pour transformer facilement les variables catégorielles.
 - <strong>Sélection de Variables</strong> : Utiliser des techniques pour filtrer automatiquement les caractéristiques les plus pertinentes.
@@ -994,722 +1147,68 @@ Dans ce code, le paramètre <code>time_budget</code> définit le temps alloué p
 </code></pre></div>
 <p>Dans cette partie, j'utilise une métrique de Huber Loss, qui est robuste contre les valeurs aberrantes, si vous trouvez cela pertinent. </p>
 <p>On peut varier la liste des estimateurs pour inclure d’autres modèles, mais ce qui est montré ici est largement suffisant pour démarrer. Et si vous voulez aller plus loin et intégrer des learners spécifiques, l'exemple donné plus tôt s'adapte parfaitement !</p>
-<h3 id="conclusion"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#conclusion">Conclusion</a></h3>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <p>Cet article vous a fait découvrir comment FLAML et SHAP peuvent travailler main dans la main pour construire des modèles de machine learning à la fois performants et interprétables. FLAML facilite et accélère l’optimisation, tandis que SHAP fournit des outils pour expliquer vos prédictions.</p>
 <p>N’hésitez pas à expérimenter ces approches dans vos projets et partagez vos retours ! Ces techniques sont des atouts précieux pour renforcer la confiance dans vos modèles prédictifs. Les exemples de code que j’ai présentés sont prêts à être utilisés, alors, lancez-vous et explorez sans limites !</p>
-<h3 id="references"><a class="toclink" href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/#references">Références</a></h3>
+<h2 id="references">Références<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://microsoft.github.io/FLAML/docs/Use-Cases/Zero-Shot-AutoML/">Documentation FLAML</a></li>
 <li><a href="https://github.com/microsoft/FLAML/blob/main/notebook/automl_lightgbm.ipynb">Notebook sur FLAML</a></li>
 <li><a href="https://shap.readthedocs.io/en/latest/example_notebooks/api_examples/explainers/Exact.html">Documentation sur les valeurs SHAP</a></li>
 <li><a href="https://sawadogosalif.github.io/blog/2024/10/05/encodage-efficace-des-variables-catégorielles-pour-du-ml/">Mon article sur l'encodage efficace des variables catégorielles pour du ML</a></li>
 </ul>
-    <nav class="md-post__action">
-      <a href="2024/10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-10-18 00:00:00">October 18, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/tips/" class="md-meta__link">Tips</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="utilisation-dalias-gestions-des-variables-denvironnement-windows-terminal"><a class="toclink" href="2024/10/18/utilisation-dalias---gestions-des-variables-denvironnement--windows-terminal/">Utilisation d'alias - gestions des variables d'environnement -Windows terminal</a></h2>
-<p>Dans cet article, je vais partager avec vous quelques astuces qui peuvent grandement améliorer votre efficacité en développement : l'utilisation d'alias, la gestion des variables d'environnement, et l'usage du nouveau terminal de Windows. En tant que développeur ou data scientist, vous savez que de nombreuses tâches répétitives peuvent devenir sources de frustration. Par exemple, répéter sans cesse <code>export LLM_KEY="macle"</code> pour que votre code récupère la clé via <code>os.getenv()</code> peut vite devenir fastidieux.</p>
-<p>Voyons comment créer un fichier d'environnement pour centraliser les variables nécessaires et un alias pour accéder rapidement à ce répertoire et exécuter votre script.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/10/18/utilisation-dalias---gestions-des-variables-denvironnement--windows-terminal/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-10-05 00:00:00">October 5, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/processing/" class="md-meta__link">Processing</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              13 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="encodage-efficace-des-variables-categorielles-pour-du-ml"><a class="toclink" href="2024/10/05/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/">Encodage efficace des variables catégorielles pour du ML</a></h2>
-<p>Les variables catégorielles, on les croise partout dans nos datasets, mais les algorithmes de machine learning, eux, préfèrent les chiffres. Dans ce billet, nous allons explorer plusieurs techniques d'encodage pour transformer ces variables, le tout agrémenté d'explications claires, de formulations mathématiques, et quelques exemples pratiques. Nous aborderons aussi les avantages et les limites de chaque technique, que ce soit les "Classic Encoders", le "Contrast Encoder", ou les "Bayesian Encoders".</p>
-
-    <nav class="md-post__action">
-      <a href="2024/10/05/encodage-efficace-des-variables-cat%C3%A9gorielles-pour-du-ml/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-28 00:00:00">September 28, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/processing/" class="md-meta__link">Processing</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              8 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="faites-du-dask-plutot-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donnees"><a class="toclink" href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/">Faites du Dask plutôt que du Spark si vous avez juste de grosses tables de données</a></h2>
-<p>Dans le monde actuel des données, traiter de grands volumes nécessite des solutions performantes et évolutives. Le calcul distribué permet de gérer efficacement ces données en les répartissant sur plusieurs machines/cores/workers (selon votre cas). Cependant, toutes les entreprises n'ont pas besoin d'une infrastructure lourde et coûteuse telle qu'un cluster Spark. <strong>Dask</strong>, un framework Python, est une alternative légère et flexible, particulièrement adaptée aux environnements déjà basés sur Python.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/28/faites-du-dask-plut%C3%B4t-que-du-spark-si-vous-avez-juste-de-grosses-tables-de-donn%C3%A9es/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-21 00:00:00">September 21, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/processing/" class="md-meta__link">Processing</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="apache-arrow-pour-loptimisation-du-traitement-des-donnees"><a class="toclink" href="2024/09/21/apache-arrow-pour-loptimisation-du-traitement-des-donn%C3%A9es/">Apache Arrow pour l'optimisation du traitement des données</a></h2>
-<p>La gestion des données en mémoire ressemble parfois à un tatonnement. Les  data engineers, scientists et analysts se retrouvent souvent à jongler entre différents formats de données, calculs intensifs et besoins de performance. Jusqu’à récemment, nous étions limités par des outils et formats conçus pour des volumes et des vitesses bien inférieurs à ceux d’aujourd'hui. C’est là qu’<strong>Apache Arrow</strong> entre en scène, tel un champion prêt à transformer ce marathon en un sprint maîtrisé.
-Dans ce billet de blog, on ne va parler que de données. Comment python gère les dataframes en backend?</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/21/apache-arrow-pour-loptimisation-du-traitement-des-donn%C3%A9es/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-14 00:00:00">September 14, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a>, 
-              <a href="category/iagen/" class="md-meta__link">IAgen</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              8 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="faire-tourner-son-chatbot-avec-une-interface-equivalente-a-chatgpt-grace-a-openwebui"><a class="toclink" href="2024/09/14/faire-tourner-son-chatbot-avec-une-interface-%C3%A9quivalente-%C3%A0-chatgpt-gr%C3%A2ce-%C3%A0-openwebui/">Faire tourner son chatbot avec une interface équivalente à ChatGPT grâce à OpenWebUI</a></h2>
-<p>L'ère des assistants conversationnels est en pleine expansion, et grâce à des outils comme <strong>OpenWebUI</strong>, il est désormais possible de créer son propre UI conversationnel avec des fonctionnalités similaires à celles de ChatGPT sans beaucoup d'effort. On suppose que vous avez déjà un chatbot qui fonctionne correctement et que vous souhaitez une meilleure interface utilisateur. Cet article vous guidera dans la mise en place de cette UI.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/14/faire-tourner-son-chatbot-avec-une-interface-%C3%A9quivalente-%C3%A0-chatgpt-gr%C3%A2ce-%C3%A0-openwebui/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-08 00:00:00">September 8, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/iagen/" class="md-meta__link">IAgen</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="evaluer-les-capacites-des-llms-les-benchmarks"><a class="toclink" href="2024/09/08/%C3%A9valuer-les-capacit%C3%A9s-des-llms--les-benchmarks/">Évaluer les Capacités des LLMs : les benchmarks</a></h2>
-<p>Les modèles de langage (LLMs) ont réalisé des avancées spectaculaires dans des tâches variées, telles que la rédaction, la conversation, et la programmation.
-Pour évaluer et comparer efficacement leur intelligence, divers benchmarks sont utilisés, mesurant des capacités allant des connaissances académiques (comme MMLU) au raisonnement complexe (GPQA), en passant par des compétences spécifiques telles que les mathématiques de base (GSM8K) ou la génération de code (HumanEval). </p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/08/%C3%A9valuer-les-capacit%C3%A9s-des-llms--les-benchmarks/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-07 00:00:00">September 7, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/iagen/" class="md-meta__link">IAgen</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="ia-generative-une-evolution-plutot-que-revolution"><a class="toclink" href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/">IA générative : une Évolution plutôt que Révolution</a></h2>
-<p>Aujourd’hui, on plonge dans l’univers fascinant de l’IA générative. On va retracer les grandes étapes qui ont marqué son évolution. Pas de panique, on ne va pas s’embourber dans une liste exhaustive – on va plutôt se concentrer sur les moments clés qui ont façonné l’IA telle qu’on la connaît aujourd'hui. J’avais depuis un moment envie de faire le point sur les avancées dans ce domaine, mais avec le rythme effréné des innovations, je ne savais pas comment illustrer cela jusqu'à ce que je tombe sur les travaux de l'Innovation Makers Alliance.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-01 00:00:00">September 1, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              9 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="tests-for-data-scientists"><a class="toclink" href="2024/09/01/tests-for-data-scientists/">Tests for data scientists</a></h2>
-<h3 id="parlons-de-tests-pour-data-scientists-mlops"><a class="toclink" href="2024/09/01/tests-for-data-scientists/#parlons-de-tests-pour-data-scientists-mlops">Parlons de tests pour data scientists - MLOPS</a></h3>
-<p>Dans cet article, je vais partager avec vous une pratique qui a transformé ma carrière de data scientist end-to-end : tester son code. C'est une étape cruciale dans l'adoption des bonnes pratiques MLOps, mais qui est souvent négligée par beaucoup de data scientists. Je vais explorer les raisons pour lesquelles les tests sont souvent peu utilisés dans ce domaine et comment vous pouvez intégrer des tests efficaces dans le workflow de vos projets de data science. Vous trouverez également un tutoriel pratique pour vous aider à démarrer, en utilisant des outils comme pytest, beartype, pandera, unittest, ou pydantic.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/01/tests-for-data-scientists/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-09-01 00:00:00">September 1, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              9 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="mlflow-best-practices"><a class="toclink" href="2024/09/01/mlflow--best-practices/">MLflow &amp; best practices</a></h2>
-<p>Dans un projet de machine learning, gérer les expérimentations et les modèles peut rapidement devenir un casse-tête. Imaginez : l'équipe s'agrandit, les exigences fusent de toutes parts… et là, votre chef de projet débarque avec une demande spéciale : "Dis, tu te souviens de ce modèle super performant qu'on a testé en avril ? On aimerait le comparer avec nos résultats actuels."À ce moment précis, à moins d'avoir une mémoire digne d'un éléphant, vous vous retrouvez à naviguer frénétiquement dans des fichiers Excel. Entre nous, c'est le genre de situation où l'on se dit : "Pourquoi je n’ai pas tout noté quelque part de façon plus propre ?!"C’est justement là qu’<strong>MLflow</strong> entre en scène.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/09/01/mlflow--best-practices/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-25 00:00:00">August 25, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/cicd/" class="md-meta__link">CI/CD</a>, 
-              <a href="category/mlops/" class="md-meta__link">MlOps</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              6 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser"><a class="toclink" href="2024/08/25/cicd-pour-les-data-scientists--quand-le-code-se-met-%C3%A0-danser/">CI/CD pour les Data Scientists : Quand le Code Se Met à Danser</a></h2>
-<p>La collaboration entre data scientists et développeurs peut parfois ressembler à une partie de ping-pong chaotique : chacun fait rebondir des idées et des bouts de code, mais rien ne semble vraiment s'assembler correctement. Heureusement, il existe une solution pour rendre cette danse collaborative plus harmonieuse : la CI/CD (Continuous Integration/Continuous Deployment). Oui, même pour les data scientists ! Alors, prenez vos notebooks, ajustez vos lunettes, et découvrons comment transformer cette pagaille en une symphonie bien orchestrée :)</p>
-
-    <nav class="md-post__action">
-      <a href="2024/08/25/cicd-pour-les-data-scientists--quand-le-code-se-met-%C3%A0-danser/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-24 00:00:00">August 24, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/cicd/" class="md-meta__link">CI/CD</a>, 
-              <a href="category/mlops/" class="md-meta__link">MlOps</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="all-things-start-with-git"><a class="toclink" href="2024/08/24/all-things-start-with-git/">All things start with git</a></h2>
-<h4 id="git-gitlab-et-github-pour-le-cicd"><a class="toclink" href="2024/08/24/all-things-start-with-git/#git-gitlab-et-github-pour-le-cicd">Git, GitLab et GitHub pour le CI/CD</a></h4>
-<p>Dans cet article, nous allons explorer comment Git, GitLab, et GitHub sont utilisés pour implémenter des pipelines CI/CD (Intégration Continue et Déploiement Continu). Ces outils sont devenus essentiels pour automatiser et gérer les processus de développement logiciel. Comment vous pouvez les utiliser pour améliorer votre flux de travail.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/08/24/all-things-start-with-git/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-18 00:00:00">August 18, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/cicd/" class="md-meta__link">CI/CD</a>, 
-              <a href="category/documentation/" class="md-meta__link">documentation</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="faire-son-blog-avec-mkdocs-et-github-actions"><a class="toclink" href="2024/08/18/faire-son-blog-avec-mkdocs-et-github-actions/">Faire son Blog avec MkDocs et github actions</a></h2>
-<p>Dans ce billet de blog, j'essayerai de retracer  créer et déployer un blog en utilisant MkDocs, un outil qui facilite la création de belles documentations grâce à des fichiers <code>markdown</code>. Nous allons couvrir chaque étape pour t'aider à mettre ton blog en ligne.</p>
-<h5 id="ce-dont-tu-as-besoin"><a class="toclink" href="2024/08/18/faire-son-blog-avec-mkdocs-et-github-actions/#ce-dont-tu-as-besoin">Ce dont tu as besoin</a></h5>
-<ol>
-<li><strong>Compte GitHub</strong> : Tu auras besoin d’un compte GitHub pour stocker et déployer ton blog.</li>
-<li><strong>Connaissances de Base</strong> : Une familiarité avec GitHub, Docker et quelques bases de la ligne de commande sera utile.</li>
-</ol>
-
-    <nav class="md-post__action">
-      <a href="2024/08/18/faire-son-blog-avec-mkdocs-et-github-actions/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-11 00:00:00">August 11, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a>, 
-              <a href="category/cloud/" class="md-meta__link">Cloud</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="iam-for-eks"><a class="toclink" href="2024/08/11/iam-for-eks/">Iam for eks</a></h2>
-<h4 id="understanding-iam-roles-and-users-in-aws-with-a-practical-example-running-an-application-on-eks"><a class="toclink" href="2024/08/11/iam-for-eks/#understanding-iam-roles-and-users-in-aws-with-a-practical-example-running-an-application-on-eks">Understanding IAM Roles and Users in AWS with a Practical Example: Running an Application on EKS</a></h4>
-<p><strong>AWS Identity and Access Management (IAM)</strong> is a cornerstone of security and access control in AWS environments. IAM allows you to manage users, groups, and roles, and to specify their permissions to access AWS resources. In this article, we will explore the differences between IAM roles and IAM users, provide a practical scenario of deploying an application on Amazon EKS (Elastic Kubernetes Service), and clarify how IAM roles relate to specific AWS console options.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/08/11/iam-for-eks/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-08-04 00:00:00">August 4, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/mlops/" class="md-meta__link">MlOps</a>, 
-              <a href="category/cloud/" class="md-meta__link">Cloud</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              7 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="setup-emr"><a class="toclink" href="2024/08/04/setup-emr/">Setup emr</a></h2>
-<h3 id="comment-creer-et-configurer-un-cluster-emr-on-ec2"><a class="toclink" href="2024/08/04/setup-emr/#comment-creer-et-configurer-un-cluster-emr-on-ec2">Comment Créer et Configurer un Cluster  EMR on EC2</a></h3>
-<p>Créer un cluster EMR (Elastic MapReduce) sur EC2 peut sembler complexe, surtout si vous vous lancez pour la première fois. Dans cet article, je vais vous guider à travers chaque étape, depuis la création des rôles jusqu’à la connexion à JupyterHub via un tunnel SSH. Ce guide est conçu pour vous fournir des explications claires et détaillées afin que vous puissiez configurer votre cluster sans difficulté. Nous nous concentrerons spécifiquement sur EMR sur EC2. La petite histoire est que j'ai passé des heures à expliquer cela à plusieurs étudiants intéressés par EMR. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à comprendre et à configurer un cluster EMR de manière efficace. </p>
-
-    <nav class="md-post__action">
-      <a href="2024/08/04/setup-emr/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2024-07-29 00:00:00">July 29, 2024</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="category/documentation/" class="md-meta__link">documentation</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              4 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="mermaid-for-data-scientist"><a class="toclink" href="2024/07/29/mermaid-for-data-scientist/">Mermaid for data scientist</a></h2>
-<h4 id="mermaid-pour-documenter-vos-projets"><a class="toclink" href="2024/07/29/mermaid-for-data-scientist/#mermaid-pour-documenter-vos-projets">Mermaid pour documenter vos projets</a></h4>
-<p>La documentation est une étape cruciale dans tout projet de développement, mais soyons honnêtes, ce n'est pas toujours la plus amusante. Pourtant, quand il s'agit de clarifier des concepts complexes ou de représenter des processus, rien ne vaut un bon diagramme. Beaucoup de gens se tournent vers Word ou PowerPoint, voire des logiciels spécialisés comme Lucidchart, pour créer ces illustrations. Mais pour nous, développeurs, qui aimons le code et l'automatisation, il existe un outil qui pourrait bien changer la donne : <strong>Mermaid</strong>.</p>
-
-    <nav class="md-post__action">
-      <a href="2024/07/29/mermaid-for-data-scientist/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-      
-        
-          
 
 
 
-<nav class="md-pagination">
+
+
+
+
   
-</nav>
-        
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
       
-    </div>
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-11</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="sawadogosalif/blog"
+        data-repo-id="R_kgDOMoC7jQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMoC7jc4CiecW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="fr"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    </article>
   </div>
 
           
@@ -1782,12 +1281,12 @@ Pour évaluer et comparer efficacement leur intelligence, divers benchmarks sont
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "content.tabs", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "content.tabs", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
