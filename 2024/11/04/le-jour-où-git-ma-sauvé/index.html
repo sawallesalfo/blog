@@ -18,7 +18,7 @@
     
     
       
-        <title>Le Jour Où Git m’a Sauvé - ssawadogo-blog</title>
+        <title>Le Jour où Git m’a Sauvé - ssawadogo-blog</title>
       
     
     
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Le Jour Où Git m’a Sauvé
+              Le Jour où Git m’a Sauvé
             
           </span>
         </div>
@@ -563,7 +563,7 @@
         <li class="md-nav__item">
   <a href="#panique-matinale" class="md-nav__link">
     <span class="md-ellipsis">
-      Panique Matinale
+      Panique matinale
     </span>
   </a>
   
@@ -572,7 +572,7 @@
         <li class="md-nav__item">
   <a href="#git-reflog-a-la-rescousse" class="md-nav__link">
     <span class="md-ellipsis">
-      Git Reflog à la Rescousse
+      Git Reflog à la rescousse
     </span>
   </a>
   
@@ -590,7 +590,7 @@
         <li class="md-nav__item">
   <a href="#une-lecon-apprise" class="md-nav__link">
     <span class="md-ellipsis">
-      Une Leçon Apprise
+      Une Leçon apprise
     </span>
   </a>
   
@@ -599,7 +599,7 @@
         <li class="md-nav__item">
   <a href="#mes-conseils-pour-eviter-le-stress" class="md-nav__link">
     <span class="md-ellipsis">
-      Mes Conseils pour Éviter le Stress
+      Mes Conseils pour éviter le stress
     </span>
   </a>
   
@@ -703,14 +703,14 @@
         
 
 
-<h1 id="le-jour-ou-git-ma-sauve">Le Jour Où Git m’a Sauvé<a class="headerlink" href="#le-jour-ou-git-ma-sauve" title="Permanent link">&para;</a></h1>
+<h1 id="le-jour-ou-git-ma-sauve">Le Jour où Git m’a Sauvé<a class="headerlink" href="#le-jour-ou-git-ma-sauve" title="Permanent link">&para;</a></h1>
 <p>On a tous une anecdote avec Git, non ? Celle où on se dit que ce petit outil, discret mais essentiel, nous a évité une catastrophe. Eh bien, laisse-moi te raconter la mienne.  </p>
 <p>C’était une journée normale de boulot. Après avoir bossé sur un package sur de l'IAGen que je développais depuis un bon moment, j’ai fait mon commit du jour juste avant de plier bagage et de rentrer chez moi. Rien d’anormal jusque-là. Mais le lendemain matin, pris d’une envie soudaine de <em>nettoyage</em>, j’ai décidé de faire du tri dans mon workspace. Le zèle, c’est bien… jusqu’à ce que tu réalises que tu viens de <strong>supprimer par mégarde tout le répertoire de ton package IAGen en développement</strong>. Oui, tout.  </p>
 <!-- more -->
 
-<h3 id="panique-matinale">Panique Matinale<a class="headerlink" href="#panique-matinale" title="Permanent link">&para;</a></h3>
+<h3 id="panique-matinale">Panique matinale<a class="headerlink" href="#panique-matinale" title="Permanent link">&para;</a></h3>
 <p>Mon premier réflexe : <em>"Oh non, tout est foutu !"</em>. Mais après une seconde (ou une dizaine de minutes) à regarder mon écran comme si un miracle allait se produire, j’ai réalisé une chose : <strong>Git est mon ami</strong>. C’est là que j’ai décidé d’utiliser les outils de Git pour remonter dans le temps et récupérer mon précieux travail.  </p>
-<h3 id="git-reflog-a-la-rescousse">Git Reflog à la Rescousse<a class="headerlink" href="#git-reflog-a-la-rescousse" title="Permanent link">&para;</a></h3>
+<h3 id="git-reflog-a-la-rescousse">Git Reflog à la rescousse<a class="headerlink" href="#git-reflog-a-la-rescousse" title="Permanent link">&para;</a></h3>
 <p>La première commande magique, c’est <code>git reflog</code>. Si tu ne la connais pas, dis-toi qu’elle enregistre tous les mouvements de ton <code>HEAD</code>, même ceux que tu ne vois pas dans l’historique habituel des commits.  </p>
 <p>Voici comment ça marche :  </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>reflog
@@ -742,10 +742,10 @@
 </li>
 </ol>
 <p>Moi, dans ma panique, j’ai joué la carte de la sécurité avec <code>--soft</code>. On ne sait jamais !  </p>
-<h3 id="une-lecon-apprise">Une Leçon Apprise<a class="headerlink" href="#une-lecon-apprise" title="Permanent link">&para;</a></h3>
+<h3 id="une-lecon-apprise">Une Leçon apprise<a class="headerlink" href="#une-lecon-apprise" title="Permanent link">&para;</a></h3>
 <p>Après avoir tout récupéré et vérifié que tout fonctionnait bien, j’ai poussé les changements avec un petit <code>git push --force</code>. C’était comme si rien ne s’était passé.  </p>
 <p>Morale de l’histoire : <strong>Git n’oublie jamais</strong>. Même quand toi, tu fais des bêtises. Depuis ce jour, je fais toujours des commits réguliers et je vérifie deux fois avant de supprimer quoi que ce soit. Et toi, quelle est ta <em>success story</em> avec Git ?  </p>
-<h3 id="mes-conseils-pour-eviter-le-stress">Mes Conseils pour Éviter le Stress<a class="headerlink" href="#mes-conseils-pour-eviter-le-stress" title="Permanent link">&para;</a></h3>
+<h3 id="mes-conseils-pour-eviter-le-stress">Mes Conseils pour éviter le stress<a class="headerlink" href="#mes-conseils-pour-eviter-le-stress" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Commite souvent</strong> : Plus il y a de checkpoints, mieux c’est.  </li>
 <li><strong>Apprends à utiliser <code>git reflog</code> et <code>git reset</code></strong> : Ces outils te sauveront la mise un jour.  </li>
