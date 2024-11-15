@@ -612,50 +612,7 @@
     <h2 id="le-jour-ou-git-ma-sauve"><a class="toclink" href="../../2024/11/04/le-jour-o%C3%B9-git-ma-sauv%C3%A9/">Le Jour Où Git m’a Sauvé</a></h2>
 <p>On a tous une anecdote avec Git, non ? Celle où on se dit que ce petit outil, discret mais essentiel, nous a évité une catastrophe. Eh bien, laisse-moi te raconter la mienne.  </p>
 <p>C’était une journée normale de boulot. Après avoir bossé sur un package sur de l'IAGen que je développais depuis un bon moment, j’ai fait mon commit du jour juste avant de plier bagage et de rentrer chez moi. Rien d’anormal jusque-là. Mais le lendemain matin, pris d’une envie soudaine de <em>nettoyage</em>, j’ai décidé de faire du tri dans mon workspace. Le zèle, c’est bien… jusqu’à ce que tu réalises que tu viens de <strong>supprimer par mégarde tout le répertoire de ton package IAGen en développement</strong>. Oui, tout.  </p>
-<h4 id="panique-matinale"><a class="toclink" href="../../2024/11/04/le-jour-o%C3%B9-git-ma-sauv%C3%A9/#panique-matinale">Panique Matinale</a></h4>
-<p>Mon premier réflexe : <em>"Oh non, tout est foutu !"</em>. Mais après une seconde (ou une dizaine de minutes) à regarder mon écran comme si un miracle allait se produire, j’ai réalisé une chose : <strong>Git est mon ami</strong>. C’est là que j’ai décidé d’utiliser les outils de Git pour remonter dans le temps et récupérer mon précieux travail.  </p>
-<h4 id="git-reflog-a-la-rescousse"><a class="toclink" href="../../2024/11/04/le-jour-o%C3%B9-git-ma-sauv%C3%A9/#git-reflog-a-la-rescousse">Git Reflog à la Rescousse</a></h4>
-<p>La première commande magique, c’est <code>git reflog</code>. Si tu ne la connais pas, dis-toi qu’elle enregistre tous les mouvements de ton <code>HEAD</code>, même ceux que tu ne vois pas dans l’historique habituel des commits.  </p>
-<p>Voici comment ça marche :  </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git<span class="w"> </span>reflog
-</code></pre></div>
-<p>Cette commande m’a affiché une liste de tout ce que j’avais fait récemment sur la branche :  </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>6 (HEAD -&gt; main) HEAD@{0}: reset: moving to HEAD~1
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>75914b7 HEAD@{1}: commit: :rocket: Test de reformulation/full_text_search
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>4212ce6 HEAD@{2}: commit: :see_no_evil: Ignorer pickle
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>...  
-</code></pre></div>
-<p>Le commit que je cherchais s’appelait <code>:rocket: Test de reformulation/full_text_search</code>, et il était à <code>HEAD@{1}</code>. Sauvé, non ? Pas encore.  </p>
-<h4 id="restaurer-le-commit"><a class="toclink" href="../../2024/11/04/le-jour-o%C3%B9-git-ma-sauv%C3%A9/#restaurer-le-commit">Restaurer le Commit</a></h4>
-<p>Une fois que j’ai trouvé le commit, il fallait revenir à cet état. Voici les trois options que Git offre pour <em>reset</em> :  </p>
-<ol>
-<li>
-<p>Si tu veux garder les modifications en attente (staged) :<br />
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>75914b7
-</code></pre></div></p>
-</li>
-<li>
-<p>Si tu veux garder les fichiers modifiés sans les préparer (unstaged) :<br />
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>reset<span class="w"> </span>75914b7
-</code></pre></div></p>
-</li>
-<li>
-<p>Si tu veux carrément tout écraser et revenir à cet état précis :<br />
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>75914b7
-</code></pre></div></p>
-</li>
-</ol>
-<p>Moi, dans ma panique, j’ai joué la carte de la sécurité avec <code>--soft</code>. On ne sait jamais !  </p>
-<h4 id="une-lecon-apprise"><a class="toclink" href="../../2024/11/04/le-jour-o%C3%B9-git-ma-sauv%C3%A9/#une-lecon-apprise">Une Leçon Apprise</a></h4>
-<p>Après avoir tout récupéré et vérifié que tout fonctionnait bien, j’ai poussé les changements avec un petit <code>git push --force</code>. C’était comme si rien ne s’était passé.  </p>
-<p>Morale de l’histoire : <strong>Git n’oublie jamais</strong>. Même quand toi, tu fais des bêtises. Depuis ce jour, je fais toujours des commits réguliers et je vérifie deux fois avant de supprimer quoi que ce soit. Et toi, quelle est ta <em>success story</em> avec Git ?  </p>
-<h4 id="mes-conseils-pour-eviter-le-stress"><a class="toclink" href="../../2024/11/04/le-jour-o%C3%B9-git-ma-sauv%C3%A9/#mes-conseils-pour-eviter-le-stress">Mes Conseils pour Éviter le Stress</a></h4>
-<ol>
-<li><strong>Commite souvent</strong> : Plus il y a de checkpoints, mieux c’est.  </li>
-<li><strong>Apprends à utiliser <code>git reflog</code> et <code>git reset</code></strong> : Ces outils te sauveront la mise un jour.  </li>
-<li><strong>Fais une sauvegarde locale régulière</strong> : Si Git ne te suffit pas, un petit script de sauvegarde ne fait jamais de mal.  </li>
-</ol>
-<p>Git, c’est un peu comme un ami fidèle : il te couvre toujours, même quand tu fais n’importe quoi. 😉  </p>
+
     <nav class="md-post__action">
       <a href="../../2024/11/04/le-jour-o%C3%B9-git-ma-sauv%C3%A9/">
         Continue reading
