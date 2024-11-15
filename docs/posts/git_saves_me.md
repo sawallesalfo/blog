@@ -12,6 +12,7 @@ categories:
 On a tous une anecdote avec Git, non ? Celle où on se dit que ce petit outil, discret mais essentiel, nous a évité une catastrophe. Eh bien, laisse-moi te raconter la mienne.  
 
 C’était une journée normale de boulot. Après avoir bossé sur un package sur de l'IAGen que je développais depuis un bon moment, j’ai fait mon commit du jour juste avant de plier bagage et de rentrer chez moi. Rien d’anormal jusque-là. Mais le lendemain matin, pris d’une envie soudaine de *nettoyage*, j’ai décidé de faire du tri dans mon workspace. Le zèle, c’est bien… jusqu’à ce que tu réalises que tu viens de **supprimer par mégarde tout le répertoire de ton package IAGen en développement**. Oui, tout.  
+<!-- more -->
 
 ### Panique Matinale  
 Mon premier réflexe : *"Oh non, tout est foutu !"*. Mais après une seconde (ou une dizaine de minutes) à regarder mon écran comme si un miracle allait se produire, j’ai réalisé une chose : **Git est mon ami**. C’est là que j’ai décidé d’utiliser les outils de Git pour remonter dans le temps et récupérer mon précieux travail.  
