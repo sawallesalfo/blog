@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../11/iam-for-eks/">
+        <link rel="prev" href="../../../10/27/auto-ml-et-interpr%C3%A9tabilit%C3%A9-avec-flaml-et-shap/">
       
-      
-        <link rel="next" href="../../24/all-things-start-with-git/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Faire son Blog avec MkDocs et github actions - ssawadogo-blog</title>
+        <title>Le Jour Où Git m’a Sauvé - ssawadogo-blog</title>
       
     
     
@@ -81,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#faire-son-blog-avec-mkdocs-et-github-actions" class="md-skip">
+        <a href="#le-jour-ou-git-ma-sauve" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Faire son Blog avec MkDocs et github actions
+              Le Jour Où Git m’a Sauvé
             
           </span>
         </div>
@@ -563,63 +561,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ce-dont-tu-as-besoin" class="md-nav__link">
+  <a href="#panique-matinale" class="md-nav__link">
     <span class="md-ellipsis">
-      Ce dont tu as besoin
+      Panique Matinale
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#etape-1-configuration-de-ton-blog" class="md-nav__link">
+  <a href="#git-reflog-a-la-rescousse" class="md-nav__link">
     <span class="md-ellipsis">
-      Étape 1 : Configuration de ton blog
+      Git Reflog à la Rescousse
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#etape-2-construire-et-deployer-avec-docker" class="md-nav__link">
+  <a href="#restaurer-le-commit" class="md-nav__link">
     <span class="md-ellipsis">
-      Étape 2 : Construire et déployer avec docker
+      Restaurer le Commit
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#etapes-finales" class="md-nav__link">
+  <a href="#une-lecon-apprise" class="md-nav__link">
     <span class="md-ellipsis">
-      Étapes finales
+      Une Leçon Apprise
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#mes-conseils-pour-eviter-le-stress" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      Références:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#maj" class="md-nav__link">
-    <span class="md-ellipsis">
-      MAJ
+      Mes Conseils pour Éviter le Stress
     </span>
   </a>
   
@@ -650,6 +630,25 @@
               </div>
             </div>
             
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Salif SAWADOGO
+                        
+                      </strong>
+                      <br>
+                      End-to-end Data Scientist
+                    </span>
+                  </div>
+                
+              </div>
+            
             <ul class="md-post__meta md-nav__list">
               <li class="md-nav__item md-nav__item--section">
                 <div class="md-post__title">
@@ -662,7 +661,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2024-08-18 00:00:00" class="md-ellipsis">August 18, 2024</time>
+                        <time datetime="2024-11-04 00:00:00" class="md-ellipsis">November 4, 2024</time>
                       </div>
                     </li>
                     
@@ -673,8 +672,7 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/cicd/">CI/CD</a>, 
-                              <a href="../../../../category/documentation/">documentation</a></span>
+                              <a href="../../../../category/mlops/">MLOps</a></span>
                         </div>
                       </li>
                     
@@ -705,187 +703,53 @@
         
 
 
-<h1 id="faire-son-blog-avec-mkdocs-et-github-actions">Faire son Blog avec MkDocs et github actions<a class="headerlink" href="#faire-son-blog-avec-mkdocs-et-github-actions" title="Permanent link">&para;</a></h1>
-<p>Dans ce billet de blog, j'essayerai de retracer  créer et déployer un blog en utilisant MkDocs, un outil qui facilite la création de belles documentations grâce à des fichiers <code>markdown</code>. Nous allons couvrir chaque étape pour t'aider à mettre ton blog en ligne.</p>
-<h4 id="ce-dont-tu-as-besoin">Ce dont tu as besoin<a class="headerlink" href="#ce-dont-tu-as-besoin" title="Permanent link">&para;</a></h4>
-<ol>
-<li><strong>Compte GitHub</strong> : Tu auras besoin d’un compte GitHub pour stocker et déployer ton blog.</li>
-<li><strong>Connaissances de Base</strong> : Une familiarité avec GitHub, Docker et quelques bases de la ligne de commande sera utile.</li>
-</ol>
-<!-- more -->
-
-<h4 id="etape-1-configuration-de-ton-blog">Étape 1 : Configuration de ton blog<a class="headerlink" href="#etape-1-configuration-de-ton-blog" title="Permanent link">&para;</a></h4>
-<ol>
-<li>
-<p><strong>Créer un répertoire gitHub</strong> :</p>
-<ul>
-<li>Va sur <a href="https://github.com">GitHub</a> et connecte-toi.</li>
-<li>Clique sur <strong>New</strong> pour créer un nouveau répertoire.</li>
-<li>Nomme ton répertoire, par exemple <code>mon-blog</code>.</li>
-<li>Choisis <strong>Public</strong> ou <strong>Private</strong> selon ta préférence.</li>
-<li>Clique sur <strong>Create repository</strong>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Installer MkDocs localement</strong> :</p>
-<ul>
-<li>Ouvre ton terminal ou la ligne de commande.</li>
-<li>Installe MkDocs avec pip :
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs
-</code></pre></div></li>
-</ul>
-</li>
-<li>
-<p><strong>Configurer ton blog</strong> :</p>
-<ul>
-<li>Navigue jusqu’au dossier où tu souhaites créer ton blog.</li>
-<li>Exécute :
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdocs<span class="w"> </span>new<span class="w"> </span>mon-blog
-</code></pre></div></li>
-<li>Cela crée un dossier nommé <code>mon-blog</code> avec les fichiers de base pour ton blog.</li>
-</ul>
-</li>
-<li>
-<p><strong>Personnaliser Ton Blog</strong> :</p>
-<ul>
-<li>Ouvre le fichier <code>mkdocs.yml</code> dans le dossier de ton blog. C’est ici que tu définis le nom et le thème de ton blog.</li>
-<li>
-<p>Modifie le fichier <code>mkdocs.yml</code> pour qu’il ressemble à ceci :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">site_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mon Blog</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">theme</span><span class="p">:</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">material</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">nav</span><span class="p">:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Accueil</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+<h1 id="le-jour-ou-git-ma-sauve">Le Jour Où Git m’a Sauvé<a class="headerlink" href="#le-jour-ou-git-ma-sauve" title="Permanent link">&para;</a></h1>
+<p>On a tous une anecdote avec Git, non ? Celle où on se dit que ce petit outil, discret mais essentiel, nous a évité une catastrophe. Eh bien, laisse-moi te raconter la mienne.  </p>
+<p>C’était une journée normale de boulot. Après avoir bossé sur un package sur de l'IAGen que je développais depuis un bon moment, j’ai fait mon commit du jour juste avant de plier bagage et de rentrer chez moi. Rien d’anormal jusque-là. Mais le lendemain matin, pris d’une envie soudaine de <em>nettoyage</em>, j’ai décidé de faire du tri dans mon workspace. Le zèle, c’est bien… jusqu’à ce que tu réalises que tu viens de <strong>supprimer par mégarde tout le répertoire de ton package IAGen en développement</strong>. Oui, tout.  </p>
+<h3 id="panique-matinale">Panique Matinale<a class="headerlink" href="#panique-matinale" title="Permanent link">&para;</a></h3>
+<p>Mon premier réflexe : <em>"Oh non, tout est foutu !"</em>. Mais après une seconde (ou une dizaine de minutes) à regarder mon écran comme si un miracle allait se produire, j’ai réalisé une chose : <strong>Git est mon ami</strong>. C’est là que j’ai décidé d’utiliser les outils de Git pour remonter dans le temps et récupérer mon précieux travail.  </p>
+<h3 id="git-reflog-a-la-rescousse">Git Reflog à la Rescousse<a class="headerlink" href="#git-reflog-a-la-rescousse" title="Permanent link">&para;</a></h3>
+<p>La première commande magique, c’est <code>git reflog</code>. Si tu ne la connais pas, dis-toi qu’elle enregistre tous les mouvements de ton <code>HEAD</code>, même ceux que tu ne vois pas dans l’historique habituel des commits.  </p>
+<p>Voici comment ça marche :  </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>reflog
 </code></pre></div>
-</li>
-</ul>
-<ul>
-<li>Ajoute du contenu en modifiant <code>index.md</code> ou en créant de nouveaux fichiers Markdown dans le dossier <code>docs</code>.</li>
-</ul>
-</li>
-</ol>
-<h4 id="etape-2-construire-et-deployer-avec-docker">Étape 2 : Construire et déployer avec docker<a class="headerlink" href="#etape-2-construire-et-deployer-avec-docker" title="Permanent link">&para;</a></h4>
+<p>Cette commande m’a affiché une liste de tout ce que j’avais fait récemment sur la branche :  </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>6 (HEAD -&gt; main) HEAD@{0}: reset: moving to HEAD~1
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>75914b7 HEAD@{1}: commit: :rocket: Test de reformulation/full_text_search
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>4212ce6 HEAD@{2}: commit: :see_no_evil: Ignorer pickle
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>...  
+</code></pre></div>
+<p>Le commit que je cherchais s’appelait <code>:rocket: Test de reformulation/full_text_search</code>, et il était à <code>HEAD@{1}</code>. Sauvé, non ? Pas encore.  </p>
+<h3 id="restaurer-le-commit">Restaurer le Commit<a class="headerlink" href="#restaurer-le-commit" title="Permanent link">&para;</a></h3>
+<p>Une fois que j’ai trouvé le commit, il fallait revenir à cet état. Voici les trois options que Git offre pour <em>reset</em> :  </p>
 <ol>
 <li>
-<p><strong>Créer une Image Docker</strong> :</p>
-<ul>
-<li>Rédige un Dockerfile pour inclure MkDocs et les outils nécessaires.</li>
-<li>
-<p>Voici un Dockerfile de base :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Utiliser l&#39;image Python 3.12</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c"># Définir le répertoire de travail</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c"># Installer MkDocs et les plugins</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material<span class="w"> </span>ghp-import
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c"># Copier les fichiers du blog dans l&#39;image Docker</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>/app
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c"># Définir la commande pour construire MkDocs</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;mkdocs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--verbose&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--site-dir&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;site&quot;</span><span class="p">]</span>
-</code></pre></div>
-</li>
-</ul>
-<ul>
-<li>Construis l'image Docker avec :
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>mon-blog-image<span class="w"> </span>.
-</code></pre></div></li>
-</ul>
+<p>Si tu veux garder les modifications en attente (staged) :<br />
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>75914b7
+</code></pre></div></p>
 </li>
 <li>
-<p><strong>Déployer ton blog</strong> :</p>
-<ul>
-<li>
-<p>Crée un fichier workflow GitHub Actions pour automatiser le déploiement. Sauvegarde le fichier suivant sous <code>.github/workflows/deploy.yml</code> dans ton répertoire :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and Deploy MkDocs Site</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">on</span><span class="p">:</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">push</span><span class="p">:</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nt">env</span><span class="p">:</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="nt">IMAGE_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mon-blog-image</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">  </span><span class="nt">IMAGE_TAG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="nt">jobs</span><span class="p">:</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span><span class="nt">build-and-deploy</span><span class="p">:</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Checkout code</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v3</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build MkDocs site</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">          </span><span class="no">docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} mkdocs build --verbose --site-dir site</span>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy to GitHub Pages</span>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github.ref == &#39;refs/heads/main&#39;</span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">          </span><span class="no">docker run --rm -v ${{ github.workspace }}:/app -w /app ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} /bin/bash -c &quot;</span>
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="w">            </span><span class="no">ghp-import -n -p -f site -r https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git -b gh-pages&quot;</span>
-<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>
-<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Clean up Docker resources</span>
-<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker system prune -f</span>
-</code></pre></div>
+<p>Si tu veux garder les fichiers modifiés sans les préparer (unstaged) :<br />
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>reset<span class="w"> </span>75914b7
+</code></pre></div></p>
 </li>
-</ul>
+<li>
+<p>Si tu veux carrément tout écraser et revenir à cet état précis :<br />
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>75914b7
+</code></pre></div></p>
 </li>
 </ol>
-<h4 id="etapes-finales">Étapes finales<a class="headerlink" href="#etapes-finales" title="Permanent link">&para;</a></h4>
+<p>Moi, dans ma panique, j’ai joué la carte de la sécurité avec <code>--soft</code>. On ne sait jamais !  </p>
+<h3 id="une-lecon-apprise">Une Leçon Apprise<a class="headerlink" href="#une-lecon-apprise" title="Permanent link">&para;</a></h3>
+<p>Après avoir tout récupéré et vérifié que tout fonctionnait bien, j’ai poussé les changements avec un petit <code>git push --force</code>. C’était comme si rien ne s’était passé.  </p>
+<p>Morale de l’histoire : <strong>Git n’oublie jamais</strong>. Même quand toi, tu fais des bêtises. Depuis ce jour, je fais toujours des commits réguliers et je vérifie deux fois avant de supprimer quoi que ce soit. Et toi, quelle est ta <em>success story</em> avec Git ?  </p>
+<h3 id="mes-conseils-pour-eviter-le-stress">Mes Conseils pour Éviter le Stress<a class="headerlink" href="#mes-conseils-pour-eviter-le-stress" title="Permanent link">&para;</a></h3>
 <ol>
-<li>
-<p><strong>Pousser tes modifications</strong> :</p>
-<ul>
-<li>Commit et pousse tes modifications vers GitHub :
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Configuration du site MkDocs&quot;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div></li>
-</ul>
-</li>
-<li>
-<p><strong>Assurer les permissions correctes pour le déploiement</strong> :</p>
-<ul>
-<li>Pour éviter les problèmes de permission avec GitHub Actions, assure-toi que le <code>GITHUB_TOKEN</code> dispose des permissions nécessaires.</li>
-<li><strong>Vérifie les paramètres du répertoire</strong> :<ul>
-<li>Va sur ton répertoire GitHub.</li>
-<li>Navigue vers <strong>Settings</strong> &gt; <strong>Actions</strong> &gt; <strong>General</strong>.</li>
-<li>Sous <strong>Workflow permissions</strong>, assure-toi que <strong>Read and write permissions</strong> sont sélectionnées.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Vérifier le déploiement</strong> :</p>
-<ul>
-<li>Va sur ton répertoire GitHub.</li>
-<li>Navigue vers <strong>Settings</strong> &gt; <strong>Pages</strong>.</li>
-<li>Assure-toi que la source est définie sur la branche <code>gh-pages</code>.</li>
-</ul>
-<p>Ton blog devrait maintenant être en ligne ! Visite l’URL fournie dans les paramètres de GitHub Pages pour voir ton site.</p>
-</li>
+<li><strong>Commite souvent</strong> : Plus il y a de checkpoints, mieux c’est.  </li>
+<li><strong>Apprends à utiliser <code>git reflog</code> et <code>git reset</code></strong> : Ces outils te sauveront la mise un jour.  </li>
+<li><strong>Fais une sauvegarde locale régulière</strong> : Si Git ne te suffit pas, un petit script de sauvegarde ne fait jamais de mal.  </li>
 </ol>
-<h4 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h4>
-<p>Félicitations ! Tu as construit et déployé un blog en utilisant MkDocs et Docker. Ce guide vise à simplifier le processus pour que tu puisses facilement partager ton contenu en ligne. Bon blogging !</p>
-<p>Pour un exemple complet, jette un œil à mon projet : <a href="https://github.com/sawadogosalif/blog">Répertoire GitHub</a>.</p>
-<h4 id="references">Références:<a class="headerlink" href="#references" title="Permanent link">&para;</a></h4>
-<ul>
-<li>https://squidfunk.github.io/mkdocs-material/getting-started/</li>
-</ul>
-<h4 id="maj">MAJ<a class="headerlink" href="#maj" title="Permanent link">&para;</a></h4>
-<ul>
-<li>08/09/2024 : Traduire en français</li>
-<li>14/09/2024 : Ajout de références</li>
-</ul>
+<p>Git, c’est un peu comme un ami fidèle : il te couvre toujours, même quand tu fais n’importe quoi. 😉  </p>
 
 
 
