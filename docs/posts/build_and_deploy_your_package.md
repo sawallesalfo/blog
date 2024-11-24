@@ -1,6 +1,6 @@
 ---
 date : 2024-11-10  
-auteurs : 
+authors : 
   - ssawadogo  
 categories : 
   - CI/CD
@@ -9,31 +9,35 @@ categories :
   - MlOps
 ---
 
-# Construire et publier son propre package Python : Du local à PyPI  
+# Construire et publier son propre package Open Source Python   
 
 Quand on débute avec Python pour l’analyse de données, on commence souvent par installer des packages comme **NumPy** ou **Pandas** après avoir configuré Python. Au fil du temps, lorsqu’on gère plusieurs projets, on se retrouve avec une "boîte à outils" composée de fonctions récurrentes que l’on transporte de projet en projet.  
 
 Mais, au lieu de copier et coller du code, pourquoi ne pas structurer ce travail dans un **package Python** ? Cela facilite le partage et l’utilisation, que ce soit par vos collègues ou la communauté.  
 
 
-Je me souviens qu’à l’époque où j’étais en école d’ingénieur, chaque fois que j’installais un package avec `pip install`, je me demandais comment il était possible de créer ces outils accessibles à tous. Voir les informations d’un package avec une commande comme `pip show` me fascinait. ![alt text](build_and_deploy_your_package/pip_show.png) C’est cette curiosité qui m’a poussé à explorer le fonctionnement interne des packages Python et à apprendre comment les concevoir moi-même.  
+Je me souviens qu’à l’époque où j’étais en école d’ingénieur, chaque fois que j’installais un package avec `pip install`, je me demandais comment il était possible de créer ces outils accessibles à tous. Voir les informations d’un package avec une commande comme `pip show` me fascinait (image en bas).
+ ![alt text](build_and_deploy_your_package/pip_show.png) 
+ C’est cette curiosité qui m’a poussé à explorer le fonctionnement interne des packages Python et à apprendre comment les concevoir moi-même.  
+
+<!-- more -->
 
 Dans cet article, nous allons découvrir les étapes et les bonnes pratiques pour construire et publier votre propre package Python, de votre ordinateur local jusqu’à **PyPI (Python Package Index)**.
 
-## **1. Pourquoi créer un package ?**  
+## I. Pourquoi créer un package ?
 
 Si vous êtes passionné de **data science**, vous avez probablement l’habitude de créer des fonctions que vous stockez dans des notebooks ou des fichiers `.py`. Cependant, au fur et à mesure que votre code devient complexe, il devient plus logique et efficace de regrouper ces fonctions dans un **package**.  
 
 Imaginez que vous avez développé un algorithme performant. Plutôt que de l’envoyer à vos collègues sous forme de fichiers, vous pourriez publier un package que tout le monde peut installer facilement avec `pip`. Et dans l’esprit de l’open source, vous pourriez même partager ce travail avec la communauté mondiale.  
 
 
-## **2. Ce qu’il faut savoir avant de commencer dans l'open source packaging**  
+## II. Les étapes de l'open source packaging
 
 Un **package Python** est une collection de code réutilisable, comme **NumPy** ou **Pandas**, qui aide les développeurs à résoudre des problèmes spécifiques. Publier un package open source signifie que ce code est accessible gratuitement à tous, sous réserve d’une licence (par exemple, MIT ou GPL).  
 
 Cela peut sembler compliqué au départ, mais les étapes sont simples si elles sont bien suivies. Voici une vue d’ensemble pour créer et partager un package open source : Les étapes pour construire un package Python**  
 
-### **a. Créez une structure claire**  
+### a. Créez une structure claire  
 Voici un exemple de structure typique pour un package :  
 
 ```
@@ -50,14 +54,14 @@ my_package/
 └── requirements.txt     # Dépendances nécessaires
 ```  
 
-### **b. Écrivez un code réutilisable**  
+### b. Du code réutilisable  
 Placez vos fonctions et classes dans des fichiers `.py` bien organisés. Documentez-les avec des docstrings et ajoutez des exemples d’utilisation.  
 
-### **c. Ajoutez des tests unitaires**  
+### c. Des tests unitaires  
 Les tests permettent de garantir la fiabilité de votre package. Par exemple, avec **pytest** :  
 Comme dirait un de mes collègue, si ton projet a des tests bien écrit, on a meme pas besoin de la documentation pour comprendre le projet.
 
-### **d. Créez le fichier `setup.py`**  
+### d. Un fichier `setup.py`  
 Ce fichier décrit votre package et ses dépendances. Exemple :  
 ```python
 from setuptools import setup, find_packages
@@ -74,7 +78,7 @@ setup(
 ```  
 Si vous rappeler de l'image en introductiona avec le pip , show c est ce fameux fichier qui est a l'origine.
 
-### **e. Choisissez une licence** 
+### e. Choisissez une licence 
 ell protège vos droits tout en autorisant la communauté à utiliser votre travail. 
 Ajoutez un fichier `LICENSE` à la racine du projet avec le texte d’une licence adaptée :  
 - **MIT** : Permissive, simple et populaire.  
@@ -83,13 +87,13 @@ Ajoutez un fichier `LICENSE` à la racine du projet avec le texte d’une licenc
 
 Utilisez [ChooseALicense](https://choosealicense.com/) pour trouver la licence qui correspond à votre projet parce qu'il y en beaucoup.  Pour etre honnete , je ne connais que 5 parmis toutes ces licencses
 
-### **f. Rédigez un fichier `README.md`**  
+### f. Un fichier `README.md`  
 Votre README doit inclure :  
 - Une description du package.  
 - Les instructions d’installation.  
 - Des exemples d’utilisation.  
 
-### **g. Publier votre package**  
+### g. Publier votre package  
 
 + Avant de publier, installez et testez votre package en local :  
 ```bash
@@ -114,9 +118,9 @@ Pour  Publier sur PyPI**
 
 + **Vérifiez votre package** sur [PyPI](https://pypi.org/).  
 
-### **f. Héberger votre code  en ligne pour **  
+### h. Héberger votre code   
 
-Rendre le code accessible et visible pour que les gens soit avisé de comment fonctionne le pcakges
+Rendre le code accessible et visible en ligne pour que les gens soit avisé de comment fonctionne le pcakges
 GitHub est idéal pour :  
 - Héberger le code source.  
 - Permettre la collaboration.  
@@ -133,7 +137,7 @@ GitHub est idéal pour :
 
 
 
-## Pratique et Best pratices
+## III. Pratique et Best pratices
 
 La construction d’un package Python va bien au-delà du simple regroupement de fichiers Python. Un package bien structuré et conforme aux standards facilite son adoption, sa maintenance, et sa distribution, que ce soit en interne ou via des plateformes publiques comme **PyPI**. Les bonnes pratiques permettent de :  
 1. **Standardiser la structure** pour une meilleure lisibilité et évolutivité.  
@@ -145,11 +149,11 @@ La construction d’un package Python va bien au-delà du simple regroupement de
 Ces quelques bonnes  vous assure une approche progressive et bien documentée pour construire, documenter et publier votre package Python de manière professionnelle.
 
 
-### Bonne pratique 1 : La meilleure structuration
+### 1. La meilleure structuration
 
 Après avoir développé plusieurs packages en entreprise et grâce à mes retours d’expérience, l’idée est d’automatiser le fichier `setup.py` le plus tôt possible tout en utilisant un fichier `package_metadata.py` pour centraliser les métadonnées.
 
-#### Structure recommandée
+#### Structure
 
 Voici une structure idéale pour un package Python bien organisé : 
 
@@ -270,7 +274,7 @@ include requirements.txt
 
 Vous pouvez aussi inclure des fichiers spécifiques comme des images ou des assets nécessaires 
 
-### **Résultat sur PyPI**
+#### Résultat sur PyPI
 
 Une fois toutes les étapes suivies, votre package sera bien documenté sur PyPI. Voici un aperçu de la documentation générée :  
 
@@ -279,7 +283,7 @@ Une fois toutes les étapes suivies, votre package sera bien documenté sur PyPI
 Grâce à un `README.md` couplé setup.py bien rédigés et au fichier `HISTORY.md`, vous obtenez une présentation claire et professionnelle de votre package.
 
 
-### **Bonne pratique 2 : Construire le package en local**
+### 2. Build en local
 
 Construire un package localement permet de s'assurer qu'il est prêt avant publication.
 
@@ -301,7 +305,7 @@ Construire un package localement permet de s'assurer qu'il est prêt avant publi
    ```
 
 
-### **Bonne pratique 3 : Le fichier `HISTORY.md`**
+### 3. Le fichier `HISTORY.md`
 
 Un bon changelog permet de suivre les évolutions du package. Exemple :  
 
@@ -323,7 +327,7 @@ Un bon changelog permet de suivre les évolutions du package. Exemple :
 Ajoutez ce fichier dans **`MANIFEST.in`** pour qu’il soit inclus dans la distribution.
 
 
-### **Bonne pratique 4 : Automatiser la publication sur PyPI**
+### 4. CICD pour PyPI
 
 Voici un exemple d’automatisation avec **GitHub Actions** :  
 
@@ -358,7 +362,7 @@ jobs:
 ```
 
 
-### **Bonne pratique 5 : Gestion des versions**
+### 5. Gestion des versions
 
 Suivez les conventions **Semantic Versioning** :  
 
