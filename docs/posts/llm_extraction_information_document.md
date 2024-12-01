@@ -41,7 +41,7 @@ Au vu de ces limitations, j’ai vite abandonné la solution **OCR classique** p
 ### Processus simplifié
 
 ```mermaid  
-graph LR;  
+graph TB;  
     A["PDF brut"] -->|Convertir en images| B[Images]  
     B -->|Encodage en Base64| C[Images encodées]  
     C -->|Envoyer au modèle| D[LLM multimodal]  
@@ -91,10 +91,10 @@ def count_image_tokens(width: int, height: int):
 ```
 
 **Exemples pour clarifier :**  
-- **500x500** → 1 tuile suffit : total tokens = 85 + 170 = **255**  
-- **513x500** → 2 tuiles : total tokens = 85 + 170 * 2 = **425**  
+- 500x500 → 1 tuile suffit : total tokens = 85 + 170 = 255 
+- 513x500 → 2 tuiles : total tokens = 85 + 170 * 2 = 425
 
-Dans mon cas, mes images mesurent **2480 x 3509**, ce qui nécessite environ **4 tuiles**, soit **780 tokens**.
+Dans mon cas, mes images mesurent 2480 x 3509, ce qui nécessite environ 4 tuiles, soit 780 tokens.
 
 Cependant, le texte contenu dans une page dépasse généralement 780  tokens. Regarde ce qui suit :  
 
