@@ -45,7 +45,7 @@ graph LR;
     B --> C[Images B64]  
     C -->D[LLM multimodal]  
     D --> E[JSON structuré]  
-    E --> F[(Stocer)]  
+    E --> F[(Stocker)]  
 ```
 
 Ce diagramme illustre parfaitement pourquoi cette approche est moins fastidieuse. Grâce aux **LLM multimodaux**, même les tâches complexes, comme celle-ci, deviennent gérables en si peu de temps. Par exemple, **GPT-4o** ou **GPT-4o-mini** excelle dans ce genre de traitement.
@@ -158,13 +158,13 @@ Maintenant que nous avons les documents, comment récupérer les informations qu
 
 ```mermaid
 flowchart LR
-    A[Départ : Image] --> B[Encoder en Base64]
+    A[Image] --> B[Encoder en Base64]
     B --> C[Créer un prompt]
-    C --> D[Appeler l'API OpenAI en boucle ou asynch]
+    C --> D[Appeler l'API OpenAI]
     D --> E[Réponse structurée LLM]
     E --> F[Parser la réponse]
     F --> G[Structure Python]
-    G --> H[(Persister/Load)]
+    G --> H[(Persister)]
 ```
 
 ### Étape 1 : Encoder en base64  
