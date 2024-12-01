@@ -840,7 +840,7 @@
     B --&gt; C[Images B64]  
     C --&gt;D[LLM multimodal]  
     D --&gt; E[JSON structuré]  
-    E --&gt; F[(Stocer)]  </code></pre>
+    E --&gt; F[(Stocker)]  </code></pre>
 <p>Ce diagramme illustre parfaitement pourquoi cette approche est moins fastidieuse. Grâce aux <strong>LLM multimodaux</strong>, même les tâches complexes, comme celle-ci, deviennent gérables en si peu de temps. Par exemple, <strong>GPT-4o</strong> ou <strong>GPT-4o-mini</strong> excelle dans ce genre de traitement.</p>
 <p>👉 <em>Pourquoi c’est gagnant ?</em><br />
 - <strong>Meilleure compréhension des structures</strong> : les tableaux et sections imbriquées sont correctement analysés.<br />
@@ -924,13 +924,13 @@ Quand tu ouvres ton dossier de sortie, tu devrais voir quelque chose comme ceci 
 <h2 id="iv-extraction-dinformations-avec-un-llm">IV. Extraction d’informations avec un LLM<a class="headerlink" href="#iv-extraction-dinformations-avec-un-llm" title="Permanent link">&para;</a></h2>
 <p>Maintenant que nous avons les documents, comment récupérer les informations qui nous intéressent ? Toutes les étapes sont dans l'illustration ci-dessous :</p>
 <pre class="mermaid"><code>flowchart LR
-    A[Départ : Image] --&gt; B[Encoder en Base64]
+    A[Image] --&gt; B[Encoder en Base64]
     B --&gt; C[Créer un prompt]
-    C --&gt; D[Appeler l'API OpenAI en boucle ou asynch]
+    C --&gt; D[Appeler l'API OpenAI]
     D --&gt; E[Réponse structurée LLM]
     E --&gt; F[Parser la réponse]
     F --&gt; G[Structure Python]
-    G --&gt; H[(Persister/Load)]</code></pre>
+    G --&gt; H[(Persister)]</code></pre>
 <h3 id="etape-1-encoder-en-base64">Étape 1 : Encoder en base64<a class="headerlink" href="#etape-1-encoder-en-base64" title="Permanent link">&para;</a></h3>
 <p>Le modèle doit être capable de traiter les images, mais l’API ne permet pas d'envoyer des fichiers d’images directement. C’est pourquoi on utilise le format <strong>base64</strong> pour convertir l’image en une chaîne de texte que le modèle pourra comprendre.  </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">base64</span>  
