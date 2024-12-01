@@ -9,7 +9,6 @@ categories:
 
 # Adieu OCR, Place aux LLM Multimodaux pour l'Extraction des Informations dans les Documents  
 
-## Introduction  
 
 Les formats comme **PDF**, **Word** ou **PowerPoint** sont omniprésents pour le partage de documents, mais dès qu’il s’agit d’extraire des données structurées ou de gérer des contenus complexes, c’est une toute autre histoire.  
 
@@ -41,12 +40,12 @@ Au vu de ces limitations, j’ai vite abandonné la solution **OCR classique** p
 ### Processus simplifié
 
 ```mermaid  
-graph TB;  
-    A["PDF brut"] -->|Convertir en images| B[Images]  
-    B -->|Encodage en Base64| C[Images encodées]  
-    C -->|Envoyer au modèle| D[LLM multimodal]  
-    D -->|Extraction des informations| E[JSON structuré]  
-    E -->|Sauvegarde des résultats| F[(Base de données)]  
+graph LR;  
+    A["document"] --> B[Images]  
+    B --> C[Images B64]  
+    C -->D[LLM multimodal]  
+    D --> E[JSON structuré]  
+    E --> F[(Stocer)]  
 ```
 
 Ce diagramme illustre parfaitement pourquoi cette approche est moins fastidieuse. Grâce aux **LLM multimodaux**, même les tâches complexes, comme celle-ci, deviennent gérables en si peu de temps. Par exemple, **GPT-4o** ou **GPT-4o-mini** excelle dans ce genre de traitement.
