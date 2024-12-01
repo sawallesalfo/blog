@@ -90,7 +90,9 @@ def count_image_tokens(width: int, height: int):
 ```
 
 **Exemples pour clarifier :**  
-- 500x500 → 1 tuile suffit : total tokens = 85 + 170 = 255 
+
+- 500x500 → 1 tuile suffit : total tokens = 85 + 170 = 255
+
 - 513x500 → 2 tuiles : total tokens = 85 + 170 * 2 = 425
 
 Dans mon cas, mes images mesurent 2480 x 3509, ce qui nécessite environ 4 tuiles, soit 780 tokens.
@@ -242,7 +244,9 @@ Un point intéressant à noter est la possibilité de réaliser des appels async
 
 ### Étape 4 : Parsing et sauvegarde  
 
-Avec les LLM, le formatage des réponses n’est pas toujours parfait. Pourtant, une stratégie simple et efficace consiste à utiliser des balises XML pour structurer les réponses. En pratique, une expression régulière permet d’extraire uniquement ce qui se trouve entre des balises spécifiques comme `<output>...</output>`. Cela résout les problèmes où le modèle ajoute du texte ou des explications inutiles avant le contenu pertinent.  
+Avec les LLM, le formatage des réponses n’est pas toujours parfait. Pourtant, une stratégie simple et efficace consiste à utiliser des balises XML pour structurer les réponses. 
+
+En pratique, une expression régulière permet d’extraire uniquement ce qui se trouve entre des balises spécifiques comme `<output>...</output>`. Cela résout les problèmes où le modèle ajoute du texte ou des explications inutiles avant le contenu pertinent.  
 
 Voici une implémentation typique :  
 
@@ -285,10 +289,10 @@ Voici à quoi ressemble ma sortie :
 
 ## Conclusion  
 
-Avec leur capacité à comprendre et interpréter des formats variés, les **LLM multimodaux** offrent une solution élégante pour l’extraction de données complexes, tout en réduisant considérablement les coûts. L’approche repose sur un pipeline efficace :  
+Avec leur capacité à comprendre et interpréter des formats variés, les lLM multimodaux offrent une solution élégante pour l’extraction de données complexes, tout en réduisant considérablement les coûts. L’approche repose sur un pipeline efficace :  
 1. Conversion des documents en images.  
-2. Encodage en **Base64**.  
-3. Utilisation d’un **prompt structuré**.  
+2. Encodage en Base64.  
+3. Utilisation d’un prompt structuré.  
 4. Parsing précis pour produire des données structurées.  
 
 En quelques lignes de code, vous pouvez transformer des centaines de pages en données directement exploitables, éliminant ainsi les frustrations des solutions classiques.  
