@@ -845,7 +845,7 @@
 <p>Au vu de ces limitations, j’ai vite abandonné la solution <strong>OCR classique</strong> pour mon projet.</p>
 <h2 id="ii-une-solution-gagnante-les-llm-multimodaux">II. Une solution gagnante : les LLM multimodaux<a class="headerlink" href="#ii-une-solution-gagnante-les-llm-multimodaux" title="Permanent link">&para;</a></h2>
 <h3 id="processus-simplifie">Processus simplifié<a class="headerlink" href="#processus-simplifie" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>graph LR;  
+<pre class="mermaid"><code>graph TB;  
     A["PDF brut"] --&gt;|Convertir en images| B[Images]  
     B --&gt;|Encodage en Base64| C[Images encodées]  
     C --&gt;|Envoyer au modèle| D[LLM multimodal]  
@@ -883,9 +883,9 @@
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">return</span> <span class="n">total</span>  
 </code></pre></div>
 <p><strong>Exemples pour clarifier :</strong><br />
-- <strong>500x500</strong> → 1 tuile suffit : total tokens = 85 + 170 = <strong>255</strong><br />
-- <strong>513x500</strong> → 2 tuiles : total tokens = 85 + 170 * 2 = <strong>425</strong>  </p>
-<p>Dans mon cas, mes images mesurent <strong>2480 x 3509</strong>, ce qui nécessite environ <strong>4 tuiles</strong>, soit <strong>780 tokens</strong>.</p>
+- 500x500 → 1 tuile suffit : total tokens = 85 + 170 = 255 
+- 513x500 → 2 tuiles : total tokens = 85 + 170 * 2 = 425</p>
+<p>Dans mon cas, mes images mesurent 2480 x 3509, ce qui nécessite environ 4 tuiles, soit 780 tokens.</p>
 <p>Cependant, le texte contenu dans une page dépasse généralement 780  tokens. Regarde ce qui suit :  </p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>1 paragraphe ≈ 100 tokens  
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>1 500 mots ≈ 2048 tokens  
