@@ -584,15 +584,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#i-ocr-et-defis" class="md-nav__link">
     <span class="md-ellipsis">
       I. OCR et Défis
@@ -827,7 +818,6 @@
 
 
 <h1 id="adieu-ocr-place-aux-llm-multimodaux-pour-lextraction-des-informations-dans-les-documents">Adieu OCR, Place aux LLM Multimodaux pour l'Extraction des Informations dans les Documents<a class="headerlink" href="#adieu-ocr-place-aux-llm-multimodaux-pour-lextraction-des-informations-dans-les-documents" title="Permanent link">&para;</a></h1>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>Les formats comme <strong>PDF</strong>, <strong>Word</strong> ou <strong>PowerPoint</strong> sont omniprésents pour le partage de documents, mais dès qu’il s’agit d’extraire des données structurées ou de gérer des contenus complexes, c’est une toute autre histoire.  </p>
 <p>Ceux qui se sont déjà aventurés dans ces tâches connaissent la frustration des outils traditionnels comme <code>PDFium</code>, <code>pypdf</code> ou <code>textract</code>. Bien que pratiques pour des besoins basiques, ces solutions montrent vite leurs limites face aux documents denses, aux tableaux imbriqués, ou au texte qui se chevauche.  </p>
 <p>Mais les temps changent. Avec l’arrivée des <strong>LLM multimodaux</strong>, les choses s'améliorent drastiquement. Ces modèles permettent non seulement de traiter des fichiers comme des <strong>PDF</strong>, <strong>PPTX</strong> ou <strong>Word</strong>, qu’ils soient purement textuels ou visuels, mais offrent également la possibilité de personnaliser l’extraction. Par exemple, vous pouvez demander un formatage précis des données extraites.  </p>
@@ -845,12 +835,12 @@
 <p>Au vu de ces limitations, j’ai vite abandonné la solution <strong>OCR classique</strong> pour mon projet.</p>
 <h2 id="ii-une-solution-gagnante-les-llm-multimodaux">II. Une solution gagnante : les LLM multimodaux<a class="headerlink" href="#ii-une-solution-gagnante-les-llm-multimodaux" title="Permanent link">&para;</a></h2>
 <h3 id="processus-simplifie">Processus simplifié<a class="headerlink" href="#processus-simplifie" title="Permanent link">&para;</a></h3>
-<pre class="mermaid"><code>graph TB;  
-    A["PDF brut"] --&gt;|Convertir en images| B[Images]  
-    B --&gt;|Encodage en Base64| C[Images encodées]  
-    C --&gt;|Envoyer au modèle| D[LLM multimodal]  
-    D --&gt;|Extraction des informations| E[JSON structuré]  
-    E --&gt;|Sauvegarde des résultats| F[(Base de données)]  </code></pre>
+<pre class="mermaid"><code>graph LR;  
+    A["document"] --&gt; B[Images]  
+    B --&gt; C[Images B64]  
+    C --&gt;D[LLM multimodal]  
+    D --&gt; E[JSON structuré]  
+    E --&gt; F[(Stocer)]  </code></pre>
 <p>Ce diagramme illustre parfaitement pourquoi cette approche est moins fastidieuse. Grâce aux <strong>LLM multimodaux</strong>, même les tâches complexes, comme celle-ci, deviennent gérables en si peu de temps. Par exemple, <strong>GPT-4o</strong> ou <strong>GPT-4o-mini</strong> excelle dans ce genre de traitement.</p>
 <p>👉 <em>Pourquoi c’est gagnant ?</em><br />
 - <strong>Meilleure compréhension des structures</strong> : les tableaux et sections imbriquées sont correctement analysés.<br />
