@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../07/ia-g%C3%A9n%C3%A9rative--une-%C3%A9volution-plut%C3%B4t-que-r%C3%A9volution/">
+        <link rel="prev" href="../../01/comprendre-les-transformers-dans-lia-g%C3%A9n%C3%A9rative/">
       
-      
-        <link rel="next" href="../../14/faire-tourner-son-chatbot-avec-une-interface-%C3%A9quivalente-%C3%A0-chatgpt-gr%C3%A2ce-%C3%A0-openwebui/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Évaluer les Capacités des LLMs : les benchmarks - ssawadogo-blog</title>
+        <title>Comment sont construits les assistants conversationnels ? ChatGPT, Claude, Mistral - ssawadogo-blog</title>
       
     
     
@@ -81,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#evaluer-les-capacites-des-llms-les-benchmarks" class="md-skip">
+        <a href="#comment-sont-construits-les-assistants-conversationnels-chatgpt-claude-mistral" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Évaluer les Capacités des LLMs : les benchmarks
+              Comment sont construits les assistants conversationnels ? ChatGPT, Claude, Mistral
             
           </span>
         </div>
@@ -586,73 +584,94 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concepts-clees" class="md-nav__link">
+  <a href="#1-pre-entrainement-construire-son-modele-de-fondation" class="md-nav__link">
     <span class="md-ellipsis">
-      Concepts clées :
+      1. Pré-entraînement : construire son modèle de fondation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#les-principaux-benchmarks-pour-evaluer-les-llms" class="md-nav__link">
+  <a href="#2-fine-tuning-specialiser-le-modele" class="md-nav__link">
     <span class="md-ellipsis">
-      Les Principaux Benchmarks pour Évaluer les LLMs
+      2. Fine-Tuning : Spécialiser le Modèle
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Les Principaux Benchmarks pour Évaluer les LLMs">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rlhf-le-dernier-coup-de-pinceau" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. RLHF : Le Dernier Coup de Pinceau
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. RLHF : Le Dernier Coup de Pinceau">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-mmlu-massive-multitask-language-understanding" class="md-nav__link">
+  <a href="#1-reward-modeling-rm-construire-un-modele-de-recompense" class="md-nav__link">
     <span class="md-ellipsis">
-      1. MMLU (Massive Multitask Language Understanding)
+      1. Reward Modeling (RM) : Construire un modèle de récompense
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Reward Modeling (RM) : Construire un modèle de récompense">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processus
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-hellaswag" class="md-nav__link">
+  <a href="#exemple" class="md-nav__link">
     <span class="md-ellipsis">
-      2. HellaSwag
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-reinforcement-learning-rl-optimiser-le-modele-generatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Reinforcement Learning (RL) : Optimiser le modèle génératif
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Reinforcement Learning (RL) : Optimiser le modèle génératif">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#processus_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processus
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-big-bench-hard-beyond-the-imitation-game-benchmark" class="md-nav__link">
+  <a href="#exemple_1" class="md-nav__link">
     <span class="md-ellipsis">
-      3. BIG-Bench Hard (Beyond the Imitation Game Benchmark)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-humaneval" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. HumanEval
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-mt-bench" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. MT-Bench
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-drop-discrete-reasoning-over-paragraphs" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. DROP (Discrete Reasoning Over Paragraphs)
+      Exemple
     </span>
   </a>
   
@@ -664,18 +683,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#3-rlhf-combinaison-des-deux" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion
+      3. RLHF : Combinaison des deux
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. RLHF : Combinaison des deux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avantages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avantages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparaison-entre-rm-et-rl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparaison entre RM et RL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-petit-recap-avec-un-visuel" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Petit Récap avec un Visuel
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#conclusion-et-references" class="md-nav__link">
     <span class="md-ellipsis">
-      Références:
+      Conclusion et références
     </span>
   </a>
   
@@ -737,7 +789,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2024-09-08 00:00:00" class="md-ellipsis">September 8, 2024</time>
+                        <time datetime="2024-12-15 00:00:00" class="md-ellipsis">December 15, 2024</time>
                       </div>
                     </li>
                     
@@ -759,7 +811,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              4 min read
+                              7 min read
                             
                           </span>
                         </div>
@@ -779,95 +831,213 @@
         
 
 
-<h1 id="evaluer-les-capacites-des-llms-les-benchmarks">Évaluer les Capacités des LLMs : les benchmarks<a class="headerlink" href="#evaluer-les-capacites-des-llms-les-benchmarks" title="Permanent link">&para;</a></h1>
-<p>Les modèles de langage (LLMs) ont réalisé des avancées spectaculaires dans des tâches variées, telles que la rédaction, la conversation, et la programmation.
-Pour évaluer et comparer efficacement leur intelligence, divers benchmarks sont utilisés, mesurant des capacités allant des connaissances académiques (comme MMLU) au raisonnement complexe (GPQA), en passant par des compétences spécifiques telles que les mathématiques de base (GSM8K) ou la génération de code (HumanEval). </p>
+<h1 id="comment-sont-construits-les-assistants-conversationnels-chatgpt-claude-mistral">Comment sont construits les assistants conversationnels ? ChatGPT, Claude, Mistral<a class="headerlink" href="#comment-sont-construits-les-assistants-conversationnels-chatgpt-claude-mistral" title="Permanent link">&para;</a></h1>
+<p>Aujourd'hui, on plonge dans les coulisses des grands modèles de langage (LLM). Vous êtes-vous déjà demandé <strong>comment ces modèles arrivent à répondre avec autant de fluidité ?</strong> Quand on parle de ChatGPT, techniquement c'est le résultat d'un modèle OpenAI après avoir fait une série d'entraînements. La réponse tient en trois étapes-clés :<br />
+1. Le <strong>pré-entraînement</strong> sur des montagnes de données,<br />
+2. Le <strong>fine-tuning</strong> pour spécialiser le modèle, et<br />
+3. L’<strong>apprentissage par renforcement avec feedback humain</strong> (RLHF).  </p>
+<p>Dans cet article, je retrace les principales étapes avec vous. Un petit billet de blog pour clore l'année 2024. On ne fera pas de MLOPS aujourd'hui, promis :)</p>
 <!-- more -->
 
-<p>Ces évaluations permettent de mieux cerner la portée des capacités des LLMs, bien que certains benchmarks se concentrent encore principalement sur des questions fermées avec des réponses courtes, limitant ainsi une évaluation complète de leurs aptitudes.</p>
-<p>Pour mieux comprendre comment les LLMs se comparent entre eux, il est essentiel d'examiner ces benchmarks en détail. Le tableau ci-dessous, illustre une comparaison des performances de leur modèle Claude face à d'autres LLMs leaders :
-<a class="glightbox" href="../../../../llm_evaluation/comparaison_llms.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Comparaison" src="../../../../llm_evaluation/comparaison_llms.webp" /></a><br />
-<em>Source : <a href="https://www.anthropic.com/news/claude-3-family">Site Anthropic</a></em></p>
-<h2 id="concepts-clees">Concepts clées :<a class="headerlink" href="#concepts-clees" title="Permanent link">&para;</a></h2>
+<h3 id="1-pre-entrainement-construire-son-modele-de-fondation">1. Pré-entraînement : construire son modèle de fondation<a class="headerlink" href="#1-pre-entrainement-construire-son-modele-de-fondation" title="Permanent link">&para;</a></h3>
+<p>Imaginez qu'on veuille apprendre à un enfant à parler. Quelle est la première étape ? Exactement, on lui expose <strong>énormément de mots et phrases</strong> : conversations, livres, histoires. C’est exactement ce qu’on fait avec un LLM, mais à une échelle gigantesque.</p>
+<p><strong>Comment ça marche ?</strong><br />
+On nourrit le modèle avec un énorme corpus de données : sites web, livres, forums, articles scientifiques… Le modèle doit prédire <strong>le mot suivant</strong> dans une phrase. Par exemple : si je dis <em>"Les oiseaux volent dans le ciel…"</em>, à votre avis, quel sera le mot suivant ? Voilà, c’est ce que le modèle apprend à faire.</p>
+<p>Voici une version corrigée de votre section avec les erreurs grammaticales, orthographiques et typographiques corrigées :  </p>
+<hr />
+<p><strong>Exemple concret : Le dataset utilisé pour LLaMA</strong>  </p>
+<blockquote>
+<p>Voici un aperçu des données qui ont servi pour LLaMA (un modèle open-source) :</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><strong>Source</strong></th>
+<th><strong>Proportion utilisée</strong></th>
+<th><strong>Époques (Passages)</strong></th>
+<th><strong>Taille</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CommonCrawl</td>
+<td>67 %</td>
+<td>1.10</td>
+<td>3,3 To</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>15 %</td>
+<td>1.06</td>
+<td>783 Go</td>
+</tr>
+<tr>
+<td>GitHub</td>
+<td>4,5 %</td>
+<td>0.64</td>
+<td>328 Go</td>
+</tr>
+<tr>
+<td>Wikipedia</td>
+<td>4,5 %</td>
+<td>2.45</td>
+<td>83 Go</td>
+</tr>
+<tr>
+<td>Livres</td>
+<td>4,5 %</td>
+<td>2.23</td>
+<td>85 Go</td>
+</tr>
+<tr>
+<td>ArXiv</td>
+<td>2,5 %</td>
+<td>1.06</td>
+<td>92 Go</td>
+</tr>
+<tr>
+<td>StackExchange</td>
+<td>2 %</td>
+<td>1.03</td>
+<td>78 Go</td>
+</tr>
+</tbody>
+</table>
+<p>Ces données brutes (non étiquetées) permettent au modèle d'apprendre <strong>la grammaire, les relations entre les mots et le contexte</strong>. Mais attention, cette étape n’est qu’une fondation. Construire des modèles de fondation n'est pas du ressort de petites entreprises ou startups. Néanmoins, à partir de modèles de fondation open source, on peut créer d'autres modèles de fondation, comme ce qu'on voit actuellement autour de LLaMA (le modèle open source par excellence).  </p>
+<p>Les LLM comme GPT-3 nécessitent d’énormes ressources de calcul. Par exemple, l’entraînement de GPT-3 a été estimé par des chercheurs comme <strong>Tim Dettmers</strong> et d’autres experts en IA :  </p>
 <ul>
-<li><strong>SOTA (State-of-the-Art) :</strong> Se réfère aux modèles, algorithmes ou techniques les plus performants actuellement dans un domaine d'étude spécifique.</li>
-<li><strong>STEM :</strong> Acronyme pour Science, Technology, Engineering, and Mathematics, représentant des disciplines clés souvent utilisées pour tester les capacités des LLMs en matière de compréhension et de raisonnement scientifique.</li>
+<li><strong>Nombre de paramètres</strong> : 175 milliards (<em>Source : OpenAI, </em>Language Models are Few-Shot Learners*).  </li>
+<li><strong>Corpus de données</strong> : Environ 570 Go de texte filtré (<em>Source : OpenAI, même article</em>).  </li>
+<li><strong>Infrastructure</strong> : Utilisation de clusters de GPU, notamment des <strong>NVIDIA V100</strong> (<em>Source : blog de Tim Dettmers</em>).  </li>
+<li><strong>Durée estimée</strong> : Entre <strong>10 000 et 50 000 heures GPU</strong>, d’après des calculs indépendants de la communauté, bien que les données exactes ne soient pas publiées.  </li>
 </ul>
-<h2 id="les-principaux-benchmarks-pour-evaluer-les-llms">Les Principaux Benchmarks pour Évaluer les LLMs<a class="headerlink" href="#les-principaux-benchmarks-pour-evaluer-les-llms" title="Permanent link">&para;</a></h2>
-<h3 id="1-mmlu-massive-multitask-language-understanding">1. <strong>MMLU (Massive Multitask Language Understanding)</strong><a class="headerlink" href="#1-mmlu-massive-multitask-language-understanding" title="Permanent link">&para;</a></h3>
+<hr />
+<p>Il faut garder en tête que les modèles de fondation ne sont pas des assistants : ils savent juste compléter des phrases. D'autres couches sont ajoutées pour arriver aux agents conversationnels. J'ai trouvé un arbre sur GitHub qui illustre bien cela :  </p>
+<p><a class="glightbox" href="https://raw.githubusercontent.com/Mooler0410/LLMsPracticalGuide/main/imgs/tree.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="https://raw.githubusercontent.com/Mooler0410/LLMsPracticalGuide/main/imgs/tree.jpg" /></a>  </p>
+<p>Source : <a href="https://github.com/Mooler0410/LLMsPracticalGuide/">GitHub</a>.  </p>
+<p>Vous verrez que la plupart des assistants conversationnels comme Bard, ChatGPT ou Claude sont aux extrémités de l'arbre, car ce sont des LLM mais pas des modèles de fondation.  </p>
+<p>La preuve que ce ne sont pas des assistants est bien dans les exemples suivants :  </p>
+<p>Le modèle de fondation ne répond pas aux questions :<br />
+- Il veut seulement compléter les documents Internet.<br />
+- Répond souvent aux questions par d'autres questions.  </p>
+<p><a class="glightbox" href="../../../../how_to_build_your_gpt/fondation_output.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../../how_to_build_your_gpt/fondation_output.PNG" /></a>  </p>
+<h3 id="2-fine-tuning-specialiser-le-modele">2. Fine-Tuning : Spécialiser le Modèle<a class="headerlink" href="#2-fine-tuning-specialiser-le-modele" title="Permanent link">&para;</a></h3>
+<p>Ici, on fait un peu comme avec un apprenti : après lui avoir montré plein de concepts généraux, on l’entraîne pour des tâches spécifiques. Pour un modèle conversationnel, on lui montre des dialogues bien construits, où la question est claire et la réponse pertinente.</p>
+<p><strong>Pourquoi c’est important ?</strong><br />
+Un modèle brut sait parler, mais pas toujours de manière cohérente. Le fine-tuning lui apprend à répondre de façon précise dans un contexte spécifique. <strong>Vous imaginez un modèle qui parle mooré (une langue locale au Burkina Faso) sans confondre les tons ni les contextes ?</strong> C’est ici que la magie opère.</p>
+<blockquote>
+<p><strong>Note pratique</strong> : Vous pouvez utiliser des modèles open-source déjà pré-entraînés, comme LLaMA, pour gagner du temps. Ajoutez vos propres données annotées pour un fine-tuning personnalisé.</p>
+</blockquote>
+<hr />
+<p>Voici une version corrigée de votre section, avec des ajustements pour améliorer la clarté et corriger les erreurs :  </p>
+<hr />
+<h3 id="3-rlhf-le-dernier-coup-de-pinceau">3. RLHF : Le Dernier Coup de Pinceau<a class="headerlink" href="#3-rlhf-le-dernier-coup-de-pinceau" title="Permanent link">&para;</a></h3>
+<p>Voici l’étape la plus fascinante, mais aussi la plus complexe : le <strong>Reinforcement Learning from Human Feedback</strong> (RLHF). Pourquoi cette étape ? Pour que le modèle ne soit pas seulement performant, mais qu’il soit aussi <strong>aligné sur vos attentes</strong>.  </p>
+<p>RLHF (<strong>Reinforcement Learning with Human Feedback</strong>) combine <strong>Reward Modeling (RM)</strong> et <strong>Reinforcement Learning (RL)</strong> pour aligner des modèles comme GPT sur les préférences humaines. Décortiquons ces deux aspects essentiels :  </p>
+<hr />
+<h4 id="1-reward-modeling-rm-construire-un-modele-de-recompense">1. <strong>Reward Modeling (RM) : Construire un modèle de récompense</strong><a class="headerlink" href="#1-reward-modeling-rm-construire-un-modele-de-recompense" title="Permanent link">&para;</a></h4>
+<p>Le <strong>Reward Modeling</strong> est la première étape du pipeline RLHF. Il s'agit de construire un modèle capable d'évaluer les réponses du modèle génératif (GPT) en fonction des préférences humaines.  </p>
+<h5 id="processus">Processus<a class="headerlink" href="#processus" title="Permanent link">&para;</a></h5>
+<ol>
+<li>
+<p><strong>Collecte de données</strong> :  </p>
 <ul>
-<li><strong>Publication :</strong> 2021</li>
-<li><strong>Liens :</strong> <a href="https://github.com/hendrycks/test">Code</a> | <a href="https://huggingface.co/datasets/lukaemon/mmlu">Dataset</a> | <a href="https://arxiv.org/abs/2009.03300">Papier</a></li>
+<li>Des annotateurs humains examinent plusieurs réponses générées par le modèle pour un même <strong>prompt</strong>.  </li>
+<li>Ils les classent selon leur qualité (par exemple, du meilleur au pire).  </li>
 </ul>
-<p>Le MMLU évalue les modèles en se basant sur les connaissances acquises lors de la pré-formation, en se concentrant sur les réglages zéro-shot et few-shot. Ce benchmark couvre 57 sujets, incluant les STEM, les sciences humaines et sociales, avec des niveaux de difficulté allant de l'élémentaire à l'avancé. </p>
+</li>
+<li>
+<p><strong>Entraînement du modèle de récompense</strong> :  </p>
 <ul>
-<li><strong>Type de données :</strong> Questions à choix multiples</li>
-<li><strong>Critère de scoring :</strong> Proportion de réponses correctes exactes (par exemple, 'A', 'B', etc.).</li>
-<li><strong>Environnement d'évaluation :</strong> Conçu pour des configurations zéro-shot et few-shot pour tester les capacités générales des LLMs sans ajustement spécifique aux tâches.</li>
+<li>Les données de classement humain sont utilisées pour entraîner un <strong>Reward Model (RM)</strong>.  </li>
+<li>Le RM apprend à attribuer un score à chaque réponse (comme dans l'image ci-dessous) pour refléter la préférence humaine.  </li>
 </ul>
-<p><a class="glightbox" href="../../../../llm_evaluation/mmlu.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple MMLU" src="../../../../llm_evaluation/mmlu.PNG" /></a>
-<em>Source : <a href="https://arxiv.org/abs/2009.03300">Papier original MMLU</a></em></p>
-<h3 id="2-hellaswag">2. <strong>HellaSwag</strong><a class="headerlink" href="#2-hellaswag" title="Permanent link">&para;</a></h3>
+</li>
+</ol>
+<h5 id="exemple">Exemple<a class="headerlink" href="#exemple" title="Permanent link">&para;</a></h5>
+<p><a class="glightbox" href="../../../../how_to_build_your_gpt/RM.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pipeline GPT" src="../../../../how_to_build_your_gpt/RM.PNG" /></a>  </p>
+<p>Dans cet exemple, les sorties du modèle pour le token <code>&lt;|reward|&gt;</code> génèrent des scores comme <strong>0.2</strong>, <strong>1.2</strong>, et <strong>-0.5</strong> pour trois complétions différentes. La <strong>fonction de perte</strong> ajuste les prédictions du modèle en fonction des préférences humaines : le modèle apprend à attribuer une <strong>récompense plus élevée</strong> à la complétion préférée (par exemple, celle qui a obtenu <strong>1.2</strong>). Les autres sorties (tokens non verts) sont ignorées durant l’entraînement. Ainsi, seul le score final des tokens <code>&lt;|reward|&gt;</code> influence l'apprentissage.  </p>
+<hr />
+<h3 id="2-reinforcement-learning-rl-optimiser-le-modele-generatif">2. <strong>Reinforcement Learning (RL) : Optimiser le modèle génératif</strong><a class="headerlink" href="#2-reinforcement-learning-rl-optimiser-le-modele-generatif" title="Permanent link">&para;</a></h3>
+<p>Une fois le modèle de récompense entraîné, il est intégré dans un pipeline de <strong>Reinforcement Learning</strong> pour ajuster le modèle génératif principal (GPT).  </p>
+<h5 id="processus_1">Processus<a class="headerlink" href="#processus_1" title="Permanent link">&para;</a></h5>
+<ol>
+<li>
+<p><strong>Politique initiale</strong> :  </p>
 <ul>
-<li><strong>Publication :</strong> 2019</li>
-<li><strong>Liens :</strong> <a href="https://github.com/rowanz/hellaswag">Code</a> | <a href="https://huggingface.co/datasets/Rowan/hellaswag">Dataset</a> | <a href="https://arxiv.org/abs/1905.07830">Papier</a></li>
+<li>On part d'un modèle génératif pré-entraîné, comme GPT-3, qui sert de <strong>politique initiale</strong>.  </li>
 </ul>
-<p>HellaSwag évalue les capacités de raisonnement des LLMs à travers des tâches de complétion de phrases. Il teste si les modèles peuvent sélectionner la fin appropriée parmi un ensemble de quatre choix pour 10 000 phrases. </p>
+</li>
+<li>
+<p><strong>Interaction avec le modèle de récompense</strong> :  </p>
 <ul>
-<li><strong>Métrique utilisée :</strong> Proportion de réponses correctes exactes.</li>
-<li><strong>Spécificité :</strong> Met l'accent sur le raisonnement de bon sens, un domaine où de nombreux modèles échouent encore.</li>
-<li><strong>Structure des tâches :</strong> Les tâches sont des complétions de phrases où les choix sont construits de manière à sembler plausibles pour tester les limites du modèle.</li>
+<li>Le modèle génératif propose des réponses pour divers prompts.  </li>
+<li>Le modèle de récompense (RM) attribue des scores à ces réponses.  </li>
 </ul>
-<p><a class="glightbox" href="../../../../llm_evaluation/hellaswag.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple HellaSwag" src="../../../../llm_evaluation/hellaswag.PNG" /></a></p>
-<p><em>Source : <a href="https://arxiv.org/abs/1905.07830">Papier original HellaSwag</a></em></p>
-<h3 id="3-big-bench-hard-beyond-the-imitation-game-benchmark">3. <strong>BIG-Bench Hard (Beyond the Imitation Game Benchmark)</strong><a class="headerlink" href="#3-big-bench-hard-beyond-the-imitation-game-benchmark" title="Permanent link">&para;</a></h3>
+</li>
+<li>
+<p><strong>Optimisation par renforcement</strong> :  </p>
 <ul>
-<li><strong>Publication :</strong> 2022</li>
-<li><strong>Liens :</strong> <a href="https://github.com/suzgunmirac/BIG-Bench-Hard">Code</a> | <a href="https://huggingface.co/datasets/maveriq/bigbenchhard">Dataset</a> | <a href="https://arxiv.org/abs/2210.09261">Papier</a></li>
+<li>Une méthode d'apprentissage par renforcement, comme <strong>PPO (Proximal Policy Optimization)</strong>, est utilisée pour améliorer la politique du modèle génératif.  </li>
+<li>L'objectif est de maximiser la récompense attribuée par le RM, ce qui correspond indirectement à <strong>aligner les sorties du modèle sur les préférences humaines</strong>.  </li>
 </ul>
-<p>BIG-Bench Hard sélectionne 23 tâches difficiles du <a href="https://github.com/google/BIG-bench">BIG-Bench suite</a>, un ensemble diversifié de 204 tâches conçues pour dépasser les capacités des modèles de langage. </p>
+</li>
+</ol>
+<h5 id="exemple_1">Exemple<a class="headerlink" href="#exemple_1" title="Permanent link">&para;</a></h5>
+<p>Dans cette phase d’apprentissage par renforcement, les cellules jaunes jouent un rôle fondamental. Ce sont elles qui sont utilisées directement pour l’entraînement du modèle génératif. Contrairement aux cellules vertes <code>&lt;|reward|&gt;</code> (qui servent à attribuer des scores via le Reward Model), les tokens jaunes correspondent aux complétions générées par le modèle, et elles deviennent les labels utilisés pour ajuster les probabilités des sorties.<br />
+<a class="glightbox" href="../../../../how_to_build_your_gpt/RL.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pipeline GPT" src="../../../../how_to_build_your_gpt/RL.PNG" /></a>  </p>
+<hr />
+<h3 id="3-rlhf-combinaison-des-deux">3. <strong>RLHF : Combinaison des deux</strong><a class="headerlink" href="#3-rlhf-combinaison-des-deux" title="Permanent link">&para;</a></h3>
+<p>L'approche RLHF combine ces deux étapes de manière itérative :<br />
+- <strong>Reward Modeling</strong> : Créer une fonction de récompense alignée sur les jugements humains.<br />
+- <strong>Reinforcement Learning</strong> : Optimiser le modèle génératif en utilisant cette fonction de récompense.  </p>
+<h5 id="avantages">Avantages<a class="headerlink" href="#avantages" title="Permanent link">&para;</a></h5>
 <ul>
-<li><strong>Caractéristiques uniques :</strong> Inclut des tâches qui dépassent les capacités des modèles de langage actuels, nécessitant souvent un raisonnement avancé ou des réponses multi-pas.</li>
-<li><strong>Méthodologie :</strong> Utilisation de Chain-of-Thought (CoT) prompting pour améliorer les performances des LLMs sur des tâches complexes.</li>
+<li>Permet d'obtenir un modèle qui <strong>génère des réponses alignées sur les valeurs humaines</strong>.  </li>
+<li>Réduit les biais potentiels des modèles de langage pré-entraînés sur des données brutes.  </li>
 </ul>
-<h3 id="4-humaneval">4. <strong>HumanEval</strong><a class="headerlink" href="#4-humaneval" title="Permanent link">&para;</a></h3>
+<hr />
+<h5 id="comparaison-entre-rm-et-rl">Comparaison entre RM et RL<a class="headerlink" href="#comparaison-entre-rm-et-rl" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th><strong>Aspect</strong></th>
+<th><strong>Reward Modeling (RM)</strong></th>
+<th><strong>Reinforcement Learning (RL)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>But principal</strong></td>
+<td>Estimer une récompense pour évaluer la qualité des réponses.</td>
+<td>Optimiser les réponses du modèle pour maximiser la récompense.</td>
+</tr>
+<tr>
+<td><strong>Données utilisées</strong></td>
+<td>Classements ou annotations humaines.</td>
+<td>Modèle de récompense et outputs du modèle génératif.</td>
+</tr>
+<tr>
+<td><strong>Sortie</strong></td>
+<td>Fonction de récompense (modèle RM).</td>
+<td>Politique optimisée (meilleur modèle génératif).</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <ul>
-<li><strong>Publication :</strong> 2021</li>
-<li><strong>Liens :</strong> <a href="https://github.com/openai/human-eval">Code</a> | <a href="https://paperswithcode.com/dataset/humaneval">Dataset</a> | <a href="https://arxiv.org/abs/2107.03374">Papier</a></li>
+<li><strong>Sans RLHF</strong> : Le modèle pourrait fournir des réponses factuelles mais <strong>non adaptées au contexte</strong> ou <strong>non alignées sur des normes sociales</strong>.  </li>
+<li><strong>Avec RLHF</strong> : Le modèle est capable de fournir des réponses non seulement factuelles, mais aussi <strong>nuancées</strong>, <strong>polies</strong>, et <strong>utiles</strong> selon les besoins humains.  </li>
 </ul>
-<p>HumanEval consiste en 164 tâches de programmation uniques pour évaluer les capacités de génération de code des modèles. Ces tâches couvrent un large spectre, des algorithmes à la compréhension des langages de programmation. </p>
-<ul>
-<li><strong>Types de tâches :</strong> Algorithmes, manipulation de données, compréhension syntaxique.</li>
-<li><strong>Métrique d'évaluation :</strong> Capacité du modèle à générer du code correct sans intervention humaine. Les sorties doivent être correctes au premier essai.</li>
-</ul>
-<h3 id="5-mt-bench">5. <strong>MT-Bench</strong><a class="headerlink" href="#5-mt-bench" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Publication :</strong> 2021</li>
-<li><strong>Liens :</strong> <a href="https://github.com/lm-sys/FastChat/blob/main/fastchat/llm_judge/README.md">Code</a> | <a href="https://huggingface.co/spaces/lmsys/mt-bench">Dataset</a> | <a href="https://arxiv.org/pdf/2306.05685v4.pdf">Papier</a></li>
-</ul>
-<p>MT-Bench évalue la qualité des assistants de chat en les soumettant à une série de questions ouvertes et multi-turn, en utilisant des LLMs comme juges. </p>
-<ul>
-<li><strong>Structure :</strong> 80 questions multi-turn pour évaluer la conversation et le suivi d'instructions.</li>
-<li><strong>Critère de scoring :</strong> Utilise GPT-4 pour noter chaque interaction sur une échelle de 1 à 10. Le score final est la moyenne de toutes les évaluations.</li>
-</ul>
-<p><a class="glightbox" href="../../../../llm_evaluation/mt_bench_example.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple MT-Bench" src="../../../../llm_evaluation/mt_bench_example.PNG" /></a>
-<em>Source : <a href="https://arxiv.org/pdf/2306.05685v4.pdf">Papier original MT-Bench</a></em></p>
-<h3 id="6-drop-discrete-reasoning-over-paragraphs">6. <strong>DROP (Discrete Reasoning Over Paragraphs)</strong><a class="headerlink" href="#6-drop-discrete-reasoning-over-paragraphs" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Publication :</strong> 2019</li>
-<li><strong>Liens :</strong> <a href="https://github.com/allenai/drop">Code</a> | <a href="https://huggingface.co/datasets/drop">Dataset</a> | <a href="https://arxiv.org/abs/1903.00161">Papier</a></li>
-</ul>
-<p>DROP teste les capacités des LLMs à effectuer des raisonnements complexes et discrets en fonction des informations contenues dans un paragraphe. Les tâches incluent des questions nécessitant des calculs, des comparaisons et des extractions de texte.</p>
-<ul>
-<li><strong>Type de données :</strong> Questions à réponse ouverte nécessitant des calculs ou des comparaisons.</li>
-<li><strong>Critère de scoring :</strong> Utilisation du F1 Score, qui combine la précision et le rappel pour mesurer la capacité des modèles à générer des réponses exactes.</li>
-</ul>
-<p><a class="glightbox" href="../../../../llm_evaluation/drop_example.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple-drop" src="../../../../llm_evaluation/drop_example.png" /></a>
-<em>Source : <a href="https://arxiv.org/pdf/2306.05685v4.pdf">Papier original MT-Bench</a></em></p>
-<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>Les benchmarks comme MMLU, HellaSwag, BIG-Bench Hard, HumanEval, MT-Bench, DROP et l'utilisation du F1 Score offrent des évaluations précieuses pour mesurer les capacités des LLMs dans divers domaines tels que la compréhension du langage, le raisonnement, la programmation et la conversation. Ces benchmarks, combinés à des scores et métriques spécifiques, aident à identifier les forces et les faiblesses des modèles, ouvrant ainsi la voie à des améliorations continues dans le domaine des LLMs.</p>
-<h2 id="references">Références:<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<p>https://github.com/leobeeson/llm_benchmarks</p>
+<h3 id="4-petit-recap-avec-un-visuel">4. Petit Récap avec un Visuel<a class="headerlink" href="#4-petit-recap-avec-un-visuel" title="Permanent link">&para;</a></h3>
+<p>Voici un schéma tiré de la présentation d’Andrej Karpathy. Il résume bien les étapes :</p>
+<p><a class="glightbox" href="../../../../how_to_build_your_gpt/pipeline.PNG" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pipeline GPT" src="../../../../how_to_build_your_gpt/pipeline.PNG" /></a></p>
+<h3 id="conclusion-et-references">Conclusion et références<a class="headerlink" href="#conclusion-et-references" title="Permanent link">&para;</a></h3>
+<p>Créer un assistant comme chatgopt conversationnel peut sembler complexe, mais en suivant ces trois étapes, on peut transformer un modèle de fondation en un assistant puissant. Et vous, qu'en pensez-vous des modèles de fondations open source et comment faites vous du RHLF,</p>
+<p>Pour aller plus loin :<br />
+- <strong>Conférence d’Andrej Karpathy sur GPT</strong> : <a href="https://www.youtube.com/watch?v=bZQun8Y4L2A">Regarder ici</a>.<br />
+- <strong>Blog de Hugging Face sur RLHF</strong> : <a href="https://huggingface.co/blog/rlhf">Lire ici</a>.<br />
+- <strong>Ressources sur les LLM</strong> : <a href="https://dsp-routine.ppd-datascience.analytics.safran/concepts/modeling/llms_101/#a-brief-history">Explorer ici</a>.</p>
 
 
 
