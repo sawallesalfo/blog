@@ -9,7 +9,7 @@ categories:
 
 # Comment sont construits les assistants conversationnels ? ChatGPT, Claude, Mistral
 
-Aujourd'hui, on plonge dans les coulisses des grands modèles de langage (LLM). Vous êtes-vous déjà demandé **comment ces modèles arrivent à répondre avec autant de fluidité ?** Quand on parle de ChatGPT, techniquement c'est le résultat d'un modèle OpenAI après avoir fait une série d'entraînements. La réponse tient en trois étapes-clés :  
+Aujourd'hui, on plonge dans les coulisses des grands modèles de langage (LLM). Vous êtes-vous déjà demandé comment ces modèles arrivent à répondre avec autant de fluidité ? Quand on parle de ChatGPT, techniquement c'est le résultat d'un modèle OpenAI après avoir fait une série d'entraînements. La réponse tient en trois étapes-clés :  
 1. Le **pré-entraînement** sur des montagnes de données,  
 2. Le **fine-tuning** pour spécialiser le modèle, et  
 3. L’**apprentissage par renforcement avec feedback humain** (RLHF).  
@@ -18,7 +18,7 @@ Dans cet article, je retrace les principales étapes avec vous. Un petit billet 
 
 <!-- more -->
 
-### 1. Pré-entraînement : construire son modèle de fondation
+### 1. Pré-entraînement : modèle de fondation
 
 Imaginez qu'on veuille apprendre à un enfant à parler. Quelle est la première étape ? Exactement, on lui expose **énormément de mots et phrases** : conversations, livres, histoires. C’est exactement ce qu’on fait avec un LLM, mais à une échelle gigantesque.
 
