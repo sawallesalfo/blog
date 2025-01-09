@@ -584,9 +584,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-pre-entrainement-construire-son-modele-de-fondation" class="md-nav__link">
+  <a href="#1-pre-entrainement-modele-de-fondation" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Pré-entraînement : construire son modèle de fondation
+      1. Pré-entraînement : modèle de fondation
     </span>
   </a>
   
@@ -832,14 +832,14 @@
 
 
 <h1 id="comment-sont-construits-les-assistants-conversationnels-chatgpt-claude-mistral">Comment sont construits les assistants conversationnels ? ChatGPT, Claude, Mistral<a class="headerlink" href="#comment-sont-construits-les-assistants-conversationnels-chatgpt-claude-mistral" title="Permanent link">&para;</a></h1>
-<p>Aujourd'hui, on plonge dans les coulisses des grands modèles de langage (LLM). Vous êtes-vous déjà demandé <strong>comment ces modèles arrivent à répondre avec autant de fluidité ?</strong> Quand on parle de ChatGPT, techniquement c'est le résultat d'un modèle OpenAI après avoir fait une série d'entraînements. La réponse tient en trois étapes-clés :<br />
+<p>Aujourd'hui, on plonge dans les coulisses des grands modèles de langage (LLM). Vous êtes-vous déjà demandé comment ces modèles arrivent à répondre avec autant de fluidité ? Quand on parle de ChatGPT, techniquement c'est le résultat d'un modèle OpenAI après avoir fait une série d'entraînements. La réponse tient en trois étapes-clés :<br />
 1. Le <strong>pré-entraînement</strong> sur des montagnes de données,<br />
 2. Le <strong>fine-tuning</strong> pour spécialiser le modèle, et<br />
 3. L’<strong>apprentissage par renforcement avec feedback humain</strong> (RLHF).  </p>
 <p>Dans cet article, je retrace les principales étapes avec vous. Un petit billet de blog pour clore l'année 2024. On ne fera pas de MLOPS aujourd'hui, promis :)</p>
 <!-- more -->
 
-<h3 id="1-pre-entrainement-construire-son-modele-de-fondation">1. Pré-entraînement : construire son modèle de fondation<a class="headerlink" href="#1-pre-entrainement-construire-son-modele-de-fondation" title="Permanent link">&para;</a></h3>
+<h3 id="1-pre-entrainement-modele-de-fondation">1. Pré-entraînement : modèle de fondation<a class="headerlink" href="#1-pre-entrainement-modele-de-fondation" title="Permanent link">&para;</a></h3>
 <p>Imaginez qu'on veuille apprendre à un enfant à parler. Quelle est la première étape ? Exactement, on lui expose <strong>énormément de mots et phrases</strong> : conversations, livres, histoires. C’est exactement ce qu’on fait avec un LLM, mais à une échelle gigantesque.</p>
 <p><strong>Comment ça marche ?</strong><br />
 On nourrit le modèle avec un énorme corpus de données : sites web, livres, forums, articles scientifiques… Le modèle doit prédire <strong>le mot suivant</strong> dans une phrase. Par exemple : si je dis <em>"Les oiseaux volent dans le ciel…"</em>, à votre avis, quel sera le mot suivant ? Voilà, c’est ce que le modèle apprend à faire.</p>
