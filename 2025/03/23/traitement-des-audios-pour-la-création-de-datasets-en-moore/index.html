@@ -860,13 +860,11 @@ Un signal audio peut être défini comme une fonction dépendant du temps :  </p
 - <span class="arithmatex">\(S(t)\)</span> représente l’amplitude du signal sonore à l’instant <span class="arithmatex">\(t\)</span>,<br />
 - <span class="arithmatex">\(t\)</span> est le temps en secondes.  </p>
 <p>Un signal audio est une <strong>série temporelle</strong>, car c’est une suite de valeurs mesurées à différents instants. Lorsqu’un son est enregistré, il est discrétisé en une <strong>série temporelle discrète</strong> selon une fréquence d’échantillonnage $ f_s $ :</p>
-<p>$
-S[n] = S(nT_s), \quad n \in \mathbb{N}
-$
+<p><span class="arithmatex">\(S[n] = S(nT_s), \quad n \in \mathbb{N}\)</span>
 où :<br />
-- $ S[n] $ est l’amplitude du signal à l’instant $ n $,<br />
-- $ T_s = \frac{1}{f_s} $ est la période d’échantillonnage,<br />
-- $ f_s $ est la fréquence d’échantillonnage (exemple : 16 kHz signifie 16 000 points par seconde).  </p>
+- <span class="arithmatex">\(S[n]\)</span> est l’amplitude du signal à l’instant $ n $,<br />
+- <span class="arithmatex">\(T_s = \frac{1}{f_s}\)</span> est la période d’échantillonnage,<br />
+- <span class="arithmatex">\(f_s\)</span> est la fréquence d’échantillonnage (exemple : 16 kHz signifie 16 000 points par seconde).  </p>
 <p>Ainsi, un fichier audio numérique (comme un enregistrement vocal) est fondamentalement une <strong>série temporelle de valeurs d’amplitude</strong>, tout comme le PIB mesuré chaque année est une série temporelle économique.</p>
 <p>Trève de bavardage,  on se lance dans le processing d'audio avec Python.</p>
 <h2 id="2-pre-requis-installation-de-ffmpeg">2. Pré-requis : Installation de FFmpeg<a class="headerlink" href="#2-pre-requis-installation-de-ffmpeg" title="Permanent link">&para;</a></h2>
