@@ -193,7 +193,7 @@ dataset = load_dataset(DATA_FILE, split="train", download_config=DownloadConfig(
 `os.environ["HF_TOKEN"]` récupère votre token d’accès depuis les variables d’environnement. Assurez-vous de configurer cette variable avec votre token Hugging Face.  
 
 
-### **Sauvegarde des datsets : Locale et sur Serveur S3 
+### Sauvegarde des datasets
 
 Hugging Face offre une flexibilité de stockage. Vous pouvez sauvegarder vos datasets **localement** ou sur des **serveurs cloud** comme S3. 
 J'oubliais, la gestion du cache des datasets hugginface est juste insane . Je vous laisse tester ça.
@@ -251,7 +251,7 @@ Les paramètre clés de map sont nombreuses;. voici les plus importants.
 Pour plus de details [ici] (https://huggingface.co/docs/datasets/v3.4.1/en/package_reference/main_classes#datasets.Dataset.map)
 
 
-## 6. Choix du format audio pour l’apprentissage
+## 6. Format audio pour training
 
 Le choix du format est crucial pour obtenir des résultats optimaux lors de l’entraînement :
 
