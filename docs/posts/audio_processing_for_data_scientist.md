@@ -7,7 +7,7 @@ categories :
   - IAGEN
 ---
 
-# Traitement des audios pour la création de datasets en Moore
+# Traitement des audios pour la création de datasets audio
 
 Ça fait un moment que je n’ai pas publié, et c’est surtout parce que j’ai été absorbé par mon projet open source de création de datasets en Moore et l’entraînement de modèles locaux. Beaucoup de choses ont été réalisées en coulisses, et j’ai décidé de publier un article par mois pour vous tenir au courant. Pour plus de détails, n’hésitez pas à faire un tour sur mon GitHub [ici](https://github.com/sawadogosalif) ou à consulter mon profil Hugging Face  [ici](https://huggingface.co/sawadogosalif).
 
@@ -176,7 +176,7 @@ from datasets import load_dataset
 ds = load_dataset("glaiveai/reasoning-v1-20m", split="train")
 ```
 
-### 5.5 **Chargment d'un dataset dataset protégé **
+### 5.5 **Chargment d'un dataset dataset protégé**
 
 Pour charger un dataset protégé, vous devez fournir un token d’accès. Ce token prouve que vous avez l’autorisation de télécharger les données.  
 
