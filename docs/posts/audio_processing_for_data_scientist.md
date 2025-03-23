@@ -1,4 +1,3 @@
-
 ---
 date : 2025-03-1023  
 authors : 
@@ -28,7 +27,6 @@ où :
 - $ S(t) $ représente l’amplitude du signal sonore à l’instant $ t $,  
 - $ t $ est le temps en secondes.  
 
-### **Lien avec les séries temporelles**  
 Un signal audio est une **série temporelle**, car c’est une suite de valeurs mesurées à différents instants. Lorsqu’un son est enregistré, il est discrétisé en une **série temporelle discrète** selon une fréquence d’échantillonnage $ f_s $ :
 
 $
@@ -41,7 +39,7 @@ où :
 
 Ainsi, un fichier audio numérique (comme un enregistrement vocal) est fondamentalement une **série temporelle de valeurs d’amplitude**, tout comme le PIB mesuré chaque année est une série temporelle économique.
 
-
+Trève de bavardage,  on se lance dans le processing d'audio avec Python.
 ## 2. Pré-requis : Installation de FFmpeg
 
 Avant de commencer, assurez-vous d’avoir **FFmpeg** installé. Cet outil est indispensable pour manipuler vos fichiers audio sur votre pc avaec python
