@@ -855,10 +855,10 @@
 <p>Quand j’étais à l’école de statistique, on m’apprenait surtout les séries temporelles sous forme de données numériques. Mais dès mes premiers pas en industrie, j’ai réalisé qu’un fichier audio n’était rien d’autre qu’une série temporelle, une succession de valeurs qui fluctuent dans le temps. En fait, débiter des paroles, c’est exactement comme analyser les signaux d’un capteur ! Chaque chiffre dans l’array représente l’amplitude du signal à un instant donné, et c’est en les traitant qu’on peut extraire la musique ou la parole cachée dans l’audio.</p>
 <p>Pour les plus matheux,  Un <strong>signal audio</strong> est mathématiquement une <strong>série temporelle continue</strong>, qui représente l’évolution d’une onde sonore en fonction du temps.<br />
 Un signal audio peut être défini comme une fonction dépendant du temps :  </p>
-<p>$ S(t) : \mathbb{R}^+ \to \mathbb{R} $
-où :<br />
-- $ S(t) $ représente l’amplitude du signal sonore à l’instant $ t $,<br />
-- $ t $ est le temps en secondes.  </p>
+<p><span class="arithmatex">\(S(t) : \mathbb{R}^+ \to \mathbb{R}\)</span></p>
+<p>où :<br />
+- <span class="arithmatex">\(S(t)\)</span> représente l’amplitude du signal sonore à l’instant <span class="arithmatex">\(t\)</span>,<br />
+- <span class="arithmatex">\(t\)</span> est le temps en secondes.  </p>
 <p>Un signal audio est une <strong>série temporelle</strong>, car c’est une suite de valeurs mesurées à différents instants. Lorsqu’un son est enregistré, il est discrétisé en une <strong>série temporelle discrète</strong> selon une fréquence d’échantillonnage $ f_s $ :</p>
 <p>$
 S[n] = S(nT_s), \quad n \in \mathbb{N}
