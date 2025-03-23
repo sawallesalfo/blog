@@ -22,10 +22,11 @@ Quand j’étais à l’école de statistique, on m’apprenait surtout les sér
 Pour les plus matheux,  Un **signal audio** est mathématiquement une **série temporelle continue**, qui représente l’évolution d’une onde sonore en fonction du temps.  
 Un signal audio peut être défini comme une fonction dépendant du temps :  
 
-$ S(t) : \mathbb{R}^+ \to \mathbb{R} $
+$S(t) : \mathbb{R}^+ \to \mathbb{R}$
+
 où :  
-- $ S(t) $ représente l’amplitude du signal sonore à l’instant $ t $,  
-- $ t $ est le temps en secondes.  
+- $S(t)$ représente l’amplitude du signal sonore à l’instant $t$,  
+- $t$ est le temps en secondes.  
 
 Un signal audio est une **série temporelle**, car c’est une suite de valeurs mesurées à différents instants. Lorsqu’un son est enregistré, il est discrétisé en une **série temporelle discrète** selon une fréquence d’échantillonnage $ f_s $ :
 
