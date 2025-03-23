@@ -616,9 +616,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-pre-requis-installation-de-ffmpeg" class="md-nav__link">
+  <a href="#2-pre-requis-ffmpeg" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Pré-requis : Installation de FFmpeg
+      2. Pré-requis : FFmpeg
     </span>
   </a>
   
@@ -653,9 +653,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-hugging-face-la-reference-des-datasets" class="md-nav__link">
+  <a href="#la-reference-des-datasets" class="md-nav__link">
     <span class="md-ellipsis">
-      5.1 Hugging Face, la référence des datasets
+      La référence des datasets
     </span>
   </a>
   
@@ -867,7 +867,7 @@ où :<br />
 - <span class="arithmatex">\(f_s\)</span> est la fréquence d’échantillonnage (exemple : 16 kHz signifie 16 000 points par seconde).  </p>
 <p>Ainsi, un fichier audio numérique (comme un enregistrement vocal) est fondamentalement une <strong>série temporelle de valeurs d’amplitude</strong>, tout comme le PIB mesuré chaque année est une série temporelle économique.</p>
 <p>Trève de bavardage,  on se lance dans le processing d'audio avec Python.</p>
-<h2 id="2-pre-requis-installation-de-ffmpeg">2. Pré-requis : Installation de FFmpeg<a class="headerlink" href="#2-pre-requis-installation-de-ffmpeg" title="Permanent link">&para;</a></h2>
+<h2 id="2-pre-requis-ffmpeg">2. Pré-requis : FFmpeg<a class="headerlink" href="#2-pre-requis-ffmpeg" title="Permanent link">&para;</a></h2>
 <p>Avant de commencer, assurez-vous d’avoir <strong>FFmpeg</strong> installé. Cet outil est indispensable pour manipuler vos fichiers audio sur votre pc avaec python</p>
 <ul>
 <li>
@@ -933,7 +933,7 @@ Comme généralement, nous avons de longs fichiers audios, la solution revient �
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="5-creation-dun-dataset-audio-sur-hugging-face">5. Création d’un dataset audio sur Hugging Face ! <a class="glightbox" href="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" width="30"/></a><a class="headerlink" href="#5-creation-dun-dataset-audio-sur-hugging-face" title="Permanent link">&para;</a></h2>
-<h3 id="51-hugging-face-la-reference-des-datasets">5.1 Hugging Face, la référence des datasets<a class="headerlink" href="#51-hugging-face-la-reference-des-datasets" title="Permanent link">&para;</a></h3>
+<h3 id="la-reference-des-datasets">La référence des datasets<a class="headerlink" href="#la-reference-des-datasets" title="Permanent link">&para;</a></h3>
 <p>Avant l’avènement de plateformes comme Hugging Face, la constitution de datasets audio était souvent un processus artisanal. Il fallait assembler manuellement les fichiers, les annoter avec des scripts personnalisés et gérer les métadonnées de façon dispersée. Les chercheurs utilisaient des fichiers encodées en base64, des répertoires organisés à la main ou des formats propriétaires.  </p>
 <p>Avec la montée en puissance du deep learning, il est devenu indispensable de partager des jeux de données standardisés. Hugging Face s’est imposé comme la référence pour la gestion et le partage de datasets, notamment dans le domaine de l’audio. Grâce à leur librairie <strong>datasets</strong>, il est désormais possible de :  </p>
 <ul>
