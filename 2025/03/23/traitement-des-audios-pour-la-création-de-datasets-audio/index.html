@@ -18,7 +18,7 @@
     
     
       
-        <title>Traitement des audios pour la création de datasets en Moore - ssawadogo-blog</title>
+        <title>Traitement des audios pour la création de datasets audio - ssawadogo-blog</title>
       
     
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#traitement-des-audios-pour-la-creation-de-datasets-en-moore" class="md-skip">
+        <a href="#traitement-des-audios-pour-la-creation-de-datasets-audio" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Traitement des audios pour la création de datasets en Moore
+              Traitement des audios pour la création de datasets audio
             
           </span>
         </div>
@@ -691,7 +691,7 @@
           <li class="md-nav__item">
   <a href="#55-chargment-dun-dataset-dataset-protege" class="md-nav__link">
     <span class="md-ellipsis">
-      5.5 **Chargment d'un dataset dataset protégé **
+      5.5 Chargment d'un dataset dataset protégé
     </span>
   </a>
   
@@ -846,7 +846,7 @@
         
 
 
-<h1 id="traitement-des-audios-pour-la-creation-de-datasets-en-moore">Traitement des audios pour la création de datasets en Moore<a class="headerlink" href="#traitement-des-audios-pour-la-creation-de-datasets-en-moore" title="Permanent link">&para;</a></h1>
+<h1 id="traitement-des-audios-pour-la-creation-de-datasets-audio">Traitement des audios pour la création de datasets audio<a class="headerlink" href="#traitement-des-audios-pour-la-creation-de-datasets-audio" title="Permanent link">&para;</a></h1>
 <p>Ça fait un moment que je n’ai pas publié, et c’est surtout parce que j’ai été absorbé par mon projet open source de création de datasets en Moore et l’entraînement de modèles locaux. Beaucoup de choses ont été réalisées en coulisses, et j’ai décidé de publier un article par mois pour vous tenir au courant. Pour plus de détails, n’hésitez pas à faire un tour sur mon GitHub <a href="https://github.com/sawadogosalif">ici</a> ou à consulter mon profil Hugging Face  <a href="https://huggingface.co/sawadogosalif">ici</a>.</p>
 <p>Aujourd’hui, je vais vous raconter comment j’ai abordé le traitement de fichiers audio, depuis leur chargement jusqu’à leur agrégation dans un dataset, en passant par la segmentation des audios. On va voir ensemble comment un simple fichier audio se transforme en un tas d’array, prêt à être exploité pour du machine learning. C’est parti !</p>
 <!-- more -->
@@ -973,7 +973,7 @@ Comme généralement, nous avons de longs fichiers audios, la solution revient �
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">ds</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;glaiveai/reasoning-v1-20m&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="55-chargment-dun-dataset-dataset-protege">5.5 **Chargment d'un dataset dataset protégé **<a class="headerlink" href="#55-chargment-dun-dataset-dataset-protege" title="Permanent link">&para;</a></h3>
+<h3 id="55-chargment-dun-dataset-dataset-protege">5.5 <strong>Chargment d'un dataset dataset protégé</strong><a class="headerlink" href="#55-chargment-dun-dataset-dataset-protege" title="Permanent link">&para;</a></h3>
 <p>Pour charger un dataset protégé, vous devez fournir un token d’accès. Ce token prouve que vous avez l’autorisation de télécharger les données.  </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">DownloadConfig</span><span class="p">,</span> <span class="n">load_dataset</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span> <span class="nn">os</span>
