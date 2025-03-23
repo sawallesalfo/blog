@@ -39,7 +39,7 @@ où :
 Ainsi, un fichier audio numérique (comme un enregistrement vocal) est fondamentalement une **série temporelle de valeurs d’amplitude**, tout comme le PIB mesuré chaque année est une série temporelle économique.
 
 Trève de bavardage,  on se lance dans le processing d'audio avec Python.
-## 2. Pré-requis : Installation de FFmpeg
+## 2. Pré-requis : FFmpeg
 
 Avant de commencer, assurez-vous d’avoir **FFmpeg** installé. Cet outil est indispensable pour manipuler vos fichiers audio sur votre pc avaec python
 
@@ -121,7 +121,7 @@ for i, (silence_start, silence_end) in enumerate(silences):
 
 ## 5. Création d’un dataset audio sur Hugging Face ! <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" width="30"/>
 
-### 5.1 Hugging Face, la référence des datasets  
+### La référence des datasets  
 
 Avant l’avènement de plateformes comme Hugging Face, la constitution de datasets audio était souvent un processus artisanal. Il fallait assembler manuellement les fichiers, les annoter avec des scripts personnalisés et gérer les métadonnées de façon dispersée. Les chercheurs utilisaient des fichiers encodées en base64, des répertoires organisés à la main ou des formats propriétaires.  
 
