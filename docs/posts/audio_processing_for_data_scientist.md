@@ -160,11 +160,14 @@ print(dataset)
 
 Adopter Hugging Face, c’est bénéficier d’un cadre flexible qui révolutionne la manière de gérer les données audio. Aujourd’hui, c’est devenu **la référence** pour quiconque veut explorer et exploiter au mieux les potentialités du deep learning appliqué à l’audio. D'ailleurs les datasets sur le hub sont **versionnés**. Donc plus de soucis de revenir en arrière.
 
+Pour terminer, pour visualiser ou écouter l'audio depuis un notebook, il faut utiliser le package
+`IPyhton`  tout simplement
+![alt text](./audio_processing_for_data_scientist/ipython.png)
+
 
 ### 5.3 **Confidentialité et protections**
 
 Le Hub Hugging Face est une mine d’or pour les datasets, mais certains sont protégés par des autorisations d’accès. Cela signifie que leurs propriétaires contrôlent qui peut les télécharger.Généralement, il suffit d'accepter les conditions d'utilisation  de l'auteur. Hugging Face assure ainsi la confidentialité et la conformité. Imaginer que vous avez créer votre dataset et que son cout de création vaut 5000 euros. Naturellement, vous ne publierer pas en open source  par defaut. Vous decidez de qui peut avoir accès à vos données. Pour plus de details, consuter l'article sur la gestion des [ droits des datasets](https://huggingface.co/docs/hub/en/datasets-gated)
-
 
 ### 5.4 **Chargement d’un dataset public**  
 
