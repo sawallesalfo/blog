@@ -30,13 +30,11 @@ où :
 
 Un signal audio est une **série temporelle**, car c’est une suite de valeurs mesurées à différents instants. Lorsqu’un son est enregistré, il est discrétisé en une **série temporelle discrète** selon une fréquence d’échantillonnage $ f_s $ :
 
-$
-S[n] = S(nT_s), \quad n \in \mathbb{N}
-$
+$S[n] = S(nT_s), \quad n \in \mathbb{N}$
 où :  
-- $ S[n] $ est l’amplitude du signal à l’instant $ n $,  
-- $ T_s = \frac{1}{f_s} $ est la période d’échantillonnage,  
-- $ f_s $ est la fréquence d’échantillonnage (exemple : 16 kHz signifie 16 000 points par seconde).  
+- $S[n]$ est l’amplitude du signal à l’instant $ n $,  
+- $T_s = \frac{1}{f_s}$ est la période d’échantillonnage,  
+- $f_s$ est la fréquence d’échantillonnage (exemple : 16 kHz signifie 16 000 points par seconde).  
 
 Ainsi, un fichier audio numérique (comme un enregistrement vocal) est fondamentalement une **série temporelle de valeurs d’amplitude**, tout comme le PIB mesuré chaque année est une série temporelle économique.
 
