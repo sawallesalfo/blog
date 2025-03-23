@@ -163,13 +163,23 @@ Adopter Hugging Face, c’est bénéficier d’un cadre flexible qui révolution
 
 
 
-### 5.3 Autres fonctionnalités importantes   de huggin face
 
-##### **Chargement de datasets protégés et gestion de la confidentialité**  
+### Datasets : confidentialité et protections
 
-Le Hub Hugging Face est une mine d’or pour les datasets, mais certains sont protégés par des autorisations d’accès. Cela signifie que leurs propriétaires contrôlent qui peut les télécharger. Hugging Face assure ainsi la confidentialité et la conformité. Imaginer que vous avez créer votre dataset et que son cout de création vaut 5000 euros. Naturellement, vous ne publierer pas en open source  par defaut. Vous decidez de qui peut avoir accès à vos données. Pour plus de details, consuter l'article sur la gestion des [ droits des datasets](https://huggingface.co/docs/hub/en/datasets-gated)
+Le Hub Hugging Face est une mine d’or pour les datasets, mais certains sont protégés par des autorisations d’accès. Cela signifie que leurs propriétaires contrôlent qui peut les télécharger.Généralement, il suffit d'accepter les conditions d'utilisation  de l'auteur. Hugging Face assure ainsi la confidentialité et la conformité. Imaginer que vous avez créer votre dataset et que son cout de création vaut 5000 euros. Naturellement, vous ne publierer pas en open source  par defaut. Vous decidez de qui peut avoir accès à vos données. Pour plus de details, consuter l'article sur la gestion des [ droits des datasets](https://huggingface.co/docs/hub/en/datasets-gated)
 
-##### **Chargement d’un dataset protégé : autorisation requise**  
+
+### **Chargement d’un dataset public**  
+
+Si le dataset est public, vous pouvez le charger directement sans token.  
+
+```python
+from datasets import load_dataset
+
+ds = load_dataset("glaiveai/reasoning-v1-20m", split="train")
+```
+
+### Chargment d'un dataset dataset protégé 
 
 Pour charger un dataset protégé, vous devez fournir un token d’accès. Ce token prouve que vous avez l’autorisation de télécharger les données.  
 
@@ -183,29 +193,18 @@ dataset = load_dataset(DATA_FILE, split="train", download_config=DownloadConfig(
 
 `os.environ["HF_TOKEN"]` récupère votre token d’accès depuis les variables d’environnement. Assurez-vous de configurer cette variable avec votre token Hugging Face.  
 
-##### **Chargement d’un dataset public : accès direct**  
 
-Si le dataset est public, vous pouvez le charger directement sans token.  
-
-```python
-from datasets import load_dataset
-
-ds = load_dataset("glaiveai/reasoning-v1-20m", split="train")
-```
-
-
-### **Sauvegarde Locale et sur Serveur S3 : Options de Stockage Flexibles**  
+### **Sauvegarde des datsets : Locale et sur Serveur S3 
 
 Hugging Face offre une flexibilité de stockage. Vous pouvez sauvegarder vos datasets **localement** ou sur des **serveurs cloud** comme S3. 
 J'oubliais, la gestion du cache des datasets hugginface est juste insane . Je vous laisse tester ça.
 
-##### **Sauvegarde locale : simplicité et rapidité**  
+Pour la sauvegarde sur ton pc, il suffit d'utiliser  
 
 ```python
 final_dataset.save_to_disk(output_path)
 ```
-
-##### **Sauvegarde sur serveur S3 : scalabilité et accessibilité**  
+Quant à la sauvegarde sur un bucket distant, il faudrait vous munir des `storage_options`
 
 ```python
 final_dataset.save_to_disk(
@@ -216,13 +215,12 @@ final_dataset.save_to_disk(
 print(f"Dataset saved to {output_path}")
 ```
 
-📌 **Note :**  
 `access_key`, `secret_key`, `endpoint_url` correspondent aux informations d’identification et à l’URL de votre serveur S3.  
 
 
-### **La méthode `map` : transformation et enrichissement de datasets**  
+### La méthode `map`
 
-La méthode `map` est un outil puissant pour transformer et enrichir un datasets de façon rapide. La parallelisation est très bien géeréée. Pour plus de details [ici] (https://huggingface.co/docs/datasets/v3.4.1/en/package_reference/main_classes#datasets.Dataset.map)
+La méthode `map` est un outil puissant pour transformer et enrichir un datasets de façon rapide. La parallelisation est très bien géeréée. 
 
 Elle applique une fonction à chaque élément du dataset, permettant des opérations comme :  
 
@@ -231,7 +229,7 @@ Elle applique une fonction à chaque élément du dataset, permettant des opéra
 - La tokenisation de texte
 - Et bien plus encore...
 
-###### **Exemple d’utilisation de la méthode `map` :**  
+Plus concrètement, voici un exemple
 
 ```python
 def ajouter_longueur(example):
@@ -243,7 +241,7 @@ dataset_avec_longueur = dataset.map(ajouter_longueur)
 
 Dans cet exemple, la fonction `ajouter_longueur` **calcule la longueur de la transcription** dans chaque élément du dataset et l’ajoute comme **une nouvelle colonne**.  
 
-##### **Paramètres clés de la méthode `map` :**  
+Les paramètre clés de map sont nombreuses;. voici les plus importants. 
 
 - `function` : La fonction à appliquer à chaque élément.  
 - `batched` : Si `True`, la fonction est appliquée à des **lots** d’éléments.  
@@ -251,6 +249,7 @@ Dans cet exemple, la fonction `ajouter_longueur` **calcule la longueur de la tra
 - `num_proc` : Le nombre de processus à utiliser pour le parallélisme.  
 - `remove_columns` : Les colonnes à supprimer après l’application de la fonction.  
 
+Pour plus de details [ici] (https://huggingface.co/docs/datasets/v3.4.1/en/package_reference/main_classes#datasets.Dataset.map)
 
 
 ## 6. Choix du format audio pour l’apprentissage
@@ -298,46 +297,7 @@ agg_dataset = agg_dataset.add_column("audio_sequence", list(range(1, len(agg_dat
 Cette étape permet de transformer plusieurs segments en une seule séquence continue, tout en insérant intelligemment des périodes de silence pour mieux séparer les différents passages.
 
 
-## 8. À l’intérieur d’un fichier audio : un tas d’array !
-
-Ici, on entre dans le vif du sujet : quand on charge un fichier audio, ce qu’on obtient, c’est une immense série d’array de valeurs. Chaque array représente l’amplitude du signal à un instant donné. C’est à partir de ces données brutes que l’on peut :
-
-- Extraire des caractéristiques du signal, comme le spectrogramme.
-- Détecter et segmenter les silences ou repérer les transitions.
-- Transformer le signal en représentations visuelles ou numériques exploitables par nos modèles.
-
-Pour donner un exemple, voici comment générer un spectrogramme avec **librosa** :
-
-```python
-import librosa
-import librosa.display
-
-# Charger l'audio (de préférence un fichier WAV pour une qualité optimale)
-y, sr = librosa.load("path_to_audio_file.wav", sr=48000)
-# Calculer le spectrogramme Mel
-S = librosa.feature.melspectrogram(y, sr=sr, n_mels=128)
-S_dB = librosa.power_to_db(S, ref=np.max)
-
-plt.figure(figsize=(10, 4))
-librosa.display.specshow(S_dB, sr=sr, x_axis='time', y_axis='mel')
-plt.colorbar(format='%+2.0f dB')
-plt.title('Spectrogramme (Mel)')
-plt.tight_layout()
-plt.show()
-```
-
-Ce passage du fichier audio brut à sa représentation en matrices est fondamental pour le traitement et l’analyse via des techniques de machine learning. C’est un peu comme passer d’une image floue à une version haute définition grâce à un algorithme de traitement d’image !
-
-
 ## Conclusion
 
-Le traitement des fichiers audio, de leur découpe en segments jusqu’à leur agrégation dans un dataset complet et riche en métadonnées, est un parcours passionnant et technique. On part d’un simple signal – un tas d’array – pour arriver à une représentation exploitable par des modèles de deep learning, tout comme l’histoire où Git m’a sauvé d’une catastrophe, en nous rappelant que chaque outil, aussi discret soit-il, peut transformer notre manière de travailler.
-
-Dans les prochains articles, je détaillerai comment annoter ces données et entraîner des modèles pour la reconnaissance vocale ou la classification audio. En attendant, faites un tour sur mon GitHub et sur mon profil Hugging Face pour suivre l’aventure et n’hésitez pas à partager vos propres expériences. 
-
-
-## References
-
-https://huggingface.co/docs/hub/en/datasets-usage
-https://huggingface.co/docs/hub/en/datasets-adding
-https://huggingface.co/docs/hub/en/datasets-overview
+Le traitement des fichiers audio, de leur découpe en segments jusqu’à leur agrégation dans un dataset complet et riche en métadonnées, est un parcours passionnant et technique.
+Dans les prochains articles, je détaillerai comment annoter ces données et entraîner des modèles pour la reconnaissance vocale ou la classification audio. 
