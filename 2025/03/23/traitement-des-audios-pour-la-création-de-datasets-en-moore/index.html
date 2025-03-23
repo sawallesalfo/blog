@@ -653,9 +653,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#la-reference-des-datasets" class="md-nav__link">
+  <a href="#51-la-reference-des-datasets" class="md-nav__link">
     <span class="md-ellipsis">
-      La référence des datasets
+      5.1 La référence des datasets
     </span>
   </a>
   
@@ -671,45 +671,45 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#datasets-confidentialite-et-protections" class="md-nav__link">
+  <a href="#53-confidentialite-et-protections" class="md-nav__link">
     <span class="md-ellipsis">
-      Datasets : confidentialité et protections
+      5.3 Confidentialité et protections
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#chargement-dun-dataset-public" class="md-nav__link">
+  <a href="#54-chargement-dun-dataset-public" class="md-nav__link">
     <span class="md-ellipsis">
-      Chargement d’un dataset public
+      5.4 Chargement d’un dataset public
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#chargment-dun-dataset-dataset-protege" class="md-nav__link">
+  <a href="#55-chargment-dun-dataset-dataset-protege" class="md-nav__link">
     <span class="md-ellipsis">
-      Chargment d'un dataset dataset protégé
+      5.5 **Chargment d'un dataset dataset protégé **
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sauvegarde-des-datasets" class="md-nav__link">
+  <a href="#56-sauvegarde-des-datasets" class="md-nav__link">
     <span class="md-ellipsis">
-      Sauvegarde des datasets
+      5.6 Sauvegarde des datasets
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#la-methode-map" class="md-nav__link">
+  <a href="#57-la-methode-map" class="md-nav__link">
     <span class="md-ellipsis">
-      La méthode map
+      5.7 La méthode map
     </span>
   </a>
   
@@ -826,7 +826,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              8 min read
+                              9 min read
                             
                           </span>
                         </div>
@@ -851,7 +851,7 @@
 <p>Aujourd’hui, je vais vous raconter comment j’ai abordé le traitement de fichiers audio, depuis leur chargement jusqu’à leur agrégation dans un dataset, en passant par la segmentation des audios. On va voir ensemble comment un simple fichier audio se transforme en un tas d’array, prêt à être exploité pour du machine learning. C’est parti !</p>
 <!-- more -->
 
-<h2 id="1-de-laudio-aux-series-temporelles">1. De l’audio aux séries temporelles<a class="headerlink" href="#1-de-laudio-aux-series-temporelles" title="Permanent link">&para;</a></h2>
+<h2 id="1-de-laudio-aux-series-temporelles">1. <strong>De l’audio aux séries temporelles</strong><a class="headerlink" href="#1-de-laudio-aux-series-temporelles" title="Permanent link">&para;</a></h2>
 <p>Quand j’étais à l’école de statistique, on m’apprenait surtout les séries temporelles sous forme de données numériques. Mais dès mes premiers pas en industrie, j’ai réalisé qu’un fichier audio n’était rien d’autre qu’une série temporelle, une succession de valeurs qui fluctuent dans le temps. En fait, débiter des paroles, c’est exactement comme analyser les signaux d’un capteur ! Chaque chiffre dans l’array représente l’amplitude du signal à un instant donné, et c’est en les traitant qu’on peut extraire la musique ou la parole cachée dans l’audio.</p>
 <p>Pour les plus matheux,  Un <strong>signal audio</strong> est mathématiquement une <strong>série temporelle continue</strong>, qui représente l’évolution d’une onde sonore en fonction du temps.<br />
 Un signal audio peut être défini comme une fonction dépendant du temps :  </p>
@@ -887,7 +887,7 @@ Sinon, suivez ce guide complet : <a href="https://phoenixnap.com/kb/ffmpeg-windo
 </li>
 </ul>
 <hr />
-<h2 id="3-chargement-et-visualisation-dun-fichier-audio">3. Chargement et visualisation d’un fichier audio<a class="headerlink" href="#3-chargement-et-visualisation-dun-fichier-audio" title="Permanent link">&para;</a></h2>
+<h2 id="3-chargement-et-visualisation-dun-fichier-audio"><strong>3. Chargement et visualisation d’un fichier audio</strong><a class="headerlink" href="#3-chargement-et-visualisation-dun-fichier-audio" title="Permanent link">&para;</a></h2>
 <p>Pour commencer, on utilise <strong>pydub</strong> pour charger le fichier :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">pydub</span> <span class="kn">import</span> <span class="n">AudioSegment</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
@@ -933,7 +933,7 @@ Comme généralement, nous avons de longs fichiers audios, la solution revient �
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="5-creation-dun-dataset-audio-sur-hugging-face">5. Création d’un dataset audio sur Hugging Face ! <a class="glightbox" href="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" width="30"/></a><a class="headerlink" href="#5-creation-dun-dataset-audio-sur-hugging-face" title="Permanent link">&para;</a></h2>
-<h3 id="la-reference-des-datasets">La référence des datasets<a class="headerlink" href="#la-reference-des-datasets" title="Permanent link">&para;</a></h3>
+<h3 id="51-la-reference-des-datasets">5.1 <strong>La référence des datasets</strong><a class="headerlink" href="#51-la-reference-des-datasets" title="Permanent link">&para;</a></h3>
 <p>Avant l’avènement de plateformes comme Hugging Face, la constitution de datasets audio était souvent un processus artisanal. Il fallait assembler manuellement les fichiers, les annoter avec des scripts personnalisés et gérer les métadonnées de façon dispersée. Les chercheurs utilisaient des fichiers encodées en base64, des répertoires organisés à la main ou des formats propriétaires.  </p>
 <p>Avec la montée en puissance du deep learning, il est devenu indispensable de partager des jeux de données standardisés. Hugging Face s’est imposé comme la référence pour la gestion et le partage de datasets, notamment dans le domaine de l’audio. Grâce à leur librairie <strong>datasets</strong>, il est désormais possible de :  </p>
 <ul>
@@ -941,7 +941,7 @@ Comme généralement, nous avons de longs fichiers audios, la solution revient �
 <li><strong>Explorer des champs riches</strong> : Au-delà de l’audio brut, vous pouvez ajouter des transcriptions, des informations sur la durée, le locuteur, le contexte de l’enregistrement et bien plus.  </li>
 <li><strong>Collaborer et partager</strong> : La communauté Hugging Face vous permet de bénéficier de jeux de données déjà construits et de contribuer à une base de connaissances collective, essentielle pour faire avancer la recherche.  </li>
 </ul>
-<h3 id="52-creation-dun-dataset-audio">5.2 Création d’un dataset audio<a class="headerlink" href="#52-creation-dun-dataset-audio" title="Permanent link">&para;</a></h3>
+<h3 id="52-creation-dun-dataset-audio"><strong>5.2 Création d’un dataset audio</strong><a class="headerlink" href="#52-creation-dun-dataset-audio" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">Audio</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Supposons que vous avez déjà une liste de chemins audio et leurs transcriptions associées</span>
@@ -965,15 +965,15 @@ Comme généralement, nous avons de longs fichiers audios, la solution revient �
 <a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </code></pre></div>
 <p>Adopter Hugging Face, c’est bénéficier d’un cadre flexible qui révolutionne la manière de gérer les données audio. Aujourd’hui, c’est devenu <strong>la référence</strong> pour quiconque veut explorer et exploiter au mieux les potentialités du deep learning appliqué à l’audio. D'ailleurs les datasets sur le hub sont <strong>versionnés</strong>. Donc plus de soucis de revenir en arrière.</p>
-<h3 id="datasets-confidentialite-et-protections">Datasets : confidentialité et protections<a class="headerlink" href="#datasets-confidentialite-et-protections" title="Permanent link">&para;</a></h3>
+<h3 id="53-confidentialite-et-protections">5.3 <strong>Confidentialité et protections</strong><a class="headerlink" href="#53-confidentialite-et-protections" title="Permanent link">&para;</a></h3>
 <p>Le Hub Hugging Face est une mine d’or pour les datasets, mais certains sont protégés par des autorisations d’accès. Cela signifie que leurs propriétaires contrôlent qui peut les télécharger.Généralement, il suffit d'accepter les conditions d'utilisation  de l'auteur. Hugging Face assure ainsi la confidentialité et la conformité. Imaginer que vous avez créer votre dataset et que son cout de création vaut 5000 euros. Naturellement, vous ne publierer pas en open source  par defaut. Vous decidez de qui peut avoir accès à vos données. Pour plus de details, consuter l'article sur la gestion des <a href="https://huggingface.co/docs/hub/en/datasets-gated"> droits des datasets</a></p>
-<h3 id="chargement-dun-dataset-public"><strong>Chargement d’un dataset public</strong><a class="headerlink" href="#chargement-dun-dataset-public" title="Permanent link">&para;</a></h3>
+<h3 id="54-chargement-dun-dataset-public">5.4 <strong>Chargement d’un dataset public</strong><a class="headerlink" href="#54-chargement-dun-dataset-public" title="Permanent link">&para;</a></h3>
 <p>Si le dataset est public, vous pouvez le charger directement sans token.  </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">ds</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;glaiveai/reasoning-v1-20m&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="chargment-dun-dataset-dataset-protege">Chargment d'un dataset dataset protégé<a class="headerlink" href="#chargment-dun-dataset-dataset-protege" title="Permanent link">&para;</a></h3>
+<h3 id="55-chargment-dun-dataset-dataset-protege">5.5 **Chargment d'un dataset dataset protégé **<a class="headerlink" href="#55-chargment-dun-dataset-dataset-protege" title="Permanent link">&para;</a></h3>
 <p>Pour charger un dataset protégé, vous devez fournir un token d’accès. Ce token prouve que vous avez l’autorisation de télécharger les données.  </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">DownloadConfig</span><span class="p">,</span> <span class="n">load_dataset</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">import</span> <span class="nn">os</span>
@@ -982,7 +982,7 @@ Comme généralement, nous avons de longs fichiers audios, la solution revient �
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">DATA_FILE</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">download_config</span><span class="o">=</span><span class="n">DownloadConfig</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;HF_TOKEN&quot;</span><span class="p">]))</span>
 </code></pre></div>
 <p><code>os.environ["HF_TOKEN"]</code> récupère votre token d’accès depuis les variables d’environnement. Assurez-vous de configurer cette variable avec votre token Hugging Face.  </p>
-<h3 id="sauvegarde-des-datasets">Sauvegarde des datasets<a class="headerlink" href="#sauvegarde-des-datasets" title="Permanent link">&para;</a></h3>
+<h3 id="56-sauvegarde-des-datasets">5.6 <strong>Sauvegarde des datasets</strong><a class="headerlink" href="#56-sauvegarde-des-datasets" title="Permanent link">&para;</a></h3>
 <p>Hugging Face offre une flexibilité de stockage. Vous pouvez sauvegarder vos datasets <strong>localement</strong> ou sur des <strong>serveurs cloud</strong> comme S3. 
 J'oubliais, la gestion du cache des datasets hugginface est juste insane . Je vous laisse tester ça.</p>
 <p>Pour la sauvegarde sur ton pc, il suffit d'utiliser  </p>
@@ -997,7 +997,7 @@ Quant à la sauvegarde sur un bucket distant, il faudrait vous munir des <code>s
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset saved to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><code>access_key</code>, <code>secret_key</code>, <code>endpoint_url</code> correspondent aux informations d’identification et à l’URL de votre serveur S3.  </p>
-<h3 id="la-methode-map">La méthode <code>map</code><a class="headerlink" href="#la-methode-map" title="Permanent link">&para;</a></h3>
+<h3 id="57-la-methode-map">5.7 <strong>La méthode <code>map</code></strong><a class="headerlink" href="#57-la-methode-map" title="Permanent link">&para;</a></h3>
 <p>La méthode <code>map</code> est un outil puissant pour transformer et enrichir un datasets de façon rapide. La parallelisation est très bien géeréée. </p>
 <p>Elle applique une fonction à chaque élément du dataset, permettant des opérations comme :  </p>
 <ul>
@@ -1023,7 +1023,7 @@ Quant à la sauvegarde sur un bucket distant, il faudrait vous munir des <code>s
 <li><code>remove_columns</code> : Les colonnes à supprimer après l’application de la fonction.  </li>
 </ul>
 <p>Pour plus de details [ici] (https://huggingface.co/docs/datasets/v3.4.1/en/package_reference/main_classes#datasets.Dataset.map)</p>
-<h2 id="6-format-audio-pour-training">6. Format audio pour training<a class="headerlink" href="#6-format-audio-pour-training" title="Permanent link">&para;</a></h2>
+<h2 id="6-format-audio-pour-training">6. <strong>Format audio pour training</strong><a class="headerlink" href="#6-format-audio-pour-training" title="Permanent link">&para;</a></h2>
 <p>Le choix du format est crucial pour obtenir des résultats optimaux lors de l’entraînement :</p>
 <ul>
 <li><strong>WAV (PCM 16-bit ou 32-bit float)</strong><br />
@@ -1037,7 +1037,7 @@ Quant à la sauvegarde sur un bucket distant, il faudrait vous munir des <code>s
 <li><strong>MP3 (compression avec perte)</strong><br />
   ➔ À éviter pour l’entraînement, car la compression avec perte élimine certaines informations, notamment dans les hautes fréquences, ce qui peut impacter la précision des modèles de reconnaissance vocale ou de classification.</li>
 </ul>
-<h2 id="7-agregation-de-segments-daudio-dans-un-dataset">7. Agrégation de segments d’audio dans un dataset<a class="headerlink" href="#7-agregation-de-segments-daudio-dans-un-dataset" title="Permanent link">&para;</a></h2>
+<h2 id="7-agregation-de-segments-daudio-dans-un-dataset">7. <strong>Agrégation de segments d’audio dans un dataset</strong><a class="headerlink" href="#7-agregation-de-segments-daudio-dans-un-dataset" title="Permanent link">&para;</a></h2>
 <p>Souvent, un enregistrement est découpé en plusieurs segments pour en faciliter l’analyse. Parfois, il est nécessaire de les concaténer en réintroduisant un silence entre chaque segment. Voici un exemple de fonction de mapping pour réaliser cette agrégation :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span> <span class="nf">mapper_function2</span><span class="p">(</span><span class="n">batch</span><span class="p">):</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">silence_duration</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># 500 ms de silence</span>
