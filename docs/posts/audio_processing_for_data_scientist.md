@@ -15,7 +15,7 @@ Aujourd’hui, je vais vous raconter comment j’ai abordé le traitement de fic
 
 <!-- more -->
 
-## 1. De l’audio aux séries temporelles
+## 1. **De l’audio aux séries temporelles**
 
 Quand j’étais à l’école de statistique, on m’apprenait surtout les séries temporelles sous forme de données numériques. Mais dès mes premiers pas en industrie, j’ai réalisé qu’un fichier audio n’était rien d’autre qu’une série temporelle, une succession de valeurs qui fluctuent dans le temps. En fait, débiter des paroles, c’est exactement comme analyser les signaux d’un capteur ! Chaque chiffre dans l’array représente l’amplitude du signal à un instant donné, et c’est en les traitant qu’on peut extraire la musique ou la parole cachée dans l’audio.
 
@@ -60,7 +60,7 @@ Avant de commencer, assurez-vous d’avoir **FFmpeg** installé. Cet outil est i
 
 ---
 
-## 3. Chargement et visualisation d’un fichier audio
+## **3. Chargement et visualisation d’un fichier audio**
 
 Pour commencer, on utilise **pydub** pour charger le fichier :
 
@@ -121,7 +121,7 @@ for i, (silence_start, silence_end) in enumerate(silences):
 
 ## 5. Création d’un dataset audio sur Hugging Face ! <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" width="30"/>
 
-### La référence des datasets  
+### 5.1 **La référence des datasets**
 
 Avant l’avènement de plateformes comme Hugging Face, la constitution de datasets audio était souvent un processus artisanal. Il fallait assembler manuellement les fichiers, les annoter avec des scripts personnalisés et gérer les métadonnées de façon dispersée. Les chercheurs utilisaient des fichiers encodées en base64, des répertoires organisés à la main ou des formats propriétaires.  
 
@@ -132,7 +132,7 @@ Avec la montée en puissance du deep learning, il est devenu indispensable de pa
 - **Collaborer et partager** : La communauté Hugging Face vous permet de bénéficier de jeux de données déjà construits et de contribuer à une base de connaissances collective, essentielle pour faire avancer la recherche.  
 
 
-### 5.2 Création d’un dataset audio  
+### **5.2 Création d’un dataset audio** 
 
 ```python
 from datasets import Dataset, Audio
@@ -161,12 +161,12 @@ print(dataset)
 Adopter Hugging Face, c’est bénéficier d’un cadre flexible qui révolutionne la manière de gérer les données audio. Aujourd’hui, c’est devenu **la référence** pour quiconque veut explorer et exploiter au mieux les potentialités du deep learning appliqué à l’audio. D'ailleurs les datasets sur le hub sont **versionnés**. Donc plus de soucis de revenir en arrière.
 
 
-### Datasets : confidentialité et protections
+### 5.3 **Confidentialité et protections**
 
 Le Hub Hugging Face est une mine d’or pour les datasets, mais certains sont protégés par des autorisations d’accès. Cela signifie que leurs propriétaires contrôlent qui peut les télécharger.Généralement, il suffit d'accepter les conditions d'utilisation  de l'auteur. Hugging Face assure ainsi la confidentialité et la conformité. Imaginer que vous avez créer votre dataset et que son cout de création vaut 5000 euros. Naturellement, vous ne publierer pas en open source  par defaut. Vous decidez de qui peut avoir accès à vos données. Pour plus de details, consuter l'article sur la gestion des [ droits des datasets](https://huggingface.co/docs/hub/en/datasets-gated)
 
 
-### **Chargement d’un dataset public**  
+### 5.4 **Chargement d’un dataset public**  
 
 Si le dataset est public, vous pouvez le charger directement sans token.  
 
@@ -176,7 +176,7 @@ from datasets import load_dataset
 ds = load_dataset("glaiveai/reasoning-v1-20m", split="train")
 ```
 
-### Chargment d'un dataset dataset protégé 
+### 5.5 **Chargment d'un dataset dataset protégé **
 
 Pour charger un dataset protégé, vous devez fournir un token d’accès. Ce token prouve que vous avez l’autorisation de télécharger les données.  
 
@@ -191,7 +191,7 @@ dataset = load_dataset(DATA_FILE, split="train", download_config=DownloadConfig(
 `os.environ["HF_TOKEN"]` récupère votre token d’accès depuis les variables d’environnement. Assurez-vous de configurer cette variable avec votre token Hugging Face.  
 
 
-### Sauvegarde des datasets
+### 5.6 **Sauvegarde des datasets**
 
 Hugging Face offre une flexibilité de stockage. Vous pouvez sauvegarder vos datasets **localement** ou sur des **serveurs cloud** comme S3. 
 J'oubliais, la gestion du cache des datasets hugginface est juste insane . Je vous laisse tester ça.
@@ -215,7 +215,7 @@ print(f"Dataset saved to {output_path}")
 `access_key`, `secret_key`, `endpoint_url` correspondent aux informations d’identification et à l’URL de votre serveur S3.  
 
 
-### La méthode `map`
+### 5.7 **La méthode `map`**
 
 La méthode `map` est un outil puissant pour transformer et enrichir un datasets de façon rapide. La parallelisation est très bien géeréée. 
 
@@ -249,7 +249,7 @@ Les paramètre clés de map sont nombreuses;. voici les plus importants.
 Pour plus de details [ici] (https://huggingface.co/docs/datasets/v3.4.1/en/package_reference/main_classes#datasets.Dataset.map)
 
 
-## 6. Format audio pour training
+## 6. **Format audio pour training**
 
 Le choix du format est crucial pour obtenir des résultats optimaux lors de l’entraînement :
 
@@ -263,7 +263,7 @@ Le choix du format est crucial pour obtenir des résultats optimaux lors de l’
   ➔ À éviter pour l’entraînement, car la compression avec perte élimine certaines informations, notamment dans les hautes fréquences, ce qui peut impacter la précision des modèles de reconnaissance vocale ou de classification.
 
 
-## 7. Agrégation de segments d’audio dans un dataset
+## 7. **Agrégation de segments d’audio dans un dataset**
 
 Souvent, un enregistrement est découpé en plusieurs segments pour en faciliter l’analyse. Parfois, il est nécessaire de les concaténer en réintroduisant un silence entre chaque segment. Voici un exemple de fonction de mapping pour réaliser cette agrégation :
 
