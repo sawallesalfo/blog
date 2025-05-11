@@ -618,11 +618,11 @@
         <li class="md-nav__item">
   <a href="#litellm-a-la-rescousse" class="md-nav__link">
     <span class="md-ellipsis">
-      🔌 LiteLLM à la rescousse
+      LiteLLM à la rescousse
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🔌 LiteLLM à la rescousse">
+    <nav class="md-nav" aria-label="LiteLLM à la rescousse">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -634,17 +634,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#a-quoi-ressemble-une-reponse-litellm" class="md-nav__link">
     <span class="md-ellipsis">
       À quoi ressemble une réponse LiteLLM ?
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -764,11 +764,11 @@
         
 
 
-<h1 id="trop-de-sdk-pour-les-llms-passe-a-une-llmfactory-ou-adapters-avec-litellm">Trop de SDK pour les LLMs ? Passe à une <code>LLMFactory</code>  ou <code>Adapters</code> avec LiteLLM<a class="headerlink" href="#trop-de-sdk-pour-les-llms-passe-a-une-llmfactory-ou-adapters-avec-litellm" title="Permanent link">&para;</a></h1>
+<h1 id="trop-de-sdk-pour-les-llms-passe-a-une-llmfactory-ou-adapters-avec-litellm">Trop de SDK pour les LLMs ? Passe à une LLMFactory  ou Adapters avec LiteLLM<a class="headerlink" href="#trop-de-sdk-pour-les-llms-passe-a-une-llmfactory-ou-adapters-avec-litellm" title="Permanent link">&para;</a></h1>
 <p>Dans l’univers des LLMs, chaque provider a son propre dialecte.
-Tu veux utiliser <strong>OpenAI</strong> ? Tu installes <code>openai</code>.
-Tu veux <strong>Claude</strong> (Anthropic) ? C’est <code>anthropic</code>.
-Et pour tester <strong>Groq</strong>, <strong>Mistral</strong>, <strong>Fireworks</strong>, ou même <strong>AWS Bedrock</strong> ? Chacun vient avec son propre SDK, ses headers custom, sa manière de formuler les prompts, et son format de sortie.</p>
+Tu veux utiliser OpenAI** ? Tu installes <code>openai</code>.
+Tu veux Claude (Anthropic) ? C’est <code>anthropic</code>.
+Et pour tester Groq, Mistral, Fireworks, ou même AWS Bedrock ? Chacun vient avec son propre SDK, ses headers custom, sa manière de formuler les prompts, et son format de sortie.</p>
 <p>C’est vite le <strong>chaos</strong>. 😤</p>
 <!-- more -->
 
@@ -776,7 +776,7 @@ Et pour tester <strong>Groq</strong>, <strong>Mistral</strong>, <strong>Firework
 <p>C’est pour ça qu’il faut penser <strong>abstraction</strong>, dès le départ. Et c’est là qu’on sort le pattern <strong><code>LLMFactory</code></strong>.</p>
 <p>Perso, dans mes projets, j’ai toujours un petit submodule <code>llm_factory</code> qui traîne.</p>
 <hr />
-<h3 id="pourquoi-une-llmfactory">Pourquoi une <code>LLMFactory</code> ?<a class="headerlink" href="#pourquoi-une-llmfactory" title="Permanent link">&para;</a></h3>
+<h3 id="pourquoi-une-llmfactory">Pourquoi une LLMFactory ?<a class="headerlink" href="#pourquoi-une-llmfactory" title="Permanent link">&para;</a></h3>
 <p>Une <code>LLMFactory</code>, c’est comme un <strong>adaptateur intelligent</strong> qui te permet de <strong>changer de fournisseur LLM comme de chemise</strong>, sans toucher au reste de ton code.</p>
 <p>Ton app appelle <code>llm.predict("ma question")</code>, et la factory se débrouille — que tu sois en local avec Mistral, sur AWS avec Claude 3, ou en API avec GPT-4o.</p>
 <blockquote>
@@ -784,7 +784,7 @@ Et pour tester <strong>Groq</strong>, <strong>Mistral</strong>, <strong>Firework
 Tu choisis le provider au runtime, tu injectes les bonnes clés, et basta.</p>
 </blockquote>
 <hr />
-<h3 id="litellm-a-la-rescousse">🔌 LiteLLM à la rescousse<a class="headerlink" href="#litellm-a-la-rescousse" title="Permanent link">&para;</a></h3>
+<h3 id="litellm-a-la-rescousse">LiteLLM à la rescousse<a class="headerlink" href="#litellm-a-la-rescousse" title="Permanent link">&para;</a></h3>
 <p><strong><a href="https://github.com/BerriAI/litellm">LiteLLM</a></strong> te donne une <strong>API unique façon OpenAI</strong> pour accéder à <strong>plus de 100 modèles différents</strong>.</p>
 <p>Et quand tu combines LiteLLM avec une <code>LLMFactory</code>, tu obtiens un design propre, modulaire et <strong>future-proof</strong>.</p>
 <h4 id="litellm-en-un-clin-dil"><strong>LiteLLM</strong> en un clin d’œil<a class="headerlink" href="#litellm-en-un-clin-dil" title="Permanent link">&para;</a></h4>
@@ -808,7 +808,7 @@ Tu choisis le provider au runtime, tu injectes les bonnes clés, et basta.</p>
 <p>🛑 Cette fois-ci, <strong>on ne rentre pas dans le monitoring</strong> avec Langfuse, Langsmith et autres — on garde ça pour une autre fois !</p>
 </blockquote>
 <hr />
-<h3 id="a-quoi-ressemble-une-reponse-litellm">À quoi ressemble une réponse LiteLLM ?<a class="headerlink" href="#a-quoi-ressemble-une-reponse-litellm" title="Permanent link">&para;</a></h3>
+<h4 id="a-quoi-ressemble-une-reponse-litellm">À quoi ressemble une réponse LiteLLM ?<a class="headerlink" href="#a-quoi-ressemble-une-reponse-litellm" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">litellm</span> <span class="kn">import</span> <span class="n">completion</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">os</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -937,7 +937,7 @@ Tu choisis le provider au runtime, tu injectes les bonnes clés, et basta.</p>
 <li><strong>Facile à faire évoluer (changer de modèle, ajouter un fallback, etc.)</strong></li>
 <li><strong>Modulaire et testable</strong></li>
 </ul>
-<p>Et la <code>LLMFactory</code> ou les <code>ADAPTERS</code>, c’est ta clef pour y arriver — surtout si tu t’appuies sur une brique comme <strong>LiteLLM</strong> qui fait le sale boulot d’unifier les appels.</p>
+<p>Et la LLMFactory ou lesADAPTERS`, c’est ta clef pour y arriver — surtout si tu t’appuies sur une brique comme <strong>LiteLLM</strong> qui fait le sale boulot d’unifier les appels.</p>
 <p>Je t’invite à lire la <a href="https://github.com/BerriAI/litellm">📚 documentation officielle de LiteLLM</a> pour :</p>
 <ul>
 <li>déployer ton propre serveur LiteLLM (proxy),</li>
