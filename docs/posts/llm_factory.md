@@ -1,12 +1,12 @@
-
 ---
-date: 2025-05-26
+date: 2025-05-30
 authors:
     - ssawadogo
 categories: 
-    - MLOps
     - IAGEN
 ---
+
+
 
 ## Trop de SDK pour les LLMs ? Passe à une `LLMFactory`  ou `Adapters` avec LiteLLM
 
@@ -16,6 +16,8 @@ Tu veux **Claude** (Anthropic) ? C’est `anthropic`.
 Et pour tester **Groq**, **Mistral**, **Fireworks**, ou même **AWS Bedrock** ? Chacun vient avec son propre SDK, ses headers custom, sa manière de formuler les prompts, et son format de sortie.
 
 C’est vite le **chaos**. 😤
+
+<!-- more -->
 
 Et quand tu construis une app sérieuse — un backend ou un agent LLM — tu ne veux surtout pas que **toute la logique de ton app dépende d’un SDK spécifique**.
 
