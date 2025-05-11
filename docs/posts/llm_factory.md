@@ -7,12 +7,12 @@ categories:
 ---
 
 
-# Trop de SDK pour les LLMs ? Passe à une `LLMFactory`  ou `Adapters` avec LiteLLM
+# Trop de SDK pour les LLMs ? Passe à une LLMFactory  ou Adapters avec LiteLLM
 
 Dans l’univers des LLMs, chaque provider a son propre dialecte.
-Tu veux utiliser **OpenAI** ? Tu installes `openai`.
-Tu veux **Claude** (Anthropic) ? C’est `anthropic`.
-Et pour tester **Groq**, **Mistral**, **Fireworks**, ou même **AWS Bedrock** ? Chacun vient avec son propre SDK, ses headers custom, sa manière de formuler les prompts, et son format de sortie.
+Tu veux utiliser OpenAI** ? Tu installes `openai`.
+Tu veux Claude (Anthropic) ? C’est `anthropic`.
+Et pour tester Groq, Mistral, Fireworks, ou même AWS Bedrock ? Chacun vient avec son propre SDK, ses headers custom, sa manière de formuler les prompts, et son format de sortie.
 
 C’est vite le **chaos**. 😤
 
@@ -26,7 +26,7 @@ Perso, dans mes projets, j’ai toujours un petit submodule `llm_factory` qui tr
 
 ---
 
-### Pourquoi une `LLMFactory` ?
+### Pourquoi une LLMFactory ?
 
 Une `LLMFactory`, c’est comme un **adaptateur intelligent** qui te permet de **changer de fournisseur LLM comme de chemise**, sans toucher au reste de ton code.
 
@@ -37,7 +37,7 @@ Ton app appelle `llm.predict("ma question")`, et la factory se débrouille — q
 
 ---
 
-### 🔌 LiteLLM à la rescousse
+### LiteLLM à la rescousse
 
 **[LiteLLM](https://github.com/BerriAI/litellm)** te donne une **API unique façon OpenAI** pour accéder à **plus de 100 modèles différents**.
 
@@ -62,7 +62,7 @@ Et quand tu combines LiteLLM avec une `LLMFactory`, tu obtiens un design propre,
 
 ---
 
-### À quoi ressemble une réponse LiteLLM ?
+#### À quoi ressemble une réponse LiteLLM ?
 
 ```python
 from litellm import completion
@@ -203,7 +203,7 @@ En 2025, tu ne codes plus ton app autour d’un seul SDK. Tu construis ton backe
 + **Facile à faire évoluer (changer de modèle, ajouter un fallback, etc.)**
 + **Modulaire et testable**
 
-Et la `LLMFactory` ou les `ADAPTERS`, c’est ta clef pour y arriver — surtout si tu t’appuies sur une brique comme **LiteLLM** qui fait le sale boulot d’unifier les appels.
+Et la LLMFactory ou lesADAPTERS`, c’est ta clef pour y arriver — surtout si tu t’appuies sur une brique comme **LiteLLM** qui fait le sale boulot d’unifier les appels.
 
 
  Je t’invite à lire la [📚 documentation officielle de LiteLLM](https://github.com/BerriAI/litellm) pour :
