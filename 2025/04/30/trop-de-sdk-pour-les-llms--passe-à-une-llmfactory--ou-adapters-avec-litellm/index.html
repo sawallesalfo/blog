@@ -649,9 +649,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#exemple-de-llmfactory-openai-claude-via-aws-etc" class="md-nav__link">
+  <a href="#exemple-de-llmfactoryopenai-claude-via-aws-etc" class="md-nav__link">
     <span class="md-ellipsis">
-      Exemple de LLMFactory (OpenAI, Claude via AWS, etc.)
+      Exemple de LLMFactory(OpenAI, Claude via AWS, etc.)
     </span>
   </a>
   
@@ -722,7 +722,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2025-05-30 00:00:00" class="md-ellipsis">May 30, 2025</time>
+                        <time datetime="2025-04-30 00:00:00" class="md-ellipsis">April 30, 2025</time>
                       </div>
                     </li>
                     
@@ -773,7 +773,7 @@ Et pour tester Groq, Mistral, Fireworks, ou même AWS Bedrock ? Chacun vient ave
 <!-- more -->
 
 <p>Et quand tu construis une app sérieuse — un backend ou un agent LLM — tu ne veux surtout pas que <strong>toute la logique de ton app dépende d’un SDK spécifique</strong>.</p>
-<p>C’est pour ça qu’il faut penser <strong>abstraction</strong>, dès le départ. Et c’est là qu’on sort le pattern <strong><code>LLMFactory</code></strong>.</p>
+<p>C’est pour ça qu’il faut penser <strong>abstraction</strong>, dès le départ. Et c’est là qu’on sort le pattern <code>LLMFactory</code>.</p>
 <p>Perso, dans mes projets, j’ai toujours un petit submodule <code>llm_factory</code> qui traîne.</p>
 <hr />
 <h3 id="pourquoi-une-llmfactory">Pourquoi une LLMFactory ?<a class="headerlink" href="#pourquoi-une-llmfactory" title="Permanent link">&para;</a></h3>
@@ -850,7 +850,7 @@ Tu choisis le provider au runtime, tu injectes les bonnes clés, et basta.</p>
 </ul>
 </blockquote>
 <hr />
-<h3 id="exemple-de-llmfactory-openai-claude-via-aws-etc">Exemple de <code>LLMFactory</code> (OpenAI, Claude via AWS, etc.)<a class="headerlink" href="#exemple-de-llmfactory-openai-claude-via-aws-etc" title="Permanent link">&para;</a></h3>
+<h3 id="exemple-de-llmfactoryopenai-claude-via-aws-etc">Exemple de LLMFactory(OpenAI, Claude via AWS, etc.)<a class="headerlink" href="#exemple-de-llmfactoryopenai-claude-via-aws-etc" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">litellm</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span> <span class="nn">boto3</span>
