@@ -1,5 +1,5 @@
 ---
-date: 2025-05-30
+date: 2025-04-30
 authors:
     - ssawadogo
 categories: 
@@ -20,7 +20,7 @@ C’est vite le **chaos**. 😤
 
 Et quand tu construis une app sérieuse — un backend ou un agent LLM — tu ne veux surtout pas que **toute la logique de ton app dépende d’un SDK spécifique**.
 
-C’est pour ça qu’il faut penser **abstraction**, dès le départ. Et c’est là qu’on sort le pattern **`LLMFactory`**.
+C’est pour ça qu’il faut penser **abstraction**, dès le départ. Et c’est là qu’on sort le pattern `LLMFactory`.
 
 Perso, dans mes projets, j’ai toujours un petit submodule `llm_factory` qui traîne.
 
@@ -108,7 +108,7 @@ response = completion(
 
 ---
 
-### Exemple de `LLMFactory` (OpenAI, Claude via AWS, etc.)
+### Exemple de LLMFactory(OpenAI, Claude via AWS, etc.)
 
 ```python
 from typing import Optional, Dict, Any
