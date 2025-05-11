@@ -8,7 +8,7 @@ categories:
     - IAGEN
 ---
 
-## Trop de SDK pour les LLMs ? Passe à une `LLMFactory` avec LiteLLM
+## Trop de SDK pour les LLMs ? Passe à une `LLMFactory`  ou `Adapters` avec LiteLLM
 
 Dans l’univers des LLMs, chaque provider a son propre dialecte.
 Tu veux utiliser **OpenAI** ? Tu installes `openai`.
