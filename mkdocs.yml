@@ -91,13 +91,13 @@ extra:
   social:
     - icon: fontawesome/brands/github
       name: My GitHub
-      link: https://github.com/sawadogosalif
+      link: https://github.com/sawallesalfo
     - icon: fontawesome/brands/twitter
       name: My Twitter
       link: https://x.com/sawallesalfo
     - icon: fontawesome/brands/linkedin
       name: My LinkedIn
-      link: https://www.linkedin.com/in/alif-sawadogo-statistician
+      link: https://www.linkedin.com/in/salif-sawadogo-statistician
     - icon: /fontawesome/regular/envelope
       name: send me an email
       link: mailto:<salif.sawadogo.pro@gmail.com>
