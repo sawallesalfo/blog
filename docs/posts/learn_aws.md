@@ -11,7 +11,7 @@ categories:
 # AWS pour Data Scientists et pas que !
 
 Bon on en fin du mois, parlons de Cloud computing avec un focus sur AWS, le géant du secteur. Tu es data scientist, tu veux te lancer dans le machine learning, mais tu ne sais pas par où commencer ? Tu as entendu parler d’AWS, mais tu trouves ça trop complexe ? Pas de panique, cet article est fait pour toi !
-Si tu débarques dans l’univers AWS, tu as sûrement ressenti cette sensation : tu ouvres la console AWS pour la première fois, et c’est comme si tu étais dans le cockpit d’un vaisseau spatial… avec 200 boutons et aucun manuel d’utilisation ! Pas de panique, je vais t’emmener pas à pas dans cet écosystème, spécialement pour nous, les manieurs de données. On va y aller du bas vers le haut : d’abord les fondations, puis la magie ML. Prêt·e ? C’est parti !
+Si tu débarques dans l’univers AWS, tu as sûrement ressenti cette sensation : tu ouvres la console AWS pour la première fois, et c’est comme si tu étais dans le cockpit d’un vaisseau spatial… avec 200 boutons et aucun manuel d’utilisation ! Pas de panique, on va y aller du bas vers le haut : d’abord les fondations, puis la magie ML. Prêt·e ? C’est parti !
 
 ---
 
