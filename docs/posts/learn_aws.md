@@ -1,10 +1,12 @@
 ---
-date: 2025-31-04
-authors:
-    - ssawadogo
-categories: 
-    - MLOps
-    - Cloud
+
+date: 2025-31-04  
+authors:  
+- ssawadogo  
+categories:  
+- MLOps
+- Cloud
+
 ---
 
 # AWS pour Data Scientists et pas que !
