@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../24/all-things-start-with-git/">
+        <link rel="prev" href="../../../05/31/aws-pour-data-scientists-et-pas-que-/">
       
-      
-        <link rel="next" href="../../../09/01/mlflow--best-practices/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>CI/CD pour les Data Scientists : Quand le Code Se Met à Danser - ssawadogo-blog</title>
+        <title>Agentic IA ne veut pas forcément dire Agent ReAct - ssawadogo-blog</title>
       
     
     
@@ -81,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser" class="md-skip">
+        <a href="#agentic-ia-ne-veut-pas-forcement-dire-agent-react" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CI/CD pour les Data Scientists : Quand le Code Se Met à Danser
+              Agentic IA ne veut pas forcément dire Agent ReAct
             
           </span>
         </div>
@@ -609,84 +607,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quest-ce-que-la-cicd" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Qu'est-ce que la CI/CD ?
+      Introduction
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cicd-pour-les-data-scientists-pourquoi" class="md-nav__link">
+  <a href="#une-histoire-dabstractions" class="md-nav__link">
     <span class="md-ellipsis">
-      CI/CD pour les Data Scientists : Pourquoi ?
+      Une histoire d'abstractions
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="CI/CD pour les Data Scientists : Pourquoi ?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#les-enjeux-de-la-collaboration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Les Enjeux de la Collaboration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#la-solution-cicd-pour-data-scientists" class="md-nav__link">
-    <span class="md-ellipsis">
-      La Solution : CI/CD pour Data Scientists
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#exemple-pour-un-projet-data-science" class="md-nav__link">
+  <a href="#levolution-avec-react-et-les-architectures-agentiques" class="md-nav__link">
     <span class="md-ellipsis">
-      Exemple pour un Projet Data Science
+      L’évolution avec ReAct et les architectures agentiques
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Exemple pour un Projet Data Science">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#structure-du-projet" class="md-nav__link">
-    <span class="md-ellipsis">
-      Structure du Projet
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#exemple-avec-gitlab" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exemple avec gitlab
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#utiliser-des-git-hooks" class="md-nav__link">
+  <a href="#classification-des-agents" class="md-nav__link">
     <span class="md-ellipsis">
-      Utiliser des Git Hooks
+      Classification des agents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprendre-concretement-le-fonctionnement-dun-agent-react" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprendre concrètement le fonctionnement d’un agent ReAct
     </span>
   </a>
   
@@ -757,7 +716,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2024-08-25 00:00:00" class="md-ellipsis">August 25, 2024</time>
+                        <time datetime="2025-06-30 00:00:00" class="md-ellipsis">June 30, 2025</time>
                       </div>
                     </li>
                     
@@ -768,8 +727,7 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/cicd/">CI/CD</a>, 
-                              <a href="../../../../category/mlops/">MLOps</a></span>
+                              <a href="../../../../category/iagen/">IAGen</a></span>
                         </div>
                       </li>
                     
@@ -780,7 +738,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              6 min read
+                              4 min read
                             
                           </span>
                         </div>
@@ -800,167 +758,124 @@
         
 
 
-<h1 id="cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser">CI/CD pour les Data Scientists : Quand le Code Se Met à Danser<a class="headerlink" href="#cicd-pour-les-data-scientists-quand-le-code-se-met-a-danser" title="Permanent link">&para;</a></h1>
-<p>La collaboration entre data scientists et développeurs peut parfois ressembler à une partie de ping-pong chaotique : chacun fait rebondir des idées et des bouts de code, mais rien ne semble vraiment s'assembler correctement. Heureusement, il existe une solution pour rendre cette danse collaborative plus harmonieuse : la CI/CD (Continuous Integration/Continuous Deployment). Oui, même pour les data scientists ! Alors, prenez vos notebooks, ajustez vos lunettes, et découvrons comment transformer cette pagaille en une symphonie bien orchestrée :)</p>
-<!-- more -->
-
-<h2 id="quest-ce-que-la-cicd">Qu'est-ce que la CI/CD ?<a class="headerlink" href="#quest-ce-que-la-cicd" title="Permanent link">&para;</a></h2>
-<p>Avant de plonger dans les détails, clarifions ce que signifie CI/CD, surtout pour ceux qui, parmi nous, passent plus de temps à jongler des notebooks qu’à jongler avec des pipelines. Ou travaillent :
-generalement en nombre reduits au près des metiers:</p>
+<h1 id="agentic-ia-ne-veut-pas-forcement-dire-agent-react">Agentic IA ne veut pas forcément dire Agent ReAct<a class="headerlink" href="#agentic-ia-ne-veut-pas-forcement-dire-agent-react" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Dans le monde de l'intelligence artificielle générative, le terme "agent" est de plus en plus utilisé, notamment avec l'émergence des architectures basées sur le protocole MCP. Pourtant, une question se pose : s'agit-il d'une réelle innovation ou simplement d'un rebranding de concepts déjà existants ?</p>
+<p>Lors d'une discussion avec un collègue, on s’est vite rendu compte qu’on n’avait pas la même définition d’un agent. D’un côté, on pensait que les agents ne sont rien de plus qu’une nouvelle manière d’organiser des abstractions classiques. De l’autre, on défendait l’idée que les agents représentent une avancée réelle, un changement de paradigme dans la façon de concevoir des systèmes intelligents.</p>
+<p>Voyons comment on peut creuser cette question, en s’appuyant notamment sur le point de vue de Hugging Face et quelques observations personnelles.</p>
+<h2 id="une-histoire-dabstractions">Une histoire d'abstractions<a class="headerlink" href="#une-histoire-dabstractions" title="Permanent link">&para;</a></h2>
+<p>Les développeurs n’ont pas attendu l’apparition du mot “agent” pour structurer des systèmes autour des LLMs (Large Language Models). Depuis plusieurs années, ils conçoivent des pipelines qui incluent :</p>
 <ul>
-<li><strong>Continuous Integration (CI)</strong>: une pratique qui consiste à intégrer régulièrement les modifications du code dans un dépôt central, où elles sont automatiquement testées. Imaginez un petit robot qui vérifie si chaque ligne de code que vous ajoutez fonctionne bien avec le reste du code, comme un danseur de tango qui s'assure que chaque pas est en harmonie avec le rythme. L'idée est de détecter rapidement les erreurs afin qu'elles ne s'accumulent pas comme une pile de vaisselle sale (vous savez, celle qu’on promet de faire plus tard, mais qui finit par devenir un Everest inébranlable).</li>
+<li>des appels à des modèles,</li>
+<li>des règles de contrôle,</li>
+<li>des modules d’interaction avec des APIs ou des bases de données.</li>
 </ul>
+<p>Ces systèmes fonctionnaient déjà avec des logiques similaires à celles des agents, mais de manière plus rigide. Un développeur pouvait définir explicitement un ensemble de règles qui guidaient le comportement du système. Ces systèmes “ressemblaient” à des agents, sauf que les décisions étaient pré-programmées.</p>
+<h2 id="levolution-avec-react-et-les-architectures-agentiques">L’évolution avec ReAct et les architectures agentiques<a class="headerlink" href="#levolution-avec-react-et-les-architectures-agentiques" title="Permanent link">&para;</a></h2>
+<p>L’une des vraies avancées a été l’introduction du paradigme <strong>ReAct (Reasoning + Acting)</strong>, qui a changé notre manière de concevoir les agents. Plutôt que de suivre un chemin fixe, les agents modernes :</p>
 <ul>
-<li><strong>Continuous Deployment (CD)</strong>: c' est comme la cerise sur le gâteau. Ici, chaque modification validée (après les tests de CI) est automatiquement déployée en production. Oui, vous avez bien entendu : plus besoin d'appuyer sur un bouton pour déployer, c'est comme si votre code se déployait tout seul, un peu comme une machine à café qui se prépare elle-même une nouvelle tasse de café dès que vous avez terminé la précédente. Le rêve, non ?</li>
+<li>raisonnent sur la situation actuelle,</li>
+<li>planifient les actions à prendre,</li>
+<li>interagissent dynamiquement avec leur environnement,</li>
+<li>s’adaptent aux nouvelles informations.</li>
 </ul>
-<h2 id="cicd-pour-les-data-scientists-pourquoi">CI/CD pour les Data Scientists : Pourquoi ?<a class="headerlink" href="#cicd-pour-les-data-scientists-pourquoi" title="Permanent link">&para;</a></h2>
-<p>Pendant longtemps, la cicd etait propre aux developpeurs : Bonne pratique de developpement (devops). Avec le developpement de la data science et la volonté de maturer les projets data, on a donc commencer à entendre parler de MLOPS. Disons que la CICD est une composante pour faire du MlOps.</p>
-<p>En tant que data scientist, vous pourriez vous demander : "Pourquoi devrais-je me préoccuper de tout ce bazar ? Mes notebooks fonctionnent très bien tels quels !" Certes, mais imaginez la scène : vous travaillez sur un modèle hyper complexe, vous l’entraînez pendant des heures (ou des jours), et puis… Oups, un autre membre de l'équipe modifie le code d'importation des données, et votre magnifique modèle ne fonctionne plus. Catastrophe.
-Ou plus simplement, vous voudriez suivre l'historique d'un code. Le code marchait -il avant? Difficilement de repondre à ces questions à priori sans CICD</p>
-<h3 id="les-enjeux-de-la-collaboration">Les Enjeux de la Collaboration<a class="headerlink" href="#les-enjeux-de-la-collaboration" title="Permanent link">&para;</a></h3>
-<p>La collaboration entre plusieurs data scientists (et développeurs) sur un même projet peut vite devenir compliquée. Chacun a son style, ses méthodes, et son code. Comme une recette de cuisine où chaque cuisinier ajoute ses propres ingrédients sans se concerter avec les autres, le résultat peut être… surprenant, pour ne pas dire immangeable. </p>
-<h3 id="la-solution-cicd-pour-data-scientists">La Solution : CI/CD pour Data Scientists<a class="headerlink" href="#la-solution-cicd-pour-data-scientists" title="Permanent link">&para;</a></h3>
-<p>Implémenter une chaîne CI/CD dans vos projets de data science permet d'assurer que :</p>
+<p>Cette souplesse est rendue possible grâce à l’usage de <strong>tools</strong> (outils), que l’agent peut appeler selon ses besoins.</p>
+<h2 id="classification-des-agents">Classification des agents<a class="headerlink" href="#classification-des-agents" title="Permanent link">&para;</a></h2>
+<p>On peut classer les agents selon leur degré d’autonomie. Voici un tableau pour résumer cette gradation :</p>
+<table>
+<thead>
+<tr>
+<th>Niveau d'agence</th>
+<th>Description</th>
+<th>Nom</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>☆☆☆</td>
+<td>LLM output n'affecte pas le programme</td>
+<td>Simple processor</td>
+<td><code>process_llm_output()</code></td>
+</tr>
+<tr>
+<td>☆☆</td>
+<td>LLM output détermine le flot de contrôle</td>
+<td>Router</td>
+<td><code>if llm_decision(): path_a() else: path_b()</code></td>
+</tr>
+<tr>
+<td>☆☆</td>
+<td>LLM output déclenche des fonctions</td>
+<td>Tool call</td>
+<td><code>run_function(llm_chosen_args)</code></td>
+</tr>
+<tr>
+<td>☆☆☆</td>
+<td>LLM output gère une boucle d'exécution</td>
+<td>Multi-step agent</td>
+<td><code>while llm_should_continue(): execute_next_step()</code></td>
+</tr>
+<tr>
+<td>☆☆☆</td>
+<td>Un agent déclenche un autre agent</td>
+<td>Multi-agent</td>
+<td><code>if llm_trigger(): execute_agent()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ce tableau illustre bien les deux visions :</p>
+<ul>
+<li>Si on reste aux niveaux 1 et 2, on peut dire que les agents ne sont qu’un rebranding de vieux patterns.</li>
+<li>Mais dès qu’on arrive aux niveaux 3 et 4, on parle d’agents <strong>autonomes</strong>, capables de prises de décision complexes.</li>
+</ul>
+<p>Et surtout, <strong>faire des agents ne veut pas forcément dire faire du ReAct</strong>. En réalité, la majorité des systèmes d'agents en production aujourd’hui sont plutôt de type <em>Router</em>.</p>
+<p>Et pour cause : les agents de type ReAct sont <strong>plus complexes à monitorer</strong>, <strong>plus chers à exécuter</strong>, et beaucoup plus difficiles à intégrer dans des boucles avec des humains (Human-in-the-loop).</p>
+<h2 id="comprendre-concretement-le-fonctionnement-dun-agent-react">Comprendre concrètement le fonctionnement d’un agent ReAct<a class="headerlink" href="#comprendre-concretement-le-fonctionnement-dun-agent-react" title="Permanent link">&para;</a></h2>
+<p>Pour bien comprendre comment fonctionne un <strong>agent ReAct</strong>, on peut s’appuyer sur le guide visuel proposé par <a href="https://huggingface.co/docs/smolagents/conceptual_guides/react">Hugging Face Smol Agents</a>. Ces agents utilisent une boucle <strong>Raisonnement ↔ Action</strong>, dans laquelle le LLM ne produit pas une réponse directe, mais une suite d’actions motivées par des raisonnements intermédiaires.</p>
+<p>Voici le <strong>GIF explicatif</strong> tiré de la documentation officielle de Hugginface:</p>
+<p><a class="glightbox" href="https://huggingface.co/datasets/smol-ai/assets/resolve/main/images/react/react-agent.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ReAct Agent Loop" src="https://huggingface.co/datasets/smol-ai/assets/resolve/main/images/react/react-agent.gif" /></a></p>
+<p>Prenons un exemple :</p>
+<blockquote>
+<p><em>"Quelle est la température actuelle à Ouagadougou ?"</em></p>
+</blockquote>
+<p>Un LLM seul ne peut pas répondre correctement à cette question, car :</p>
+<ul>
+<li>il n’a pas accès à la date du jour,</li>
+<li>il ne peut pas interroger une API météo en temps réel.</li>
+</ul>
+<p>Un <strong>agent ReAct</strong>, lui, va raisonner comme suit :</p>
 <ol>
 <li>
-<p><strong>Tous les changements sont testés</strong> : Vous évitez le fameux "ça marche sur ma machine !" en vous assurant que chaque modification est testée dans un environnement standardisé.</p>
+<p><strong>Observation initiale</strong><br />
+   L’agent reçoit la question et constate qu’il lui manque deux informations : la <strong>date actuelle</strong> et la <strong>température en temps réel</strong>.</p>
 </li>
 <li>
-<p><strong>Le code est toujours prêt pour la production</strong> : Vous pouvez déployer vos modèles en production rapidement et en toute confiance, sans avoir à passer des jours à les vérifier manuellement.</p>
+<p><strong>Premier raisonnement</strong><br />
+<em>"Je dois connaître la date d’aujourd’hui pour interroger l’API météo."</em></p>
 </li>
 <li>
-<p><strong>La documentation et le versionning sont automatiques</strong> : Chaque modification est documentée, et vous pouvez facilement revenir en arrière en cas de problème (comme une machine à remonter le temps pour votre code).</p>
+<p><strong>Première action (outil)</strong><br />
+   Appel de <code>get_today_date()</code> → réponse : <code>"13 juillet 2025"</code></p>
 </li>
 <li>
-<p>Tout developpeur ou data scientist pourrait reprendre vos travaux sans perdre les cheveux.</p>
+<p><strong>Deuxième raisonnement</strong><br />
+<em>"Maintenant que j’ai la date, je peux appeler l’outil météo pour Ouagadougou."</em></p>
+</li>
+<li>
+<p><strong>Deuxième action (outil)</strong><br />
+   Appel de <code>get_temperature(city="Ouagadougou", date="2025-07-13")</code> → réponse : <code>"Température actuelle : 32°C"</code></p>
+</li>
+<li>
+<p><strong>Raisonnement final et réponse</strong><br />
+<em>"La température actuelle à Ouagadougou est de 32°C."</em><br />
+   → L’agent renvoie cette réponse à l’utilisateur.</p>
 </li>
 </ol>
-<p>C'est quoi git , gitlab ou github dans tout ça?
-Je vous invite à faire un tour sur cet article au cas où vous n'etes pas tres familier avec des trois mots: <a href="/All_things_start_git.md">github vs gitlab vs git</a></p>
-<h2 id="exemple-pour-un-projet-data-science">Exemple pour un Projet Data Science<a class="headerlink" href="#exemple-pour-un-projet-data-science" title="Permanent link">&para;</a></h2>
-<p>Dans ce guide, nous allons créer un pipeline CI/CD pour un projet de data science sur GitLab. Nous aborderons la structure du projet, la configuration du pipeline avec GitLab CI/CD, les tests, le déploiement d'une application Dash, et un bonus sur l'utilisation des “git hooks” pour tester localement avant de pousser les changements.
-Avant tout parlons de </p>
-<h3 id="structure-du-projet">Structure du Projet<a class="headerlink" href="#structure-du-projet" title="Permanent link">&para;</a></h3>
-<p>Voici une structure typique pour un projet de data science utilisant GitLab CI/CD :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mon_projet_data_science/
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>│
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├── .gitlab-ci.yml        # Fichier de configuration pour le pipeline CI/CD
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├── requirements.txt      # Fichier listant les dépendances Python
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── README.md             # Documentation du projet
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>├── setup.py              # Script d&#39;installation pour le projet
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── data/                 # Répertoire contenant les données
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── raw/              # Données brutes non traitées
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   └── processed/        # Données pré-traitées
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>├── src/                  # Répertoire du code source principal
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   ├── __init__.py       # Fichier d&#39;initialisation du package Python
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   ├── data_loader.py    # Script pour charger et traiter les données
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   ├── model.py          # Définition du modèle de machine learning
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   └── train_model.py    # Script pour l&#39;entraînement du modèle
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>├── tests/                # Répertoire contenant les tests
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│   ├── __init__.py       # Fichier d&#39;initialisation du package de tests
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│   ├── test_data_loader.py  # Tests pour le chargement des données
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│   └── test_model.py     # Tests pour le modèle de machine learning
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>└── notebooks/            # Répertoire pour les notebooks Jupyter
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    ├── exploration.ipynb # Notebook pour l&#39;exploration des données
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    └── analysis.ipynb    # Notebook pour l&#39;analyse des résultats
-</code></pre></div>
-<h3 id="exemple-avec-gitlab">Exemple avec gitlab<a class="headerlink" href="#exemple-avec-gitlab" title="Permanent link">&para;</a></h3>
-<p>Cela revient à configurer le fichier <code>.gitlab-ci.yml</code>
-Voici un exemple de configuration pour le pipeline CI/CD :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">stages</span><span class="p">:</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nt">variables</span><span class="p">:</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">VENV_PATH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.venv</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nt">before_script</span><span class="p">:</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python3 -m venv $VENV_PATH</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source $VENV_PATH/bin/activate</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install --upgrade pip</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="nt">install</span><span class="p">:</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">install</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="nt">cache</span><span class="p">:</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$VENV_PATH</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="nt">test</span><span class="p">:</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest tests/</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="nt">lint</span><span class="p">:</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lint</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flake8 .</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="nt">train</span><span class="p">:</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/train_model.py</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="nt">deploy</span><span class="p">:</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy</span>
-<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;Déploiement de l&#39;application Dash sur le serveur de production...&quot;</span>
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">scp -r * user@server:/path/to/deployment</span>
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">  </span><span class="nt">only</span><span class="p">:</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
-</code></pre></div>
-<p>Explications des Étapes du Pipeline :</p>
-<ol>
-<li><strong>Install Stage</strong> : Installe les dépendances Python définies dans <code>requirements.txt</code>.</li>
-<li><strong>Test Stage</strong> : Exécute les tests unitaires avec <code>pytest</code> pour s'assurer que chaque composant fonctionne correctement.</li>
-<li><strong>Lint Stage</strong> : Utilise <code>flake8</code> pour vérifier la qualité du code et s'assurer qu'il respecte les bonnes pratiques de codage.</li>
-<li><strong>Train Stage</strong> : Lance l'entraînement du modèle de machine learning en exécutant le script <code>train_model.py</code>.</li>
-<li><strong>Deploy Stage</strong> : Déploie l'application Dash sur un serveur distant. Cette étape est déclenchée uniquement pour la branche <code>main</code>.</li>
-</ol>
-<h2 id="utiliser-des-git-hooks">Utiliser des Git Hooks<a class="headerlink" href="#utiliser-des-git-hooks" title="Permanent link">&para;</a></h2>
-<p>Dans le cas où vous ne disposer pas de serveur distant pour lancer vos codes, vous pourriez utiliser  <strong>git hooks</strong> pour exécuter les tests locaux. Par exemple, un hook <code>pre-push</code> peut être utilisé pour exécuter les tests avant chaque <code>git push</code>.</p>
-<ol>
-<li>
-<p><strong>Créer un Hook <code>pre-push</code> :</strong></p>
-<p>Dans le répertoire <code>.git/hooks</code>, créez un fichier nommé <code>pre-push</code> :</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>touch<span class="w"> </span>.git/hooks/pre-push
-</code></pre></div>
-2. <strong>Rendre le Hook Exécutable :</strong>
-3. <strong>Ajouter le Script pour Exécuter les Tests :</strong></p>
-<p>Ouvrez le fichier <code>pre-push</code> et ajoutez le script suivant :</p>
-</li>
-</ol>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Exécution des tests locaux avant le push...&quot;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>pytest<span class="w"> </span>tests/
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Échec des tests. Annulation du push.&quot;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">fi</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Tests réussis. Push en cours...&quot;</span>
-</code></pre></div>
-Avec ce hook en place, chaque tentative de git push exécutera les tests locaux. Si les tests échouent, le push sera annulé, garantissant ainsi que seul le code valide est poussé vers le dépôt distant.</p>
+<p>Ce qui est puissant ici, c’est que <strong>chaque étape est motivée par une réflexion claire</strong>, ce qui rend le comportement de l’agent transparent, traçable, et modulaire. Si demain l’API météo change, il suffit de remplacer l’outil, sans toucher à la logique globale.</p>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>En somme, intégrer la CI/CD dans vos projets de data science est comme apprendre à danser le tango avec vos collègues : c'est au début un peu maladroit, mais une fois que vous avez le rythme, vous ne pouvez plus vous en passer. Cela transforme votre façon de travailler, rend vos collaborations plus fluides, et garantit que vos modèles sont toujours au top de leur forme.</p>
-<p>Alors, chers data scientists, prêts à chausser vos chaussures de danse et à adopter la CI/CD ? Parce qu’une fois que vous y aurez goûté, vous ne reviendrez jamais en arrière. Promis, juré.</p>
-<p>References :
-- https://martinfowler.com/articles/continuousIntegration.html</p>
-<ul>
-<li>https://martinfowler.com/books/duvall.html</li>
-</ul>
+<p>Alors, qui a raison ? En réalité, les deux camps ont un fond de vérité. Oui, les agents reprennent des concepts déjà connus, mais ils les élèvent à un niveau supérieur.</p>
+<p>L’intérêt des agents modernes ne réside pas uniquement dans leur architecture, mais dans leur <strong>capacité à planifier, raisonner, s’adapter</strong>, et à choisir dynamiquement les bonnes actions. Et c’est cette intelligence d’orchestration qui donne du sens au mot <strong>“agent”</strong> aujourd’hui.</p>
 
 
 
