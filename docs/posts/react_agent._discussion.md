@@ -14,6 +14,8 @@ Dans le monde de l'intelligence artificielle générative, le terme "agent" est 
 
 Lors d'une discussion avec un collègue, on s’est vite rendu compte qu’on n’avait pas la même définition d’un agent. D’un côté, on pensait que les agents ne sont rien de plus qu’une nouvelle manière d’organiser des abstractions classiques. De l’autre, on défendait l’idée que les agents représentent une avancée réelle, un changement de paradigme dans la façon de concevoir des systèmes intelligents.
 
+<!-- more -->
+
 Voyons comment on peut creuser cette question, en s’appuyant notamment sur le point de vue de Hugging Face et quelques observations personnelles.
 
 ## Une histoire d'abstractions
@@ -64,7 +66,7 @@ Pour bien comprendre comment fonctionne un **agent ReAct**, on peut s’appuyer 
 
 Voici le **GIF explicatif** tiré de la documentation officielle de Hugginface:
 
-![ReAct Agent Loop](https://huggingface.co/datasets/smol-ai/assets/resolve/main/images/react/react-agent.gif)
+![ReAct Agent Loop](https://cas-bridge.xethub.hf.co/xet-bridge-us/621ffdd236468d709f1835cf/00598243d02aefce27b6f2a315b745b55556b191fd8f472a95d3c0f2695ed84d?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20250713%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250713T023130Z&X-Amz-Expires=3600&X-Amz-Signature=2e41937613d114f79f9abc2601464c4431b044bf6de7ed406807001df792340f&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=64ba8d436387fe297fd42571&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27Agent_ManimCE.gif%3B+filename%3D%22Agent_ManimCE.gif%22%3B&response-content-type=image%2Fgif&x-id=GetObject&Expires=1752377490&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1MjM3NzQ5MH19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82MjFmZmRkMjM2NDY4ZDcwOWYxODM1Y2YvMDA1OTgyNDNkMDJhZWZjZTI3YjZmMmEzMTViNzQ1YjU1NTU2YjE5MWZkOGY0NzJhOTVkM2MwZjI2OTVlZDg0ZCoifV19&Signature=epKU6haFYeaWZynpk4Uw5KDkfTK1%7EL1y5ishW6SzxuKijrQGHhBosOq5JpsjCTJLcdvQBwy-vVvlbN8DOn9vyUr9--HNzRv3LDg2UtRMfuq6bI-JVtG8XoDax5WxzLKU7-AFU-Z6DE7NO7fMSrMrcTsjPcEJkDlkeo0ikh981GXRzLZL%7EqTPsywTKan8Xj0eR6ebEsit4lAiXvw4%7E6Qoo0wQltfu1wPLVpVm3q%7EAieDS5plYYMj8ZgSP5XZ7JvnNX4V5D-ko29CxNmatjipaunelM4nkqYJgsoAl9LrBvbW%7Ed-wMIkLRhRUOA-1GUmCsQ88iKy7uJCNNt2aYEqXHvw__&Key-Pair-Id=K2L8F4GPSG1IFC)
 
 Prenons un exemple :
 
