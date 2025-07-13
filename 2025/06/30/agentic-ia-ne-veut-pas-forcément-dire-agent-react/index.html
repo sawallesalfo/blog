@@ -831,12 +831,12 @@
 <li>Si on reste aux niveaux 1 et 2, on peut dire que les agents ne sont qu’un rebranding de vieux patterns.</li>
 <li>Mais dès qu’on arrive aux niveaux 3 et 4, on parle d’agents <strong>autonomes</strong>, capables de prises de décision complexes.</li>
 </ul>
-<p>Et surtout, <strong>faire des agents ne veut pas forcément dire faire du ReAct</strong>. En réalité, la majorité des systèmes d'agents en production aujourd’hui sont plutôt de type <em>Router</em>.</p>
+<p>Et surtout, <strong>faire des agents ne veut pas forcément dire faire du ReAct</strong>. En réalité, la majorité des systèmes d'agents en production(avis collectés sur la base de discussions lors du Google submit tenu à Paris le 22 Mai 2025 avec des data scientists) aujourd’hui sont plutôt de type <em>Router</em>.</p>
 <p>Et pour cause : les agents de type ReAct sont <strong>plus complexes à monitorer</strong>, <strong>plus chers à exécuter</strong>, et beaucoup plus difficiles à intégrer dans des boucles avec des humains (Human-in-the-loop).</p>
 <h2 id="comprendre-concretement-le-fonctionnement-dun-agent-react">Comprendre concrètement le fonctionnement d’un agent ReAct<a class="headerlink" href="#comprendre-concretement-le-fonctionnement-dun-agent-react" title="Permanent link">&para;</a></h2>
 <p>Pour bien comprendre comment fonctionne un <strong>agent ReAct</strong>, on peut s’appuyer sur le guide visuel proposé par <a href="https://huggingface.co/docs/smolagents/conceptual_guides/react">Hugging Face Smol Agents</a>. Ces agents utilisent une boucle <strong>Raisonnement ↔ Action</strong>, dans laquelle le LLM ne produit pas une réponse directe, mais une suite d’actions motivées par des raisonnements intermédiaires.</p>
 <p>Voici le <strong>GIF explicatif</strong> tiré de la documentation officielle de Hugginface:</p>
-<p><a class="glightbox" href="&quot;https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Agent_ManimCE.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ReAct Agent Loop" src="&quot;https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Agent_ManimCE.gif" /></a></p>
+<p><a class="glightbox" href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Agent_ManimCE.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ReAct Agent Loop" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Agent_ManimCE.gif" /></a></p>
 <p>Prenons un exemple :</p>
 <blockquote>
 <p><em>"Quelle est la température actuelle à Ouagadougou ?"</em></p>
