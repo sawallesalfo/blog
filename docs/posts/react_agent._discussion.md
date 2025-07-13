@@ -56,7 +56,7 @@ Ce tableau illustre bien les deux visions :
 - Si on reste aux niveaux 1 et 2, on peut dire que les agents ne sont qu’un rebranding de vieux patterns.
 - Mais dès qu’on arrive aux niveaux 3 et 4, on parle d’agents **autonomes**, capables de prises de décision complexes.
 
-Et surtout, **faire des agents ne veut pas forcément dire faire du ReAct**. En réalité, la majorité des systèmes d'agents en production aujourd’hui sont plutôt de type *Router*.
+Et surtout, **faire des agents ne veut pas forcément dire faire du ReAct**. En réalité, la majorité des systèmes d'agents en production(avis collectés sur la base de discussions lors du Google submit tenu à Paris le 22 Mai 2025 avec des data scientists) aujourd’hui sont plutôt de type *Router*.
 
 Et pour cause : les agents de type ReAct sont **plus complexes à monitorer**, **plus chers à exécuter**, et beaucoup plus difficiles à intégrer dans des boucles avec des humains (Human-in-the-loop).
 
@@ -66,7 +66,7 @@ Pour bien comprendre comment fonctionne un **agent ReAct**, on peut s’appuyer 
 
 Voici le **GIF explicatif** tiré de la documentation officielle de Hugginface:
 
-![ReAct Agent Loop]("https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Agent_ManimCE.gif)
+![ReAct Agent Loop](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/Agent_ManimCE.gif)
 
 Prenons un exemple :
 
