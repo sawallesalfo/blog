@@ -6,40 +6,38 @@ categories:
     - IAGen  
 ---
 
-# Build an Agent (1/3): Exemple d'un Agent Router
+# Build an Agent (1/3): Example of a Router Agent
 
 ## Introduction
 
-Bon, 
 Dans cet article, je partage avec vous comment construire des agents IA sans recourir à des frameworks complexes comme LangChain ou SmolAgent. Si vous êtes nouveau sur ce blog, je vous invite à lire d'abord cet article :
 
-**Qu'est-ce qu'un agent ?** Pour comprendre les concepts de base, je vous invite à lire d'abord [l'article précédent sur les agents](https://sawallesalfo.github.io/blog/2025/06/30/agentic-ia-ne-veut-pas-forc%C3%A9ment-dire-agent-react/)
+Qu'est-ce qu'un agent ? Pour comprendre les concepts de base, je vous invite à lire d'abord [l'article précédent sur les agents](https://sawallesalfo.github.io/blog/2025/06/30/agentic-ia-ne-veut-pas-forc%C3%A9ment-dire-agent-react/)
 
 Cette première partie de la série "How to build an Agent" se concentre sur la création d'un **Router Agent** - un agent capable de router intelligemment les requêtes utilisateur vers différentes actions selon leur nature.
+<!-- more -->
 
-L'approche présentée ici privilégie la simplicité et le contrôle total sur les sorties des agents, en utilisant uniquement Python et des bonnes pratiques d'abstraction. Dans cet article, nous allons mettre en place un Agent Router qui fait des visualisations de A à Z.
+L'approche présentée ici privilégie la simplicité et le contrôle total sur les sorties des agents, en utilisant uniquement Python et des bonnes pratiques d'abstraction.
+Dans cet article, nous allons mettre en place un Agent Router qui fait des visualisations de A à Z.
 
-## Les 8 Bonnes Pratiques Fondamentales
+
+## 8 Bonnes Pratiques
 
 Avant d'explorer l'implémentation, voici quelques bonnes pratiques à mettre en place si vous voulez créer vos propres agents :
-
 1. **Concevoir un workflow clair** avec une orchestration simple, privilégier les schémas pour avoir une idée claire des composants de votre système. Vous pouvez dessiner au tableau, sur PowerPoint ou avec un outil spécifique. Personnellement, je préfère utiliser Mermaid car il s'intègre facilement dans le code.
 
-2. **Définir un type de sortie standardisé** (ici dans cet article j'utiliserai `ActionOutput`) pour toutes les actions
-
+2. **Définir un type de sortie standardisé** (ici dans cet j'utilisera`ActionOutput`) pour toutes les actions
 3. **Standardiser les méthodes principales** (utiliser `execute()` pour chaque action)
-
 4. **Utiliser des balises XML** pour contrôler les sorties des LLMs
-
-5. **Implémenter le One-Shot Prompting** avec des exemples dans les prompts
-
-6. **Utiliser un adapter pattern** pour gérer les différents clients LLM (voir mon article sur LLM factory [ici](https://sawallesalfo.github.io/blog/2025/04/30/trop-de-sdk-pour-les-llms--passe-%C3%A0-une-llmfactory--ou-adapters-avec-litellm/))
-
-7. **Maintenir un code propre** avec une logique d'abstraction bien définie (ce point c'est assez simple à dire mais plus le code est codé sans bonne structuration plus il sera difficile à maintenir)
-
+4. **Implémenter le One-Shot Prompting** avec des exemples dans les prompts
+5. **Utiliser un adapter pattern** pour gérer les différents clients LLM (voir mon article sur LLM factory [ici] (https://sawallesalfo.github.io/blog/2025/04/30/trop-de-sdk-pour-les-llms--passe-%C3%A0-une-llmfactory--ou-adapters-avec-litellm/)
+)
+7. **Maintenir un code propre** avec une logique d'abstraction bien définie  (ce point c'est assz simple à dire mais plus le code est codé sans bonne strcturation plus ils sera differents)
 8. **Différencier vos prompts templates** avec Jinja au lieu d'un simple formatage, car vous serez vite limité quand vous avez un mélange d'accolades dans vos prompts. D'ailleurs, vous pourriez définir des décorateurs qui permettent de générer les prompts templates juste grâce à un docstring de votre fonction.
 
-Dans la suite de cet article, on essayera de mettre en place un Agent qui fait des visualisations.
+
+Dans la suite de cet article on essayzera de mettre en place un Agent qui fait des visualisation
+
 
 ## WORKFLOW
 
@@ -77,13 +75,18 @@ sequenceDiagram
     end
 ```
 
+
+
 Grâce à ce graphique, on voit que nous avons besoin d'une requête qui sera envoyée à un agent.
 
 L'agent va d'abord passer par un générateur de code SQL, puis exécuter ce code et enfin générer le graphique.
 
 Ce workflow nous permet donc de visualiser nos premiers composants.
 
-## Les Abstractions de Base
+
+
+## Les Abstraction de Base
+
 
 La première étape consiste à créer une structure de données commune pour toutes les actions :
 
@@ -92,10 +95,11 @@ La première étape consiste à créer une structure de données commune pour to
 class ActionOutput:
     action_name: str
     output_value: Any
-    grade: int  # Note de qualité de la sortie
-```
+    grade: int  #
 
-Cette approche garantit une interface cohérente entre toutes les actions de l'agent. Je peux facilement contrôler les résultats grâce au paramètre `grade`.
+Cette approche garantit une interface cohérente entre toutes les actions de l'agent.
+Je peux facilement contrôler les résultats grâce au paramètre grade
+
 
 Toutes les actions héritent d'une classe de base et implémentent la méthode `execute()` :
 
@@ -109,7 +113,8 @@ class BaseAction(ABC):
         pass
 ```
 
-### LLM Adapter
+
+### LLM adapter
 
 L'adapter permet de gérer différents clients LLM avec une interface unifiée :
 Dans cet article, j'utilise un LLM de ma LLMFactory de type Mistral.
@@ -118,8 +123,7 @@ Faire un appel LLM revient à faire : `llm.predict(query=my_query, system_prompt
 
 L'article qui discute de cette approche : [Trop de SDK pour les LLMs ? Passez à une LLMFactory](https://sawallesalfo.github.io/blog/2025/04/30/trop-de-sdk-pour-les-llms--passe-%C3%A0-une-llmfactory--ou-adapters-avec-litellm/)
 
-Avec le code ci-après, j'ai mon client LLM :
-
+Avec le code ci-après, j'ai mon llm client.
 ```python
 config = {
     "provider": "mistral",
@@ -129,8 +133,8 @@ config = {
 }
 
 llm = LLMFactory(config).get_client()
-```
 
+```
 ## Construction du Générateur SQL
 
 ### Prérequis
@@ -167,8 +171,8 @@ Notre implémentation suit ces étapes :
 ### Données et Métadonnées
 
 Pour ce projet, j'utilise un dataset de la Banque Mondiale sur le PIB par habitant, transformé en format time series. Voici la description YAML qui servira de référence au LLM :
-
 ```yaml
+
 dataset:
   name: "World Bank Country Classification"
   description: "World Bank country and regional classifications with income groups"
@@ -205,10 +209,11 @@ columns:
     nullable: false  
 ```
 
-Pour le prompt template SQL, cela ressemble à ceci :
+Pour le prompt template SQL , cela ressemble à ceci
 
 ```python
-PROMPT_TEMPLATE_SQL = """
+PROMPT_TEMPLATE_SQL  = """
+
 Tu es un assistant expert en données structurées et capable de répondre à des questions utilisateur à partir d'un jeu de données timeseries.
 
 Voici les métadonnées du jeu de données :
@@ -216,23 +221,26 @@ Voici les métadonnées du jeu de données :
 
 Les métadonnées permettent de mieux comprendre le jeu de données, ses colonnes, ses types de données, et les informations supplémentaires qui peuvent être utiles pour répondre aux questions.
 
-Ta réponse doit respecter **strictement** l'un des formats suivants :
+
+Ta réponse doit respecter **strictement** l’un des formats suivants :
 - Si la query demande une explication, définition, source ou toute information contenue dans les métadonnées du jeu de données, alors ta réponse doit être **entourée de balises `<text>`** comme ceci :
-- Si la query nécessite d'interroger les données via une requête SQL (par exemple, valeurs d'un pays, comparaison entre années, etc.), alors ta réponse doit être **entourée de balises `<sql>`** comme ceci :
+- Si la query nécessite d’interroger les données via une requête SQL (par exemple, valeurs d’un pays, comparaison entre années, etc.), alors ta réponse doit être **entourée de balises `<sql>`** comme ceci :
 
 <exemple>
 **Question** : Quelle est la définition longue de l'indicateur ?
-**Réponse attendue** <text>Le PIB par habitant est le produit intérieur brut divisé par la population en milieu d'année. Le PIB est la somme de la valeur ajoutée brute de tous les producteurs résidents d'une économie plus toutes taxes sur les produits et moins les subventions non incluses dans la valeur des produits.</text>
-</exemple>
+**Réponse attendue** <text>Political Stability and Absence of Violence/Terrorism measures perceptions of the likelihood of political instability and/or politically-motivated violence, including terrorism. Estimate gives the country's score on the aggregate indicator, in units of a standard normal distribution, i.e. ranging from approximately -2.5 to 2.5.</text>
+<exemple>
 
-Voici la query : <query>{{ query }}</query>
-Ne mélange jamais les deux types. Ne justifie rien. Retourne uniquement ce qu'on t'a demandé au bon format.
+Here is the query :<query>{{ query }}</query>
+Ne mélange jamais les deux types. Ne justifie rien. Retourne uniquement ce qu’on t’a demandé au bon format.**
 """
 ```
 
 ```python
 import yaml
-
+metadata_path = "./metadata.yaml"
+with open(metadata_path, 'r') as file:
+    METADATA = yaml.safe_load(file)
 class SQLGeneratorAction(BaseAction):
     """Action qui génère des requêtes SQL ou retourne des informations à partir des métadonnées"""
     
@@ -253,7 +261,7 @@ class SQLGeneratorAction(BaseAction):
         """Génère une requête SQL ou retourne une information des métadonnées"""
         try:
             # Génération de la réponse via le LLM
-            prompt = Template(PROMPT_TEMPLATE_SQL).render(
+            prompt = Template(SQL_PROMPT_TEMPLATE).render(
                 query=query,
                 metadata=self.metadata
             )
@@ -283,6 +291,7 @@ class SQLGeneratorAction(BaseAction):
                     grade=1  # Réponse textuelle
                 )
             
+            # Aucun format reconnu
             return ActionOutput(
                 action_name=self.name,
                 output_value="Format de réponse invalide",
@@ -298,9 +307,13 @@ class SQLGeneratorAction(BaseAction):
             )
 ```
 
-Et voilà, nous avons notre générateur SQL fonctionnel !
+Et voilà, nous avons notre générateur SQL fonctionnel :
+![image](./agent_router/sql_generator.png)
 
-## Construction de l'Exécuteur du Code
+
+
+## Construction de l'executeur du code
+
 
 Il y a plusieurs façons de procéder :
 
@@ -314,10 +327,10 @@ Il y a plusieurs façons de procéder :
 
 Je vous propose d'utiliser Polars car il est très optimisé : il peut faire de l'exécution lazy comme Spark et gère très bien les grosses tables. Par expérience, j'ai manipulé des tables de plus de 20 Go en faisant du SQL avec Polars. Cela fonctionne bien car le contexte fait du lazy loading et, lors du scan du dataset, il parcourt et récupère uniquement les partitions qui l'intéressent. Mais fermons la parenthèse et revenons à nos moutons.
 
-Ici j'ai juste un fichier CSV à scanner, mais je vous propose ici une Action complète qui peut se faire sur pandas, polars ou sqlite très simple à prendre en main.
 
-Voici le code :) ne me remerciez pas :
+Iic j'ai juste un fichier csv à scanner, mais , ej vous propose ici une aAcytion complete qui peut se faire sur pandas polars ou slqite très simple à prendre en monins
 
+vOICI LE code :) ne me remerceie pas
 ```python
 class SQLExecutor:
     """Simplified SQL executor with configurable backends"""
@@ -415,23 +428,32 @@ class SQLExecutor:
             self.conn.close()
 ```
 
-## Construction de l'Action Plot
+![image](./agent_router/sql_generator.png)
 
-La génération automatique de graphiques à partir de données et de requêtes en langage naturel représente un défi technique complexe qui combine traitement du langage naturel, compréhension des données et génération de code. Pour aller droit au but, c'est mieux d'utiliser vega-altair si on veut le faire plus facilement et efficacement.
 
-### Pourquoi Altair plutôt que Plotly ou Matplotlib ?
+## Construction of Plot Action
 
-Altair se distingue par sa grammaire de visualisation déclarative basée sur Vega-Lite, qui offre une structure JSON prévisible et standardisée, une séparation claire entre les données et la spécification visuelle, et nécessite beaucoup moins de code "boilerplate" que Matplotlib. Cette consistance structurelle facilite grandement la génération automatique de graphiques : le modèle de langage sait exactement à quoi s'attendre, ce qui réduit les erreurs et accélère le développement. En résumé, Altair est particulièrement adapté à l'automatisation car il combine simplicité, robustesse et clarté dans la définition des visualisations.
+
+
+
+La génération automatique de graphiques à partir de données et de requêtes en langage naturel représente un défi technique complexe qui combine traitement du langage naturel, compréhension des données et génération de code. Pour aller droit au but, c'est mieux d'utilsier vega-altair si on veut le faire plus faciement et effciacement
+
+###  Pourquoi Altair plutôt que Plotly ou Matplotlib ?
+
+
+Altair se distingue par sa grammaire de visualisation déclarative basée sur Vega-Lite, qui offre une structure JSON prévisible et standardisée, une séparation claire entre les données et la spécification visuelle, et nécessite beaucoup moins de code "boilerplate" que Matplotlib. Cette consistance structurelle facilite grandement la génération automatique de graphiques : le modèle de langage sait exactement à quoi s'attendre, ce qui réduit les erreurs et accélère le développement. En résumé, Altair est particulièrement adapté à l'automatisation car il combine simplicité, robustesse et clarté dans la définition des visualisations.
+
 
 ### Discussions
 
-Le post-traitement est une étape absolument cruciale dans la génération automatique de graphiques. Il ne s'agit pas simplement de récupérer la grammaire Altair produite par le LLM : il faut aussi corriger les éventuelles incohérences de syntaxe (par exemple, les différences entre JavaScript et Python), injecter les vraies données dans la grammaire, et valider la structure finale avant le rendu. Sans cette étape, on s'expose à des erreurs d'exécution ou à des visualisations incomplètes.
+Le post-traitement est une étape absolument cruciale dans la génération automatique de graphiques. Il ne s'agit pas simplement de récupérer la grammaire Altair produite par le LLM : il faut aussi corriger les éventuelles incohérences de syntaxe (par exemple, les différences entre JavaScript et Python), injecter les vraies données dans la grammaire, et valider la structure finale avant le rendu. Sans cette étape, on s'expose à des erreurs d'exécution ou à des visualisations incomplètes.
 
-Bonne nouvelle : la plupart des modèles de langage modernes, même les plus petits, s'en sortent très bien pour générer du Altair. J'ai pu tester avec GPT-4o-mini, Claude 3 Haiku ou Mistral Medium : tous comprennent la structure JSON attendue, suivent correctement les instructions, et produisent des grammaires Altair cohérentes dans la majorité des cas. Cela ouvre la voie à des solutions robustes, même avec des modèles accessibles et peu coûteux.
+Bonne nouvelle : la plupart des modèles de langage modernes, même les plus petits, s'en sortent très bien pour générer du Altair. J'ai pu tester avec GPT-4o-mini, Claude 3 Haiku ou Mistral Medium : tous comprennent la structure JSON attendue, suivent correctement les instructions, et produisent des grammaires Altair cohérentes dans la majorité des cas. Cela ouvre la voie à des solutions robustes, même avec des modèles accessibles et peu coûteux.
 
-Un point d'attention : il ne suffit pas de générer la grammaire et de l'afficher telle quelle. Selon le contexte, la visualisation peut être servie sous différents formats : HTML pour une intégration web, base64 pour une API, ou directement en objet Altair pour une application Python. Cette flexibilité est essentielle pour s'adapter à tous les cas d'usage (dashboard, reporting automatisé, chatbot, etc.).
+Un point d'attention : il ne suffit pas de générer la grammaire et de l'afficher telle quelle. Selon le contexte, la visualisation peut être servie sous différents formats : HTML pour une intégration web, base64 pour une API, ou directement en objet Altair pour une application Python. Cette flexibilité est essentielle pour s'adapter à tous les cas d'usage (dashboard, reporting automatisé, chatbot, etc.).
 
-Un autre aspect clé à prendre en compte est la gestion des tokens et l'optimisation du prompt. Pour éviter d'exploser le contexte du modèle, il est judicieux de limiter la taille des exemples de données envoyés dans le prompt. Par exemple, on peut simplement échantillonner les 5 premières lignes du dataset :
+
+Un autre aspect clé à prendre en compte est la gestion des tokens et l'optimisation du prompt. Pour éviter d'exploser le contexte du modèle, il est judicieux de limiter la taille des exemples de données envoyés dans le prompt. Par exemple, on peut simplement échantillonner les 5 premières lignes du dataset :
 
 ```python
 data_sample = dataset[:5]
@@ -439,9 +461,9 @@ data_sample = dataset[:5]
 
 Cette approche réduit significativement la consommation de tokens tout en conservant suffisamment d'informations pour que le modèle comprenne la structure des données.
 
-Le template de prompt doit aussi être optimisé : instructions concises mais précises, exemples structurés, contraintes claires sur le format de sortie. Il ne faut pas hésiter à itérer plusieurs fois pour trouver le prompt idéal, celui qui maximise la qualité des réponses du modèle. À noter : certains modèles comme Mistral ont été entraînés sur d'anciennes versions de Vega, donc il arrive parfois qu'ils utilisent des clés obsolètes dans la grammaire générée.
+Le template de prompt doit aussi être optimisé : instructions concises mais précises, exemples structurés, contraintes claires sur le format de sortie. Il ne faut pas hésiter à itérer plusieurs fois pour trouver le prompt idéal, celui qui maximise la qualité des réponses du modèle. À noter : certains modèles comme Mistral ont été entraînés sur d'anciennes versions de Vega, donc il arrive parfois qu'ils utilisent des clés obsolètes dans la grammaire générée.
 
-Voici un exemple de template optimisé :
+Voici un exemple de template optimisé :
 
 ```python
 PLOT_PROMPT_TEMPLATE = """Your task is to generate Vega-Altair grammar chart that tells a story with actionable insights for non-technical stakeholders.
@@ -479,14 +501,29 @@ Choose the most appropriate:
 """
 ```
 
-En production, il ne s'agit évidemment pas de servir le graphique tel quel dans un notebook ou une console. L'intérêt de cette architecture, c'est qu'elle permet une intégration très flexible : la visualisation générée peut être exportée dynamiquement en HTML pour une application web, ou encodée en base64 pour être intégrée dans une API, un rapport automatisé, ou même transmise à un front-end distant. Cette polyvalence rend le système facilement déployable dans des contextes variés :
+Voici un exemple de résultat obtenu après exécution de l'action complet :
+![alt text](./agent_router/plot.png)
+
+
+
+
+
+### Résultats
+
+Voici le résultat de l'exécution :
+
+![alt text](./agent_router/plot.png)
+
+
+En production, il ne s'agit évidemment pas de servir le graphique tel quel dans un notebook ou une console. L'intérêt de cette architecture, c'est qu'elle permet une intégration très flexible : la visualisation générée peut être exportée dynamiquement en HTML pour une application web, ou encodée en base64 pour être intégrée dans une API, un rapport automatisé, ou même transmise à un front-end distant. Cette polyvalence rend le système facilement déployable dans des contextes variés :
 - Applications web (HTML)
 - APIs (base64)
 - Dashboards interactifs
 - Génération de rapports automatisés
 
-Mais alors, comment transformer toute cette belle théorie en un agent qui génère vraiment des graphiques ? Spoiler : il ne suffit pas de crier "Altair, fais-moi un joli chart !" (même si ça serait cool). Voici donc la fameuse classe PlotAction, à consommer sans modération :
 
+
+Mais alors, comment transformer toute cette belle théorie en un agent qui génère vraiment des graphiques ? Spoiler : il ne suffit pas de crier "Altair, fais-moi un joli chart !" (même si ça serait cool :). Voici donc la fameuse classe PlotAction, à consommer sans modération :
 ```python
 import altair as alt
 import ast
@@ -587,6 +624,7 @@ class PlotAction(BaseAction):
                 output_value=f"Error: {str(e)}",
                 grade=0
             )
+
 ```
 
 
