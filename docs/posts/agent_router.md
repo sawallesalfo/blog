@@ -501,10 +501,6 @@ Choose the most appropriate:
 """
 ```
 
-Voici un exemple de résultat obtenu après exécution de l'action complet :
-![alt text](./agent_router/plot.png)
-
-
 
 
 
