@@ -51,7 +51,7 @@ Trop de frameworks sont disponibles sur le marché. Pour la production, je recom
 |---------------|------------|-------------------|---------------------|
 | **LangChain** | Écosystème riche, nombreux connecteurs | Complexité élevée, abstractions opaques | Prototypage rapide, intégrations multiples |
 | **LangGraph** | Contrôle fin du workflow, Human in the loop, graph-based, state management | Courbe d'apprentissage élevée | Workflows complexes, debugging avancé |
-| **SmolAgent** | Simplicité, transparence, performance | Écosystème plus limité | Production, contrôle précis |
+| **SmolAgent** | Simplicité, transparence, performance | Écosystème plus limité | Prototypage rapide, React loop, démo |
 | **CrewAI** | Multi-agents, orchestration avancée | Overhead pour cas simples | Équipes d'agents, tâches complexes |
 | **Pydantic AI** | Type safety, AG-UI, intégration MCP, async, interruption et communauté active | Écosystème récent, documentation en cours | Applications type-safe et prêtes pour la production |
 
