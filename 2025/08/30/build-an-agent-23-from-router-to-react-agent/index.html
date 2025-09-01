@@ -668,9 +668,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ce-quil-faut-pour-avoir-un-outil" class="md-nav__link">
+  <a href="#ce-quil-faut-pour-avoir-un-tool" class="md-nav__link">
     <span class="md-ellipsis">
-      Ce qu'il faut pour avoir un outil
+      Ce qu'il faut pour avoir un tool
     </span>
   </a>
   
@@ -889,30 +889,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workflow-intelligent-quand-utiliser-chaque-approche" class="md-nav__link">
-    <span class="md-ellipsis">
-      Workflow Intelligent : Quand Utiliser Chaque Approche
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Workflow Intelligent : Quand Utiliser Chaque Approche">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#matrice-de-decision" class="md-nav__link">
-    <span class="md-ellipsis">
-      Matrice de Décision
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
@@ -1032,7 +1008,7 @@ Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de
 <p>Le pattern <strong>React</strong> = Reason-Act-Observe. L'agent raisonne → agit → observe → répète.</p>
 <ol>
 <li><strong>Raisonne</strong> (Reason) : Analyse la situation et détermine la prochaine action à entreprendre</li>
-<li><strong>Agit</strong> (Act) : Exécute l'action choisie en utilisant les outils disponibles  </li>
+<li><strong>Agit</strong> (Act) : Exécute l'action choisie en utilisant les tools disponibles  </li>
 <li><strong>Observe</strong> : Analyse le résultat de l'action pour décider de la suite</li>
 </ol>
 <p>Ce cycle se répète jusqu'à ce que l'agent estime avoir accompli la tâche demandée.</p>
@@ -1133,20 +1109,20 @@ Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de
 <li><strong>Multi-agents</strong> : CrewAI</li>
 </ul>
 <h2 id="les-tools">Les Tools<a class="headerlink" href="#les-tools" title="Permanent link">&para;</a></h2>
-<p>Pourquoi les LLM ont besoin d'outils ?</p>
+<p>Pourquoi les LLM ont besoin de tools ?</p>
 <p>Les LLM prédisent des tokens, ils ne calculent pas. D'où les erreurs fréquentes sur des questions simples comme "combien de 'r' dans strawberry".</p>
 <p>Les grands modèles de langage comme GPT-4 ou Mistral sont extraordinaires pour comprendre et générer du texte, mais ils ont une limitation fondamentale : <strong>leur tâche principale est de prédire le prochain token dans une séquence</strong>, pas d'exécuter des calculs précis ou d'accéder à des informations en temps réel.</p>
 <p>Cette limitation devient évidente avec des questions simples comme "Combien de 'r' dans le mot 'strawberry' ?" où même les meilleurs LLM peuvent se tromper. Ils "devinent" la réponse basée sur leurs données d'entraînement plutôt que de compter réellement les lettres.</p>
-<p>C'est pourquoi ChatGPT et Claude intègrent maintenant des outils comme des calculatrices et des interpréteurs de code - pour dépasser leurs propres limites et fournir des réponses fiables.</p>
+<p>C'est pourquoi ChatGPT et Claude intègrent maintenant des tools comme des calculatrices et des interpréteurs de code - pour dépasser leurs propres limites et fournir des réponses fiables.</p>
 <h3 id="concept-fondamental">Concept Fondamental<a class="headerlink" href="#concept-fondamental" title="Permanent link">&para;</a></h3>
-<p>Les outils étendent les capacités des agents : calculs, bases de données, web, etc.</p>
+<p>Les tools étendent les capacités des agents : calculs, bases de données, web, etc.</p>
 <p>Prenons un exemple concret qui démontre cette différence (exemple très connu) :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Sans outil - Le LLM hallucine souvent</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Sans tools - Le LLM hallucine souvent</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;Combien de &#39;r&#39; y a-t-il dans le mot &#39;strawberry&#39; ?&quot;</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">question</span><span class="p">)</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Réponse LLM typique : &quot;Il y a 2 &#39;r&#39; dans strawberry&quot; ❌ (Incorrect, il y en a 3)</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Avec outil - Résultat précis</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Avec tools - Résultat précis</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nd">@tool</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">def</span> <span class="nf">count_letters</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">letter</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Compte le nombre d&#39;occurrences d&#39;une lettre dans un mot.&quot;&quot;&quot;</span>
@@ -1157,14 +1133,14 @@ Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># Résultat : &quot;Le mot &#39;strawberry&#39; contient 3 occurrence(s) de la lettre &#39;r&#39;.&quot; ✅</span>
 </code></pre></div>
-<p>Les outils transforment un LLM qui "devine" en agent qui "sait". Ils permettent d'avoir des réponses factuelles plutôt que des approximations.</p>
-<p>ChatGPT et Claude utilisent des outils : calculatrice, code Python, recherche web, analyse d'images, accès API météo, calendrier.</p>
-<p>D'ailleurs, rappelez-vous qu'au début de ChatGPT, si vous demandiez la date actuelle, c'était une date comme 2021 qui était retournée. Aujourd'hui, le LLM appelle ses outils calendar quand il s'agit de la date actuelle.</p>
-<h3 id="ce-quil-faut-pour-avoir-un-outil">Ce qu'il faut pour avoir un outil<a class="headerlink" href="#ce-quil-faut-pour-avoir-un-outil" title="Permanent link">&para;</a></h3>
-<p>3 éléments clés pour un bon outil : docstring détaillée, types annotés, retour consistant.
+<p>Les tools transforment un LLM qui "devine" en agent qui "sait". Ils permettent d'avoir des réponses factuelles plutôt que des approximations.</p>
+<p>ChatGPT et Claude utilisent des tools : calculatrice, code Python, recherche web, analyse d'images, accès API météo, calendrier.</p>
+<p>D'ailleurs, rappelez-vous qu'au début de ChatGPT, si vous demandiez la date actuelle, c'était une date comme 2021 qui était retournée. Aujourd'hui, le LLM appelle ses tools calendar quand il s'agit de la date actuelle.</p>
+<h3 id="ce-quil-faut-pour-avoir-un-tool">Ce qu'il faut pour avoir un tool<a class="headerlink" href="#ce-quil-faut-pour-avoir-un-tool" title="Permanent link">&para;</a></h3>
+<p>3 éléments clés pour un bon tool : docstring détaillée, types annotés, retour consistant.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@tool</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">def</span> <span class="nf">example_tool</span><span class="p">(</span><span class="n">param1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">param2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Description claire de ce que fait l&#39;outil.</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Description claire de ce que fait le tool.</span>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="sd">    Args:</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sd">        param1: Description du premier paramètre</span>
@@ -1179,21 +1155,21 @@ Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de
 </code></pre></div></p>
 <h3 id="demonstration-pratique">Démonstration Pratique<a class="headerlink" href="#demonstration-pratique" title="Permanent link">&para;</a></h3>
 <p>Faisons une démonstration pratique avec le framework SmolAgent.
-À la fin, vous verrez que SmolAgent sans outils = erreurs de calcul. Avec outils = précision.</p>
+À la fin, vous verrez que SmolAgent sans tools = erreurs de calcul. Avec tools = précision.</p>
 <p>SmolAgent propose : </p>
 <ul>
 <li><code>CodeAgent</code> (écrire du code Python et l'exécuter)</li>
 <li><code>ToolCallingAgent</code> (appels JSON)</li>
 </ul>
-<p>Selon vos besoins, l'une ou l'autre approche peut être utilisée. Par exemple, la navigation web nécessite souvent d'attendre après chaque interaction de page, donc les appels d'outils JSON peuvent bien convenir. D'après mes discussions avec d'autres développeurs IA et data scientists, personne n'utilise CodeAgent dans un projet sérieux, surtout que la génération de code peut partir dans tous les sens.</p>
-<p>Étape 1 : Agent sans Outils</p>
+<p>Selon vos besoins, l'une ou l'autre approche peut être utilisée. Par exemple, la navigation web nécessite souvent d'attendre après chaque interaction de page, donc les appels de tools JSON peuvent bien convenir. D'après mes discussions avec d'autres développeurs IA et data scientists, personne n'utilise CodeAgent dans un projet sérieux, surtout que la génération de code peut partir dans tous les sens.</p>
+<p>Étape 1 : Agent sans Tools</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">LiteLLMModel</span><span class="p">(</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mistral/mistral-tiny&quot;</span><span class="p">,</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MISTRAL_API_KEY&quot;</span><span class="p">)</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">ToolCallingAgent</span><span class="p">(</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[],</span>  <span class="c1"># Aucun outil disponible</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">tools</span><span class="o">=</span><span class="p">[],</span>  <span class="c1"># Aucun tool disponible</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">)</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
@@ -1201,8 +1177,8 @@ Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de
 </code></pre></div>
 <p><a class="glightbox" href="../../../../agent_2/smolagent_example1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../agent_2/smolagent_example1.png" /></a></p>
 <p>Comme vous pouvez le voir, le LLM a donné une mauvaise réponse - ce qui était attendu. Le LLM utilisé est mistral-tiny (modèle trop petit), mais même pour les grands LLM, les calculs précis ne sont pas toujours évidents.</p>
-<p>Étape 2 : Implémentation de notre premier outil</p>
-<p>Maintenant, implémentons notre premier outil :</p>
+<p>Étape 2 : Implémentation de notre premier tool</p>
+<p>Maintenant, implémentons notre premier tool :</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">smolagents</span> <span class="kn">import</span> <span class="n">tool</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nd">@tool</span>
@@ -1223,7 +1199,7 @@ Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Erreur: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>Cette implémentation reste simple, n'est-ce pas ?</p>
-<p>Étape 3 : Ajout de l'outil</p>
+<p>Étape 3 : Ajout du tool</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">smolagents</span> <span class="kn">import</span> <span class="n">ToolCallingAgent</span><span class="p">,</span> <span class="n">LiteLLMModel</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">model</span> <span class="o">=</span> <span class="n">LiteLLMModel</span><span class="p">(</span>
@@ -1236,9 +1212,9 @@ Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">result</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;Quelle est la racine carrée de 6.12?&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" href="../../../../agent_2/smolagent_example2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../agent_2/smolagent_example2.png" /></a></p>
-<p><strong>EURÊKA !</strong> La réponse est désormais correcte. Voilà, vous savez tout sur les outils et comment les intégrer à un LLM.</p>
+<p><strong>EURÊKA !</strong> La réponse est désormais correcte. Voilà, vous savez tout sur les tools et comment les intégrer à un LLM.</p>
 <h2 id="design-pattern-abstraction-generique-pour-frameworks">Design Pattern : Abstraction Générique pour Frameworks<a class="headerlink" href="#design-pattern-abstraction-generique-pour-frameworks" title="Permanent link">&para;</a></h2>
-<p>L'un des défis majeurs quand on travaille avec plusieurs frameworks d'agents est la nécessité de réécrire les outils pour chaque framework. Voici une solution d'abstraction que j'ai développée, prête à l'utilisation :</p>
+<p>L'un des défis majeurs quand on travaille avec plusieurs frameworks d'agents est la nécessité de réécrire les tools pour chaque framework. Voici une solution d'abstraction que j'ai développée, prête à l'utilisation :</p>
 <p>En gros, il faut savoir que derrière les décorateurs, il y a des classes qui gèrent les docstrings pour les préparer. Cette abstraction consiste à partir de ces classes pour passer dynamiquement nos docstrings ou informations sans passer par des fonctions avec décorateur :
 Je vous invit à consulter les docs officiels de ces framework pour construire des Class elegant</p>
 <h3 id="architecture-de-labstraction">Architecture de l'Abstraction<a class="headerlink" href="#architecture-de-labstraction" title="Permanent link">&para;</a></h3>
@@ -1526,8 +1502,7 @@ Je vous invit à consulter les docs officiels de ces framework pour construire d
 <p class="admonition-title">Bilan</p>
 <p>Ces limitations ne doivent pas vous dissuader d'utiliser les agents React, mais vous aider à prendre des décisions éclairées selon votre contexte. </p>
 </div>
-<h2 id="workflow-intelligent-quand-utiliser-chaque-approche">Workflow Intelligent : Quand Utiliser Chaque Approche<a class="headerlink" href="#workflow-intelligent-quand-utiliser-chaque-approche" title="Permanent link">&para;</a></h2>
-<h3 id="matrice-de-decision">Matrice de Décision<a class="headerlink" href="#matrice-de-decision" title="Permanent link">&para;</a></h3>
+<p>Pour terminer, ceci est une matrice de décision pour resumer tout ça. </p>
 <table>
 <thead>
 <tr>
