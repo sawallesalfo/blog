@@ -495,7 +495,7 @@ agent = ToolCallingAgent(tools=tools, model=model)
 
 **Contraintes :**
 - Pas de gestion d'état persistant entre sessions
-- Workflows complexes non supportés
+- Workflows complexes non supportés et le  paradigme Human-In-The-Loop
 - Écosystème d'outils plus restreint
 
 **LangGraph : La Configuration Verbeuse**
