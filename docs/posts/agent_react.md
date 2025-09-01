@@ -436,7 +436,7 @@ Après avoir exploré les applications pratiques, il est important de discuter d
 
 ### Problèmes Critiques
 
-#### 1. **Coûts Exponentiels**
+1. **Coûts Exponentiels**
 ```python
 # Router Agent : coût fixe et prévisible
 router_cost = "1-2 appels LLM → ~$0.001/requête"
@@ -448,14 +448,14 @@ react_cost = "1-10+ appels → $0.005-0.50+/requête"
 !!! danger "Impact Financier"
     Un agent React peut coûter **10 à 20 plus cher** qu'un Router Agent selon la complexité de la tâche.
 
-#### 2. **Debugging Complexe**
+2. **Debugging Complexe**
 ```python
 # Difficulté à reproduire les erreurs
 agent.run("Question complexe") 
 # ❌ Échec à l'étape 3/7 - workflow dynamique difficile à tracer
 ```
 
-#### 3. **Performances Variables**
+3. **Performances Variables**
 ```python
 # Même question, résultats différents à chaque exécution
 question = "Analyse les PIB des pays en 2023"
@@ -465,7 +465,7 @@ question = "Analyse les PIB des pays en 2023"
 # Exécution 3 : Boucle infinie, timeout ❌
 ```
 
-#### 4. **Dépendance aux LLM**
+4. **Dépendance aux LLM**
 !!! warning "Risques LLM"
     - **Hallucinations** : Invention d'appels d'outils inexistants
     - **Interprétation erronée** : Mauvaise compréhension des résultats
@@ -476,7 +476,7 @@ question = "Analyse les PIB des pays en 2023"
 !!! info "Choix Framework"
     Chaque framework a ses propres compromis entre simplicité, fonctionnalités et performance. Il y a beacuoup trop de framework.
 
-#### **LangChain : L'Écosystème Complexe**
+**LangChain : L'Écosystème Complexe**
 ```python
 from langchain.agents import create_react_agent
 # Nombreuses couches d'abstraction = debugging difficile
@@ -487,7 +487,7 @@ from langchain.agents import create_react_agent
 - Overhead de performance dû aux multiples couches
 - Documentation fragmentée pour les cas avancés
 
-#### **SmolAgent : La Simplicité Limitante**
+**SmolAgent : La Simplicité Limitante**
 ```python
 agent = ToolCallingAgent(tools=tools, model=model)
 # Simple mais fonctionnalités limitées
@@ -498,7 +498,7 @@ agent = ToolCallingAgent(tools=tools, model=model)
 - Workflows complexes non supportés
 - Écosystème d'outils plus restreint
 
-#### **LangGraph : La Configuration Verbeuse**
+**LangGraph : La Configuration Verbeuse**
 ```python
 workflow = StateGraph(State)
 workflow.add_node("step1", node1)
