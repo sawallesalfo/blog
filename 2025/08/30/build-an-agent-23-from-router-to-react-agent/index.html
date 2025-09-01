@@ -764,48 +764,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Problèmes Critiques">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-couts-exponentiels" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Coûts Exponentiels
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-debugging-complexe" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Debugging Complexe
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-performances-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Performances Variables
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-dependance-aux-llm" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Dépendance aux LLM
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -814,39 +772,6 @@
       Spécificités par Framework
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Spécificités par Framework">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#langchain-lecosysteme-complexe" class="md-nav__link">
-    <span class="md-ellipsis">
-      LangChain : L'Écosystème Complexe
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smolagent-la-simplicite-limitante" class="md-nav__link">
-    <span class="md-ellipsis">
-      SmolAgent : La Simplicité Limitante
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#langgraph-la-configuration-verbeuse" class="md-nav__link">
-    <span class="md-ellipsis">
-      LangGraph : La Configuration Verbeuse
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1405,31 +1330,41 @@ Je vous invit à consulter les docs officiels de ces framework pour construire d
 <p>Les agents React introduisent une complexité et des coûts imprévisibles qui nécessitent une vigilance particulière en production.</p>
 </div>
 <h3 id="problemes-critiques">Problèmes Critiques<a class="headerlink" href="#problemes-critiques" title="Permanent link">&para;</a></h3>
-<h4 id="1-couts-exponentiels">1. <strong>Coûts Exponentiels</strong><a class="headerlink" href="#1-couts-exponentiels" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Coûts Exponentiels</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Router Agent : coût fixe et prévisible</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">router_cost</span> <span class="o">=</span> <span class="s2">&quot;1-2 appels LLM → ~$0.001/requête&quot;</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># React Agent : coût variable et imprévisible</span>
 <a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">react_cost</span> <span class="o">=</span> <span class="s2">&quot;1-10+ appels → $0.005-0.50+/requête&quot;</span>
-</code></pre></div>
+</code></pre></div></li>
+</ol>
 <div class="admonition danger">
 <p class="admonition-title">Impact Financier</p>
 <p>Un agent React peut coûter <strong>10 à 20 plus cher</strong> qu'un Router Agent selon la complexité de la tâche.</p>
 </div>
-<h4 id="2-debugging-complexe">2. <strong>Debugging Complexe</strong><a class="headerlink" href="#2-debugging-complexe" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Debugging Complexe</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Difficulté à reproduire les erreurs</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;Question complexe&quot;</span><span class="p">)</span> 
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># ❌ Échec à l&#39;étape 3/7 - workflow dynamique difficile à tracer</span>
-</code></pre></div>
-<h4 id="3-performances-variables">3. <strong>Performances Variables</strong><a class="headerlink" href="#3-performances-variables" title="Permanent link">&para;</a></h4>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Performances Variables</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Même question, résultats différents à chaque exécution</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;Analyse les PIB des pays en 2023&quot;</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Exécution 1 : 3 étapes, 15 secondes ✅</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># Exécution 2 : 7 étapes, 45 secondes ⚠️  </span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># Exécution 3 : Boucle infinie, timeout ❌</span>
-</code></pre></div>
-<h4 id="4-dependance-aux-llm">4. <strong>Dépendance aux LLM</strong><a class="headerlink" href="#4-dependance-aux-llm" title="Permanent link">&para;</a></h4>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Dépendance aux LLM</strong></p>
+</li>
+</ol>
 <div class="admonition warning">
 <p class="admonition-title">Risques LLM</p>
 <ul>
@@ -1443,28 +1378,28 @@ Je vous invit à consulter les docs officiels de ces framework pour construire d
 <p class="admonition-title">Choix Framework</p>
 <p>Chaque framework a ses propres compromis entre simplicité, fonctionnalités et performance. Il y a beacuoup trop de framework.</p>
 </div>
-<h4 id="langchain-lecosysteme-complexe"><strong>LangChain : L'Écosystème Complexe</strong><a class="headerlink" href="#langchain-lecosysteme-complexe" title="Permanent link">&para;</a></h4>
+<p><strong>LangChain : L'Écosystème Complexe</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">create_react_agent</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># Nombreuses couches d&#39;abstraction = debugging difficile</span>
-</code></pre></div>
+</code></pre></div></p>
 <p><strong>Problèmes spécifiques :</strong>
 - Abstractions opaques rendant le debugging complexe
 - Overhead de performance dû aux multiples couches
 - Documentation fragmentée pour les cas avancés</p>
-<h4 id="smolagent-la-simplicite-limitante"><strong>SmolAgent : La Simplicité Limitante</strong><a class="headerlink" href="#smolagent-la-simplicite-limitante" title="Permanent link">&para;</a></h4>
+<p><strong>SmolAgent : La Simplicité Limitante</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">ToolCallingAgent</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># Simple mais fonctionnalités limitées</span>
-</code></pre></div>
+</code></pre></div></p>
 <p><strong>Contraintes :</strong>
 - Pas de gestion d'état persistant entre sessions
 - Workflows complexes non supportés
 - Écosystème d'outils plus restreint</p>
-<h4 id="langgraph-la-configuration-verbeuse"><strong>LangGraph : La Configuration Verbeuse</strong><a class="headerlink" href="#langgraph-la-configuration-verbeuse" title="Permanent link">&para;</a></h4>
+<p><strong>LangGraph : La Configuration Verbeuse</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">workflow</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;step1&quot;</span><span class="p">,</span> <span class="n">node1</span><span class="p">)</span>
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;step1&quot;</span><span class="p">,</span> <span class="s2">&quot;step2&quot;</span><span class="p">)</span>
 <a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Beaucoup de code pour des tâches simples</span>
-</code></pre></div>
+</code></pre></div></p>
 <p><strong>Défis d'adoption :</strong>
 - Courbe d'apprentissage très élevée
 - Over-engineering pour des cas d'usage simples
