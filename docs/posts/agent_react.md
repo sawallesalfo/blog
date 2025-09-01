@@ -50,7 +50,6 @@ Nous approfondirons ces distinctions dans l'article précédent qui traite de ce
 Trop de frameworks sont disponibles sur le marché. Pour la production, nous recommandons : `Pydantic AI` et `LangGraph`. Les autres (Swarm, SmolAgent) sont plus adaptés à l'apprentissage et au prototypage.
 
 
-### Tableau Comparatif des Frameworks
 
 | **Framework** | **Atouts** | **Inconvénients** | **Use Case Idéal** |
 |---------------|------------|-------------------|---------------------|
@@ -62,7 +61,7 @@ Trop de frameworks sont disponibles sur le marché. Pour la production, nous rec
 
 Les frameworks gèrent efficacement les machines d'état et l'orchestration de prompts, mais chacun a ses spécificités.
 
-### Recommandations
+Mes recommandations sont: 
 
 - **Débutant** : SmolAgent 
 - **Prototype** : LangChain 
@@ -70,7 +69,7 @@ Les frameworks gèrent efficacement les machines d'état et l'orchestration de p
 - **Workflows complexes** : LangGraph 
 - **Multi-agents** : CrewAI
 
-## Les Tools : Foundation des Agents React
+## Les Tools
 
 Pourquoi les LLM ont besoin d'outils ?
 
@@ -219,6 +218,7 @@ L'un des défis majeurs quand on travaille avec plusieurs frameworks d'agents es
 
 En gros, il faut savoir que derrière les décorateurs, il y a des classes qui gèrent les docstrings pour les préparer. Cette abstraction consiste à partir de ces classes pour passer dynamiquement nos docstrings ou informations sans passer par des fonctions avec décorateur :
 Je vous invit à consulter les docs officiels de ces framework pour construire des Class elegant
+
 ### Architecture de l'Abstraction
 
 Ajouter ces méthodes dans les précédentes classes Action :
@@ -337,7 +337,8 @@ class PlotAction(BaseAction):
 
 
 Implémenter cette approche nous permet de mieux gérer les docstrings et de ne plus avoir à recoder notre système pour chaque framework. 
-# Applications des Agents React
+
+### Applications des Agents React
 
 Commençons par créer nos instances, ce sont les mêmes que dans l'article précédent :
 
@@ -351,7 +352,7 @@ plot_generator = PlotAction(llm)
 
 Allez, c'est parti pour une démonstration de React avec 2 frameworks.
 
-### Avec SmolAgent
+#### SmolAgent
 
 ```python
 
@@ -388,7 +389,7 @@ Calling ────────────────────────
 
 Cette interactivité et ces logs font la force de SmolAgent.
 
-### Avec LangChain/LangGraph
+#### Avec LangChain/LangGraph
 
 ```python
 tool1_langchain = sql_generator.as_langchain_tool()
