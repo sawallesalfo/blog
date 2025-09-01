@@ -18,9 +18,8 @@ Contrairement aux Router Agents qui suivent un chemin fixe, les React Agents s'a
 Nous explorerons les concepts clés, comparerons les frameworks disponibles, et implémenterons notre propre solution.
 
 
-## Core Concepts : Les Agents React
+## Core Concepts d'agents React
 
-### Définition
 
 Le pattern **React** = Reason-Act-Observe. L'agent raisonne → agit → observe → répète.
 
@@ -30,7 +29,6 @@ Le pattern **React** = Reason-Act-Observe. L'agent raisonne → agit → observe
 
 Ce cycle se répète jusqu'à ce que l'agent estime avoir accompli la tâche demandée.
 
-### Comparaison
 
 | **Aspect** | **Router Agent** | **React Agent** |
 |------------|------------------|-----------------|
@@ -210,8 +208,7 @@ result = agent.run("Quelle est la racine carrée de 6.12?")
 
 **EURÊKA !** La réponse est désormais correcte. Voilà, vous savez tout sur les tools et comment les intégrer à un LLM.
 
-## Design Pattern : Abstraction Générique pour Frameworks
-
+## Design Pattern 
 L'un des défis majeurs quand on travaille avec plusieurs frameworks d'agents est la nécessité de réécrire les tools pour chaque framework. Voici une solution d'abstraction que j'ai développée, prête à l'utilisation :
 
 En gros, il faut savoir que derrière les décorateurs, il y a des classes qui gèrent les docstrings pour les préparer. Cette abstraction consiste à partir de ces classes pour passer dynamiquement nos docstrings ou informations sans passer par des fonctions avec décorateur :
@@ -256,7 +253,7 @@ class SQLGeneratorAction(BaseAction):
         return sql_generator_tool
 
 
-
+```
 
 ```python
 class SQLExecutor(BaseAction):
@@ -350,7 +347,7 @@ plot_generator = PlotAction(llm)
 
 Allez, c'est parti pour une démonstration de React avec 2 frameworks.
 
-#### SmolAgent
+#### 1. SmolAgent
 
 ```python
 
@@ -387,7 +384,7 @@ Calling ────────────────────────
 
 Cette interactivité et ces logs font la force de SmolAgent.
 
-#### Avec LangChain/LangGraph
+#### 2. LangChain/LangGraph
 
 ```python
 tool1_langchain = sql_generator.as_langchain_tool()
@@ -427,7 +424,7 @@ except Exception as e:
 
 EUREKA, ça marche aussi !
 
-## Limitations et Inconvénients des Frameworks
+## Discussions
 
 Après avoir exploré les applications pratiques, il est important de discuter des limitations et défis que vous pourriez rencontrer avec les frameworks d'agents React.
 
