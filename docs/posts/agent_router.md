@@ -6,9 +6,8 @@ categories:
     - IAGen  
 ---
 
-# Build an Agent (1/3): Example of a Router Agent
+# Agentic IA (1/3): Exemple d'un agent de type Router
 
-## Introduction
 
 Dans cet article, je partage avec vous comment construire des agents IA sans recourir à des frameworks complexes comme LangChain ou SmolAgent. Si vous êtes nouveau sur ce blog, je vous invite à lire d'abord cet article :
 
