@@ -9,10 +9,10 @@ categories:
 
 # Build an Agent (2/3): From Router to React Agent
 
-Dans le [premier article de cette série](https://sawallesalfo.github.io/blog/2025/07/14/agent-router/), nous avons construit un **Router Agent** avec une logique if/else rigide. Aujourd'hui, nous passons au **React Agent** : un agent autonome qui décide lui-même de ses actions.
+Dans le [premier article de cette série](https://sawallesalfo.github.io/blog/2025/07/14/agent-router/), nous avons construit un Router Agent avec une logique if/else rigide. Aujourd'hui, nous passons au React Agent : un agent autonome qui décide lui-même de ses actions.
 
-- Router = chemin fixe. 
-- React = agent autonome qui s'adapte.
+Router = chemin fixe. 
+React = agent autonome qui s'adapte.
 Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de maintenir des prompts avec exemples de plus en plus lourds.
 
 <!-- more -->
@@ -47,7 +47,7 @@ Nous approfondirons ces distinctions dans l'article précédent qui traite de ce
 
 ## Framework Landscape
 
-Trop de frameworks sont disponibles sur le marché. Pour la production, nous recommandons : `Pydantic AI` et `LangGraph`. Les autres (Swarm, SmolAgent) sont plus adaptés à l'apprentissage et au prototypage.
+Trop de frameworks sont disponibles sur le marché. Pour la production, je recommande : `Pydantic AI` et `LangGraph`. Les autres (Swarm, SmolAgent) sont plus adaptés à l'apprentissage et au prototypage.
 
 
 
