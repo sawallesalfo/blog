@@ -27,7 +27,7 @@ Nous verrons les concepts clés, comparerons les frameworks, et implémenterons 
 Le pattern **React** = Reason-Act-Observe. L'agent raisonne → agit → observe → répète.
 
 1. **Raisonne** (Reason) : Analyse la situation et détermine la prochaine action à entreprendre
-2. **Agit** (Act) : Exécute l'action choisie en utilisant les outils disponibles  
+2. **Agit** (Act) : Exécute l'action choisie en utilisant les tools disponibles  
 3. **Observe** : Analyse le résultat de l'action pour décider de la suite
 
 Ce cycle se répète jusqu'à ce que l'agent estime avoir accompli la tâche demandée.
@@ -71,7 +71,7 @@ Mes recommandations sont:
 
 ## Les Tools
 
-Pourquoi les LLM ont besoin d'outils ?
+Pourquoi les LLM ont besoin de tools ?
 
 Les LLM prédisent des tokens, ils ne calculent pas. D'où les erreurs fréquentes sur des questions simples comme "combien de 'r' dans strawberry".
 
@@ -79,21 +79,21 @@ Les grands modèles de langage comme GPT-4 ou Mistral sont extraordinaires pour 
 
 Cette limitation devient évidente avec des questions simples comme "Combien de 'r' dans le mot 'strawberry' ?" où même les meilleurs LLM peuvent se tromper. Ils "devinent" la réponse basée sur leurs données d'entraînement plutôt que de compter réellement les lettres.
 
-C'est pourquoi ChatGPT et Claude intègrent maintenant des outils comme des calculatrices et des interpréteurs de code - pour dépasser leurs propres limites et fournir des réponses fiables.
+C'est pourquoi ChatGPT et Claude intègrent maintenant des tools comme des calculatrices et des interpréteurs de code - pour dépasser leurs propres limites et fournir des réponses fiables.
 
 ### Concept Fondamental
 
-Les outils étendent les capacités des agents : calculs, bases de données, web, etc.
+Les tools étendent les capacités des agents : calculs, bases de données, web, etc.
 
 Prenons un exemple concret qui démontre cette différence (exemple très connu) :
 
 ```python
-# Sans outil - Le LLM hallucine souvent
+# Sans tools - Le LLM hallucine souvent
 question = "Combien de 'r' y a-t-il dans le mot 'strawberry' ?"
 agent.run(question)
 # Réponse LLM typique : "Il y a 2 'r' dans strawberry" ❌ (Incorrect, il y en a 3)
 
-# Avec outil - Résultat précis
+# Avec tools - Résultat précis
 @tool
 def count_letters(word: str, letter: str) -> str:
     """Compte le nombre d'occurrences d'une lettre dans un mot."""
@@ -105,19 +105,19 @@ agent.run(question)
 # Résultat : "Le mot 'strawberry' contient 3 occurrence(s) de la lettre 'r'." ✅
 ```
 
-Les outils transforment un LLM qui "devine" en agent qui "sait". Ils permettent d'avoir des réponses factuelles plutôt que des approximations.
+Les tools transforment un LLM qui "devine" en agent qui "sait". Ils permettent d'avoir des réponses factuelles plutôt que des approximations.
 
-ChatGPT et Claude utilisent des outils : calculatrice, code Python, recherche web, analyse d'images, accès API météo, calendrier.
+ChatGPT et Claude utilisent des tools : calculatrice, code Python, recherche web, analyse d'images, accès API météo, calendrier.
 
-D'ailleurs, rappelez-vous qu'au début de ChatGPT, si vous demandiez la date actuelle, c'était une date comme 2021 qui était retournée. Aujourd'hui, le LLM appelle ses outils calendar quand il s'agit de la date actuelle.
+D'ailleurs, rappelez-vous qu'au début de ChatGPT, si vous demandiez la date actuelle, c'était une date comme 2021 qui était retournée. Aujourd'hui, le LLM appelle ses tools calendar quand il s'agit de la date actuelle.
 
-### Ce qu'il faut pour avoir un outil
+### Ce qu'il faut pour avoir un tool
 
-3 éléments clés pour un bon outil : docstring détaillée, types annotés, retour consistant.
+3 éléments clés pour un bon tool : docstring détaillée, types annotés, retour consistant.
 ```python
 @tool
 def example_tool(param1: str, param2: int) -> str:
-    """Description claire de ce que fait l'outil.
+    """Description claire de ce que fait le tool.
     
     Args:
         param1: Description du premier paramètre
@@ -134,7 +134,7 @@ def example_tool(param1: str, param2: int) -> str:
 ### Démonstration Pratique
 
 Faisons une démonstration pratique avec le framework SmolAgent.
-À la fin, vous verrez que SmolAgent sans outils = erreurs de calcul. Avec outils = précision.
+À la fin, vous verrez que SmolAgent sans tools = erreurs de calcul. Avec tools = précision.
 
 SmolAgent propose : 
 
@@ -142,11 +142,11 @@ SmolAgent propose :
 -  `ToolCallingAgent` (appels JSON)
 
 
-Selon vos besoins, l'une ou l'autre approche peut être utilisée. Par exemple, la navigation web nécessite souvent d'attendre après chaque interaction de page, donc les appels d'outils JSON peuvent bien convenir. D'après mes discussions avec d'autres développeurs IA et data scientists, personne n'utilise CodeAgent dans un projet sérieux, surtout que la génération de code peut partir dans tous les sens.
+Selon vos besoins, l'une ou l'autre approche peut être utilisée. Par exemple, la navigation web nécessite souvent d'attendre après chaque interaction de page, donc les appels de tools JSON peuvent bien convenir. D'après mes discussions avec d'autres développeurs IA et data scientists, personne n'utilise CodeAgent dans un projet sérieux, surtout que la génération de code peut partir dans tous les sens.
 
 
 
-Étape 1 : Agent sans Outils
+Étape 1 : Agent sans Tools
 
 ```python
 model = LiteLLMModel(
@@ -155,7 +155,7 @@ model = LiteLLMModel(
 )
 
 agent = ToolCallingAgent(
-    tools=[],  # Aucun outil disponible
+    tools=[],  # Aucun tool disponible
     model=model
 )
 
@@ -166,9 +166,9 @@ result = agent.run("Quelle est la racine carrée de 6.12?")
 
 Comme vous pouvez le voir, le LLM a donné une mauvaise réponse - ce qui était attendu. Le LLM utilisé est mistral-tiny (modèle trop petit), mais même pour les grands LLM, les calculs précis ne sont pas toujours évidents.
 
-Étape 2 : Implémentation de notre premier outil
+Étape 2 : Implémentation de notre premier tool
 
-Maintenant, implémentons notre premier outil :
+Maintenant, implémentons notre premier tool :
 
 ```python
 from smolagents import tool
@@ -193,7 +193,7 @@ def square_root_smolagent(number: float) -> str:
 
 Cette implémentation reste simple, n'est-ce pas ?
 
-Étape 3 : Ajout de l'outil
+Étape 3 : Ajout du tool
 
 ```python
 from smolagents import ToolCallingAgent, LiteLLMModel
@@ -210,11 +210,11 @@ result = agent.run("Quelle est la racine carrée de 6.12?")
 
 ![alt text](agent_2/smolagent_example2.png)
 
-**EURÊKA !** La réponse est désormais correcte. Voilà, vous savez tout sur les outils et comment les intégrer à un LLM.
+**EURÊKA !** La réponse est désormais correcte. Voilà, vous savez tout sur les tools et comment les intégrer à un LLM.
 
 ## Design Pattern : Abstraction Générique pour Frameworks
 
-L'un des défis majeurs quand on travaille avec plusieurs frameworks d'agents est la nécessité de réécrire les outils pour chaque framework. Voici une solution d'abstraction que j'ai développée, prête à l'utilisation :
+L'un des défis majeurs quand on travaille avec plusieurs frameworks d'agents est la nécessité de réécrire les tools pour chaque framework. Voici une solution d'abstraction que j'ai développée, prête à l'utilisation :
 
 En gros, il faut savoir que derrière les décorateurs, il y a des classes qui gèrent les docstrings pour les préparer. Cette abstraction consiste à partir de ces classes pour passer dynamiquement nos docstrings ou informations sans passer par des fonctions avec décorateur :
 Je vous invit à consulter les docs officiels de ces framework pour construire des Class elegant
@@ -546,9 +546,7 @@ class SafeReactAgent:
 
 
 
-## Workflow Intelligent : Quand Utiliser Chaque Approche
-
-### Matrice de Décision
+Pour terminer, ceci est une matrice de décision pour resumer tout ça. 
 
 | **Critère** | **Router Agent** | **React Agent** |
 |-------------|------------------|-----------------|
