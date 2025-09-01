@@ -1020,12 +1020,10 @@
 
 
 <h1 id="build-an-agent-23-from-router-to-react-agent">Build an Agent (2/3): From Router to React Agent<a class="headerlink" href="#build-an-agent-23-from-router-to-react-agent" title="Permanent link">&para;</a></h1>
-<p>Dans le <a href="https://sawallesalfo.github.io/blog/2025/07/14/agent-router/">premier article de cette série</a>, nous avons construit un <strong>Router Agent</strong> avec une logique if/else rigide. Aujourd'hui, nous passons au <strong>React Agent</strong> : un agent autonome qui décide lui-même de ses actions.</p>
-<ul>
-<li>Router = chemin fixe. </li>
-<li>React = agent autonome qui s'adapte.
-Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de maintenir des prompts avec exemples de plus en plus lourds.</li>
-</ul>
+<p>Dans le <a href="https://sawallesalfo.github.io/blog/2025/07/14/agent-router/">premier article de cette série</a>, nous avons construit un Router Agent avec une logique if/else rigide. Aujourd'hui, nous passons au React Agent : un agent autonome qui décide lui-même de ses actions.</p>
+<p>Router = chemin fixe. 
+React = agent autonome qui s'adapte.
+Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de maintenir des prompts avec exemples de plus en plus lourds.</p>
 <!-- more -->
 
 <p>Nous verrons les concepts clés, comparerons les frameworks, et implémenterons notre solution.</p>
@@ -1082,7 +1080,7 @@ Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de
 </table>
 <p>Nous approfondirons ces distinctions dans l'article précédent qui traite de cette comparaison.</p>
 <h2 id="framework-landscape">Framework Landscape<a class="headerlink" href="#framework-landscape" title="Permanent link">&para;</a></h2>
-<p>Trop de frameworks sont disponibles sur le marché. Pour la production, nous recommandons : <code>Pydantic AI</code> et <code>LangGraph</code>. Les autres (Swarm, SmolAgent) sont plus adaptés à l'apprentissage et au prototypage.</p>
+<p>Trop de frameworks sont disponibles sur le marché. Pour la production, je recommande : <code>Pydantic AI</code> et <code>LangGraph</code>. Les autres (Swarm, SmolAgent) sont plus adaptés à l'apprentissage et au prototypage.</p>
 <table>
 <thead>
 <tr>
