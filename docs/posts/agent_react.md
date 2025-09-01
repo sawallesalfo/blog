@@ -1,10 +1,11 @@
 ---
-date: 2025-08-30  
-authors:  
-    - ssawadogo  
-categories:  
-    - IAGen  
+date: 2024-09-21
+authors:
+    - ssawadogo
+categories: 
+    - IAGen
 ---
+
 
 # Build an Agent (2/3): From Router to React Agent
 
