@@ -607,35 +607,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-concepts-les-agents-react" class="md-nav__link">
+  <a href="#core-concepts-dagents-react" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Concepts : Les Agents React
+      Core Concepts d'agents React
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Core Concepts : Les Agents React">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Définition
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comparaison" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comparaison
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -691,13 +667,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#design-pattern-abstraction-generique-pour-frameworks" class="md-nav__link">
+  <a href="#design-pattern" class="md-nav__link">
     <span class="md-ellipsis">
-      Design Pattern : Abstraction Générique pour Frameworks
+      Design Pattern
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Design Pattern : Abstraction Générique pour Frameworks">
+    <nav class="md-nav" aria-label="Design Pattern">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -720,18 +696,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#smolagent" class="md-nav__link">
+  <a href="#1-smolagent" class="md-nav__link">
     <span class="md-ellipsis">
-      SmolAgent
+      1. SmolAgent
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#avec-langchainlanggraph" class="md-nav__link">
+  <a href="#2-langchainlanggraph" class="md-nav__link">
     <span class="md-ellipsis">
-      Avec LangChain/LangGraph
+      2. LangChain/LangGraph
     </span>
   </a>
   
@@ -748,13 +724,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#limitations-et-inconvenients-des-frameworks" class="md-nav__link">
+  <a href="#discussions" class="md-nav__link">
     <span class="md-ellipsis">
-      Limitations et Inconvénients des Frameworks
+      Discussions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Limitations et Inconvénients des Frameworks">
+    <nav class="md-nav" aria-label="Discussions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -926,8 +902,7 @@
 <!-- more -->
 
 <p>Nous explorerons les concepts clés, comparerons les frameworks disponibles, et implémenterons notre propre solution.</p>
-<h2 id="core-concepts-les-agents-react">Core Concepts : Les Agents React<a class="headerlink" href="#core-concepts-les-agents-react" title="Permanent link">&para;</a></h2>
-<h3 id="definition">Définition<a class="headerlink" href="#definition" title="Permanent link">&para;</a></h3>
+<h2 id="core-concepts-dagents-react">Core Concepts d'agents React<a class="headerlink" href="#core-concepts-dagents-react" title="Permanent link">&para;</a></h2>
 <p>Le pattern <strong>React</strong> = Reason-Act-Observe. L'agent raisonne → agit → observe → répète.</p>
 <ol>
 <li><strong>Raisonne</strong> (Reason) : Analyse la situation et détermine la prochaine action à entreprendre</li>
@@ -935,7 +910,6 @@
 <li><strong>Observe</strong> : Analyse le résultat de l'action pour décider de la suite</li>
 </ol>
 <p>Ce cycle se répète jusqu'à ce que l'agent estime avoir accompli la tâche demandée.</p>
-<h3 id="comparaison">Comparaison<a class="headerlink" href="#comparaison" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1136,13 +1110,13 @@
 </code></pre></div>
 <p><a class="glightbox" href="../../../../agent_2/smolagent_example2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../agent_2/smolagent_example2.png" /></a></p>
 <p><strong>EURÊKA !</strong> La réponse est désormais correcte. Voilà, vous savez tout sur les tools et comment les intégrer à un LLM.</p>
-<h2 id="design-pattern-abstraction-generique-pour-frameworks">Design Pattern : Abstraction Générique pour Frameworks<a class="headerlink" href="#design-pattern-abstraction-generique-pour-frameworks" title="Permanent link">&para;</a></h2>
+<h2 id="design-pattern">Design Pattern<a class="headerlink" href="#design-pattern" title="Permanent link">&para;</a></h2>
 <p>L'un des défis majeurs quand on travaille avec plusieurs frameworks d'agents est la nécessité de réécrire les tools pour chaque framework. Voici une solution d'abstraction que j'ai développée, prête à l'utilisation :</p>
 <p>En gros, il faut savoir que derrière les décorateurs, il y a des classes qui gèrent les docstrings pour les préparer. Cette abstraction consiste à partir de ces classes pour passer dynamiquement nos docstrings ou informations sans passer par des fonctions avec décorateur :
 Je vous invit à consulter les docs officiels de ces framework pour construire des Class elegant</p>
 <h3 id="architecture-de-labstraction">Architecture de l'Abstraction<a class="headerlink" href="#architecture-de-labstraction" title="Permanent link">&para;</a></h3>
 <p>Ajouter ces méthodes dans les précédentes classes Action :</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span> <span class="nc">SQLGeneratorAction</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">class</span> <span class="nc">SQLGeneratorAction</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="c1"># ... (code déjà vu dans l&#39;article précédent) ...</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="k">def</span> <span class="nf">_create_smolagent_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1174,156 +1148,152 @@ Je vous invit à consulter les docs officiels de ces framework pour construire d
 <a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="sd">            &quot;&quot;&quot;</span>
 <a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">output_value</span>
 <a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>        <span class="k">return</span> <span class="n">sql_generator_tool</span>
-<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>
-<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>
-<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>
-<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>
-<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="err">```</span><span class="n">python</span>
-<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="k">class</span> <span class="nc">SQLExecutor</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
-<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>        <span class="c1"># ... (code déjà vu dans l&#39;article précédent) ...</span>
-<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>
-<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a>
-<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>    <span class="k">def</span> <span class="nf">_create_smolagent_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Crée un outil smolagent pour cette action&quot;&quot;&quot;</span>
-<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a>        <span class="nd">@smolagents</span><span class="o">.</span><span class="n">tool</span>
-<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>        <span class="k">def</span> <span class="nf">sql_executor_smolagent</span><span class="p">(</span><span class="n">sql_query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="w">            </span><span class="sd">&quot;&quot;&quot;Exécute un code SQL et retourne les résultats.</span>
-<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>
-<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="sd">            Args:</span>
-<a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="sd">                sql_query: Requête SQL valide à exécuter (SELECT uniquement)</span>
-<a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>
-<a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="sd">            Returns:</span>
-<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="sd">                Résultats de la requête au format JSON string</span>
-<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="sd">            &quot;&quot;&quot;</span>
-<a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_query</span><span class="o">=</span><span class="n">sql_query</span><span class="p">)</span><span class="o">.</span><span class="n">output_value</span>
-<a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a>        <span class="k">return</span> <span class="n">sql_executor_smolagent</span>
-<a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a>
-<a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a>    <span class="k">def</span> <span class="nf">_create_langchain_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Crée un outil langchain pour cette action&quot;&quot;&quot;</span>
-<a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a>        <span class="nd">@langchain_core</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">tool</span>
-<a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a>        <span class="k">def</span> <span class="nf">sql_executor_tool</span><span class="p">(</span><span class="n">sql_query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a><span class="w">            </span><span class="sd">&quot;&quot;&quot;Exécute un code SQL et retourne les résultats.</span>
-<a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a>
-<a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a><span class="sd">            Args:</span>
-<a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a><span class="sd">                sql_query: Requête SQL valide à exécuter (SELECT uniquement)</span>
-<a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a>
-<a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a><span class="sd">            Returns:</span>
-<a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a><span class="sd">                Résultats de la requête en format list</span>
-<a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a><span class="sd">            &quot;&quot;&quot;</span>
-<a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_query</span><span class="o">=</span><span class="n">sql_query</span><span class="p">)</span><span class="o">.</span><span class="n">output_value</span>
-<a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a>        <span class="k">return</span> <span class="n">sql_executor_tool</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">class</span> <span class="nc">PlotAction</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="c1"># ... (code déjà vu dans l&#39;article précédent) ...</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">class</span> <span class="nc">SQLExecutor</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>        <span class="c1"># ... (code déjà vu dans l&#39;article précédent) ...</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="k">def</span> <span class="nf">_create_smolagent_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Crée un outil smolagent pour cette action&quot;&quot;&quot;</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="nd">@smolagents</span><span class="o">.</span><span class="n">tool</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="k">def</span> <span class="nf">plotter_smolagent</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;altair&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">            </span><span class="sd">&quot;&quot;&quot;Crée un graphique Altair à partir de données et d&#39;une description.</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="sd">            Args:</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="sd">                query: Description du graphique souhaité en langage naturel</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="sd">                data: Données au format List[Dict]</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="sd">                output_format: Format de sortie (&#39;altair&#39;, &#39;html&#39;, ou &#39;base64&#39;)</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="sd">            Returns:</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="sd">                Graphique généré au format demandé ou message d&#39;erreur</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="sd">            &quot;&quot;&quot;</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="n">output_format</span><span class="p">)</span><span class="o">.</span><span class="n">output_value</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>        <span class="k">return</span> <span class="n">plotter_smolagent</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>    <span class="k">def</span> <span class="nf">_create_langchain_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Crée un outil langchain pour cette action&quot;&quot;&quot;</span>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>        <span class="nd">@langchain_core</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">tool</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>        <span class="k">def</span> <span class="nf">plotter_tool</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;altair&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">            </span><span class="sd">&quot;&quot;&quot;Génère un graphique à partir des données générées selon la demande utilisateur.</span>
-<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
-<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="sd">            Args:</span>
-<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="sd">                query: Description du graphique souhaité en langage naturel</span>
-<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="sd">                data: Données au format List[Dict]</span>
-<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="sd">                output_format: Format de sortie (&#39;altair&#39;, &#39;html&#39;, ou &#39;base64&#39;)</span>
-<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>
-<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="sd">            Returns:</span>
-<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="sd">                Graphique généré au format demandé ou message d&#39;erreur</span>
-<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="sd">            &quot;&quot;&quot;</span>
-<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="n">output_format</span><span class="p">)</span><span class="o">.</span><span class="n">output_value</span>
-<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>        <span class="k">return</span> <span class="n">plotter_tool</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="k">def</span> <span class="nf">_create_smolagent_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Crée un outil smolagent pour cette action&quot;&quot;&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>        <span class="nd">@smolagents</span><span class="o">.</span><span class="n">tool</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        <span class="k">def</span> <span class="nf">sql_executor_smolagent</span><span class="p">(</span><span class="n">sql_query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">            </span><span class="sd">&quot;&quot;&quot;Exécute un code SQL et retourne les résultats.</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="sd">            Args:</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="sd">                sql_query: Requête SQL valide à exécuter (SELECT uniquement)</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="sd">            Returns:</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="sd">                Résultats de la requête au format JSON string</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="sd">            &quot;&quot;&quot;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_query</span><span class="o">=</span><span class="n">sql_query</span><span class="p">)</span><span class="o">.</span><span class="n">output_value</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>        <span class="k">return</span> <span class="n">sql_executor_smolagent</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="k">def</span> <span class="nf">_create_langchain_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Crée un outil langchain pour cette action&quot;&quot;&quot;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>        <span class="nd">@langchain_core</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">tool</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>        <span class="k">def</span> <span class="nf">sql_executor_tool</span><span class="p">(</span><span class="n">sql_query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">            </span><span class="sd">&quot;&quot;&quot;Exécute un code SQL et retourne les résultats.</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="sd">            Args:</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="sd">                sql_query: Requête SQL valide à exécuter (SELECT uniquement)</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="sd">            Returns:</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="sd">                Résultats de la requête en format list</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="sd">            &quot;&quot;&quot;</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql_query</span><span class="o">=</span><span class="n">sql_query</span><span class="p">)</span><span class="o">.</span><span class="n">output_value</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>        <span class="k">return</span> <span class="n">sql_executor_tool</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">class</span> <span class="nc">PlotAction</span><span class="p">(</span><span class="n">BaseAction</span><span class="p">):</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    <span class="c1"># ... (code déjà vu dans l&#39;article précédent) ...</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="k">def</span> <span class="nf">_create_smolagent_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Crée un outil smolagent pour cette action&quot;&quot;&quot;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>        <span class="nd">@smolagents</span><span class="o">.</span><span class="n">tool</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>        <span class="k">def</span> <span class="nf">plotter_smolagent</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;altair&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">            </span><span class="sd">&quot;&quot;&quot;Crée un graphique Altair à partir de données et d&#39;une description.</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="sd">            Args:</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="sd">                query: Description du graphique souhaité en langage naturel</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="sd">                data: Données au format List[Dict]</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="sd">                output_format: Format de sortie (&#39;altair&#39;, &#39;html&#39;, ou &#39;base64&#39;)</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="sd">            Returns:</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="sd">                Graphique généré au format demandé ou message d&#39;erreur</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="sd">            &quot;&quot;&quot;</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="n">output_format</span><span class="p">)</span><span class="o">.</span><span class="n">output_value</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        <span class="k">return</span> <span class="n">plotter_smolagent</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="k">def</span> <span class="nf">_create_langchain_tool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Crée un outil langchain pour cette action&quot;&quot;&quot;</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>        <span class="nd">@langchain_core</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">tool</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>        <span class="k">def</span> <span class="nf">plotter_tool</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">],</span> <span class="n">output_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;altair&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">            </span><span class="sd">&quot;&quot;&quot;Génère un graphique à partir des données générées selon la demande utilisateur.</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="sd">            Args:</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="sd">                query: Description du graphique souhaité en langage naturel</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="sd">                data: Données au format List[Dict]</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="sd">                output_format: Format de sortie (&#39;altair&#39;, &#39;html&#39;, ou &#39;base64&#39;)</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="sd">            Returns:</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="sd">                Graphique généré au format demandé ou message d&#39;erreur</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="sd">            &quot;&quot;&quot;</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">output_format</span><span class="o">=</span><span class="n">output_format</span><span class="p">)</span><span class="o">.</span><span class="n">output_value</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>        <span class="k">return</span> <span class="n">plotter_tool</span>
 </code></pre></div></p>
 <p>Implémenter cette approche nous permet de mieux gérer les docstrings et de ne plus avoir à recoder notre système pour chaque framework. </p>
 <h3 id="applications-des-agents-react">Applications des Agents React<a class="headerlink" href="#applications-des-agents-react" title="Permanent link">&para;</a></h3>
 <p>Commençons par créer nos instances, ce sont les mêmes que dans l'article précédent :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ... (instances déjà vues dans l&#39;article précédent) ...</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">sql_generator</span> <span class="o">=</span> <span class="n">SQLGeneratorAction</span><span class="p">(</span><span class="n">llm</span><span class="p">)</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">sql_executor</span> <span class="o">=</span> <span class="n">SQLExecutor</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">sql_executor</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="s2">&quot;pib_data&quot;</span><span class="p">,</span> <span class="s2">&quot;./pib_data0.csv&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">plot_generator</span> <span class="o">=</span> <span class="n">PlotAction</span><span class="p">(</span><span class="n">llm</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ... (instances déjà vues dans l&#39;article précédent) ...</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">sql_generator</span> <span class="o">=</span> <span class="n">SQLGeneratorAction</span><span class="p">(</span><span class="n">llm</span><span class="p">)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">sql_executor</span> <span class="o">=</span> <span class="n">SQLExecutor</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">sql_executor</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="s2">&quot;pib_data&quot;</span><span class="p">,</span> <span class="s2">&quot;./pib_data0.csv&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">plot_generator</span> <span class="o">=</span> <span class="n">PlotAction</span><span class="p">(</span><span class="n">llm</span><span class="p">)</span>
 </code></pre></div>
 <p>Allez, c'est parti pour une démonstration de React avec 2 frameworks.</p>
-<h4 id="smolagent">SmolAgent<a class="headerlink" href="#smolagent" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">tool1_smolagent</span> <span class="o">=</span> <span class="n">sql_generator</span><span class="o">.</span><span class="n">as_smolagent_tool</span><span class="p">()</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">tool2_smolagent</span> <span class="o">=</span> <span class="n">sql_executor</span><span class="o">.</span><span class="n">as_smolagent_tool</span><span class="p">()</span> 
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">tool3_smolagent</span> <span class="o">=</span> <span class="n">plot_generator</span><span class="o">.</span><span class="n">as_smolagent_tool</span><span class="p">()</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">smolagent_tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">tool1_smolagent</span><span class="p">,</span> <span class="n">tool2_smolagent</span><span class="p">,</span> <span class="n">tool3_smolagent</span><span class="p">]</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">model</span> <span class="o">=</span> <span class="n">smolagents</span><span class="o">.</span><span class="n">LiteLLMModel</span><span class="p">(</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mistral/mistral-tiny&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MISTRAL_API_KEY&quot;</span><span class="p">),</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">)</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="n">agent_smolagent</span> <span class="o">=</span> <span class="n">smolagents</span><span class="o">.</span><span class="n">ToolCallingAgent</span><span class="p">(</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="n">tools</span><span class="o">=</span><span class="n">smolagent_tools</span><span class="p">,</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="p">)</span>
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="n">agent_smolagent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;Donne-moi le PIB du Burkina Faso depuis 2020 sous forme de graphique&quot;</span><span class="p">)</span>
+<h4 id="1-smolagent">1. SmolAgent<a class="headerlink" href="#1-smolagent" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">tool1_smolagent</span> <span class="o">=</span> <span class="n">sql_generator</span><span class="o">.</span><span class="n">as_smolagent_tool</span><span class="p">()</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">tool2_smolagent</span> <span class="o">=</span> <span class="n">sql_executor</span><span class="o">.</span><span class="n">as_smolagent_tool</span><span class="p">()</span> 
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">tool3_smolagent</span> <span class="o">=</span> <span class="n">plot_generator</span><span class="o">.</span><span class="n">as_smolagent_tool</span><span class="p">()</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">smolagent_tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">tool1_smolagent</span><span class="p">,</span> <span class="n">tool2_smolagent</span><span class="p">,</span> <span class="n">tool3_smolagent</span><span class="p">]</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">model</span> <span class="o">=</span> <span class="n">smolagents</span><span class="o">.</span><span class="n">LiteLLMModel</span><span class="p">(</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;mistral/mistral-tiny&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    <span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MISTRAL_API_KEY&quot;</span><span class="p">),</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="p">)</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="n">agent_smolagent</span> <span class="o">=</span> <span class="n">smolagents</span><span class="o">.</span><span class="n">ToolCallingAgent</span><span class="p">(</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="n">tools</span><span class="o">=</span><span class="n">smolagent_tools</span><span class="p">,</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="p">)</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="n">agent_smolagent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;Donne-moi le PIB du Burkina Faso depuis 2020 sous forme de graphique&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" href="../../../../agent_2/step_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Étape 1" src="../../../../agent_2/step_1.png" /></a>
 <a class="glightbox" href="../../../../agent_2/STEP_2%20and3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Étapes 2 et 3" src="../../../../agent_2/STEP_2%20and3.png" /></a>
 <a class="glightbox" href="../../../../agent_2/FINAL.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Résultat final" src="../../../../agent_2/FINAL.png" /></a>
 <a class="glightbox" href="../../../../agent_2/smolagent_example3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Exemple SmolAgent" src="../../../../agent_2/smolagent_example3.png" /></a></p>
 <p>Comme vous pouvez le remarquer, chaque étape correspond à l'utilisation d'un outil spécifique et l'appel des outils se fait avec la ligne :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Calling ────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>│ Calling tool: &#39;sql_executor_smolagent&#39; with arguments: {&#39;sql_query&#39;: &quot;SELECT year, value FROM pib_data WHERE    │
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>│ country_code = &#39;BFA&#39; AND year &gt;= &#39;2020&#39; ORDER BY year;&quot;}                                                        │
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Calling ────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>│ Calling tool: &#39;sql_executor_smolagent&#39; with arguments: {&#39;sql_query&#39;: &quot;SELECT year, value FROM pib_data WHERE    │
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>│ country_code = &#39;BFA&#39; AND year &gt;= &#39;2020&#39; ORDER BY year;&quot;}                                                        │
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 </code></pre></div>
 <p>Cette interactivité et ces logs font la force de SmolAgent.</p>
-<h4 id="avec-langchainlanggraph">Avec LangChain/LangGraph<a class="headerlink" href="#avec-langchainlanggraph" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">tool1_langchain</span> <span class="o">=</span> <span class="n">sql_generator</span><span class="o">.</span><span class="n">as_langchain_tool</span><span class="p">()</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">tool2_langchain</span> <span class="o">=</span> <span class="n">sql_executor</span><span class="o">.</span><span class="n">as_langchain_tool</span><span class="p">()</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">tool3_langchain</span> <span class="o">=</span> <span class="n">plot_generator</span><span class="o">.</span><span class="n">as_langchain_tool</span><span class="p">()</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="n">langchain_tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">tool1_langchain</span><span class="p">,</span> <span class="n">tool2_langchain</span><span class="p">,</span> <span class="n">tool3_langchain</span><span class="p">]</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="c1"># Configuration du modèle langchain</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="n">model_langchain</span> <span class="o">=</span> <span class="n">init_chat_model</span><span class="p">(</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>        <span class="s2">&quot;mistral-medium&quot;</span><span class="p">,</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>        <span class="n">api_key</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">],</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="p">)</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>    <span class="n">agent_langchain_direct</span> <span class="o">=</span> <span class="n">create_react_agent</span><span class="p">(</span>
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>        <span class="n">model_langchain</span><span class="p">,</span> 
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>        <span class="n">langchain_tools</span><span class="p">,</span> 
-<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>        <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;You are a data analysis expert assistant&quot;</span>
-<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>    <span class="p">)</span>
-<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Agent Langchain direct créé avec succès !&quot;</span><span class="p">)</span>
-<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nombre d&#39;outils: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">langchain_tools</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>
-<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>    <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;Donne-moi le PIB du Burkina Faso en 2020 en graphique&quot;</span>
-<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">agent_langchain_direct</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span>
-<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="n">question</span><span class="p">)]</span>
-<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>    <span class="p">})</span>
-<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Résultat: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a>
-<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erreur: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<h4 id="2-langchainlanggraph">2. LangChain/LangGraph<a class="headerlink" href="#2-langchainlanggraph" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">tool1_langchain</span> <span class="o">=</span> <span class="n">sql_generator</span><span class="o">.</span><span class="n">as_langchain_tool</span><span class="p">()</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">tool2_langchain</span> <span class="o">=</span> <span class="n">sql_executor</span><span class="o">.</span><span class="n">as_langchain_tool</span><span class="p">()</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">tool3_langchain</span> <span class="o">=</span> <span class="n">plot_generator</span><span class="o">.</span><span class="n">as_langchain_tool</span><span class="p">()</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">langchain_tools</span> <span class="o">=</span> <span class="p">[</span><span class="n">tool1_langchain</span><span class="p">,</span> <span class="n">tool2_langchain</span><span class="p">,</span> <span class="n">tool3_langchain</span><span class="p">]</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="c1"># Configuration du modèle langchain</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    <span class="n">model_langchain</span> <span class="o">=</span> <span class="n">init_chat_model</span><span class="p">(</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>        <span class="s2">&quot;mistral-medium&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>        <span class="n">api_key</span><span class="o">=</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;api_key&#39;</span><span class="p">],</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>    <span class="p">)</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>    <span class="n">agent_langchain_direct</span> <span class="o">=</span> <span class="n">create_react_agent</span><span class="p">(</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>        <span class="n">model_langchain</span><span class="p">,</span> 
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>        <span class="n">langchain_tools</span><span class="p">,</span> 
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>        <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;You are a data analysis expert assistant&quot;</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>    <span class="p">)</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Agent Langchain direct créé avec succès !&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nombre d&#39;outils: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">langchain_tools</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>    <span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;Donne-moi le PIB du Burkina Faso en 2020 en graphique&quot;</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">agent_langchain_direct</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;human&quot;</span><span class="p">,</span> <span class="n">question</span><span class="p">)]</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>    <span class="p">})</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Résultat: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Erreur: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" href="../../../../agent_2/langraph.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Résultat LangGraph" src="../../../../agent_2/langraph.png" /></a></p>
 <p>EUREKA, ça marche aussi !</p>
-<h2 id="limitations-et-inconvenients-des-frameworks">Limitations et Inconvénients des Frameworks<a class="headerlink" href="#limitations-et-inconvenients-des-frameworks" title="Permanent link">&para;</a></h2>
+<h2 id="discussions">Discussions<a class="headerlink" href="#discussions" title="Permanent link">&para;</a></h2>
 <p>Après avoir exploré les applications pratiques, il est important de discuter des limitations et défis que vous pourriez rencontrer avec les frameworks d'agents React.</p>
 <div class="admonition warning">
 <p class="admonition-title">Attention Production</p>
@@ -1332,11 +1302,11 @@ Je vous invit à consulter les docs officiels de ces framework pour construire d
 <h3 id="problemes-critiques">Problèmes Critiques<a class="headerlink" href="#problemes-critiques" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Coûts Exponentiels</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Router Agent : coût fixe et prévisible</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">router_cost</span> <span class="o">=</span> <span class="s2">&quot;1-2 appels LLM → ~$0.001/requête&quot;</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># React Agent : coût variable et imprévisible</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">react_cost</span> <span class="o">=</span> <span class="s2">&quot;1-10+ appels → $0.005-0.50+/requête&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Router Agent : coût fixe et prévisible</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">router_cost</span> <span class="o">=</span> <span class="s2">&quot;1-2 appels LLM → ~$0.001/requête&quot;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># React Agent : coût variable et imprévisible</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">react_cost</span> <span class="o">=</span> <span class="s2">&quot;1-10+ appels → $0.005-0.50+/requête&quot;</span>
 </code></pre></div></li>
 </ol>
 <div class="admonition danger">
@@ -1346,19 +1316,19 @@ Je vous invit à consulter les docs officiels de ces framework pour construire d
 <ol>
 <li>
 <p><strong>Debugging Complexe</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Difficulté à reproduire les erreurs</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;Question complexe&quot;</span><span class="p">)</span> 
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># ❌ Échec à l&#39;étape 3/7 - workflow dynamique difficile à tracer</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Difficulté à reproduire les erreurs</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;Question complexe&quot;</span><span class="p">)</span> 
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># ❌ Échec à l&#39;étape 3/7 - workflow dynamique difficile à tracer</span>
 </code></pre></div></p>
 </li>
 <li>
 <p><strong>Performances Variables</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Même question, résultats différents à chaque exécution</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;Analyse les PIB des pays en 2023&quot;</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Exécution 1 : 3 étapes, 15 secondes ✅</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># Exécution 2 : 7 étapes, 45 secondes ⚠️  </span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># Exécution 3 : Boucle infinie, timeout ❌</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Même question, résultats différents à chaque exécution</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">question</span> <span class="o">=</span> <span class="s2">&quot;Analyse les PIB des pays en 2023&quot;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Exécution 1 : 3 étapes, 15 secondes ✅</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1"># Exécution 2 : 7 étapes, 45 secondes ⚠️  </span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1"># Exécution 3 : Boucle infinie, timeout ❌</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -1379,26 +1349,26 @@ Je vous invit à consulter les docs officiels de ces framework pour construire d
 <p>Chaque framework a ses propres compromis entre simplicité, fonctionnalités et performance. Il y a beacuoup trop de framework.</p>
 </div>
 <p><strong>LangChain : L'Écosystème Complexe</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">create_react_agent</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># Nombreuses couches d&#39;abstraction = debugging difficile</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kn">from</span> <span class="nn">langchain.agents</span> <span class="kn">import</span> <span class="n">create_react_agent</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># Nombreuses couches d&#39;abstraction = debugging difficile</span>
 </code></pre></div></p>
 <p><strong>Problèmes spécifiques :</strong>
 - Abstractions opaques rendant le debugging complexe
 - Overhead de performance dû aux multiples couches
 - Documentation fragmentée pour les cas avancés</p>
 <p><strong>SmolAgent : La Simplicité Limitante</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">ToolCallingAgent</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># Simple mais fonctionnalités limitées</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">agent</span> <span class="o">=</span> <span class="n">ToolCallingAgent</span><span class="p">(</span><span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># Simple mais fonctionnalités limitées</span>
 </code></pre></div></p>
 <p><strong>Contraintes :</strong>
 - Pas de gestion d'état persistant entre sessions
 - Workflows complexes non supportés et le  paradigme Human-In-The-Loop
 - Écosystème d'outils plus restreint</p>
 <p><strong>LangGraph : La Configuration Verbeuse</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">workflow</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;step1&quot;</span><span class="p">,</span> <span class="n">node1</span><span class="p">)</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;step1&quot;</span><span class="p">,</span> <span class="s2">&quot;step2&quot;</span><span class="p">)</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Beaucoup de code pour des tâches simples</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">workflow</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;step1&quot;</span><span class="p">,</span> <span class="n">node1</span><span class="p">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="n">workflow</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;step1&quot;</span><span class="p">,</span> <span class="s2">&quot;step2&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># Beaucoup de code pour des tâches simples</span>
 </code></pre></div></p>
 <p><strong>Défis d'adoption :</strong>
 - Courbe d'apprentissage très élevée
@@ -1410,19 +1380,19 @@ Je vous invit à consulter les docs officiels de ces framework pour construire d
 <p>Implémentez ces safeguards pour minimiser les risques en production.</p>
 </div>
 <h4 id="monitoring-controle"><strong>Monitoring &amp; Contrôle</strong><a class="headerlink" href="#monitoring-controle" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Exemple de wrapper sécurisé</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">class</span> <span class="nc">SafeReactAgent</span><span class="p">:</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">agent</span> <span class="o">=</span> <span class="n">agent</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">max_steps</span> <span class="o">=</span> <span class="n">max_steps</span>  <span class="c1"># Limite les boucles infinies</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span>      <span class="c1"># Évite les blocages</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="k">def</span> <span class="nf">run_with_fallback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>        <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>            <span class="c1"># Fallback vers Router Agent</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">router_fallback</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Exemple de wrapper sécurisé</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="k">class</span> <span class="nc">SafeReactAgent</span><span class="p">:</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent</span><span class="p">,</span> <span class="n">max_steps</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">agent</span> <span class="o">=</span> <span class="n">agent</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">max_steps</span> <span class="o">=</span> <span class="n">max_steps</span>  <span class="c1"># Limite les boucles infinies</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span>      <span class="c1"># Évite les blocages</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>    <span class="k">def</span> <span class="nf">run_with_fallback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>            <span class="c1"># Fallback vers Router Agent</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">router_fallback</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="solutions-recommandees"><strong>Solutions Recommandées</strong><a class="headerlink" href="#solutions-recommandees" title="Permanent link">&para;</a></h4>
 <ol>
