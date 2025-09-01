@@ -9,60 +9,16 @@ categories:
 
 # Build an Agent (2/3): From Router to React Agent
 
-## Introduction
-
 Dans le [premier article de cette série](https://sawallesalfo.github.io/blog/2025/07/14/agent-router/), nous avons construit un **Router Agent** avec une logique if/else rigide. Aujourd'hui, nous passons au **React Agent** : un agent autonome qui décide lui-même de ses actions.
+
+- Router = chemin fixe. 
+- React = agent autonome qui s'adapte.
+Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de maintenir des prompts avec exemples de plus en plus lourds.
 
 <!-- more -->
 
 Nous verrons les concepts clés, comparerons les frameworks, et implémenterons notre solution.
 
-## Rappel : Notre Workflow Précédent
-
-Router Agent = chemin prédéfini. React Agent = agent qui décide lui-même à chaque étape.
-
-```python
-class RouterAgent:
-    
-    def __init__(self, llm_client):
-        self.llm = llm_client
-    
-    def run(self, query: str) -> Union[str, ActionOutput]:
-        logger.info(f"RouterAgent processing query: {query}")
-        
-        sql_generator = SQLGeneratorAction(self.llm)
-        result = sql_generator.execute(query=query)
-
-        if result.grade <= 1:
-            logger.info("Returning general response")
-            return result.output_value
-
-        sql_executor = SQLExecutor(mode="polars")
-        sql_executor.add_table("pib_data", "C:/Users/sawal/Downloads/pib_data0.csv")
-        sql_data = sql_executor.execute(result.output_value)
-
-        if sql_data.grade < 1:
-            logger.error(f"SQL execution failed: {sql_data.output_value}")
-            return f"SQL execution failed: {sql_data.output_value}"
-
-        plotter = PlotAction(self.llm)
-        plot_result = plotter.execute(
-            query=query,
-            dataset=sql_data.output_value,
-            output_format="altair"
-        )
-
-        if plot_result.grade < 1:
-            logger.error(f"Chart generation failed: {plot_result.output_value}")
-            return f"Chart generation failed: {plot_result.output_value}"
-
-        logger.info("RouterAgent completed successfully")
-        return plot_result.output_value
-
-```
-Router = chemin fixe. React = agent autonome qui s'adapte.
-
-Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de maintenir des prompts avec exemples de plus en plus lourds.
 
 ## Core Concepts : Les Agents React
 
@@ -76,7 +32,7 @@ Le pattern **React** = Reason-Act-Observe. L'agent raisonne → agit → observe
 
 Ce cycle se répète jusqu'à ce que l'agent estime avoir accompli la tâche demandée.
 
-### Comparaison avec l'Approche Router
+### Comparaison
 
 | **Aspect** | **Router Agent** | **React Agent** |
 |------------|------------------|-----------------|
@@ -116,7 +72,7 @@ Les frameworks gèrent efficacement les machines d'état et l'orchestration de p
 
 ## Les Tools : Foundation des Agents React
 
-### Pourquoi les LLM ont besoin d'outils
+Pourquoi les LLM ont besoin d'outils ?
 
 Les LLM prédisent des tokens, ils ne calculent pas. D'où les erreurs fréquentes sur des questions simples comme "combien de 'r' dans strawberry".
 
@@ -181,17 +137,17 @@ def example_tool(param1: str, param2: int) -> str:
 Faisons une démonstration pratique avec le framework SmolAgent.
 À la fin, vous verrez que SmolAgent sans outils = erreurs de calcul. Avec outils = précision.
 
-SmolAgent propose : `CodeAgent` (écrire du code Python et l'exécuter) vs `ToolCallingAgent` (appels JSON). Nous préférons les appels JSON.
+SmolAgent propose : 
 
-**Explication technique :**
-- CodeAgent génère ses appels d'outils sous forme de snippets de code Python.
-- ToolCallingAgent écrit ses appels d'outils en JSON, comme c'est courant dans de nombreux frameworks.
+- `CodeAgent` (écrire du code Python et l'exécuter)
+-  `ToolCallingAgent` (appels JSON)
+
 
 Selon vos besoins, l'une ou l'autre approche peut être utilisée. Par exemple, la navigation web nécessite souvent d'attendre après chaque interaction de page, donc les appels d'outils JSON peuvent bien convenir. D'après mes discussions avec d'autres développeurs IA et data scientists, personne n'utilise CodeAgent dans un projet sérieux, surtout que la génération de code peut partir dans tous les sens.
 
 
 
-#### Étape 1 : Agent sans Outils
+Étape 1 : Agent sans Outils
 
 ```python
 model = LiteLLMModel(
@@ -211,7 +167,7 @@ result = agent.run("Quelle est la racine carrée de 6.12?")
 
 Comme vous pouvez le voir, le LLM a donné une mauvaise réponse - ce qui était attendu. Le LLM utilisé est mistral-tiny (modèle trop petit), mais même pour les grands LLM, les calculs précis ne sont pas toujours évidents.
 
-#### Étape 2 : Implémentation de notre premier outil
+Étape 2 : Implémentation de notre premier outil
 
 Maintenant, implémentons notre premier outil :
 
@@ -238,7 +194,7 @@ def square_root_smolagent(number: float) -> str:
 
 Cette implémentation reste simple, n'est-ce pas ?
 
-#### Étape 3 : Ajout de l'outil
+Étape 3 : Ajout de l'outil
 
 ```python
 from smolagents import ToolCallingAgent, LiteLLMModel
@@ -491,7 +447,7 @@ react_cost = "1-10+ appels → $0.005-0.50+/requête"
 ```
 
 !!! danger "Impact Financier"
-    Un agent React peut coûter **50x à 500x plus cher** qu'un Router Agent selon la complexité de la tâche.
+    Un agent React peut coûter **10 à 20 plus cher** qu'un Router Agent selon la complexité de la tâche.
 
 #### 2. **Debugging Complexe**
 ```python
