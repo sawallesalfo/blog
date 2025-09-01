@@ -11,13 +11,11 @@ categories:
 
 Dans le [premier article de cette série](https://sawallesalfo.github.io/blog/2025/07/14/agent-router/), nous avons construit un Router Agent avec une logique if/else rigide. Aujourd'hui, nous passons au React Agent : un agent autonome qui décide lui-même de ses actions.
 
-Router = chemin fixe. 
-React = agent autonome qui s'adapte.
-Les orchestrateurs complexes deviennent vite ingérables car ils nécessitent de maintenir des prompts avec exemples de plus en plus lourds.
+Contrairement aux Router Agents qui suivent un chemin fixe, les React Agents s'adaptent dynamiquement à chaque situation. Cette flexibilité résout un problème majeur : les orchestrateurs complexes deviennent rapidement ingérables car ils nécessitent de maintenir des prompts avec exemples de plus en plus lourds.
 
 <!-- more -->
 
-Nous verrons les concepts clés, comparerons les frameworks, et implémenterons notre solution.
+Nous explorerons les concepts clés, comparerons les frameworks disponibles, et implémenterons notre propre solution.
 
 
 ## Core Concepts : Les Agents React
