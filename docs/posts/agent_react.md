@@ -7,7 +7,7 @@ categories:
 ---
 
 
-# Build an Agent (2/3): From Router to React Agent
+# Agentic IA (2/3): From Router to React Agent
 
 Dans le [premier article de cette série](https://sawallesalfo.github.io/blog/2025/07/14/agent-router/), nous avons construit un Router Agent avec une logique if/else rigide. Aujourd'hui, nous passons au React Agent : un agent autonome qui décide lui-même de ses actions.
 
