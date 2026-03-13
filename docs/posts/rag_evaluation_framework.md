@@ -1,5 +1,5 @@
 ---
-date: 2026-03-15
+date: 2026-02-10
 authors:
     - ssawadogo
 categories: 
@@ -17,7 +17,7 @@ Dans ce premier volet, je partage avec vous la boîte à outils technique que j'
 
 <!-- more -->
 
-## Pourquoi l'évaluation est-elle complexe ?
+## Pourquoi l'évaluation est-elle si complexe ?
 
 Contrairement au Machine Learning classique où l'on dispose de métriques simples (Précision, Rappel), le RAG produit du texte libre. Un échec peut provenir de deux sources distinctes :
 1.  **Le Retrieval** : Le système n'a pas trouvé les bons documents.
@@ -27,7 +27,7 @@ Contrairement au Machine Learning classique où l'on dispose de métriques simpl
 
 Pour débugger efficacement, j'ai structuré mon pipeline d'évaluation en quatre couches :
 
-![Framework d'Évaluation](https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png)
+![Framework d'Évaluation](https://sawallesalfo.github.io/blog/2026/02/10/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png)
 
 ### Layer 1 : Observabilité brute
 J'utilise des outils comme **Langfuse** pour suivre les métriques techniques :
@@ -50,4 +50,4 @@ $$FactualAccuracy = \frac{N_{correct} + N_{plausible}}{N_{total\_facts}}$$
 
 Ce framework "Offline" permet de comparer deux versions d'un prompt ou d'un modèle d'embedding avec rigueur. Mais une fois que le système est entre les mains des utilisateurs, les problématiques changent.
 
-Dans la [Partie 2](https://sawallesalfo.github.io/blog/2026/03/25/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/), nous verrons comment transformer ces outils techniques en un véritable tableau de bord de pilotage pour l'entreprise.
+Dans la [Partie 2](https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/), nous verrons comment transformer ces outils techniques en un véritable tableau de bord de pilotage pour l'entreprise.

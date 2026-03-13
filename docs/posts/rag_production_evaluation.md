@@ -1,5 +1,5 @@
 ---
-date: 2026-03-25
+date: 2026-02-15
 authors:
     - ssawadogo
 categories: 
@@ -11,7 +11,7 @@ categories:
 
 # Évaluer un système RAG (Partie 2) : le pilotage en production
 
-Dans la [Partie 1](https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/), nous avons exploré la "boîte à outils" technique pour débugger un pipeline RAG. Aujourd'hui, nous passons du laboratoire au terrain. Comment s'assurer que le système apporte réellement de la valeur aux utilisateurs finaux et reste sûr dans le temps ?
+Dans la [Partie 1](https://sawallesalfo.github.io/blog/2026/02/10/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/), nous avons exploré la "boîte à outils" technique pour débugger un pipeline RAG. Aujourd'hui, nous passons du laboratoire au terrain. Comment s'assurer que le système apporte réellement de la valeur aux utilisateurs finaux et reste sûr dans le temps ?
 
 Le défi n'est plus seulement technique, il devient opérationnel. Voici comment je transforme des métriques brutes en un système de pilotage par les données.
 
@@ -25,7 +25,7 @@ L'évaluation en production ne s'adresse plus seulement aux développeurs, mais 
 -   **Hallucination Rate** : L'IA invente-t-elle des faits ?
 -   **Knowledge Gap** : Avons-nous les documents nécessaires pour répondre ?
 
-![Pilotage RAG](https://sawallesalfo.github.io/blog/2026/03/25/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/rag_production_evaluation/rag_eval_mindmap.png)
+![Pilotage RAG](https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/rag_production_evaluation/rag_eval_mindmap.png)
 
 ## Le Système "Feu Tricolore"
 
