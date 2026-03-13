@@ -1111,7 +1111,8 @@
 
 <h2 id="1-metriques-de-retrieval-avons-nous-les-bons-documents">1. Métriques de Retrieval : avons-nous les bons documents ?<a class="headerlink" href="#1-metriques-de-retrieval-avons-nous-les-bons-documents" title="Permanent link">&para;</a></h2>
 <h3 id="contextual-recall-rappel">Contextual Recall (Rappel)<a class="headerlink" href="#contextual-recall-rappel" title="Permanent link">&para;</a></h3>
-<p>Le Rappel vérifie si nous avons trouvé tous les ingrédients nécessaires pour répondre.</p>
+<p>Le Rappel vérifie si nous avons trouvé tous les ingrédients nécessaires pour répondre. Il se base sur le ratio entre les faits trouvés et les faits attendus :</p>
+<div class="arithmatex">\[Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}\]</div>
 <p><strong>Exemple :</strong></p>
 <ul>
 <li><strong>Question</strong> : "Quels sont les faits marquants de l'indépendance du pays ?"</li>
@@ -1143,16 +1144,19 @@
 <hr />
 <h2 id="2-metriques-de-generation-le-llm-est-il-fiable">2. Métriques de Génération : le LLM est-il fiable ?<a class="headerlink" href="#2-metriques-de-generation-le-llm-est-il-fiable" title="Permanent link">&para;</a></h2>
 <h3 id="faithfulness-fidelite-groundedness">Faithfulness (Fidélité / Groundedness)<a class="headerlink" href="#faithfulness-fidelite-groundedness" title="Permanent link">&para;</a></h3>
-<p>C'est le rempart contre l'hallucination. L'IA doit répondre <strong>uniquement</strong> avec ce qu'on lui a donné.</p>
+<p>C'est le rempart contre l'hallucination. L'IA doit répondre <strong>uniquement</strong> avec ce qu'on lui a donné. Elle se mesure par le ratio des affirmations étayées :</p>
+<div class="arithmatex">\[Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\]</div>
 <p><strong>Exemple :</strong></p>
 <ul>
 <li><strong>Contexte fourni</strong> : "Le Burkina Faso a obtenu son indépendance le 5 août 1960."</li>
 <li><strong>Réponse de l'IA</strong> : "L'indépendance a eu lieu le 5 août 1960 sous la direction de Thomas Sankara."</li>
 </ul>
-<p><strong>Calcul étape par étape :</strong>
-1. Affirmation 1 : "Indépendance le 5 août 1960" -&gt; Présente dans le contexte (VRAI).
-2. Affirmation 2 : "Sous la direction de Thomas Sankara" -&gt; <strong>Absente</strong> du contexte (Thomas Sankara est arrivé au pouvoir en 1983) (FAUX).
-3. Score de fidélité : </p>
+<p><strong>Calcul étape par étape :</strong></p>
+<ol>
+<li>Affirmation 1 : "Indépendance le 5 août 1960" -&gt; Présente dans le contexte (VRAI).</li>
+<li>Affirmation 2 : "Sous la direction de Thomas Sankara" -&gt; <strong>Absente</strong> du contexte (Thomas Sankara est arrivé au pouvoir en 1983) (FAUX).</li>
+<li>Score de fidélité : </li>
+</ol>
 <div class="arithmatex">\[Faithfulness = \frac{1}{2} = 0.50\]</div>
 <hr />
 <h3 id="answer-relevancy-pertinence">Answer Relevancy (Pertinence)<a class="headerlink" href="#answer-relevancy-pertinence" title="Permanent link">&para;</a></h3>
