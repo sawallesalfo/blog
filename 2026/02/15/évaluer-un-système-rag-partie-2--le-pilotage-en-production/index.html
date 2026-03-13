@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../../15/%C3%A9valuer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/">
+        <link rel="prev" href="../../10/%C3%A9valuer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/">
       
+      
+        <link rel="next" href="../../28/sous-le-capot-du-docx--comment-jautomatise-le-remplissage-de-fiches-m%C3%A9tier-avec-une-ia/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -1029,7 +1031,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2026-03-25 00:00:00" class="md-ellipsis">March 25, 2026</time>
+                        <time datetime="2026-02-15 00:00:00" class="md-ellipsis">February 15, 2026</time>
                       </div>
                     </li>
                     
@@ -1075,7 +1077,7 @@
 
 
 <h1 id="evaluer-un-systeme-rag-partie-2-le-pilotage-en-production">Évaluer un système RAG (Partie 2) : le pilotage en production<a class="headerlink" href="#evaluer-un-systeme-rag-partie-2-le-pilotage-en-production" title="Permanent link">&para;</a></h1>
-<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/">Partie 1</a>, nous avons exploré la "boîte à outils" technique pour débugger un pipeline RAG. Aujourd'hui, nous passons du laboratoire au terrain. Comment s'assurer que le système apporte réellement de la valeur aux utilisateurs finaux et reste sûr dans le temps ?</p>
+<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/10/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/">Partie 1</a>, nous avons exploré la "boîte à outils" technique pour débugger un pipeline RAG. Aujourd'hui, nous passons du laboratoire au terrain. Comment s'assurer que le système apporte réellement de la valeur aux utilisateurs finaux et reste sûr dans le temps ?</p>
 <p>Le défi n'est plus seulement technique, il devient opérationnel. Voici comment je transforme des métriques brutes en un système de pilotage par les données.</p>
 <!-- more -->
 
@@ -1086,7 +1088,7 @@
 <li><strong>Hallucination Rate</strong> : L'IA invente-t-elle des faits ?</li>
 <li><strong>Knowledge Gap</strong> : Avons-nous les documents nécessaires pour répondre ?</li>
 </ul>
-<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/2026/03/25/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/rag_production_evaluation/rag_eval_mindmap.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pilotage RAG" src="https://sawallesalfo.github.io/blog/2026/03/25/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/rag_production_evaluation/rag_eval_mindmap.png" /></a></p>
+<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/rag_production_evaluation/rag_eval_mindmap.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pilotage RAG" src="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/rag_production_evaluation/rag_eval_mindmap.png" /></a></p>
 <h2 id="le-systeme-feu-tricolore">Le Système "Feu Tricolore"<a class="headerlink" href="#le-systeme-feu-tricolore" title="Permanent link">&para;</a></h2>
 <p>Pour rendre l'analyse actionnable immédiatement, je convertis chaque résultat en un statut visuel simple :
 -   🟢 <strong>PASS (Score &gt; 0.8)</strong> : Précis et sourcé.

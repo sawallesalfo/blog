@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../../02/28/sous-le-capot-du-docx--comment-jautomatise-le-remplissage-de-fiches-m%C3%A9tier-avec-une-ia/">
+        <link rel="prev" href="../../../01/30/conformit%C3%A9-et-qualit%C3%A9--guider-un-agent-vers-des-standards-m%C3%A9tier-exigeants/">
       
       
-        <link rel="next" href="../../25/%C3%A9valuer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">
+        <link rel="next" href="../../15/%C3%A9valuer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -931,9 +931,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pourquoi-levaluation-est-elle-complexe" class="md-nav__link">
+  <a href="#pourquoi-levaluation-est-elle-si-complexe" class="md-nav__link">
     <span class="md-ellipsis">
-      Pourquoi l'évaluation est-elle complexe ?
+      Pourquoi l'évaluation est-elle si complexe ?
     </span>
   </a>
   
@@ -1055,7 +1055,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2026-03-15 00:00:00" class="md-ellipsis">March 15, 2026</time>
+                        <time datetime="2026-02-10 00:00:00" class="md-ellipsis">February 10, 2026</time>
                       </div>
                     </li>
                     
@@ -1105,13 +1105,13 @@
 <p>Dans ce premier volet, je partage avec vous la boîte à outils technique que j'utilise pour évaluer la mécanique interne d'un pipeline RAG.</p>
 <!-- more -->
 
-<h2 id="pourquoi-levaluation-est-elle-complexe">Pourquoi l'évaluation est-elle complexe ?<a class="headerlink" href="#pourquoi-levaluation-est-elle-complexe" title="Permanent link">&para;</a></h2>
+<h2 id="pourquoi-levaluation-est-elle-si-complexe">Pourquoi l'évaluation est-elle si complexe ?<a class="headerlink" href="#pourquoi-levaluation-est-elle-si-complexe" title="Permanent link">&para;</a></h2>
 <p>Contrairement au Machine Learning classique où l'on dispose de métriques simples (Précision, Rappel), le RAG produit du texte libre. Un échec peut provenir de deux sources distinctes :
 1.  <strong>Le Retrieval</strong> : Le système n'a pas trouvé les bons documents.
 2.  <strong>La Génération</strong> : Le LLM a mal interprété les documents (hallucination).</p>
 <h2 id="le-framework-en-4-couches">Le Framework en 4 Couches<a class="headerlink" href="#le-framework-en-4-couches" title="Permanent link">&para;</a></h2>
 <p>Pour débugger efficacement, j'ai structuré mon pipeline d'évaluation en quatre couches :</p>
-<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png" /></a></p>
+<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/2026/02/10/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/2026/02/10/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png" /></a></p>
 <h3 id="layer-1-observabilite-brute">Layer 1 : Observabilité brute<a class="headerlink" href="#layer-1-observabilite-brute" title="Permanent link">&para;</a></h3>
 <p>J'utilise des outils comme <strong>Langfuse</strong> pour suivre les métriques techniques :
 -   <strong>Latence</strong> : Temps de réponse par étape.
@@ -1127,7 +1127,7 @@
 <span class="arithmatex">\(<span class="arithmatex">\(FactualAccuracy = \frac{N_{correct} + N_{plausible}}{N_{total\_facts}}\)</span>\)</span></p>
 <h2 id="conclusion-de-la-partie-1">Conclusion de la Partie 1<a class="headerlink" href="#conclusion-de-la-partie-1" title="Permanent link">&para;</a></h2>
 <p>Ce framework "Offline" permet de comparer deux versions d'un prompt ou d'un modèle d'embedding avec rigueur. Mais une fois que le système est entre les mains des utilisateurs, les problématiques changent.</p>
-<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/03/25/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment transformer ces outils techniques en un véritable tableau de bord de pilotage pour l'entreprise.</p>
+<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment transformer ces outils techniques en un véritable tableau de bord de pilotage pour l'entreprise.</p>
 
 
 
