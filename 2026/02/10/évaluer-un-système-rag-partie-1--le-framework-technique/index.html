@@ -1133,10 +1133,12 @@
 <p>Une fois le contexte fourni, nous évaluons la qualité de la synthèse produite par le modèle.</p>
 <h3 id="faithfulness-fidelite-groundedness">Faithfulness (Fidélité / Groundedness)<a class="headerlink" href="#faithfulness-fidelite-groundedness" title="Permanent link">&para;</a></h3>
 <p>C'est la métrique vitale pour lutter contre les hallucinations. Elle garantit que l'IA ne s'appuie que sur les documents fournis et non sur ses propres connaissances internes (qui peuvent être datées ou erronées).</p>
-<p>Le processus de mesure :
-1. L'IA génère une réponse.
-2. On décompose cette réponse en affirmations atomiques.
-3. Pour chaque affirmation, on demande à un "Juge" si elle est étayée par le contexte fourni.</p>
+<p>Le processus de mesure :</p>
+<ol>
+<li>L'IA génère une réponse.</li>
+<li>On décompose cette réponse en affirmations atomiques.</li>
+<li>Pour chaque affirmation, on demande à un "Juge" si elle est étayée par le contexte fourni.</li>
+</ol>
 <p><span class="arithmatex">\(Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\)</span></p>
 <h3 id="answer-relevancy-pertinence-de-la-reponse">Answer Relevancy (Pertinence de la réponse)<a class="headerlink" href="#answer-relevancy-pertinence-de-la-reponse" title="Permanent link">&para;</a></h3>
 <p>Elle mesure à quel point la réponse s'adresse directement à la question de l'utilisateur. Une réponse peut être fidèle au contexte mais totalement hors-sujet.</p>
@@ -1149,8 +1151,10 @@
 <h2 id="pourquoi-diviser-ainsi">Pourquoi diviser ainsi ?<a class="headerlink" href="#pourquoi-diviser-ainsi" title="Permanent link">&para;</a></h2>
 <p>Cette séparation permet d'identifier immédiatement le maillon faible de votre chaîne de valeur :</p>
 <ul>
-<li><strong>Scénario A</strong> : Recall bas / Faithfulness haute.
-    *   <em>Diagnostic</em> : Votre base de données est mal indexée ou la recherche est inefficace. Votre LLM est "honnête" mais manque d'informations.</li>
+<li><strong>Scénario A</strong> : Recall bas / Faithfulness haute.<p>*   <em>Diagnostic</em> : Votre base de données est mal indexée ou la recherche est inefficace. Votre LLM est "honnête" mais manque d'informations.</p>
+</li>
+</ul>
+<ul>
 <li><strong>Scénario B</strong> : Recall haut / Faithfulness basse.
     *   <em>Diagnostic</em> : Votre moteur de recherche trouve les bonnes infos, mais votre LLM invente des faits. Il faut ajuster le prompt système ou changer de modèle.</li>
 </ul>
