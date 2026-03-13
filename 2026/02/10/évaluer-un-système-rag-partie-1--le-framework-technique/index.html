@@ -1151,12 +1151,12 @@
 <h2 id="pourquoi-diviser-ainsi">Pourquoi diviser ainsi ?<a class="headerlink" href="#pourquoi-diviser-ainsi" title="Permanent link">&para;</a></h2>
 <p>Cette séparation permet d'identifier immédiatement le maillon faible de votre chaîne de valeur :</p>
 <ul>
-<li><strong>Scénario A</strong> : Recall bas / Faithfulness haute.<p>*   <em>Diagnostic</em> : Votre base de données est mal indexée ou la recherche est inefficace. Votre LLM est "honnête" mais manque d'informations.</p>
+<li><strong>Scénario A</strong> : Recall bas / Faithfulness haute.<p><em>Diagnostic</em> : Votre base de données est mal indexée ou la recherche est inefficace. Votre LLM est "honnête" mais manque d'informations.</p>
 </li>
 </ul>
 <ul>
-<li><strong>Scénario B</strong> : Recall haut / Faithfulness basse.
-    *   <em>Diagnostic</em> : Votre moteur de recherche trouve les bonnes infos, mais votre LLM invente des faits. Il faut ajuster le prompt système ou changer de modèle.</li>
+<li><strong>Scénario B</strong> : Recall haut / Faithfulness basse.<p><em>Diagnostic</em> : Votre moteur de recherche trouve les bonnes infos, mais votre LLM invente des faits. Il faut ajuster le prompt système ou changer de modèle.</p>
+</li>
 </ul>
 <p><a class="glightbox" href="../../../../rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="../../../../rag_evaluation_framework/evaluation_layers.png" /></a></p>
 <p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment agréger ces métriques techniques pour piloter la qualité globale de votre service.</p>
