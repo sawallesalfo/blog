@@ -19,7 +19,7 @@ C'est là qu'intervient le **RAG Agentique**, et plus précisément le pattern *
 
 ## La Fondation : Une Base de Connaissances Structurée, pas Vectorielle
 
-Beaucoup pensent que le RAG impose l'utilisation de vecteurs. J'ai découvert que pour des bases de connaissances métier complexes (comme celles que j'ai pu bâtir récemment), la structure relationnelle est bien plus puissante pour un agent.
+Beaucoup pensent que le RAG impose l'utilisation de vecteurs. J'ai découvert que pour des bases de connaissances métier complexes, la structure relationnelle est bien plus puissante pour un agent.
 
 Pour qu'un agent Navigator soit efficace, il lui faut une "carte" précise. Voici mon pipeline type :
 
@@ -72,4 +72,4 @@ async def get_document_content(ctx: RunContext, doc_id: str, section_name: str) 
 
 Le RAG Agentique Navigator transforme l'IA d'un simple moteur de recherche statistique en un véritable **analyste documentaire**. En revenant à une structure relationnelle solide et en lui donnant les bons outils, on obtient une fiabilité qu'une approche vectorielle classique ne peut pas égaler.
 
-Dans le [prochain article](https://sawallesalfo.github.io/blog/2026/01/30/conformit%C3%A9-et-qualit%C3%A9--ma-fa%C3%A7on-de-guider-un-agent-vers-vos-standards-m%C3%A9tier/), nous verrons comment garantir que ces analyses respectent vos standards métier grâce à un système de revue automatisé.
+Dans le [prochain article](https://sawallesalfo.github.io/blog/2026/01/30/conformit%C3%A9-et-qualit%C3%A9--guider-un-agent-vers-des-standards-m%C3%A9tier-exigeants/), nous verrons comment garantir que ces analyses respectent des standards métier exigeants grâce à un système de revue automatisé.

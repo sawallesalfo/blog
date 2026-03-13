@@ -60,4 +60,4 @@ J'ajuste les scores pour donner une priorité au *Full-Text* lorsque la requête
 
 Le RAG de demain ne sera pas une simple boîte noire vectorielle. Ce sera un système hybride capable de respecter la précision des mots-clés tout en comprenant le contexte. C'est une étape nécessaire vers une IA vraiment exploitable par les métiers de la connaissance.
 
-Mais chercher n'est qu'une partie du problème. Dans le [prochain article](agentic_rag_navigator.md), je vous montrerai comment je passe de la "recherche" à la "navigation" intelligente grâce au **RAG Agentique (Navigator based)**.
+Mais chercher n'est qu'une partie du problème. Dans le [prochain article](https://sawallesalfo.github.io/blog/2026/01/15/au-del%C3%A0-de-la-recherche--le-rag-agentique-et-le-pattern-navigator/), je vous montrerai comment je passe de la "recherche" à la "navigation" intelligente grâce au **RAG Agentique (Navigator based)**.

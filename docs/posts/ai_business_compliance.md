@@ -8,7 +8,7 @@ categories:
     - IA
 ---
 
-# Conformité et qualité : ma façon de guider un agent vers vos standards métier
+# Conformité et qualité : guider un agent vers des standards métier exigeants
 
 Générer du texte avec une IA est devenu facile. Mais générer un document qui respecte scrupuleusement les standards de qualité, de ton et de fond d'une organisation est un défi bien plus complexe. Comment passer d'un simple "brouillon" à un document prêt à être approuvé ?
 
@@ -66,7 +66,6 @@ Je ne vois pas la technologie comme un remplaçant de l'expert, mais comme un mo
 
 ## Conclusion
 
-L'avenir de l'IA générative en entreprise ne réside pas dans la production de masse, mais dans la production de **qualité**. En intégrant des boucles de conformité directement dans mes architectures d'agents, j'essaie de bâtir des systèmes qui ne se contentent pas d'écrire, mais qui comprennent et respectent les standards d'excellence métier.
+L'avenir de l'IA générative en entreprise ne réside pas dans la production de masse, mais dans la production de **qualité**. En intégrant des boucles de conformité directement dans des architectures d'agents, j'essaie de bâtir des systèmes qui ne se contentent pas d'écrire, mais qui comprennent et respectent des standards d'excellence.
 
-C'est ainsi que je conclus cette série d'articles sur l'analyse et la revue agentique. Dans le [dernier article](docx_automation.md), je partagerai avec vous comment je boucle la boucle en automatisant la production de documents finaux parfaitement formatés.
-
+C'est ainsi que je conclus cette série d'articles sur l'analyse et la revue agentique. Dans le [dernier article](https://sawallesalfo.github.io/blog/2026/02/28/sous-le-capot-du-docx--comment-jautomatise-le-remplissage-de-fiches-m%C3%A9tier-avec-une-ia/), je partagerai avec vous comment je boucle la boucle en automatisant la production de documents finaux parfaitement formatés.
