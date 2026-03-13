@@ -41,4 +41,4 @@ Le webhook est l'outil parfait pour connecter des services sans complexifier inu
 
 L'intégration de l'IA demande de sortir du cadre strict du code Python pour regarder comment l'information circule. En adoptant les webhooks, je m'assure que mon travail de ML Engineer est réellement utile et exploitable, même dans des environnements qui n'étaient pas prêts pour l'IA.
 
-Dans le prochain article, je vous expliquerai pourquoi, dans ces mêmes contextes métiers exigeants (banque, droit), j'ajuste mon approche du RAG pour redonner du poids aux bons vieux mots-clés.
+Dans le [prochain article](beyond_embeddings_rag.md), je vous expliquerai pourquoi, dans ces mêmes contextes métiers exigeants (banque, droit), j'ajuste mon approche du RAG pour redonner du poids aux bons vieux mots-clés.

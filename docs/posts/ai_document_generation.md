@@ -75,4 +75,4 @@ async def read_section(ctx: RunContext, section_id: str) -> str:
 
 L'utilisation d'agents pour la génération de documents change radicalement ma productivité. En passant d'une rédaction monolithique à une approche par outils et sections, et en respectant les interventions humaines, j'obtiens des résultats plus précis, mieux sourcés et réellement collaboratifs.
 
-C'est mon retour d'expérience actuel sur le sujet. Dans le prochain article, je vous propose de regarder sous le capot pour analyser l'architecture technique que j'ai mise en place pour orchestrer tout cela.
+C'est mon retour d'expérience actuel sur le sujet. Dans le [prochain article](agentic_system_architecture.md), je vous propose de regarder sous le capot pour analyser l'architecture technique que j'ai mise en place pour orchestrer tout cela.

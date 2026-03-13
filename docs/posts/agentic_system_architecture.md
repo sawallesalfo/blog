@@ -64,4 +64,4 @@ async def chat_stream(request: ChatRequest):
 
 L'architecture d'un système agentique est un équilibre permanent. En tant que ML Engineer, ma mission s'arrête rarement au `predict()`. Elle continue jusqu'à ce que le système soit capable de discuter de manière fiable avec le reste de l'infrastructure, même si celle-ci n'est pas "AI-ready".
 
-Dans le prochain article, j'aborderai un point crucial de cette intégration : comment j'utilise les **webhooks** pour connecter mon IA à des systèmes qui ne peuvent pas se permettre d'attendre.
+Dans le [prochain article](ai_webhook_integration.md), j'aborderai un point crucial de cette intégration : comment j'utilise les **webhooks** pour connecter mon IA à des systèmes qui ne peuvent pas se permettre d'attendre.

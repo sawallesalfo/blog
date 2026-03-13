@@ -72,4 +72,4 @@ async def get_document_content(ctx: RunContext, doc_id: str, section_name: str) 
 
 Le RAG Agentique Navigator transforme l'IA d'un simple moteur de recherche statistique en un véritable **analyste documentaire**. En revenant à une structure relationnelle solide et en lui donnant les bons outils, on obtient une fiabilité qu'une approche vectorielle classique ne peut pas égaler.
 
-Dans le prochain article, nous verrons comment garantir que ces analyses respectent vos standards métier grâce à un système de revue automatisé.
+Dans le [prochain article](ai_business_compliance.md), nous verrons comment garantir que ces analyses respectent vos standards de conformité grâce à un système de revue automatisé.

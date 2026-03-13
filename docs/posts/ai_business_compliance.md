@@ -68,4 +68,5 @@ Je ne vois pas la technologie comme un remplaçant de l'expert, mais comme un mo
 
 L'avenir de l'IA générative en entreprise ne réside pas dans la production de masse, mais dans la production de **qualité**. En intégrant des boucles de conformité directement dans mes architectures d'agents, j'essaie de bâtir des systèmes qui ne se contentent pas d'écrire, mais qui comprennent et respectent les standards d'excellence métier.
 
-C'est ainsi que je conclus cette série d'articles sur la génération agentique de documents. J'espère que ces partages d'expérience vous aideront à bâtir vos propres systèmes d'IA robustes.
+C'est ainsi que je conclus cette série d'articles sur l'analyse et la revue agentique. Dans le [dernier article](docx_automation.md), je partagerai avec vous comment je boucle la boucle en automatisant la production de documents finaux parfaitement formatés.
+
