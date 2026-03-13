@@ -1112,26 +1112,32 @@
 <h2 id="1-metriques-de-retrieval-avons-nous-les-bons-documents">1. Métriques de Retrieval : avons-nous les bons documents ?<a class="headerlink" href="#1-metriques-de-retrieval-avons-nous-les-bons-documents" title="Permanent link">&para;</a></h2>
 <h3 id="contextual-recall-rappel">Contextual Recall (Rappel)<a class="headerlink" href="#contextual-recall-rappel" title="Permanent link">&para;</a></h3>
 <p>Le Rappel vérifie si nous avons trouvé tous les ingrédients nécessaires pour répondre.</p>
-<p><strong>Exemple :</strong>
-*   <strong>Question</strong> : "Quels sont les faits marquants de l'indépendance du pays ?"
-*   <strong>Faits attendus (Ground Truth)</strong> : 
-    1. Proclamation de la République (11 déc 1958).
-    2. Indépendance totale (5 août 1960).
-    3. Maurice Yaméogo premier président.
+<p><strong>Exemple :</strong></p>
+<ul>
+<li><strong>Question</strong> : "Quels sont les faits marquants de l'indépendance du pays ?"</li>
+<li><strong>Faits attendus (Ground Truth)</strong> : <p>1. Proclamation de la République (11 déc 1958).
+  2. Indépendance totale (5 août 1960).
+  3. Maurice Yaméogo premier président.
 *   <strong>Contexte récupéré par l'IA</strong> : Un document mentionnant le 5 août 1960 et Maurice Yaméogo, mais <strong>aucun</strong> document sur 1958.</p>
-<p><strong>Calcul étape par étape :</strong>
-1. Nombre de faits attendus = 3
-2. Nombre de faits trouvés dans le contexte = 2
-3. Ratio : </p>
+</li>
+</ul>
+<p><strong>Calcul étape par étape :</strong></p>
+<ol>
+<li>Nombre de faits attendus = 3</li>
+<li>Nombre de faits trouvés dans le contexte = 2</li>
+<li>Ratio : </li>
+</ol>
 <div class="arithmatex">\[Recall = \frac{2}{3} = 0.66\]</div>
 <hr />
 <h3 id="contextual-precision-precision">Contextual Precision (Précision)<a class="headerlink" href="#contextual-precision-precision" title="Permanent link">&para;</a></h3>
 <p>La Précision vérifie si les informations utiles arrivent en tête de liste.</p>
 <p><strong>Exemple :</strong>
-Si notre moteur de recherche renvoie 5 documents :
-*   Rang 1 : Un texte sur la culture du coton (Non pertinent).
-*   Rang 2 : Un texte sur Maurice Yaméogo et 1960 (Pertinent !).
-*   Rang 3 : Un texte sur le climat (Non pertinent).</p>
+Si notre moteur de recherche renvoie 5 documents :</p>
+<ul>
+<li>Rang 1 : Un texte sur la culture du coton (Non pertinent).</li>
+<li>Rang 2 : Un texte sur Maurice Yaméogo et 1960 (Pertinent !).</li>
+<li>Rang 3 : Un texte sur le climat (Non pertinent).</li>
+</ul>
 <p>Ici, la précision est faible car l'information utile est noyée après un document hors-sujet.</p>
 <div class="arithmatex">\[Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de segments pertinents}}\]</div>
 <hr />
