@@ -24,6 +24,7 @@ Le but ici est de mesurer si le moteur de recherche (Vector ou Hybride) a réuss
 Le Rappel mesure l'exhaustivité. Il répond à la question : "Sur l'ensemble des informations nécessaires, quel pourcentage avons-nous trouvé ?".
 
 Le calcul se déroule en trois étapes :
+
 1. On extrait les affirmations clés de la réponse de référence (Ground Truth).
 2. On vérifie si chacune de ces affirmations est présente dans les documents récupérés par notre moteur.
 3. On calcule le ratio :
@@ -53,12 +54,13 @@ Le processus de mesure :
 2. On décompose cette réponse en affirmations atomiques.
 3. Pour chaque affirmation, on demande à un "Juge" si elle est étayée par le contexte fourni.
 
-$ = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}$
+$Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}$
 
 ### Answer Relevancy (Pertinence de la réponse)
 Elle mesure à quel point la réponse s'adresse directement à la question de l'utilisateur. Une réponse peut être fidèle au contexte mais totalement hors-sujet.
 
 La mesure s'effectue en comparant les vecteurs :
+
 1. On génère plusieurs questions potentielles à partir de la réponse produite par l'IA.
 2. On calcule la similarité cosinus entre ces questions générées et la question initiale de l'utilisateur.
 
