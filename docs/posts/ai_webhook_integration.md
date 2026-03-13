@@ -31,7 +31,7 @@ Voici le schéma de données (Payload) que j'utilise généralement pour notifie
   "job_id": "uuid-1234-5678",
   "status": "success",
   "result": {
-    "document_url": "https://storage.cloud/pcn_final.docx",
+    "document_url": "https://storage.cloud/document_final.docx",
     "summary": "Le document a été généré avec succès..."
   },
   "metadata": {
