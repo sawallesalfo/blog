@@ -862,27 +862,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#le-mur-du-synchrone-dans-le-monde-reel" class="md-nav__link">
+  <a href="#le-mur-du-synchrone" class="md-nav__link">
     <span class="md-ellipsis">
-      Le Mur du Synchrone dans le Monde Réel
+      Le Mur du Synchrone
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#la-solution-pragmatique-le-webhook" class="md-nav__link">
+  <a href="#lelement-cle-le-contrat-dinterface" class="md-nav__link">
     <span class="md-ellipsis">
-      La Solution Pragmatique : Le Webhook
+      L'Élément Clé : Le Contrat d'Interface
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#pourquoi-cest-un-choix-terrain" class="md-nav__link">
+  <a href="#mise-en-uvre-avec-fastapi" class="md-nav__link">
     <span class="md-ellipsis">
-      Pourquoi c'est un choix "Terrain" ?
+      Mise en œuvre avec FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourquoi-ce-contrat-change-tout" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi ce contrat change tout ?
     </span>
   </a>
   
@@ -998,28 +1007,57 @@
 
 
 <h1 id="finis-les-timeouts-comment-jintegre-mes-moteurs-ia-via-webhooks">Finis les Timeouts : Comment j'intègre mes Moteurs IA via Webhooks<a class="headerlink" href="#finis-les-timeouts-comment-jintegre-mes-moteurs-ia-via-webhooks" title="Permanent link">&para;</a></h1>
-<p>On se concentre souvent sur la performance des modèles et des APIs. Dans un environnement technologique idéal, l'intégration de bout en bout est gérée par des équipes spécialisées et semble presque transparente. </p>
-<p>Mais dans la réalité — au sein d'organisations moins tech ou d'équipes plus petites — l'enjeu se déplace. Ce n'est plus seulement une question de "modèle" ou d' "API", mais surtout de la manière dont ces composants discutent avec l'infrastructure existante. C'est là que j'ai découvert la puissance des <strong>webhooks</strong> et des architectures asynchrones.</p>
+<p>On se concentre souvent sur la performance des modèles. Mais dans la réalité, le défi est de faire en sorte que l'IA discute efficacement avec le reste du système. C'est là que j'ai découvert la puissance des <strong>webhooks</strong>.</p>
 <!-- more -->
 
-<h2 id="le-mur-du-synchrone-dans-le-monde-reel">Le Mur du Synchrone dans le Monde Réel<a class="headerlink" href="#le-mur-du-synchrone-dans-le-monde-reel" title="Permanent link">&para;</a></h2>
-<p>Le traitement par IA, surtout lorsqu'il s'agit d'agents complexes analysant des documents, peut prendre plusieurs minutes. Maintenir une connexion HTTP ouverte pendant 5 minutes est, selon moi, une mauvaise pratique. Dans beaucoup d'organisations, l'infrastructure (proxies, load balancers) coupera la connexion bien avant.</p>
-<h2 id="la-solution-pragmatique-le-webhook">La Solution Pragmatique : Le Webhook<a class="headerlink" href="#la-solution-pragmatique-le-webhook" title="Permanent link">&para;</a></h2>
-<p>Le webhook est l'outil parfait pour connecter des services sans complexifier inutilement l'infrastructure. L'approche asynchrone transforme le dialogue de mon système :
-1. <strong>L'Appelant</strong> envoie une requête avec une URL de rappel (<code>webhook_url</code>).
-2. <strong>Mon API</strong> répond immédiatement par un code "202 Accepted" et un <code>job_id</code>.
-3. <strong>Mon Moteur IA</strong> travaille de son côté.
-4. <strong>Mon Système</strong> rappelle le client une fois le résultat prêt via le webhook.</p>
+<h2 id="le-mur-du-synchrone">Le Mur du Synchrone<a class="headerlink" href="#le-mur-du-synchrone" title="Permanent link">&para;</a></h2>
+<p>Le traitement par IA peut prendre plusieurs minutes. Maintenir une connexion HTTP ouverte est risqué. L'approche asynchrone transforme le dialogue : l'API répond immédiatement "202 Accepted" et rappelle le client via un <strong>Webhook</strong> une fois le travail fini.</p>
 <p><a class="glightbox" href="../../../../ai_webhook_integration/webhook_flow.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Flux Webhook" src="../../../../ai_webhook_integration/webhook_flow.png" /></a></p>
-<h2 id="pourquoi-cest-un-choix-terrain">Pourquoi c'est un choix "Terrain" ?<a class="headerlink" href="#pourquoi-cest-un-choix-terrain" title="Permanent link">&para;</a></h2>
+<h2 id="lelement-cle-le-contrat-dinterface">L'Élément Clé : Le Contrat d'Interface<a class="headerlink" href="#lelement-cle-le-contrat-dinterface" title="Permanent link">&para;</a></h2>
+<p>Pour que la notification soit automatique et fluide, il faut établir un <strong>contrat strict</strong> entre mon moteur IA et le développeur Backend. Sans ce contrat, le backend ne saurait pas interpréter ma réponse et serait obligé de venir "interroger" mon API manuellement (polling).</p>
+<p>Voici le schéma de données (Payload) que j'utilise généralement pour notifier le backend :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;job_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-1234-5678&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">&quot;document_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://storage.cloud/pcn_final.docx&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Le document a été généré avec succès...&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user_01&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="nt">&quot;processing_time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;145s&quot;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
+</code></pre></div>
+<p>En cas d'erreur, le contrat prévoit une structure identique pour que le backend puisse gérer l'échec proprement :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;job_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uuid-1234-5678&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;error_message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LLM timeout after 120s&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="mise-en-uvre-avec-fastapi">Mise en œuvre avec FastAPI<a class="headerlink" href="#mise-en-uvre-avec-fastapi" title="Permanent link">&para;</a></h2>
+<p>Du côté de mon moteur IA, l'envoi de la notification se fait via une simple requête POST vers l'URL fournie par le backend :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">httpx</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">notify_backend</span><span class="p">(</span><span class="n">webhook_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">()</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        <span class="c1"># On tente d&#39;envoyer le résultat au backend</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">webhook_url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="c1"># Logique de retry si le backend est temporairement indisponible</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Notification failed: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="pourquoi-ce-contrat-change-tout">Pourquoi ce contrat change tout ?<a class="headerlink" href="#pourquoi-ce-contrat-change-tout" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Intégration Asynchrone Simple</strong> : Pas besoin de Kafka ou RabbitMQ si l'organisation n'est pas prête. Les <code>BackgroundTasks</code> de FastAPI font souvent l'affaire.</li>
-<li><strong>Découplage</strong> : L'infrastructure de mon client n'a pas besoin d'être configurée pour l'IA ; elle doit juste savoir recevoir un POST HTTP.</li>
-<li><strong>Résilience</strong> : On peut facilement implémenter des politiques de "retry" sur l'envoi du webhook si le système client est temporairement indisponible.</li>
+<li><strong>Automatisation Totale</strong> : Le développeur backend crée un endpoint dédié. Dès que mon agent a fini, le backend reçoit les données et peut, par exemple, envoyer un mail à l'utilisateur ou mettre à jour une base de données sans aucune intervention manuelle.</li>
+<li><strong>Découplage</strong> : Je peux faire évoluer mon moteur IA sans casser le backend, tant que je respecte le format JSON convenu.</li>
+<li><strong>Fiabilité</strong> : En cas de coupure réseau, mon système de notification peut retenter l'envoi (Retry Policy), garantissant que le résultat arrive à destination.</li>
 </ol>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>L'intégration de l'IA demande de sortir du cadre strict du code Python pour regarder comment l'information circule. En adoptant les webhooks, je m'assure que mon travail est réellement utile et exploitable, même dans des environnements qui n'étaient pas prêts pour l'IA.</p>
-<p>Dans le <a href="https://sawallesalfo.github.io/blog/2025/12/30/le-rag-ne-se-limite-pas-aux-embeddings--limportance-de-la-recherche-hybride/">prochain article</a>, je vous expliquerai pourquoi, dans des contextes métiers exigeants (banque, droit), j'ajuste mon approche du RAG pour redonner du poids aux mots-clés.</p>
+<p>L'intégration de l'IA demande de sortir du cadre du code pour regarder comment l'information circule. En définissant un contrat de webhook clair, je m'assure que mon travail est réellement exploitable par les autres équipes.</p>
+<p>Dans le <a href="https://sawallesalfo.github.io/blog/2025/12/30/le-rag-ne-se-limite-pas-aux-embeddings--limportance-de-la-recherche-hybride/">prochain article</a>, je vous expliquerai pourquoi j'ajuste mon approche du RAG pour redonner du poids aux mots-clés.</p>
 
 
 
