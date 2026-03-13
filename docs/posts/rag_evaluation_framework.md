@@ -73,11 +73,12 @@ Cette séparation permet d'identifier immédiatement le maillon faible de votre 
 
 *   **Scénario A** : Recall bas / Faithfulness haute.
 
-    *   *Diagnostic* : Votre base de données est mal indexée ou la recherche est inefficace. Votre LLM est "honnête" mais manque d'informations.
+     *Diagnostic* : Votre base de données est mal indexée ou la recherche est inefficace. Votre LLM est "honnête" mais manque d'informations.
 
 *   **Scénario B** : Recall haut / Faithfulness basse.
-    *   *Diagnostic* : Votre moteur de recherche trouve les bonnes infos, mais votre LLM invente des faits. Il faut ajuster le prompt système ou changer de modèle.
-    
+
+    *Diagnostic* : Votre moteur de recherche trouve les bonnes infos, mais votre LLM invente des faits. Il faut ajuster le prompt système ou changer de modèle.
+
 
 ![Framework d'Évaluation](./rag_evaluation_framework/evaluation_layers.png)
 
