@@ -20,14 +20,17 @@ La bataille du RAG se gagne sur deux fronts : la capacité à trouver l'informat
 Le Rappel vérifie si nous avons trouvé tous les ingrédients nécessaires pour répondre.
 
 **Exemple :**
+
 *   **Question** : "Quels sont les faits marquants de l'indépendance du pays ?"
 *   **Faits attendus (Ground Truth)** : 
+
     1. Proclamation de la République (11 déc 1958).
     2. Indépendance totale (5 août 1960).
     3. Maurice Yaméogo premier président.
 *   **Contexte récupéré par l'IA** : Un document mentionnant le 5 août 1960 et Maurice Yaméogo, mais **aucun** document sur 1958.
 
 **Calcul étape par étape :**
+
 1. Nombre de faits attendus = 3
 2. Nombre de faits trouvés dans le contexte = 2
 3. Ratio : 
@@ -41,6 +44,7 @@ La Précision vérifie si les informations utiles arrivent en tête de liste.
 
 **Exemple :**
 Si notre moteur de recherche renvoie 5 documents :
+
 *   Rang 1 : Un texte sur la culture du coton (Non pertinent).
 *   Rang 2 : Un texte sur Maurice Yaméogo et 1960 (Pertinent !).
 *   Rang 3 : Un texte sur le climat (Non pertinent).
