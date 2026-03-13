@@ -983,9 +983,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#answer-relevancy-pertinence-de-la-reponse" class="md-nav__link">
+  <a href="#answer-relevancy-pertinence" class="md-nav__link">
     <span class="md-ellipsis">
-      Answer Relevancy (Pertinence de la réponse)
+      Answer Relevancy (Pertinence)
     </span>
   </a>
   
@@ -1106,60 +1106,62 @@
 
 
 <h1 id="evaluer-un-systeme-rag-partie-1-le-framework-technique">Évaluer un système RAG (Partie 1) : le framework technique<a class="headerlink" href="#evaluer-un-systeme-rag-partie-1-le-framework-technique" title="Permanent link">&para;</a></h1>
-<p>La bataille du RAG se gagne sur deux fronts : la capacité à trouver l'information (<strong>Retrieval</strong>) et la capacité à l'utiliser sans inventer (<strong>Génération</strong>). Pour évaluer ces deux piliers, j'utilise un framework basé sur des métriques probabilistes et qualitatives.</p>
-<p>Voici le détail des métriques que j'implémente pour auditer mes pipelines, étape par étape.</p>
+<p>La bataille du RAG se gagne sur deux fronts : la capacité à trouver l'information (<strong>Retrieval</strong>) et la capacité à l'utiliser sans inventer (<strong>Génération</strong>). Pour illustrer ce framework, prenons un exemple concret sur l'histoire du <strong>Burkina Faso</strong>.</p>
 <!-- more -->
 
 <h2 id="1-metriques-de-retrieval-avons-nous-les-bons-documents">1. Métriques de Retrieval : avons-nous les bons documents ?<a class="headerlink" href="#1-metriques-de-retrieval-avons-nous-les-bons-documents" title="Permanent link">&para;</a></h2>
-<p>Le but ici est de mesurer si le moteur de recherche (Vector ou Hybride) a réussi à extraire les segments nécessaires à la réponse.</p>
 <h3 id="contextual-recall-rappel">Contextual Recall (Rappel)<a class="headerlink" href="#contextual-recall-rappel" title="Permanent link">&para;</a></h3>
-<p>Le Rappel mesure l'exhaustivité. Il répond à la question : "Sur l'ensemble des informations nécessaires, quel pourcentage avons-nous trouvé ?".</p>
-<p>Le calcul se déroule en trois étapes :</p>
-<ol>
-<li>On extrait les affirmations clés de la réponse de référence (Ground Truth).</li>
-<li>On vérifie si chacune de ces affirmations est présente dans les documents récupérés par notre moteur.</li>
-<li>On calcule le ratio :</li>
-</ol>
-<p><span class="arithmatex">\(Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}\)</span></p>
-<blockquote>
-<p><strong>Note technique</strong> : Un score bas indique généralement qu'il faut améliorer votre stratégie de chunking ou augmenter la valeur du <code>top_k</code> lors de la recherche.</p>
-</blockquote>
+<p>Le Rappel vérifie si nous avons trouvé tous les ingrédients nécessaires pour répondre.</p>
+<p><strong>Exemple :</strong>
+*   <strong>Question</strong> : "Quels sont les faits marquants de l'indépendance du pays ?"
+*   <strong>Faits attendus (Ground Truth)</strong> : 
+    1. Proclamation de la République (11 déc 1958).
+    2. Indépendance totale (5 août 1960).
+    3. Maurice Yaméogo premier président.
+*   <strong>Contexte récupéré par l'IA</strong> : Un document mentionnant le 5 août 1960 et Maurice Yaméogo, mais <strong>aucun</strong> document sur 1958.</p>
+<p><strong>Calcul étape par étape :</strong>
+1. Nombre de faits attendus = 3
+2. Nombre de faits trouvés dans le contexte = 2
+3. Ratio : </p>
+<div class="arithmatex">\[Recall = \frac{2}{3} = 0.66\]</div>
+<hr />
 <h3 id="contextual-precision-precision">Contextual Precision (Précision)<a class="headerlink" href="#contextual-precision-precision" title="Permanent link">&para;</a></h3>
-<p>La Précision vérifie si les segments les plus pertinents sont classés en haut de la liste. C'est crucial car plus l'information utile est "noyée" loin dans le contexte, plus le LLM risque de s'y perdre (effet <em>Lost in the Middle</em>).</p>
-<p>On utilise souvent la moyenne des précisions à chaque rang <span class="arithmatex">\(k\)</span> où un document est jugé pertinent :</p>
-<p><span class="arithmatex">\(Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de segments pertinents}}\)</span></p>
+<p>La Précision vérifie si les informations utiles arrivent en tête de liste.</p>
+<p><strong>Exemple :</strong>
+Si notre moteur de recherche renvoie 5 documents :
+*   Rang 1 : Un texte sur la culture du coton (Non pertinent).
+*   Rang 2 : Un texte sur Maurice Yaméogo et 1960 (Pertinent !).
+*   Rang 3 : Un texte sur le climat (Non pertinent).</p>
+<p>Ici, la précision est faible car l'information utile est noyée après un document hors-sujet.</p>
+<div class="arithmatex">\[Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de segments pertinents}}\]</div>
 <hr />
 <h2 id="2-metriques-de-generation-le-llm-est-il-fiable">2. Métriques de Génération : le LLM est-il fiable ?<a class="headerlink" href="#2-metriques-de-generation-le-llm-est-il-fiable" title="Permanent link">&para;</a></h2>
-<p>Une fois le contexte fourni, nous évaluons la qualité de la synthèse produite par le modèle.</p>
 <h3 id="faithfulness-fidelite-groundedness">Faithfulness (Fidélité / Groundedness)<a class="headerlink" href="#faithfulness-fidelite-groundedness" title="Permanent link">&para;</a></h3>
-<p>C'est la métrique vitale pour lutter contre les hallucinations. Elle garantit que l'IA ne s'appuie que sur les documents fournis et non sur ses propres connaissances internes (qui peuvent être datées ou erronées).</p>
-<p>Le processus de mesure :</p>
-<ol>
-<li>L'IA génère une réponse.</li>
-<li>On décompose cette réponse en affirmations atomiques.</li>
-<li>Pour chaque affirmation, on demande à un "Juge" si elle est étayée par le contexte fourni.</li>
-</ol>
-<p><span class="arithmatex">\(Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\)</span></p>
-<h3 id="answer-relevancy-pertinence-de-la-reponse">Answer Relevancy (Pertinence de la réponse)<a class="headerlink" href="#answer-relevancy-pertinence-de-la-reponse" title="Permanent link">&para;</a></h3>
-<p>Elle mesure à quel point la réponse s'adresse directement à la question de l'utilisateur. Une réponse peut être fidèle au contexte mais totalement hors-sujet.</p>
-<p>La mesure s'effectue en comparant les vecteurs :</p>
-<ol>
-<li>On génère plusieurs questions potentielles à partir de la réponse produite par l'IA.</li>
-<li>On calcule la similarité cosinus entre ces questions générées et la question initiale de l'utilisateur.</li>
-</ol>
+<p>C'est le rempart contre l'hallucination. L'IA doit répondre <strong>uniquement</strong> avec ce qu'on lui a donné.</p>
+<p><strong>Exemple :</strong>
+*   <strong>Contexte fourni</strong> : "Le Burkina Faso a obtenu son indépendance le 5 août 1960."
+*   <strong>Réponse de l'IA</strong> : "L'indépendance a eu lieu le 5 août 1960 sous la direction de Thomas Sankara."</p>
+<p><strong>Calcul étape par étape :</strong>
+1. Affirmation 1 : "Indépendance le 5 août 1960" -&gt; Présente dans le contexte (VRAI).
+2. Affirmation 2 : "Sous la direction de Thomas Sankara" -&gt; <strong>Absente</strong> du contexte (Thomas Sankara est arrivé au pouvoir en 1983) (FAUX).
+3. Score de fidélité : </p>
+<div class="arithmatex">\[Faithfulness = \frac{1}{2} = 0.50\]</div>
+<hr />
+<h3 id="answer-relevancy-pertinence">Answer Relevancy (Pertinence)<a class="headerlink" href="#answer-relevancy-pertinence" title="Permanent link">&para;</a></h3>
+<p>L'IA a-t-elle vraiment répondu à la question ?</p>
+<p><strong>Exemple :</strong>
+*   <strong>Question</strong> : "Qui était le premier président du Burkina Faso ?"
+*   <strong>Réponse de l'IA</strong> : "Le Burkina Faso est un pays enclavé d'Afrique de l'Ouest dont la capitale est Ouagadougou."</p>
+<p>La réponse est vraie (Fidèle), mais elle ne répond pas à la question. La similarité cosinus entre la question et la réponse sera très basse.</p>
 <hr />
 <h2 id="pourquoi-diviser-ainsi">Pourquoi diviser ainsi ?<a class="headerlink" href="#pourquoi-diviser-ainsi" title="Permanent link">&para;</a></h2>
-<p>Cette séparation permet d'identifier immédiatement le maillon faible de votre chaîne de valeur :</p>
+<p>Cette séparation permet d'identifier le coupable en cas d'erreur :</p>
 <ul>
-<li><strong>Scénario A</strong> : Recall bas / Faithfulness haute.<p><em>Diagnostic</em> : Votre base de données est mal indexée ou la recherche est inefficace. Votre LLM est "honnête" mais manque d'informations.</p>
-</li>
+<li><strong>Recall bas</strong> (ex: On ne trouve pas 1958) : Le problème vient de votre <strong>Indexation</strong> (Data Engineering).</li>
+<li><strong>Faithfulness basse</strong> (ex: On cite Sankara en 1960) : Le problème vient de votre <strong>Prompt</strong> ou du <strong>Modèle</strong> (Génération).</li>
 </ul>
-<ul>
-<li><strong>Scénario B</strong> : Recall haut / Faithfulness basse.<p><em>Diagnostic</em> : Votre moteur de recherche trouve les bonnes infos, mais votre LLM invente des faits. Il faut ajuster le prompt système ou changer de modèle.</p>
-</li>
-</ul>
-<p><a class="glightbox" href="../../../../rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="../../../../rag_evaluation_framework/evaluation_layers.png" /></a></p>
-<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment agréger ces métriques techniques pour piloter la qualité globale de votre service.</p>
+<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" /></a></p>
+<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment piloter ces scores en production.</p>
 
 
 
