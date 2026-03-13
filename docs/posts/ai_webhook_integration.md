@@ -8,7 +8,7 @@ categories:
     - FastAPI
 ---
 
-# Finis les Timeouts : Comment j'intègre mes Moteurs IA via Webhooks
+# Finis les timeouts : comment j'intègre mes moteurs IA via webhooks
 
 On se concentre souvent sur la performance des modèles. Mais dans la réalité, le défi est de faire en sorte que l'IA discute efficacement avec le reste du système. C'est là que j'ai découvert la puissance des **webhooks**.
 

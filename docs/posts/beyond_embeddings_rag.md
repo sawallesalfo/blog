@@ -8,7 +8,7 @@ categories:
     - Recherche
 ---
 
-# Le RAG ne se limite pas aux Embeddings : L'importance de la Recherche Hybride
+# Le RAG ne se limite pas aux embeddings : l'importance de la recherche hybride
 
 Le RAG (*Retrieval Augmented Generation*) est devenu le standard pour connecter des LLMs à des bases de connaissances privées. Dans la plupart des tutoriels, on vous explique qu'il suffit de découper vos documents en morceaux (*chunks*), de les transformer en vecteurs (*embeddings*) et de faire une recherche de similitude.
 

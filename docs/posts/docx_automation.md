@@ -7,7 +7,7 @@ categories:
     - IAGen
 ---
 
-# Sous le capot du .docx : Comment j'automatise le remplissage de fiches métier avec une IA
+# Sous le capot du .docx : comment j'automatise le remplissage de fiches métier avec une IA
 
 On me demande souvent de générer des documents qui doivent s'insérer dans des processus administratifs existants. Oubliez la rédaction de longs textes libres : ici, l'enjeu est de remplir une **fiche de synthèse**, avec des cases précises, des tableaux et même des cases à cocher.
 

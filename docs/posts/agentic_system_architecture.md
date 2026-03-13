@@ -7,7 +7,7 @@ categories:
     - IAGen
 ---
 
-# Concevoir un Système Agentique : De la Théorie à la Réalité Terrain
+# Concevoir un système agentique : de la théorie à la réalité terrain
 
 On a souvent tendance à se concentrer sur la création d’APIs, de modèles ou encore de packages Python bien structurés. Dans des équipes très spécialisées — avec des backend engineers, des data engineers et des équipes plateforme — l’intégration de bout en bout est généralement fluide.
 

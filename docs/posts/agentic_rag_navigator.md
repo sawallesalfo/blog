@@ -9,7 +9,7 @@ categories:
     - Data-Engineering
 ---
 
-# Au-delà de la Recherche : Le RAG Agentique et le Pattern "Navigator"
+# Au-delà de la recherche : le RAG agentique et le pattern "navigator"
 
 Dans mon article précédent, j'ai expliqué pourquoi la **Recherche Hybride** est une première étape importante. Mais pour des domaines de précision comme la banque ou le droit, la recherche statistique par similitude ne suffit pas. L'agent doit savoir exactement où il se trouve.
 

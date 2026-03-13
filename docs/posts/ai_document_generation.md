@@ -7,7 +7,7 @@ categories:
     - Productivité
 ---
 
-# Automatiser la Génération de Documents Complexes : Mon Approche Agentique
+# Automatiser la génération de documents complexes : mon approche agentique
 
 La génération de documents professionnels, tels que les rapports techniques ou les notes de cadrage, est une tâche qui demande souvent des heures de recherche, de synthèse et de mise en forme. Si les LLMs classiques excellent dans la rédaction de courts textes, j'ai souvent remarqué qu'ils peinent à produire des documents longs et structurés tout en respectant un template strict.
 

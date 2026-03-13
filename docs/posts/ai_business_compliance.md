@@ -8,7 +8,7 @@ categories:
     - IA
 ---
 
-# Conformité et Qualité : Ma façon de Guider un Agent vers vos Standards Métier
+# Conformité et qualité : ma façon de guider un agent vers vos standards métier
 
 Générer du texte avec une IA est devenu facile. Mais générer un document qui respecte scrupuleusement les standards de qualité, de ton et de fond d'une organisation est un défi bien plus complexe. Comment passer d'un simple "brouillon" à un document prêt à être approuvé ?
 
