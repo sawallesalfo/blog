@@ -1078,12 +1078,14 @@
 <li><strong>Hallucination Rate</strong> : La fréquence d'échec critique (quand Faithfulness &lt; 0.5). C'est notre indicateur de sécurité.</li>
 <li><strong>Knowledge Gap</strong> : Le taux de "Je ne sais pas". Un score élevé ici indique que notre base de documents est incomplète pour les besoins réels des utilisateurs.</li>
 </ol>
-<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/posts/rag_production_evaluation/rag_eval_mindmap.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pilotage RAG" src="https://sawallesalfo.github.io/blog/posts/rag_production_evaluation/rag_eval_mindmap.png" /></a></p>
+<p><a class="glightbox" href="../../../../rag_production_evaluation/rag_eval_mindmap.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pilotage RAG" src="../../../../rag_production_evaluation/rag_eval_mindmap.png" /></a></p>
 <h2 id="le-systeme-feu-tricolore">Le Système "Feu Tricolore"<a class="headerlink" href="#le-systeme-feu-tricolore" title="Permanent link">&para;</a></h2>
-<p>Pour rendre l'analyse actionnable immédiatement, je convertis chaque résultat en un statut visuel simple :
--   🟢 <strong>PASS (Score &gt; 0.8)</strong> : Précis et sourcé. Prêt pour l'utilisateur.
--   🟡 <strong>REVIEW (Score 0.5 - 0.8)</strong> : La réponse est correcte mais le style ou la précision des sources peut être amélioré.
--   🔴 <strong>FAIL (Score &lt; 0.5)</strong> : Erreur factuelle ou hors-sujet. Nécessite une intervention immédiate sur le pipeline.</p>
+<p>Pour rendre l'analyse actionnable immédiatement, je convertis chaque résultat en un statut visuel simple :</p>
+<ul>
+<li>🟢 <strong>PASS (Score &gt; 0.8)</strong> : Précis et sourcé. Prêt pour l'utilisateur.</li>
+<li>🟡 <strong>REVIEW (Score 0.5 - 0.8)</strong> : La réponse est correcte mais le style ou la précision des sources peut être amélioré.</li>
+<li>🔴 <strong>FAIL (Score &lt; 0.5)</strong> : Erreur factuelle ou hors-sujet. Nécessite une intervention immédiate sur le pipeline.</li>
+</ul>
 <h2 id="limportance-de-la-trace">L'importance de la trace<a class="headerlink" href="#limportance-de-la-trace" title="Permanent link">&para;</a></h2>
 <p>Le pilotage ne s'arrête pas à un instant T. Il est crucial de conserver l'historique des évaluations pour détecter le "Drift" (dérive) de qualité. Si le <strong>Contextual Recall</strong> chute soudainement après l'ajout d'un nouveau volume de documents, cela signifie que votre index vectoriel commence à souffrir du bruit.</p>
 <h2 id="conclusion-de-la-serie">Conclusion de la série<a class="headerlink" href="#conclusion-de-la-serie" title="Permanent link">&para;</a></h2>
