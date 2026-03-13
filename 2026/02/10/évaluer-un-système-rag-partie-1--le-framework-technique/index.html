@@ -1131,8 +1131,8 @@
 <hr />
 <h3 id="contextual-precision-precision">Contextual Precision (Précision)<a class="headerlink" href="#contextual-precision-precision" title="Permanent link">&para;</a></h3>
 <p>La Précision vérifie si les informations utiles arrivent en tête de liste.</p>
-<p><strong>Exemple :</strong>
-Si notre moteur de recherche renvoie 5 documents :</p>
+<p><strong>Exemple :</strong></p>
+<p>Si notre moteur de recherche renvoie 5 documents :</p>
 <ul>
 <li>Rang 1 : Un texte sur la culture du coton (Non pertinent).</li>
 <li>Rang 2 : Un texte sur Maurice Yaméogo et 1960 (Pertinent !).</li>
@@ -1144,9 +1144,11 @@ Si notre moteur de recherche renvoie 5 documents :</p>
 <h2 id="2-metriques-de-generation-le-llm-est-il-fiable">2. Métriques de Génération : le LLM est-il fiable ?<a class="headerlink" href="#2-metriques-de-generation-le-llm-est-il-fiable" title="Permanent link">&para;</a></h2>
 <h3 id="faithfulness-fidelite-groundedness">Faithfulness (Fidélité / Groundedness)<a class="headerlink" href="#faithfulness-fidelite-groundedness" title="Permanent link">&para;</a></h3>
 <p>C'est le rempart contre l'hallucination. L'IA doit répondre <strong>uniquement</strong> avec ce qu'on lui a donné.</p>
-<p><strong>Exemple :</strong>
-*   <strong>Contexte fourni</strong> : "Le Burkina Faso a obtenu son indépendance le 5 août 1960."
-*   <strong>Réponse de l'IA</strong> : "L'indépendance a eu lieu le 5 août 1960 sous la direction de Thomas Sankara."</p>
+<p><strong>Exemple :</strong></p>
+<ul>
+<li><strong>Contexte fourni</strong> : "Le Burkina Faso a obtenu son indépendance le 5 août 1960."</li>
+<li><strong>Réponse de l'IA</strong> : "L'indépendance a eu lieu le 5 août 1960 sous la direction de Thomas Sankara."</li>
+</ul>
 <p><strong>Calcul étape par étape :</strong>
 1. Affirmation 1 : "Indépendance le 5 août 1960" -&gt; Présente dans le contexte (VRAI).
 2. Affirmation 2 : "Sous la direction de Thomas Sankara" -&gt; <strong>Absente</strong> du contexte (Thomas Sankara est arrivé au pouvoir en 1983) (FAUX).
@@ -1155,9 +1157,11 @@ Si notre moteur de recherche renvoie 5 documents :</p>
 <hr />
 <h3 id="answer-relevancy-pertinence">Answer Relevancy (Pertinence)<a class="headerlink" href="#answer-relevancy-pertinence" title="Permanent link">&para;</a></h3>
 <p>L'IA a-t-elle vraiment répondu à la question ?</p>
-<p><strong>Exemple :</strong>
-*   <strong>Question</strong> : "Qui était le premier président du Burkina Faso ?"
-*   <strong>Réponse de l'IA</strong> : "Le Burkina Faso est un pays enclavé d'Afrique de l'Ouest dont la capitale est Ouagadougou."</p>
+<p><strong>Exemple :</strong></p>
+<ul>
+<li><strong>Question</strong> : "Qui était le premier président du Burkina Faso ?"</li>
+<li><strong>Réponse de l'IA</strong> : "Le Burkina Faso est un pays enclavé d'Afrique de l'Ouest dont la capitale est Ouagadougou."</li>
+</ul>
 <p>La réponse est vraie (Fidèle), mais elle ne répond pas à la question. La similarité cosinus entre la question et la réponse sera très basse.</p>
 <hr />
 <h2 id="pourquoi-diviser-ainsi">Pourquoi diviser ainsi ?<a class="headerlink" href="#pourquoi-diviser-ainsi" title="Permanent link">&para;</a></h2>
@@ -1166,7 +1170,7 @@ Si notre moteur de recherche renvoie 5 documents :</p>
 <li><strong>Recall bas</strong> (ex: On ne trouve pas 1958) : Le problème vient de votre <strong>Indexation</strong> (Data Engineering).</li>
 <li><strong>Faithfulness basse</strong> (ex: On cite Sankara en 1960) : Le problème vient de votre <strong>Prompt</strong> ou du <strong>Modèle</strong> (Génération).</li>
 </ul>
-<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" /></a></p>
+<p><a class="glightbox" href="../../../../rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="../../../../rag_evaluation_framework/evaluation_layers.png" /></a></p>
 <p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment piloter ces scores en production.</p>
 
 
