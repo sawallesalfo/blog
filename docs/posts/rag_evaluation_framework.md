@@ -17,7 +17,9 @@ La bataille du RAG se gagne sur deux fronts : la capacité à trouver l'informat
 ## 1. Métriques de Retrieval : avons-nous les bons documents ?
 
 ### Contextual Recall (Rappel)
-Le Rappel vérifie si nous avons trouvé tous les ingrédients nécessaires pour répondre.
+Le Rappel vérifie si nous avons trouvé tous les ingrédients nécessaires pour répondre. Il se base sur le ratio entre les faits trouvés et les faits attendus :
+
+$$Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}$$
 
 **Exemple :**
 
@@ -59,7 +61,9 @@ $$Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de seg
 ## 2. Métriques de Génération : le LLM est-il fiable ?
 
 ### Faithfulness (Fidélité / Groundedness)
-C'est le rempart contre l'hallucination. L'IA doit répondre **uniquement** avec ce qu'on lui a donné.
+C'est le rempart contre l'hallucination. L'IA doit répondre **uniquement** avec ce qu'on lui a donné. Elle se mesure par le ratio des affirmations étayées :
+
+$$Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}$$
 
 **Exemple :**
 
@@ -67,6 +71,7 @@ C'est le rempart contre l'hallucination. L'IA doit répondre **uniquement** avec
 *   **Réponse de l'IA** : "L'indépendance a eu lieu le 5 août 1960 sous la direction de Thomas Sankara."
 
 **Calcul étape par étape :**
+
 1. Affirmation 1 : "Indépendance le 5 août 1960" -> Présente dans le contexte (VRAI).
 2. Affirmation 2 : "Sous la direction de Thomas Sankara" -> **Absente** du contexte (Thomas Sankara est arrivé au pouvoir en 1983) (FAUX).
 3. Score de fidélité : 
