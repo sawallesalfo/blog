@@ -626,29 +626,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/ml-engineering/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ML-Engineering
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
       <a href="../../../../category/mlops/" class="md-nav__link">
         
   
@@ -919,15 +896,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pourquoi-cette-approche-est-la-meilleure" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pourquoi cette approche est la meilleure ?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
@@ -1004,8 +972,7 @@
                             in
                             
                               <a href="../../../../category/architecture/">Architecture</a>, 
-                              <a href="../../../../category/iagen/">IAGen</a>, 
-                              <a href="../../../../category/ml-engineering/">ML-Engineering</a></span>
+                              <a href="../../../../category/iagen/">IAGen</a></span>
                         </div>
                       </li>
                     
@@ -1037,7 +1004,7 @@
 
 
 <h1 id="sous-le-capot-du-docx-comment-jautomatise-le-remplissage-de-fiches-metier-avec-une-ia">Sous le capot du .docx : Comment j'automatise le remplissage de fiches métier avec une IA<a class="headerlink" href="#sous-le-capot-du-docx-comment-jautomatise-le-remplissage-de-fiches-metier-avec-une-ia" title="Permanent link">&para;</a></h1>
-<p>En tant que <strong>ML Engineer</strong>, on me demande souvent de générer des documents qui doivent s'insérer dans des processus administratifs existants. Oubliez la rédaction de longs textes libres : ici, l'enjeu est de remplir une <strong>fiche de synthèse</strong>, avec des cases précises, des tableaux et même des cases à cocher.</p>
+<p>On me demande souvent de générer des documents qui doivent s'insérer dans des processus administratifs existants. Oubliez la rédaction de longs textes libres : ici, l'enjeu est de remplir une <strong>fiche de synthèse</strong>, avec des cases précises, des tableaux et même des cases à cocher.</p>
 <p>Pour relever ce défi, j'ai dû arrêter de voir Word comme un éditeur de texte et commencer à le voir pour ce qu'il est réellement : une archive <strong>ZIP remplie de fichiers XML</strong>. Cette perspective change tout pour l'automatisation.</p>
 <!-- more -->
 
@@ -1069,14 +1036,8 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="c1"># On remplace le texte simple</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="n">xml_content</span> <span class="o">=</span> <span class="n">xml_content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{{{</span><span class="si">{</span><span class="n">key</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="se">}}}}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
 </code></pre></div>
-<h2 id="pourquoi-cette-approche-est-la-meilleure">Pourquoi cette approche est la meilleure ?<a class="headerlink" href="#pourquoi-cette-approche-est-la-meilleure" title="Permanent link">&para;</a></h2>
-<ol>
-<li><strong>Prédictibilité</strong> : Le schéma JSON agit comme un contrat. Si l'IA ne respecte pas le schéma, le processus s'arrête avant même de toucher au fichier Word.</li>
-<li><strong>Mise en page préservée</strong> : Comme on manipule le XML d'un template existant, les polices, les logos et les marges restent parfaits.</li>
-<li><strong>Performance</strong> : Remplacer des chaînes de caractères dans un fichier XML est une opération extrêmement légère.</li>
-</ol>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>L'automatisation de documents métier ne doit pas être laissée au hasard du texte libre. En tant que ML Engineer, ma mission est de créer des systèmes fiables. En utilisant l'IA pour générer un <strong>JSON structuré</strong> et un moteur simple pour l'injecter dans le <strong>XML de Word</strong>, je garantis un résultat professionnel, conforme et auditable à chaque exécution.</p>
+<p>L'automatisation de documents métier ne doit pas être laissée au hasard du texte libre. Ma mission est de créer des systèmes fiables. En utilisant l'IA pour générer un <strong>JSON structuré</strong> et un moteur simple pour l'injecter dans le <strong>XML de Word</strong>, je garantis un résultat professionnel, conforme et auditable à chaque exécution.</p>
 <p>C'est ainsi que je boucle cette série : de l'extraction de connaissances à la production finale d'un document prêt à l'emploi.</p>
 
 

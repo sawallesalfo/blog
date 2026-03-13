@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../../../10/30/concevoir-un-syst%C3%A8me-agentique--quand-le-ml-engineering-rencontre-la-r%C3%A9alit%C3%A9-terrain/">
+        <link rel="prev" href="../../../10/30/concevoir-un-syst%C3%A8me-agentique--de-la-th%C3%A9orie-%C3%A0-la-r%C3%A9alit%C3%A9-terrain/">
       
       
         <link rel="next" href="../../../12/30/le-rag-ne-se-limite-pas-aux-embeddings--limportance-de-la-recherche-hybride/">
@@ -628,29 +628,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/ml-engineering/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ML-Engineering
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
       <a href="../../../../category/mlops/" class="md-nav__link">
         
   
@@ -903,9 +880,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pourquoi-cest-le-choix-du-ml-engineer-terrain" class="md-nav__link">
+  <a href="#pourquoi-cest-un-choix-terrain" class="md-nav__link">
     <span class="md-ellipsis">
-      Pourquoi c'est le choix du ML Engineer "Terrain" ?
+      Pourquoi c'est un choix "Terrain" ?
     </span>
   </a>
   
@@ -989,8 +966,7 @@
                             
                               <a href="../../../../category/architecture/">Architecture</a>, 
                               <a href="../../../../category/api/">API</a>, 
-                              <a href="../../../../category/fastapi/">FastAPI</a>, 
-                              <a href="../../../../category/ml-engineering/">ML-Engineering</a></span>
+                              <a href="../../../../category/fastapi/">FastAPI</a></span>
                         </div>
                       </li>
                     
@@ -1022,7 +998,7 @@
 
 
 <h1 id="finis-les-timeouts-comment-jintegre-mes-moteurs-ia-via-webhooks">Finis les Timeouts : Comment j'intègre mes Moteurs IA via Webhooks<a class="headerlink" href="#finis-les-timeouts-comment-jintegre-mes-moteurs-ia-via-webhooks" title="Permanent link">&para;</a></h1>
-<p>En tant que <strong>ML Engineer</strong>, je me concentre souvent sur la performance de mes modèles et de mes APIs. Dans un environnement technologique idéal, l'intégration de bout en bout est gérée par des équipes spécialisées et semble presque transparente. </p>
+<p>On se concentre souvent sur la performance des modèles et des APIs. Dans un environnement technologique idéal, l'intégration de bout en bout est gérée par des équipes spécialisées et semble presque transparente. </p>
 <p>Mais dans la réalité — au sein d'organisations moins tech ou d'équipes plus petites — l'enjeu se déplace. Ce n'est plus seulement une question de "modèle" ou d' "API", mais surtout de la manière dont ces composants discutent avec l'infrastructure existante. C'est là que j'ai découvert la puissance des <strong>webhooks</strong> et des architectures asynchrones.</p>
 <!-- more -->
 
@@ -1035,15 +1011,15 @@
 3. <strong>Mon Moteur IA</strong> travaille de son côté.
 4. <strong>Mon Système</strong> rappelle le client une fois le résultat prêt via le webhook.</p>
 <p><a class="glightbox" href="../../../../ai_webhook_integration/webhook_flow.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Flux Webhook" src="../../../../ai_webhook_integration/webhook_flow.png" /></a></p>
-<h2 id="pourquoi-cest-le-choix-du-ml-engineer-terrain">Pourquoi c'est le choix du ML Engineer "Terrain" ?<a class="headerlink" href="#pourquoi-cest-le-choix-du-ml-engineer-terrain" title="Permanent link">&para;</a></h2>
+<h2 id="pourquoi-cest-un-choix-terrain">Pourquoi c'est un choix "Terrain" ?<a class="headerlink" href="#pourquoi-cest-un-choix-terrain" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Intégration Asynchrone Simple</strong> : Pas besoin de Kafka ou RabbitMQ si l'organisation n'est pas prête. Les <code>BackgroundTasks</code> de FastAPI font souvent l'affaire.</li>
 <li><strong>Découplage</strong> : L'infrastructure de mon client n'a pas besoin d'être configurée pour l'IA ; elle doit juste savoir recevoir un POST HTTP.</li>
 <li><strong>Résilience</strong> : On peut facilement implémenter des politiques de "retry" sur l'envoi du webhook si le système client est temporairement indisponible.</li>
 </ol>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>L'intégration de l'IA demande de sortir du cadre strict du code Python pour regarder comment l'information circule. En adoptant les webhooks, je m'assure que mon travail de ML Engineer est réellement utile et exploitable, même dans des environnements qui n'étaient pas prêts pour l'IA.</p>
-<p>Dans le <a href="../../../12/30/le-rag-ne-se-limite-pas-aux-embeddings--limportance-de-la-recherche-hybride/">prochain article</a>, je vous expliquerai pourquoi, dans ces mêmes contextes métiers exigeants (banque, droit), j'ajuste mon approche du RAG pour redonner du poids aux bons vieux mots-clés.</p>
+<p>L'intégration de l'IA demande de sortir du cadre strict du code Python pour regarder comment l'information circule. En adoptant les webhooks, je m'assure que mon travail est réellement utile et exploitable, même dans des environnements qui n'étaient pas prêts pour l'IA.</p>
+<p>Dans le <a href="https://sawallesalfo.github.io/blog/2025/12/30/le-rag-ne-se-limite-pas-aux-embeddings--limportance-de-la-recherche-hybride/">prochain article</a>, je vous expliquerai pourquoi, dans des contextes métiers exigeants (banque, droit), j'ajuste mon approche du RAG pour redonner du poids aux mots-clés.</p>
 
 
 

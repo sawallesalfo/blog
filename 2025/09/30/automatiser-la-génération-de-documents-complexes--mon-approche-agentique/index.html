@@ -12,7 +12,7 @@
         <link rel="prev" href="../../../08/30/agentic-ia-23-from-router-to-react-agent/">
       
       
-        <link rel="next" href="../../../10/30/concevoir-un-syst%C3%A8me-agentique--quand-le-ml-engineering-rencontre-la-r%C3%A9alit%C3%A9-terrain/">
+        <link rel="next" href="../../../10/30/concevoir-un-syst%C3%A8me-agentique--de-la-th%C3%A9orie-%C3%A0-la-r%C3%A9alit%C3%A9-terrain/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -628,29 +628,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../category/ml-engineering/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ML-Engineering
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-  
-  
-    <li class="md-nav__item">
       <a href="../../../../category/mlops/" class="md-nav__link">
         
   
@@ -912,15 +889,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#la-puissance-de-la-separation-fondforme" class="md-nav__link">
-    <span class="md-ellipsis">
-      La puissance de la séparation fond/forme
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#le-defi-du-human-in-the-loop-ne-pas-ecraser-lhumain" class="md-nav__link">
     <span class="md-ellipsis">
       Le défi du "Human-in-the-loop" : Ne pas écraser l'humain
@@ -1017,7 +985,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              4 min read
+                              3 min read
                             
                           </span>
                         </div>
@@ -1039,11 +1007,11 @@
 
 <h1 id="automatiser-la-generation-de-documents-complexes-mon-approche-agentique">Automatiser la Génération de Documents Complexes : Mon Approche Agentique<a class="headerlink" href="#automatiser-la-generation-de-documents-complexes-mon-approche-agentique" title="Permanent link">&para;</a></h1>
 <p>La génération de documents professionnels, tels que les rapports techniques ou les notes de cadrage, est une tâche qui demande souvent des heures de recherche, de synthèse et de mise en forme. Si les LLMs classiques excellent dans la rédaction de courts textes, j'ai souvent remarqué qu'ils peinent à produire des documents longs et structurés tout en respectant un template strict.</p>
-<p>Pour relever ce défi, j'ai exploré une approche agentique basée sur le pattern <strong>ReAct</strong> (Reasoning + Acting). Dans cet article, je partage avec vous ma façon de transformer un processus de rédaction manuel en un système capable de rechercher des données, de rédiger des sections et de compiler un document final. C'est une méthode parmi d'autres, mais elle s'est révélée particulièrement efficace pour mes besoins.</p>
+<p>Pour relever ce défi, j'ai exploré une approche agentique basée sur le pattern <strong>ReAct</strong> (Reasoning + Acting). Dans cet article, je partage avec vous ma façon de transformer un processus de rédaction manuel en un système capable de rechercher des données, de rédiger des sections et de compiler un document final. C'est une méthode parmi d'autres, mais elle s'est révélée particulièrement efficace.</p>
 <!-- more -->
 
 <h2 id="le-probleme-pourquoi-un-simple-prompt-ne-suffit-pas">Le Problème : Pourquoi un simple prompt ne suffit pas ?<a class="headerlink" href="#le-probleme-pourquoi-un-simple-prompt-ne-suffit-pas" title="Permanent link">&para;</a></h2>
-<p>Lorsqu'on demande à une IA de "générer un rapport de 30 pages", on se heurte rapidement à plusieurs limites que j'ai rencontrées à maintes reprises :
+<p>Lorsqu'on demande à une IA de "générer un rapport de 30 pages", on se heurte rapidement à plusieurs limites :
 1. <strong>La fenêtre de contexte</strong> : Même avec des fenêtres larges, la cohérence globale diminue avec la longueur du texte.
 2. <strong>Le manque de données fraîches</strong> : L'IA ne connaît pas les derniers indicateurs ou les spécificités locales sans recherche externe.
 3. <strong>Le formatage</strong> : Faire respecter une structure de chapitres précise et insérer des tableaux formatés reste un défi pour un modèle purement textuel.</p>
@@ -1064,27 +1032,12 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="c1"># Logique pour sauvegarder le contenu dans un espace de travail temporaire</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Section </span><span class="si">{</span><span class="n">section_id</span><span class="si">}</span><span class="s2"> mise à jour.&quot;</span>
 </code></pre></div>
-<p>L'agent peut ainsi décider d'appeler un outil de recherche pour trouver des informations précises, puis d'utiliser l'outil de rédaction pour remplir un chapitre spécifique.</p>
-<h2 id="la-puissance-de-la-separation-fondforme">La puissance de la séparation fond/forme<a class="headerlink" href="#la-puissance-de-la-separation-fondforme" title="Permanent link">&para;</a></h2>
-<p>Le point critique de mon approche est la séparation entre le <strong>fond</strong> (le contenu généré) et la <strong>forme</strong> (le document final). </p>
-<p>En faisant en sorte que l'agent travaille sur des fichiers intermédiaires, je garde le contrôle sur le template final. L'outil de compilation parcourt les sections, gère la hiérarchie des titres et convertit les tableaux. Cela me garantit que le document final est toujours conforme aux standards attendus, peu importe l'ordre dans lequel l'agent a travaillé.</p>
 <h2 id="le-defi-du-human-in-the-loop-ne-pas-ecraser-lhumain">Le défi du "Human-in-the-loop" : Ne pas écraser l'humain<a class="headerlink" href="#le-defi-du-human-in-the-loop-ne-pas-ecraser-lhumain" title="Permanent link">&para;</a></h2>
-<p>Un aspect crucial de mon approche est la collaboration entre l'IA et l'utilisateur. Il arrive souvent qu'après une première génération, un expert souhaite modifier manuellement un paragraphe ou un tableau directement dans le fichier Markdown. </p>
-<p>Si l'agent relance une génération sans précaution, il risque d'écraser ces modifications précieuses. Pour éviter cela, j'ai mis en place une stratégie de "lecture avant écriture" :</p>
-<ol>
-<li><strong>L'outil d'Inspection</strong> : Avant toute action, l'agent utilise un outil comme <code>inspect_workspace()</code> pour lister les fichiers existants et leur état (par exemple, s'ils ont été modifiés manuellement).</li>
-<li><strong>L'outil de Lecture</strong> : J'ai doté l'agent d'un outil <code>read_section()</code>. Au lieu de régénérer aveuglément, l'agent lit d'abord la version actuelle du disque pour intégrer les changements de l'utilisateur dans son contexte avant de proposer des améliorations.</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@agent</span><span class="o">.</span><span class="n">tool</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">async</span> <span class="k">def</span> <span class="nf">read_section</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">RunContext</span><span class="p">,</span> <span class="n">section_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Lit le contenu actuel d&#39;une section pour prendre en compte les éditions manuelles.&quot;&quot;&quot;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;workspaces/</span><span class="si">{</span><span class="n">ctx</span><span class="o">.</span><span class="n">user_id</span><span class="si">}</span><span class="s2">/sections/</span><span class="si">{</span><span class="n">section_id</span><span class="si">}</span><span class="s2">.md&quot;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="c1"># Logique pour lire le texte sur le disque...</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Contenu actuel de </span><span class="si">{</span><span class="n">section_id</span><span class="si">}</span><span class="s2"> : </span><span class="se">\n\n</span><span class="s2"> </span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span>
-</code></pre></div>
+<p>Un aspect crucial de mon approche est la collaboration entre l'IA et l'utilisateur. Il arrive souvent qu'après une première génération, un expert souhaite modifier manuellement un paragraphe directement dans le Markdown. </p>
+<p>Si l'agent relance une génération sans précaution, il risque d'écraser ces modifications précieuses. Pour éviter cela, j'ai mis en place une stratégie de "lecture avant écriture" : l'agent utilise un outil <code>inspect_workspace()</code> pour lister les fichiers, puis un outil <code>read_section()</code> pour intégrer les changements de l'utilisateur dans son contexte avant de proposer des améliorations.</p>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>L'utilisation d'agents pour la génération de documents change radicalement ma productivité. En passant d'une rédaction monolithique à une approche par outils et sections, et en respectant les interventions humaines, j'obtiens des résultats plus précis, mieux sourcés et réellement collaboratifs.</p>
-<p>C'est mon retour d'expérience actuel sur le sujet. Dans le <a href="../../../10/30/concevoir-un-syst%C3%A8me-agentique--quand-le-ml-engineering-rencontre-la-r%C3%A9alit%C3%A9-terrain/">prochain article</a>, je vous propose de regarder sous le capot pour analyser l'architecture technique que j'ai mise en place pour orchestrer tout cela.</p>
+<p>L'utilisation d'agents pour la génération de documents change radicalement ma productivité. En passant d'une rédaction monolithique à une approche par outils et sections, j'obtiens des résultats plus précis et réellement collaboratifs.</p>
+<p>C'est mon retour d'expérience actuel sur le sujet. Dans le <a href="https://sawallesalfo.github.io/blog/2025/10/30/concevoir-un-syst%C3%A8me-agentique--quand-le-ml-engineering-rencontre-la-r%C3%A9alit%C3%A9-terrain/">prochain article</a>, je vous propose de regarder sous le capot pour analyser l'architecture technique que j'ai mise en place.</p>
 
 
 
