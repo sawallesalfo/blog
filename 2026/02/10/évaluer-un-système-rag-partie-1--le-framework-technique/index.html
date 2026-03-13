@@ -931,55 +931,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pourquoi-levaluation-est-elle-si-complexe" class="md-nav__link">
+  <a href="#1-metriques-de-retrieval-avons-nous-les-bons-documents" class="md-nav__link">
     <span class="md-ellipsis">
-      Pourquoi l'évaluation est-elle si complexe ?
+      1. Métriques de Retrieval : avons-nous les bons documents ?
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#le-framework-en-4-couches" class="md-nav__link">
-    <span class="md-ellipsis">
-      Le Framework en 4 Couches
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Le Framework en 4 Couches">
+    <nav class="md-nav" aria-label="1. Métriques de Retrieval : avons-nous les bons documents ?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#layer-1-observabilite-brute" class="md-nav__link">
+  <a href="#contextual-recall-rappel" class="md-nav__link">
     <span class="md-ellipsis">
-      Layer 1 : Observabilité brute
+      Contextual Recall (Rappel)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#layer-2-qualite-structurelle" class="md-nav__link">
+  <a href="#contextual-precision-precision" class="md-nav__link">
     <span class="md-ellipsis">
-      Layer 2 : Qualité Structurelle
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#layer-3-qualite-du-contenu-llm-as-a-judge" class="md-nav__link">
-    <span class="md-ellipsis">
-      Layer 3 : Qualité du Contenu (LLM-as-a-Judge)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#layer-4-precision-factuelle" class="md-nav__link">
-    <span class="md-ellipsis">
-      Layer 4 : Précision Factuelle
+      Contextual Precision (Précision)
     </span>
   </a>
   
@@ -991,9 +964,42 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion-de-la-partie-1" class="md-nav__link">
+  <a href="#2-metriques-de-generation-le-llm-est-il-fiable" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion de la Partie 1
+      2. Métriques de Génération : le LLM est-il fiable ?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Métriques de Génération : le LLM est-il fiable ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#faithfulness-fidelite-groundedness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Faithfulness (Fidélité / Groundedness)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#answer-relevancy-pertinence" class="md-nav__link">
+    <span class="md-ellipsis">
+      Answer Relevancy (Pertinence)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pourquoi-diviser-ainsi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi diviser ainsi ?
     </span>
   </a>
   
@@ -1068,7 +1074,6 @@
                             
                               <a href="../../../../category/rag/">RAG</a>, 
                               <a href="../../../../category/%C3%A9valuation/">Évaluation</a>, 
-                              <a href="../../../../category/mlops/">MLOps</a>, 
                               <a href="../../../../category/python/">Python</a></span>
                         </div>
                       </li>
@@ -1101,33 +1106,33 @@
 
 
 <h1 id="evaluer-un-systeme-rag-partie-1-le-framework-technique">Évaluer un système RAG (Partie 1) : le framework technique<a class="headerlink" href="#evaluer-un-systeme-rag-partie-1-le-framework-technique" title="Permanent link">&para;</a></h1>
-<p>Construire un système RAG (Retrieval-Augmented Generation) est aujourd'hui à la portée de n'importe quel développeur. Mais construire un système RAG <strong>fiable</strong> est un défi d'une toute autre nature. Avant même de parler de mise en production, il faut savoir mesurer la qualité de ce que l'on construit "en laboratoire".</p>
-<p>Dans ce premier volet, je partage avec vous la boîte à outils technique que j'utilise pour évaluer la mécanique interne d'un pipeline RAG.</p>
+<p>La bataille du RAG se gagne sur deux fronts : la capacité à trouver l'information (<strong>Retrieval</strong>) et la capacité à l'utiliser sans inventer (<strong>Génération</strong>). Pour évaluer ces deux piliers, j'utilise un framework basé sur des métriques probabilistes et qualitatives.</p>
+<p>Voici le détail des métriques que j'implémente pour auditer mes pipelines.</p>
 <!-- more -->
 
-<h2 id="pourquoi-levaluation-est-elle-si-complexe">Pourquoi l'évaluation est-elle si complexe ?<a class="headerlink" href="#pourquoi-levaluation-est-elle-si-complexe" title="Permanent link">&para;</a></h2>
-<p>Contrairement au Machine Learning classique où l'on dispose de métriques simples (Précision, Rappel), le RAG produit du texte libre. Un échec peut provenir de deux sources distinctes :
-1.  <strong>Le Retrieval</strong> : Le système n'a pas trouvé les bons documents.
-2.  <strong>La Génération</strong> : Le LLM a mal interprété les documents (hallucination).</p>
-<h2 id="le-framework-en-4-couches">Le Framework en 4 Couches<a class="headerlink" href="#le-framework-en-4-couches" title="Permanent link">&para;</a></h2>
-<p>Pour débugger efficacement, j'ai structuré mon pipeline d'évaluation en quatre couches :</p>
-<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/2026/02/10/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/2026/02/10/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png" /></a></p>
-<h3 id="layer-1-observabilite-brute">Layer 1 : Observabilité brute<a class="headerlink" href="#layer-1-observabilite-brute" title="Permanent link">&para;</a></h3>
-<p>J'utilise des outils comme <strong>Langfuse</strong> pour suivre les métriques techniques :
--   <strong>Latence</strong> : Temps de réponse par étape.
--   <strong>Coût</strong> : Consommation de tokens.</p>
-<h3 id="layer-2-qualite-structurelle">Layer 2 : Qualité Structurelle<a class="headerlink" href="#layer-2-qualite-structurelle" title="Permanent link">&para;</a></h3>
-<p>Vérification via code Python simple (Heuristiques) :
-<span class="arithmatex">\(<span class="arithmatex">\(Completeness = \frac{\sum SectionsPresentes}{\sum SectionsRequises}\)</span>\)</span></p>
-<h3 id="layer-3-qualite-du-contenu-llm-as-a-judge">Layer 3 : Qualité du Contenu (LLM-as-a-Judge)<a class="headerlink" href="#layer-3-qualite-du-contenu-llm-as-a-judge" title="Permanent link">&para;</a></h3>
-<p>Le LLM évalue des critères comme la cohérence ou le ton via une moyenne pondérée :
-<span class="arithmatex">\(<span class="arithmatex">\(FinalScore = \frac{\sum (Score_i \times Weight_i)}{\sum Weight_i}\)</span>\)</span></p>
-<h3 id="layer-4-precision-factuelle">Layer 4 : Précision Factuelle<a class="headerlink" href="#layer-4-precision-factuelle" title="Permanent link">&para;</a></h3>
-<p>Comparaison avec un document de référence (<em>Ground Truth</em>) :
-<span class="arithmatex">\(<span class="arithmatex">\(FactualAccuracy = \frac{N_{correct} + N_{plausible}}{N_{total\_facts}}\)</span>\)</span></p>
-<h2 id="conclusion-de-la-partie-1">Conclusion de la Partie 1<a class="headerlink" href="#conclusion-de-la-partie-1" title="Permanent link">&para;</a></h2>
-<p>Ce framework "Offline" permet de comparer deux versions d'un prompt ou d'un modèle d'embedding avec rigueur. Mais une fois que le système est entre les mains des utilisateurs, les problématiques changent.</p>
-<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment transformer ces outils techniques en un véritable tableau de bord de pilotage pour l'entreprise.</p>
+<h2 id="1-metriques-de-retrieval-avons-nous-les-bons-documents">1. Métriques de Retrieval : avons-nous les bons documents ?<a class="headerlink" href="#1-metriques-de-retrieval-avons-nous-les-bons-documents" title="Permanent link">&para;</a></h2>
+<p>Le but ici est de mesurer si le moteur de recherche (Vector ou Hybride) a réussi à extraire les segments nécessaires à la réponse.</p>
+<h3 id="contextual-recall-rappel">Contextual Recall (Rappel)<a class="headerlink" href="#contextual-recall-rappel" title="Permanent link">&para;</a></h3>
+<p>Il mesure si tous les faits nécessaires pour répondre à la question sont présents dans le contexte récupéré.
+<span class="arithmatex">\(<span class="arithmatex">\(Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}\)</span>\)</span>
+<em>Un score bas indique qu'il faut améliorer votre chunking ou votre recherche <code>top_k</code>.</em></p>
+<h3 id="contextual-precision-precision">Contextual Precision (Précision)<a class="headerlink" href="#contextual-precision-precision" title="Permanent link">&para;</a></h3>
+<p>Il vérifie si les segments les plus pertinents sont classés en haut de la liste des résultats. C'est crucial pour optimiser la fenêtre de contexte du LLM.
+<span class="arithmatex">\(<span class="arithmatex">\(Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de segments pertinents}}\)</span>\)</span></p>
+<hr />
+<h2 id="2-metriques-de-generation-le-llm-est-il-fiable">2. Métriques de Génération : le LLM est-il fiable ?<a class="headerlink" href="#2-metriques-de-generation-le-llm-est-il-fiable" title="Permanent link">&para;</a></h2>
+<p>Une fois le contexte fourni, nous évaluons la qualité de la synthèse produite par le modèle.</p>
+<h3 id="faithfulness-fidelite-groundedness">Faithfulness (Fidélité / Groundedness)<a class="headerlink" href="#faithfulness-fidelite-groundedness" title="Permanent link">&para;</a></h3>
+<p>C'est la métrique la plus importante contre les hallucinations. Elle vérifie que chaque affirmation dans la réponse de l'IA peut être directement tracée vers une phrase du contexte.
+<span class="arithmatex">\(<span class="arithmatex">\(Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\)</span>\)</span></p>
+<h3 id="answer-relevancy-pertinence">Answer Relevancy (Pertinence)<a class="headerlink" href="#answer-relevancy-pertinence" title="Permanent link">&para;</a></h3>
+<p>Elle mesure à quel point la réponse répond directement à la question posée, sans fioritures ni hors-sujet. On la calcule souvent via la similarité cosinus entre le vecteur de la question et celui de la réponse générée.</p>
+<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/docs/posts/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/docs/posts/rag_evaluation_framework/evaluation_layers.png" /></a></p>
+<h2 id="pourquoi-diviser-ainsi">Pourquoi diviser ainsi ?<a class="headerlink" href="#pourquoi-diviser-ainsi" title="Permanent link">&para;</a></h2>
+<p>Cette séparation permet d'identifier immédiatement le maillon faible :
+- Si le <strong>Recall</strong> est bas mais la <strong>Faithfulness</strong> est haute : Votre base de données est mal indexée, mais votre LLM est honnête.
+- Si le <strong>Recall</strong> est haut mais la <strong>Faithfulness</strong> est basse : Votre moteur de recherche est excellent, mais votre LLM hallucine.</p>
+<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment agréger ces métriques techniques pour piloter la qualité en conditions réelles.</p>
 
 
 
