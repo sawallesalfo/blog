@@ -983,9 +983,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#answer-relevancy-pertinence" class="md-nav__link">
+  <a href="#answer-relevancy-pertinence-de-la-reponse" class="md-nav__link">
     <span class="md-ellipsis">
-      Answer Relevancy (Pertinence)
+      Answer Relevancy (Pertinence de la réponse)
     </span>
   </a>
   
@@ -1085,7 +1085,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              2 min read
+                              3 min read
                             
                           </span>
                         </div>
@@ -1107,32 +1107,51 @@
 
 <h1 id="evaluer-un-systeme-rag-partie-1-le-framework-technique">Évaluer un système RAG (Partie 1) : le framework technique<a class="headerlink" href="#evaluer-un-systeme-rag-partie-1-le-framework-technique" title="Permanent link">&para;</a></h1>
 <p>La bataille du RAG se gagne sur deux fronts : la capacité à trouver l'information (<strong>Retrieval</strong>) et la capacité à l'utiliser sans inventer (<strong>Génération</strong>). Pour évaluer ces deux piliers, j'utilise un framework basé sur des métriques probabilistes et qualitatives.</p>
-<p>Voici le détail des métriques que j'implémente pour auditer mes pipelines.</p>
+<p>Voici le détail des métriques que j'implémente pour auditer mes pipelines, étape par étape.</p>
 <!-- more -->
 
 <h2 id="1-metriques-de-retrieval-avons-nous-les-bons-documents">1. Métriques de Retrieval : avons-nous les bons documents ?<a class="headerlink" href="#1-metriques-de-retrieval-avons-nous-les-bons-documents" title="Permanent link">&para;</a></h2>
 <p>Le but ici est de mesurer si le moteur de recherche (Vector ou Hybride) a réussi à extraire les segments nécessaires à la réponse.</p>
 <h3 id="contextual-recall-rappel">Contextual Recall (Rappel)<a class="headerlink" href="#contextual-recall-rappel" title="Permanent link">&para;</a></h3>
-<p>Il mesure si tous les faits nécessaires pour répondre à la question sont présents dans le contexte récupéré.
-<span class="arithmatex">\(<span class="arithmatex">\(Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}\)</span>\)</span>
-<em>Un score bas indique qu'il faut améliorer votre chunking ou votre recherche <code>top_k</code>.</em></p>
+<p>Le Rappel mesure l'exhaustivité. Il répond à la question : "Sur l'ensemble des informations nécessaires, quel pourcentage avons-nous trouvé ?".</p>
+<p>Le calcul se déroule en trois étapes :
+1. On extrait les affirmations clés de la réponse de référence (Ground Truth).
+2. On vérifie si chacune de ces affirmations est présente dans les documents récupérés par notre moteur.
+3. On calcule le ratio :</p>
+<div class="arithmatex">\[Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}\]</div>
+<blockquote>
+<p><strong>Note technique</strong> : Un score bas indique généralement qu'il faut améliorer votre stratégie de chunking ou augmenter la valeur du <code>top_k</code> lors de la recherche.</p>
+</blockquote>
 <h3 id="contextual-precision-precision">Contextual Precision (Précision)<a class="headerlink" href="#contextual-precision-precision" title="Permanent link">&para;</a></h3>
-<p>Il vérifie si les segments les plus pertinents sont classés en haut de la liste des résultats. C'est crucial pour optimiser la fenêtre de contexte du LLM.
-<span class="arithmatex">\(<span class="arithmatex">\(Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de segments pertinents}}\)</span>\)</span></p>
+<p>La Précision vérifie si les segments les plus pertinents sont classés en haut de la liste. C'est crucial car plus l'information utile est "noyée" loin dans le contexte, plus le LLM risque de s'y perdre (effet <em>Lost in the Middle</em>).</p>
+<p>On utilise souvent la moyenne des précisions à chaque rang <span class="arithmatex">\(k\)</span> où un document est jugé pertinent :</p>
+<div class="arithmatex">\[Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de segments pertinents}}\]</div>
 <hr />
 <h2 id="2-metriques-de-generation-le-llm-est-il-fiable">2. Métriques de Génération : le LLM est-il fiable ?<a class="headerlink" href="#2-metriques-de-generation-le-llm-est-il-fiable" title="Permanent link">&para;</a></h2>
 <p>Une fois le contexte fourni, nous évaluons la qualité de la synthèse produite par le modèle.</p>
 <h3 id="faithfulness-fidelite-groundedness">Faithfulness (Fidélité / Groundedness)<a class="headerlink" href="#faithfulness-fidelite-groundedness" title="Permanent link">&para;</a></h3>
-<p>C'est la métrique la plus importante contre les hallucinations. Elle vérifie que chaque affirmation dans la réponse de l'IA peut être directement tracée vers une phrase du contexte.
-<span class="arithmatex">\(<span class="arithmatex">\(Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\)</span>\)</span></p>
-<h3 id="answer-relevancy-pertinence">Answer Relevancy (Pertinence)<a class="headerlink" href="#answer-relevancy-pertinence" title="Permanent link">&para;</a></h3>
-<p>Elle mesure à quel point la réponse répond directement à la question posée, sans fioritures ni hors-sujet. On la calcule souvent via la similarité cosinus entre le vecteur de la question et celui de la réponse générée.</p>
-<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" /></a></p>
+<p>C'est la métrique vitale pour lutter contre les hallucinations. Elle garantit que l'IA ne s'appuie que sur les documents fournis et non sur ses propres connaissances internes (qui peuvent être datées ou erronées).</p>
+<p>Le processus de mesure :
+1. L'IA génère une réponse.
+2. On décompose cette réponse en affirmations atomiques.
+3. Pour chaque affirmation, on demande à un "Juge" si elle est étayée par le contexte fourni.</p>
+<div class="arithmatex">\[Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\]</div>
+<h3 id="answer-relevancy-pertinence-de-la-reponse">Answer Relevancy (Pertinence de la réponse)<a class="headerlink" href="#answer-relevancy-pertinence-de-la-reponse" title="Permanent link">&para;</a></h3>
+<p>Elle mesure à quel point la réponse s'adresse directement à la question de l'utilisateur. Une réponse peut être fidèle au contexte mais totalement hors-sujet.</p>
+<p>La mesure s'effectue en comparant les vecteurs :
+1. On génère plusieurs questions potentielles à partir de la réponse produite par l'IA.
+2. On calcule la similarité cosinus entre ces questions générées et la question initiale de l'utilisateur.</p>
+<hr />
 <h2 id="pourquoi-diviser-ainsi">Pourquoi diviser ainsi ?<a class="headerlink" href="#pourquoi-diviser-ainsi" title="Permanent link">&para;</a></h2>
-<p>Cette séparation permet d'identifier immédiatement le maillon faible :
-- Si le <strong>Recall</strong> est bas mais la <strong>Faithfulness</strong> est haute : Votre base de données est mal indexée, mais votre LLM est honnête.
-- Si le <strong>Recall</strong> est haut mais la <strong>Faithfulness</strong> est basse : Votre moteur de recherche est excellent, mais votre LLM hallucine.</p>
-<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment agréger ces métriques techniques pour piloter la qualité en conditions réelles.</p>
+<p>Cette séparation permet d'identifier immédiatement le maillon faible de votre chaîne de valeur :</p>
+<ul>
+<li><strong>Scénario A</strong> : Recall bas / Faithfulness haute.
+    *   <em>Diagnostic</em> : Votre base de données est mal indexée ou la recherche est inefficace. Votre LLM est "honnête" mais manque d'informations.</li>
+<li><strong>Scénario B</strong> : Recall haut / Faithfulness basse.
+    *   <em>Diagnostic</em> : Votre moteur de recherche trouve les bonnes infos, mais votre LLM invente des faits. Il faut ajuster le prompt système ou changer de modèle.</li>
+</ul>
+<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" /></a></p>
+<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment agréger ces métriques techniques pour piloter la qualité globale de votre service.</p>
 
 
 
