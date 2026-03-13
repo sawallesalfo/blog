@@ -5,49 +5,49 @@ authors:
 categories: 
     - RAG
     - Évaluation
-    - MLOps
     - Python
 ---
 
 # Évaluer un système RAG (Partie 1) : le framework technique
 
-Construire un système RAG (Retrieval-Augmented Generation) est aujourd'hui à la portée de n'importe quel développeur. Mais construire un système RAG **fiable** est un défi d'une toute autre nature. Avant même de parler de mise en production, il faut savoir mesurer la qualité de ce que l'on construit "en laboratoire".
+La bataille du RAG se gagne sur deux fronts : la capacité à trouver l'information (**Retrieval**) et la capacité à l'utiliser sans inventer (**Génération**). Pour évaluer ces deux piliers, j'utilise un framework basé sur des métriques probabilistes et qualitatives.
 
-Dans ce premier volet, je partage avec vous la boîte à outils technique que j'utilise pour évaluer la mécanique interne d'un pipeline RAG.
+Voici le détail des métriques que j'implémente pour auditer mes pipelines.
 
 <!-- more -->
 
-## Pourquoi l'évaluation est-elle si complexe ?
+## 1. Métriques de Retrieval : avons-nous les bons documents ?
 
-Contrairement au Machine Learning classique où l'on dispose de métriques simples (Précision, Rappel), le RAG produit du texte libre. Un échec peut provenir de deux sources distinctes :
-1.  **Le Retrieval** : Le système n'a pas trouvé les bons documents.
-2.  **La Génération** : Le LLM a mal interprété les documents (hallucination).
+Le but ici est de mesurer si le moteur de recherche (Vector ou Hybride) a réussi à extraire les segments nécessaires à la réponse.
 
-## Le Framework en 4 Couches
+### Contextual Recall (Rappel)
+Il mesure si tous les faits nécessaires pour répondre à la question sont présents dans le contexte récupéré.
+$$Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}$$
+*Un score bas indique qu'il faut améliorer votre chunking ou votre recherche `top_k`.*
 
-Pour débugger efficacement, j'ai structuré mon pipeline d'évaluation en quatre couches :
+### Contextual Precision (Précision)
+Il vérifie si les segments les plus pertinents sont classés en haut de la liste des résultats. C'est crucial pour optimiser la fenêtre de contexte du LLM.
+$$Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de segments pertinents}}$$
 
-![Framework d'Évaluation](https://sawallesalfo.github.io/blog/2026/02/10/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png)
+---
 
-### Layer 1 : Observabilité brute
-J'utilise des outils comme **Langfuse** pour suivre les métriques techniques :
--   **Latence** : Temps de réponse par étape.
--   **Coût** : Consommation de tokens.
+## 2. Métriques de Génération : le LLM est-il fiable ?
 
-### Layer 2 : Qualité Structurelle
-Vérification via code Python simple (Heuristiques) :
-$$Completeness = \frac{\sum SectionsPresentes}{\sum SectionsRequises}$$
+Une fois le contexte fourni, nous évaluons la qualité de la synthèse produite par le modèle.
 
-### Layer 3 : Qualité du Contenu (LLM-as-a-Judge)
-Le LLM évalue des critères comme la cohérence ou le ton via une moyenne pondérée :
-$$FinalScore = \frac{\sum (Score_i \times Weight_i)}{\sum Weight_i}$$
+### Faithfulness (Fidélité / Groundedness)
+C'est la métrique la plus importante contre les hallucinations. Elle vérifie que chaque affirmation dans la réponse de l'IA peut être directement tracée vers une phrase du contexte.
+$$Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}$$
 
-### Layer 4 : Précision Factuelle
-Comparaison avec un document de référence (*Ground Truth*) :
-$$FactualAccuracy = \frac{N_{correct} + N_{plausible}}{N_{total\_facts}}$$
+### Answer Relevancy (Pertinence)
+Elle mesure à quel point la réponse répond directement à la question posée, sans fioritures ni hors-sujet. On la calcule souvent via la similarité cosinus entre le vecteur de la question et celui de la réponse générée.
 
-## Conclusion de la Partie 1
+![Framework d'Évaluation](https://sawallesalfo.github.io/blog/docs/posts/rag_evaluation_framework/evaluation_layers.png)
 
-Ce framework "Offline" permet de comparer deux versions d'un prompt ou d'un modèle d'embedding avec rigueur. Mais une fois que le système est entre les mains des utilisateurs, les problématiques changent.
+## Pourquoi diviser ainsi ?
 
-Dans la [Partie 2](https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/), nous verrons comment transformer ces outils techniques en un véritable tableau de bord de pilotage pour l'entreprise.
+Cette séparation permet d'identifier immédiatement le maillon faible :
+- Si le **Recall** est bas mais la **Faithfulness** est haute : Votre base de données est mal indexée, mais votre LLM est honnête.
+- Si le **Recall** est haut mais la **Faithfulness** est basse : Votre moteur de recherche est excellent, mais votre LLM hallucine.
+
+Dans la [Partie 2](https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/), nous verrons comment agréger ces métriques techniques pour piloter la qualité en conditions réelles.
