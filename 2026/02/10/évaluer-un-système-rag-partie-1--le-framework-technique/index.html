@@ -1114,10 +1114,12 @@
 <p>Le but ici est de mesurer si le moteur de recherche (Vector ou Hybride) a réussi à extraire les segments nécessaires à la réponse.</p>
 <h3 id="contextual-recall-rappel">Contextual Recall (Rappel)<a class="headerlink" href="#contextual-recall-rappel" title="Permanent link">&para;</a></h3>
 <p>Le Rappel mesure l'exhaustivité. Il répond à la question : "Sur l'ensemble des informations nécessaires, quel pourcentage avons-nous trouvé ?".</p>
-<p>Le calcul se déroule en trois étapes :
-1. On extrait les affirmations clés de la réponse de référence (Ground Truth).
-2. On vérifie si chacune de ces affirmations est présente dans les documents récupérés par notre moteur.
-3. On calcule le ratio :</p>
+<p>Le calcul se déroule en trois étapes :</p>
+<ol>
+<li>On extrait les affirmations clés de la réponse de référence (Ground Truth).</li>
+<li>On vérifie si chacune de ces affirmations est présente dans les documents récupérés par notre moteur.</li>
+<li>On calcule le ratio :</li>
+</ol>
 <p><span class="arithmatex">\(Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}\)</span></p>
 <blockquote>
 <p><strong>Note technique</strong> : Un score bas indique généralement qu'il faut améliorer votre stratégie de chunking ou augmenter la valeur du <code>top_k</code> lors de la recherche.</p>
@@ -1135,12 +1137,14 @@
 1. L'IA génère une réponse.
 2. On décompose cette réponse en affirmations atomiques.
 3. Pour chaque affirmation, on demande à un "Juge" si elle est étayée par le contexte fourni.</p>
-<p>$ = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}$</p>
+<p><span class="arithmatex">\(Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\)</span></p>
 <h3 id="answer-relevancy-pertinence-de-la-reponse">Answer Relevancy (Pertinence de la réponse)<a class="headerlink" href="#answer-relevancy-pertinence-de-la-reponse" title="Permanent link">&para;</a></h3>
 <p>Elle mesure à quel point la réponse s'adresse directement à la question de l'utilisateur. Une réponse peut être fidèle au contexte mais totalement hors-sujet.</p>
-<p>La mesure s'effectue en comparant les vecteurs :
-1. On génère plusieurs questions potentielles à partir de la réponse produite par l'IA.
-2. On calcule la similarité cosinus entre ces questions générées et la question initiale de l'utilisateur.</p>
+<p>La mesure s'effectue en comparant les vecteurs :</p>
+<ol>
+<li>On génère plusieurs questions potentielles à partir de la réponse produite par l'IA.</li>
+<li>On calcule la similarité cosinus entre ces questions générées et la question initiale de l'utilisateur.</li>
+</ol>
 <hr />
 <h2 id="pourquoi-diviser-ainsi">Pourquoi diviser ainsi ?<a class="headerlink" href="#pourquoi-diviser-ainsi" title="Permanent link">&para;</a></h2>
 <p>Cette séparation permet d'identifier immédiatement le maillon faible de votre chaîne de valeur :</p>
