@@ -43,6 +43,7 @@ $$Recall = \frac{2}{3} = 0.66$$
 La Précision vérifie si les informations utiles arrivent en tête de liste.
 
 **Exemple :**
+
 Si notre moteur de recherche renvoie 5 documents :
 
 *   Rang 1 : Un texte sur la culture du coton (Non pertinent).
@@ -61,6 +62,7 @@ $$Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de seg
 C'est le rempart contre l'hallucination. L'IA doit répondre **uniquement** avec ce qu'on lui a donné.
 
 **Exemple :**
+
 *   **Contexte fourni** : "Le Burkina Faso a obtenu son indépendance le 5 août 1960."
 *   **Réponse de l'IA** : "L'indépendance a eu lieu le 5 août 1960 sous la direction de Thomas Sankara."
 
@@ -77,6 +79,7 @@ $$Faithfulness = \frac{1}{2} = 0.50$$
 L'IA a-t-elle vraiment répondu à la question ?
 
 **Exemple :**
+
 *   **Question** : "Qui était le premier président du Burkina Faso ?"
 *   **Réponse de l'IA** : "Le Burkina Faso est un pays enclavé d'Afrique de l'Ouest dont la capitale est Ouagadougou."
 
@@ -91,6 +94,6 @@ Cette séparation permet d'identifier le coupable en cas d'erreur :
 *   **Recall bas** (ex: On ne trouve pas 1958) : Le problème vient de votre **Indexation** (Data Engineering).
 *   **Faithfulness basse** (ex: On cite Sankara en 1960) : Le problème vient de votre **Prompt** ou du **Modèle** (Génération).
 
-![Framework d'Évaluation](https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png)
+![Framework d'Évaluation](./rag_evaluation_framework/evaluation_layers.png)
 
 Dans la [Partie 2](https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/), nous verrons comment piloter ces scores en production.
