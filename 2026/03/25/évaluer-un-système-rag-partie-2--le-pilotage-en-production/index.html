@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../../../02/28/sous-le-capot-du-docx--comment-jautomatise-le-remplissage-de-fiches-m%C3%A9tier-avec-une-ia/">
+        <link rel="prev" href="../../15/%C3%A9valuer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Évaluer un système RAG en production : mon framework d'analyse et de pilotage - ssawadogo-blog</title>
+        <title>Évaluer un système RAG (Partie 2) : le pilotage en production - ssawadogo-blog</title>
       
     
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#evaluer-un-systeme-rag-en-production-mon-framework-danalyse-et-de-pilotage" class="md-skip">
+        <a href="#evaluer-un-systeme-rag-partie-2-le-pilotage-en-production" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Évaluer un système RAG en production : mon framework d'analyse et de pilotage
+              Évaluer un système RAG (Partie 2) : le pilotage en production
             
           </span>
         </div>
@@ -929,66 +929,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#une-strategie-a-double-couche" class="md-nav__link">
+  <a href="#du-technique-au-business" class="md-nav__link">
     <span class="md-ellipsis">
-      Une Stratégie à Double Couche
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Une Stratégie à Double Couche">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-les-business-kpis-pour-les-stakeholders" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Les Business KPIs (Pour les Stakeholders)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-les-metriques-techniques-pour-les-ingenieurs" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Les Métriques Techniques (Pour les Ingénieurs)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Les Métriques Techniques (Pour les Ingénieurs)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#qualite-du-retrieval-recherche" class="md-nav__link">
-    <span class="md-ellipsis">
-      Qualité du Retrieval (Recherche)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#qualite-de-la-generation-llm" class="md-nav__link">
-    <span class="md-ellipsis">
-      Qualité de la Génération (LLM)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#orchestration-du-pipeline-devaluation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Orchestration du Pipeline d'Évaluation
+      Du Technique au Business
     </span>
   </a>
   
@@ -1004,18 +947,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#pilotage-par-les-donnees-avec-mlflow" class="md-nav__link">
+  <a href="#monitoring-continu-avec-mlflow" class="md-nav__link">
     <span class="md-ellipsis">
-      Pilotage par les données avec MLflow
+      Monitoring continu avec MLflow
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#les-metriques-de-generation" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion
+      Les métriques de génération
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-de-la-serie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion de la série
     </span>
   </a>
   
@@ -1102,7 +1054,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
                           <span class="md-ellipsis">
                             
-                              3 min read
+                              2 min read
                             
                           </span>
                         </div>
@@ -1122,71 +1074,35 @@
         
 
 
-<h1 id="evaluer-un-systeme-rag-en-production-mon-framework-danalyse-et-de-pilotage">Évaluer un système RAG en production : mon framework d'analyse et de pilotage<a class="headerlink" href="#evaluer-un-systeme-rag-en-production-mon-framework-danalyse-et-de-pilotage" title="Permanent link">&para;</a></h1>
-<p>Construire un RAG est simple, mais garantir sa fiabilité en production est une autre paire de manches. Après avoir mis en place plusieurs systèmes d'IA agentiques, j'ai réalisé que l'on ne peut pas piloter ce que l'on ne mesure pas. Aujourd'hui, je vous présente mon framework d'évaluation complet, conçu pour aligner les exigences techniques des ingénieurs avec les besoins métier des décideurs.</p>
-<p>Mon approche repose sur une stratégie à double niveau : des <strong>Métriques Techniques</strong> pour débugger le pipeline et des <strong>Business KPIs</strong> pour valider la valeur réelle.</p>
+<h1 id="evaluer-un-systeme-rag-partie-2-le-pilotage-en-production">Évaluer un système RAG (Partie 2) : le pilotage en production<a class="headerlink" href="#evaluer-un-systeme-rag-partie-2-le-pilotage-en-production" title="Permanent link">&para;</a></h1>
+<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/">Partie 1</a>, nous avons exploré la "boîte à outils" technique pour débugger un pipeline RAG. Aujourd'hui, nous passons du laboratoire au terrain. Comment s'assurer que le système apporte réellement de la valeur aux utilisateurs finaux et reste sûr dans le temps ?</p>
+<p>Le défi n'est plus seulement technique, il devient opérationnel. Voici comment je transforme des métriques brutes en un système de pilotage par les données.</p>
 <!-- more -->
 
-<h2 id="une-strategie-a-double-couche">Une Stratégie à Double Couche<a class="headerlink" href="#une-strategie-a-double-couche" title="Permanent link">&para;</a></h2>
-<p>L'évaluation d'un RAG ne doit pas être une boîte noire. J'ai structuré mon analyse autour de trois axes majeurs : le Métier, la Technique, et l'Opérationnel.</p>
-<p><a class="glightbox" href="../../../../rag_production_evaluation/rag_eval_mindmap.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation RAG" src="../../../../rag_production_evaluation/rag_eval_mindmap.png" /></a></p>
-<h3 id="1-les-business-kpis-pour-les-stakeholders">1. Les Business KPIs (Pour les Stakeholders)<a class="headerlink" href="#1-les-business-kpis-pour-les-stakeholders" title="Permanent link">&para;</a></h3>
-<p>Ces indicateurs répondent à la question : "Le système est-il prêt pour les utilisateurs ?".</p>
+<h2 id="du-technique-au-business">Du Technique au Business<a class="headerlink" href="#du-technique-au-business" title="Permanent link">&para;</a></h2>
+<p>L'évaluation en production ne s'adresse plus seulement aux développeurs, mais aussi aux décideurs (Stakeholders). Pour cela, je traduis les scores complexes en <strong>Business KPIs</strong> clairs :</p>
 <ul>
-<li><strong>Accuracy Rate</strong> : Le taux de réponses correctes.</li>
-<li><strong>Hallucination Rate</strong> : La fréquence à laquelle le modèle invente des faits.</li>
-<li><strong>Knowledge Gap</strong> : Le pourcentage de questions auxquelles le système n'a pas pu répondre faute de données.</li>
+<li><strong>Accuracy Rate</strong> : Est-ce que la réponse est correcte ?</li>
+<li><strong>Hallucination Rate</strong> : L'IA invente-t-elle des faits ?</li>
+<li><strong>Knowledge Gap</strong> : Avons-nous les documents nécessaires pour répondre ?</li>
 </ul>
-<h3 id="2-les-metriques-techniques-pour-les-ingenieurs">2. Les Métriques Techniques (Pour les Ingénieurs)<a class="headerlink" href="#2-les-metriques-techniques-pour-les-ingenieurs" title="Permanent link">&para;</a></h3>
-<p>Inspiré par le framework RAGAS, je mesure la qualité de chaque composant.</p>
-<h4 id="qualite-du-retrieval-recherche">Qualité du Retrieval (Recherche)<a class="headerlink" href="#qualite-du-retrieval-recherche" title="Permanent link">&para;</a></h4>
-<p>Le <strong>Contextual Recall</strong> mesure si la réponse attendue se trouve bien dans les documents récupérés :
-<span class="arithmatex">\(<span class="arithmatex">\(Recall = \frac{|\text{Faits attendus} \cap \text{Faits présents dans le contexte}|}{|\text{Faits attendus}|}\)</span>\)</span></p>
-<h4 id="qualite-de-la-generation-llm">Qualité de la Génération (LLM)<a class="headerlink" href="#qualite-de-la-generation-llm" title="Permanent link">&para;</a></h4>
-<p>La <strong>Faithfulness</strong> (Fidélité) vérifie si la réponse de l'IA est strictement dérivée des documents fournis :
-<span class="arithmatex">\(<span class="arithmatex">\(Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\)</span>\)</span></p>
-<h2 id="orchestration-du-pipeline-devaluation">Orchestration du Pipeline d'Évaluation<a class="headerlink" href="#orchestration-du-pipeline-devaluation" title="Permanent link">&para;</a></h2>
-<p>Pour automatiser ce processus, j'ai développé un <code>EvalRunner</code> qui orchestre la génération et le calcul des scores. Voici un extrait de ma logique d'implémentation :</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span> <span class="nc">EvalRunner</span><span class="p">:</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">def</span> <span class="nf">evaluate_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">case</span><span class="p">:</span> <span class="n">EvalCase</span><span class="p">,</span> <span class="n">query_fn</span><span class="p">:</span> <span class="n">RAGQueryFn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EvalResult</span><span class="p">:</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="c1"># 1. Requête du pipeline RAG</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="n">rag_result</span> <span class="o">=</span> <span class="n">query_fn</span><span class="p">(</span><span class="n">case</span><span class="o">.</span><span class="n">question</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="c1"># 2. Calcul des métriques techniques</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="n">faith_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">faithfulness</span><span class="o">.</span><span class="n">score</span><span class="p">(</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="k">case</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> 
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="n">rag_result</span><span class="o">.</span><span class="n">answer</span><span class="p">,</span> 
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">rag_result</span><span class="o">.</span><span class="n">contexts</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="p">)</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="n">recall_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contextual_recall</span><span class="o">.</span><span class="n">score</span><span class="p">(</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="k">case</span><span class="o">.</span><span class="n">expected_answer</span><span class="p">,</span> 
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="n">rag_result</span><span class="o">.</span><span class="n">contexts</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="p">)</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="c1"># 3. Évaluation qualitative via un LLM Judge</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="n">judge_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">judge</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            <span class="n">question</span><span class="o">=</span><span class="n">case</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>            <span class="n">actual_answer</span><span class="o">=</span><span class="n">rag_result</span><span class="o">.</span><span class="n">answer</span><span class="p">,</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>            <span class="n">expected_answer</span><span class="o">=</span><span class="n">case</span><span class="o">.</span><span class="n">expected_answer</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="p">)</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="k">return</span> <span class="n">EvalResult</span><span class="p">(</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>            <span class="n">accuracy</span><span class="o">=</span><span class="p">(</span><span class="n">judge_result</span><span class="o">.</span><span class="n">score</span> <span class="o">+</span> <span class="n">similarity_score</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>            <span class="n">is_hallucination</span><span class="o">=</span><span class="n">faith_score</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">,</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>            <span class="o">...</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="p">)</span>
-</code></pre></div>
+<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/2026/03/25/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/rag_production_evaluation/rag_eval_mindmap.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pilotage RAG" src="https://sawallesalfo.github.io/blog/2026/03/25/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/rag_production_evaluation/rag_eval_mindmap.png" /></a></p>
 <h2 id="le-systeme-feu-tricolore">Le Système "Feu Tricolore"<a class="headerlink" href="#le-systeme-feu-tricolore" title="Permanent link">&para;</a></h2>
-<p>Pour rendre les rapports digestes, je convertis les scores numériques en statuts visuels :
-- 🟢 <strong>PASS (Score &gt; 0.8)</strong> : Précis et sourcé.
-- 🟡 <strong>REVIEW (Score 0.5 - 0.8)</strong> : Acceptable mais perfectible.
-- 🔴 <strong>FAIL (Score &lt; 0.5)</strong> : Erreur factuelle ou hors-sujet.</p>
-<h2 id="pilotage-par-les-donnees-avec-mlflow">Pilotage par les données avec MLflow<a class="headerlink" href="#pilotage-par-les-donnees-avec-mlflow" title="Permanent link">&para;</a></h2>
-<p>Toutes mes expériences sont tracées dans <strong>MLflow</strong>. Cela me permet de comparer l'impact d'un changement d'embedding ou d'un nouveau prompt sur mes KPIs globaux. Je génère systématiquement des graphiques radar pour visualiser l'équilibre entre précision, rappel et fidélité.</p>
-<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>L'évaluation est le système nerveux de tout projet d'IA générative. Sans elle, vous avancez à l'aveugle. En combinant des formules mathématiques rigoureuses et des KPIs métier clairs, vous transformez un prototype fragile en un produit de production robuste et auditable.</p>
-<p>C'est ainsi que se termine cette série d'articles sur la mise en œuvre de systèmes agentiques. J'espère que ces partages d'expérience vous aideront à bâtir des solutions IA qui apportent une réelle valeur ajoutée.</p>
+<p>Pour rendre l'analyse actionnable immédiatement, je convertis chaque résultat en un statut visuel simple :
+-   🟢 <strong>PASS (Score &gt; 0.8)</strong> : Précis et sourcé.
+-   🟡 <strong>REVIEW (Score 0.5 - 0.8)</strong> : Acceptable mais perfectible (besoin d'ajuster le prompt).
+-   🔴 <strong>FAIL (Score &lt; 0.5)</strong> : Erreur factuelle ou hors-sujet (besoin d'ajouter des données).</p>
+<h2 id="monitoring-continu-avec-mlflow">Monitoring continu avec MLflow<a class="headerlink" href="#monitoring-continu-avec-mlflow" title="Permanent link">&para;</a></h2>
+<p>Le pilotage ne s'arrête pas à un instant T. En traçant chaque exécution dans <strong>MLflow</strong>, je peux détecter le "Drift" (dérive) de qualité. Si le taux d'hallucination augmente soudainement après l'ajout d'une nouvelle source de données, je le vois immédiatement sur mes graphiques radar.</p>
+<h2 id="les-metriques-de-generation">Les métriques de génération<a class="headerlink" href="#les-metriques-de-generation" title="Permanent link">&para;</a></h2>
+<p>Pour les ingénieurs qui surveillent le système, deux formules restent essentielles en production :</p>
+<p><strong>Faithfulness (Fidélité)</strong> :
+<span class="arithmatex">\(<span class="arithmatex">\(Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\)</span>\)</span></p>
+<p><strong>Contextual Recall</strong> :
+<span class="arithmatex">\(<span class="arithmatex">\(Recall = \frac{|\text{Faits attendus} \cap \text{Faits présents dans le contexte}|}{|\text{Faits attendus}|}\)</span>\)</span></p>
+<h2 id="conclusion-de-la-serie">Conclusion de la série<a class="headerlink" href="#conclusion-de-la-serie" title="Permanent link">&para;</a></h2>
+<p>L'évaluation est le système nerveux de tout projet d'IA générative. En combinant un framework technique rigoureux (Partie 1) et un pilotage métier par les données (Partie 2), vous transformez une IA expérimentale en un service de production robuste et auditable.</p>
+<p>J'espère que ce partage d'expérience vous aidera à bâtir des systèmes qui apportent une réelle valeur ajoutée à vos métiers.</p>
 
 
 

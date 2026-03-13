@@ -9,25 +9,25 @@
       
       
       
-        <link rel="prev" href="../qualit%C3%A9/">
+        <link rel="prev" href="../../../02/28/sous-le-capot-du-docx--comment-jautomatise-le-remplissage-de-fiches-m%C3%A9tier-avec-une-ia/">
       
       
-        <link rel="next" href="../recherche/">
+        <link rel="next" href="../../25/%C3%A9valuer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.0">
     
     
       
-        <title>RAG - ssawadogo-blog</title>
+        <title>Évaluer un système RAG (Partie 1) : le framework technique - ssawadogo-blog</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.45e1311d.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.45e1311d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,14 +46,14 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -62,7 +62,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rag" class="md-skip">
+        <a href="#evaluer-un-systeme-rag-partie-1-le-framework-technique" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ssawadogo-blog" class="md-header__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+    <a href="../../../.." title="ssawadogo-blog" class="md-header__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RAG
+              Évaluer un système RAG (Partie 1) : le framework technique
             
           </span>
         </div>
@@ -216,7 +216,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -225,7 +227,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ssawadogo-blog" class="md-nav__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+    <a href="../../../.." title="ssawadogo-blog" class="md-nav__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -240,12 +242,14 @@
       
   
   
+    
+  
   
     
   
   
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -304,7 +308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2026/" class="md-nav__link">
+      <a href="../../../../archive/2026/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -327,7 +331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2025/" class="md-nav__link">
+      <a href="../../../../archive/2025/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -350,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../archive/2024/" class="md-nav__link">
+      <a href="../../../../archive/2024/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -375,21 +379,19 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -403,7 +405,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Categories
@@ -419,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api/" class="md-nav__link">
+      <a href="../../../../category/api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -442,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../../../../category/architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -465,7 +467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../business/" class="md-nav__link">
+      <a href="../../../../category/business/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -488,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cicd/" class="md-nav__link">
+      <a href="../../../../category/cicd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -511,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud/" class="md-nav__link">
+      <a href="../../../../category/cloud/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -534,7 +536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-engineering/" class="md-nav__link">
+      <a href="../../../../category/data-engineering/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -557,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fastapi/" class="md-nav__link">
+      <a href="../../../../category/fastapi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -580,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gouvernance/" class="md-nav__link">
+      <a href="../../../../category/gouvernance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -603,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ia/" class="md-nav__link">
+      <a href="../../../../category/ia/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -626,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../iagen/" class="md-nav__link">
+      <a href="../../../../category/iagen/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -649,7 +651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mlops/" class="md-nav__link">
+      <a href="../../../../category/mlops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -672,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../open-source/" class="md-nav__link">
+      <a href="../../../../category/open-source/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -695,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../processing/" class="md-nav__link">
+      <a href="../../../../category/processing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -718,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../productivit%C3%A9/" class="md-nav__link">
+      <a href="../../../../category/productivit%C3%A9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -741,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+      <a href="../../../../category/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -764,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../qualit%C3%A9/" class="md-nav__link">
+      <a href="../../../../category/qualit%C3%A9/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -782,23 +784,12 @@
                 
   
   
-    
-  
   
     
-      
-    
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../category/rag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -807,7 +798,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -822,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../recherche/" class="md-nav__link">
+      <a href="../../../../category/recherche/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -845,7 +835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tips/" class="md-nav__link">
+      <a href="../../../../category/tips/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -868,7 +858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../documentation/" class="md-nav__link">
+      <a href="../../../../category/documentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -891,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%C3%A9valuation/" class="md-nav__link">
+      <a href="../../../../category/%C3%A9valuation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -920,6 +910,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -932,6 +924,83 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pourquoi-levaluation-est-elle-complexe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi l'évaluation est-elle complexe ?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#le-framework-en-4-couches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le Framework en 4 Couches
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Le Framework en 4 Couches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-1-observabilite-brute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 1 : Observabilité brute
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-2-qualite-structurelle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 2 : Qualité Structurelle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-3-qualite-du-contenu-llm-as-a-judge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 3 : Qualité du Contenu (LLM-as-a-Judge)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layer-4-precision-factuelle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer 4 : Précision Factuelle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-de-la-partie-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion de la Partie 1
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -939,267 +1008,178 @@
             
           
           
-  <div class="md-content" data-md-component="content">
-    <div class="md-content__inner">
-      <header class="md-typeset">
-        <h1 id="rag">RAG<a class="headerlink" href="#rag" title="Permanent link">&para;</a></h1>
-      </header>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-03-25 00:00:00">March 25, 2026</time></li>
-        
-          <li class="md-meta__item">
-            in
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
             
-              <a href="./" class="md-meta__link">RAG</a>, 
-              <a href="../%C3%A9valuation/" class="md-meta__link">Évaluation</a>, 
-              <a href="../mlops/" class="md-meta__link">MLOps</a>, 
-              <a href="../business/" class="md-meta__link">Business</a></li>
-        
-        
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Salif SAWADOGO
+                        
+                      </strong>
+                      <br>
+                      End-to-end Data Scientist
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                        <time datetime="2026-03-15 00:00:00" class="md-ellipsis">March 15, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/rag/">RAG</a>, 
+                              <a href="../../../../category/%C3%A9valuation/">Évaluation</a>, 
+                              <a href="../../../../category/mlops/">MLOps</a>, 
+                              <a href="../../../../category/python/">Python</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              2 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
           
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
+        </div>
+      </div>
     </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="evaluer-un-systeme-rag-partie-2-le-pilotage-en-production"><a class="toclink" href="../../2026/03/25/%C3%A9valuer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Évaluer un système RAG (Partie 2) : le pilotage en production</a></h2>
-<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/">Partie 1</a>, nous avons exploré la "boîte à outils" technique pour débugger un pipeline RAG. Aujourd'hui, nous passons du laboratoire au terrain. Comment s'assurer que le système apporte réellement de la valeur aux utilisateurs finaux et reste sûr dans le temps ?</p>
-<p>Le défi n'est plus seulement technique, il devient opérationnel. Voici comment je transforme des métriques brutes en un système de pilotage par les données.</p>
+    <article class="md-content__inner md-typeset">
+      
+        
 
-    <nav class="md-post__action">
-      <a href="../../2026/03/25/%C3%A9valuer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-03-15 00:00:00">March 15, 2026</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">RAG</a>, 
-              <a href="../%C3%A9valuation/" class="md-meta__link">Évaluation</a>, 
-              <a href="../mlops/" class="md-meta__link">MLOps</a>, 
-              <a href="../python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="evaluer-un-systeme-rag-partie-1-le-framework-technique"><a class="toclink" href="../../2026/03/15/%C3%A9valuer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/">Évaluer un système RAG (Partie 1) : le framework technique</a></h2>
+
+<h1 id="evaluer-un-systeme-rag-partie-1-le-framework-technique">Évaluer un système RAG (Partie 1) : le framework technique<a class="headerlink" href="#evaluer-un-systeme-rag-partie-1-le-framework-technique" title="Permanent link">&para;</a></h1>
 <p>Construire un système RAG (Retrieval-Augmented Generation) est aujourd'hui à la portée de n'importe quel développeur. Mais construire un système RAG <strong>fiable</strong> est un défi d'une toute autre nature. Avant même de parler de mise en production, il faut savoir mesurer la qualité de ce que l'on construit "en laboratoire".</p>
 <p>Dans ce premier volet, je partage avec vous la boîte à outils technique que j'utilise pour évaluer la mécanique interne d'un pipeline RAG.</p>
+<!-- more -->
 
-    <nav class="md-post__action">
-      <a href="../../2026/03/15/%C3%A9valuer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2026-01-15 00:00:00">January 15, 2026</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">RAG</a>, 
-              <a href="../ia/" class="md-meta__link">IA</a>, 
-              <a href="../architecture/" class="md-meta__link">Architecture</a>, 
-              <a href="../data-engineering/" class="md-meta__link">Data-Engineering</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="au-dela-de-la-recherche-le-rag-agentique-et-le-pattern-navigator"><a class="toclink" href="../../2026/01/15/au-del%C3%A0-de-la-recherche--le-rag-agentique-et-le-pattern-navigator/">Au-delà de la recherche : le RAG agentique et le pattern "navigator"</a></h2>
-<p>Dans mon article précédent, j'ai expliqué pourquoi la <strong>Recherche Hybride</strong> est une première étape importante. Mais pour des domaines de précision comme la banque ou le droit, la recherche statistique par similitude ne suffit pas. L'agent doit savoir exactement où il se trouve.</p>
-<p>C'est là qu'intervient le <strong>RAG Agentique</strong>, et plus précisément le pattern <strong>Navigator</strong>. Ici, oubliez les <strong>Vector DB</strong> et les <strong>Embeddings</strong> : nous passons sur une navigation déterministe basée sur la structure et les outils. </p>
-
-    <nav class="md-post__action">
-      <a href="../../2026/01/15/au-del%C3%A0-de-la-recherche--le-rag-agentique-et-le-pattern-navigator/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-12-30 00:00:00">December 30, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">RAG</a>, 
-              <a href="../ia/" class="md-meta__link">IA</a>, 
-              <a href="../recherche/" class="md-meta__link">Recherche</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              3 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="le-rag-ne-se-limite-pas-aux-embeddings-limportance-de-la-recherche-hybride"><a class="toclink" href="../../2025/12/30/le-rag-ne-se-limite-pas-aux-embeddings--limportance-de-la-recherche-hybride/">Le RAG ne se limite pas aux embeddings : l'importance de la recherche hybride</a></h2>
-<p>Le RAG (<em>Retrieval Augmented Generation</em>) est devenu le standard pour connecter des LLMs à des bases de connaissances privées. Dans la plupart des tutoriels, on vous explique qu'il suffit de découper vos documents en morceaux (<em>chunks</em>), de les transformer en vecteurs (<em>embeddings</em>) et de faire une recherche de similitude.</p>
-<p>Cependant, dans des secteurs exigeants comme la banque ou le droit, j'ai constaté que cette approche "tout-vecteur" est souvent insuffisante. Aujourd'hui, je partage avec vous pourquoi la combinaison de la recherche vectorielle et de la recherche plein texte (Full-Text Search) est le véritable pilier d'un RAG de production fiable.</p>
-
-    <nav class="md-post__action">
-      <a href="../../2025/12/30/le-rag-ne-se-limite-pas-aux-embeddings--limportance-de-la-recherche-hybride/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-        <article class="md-post md-post--excerpt">
-  <header class="md-post__header">
-    
-      <nav class="md-post__authors md-typeset">
-        
-          <span class="md-author">
-            <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
-          </span>
-        
-      </nav>
-    
-    <div class="md-post__meta md-meta">
-      <ul class="md-meta__list">
-        <li class="md-meta__item">
-          <time datetime="2025-12-15 00:00:00">December 15, 2025</time></li>
-        
-          <li class="md-meta__item">
-            in
-            
-              <a href="./" class="md-meta__link">RAG</a>, 
-              <a href="../data-engineering/" class="md-meta__link">Data-Engineering</a>, 
-              <a href="../python/" class="md-meta__link">Python</a></li>
-        
-        
-          
-          <li class="md-meta__item">
-            
-              2 min read
-            
-          </li>
-        
-      </ul>
-      
-    </div>
-  </header>
-  <div class="md-post__content md-typeset">
-    <h2 id="du-pdf-au-markdown-mon-pipeline-pour-une-ingestion-rag-de-qualite"><a class="toclink" href="../../2025/12/15/du-pdf-au-markdown--mon-pipeline-pour-une-ingestion-rag-de-qualit%C3%A9/">Du PDF au Markdown : mon pipeline pour une ingestion RAG de qualité</a></h2>
-<p>On dit souvent que la qualité d'un système RAG dépend de son modèle d'embedding ou de son LLM. Mais mon expérience m'a montré qu'en réalité, la bataille se gagne bien plus tôt : au moment du parsing des documents. Un agent IA ne peut pas naviguer intelligemment dans un document s'il reçoit un bloc de texte brut sans structure.</p>
-<p>Aujourd'hui, je partage avec vous mon approche pour transformer des PDF complexes en <strong>Markdown structuré</strong>, le langage universel des LLMs.</p>
-
-    <nav class="md-post__action">
-      <a href="../../2025/12/15/du-pdf-au-markdown--mon-pipeline-pour-une-ingestion-rag-de-qualit%C3%A9/">
-        Continue reading
-      </a>
-    </nav>
-  </div>
-</article>
-      
-      
-        
-          
+<h2 id="pourquoi-levaluation-est-elle-complexe">Pourquoi l'évaluation est-elle complexe ?<a class="headerlink" href="#pourquoi-levaluation-est-elle-complexe" title="Permanent link">&para;</a></h2>
+<p>Contrairement au Machine Learning classique où l'on dispose de métriques simples (Précision, Rappel), le RAG produit du texte libre. Un échec peut provenir de deux sources distinctes :
+1.  <strong>Le Retrieval</strong> : Le système n'a pas trouvé les bons documents.
+2.  <strong>La Génération</strong> : Le LLM a mal interprété les documents (hallucination).</p>
+<h2 id="le-framework-en-4-couches">Le Framework en 4 Couches<a class="headerlink" href="#le-framework-en-4-couches" title="Permanent link">&para;</a></h2>
+<p>Pour débugger efficacement, j'ai structuré mon pipeline d'évaluation en quatre couches :</p>
+<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/rag_evaluation_framework/evaluation_layers.png" /></a></p>
+<h3 id="layer-1-observabilite-brute">Layer 1 : Observabilité brute<a class="headerlink" href="#layer-1-observabilite-brute" title="Permanent link">&para;</a></h3>
+<p>J'utilise des outils comme <strong>Langfuse</strong> pour suivre les métriques techniques :
+-   <strong>Latence</strong> : Temps de réponse par étape.
+-   <strong>Coût</strong> : Consommation de tokens.</p>
+<h3 id="layer-2-qualite-structurelle">Layer 2 : Qualité Structurelle<a class="headerlink" href="#layer-2-qualite-structurelle" title="Permanent link">&para;</a></h3>
+<p>Vérification via code Python simple (Heuristiques) :
+<span class="arithmatex">\(<span class="arithmatex">\(Completeness = \frac{\sum SectionsPresentes}{\sum SectionsRequises}\)</span>\)</span></p>
+<h3 id="layer-3-qualite-du-contenu-llm-as-a-judge">Layer 3 : Qualité du Contenu (LLM-as-a-Judge)<a class="headerlink" href="#layer-3-qualite-du-contenu-llm-as-a-judge" title="Permanent link">&para;</a></h3>
+<p>Le LLM évalue des critères comme la cohérence ou le ton via une moyenne pondérée :
+<span class="arithmatex">\(<span class="arithmatex">\(FinalScore = \frac{\sum (Score_i \times Weight_i)}{\sum Weight_i}\)</span>\)</span></p>
+<h3 id="layer-4-precision-factuelle">Layer 4 : Précision Factuelle<a class="headerlink" href="#layer-4-precision-factuelle" title="Permanent link">&para;</a></h3>
+<p>Comparaison avec un document de référence (<em>Ground Truth</em>) :
+<span class="arithmatex">\(<span class="arithmatex">\(FactualAccuracy = \frac{N_{correct} + N_{plausible}}{N_{total\_facts}}\)</span>\)</span></p>
+<h2 id="conclusion-de-la-partie-1">Conclusion de la Partie 1<a class="headerlink" href="#conclusion-de-la-partie-1" title="Permanent link">&para;</a></h2>
+<p>Ce framework "Offline" permet de comparer deux versions d'un prompt ou d'un modèle d'embedding avec rigueur. Mais une fois que le système est entre les mains des utilisateurs, les problématiques changent.</p>
+<p>Dans la <a href="https://sawallesalfo.github.io/blog/2026/03/25/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/">Partie 2</a>, nous verrons comment transformer ces outils techniques en un véritable tableau de bord de pilotage pour l'entreprise.</p>
 
 
 
-<nav class="md-pagination">
+
+
+
+
   
-</nav>
-        
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
       
-    </div>
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2026-03-13</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="sawallesalfo/blog"
+        data-repo-id="R_kgDOMoC7jQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMoC7jc4CiecW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="fr"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    </article>
   </div>
 
           
@@ -1272,12 +1252,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "content.tabs", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "content.tabs", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
