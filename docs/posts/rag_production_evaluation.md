@@ -9,87 +9,47 @@ categories:
     - Business
 ---
 
-# Évaluer un système RAG en production : mon framework d'analyse et de pilotage
+# Évaluer un système RAG (Partie 2) : le pilotage en production
 
-Construire un RAG est simple, mais garantir sa fiabilité en production est une autre paire de manches. Après avoir mis en place plusieurs systèmes d'IA agentiques, j'ai réalisé que l'on ne peut pas piloter ce que l'on ne mesure pas. Aujourd'hui, je vous présente mon framework d'évaluation complet, conçu pour aligner les exigences techniques des ingénieurs avec les besoins métier des décideurs.
+Dans la [Partie 1](https://sawallesalfo.github.io/blog/2026/03/15/evaluer-un-syst%C3%A8me-rag-partie-1--le-framework-technique/), nous avons exploré la "boîte à outils" technique pour débugger un pipeline RAG. Aujourd'hui, nous passons du laboratoire au terrain. Comment s'assurer que le système apporte réellement de la valeur aux utilisateurs finaux et reste sûr dans le temps ?
 
-Mon approche repose sur une stratégie à double niveau : des **Métriques Techniques** pour débugger le pipeline et des **Business KPIs** pour valider la valeur réelle.
+Le défi n'est plus seulement technique, il devient opérationnel. Voici comment je transforme des métriques brutes en un système de pilotage par les données.
 
 <!-- more -->
 
-## Une Stratégie à Double Couche
+## Du Technique au Business
 
-L'évaluation d'un RAG ne doit pas être une boîte noire. J'ai structuré mon analyse autour de trois axes majeurs : le Métier, la Technique, et l'Opérationnel.
+L'évaluation en production ne s'adresse plus seulement aux développeurs, mais aussi aux décideurs (Stakeholders). Pour cela, je traduis les scores complexes en **Business KPIs** clairs :
 
-![Framework d'Évaluation RAG](rag_production_evaluation/rag_eval_mindmap.png)
+-   **Accuracy Rate** : Est-ce que la réponse est correcte ?
+-   **Hallucination Rate** : L'IA invente-t-elle des faits ?
+-   **Knowledge Gap** : Avons-nous les documents nécessaires pour répondre ?
 
-### 1. Les Business KPIs (Pour les Stakeholders)
-Ces indicateurs répondent à la question : "Le système est-il prêt pour les utilisateurs ?".
-
-- **Accuracy Rate** : Le taux de réponses correctes.
-- **Hallucination Rate** : La fréquence à laquelle le modèle invente des faits.
-- **Knowledge Gap** : Le pourcentage de questions auxquelles le système n'a pas pu répondre faute de données.
-
-### 2. Les Métriques Techniques (Pour les Ingénieurs)
-Inspiré par le framework RAGAS, je mesure la qualité de chaque composant.
-
-#### Qualité du Retrieval (Recherche)
-Le **Contextual Recall** mesure si la réponse attendue se trouve bien dans les documents récupérés :
-$$Recall = \frac{|\text{Faits attendus} \cap \text{Faits présents dans le contexte}|}{|\text{Faits attendus}|}$$
-
-#### Qualité de la Génération (LLM)
-La **Faithfulness** (Fidélité) vérifie si la réponse de l'IA est strictement dérivée des documents fournis :
-$$Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}$$
-
-## Orchestration du Pipeline d'Évaluation
-
-Pour automatiser ce processus, j'ai développé un `EvalRunner` qui orchestre la génération et le calcul des scores. Voici un extrait de ma logique d'implémentation :
-
-```python
-class EvalRunner:
-    def evaluate_case(self, case: EvalCase, query_fn: RAGQueryFn) -> EvalResult:
-        # 1. Requête du pipeline RAG
-        rag_result = query_fn(case.question)
-        
-        # 2. Calcul des métriques techniques
-        faith_score = self.faithfulness.score(
-            case.question, 
-            rag_result.answer, 
-            rag_result.contexts
-        )
-        
-        recall_score = self.contextual_recall.score(
-            case.expected_answer, 
-            rag_result.contexts
-        )
-        
-        # 3. Évaluation qualitative via un LLM Judge
-        judge_result = self.judge.evaluate(
-            question=case.question,
-            actual_answer=rag_result.answer,
-            expected_answer=case.expected_answer
-        )
-        
-        return EvalResult(
-            accuracy=(judge_result.score + similarity_score) / 2,
-            is_hallucination=faith_score < 0.5,
-            ...
-        )
-```
+![Pilotage RAG](https://sawallesalfo.github.io/blog/2026/03/25/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/rag_production_evaluation/rag_eval_mindmap.png)
 
 ## Le Système "Feu Tricolore"
 
-Pour rendre les rapports digestes, je convertis les scores numériques en statuts visuels :
-- 🟢 **PASS (Score > 0.8)** : Précis et sourcé.
-- 🟡 **REVIEW (Score 0.5 - 0.8)** : Acceptable mais perfectible.
-- 🔴 **FAIL (Score < 0.5)** : Erreur factuelle ou hors-sujet.
+Pour rendre l'analyse actionnable immédiatement, je convertis chaque résultat en un statut visuel simple :
+-   🟢 **PASS (Score > 0.8)** : Précis et sourcé.
+-   🟡 **REVIEW (Score 0.5 - 0.8)** : Acceptable mais perfectible (besoin d'ajuster le prompt).
+-   🔴 **FAIL (Score < 0.5)** : Erreur factuelle ou hors-sujet (besoin d'ajouter des données).
 
-## Pilotage par les données avec MLflow
+## Monitoring continu avec MLflow
 
-Toutes mes expériences sont tracées dans **MLflow**. Cela me permet de comparer l'impact d'un changement d'embedding ou d'un nouveau prompt sur mes KPIs globaux. Je génère systématiquement des graphiques radar pour visualiser l'équilibre entre précision, rappel et fidélité.
+Le pilotage ne s'arrête pas à un instant T. En traçant chaque exécution dans **MLflow**, je peux détecter le "Drift" (dérive) de qualité. Si le taux d'hallucination augmente soudainement après l'ajout d'une nouvelle source de données, je le vois immédiatement sur mes graphiques radar.
 
-## Conclusion
+## Les métriques de génération
 
-L'évaluation est le système nerveux de tout projet d'IA générative. Sans elle, vous avancez à l'aveugle. En combinant des formules mathématiques rigoureuses et des KPIs métier clairs, vous transformez un prototype fragile en un produit de production robuste et auditable.
+Pour les ingénieurs qui surveillent le système, deux formules restent essentielles en production :
 
-C'est ainsi que se termine cette série d'articles sur la mise en œuvre de systèmes agentiques. J'espère que ces partages d'expérience vous aideront à bâtir des solutions IA qui apportent une réelle valeur ajoutée.
+**Faithfulness (Fidélité)** :
+$$Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}$$
+
+**Contextual Recall** :
+$$Recall = \frac{|\text{Faits attendus} \cap \text{Faits présents dans le contexte}|}{|\text{Faits attendus}|}$$
+
+## Conclusion de la série
+
+L'évaluation est le système nerveux de tout projet d'IA générative. En combinant un framework technique rigoureux (Partie 1) et un pilotage métier par les données (Partie 2), vous transformez une IA expérimentale en un service de production robuste et auditable.
+
+J'espère que ce partage d'expérience vous aidera à bâtir des systèmes qui apportent une réelle valeur ajoutée à vos métiers.
