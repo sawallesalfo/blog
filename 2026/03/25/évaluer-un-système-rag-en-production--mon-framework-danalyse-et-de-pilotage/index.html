@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../../../01/30/conformit%C3%A9-et-qualit%C3%A9--guider-un-agent-vers-des-standards-m%C3%A9tier-exigeants/">
+        <link rel="prev" href="../../../02/28/sous-le-capot-du-docx--comment-jautomatise-le-remplissage-de-fiches-m%C3%A9tier-avec-une-ia/">
       
-      
-        <link rel="next" href="../../../03/25/%C3%A9valuer-un-syst%C3%A8me-rag-en-production--mon-framework-danalyse-et-de-pilotage/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Sous le capot du .docx : comment j'automatise le remplissage de fiches métier avec une IA - ssawadogo-blog</title>
+        <title>Évaluer un système RAG en production : mon framework d'analyse et de pilotage - ssawadogo-blog</title>
       
     
     
@@ -81,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sous-le-capot-du-docx-comment-jautomatise-le-remplissage-de-fiches-metier-avec-une-ia" class="md-skip">
+        <a href="#evaluer-un-systeme-rag-en-production-mon-framework-danalyse-et-de-pilotage" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sous le capot du .docx : comment j'automatise le remplissage de fiches métier avec une IA
+              Évaluer un système RAG en production : mon framework d'analyse et de pilotage
             
           </span>
         </div>
@@ -931,36 +929,84 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#un-fichier-word-est-un-zip-si-si" class="md-nav__link">
+  <a href="#une-strategie-a-double-couche" class="md-nav__link">
     <span class="md-ellipsis">
-      Un fichier Word est un ZIP (si, si !)
+      Une Stratégie à Double Couche
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Une Stratégie à Double Couche">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-les-business-kpis-pour-les-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Les Business KPIs (Pour les Stakeholders)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-les-metriques-techniques-pour-les-ingenieurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Les Métriques Techniques (Pour les Ingénieurs)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Les Métriques Techniques (Pour les Ingénieurs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qualite-du-retrieval-recherche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qualité du Retrieval (Recherche)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qualite-de-la-generation-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qualité de la Génération (LLM)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orchestration-du-pipeline-devaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Orchestration du Pipeline d'Évaluation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#le-workflow-separer-lia-de-la-manipulation-de-fichiers" class="md-nav__link">
+  <a href="#le-systeme-feu-tricolore" class="md-nav__link">
     <span class="md-ellipsis">
-      Le Workflow : Séparer l'IA de la Manipulation de Fichiers
+      Le Système "Feu Tricolore"
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lavantage-du-json-structure" class="md-nav__link">
+  <a href="#pilotage-par-les-donnees-avec-mlflow" class="md-nav__link">
     <span class="md-ellipsis">
-      L'avantage du JSON structuré
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#le-defi-des-cases-a-cocher" class="md-nav__link">
-    <span class="md-ellipsis">
-      Le défi des cases à cocher
+      Pilotage par les données avec MLflow
     </span>
   </a>
   
@@ -1031,7 +1077,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
-                        <time datetime="2026-02-28 00:00:00" class="md-ellipsis">February 28, 2026</time>
+                        <time datetime="2026-03-25 00:00:00" class="md-ellipsis">March 25, 2026</time>
                       </div>
                     </li>
                     
@@ -1042,8 +1088,10 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/architecture/">Architecture</a>, 
-                              <a href="../../../../category/iagen/">IAGen</a></span>
+                              <a href="../../../../category/rag/">RAG</a>, 
+                              <a href="../../../../category/%C3%A9valuation/">Évaluation</a>, 
+                              <a href="../../../../category/mlops/">MLOps</a>, 
+                              <a href="../../../../category/business/">Business</a></span>
                         </div>
                       </li>
                     
@@ -1074,42 +1122,71 @@
         
 
 
-<h1 id="sous-le-capot-du-docx-comment-jautomatise-le-remplissage-de-fiches-metier-avec-une-ia">Sous le capot du .docx : comment j'automatise le remplissage de fiches métier avec une IA<a class="headerlink" href="#sous-le-capot-du-docx-comment-jautomatise-le-remplissage-de-fiches-metier-avec-une-ia" title="Permanent link">&para;</a></h1>
-<p>On me demande souvent de générer des documents qui doivent s'insérer dans des processus administratifs existants. Oubliez la rédaction de longs textes libres : ici, l'enjeu est de remplir une <strong>fiche de synthèse</strong>, avec des cases précises, des tableaux et même des cases à cocher.</p>
-<p>Pour relever ce défi, j'ai dû arrêter de voir Word comme un éditeur de texte et commencer à le voir pour ce qu'il est réellement : une archive <strong>ZIP remplie de fichiers XML</strong>. Cette perspective change tout pour l'automatisation.</p>
+<h1 id="evaluer-un-systeme-rag-en-production-mon-framework-danalyse-et-de-pilotage">Évaluer un système RAG en production : mon framework d'analyse et de pilotage<a class="headerlink" href="#evaluer-un-systeme-rag-en-production-mon-framework-danalyse-et-de-pilotage" title="Permanent link">&para;</a></h1>
+<p>Construire un RAG est simple, mais garantir sa fiabilité en production est une autre paire de manches. Après avoir mis en place plusieurs systèmes d'IA agentiques, j'ai réalisé que l'on ne peut pas piloter ce que l'on ne mesure pas. Aujourd'hui, je vous présente mon framework d'évaluation complet, conçu pour aligner les exigences techniques des ingénieurs avec les besoins métier des décideurs.</p>
+<p>Mon approche repose sur une stratégie à double niveau : des <strong>Métriques Techniques</strong> pour débugger le pipeline et des <strong>Business KPIs</strong> pour valider la valeur réelle.</p>
 <!-- more -->
 
-<h2 id="un-fichier-word-est-un-zip-si-si">Un fichier Word est un ZIP (si, si !)<a class="headerlink" href="#un-fichier-word-est-un-zip-si-si" title="Permanent link">&para;</a></h2>
-<p>Si vous changez l'extension d'un fichier <code>.docx</code> en <code>.zip</code> et que vous l'ouvrez, vous découvrirez une arborescence de fichiers. Le plus important est <code>word/document.xml</code>. C'est là que réside tout le contenu de votre document, balisé par des tags OOXML (<code>&lt;w:t&gt;</code>, <code>&lt;w:p&gt;</code>, etc.).</p>
-<p><a class="glightbox" href="../../../../docx_automation/docx_structure.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Structure OOXML et Agent" src="../../../../docx_automation/docx_structure.png" /></a></p>
-<h2 id="le-workflow-separer-lia-de-la-manipulation-de-fichiers">Le Workflow : Séparer l'IA de la Manipulation de Fichiers<a class="headerlink" href="#le-workflow-separer-lia-de-la-manipulation-de-fichiers" title="Permanent link">&para;</a></h2>
-<p>La méthode la plus robuste que j'ai trouvée ne consiste pas à demander à l'IA d'écrire le XML (ce serait trop risqué). À la place, je sépare le travail en deux étapes distinctes :</p>
-<ol>
-<li><strong>L'Agent IA comme Générateur de Données</strong> : Je demande à l'agent d'extraire les informations nécessaires et de les structurer dans un objet <strong>JSON</strong> strict (via Pydantic). </li>
-<li><strong>Le Mapping Engine</strong> : Un script Python classique récupère ce JSON et utilise des <strong>identifiants (IDs)</strong> ou des placeholders trouvés dans le XML du template pour injecter les données.</li>
-</ol>
-<p><a class="glightbox" href="../../../../docx_automation/workflow_json_xml.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Workflow JSON vers XML" src="../../../../docx_automation/workflow_json_xml.png" /></a></p>
-<h2 id="lavantage-du-json-structure">L'avantage du JSON structuré<a class="headerlink" href="#lavantage-du-json-structure" title="Permanent link">&para;</a></h2>
-<p>En utilisant le JSON comme pivot, je force l'agent à produire des données prévisibles :
-- <code>nom_projet</code>: "Projet Solaire Alpha"
-- <code>score_conformite</code>: 85
-- <code>is_urgent</code>: True</p>
-<p>Mon code de mapping n'a plus qu'à parcourir le XML et remplacer, par exemple, le placeholder <code>{{SCORE}}</code> par la valeur <code>85</code>.</p>
-<h2 id="le-defi-des-cases-a-cocher">Le défi des cases à cocher<a class="headerlink" href="#le-defi-des-cases-a-cocher" title="Permanent link">&para;</a></h2>
-<p>Dans le XML de Word, une case à cocher est un état spécifique. Grâce au JSON, c'est devenu trivial : si l'agent me renvoie <code>"is_urgent": true</code>, mon script de mapping va chercher l'identifiant de la case à cocher dans le XML et changer son état de "non coché" à "coché" (souvent en remplaçant les caractères <code>☐</code> par <code>☒</code>).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Exemple de logique de mapping</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data_json</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="c1"># On gère les cases à cocher via des placeholders dédiés</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="n">symbol</span> <span class="o">=</span> <span class="s2">&quot;☒&quot;</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="s2">&quot;☐&quot;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="n">xml_content</span> <span class="o">=</span> <span class="n">xml_content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{{{</span><span class="s2">CHECK_</span><span class="si">{</span><span class="n">key</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="se">}}}}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">symbol</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="c1"># On remplace le texte simple</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="n">xml_content</span> <span class="o">=</span> <span class="n">xml_content</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{{{</span><span class="si">{</span><span class="n">key</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="se">}}}}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+<h2 id="une-strategie-a-double-couche">Une Stratégie à Double Couche<a class="headerlink" href="#une-strategie-a-double-couche" title="Permanent link">&para;</a></h2>
+<p>L'évaluation d'un RAG ne doit pas être une boîte noire. J'ai structuré mon analyse autour de trois axes majeurs : le Métier, la Technique, et l'Opérationnel.</p>
+<p><a class="glightbox" href="../../../../rag_production_evaluation/rag_eval_mindmap.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation RAG" src="../../../../rag_production_evaluation/rag_eval_mindmap.png" /></a></p>
+<h3 id="1-les-business-kpis-pour-les-stakeholders">1. Les Business KPIs (Pour les Stakeholders)<a class="headerlink" href="#1-les-business-kpis-pour-les-stakeholders" title="Permanent link">&para;</a></h3>
+<p>Ces indicateurs répondent à la question : "Le système est-il prêt pour les utilisateurs ?".</p>
+<ul>
+<li><strong>Accuracy Rate</strong> : Le taux de réponses correctes.</li>
+<li><strong>Hallucination Rate</strong> : La fréquence à laquelle le modèle invente des faits.</li>
+<li><strong>Knowledge Gap</strong> : Le pourcentage de questions auxquelles le système n'a pas pu répondre faute de données.</li>
+</ul>
+<h3 id="2-les-metriques-techniques-pour-les-ingenieurs">2. Les Métriques Techniques (Pour les Ingénieurs)<a class="headerlink" href="#2-les-metriques-techniques-pour-les-ingenieurs" title="Permanent link">&para;</a></h3>
+<p>Inspiré par le framework RAGAS, je mesure la qualité de chaque composant.</p>
+<h4 id="qualite-du-retrieval-recherche">Qualité du Retrieval (Recherche)<a class="headerlink" href="#qualite-du-retrieval-recherche" title="Permanent link">&para;</a></h4>
+<p>Le <strong>Contextual Recall</strong> mesure si la réponse attendue se trouve bien dans les documents récupérés :
+<span class="arithmatex">\(<span class="arithmatex">\(Recall = \frac{|\text{Faits attendus} \cap \text{Faits présents dans le contexte}|}{|\text{Faits attendus}|}\)</span>\)</span></p>
+<h4 id="qualite-de-la-generation-llm">Qualité de la Génération (LLM)<a class="headerlink" href="#qualite-de-la-generation-llm" title="Permanent link">&para;</a></h4>
+<p>La <strong>Faithfulness</strong> (Fidélité) vérifie si la réponse de l'IA est strictement dérivée des documents fournis :
+<span class="arithmatex">\(<span class="arithmatex">\(Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\)</span>\)</span></p>
+<h2 id="orchestration-du-pipeline-devaluation">Orchestration du Pipeline d'Évaluation<a class="headerlink" href="#orchestration-du-pipeline-devaluation" title="Permanent link">&para;</a></h2>
+<p>Pour automatiser ce processus, j'ai développé un <code>EvalRunner</code> qui orchestre la génération et le calcul des scores. Voici un extrait de ma logique d'implémentation :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span> <span class="nc">EvalRunner</span><span class="p">:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="k">def</span> <span class="nf">evaluate_case</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">case</span><span class="p">:</span> <span class="n">EvalCase</span><span class="p">,</span> <span class="n">query_fn</span><span class="p">:</span> <span class="n">RAGQueryFn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EvalResult</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="c1"># 1. Requête du pipeline RAG</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="n">rag_result</span> <span class="o">=</span> <span class="n">query_fn</span><span class="p">(</span><span class="n">case</span><span class="o">.</span><span class="n">question</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="c1"># 2. Calcul des métriques techniques</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="n">faith_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">faithfulness</span><span class="o">.</span><span class="n">score</span><span class="p">(</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="k">case</span><span class="o">.</span><span class="n">question</span><span class="p">,</span> 
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="n">rag_result</span><span class="o">.</span><span class="n">answer</span><span class="p">,</span> 
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">rag_result</span><span class="o">.</span><span class="n">contexts</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="n">recall_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contextual_recall</span><span class="o">.</span><span class="n">score</span><span class="p">(</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="k">case</span><span class="o">.</span><span class="n">expected_answer</span><span class="p">,</span> 
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="n">rag_result</span><span class="o">.</span><span class="n">contexts</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="c1"># 3. Évaluation qualitative via un LLM Judge</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="n">judge_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">judge</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            <span class="n">question</span><span class="o">=</span><span class="n">case</span><span class="o">.</span><span class="n">question</span><span class="p">,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>            <span class="n">actual_answer</span><span class="o">=</span><span class="n">rag_result</span><span class="o">.</span><span class="n">answer</span><span class="p">,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>            <span class="n">expected_answer</span><span class="o">=</span><span class="n">case</span><span class="o">.</span><span class="n">expected_answer</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="p">)</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="k">return</span> <span class="n">EvalResult</span><span class="p">(</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>            <span class="n">accuracy</span><span class="o">=</span><span class="p">(</span><span class="n">judge_result</span><span class="o">.</span><span class="n">score</span> <span class="o">+</span> <span class="n">similarity_score</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>            <span class="n">is_hallucination</span><span class="o">=</span><span class="n">faith_score</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">,</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>            <span class="o">...</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="p">)</span>
 </code></pre></div>
+<h2 id="le-systeme-feu-tricolore">Le Système "Feu Tricolore"<a class="headerlink" href="#le-systeme-feu-tricolore" title="Permanent link">&para;</a></h2>
+<p>Pour rendre les rapports digestes, je convertis les scores numériques en statuts visuels :
+- 🟢 <strong>PASS (Score &gt; 0.8)</strong> : Précis et sourcé.
+- 🟡 <strong>REVIEW (Score 0.5 - 0.8)</strong> : Acceptable mais perfectible.
+- 🔴 <strong>FAIL (Score &lt; 0.5)</strong> : Erreur factuelle ou hors-sujet.</p>
+<h2 id="pilotage-par-les-donnees-avec-mlflow">Pilotage par les données avec MLflow<a class="headerlink" href="#pilotage-par-les-donnees-avec-mlflow" title="Permanent link">&para;</a></h2>
+<p>Toutes mes expériences sont tracées dans <strong>MLflow</strong>. Cela me permet de comparer l'impact d'un changement d'embedding ou d'un nouveau prompt sur mes KPIs globaux. Je génère systématiquement des graphiques radar pour visualiser l'équilibre entre précision, rappel et fidélité.</p>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>L'automatisation de documents métier ne doit pas être laissée au hasard du texte libre. Ma mission est de créer des systèmes fiables. En utilisant l'IA pour générer un <strong>JSON structuré</strong> et un moteur simple pour l'injecter dans le <strong>XML de Word</strong>, je garantis un résultat professionnel, conforme et auditable à chaque exécution.</p>
-<p>C'est ainsi que je boucle cette série : de l'extraction de connaissances à la production finale d'un document prêt à l'emploi.</p>
+<p>L'évaluation est le système nerveux de tout projet d'IA générative. Sans elle, vous avancez à l'aveugle. En combinant des formules mathématiques rigoureuses et des KPIs métier clairs, vous transformez un prototype fragile en un produit de production robuste et auditable.</p>
+<p>C'est ainsi que se termine cette série d'articles sur la mise en œuvre de systèmes agentiques. J'espère que ces partages d'expérience vous aideront à bâtir des solutions IA qui apportent une réelle valeur ajoutée.</p>
 
 
 
