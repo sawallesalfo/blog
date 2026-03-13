@@ -53,8 +53,26 @@ Le point critique de mon approche est la séparation entre le **fond** (le conte
 
 En faisant en sorte que l'agent travaille sur des fichiers intermédiaires, je garde le contrôle sur le template final. L'outil de compilation parcourt les sections, gère la hiérarchie des titres et convertit les tableaux. Cela me garantit que le document final est toujours conforme aux standards attendus, peu importe l'ordre dans lequel l'agent a travaillé.
 
+## Le défi du "Human-in-the-loop" : Ne pas écraser l'humain
+
+Un aspect crucial de mon approche est la collaboration entre l'IA et l'utilisateur. Il arrive souvent qu'après une première génération, un expert souhaite modifier manuellement un paragraphe ou un tableau directement dans le fichier Markdown. 
+
+Si l'agent relance une génération sans précaution, il risque d'écraser ces modifications précieuses. Pour éviter cela, j'ai mis en place une stratégie de "lecture avant écriture" :
+
+1. **L'outil d'Inspection** : Avant toute action, l'agent utilise un outil comme `inspect_workspace()` pour lister les fichiers existants et leur état (par exemple, s'ils ont été modifiés manuellement).
+2. **L'outil de Lecture** : J'ai doté l'agent d'un outil `read_section()`. Au lieu de régénérer aveuglément, l'agent lit d'abord la version actuelle du disque pour intégrer les changements de l'utilisateur dans son contexte avant de proposer des améliorations.
+
+```python
+@agent.tool
+async def read_section(ctx: RunContext, section_id: str) -> str:
+    """Lit le contenu actuel d'une section pour prendre en compte les éditions manuelles."""
+    path = f"workspaces/{ctx.user_id}/sections/{section_id}.md"
+    # Logique pour lire le texte sur le disque...
+    return f"Contenu actuel de {section_id} : \n\n {content}"
+```
+
 ## Conclusion
 
-L'utilisation d'agents pour la génération de documents change radicalement ma productivité. En passant d'une rédaction monolithique à une approche par outils et sections, j'obtiens des résultats plus précis et mieux sourcés.
+L'utilisation d'agents pour la génération de documents change radicalement ma productivité. En passant d'une rédaction monolithique à une approche par outils et sections, et en respectant les interventions humaines, j'obtiens des résultats plus précis, mieux sourcés et réellement collaboratifs.
 
 C'est mon retour d'expérience actuel sur le sujet. Dans le prochain article, je vous propose de regarder sous le capot pour analyser l'architecture technique que j'ai mise en place pour orchestrer tout cela.
