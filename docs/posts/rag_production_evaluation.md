@@ -24,11 +24,12 @@ Pour un décideur, un score de 0.85 en "Faithfulness" ne veut rien dire. Je trad
 2. **Hallucination Rate** : La fréquence d'échec critique (quand Faithfulness < 0.5). C'est notre indicateur de sécurité.
 3. **Knowledge Gap** : Le taux de "Je ne sais pas". Un score élevé ici indique que notre base de documents est incomplète pour les besoins réels des utilisateurs.
 
-![Pilotage RAG](https://sawallesalfo.github.io/blog/posts/rag_production_evaluation/rag_eval_mindmap.png)
+![Pilotage RAG](./rag_production_evaluation/rag_eval_mindmap.png)
 
 ## Le Système "Feu Tricolore"
 
 Pour rendre l'analyse actionnable immédiatement, je convertis chaque résultat en un statut visuel simple :
+
 -   🟢 **PASS (Score > 0.8)** : Précis et sourcé. Prêt pour l'utilisateur.
 -   🟡 **REVIEW (Score 0.5 - 0.8)** : La réponse est correcte mais le style ou la précision des sources peut être amélioré.
 -   🔴 **FAIL (Score < 0.5)** : Erreur factuelle ou hors-sujet. Nécessite une intervention immédiate sur le pipeline.

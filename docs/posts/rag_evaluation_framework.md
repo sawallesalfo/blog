@@ -28,7 +28,7 @@ Le calcul se déroule en trois étapes :
 2. On vérifie si chacune de ces affirmations est présente dans les documents récupérés par notre moteur.
 3. On calcule le ratio :
 
-$$Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}$$
+$Recall = \frac{|\text{Segments récupérés} \cap \text{Segments attendus}|}{|\text{Segments attendus}|}$
 
 > **Note technique** : Un score bas indique généralement qu'il faut améliorer votre stratégie de chunking ou augmenter la valeur du `top_k` lors de la recherche.
 
@@ -37,7 +37,7 @@ La Précision vérifie si les segments les plus pertinents sont classés en haut
 
 On utilise souvent la moyenne des précisions à chaque rang $k$ où un document est jugé pertinent :
 
-$$Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de segments pertinents}}$$
+$Precision = \frac{\sum_{k=1}^{n} P@k \times \text{rel}(k)}{\text{Nombre de segments pertinents}}$
 
 ---
 
@@ -53,7 +53,7 @@ Le processus de mesure :
 2. On décompose cette réponse en affirmations atomiques.
 3. Pour chaque affirmation, on demande à un "Juge" si elle est étayée par le contexte fourni.
 
-$$Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}$$
+$ = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}$
 
 ### Answer Relevancy (Pertinence de la réponse)
 Elle mesure à quel point la réponse s'adresse directement à la question de l'utilisateur. Une réponse peut être fidèle au contexte mais totalement hors-sujet.
@@ -73,6 +73,6 @@ Cette séparation permet d'identifier immédiatement le maillon faible de votre 
 *   **Scénario B** : Recall haut / Faithfulness basse.
     *   *Diagnostic* : Votre moteur de recherche trouve les bonnes infos, mais votre LLM invente des faits. Il faut ajuster le prompt système ou changer de modèle.
 
-![Framework d'Évaluation](https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png)
+![Framework d'Évaluation](./rag_evaluation_framework/evaluation_layers.png)
 
 Dans la [Partie 2](https://sawallesalfo.github.io/blog/2026/02/15/evaluer-un-syst%C3%A8me-rag-partie-2--le-pilotage-en-production/), nous verrons comment agréger ces métriques techniques pour piloter la qualité globale de votre service.
