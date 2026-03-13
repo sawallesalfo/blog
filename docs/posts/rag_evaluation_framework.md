@@ -42,7 +42,7 @@ $$Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\
 ### Answer Relevancy (Pertinence)
 Elle mesure à quel point la réponse répond directement à la question posée, sans fioritures ni hors-sujet. On la calcule souvent via la similarité cosinus entre le vecteur de la question et celui de la réponse générée.
 
-![Framework d'Évaluation](https://sawallesalfo.github.io/blog/docs/posts/rag_evaluation_framework/evaluation_layers.png)
+![Framework d'Évaluation](https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png)
 
 ## Pourquoi diviser ainsi ?
 
