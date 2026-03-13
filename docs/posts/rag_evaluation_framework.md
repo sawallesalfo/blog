@@ -50,6 +50,7 @@ Une fois le contexte fourni, nous évaluons la qualité de la synthèse produite
 C'est la métrique vitale pour lutter contre les hallucinations. Elle garantit que l'IA ne s'appuie que sur les documents fournis et non sur ses propres connaissances internes (qui peuvent être datées ou erronées).
 
 Le processus de mesure :
+
 1. L'IA génère une réponse.
 2. On décompose cette réponse en affirmations atomiques.
 3. Pour chaque affirmation, on demande à un "Juge" si elle est étayée par le contexte fourni.
@@ -71,9 +72,12 @@ La mesure s'effectue en comparant les vecteurs :
 Cette séparation permet d'identifier immédiatement le maillon faible de votre chaîne de valeur :
 
 *   **Scénario A** : Recall bas / Faithfulness haute.
+
     *   *Diagnostic* : Votre base de données est mal indexée ou la recherche est inefficace. Votre LLM est "honnête" mais manque d'informations.
+
 *   **Scénario B** : Recall haut / Faithfulness basse.
     *   *Diagnostic* : Votre moteur de recherche trouve les bonnes infos, mais votre LLM invente des faits. Il faut ajuster le prompt système ou changer de modèle.
+    
 
 ![Framework d'Évaluation](./rag_evaluation_framework/evaluation_layers.png)
 
