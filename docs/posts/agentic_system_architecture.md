@@ -5,20 +5,19 @@ authors:
 categories: 
     - Architecture
     - IAGen
-    - ML-Engineering
 ---
 
-# Concevoir un Système Agentique : Quand le ML Engineering rencontre la Réalité Terrain
+# Concevoir un Système Agentique : De la Théorie à la Réalité Terrain
 
-En tant que **ML Engineer**, on a souvent tendance à se concentrer sur la création d’APIs, de modèles ou encore de packages Python bien structurés. Dans des équipes très spécialisées — avec des backend engineers, des data engineers et des équipes plateforme — l’intégration de bout en bout est généralement fluide.
+On a souvent tendance à se concentrer sur la création d’APIs, de modèles ou encore de packages Python bien structurés. Dans des équipes très spécialisées — avec des backend engineers, des data engineers et des équipes plateforme — l’intégration de bout en bout est généralement fluide.
 
 Mais mon expérience dans des organisations moins technologiques, ou au sein de petites équipes, m'a appris une réalité différente : le défi ne réside pas seulement dans le modèle lui-même, mais dans la manière dont ces composants s’intègrent réellement avec les systèmes existants. Voici comment j'ai conçu mon architecture pour qu'elle soit non seulement performante, mais surtout intégrable.
 
 <!-- more -->
 
-## Au-delà du modèle : Le Package comme moteur
+## Le Package comme moteur
 
-Plutôt que de construire un service isolé, j'ai choisi de packager mon intelligence agentique. Pourquoi ? Pour qu'elle puisse être consommée aussi bien par une API FastAPI que par un simple script ou une interface de test. C'est ma façon de garantir que le travail de ML reste portable, peu importe l'évolution de l'infrastructure environnante.
+Plutôt que de construire un service isolé, j'ai choisi de packager l'intelligence agentique. Pourquoi ? Pour qu'elle puisse être consommée aussi bien par une API FastAPI que par un simple script ou une interface de test. C'est ma façon de garantir que mon travail reste portable, peu importe l'évolution de l'infrastructure environnante.
 
 ## Une Structure en Couches pour la Portabilité
 
@@ -62,6 +61,6 @@ async def chat_stream(request: ChatRequest):
 
 ## Conclusion
 
-L'architecture d'un système agentique est un équilibre permanent. En tant que ML Engineer, ma mission s'arrête rarement au `predict()`. Elle continue jusqu'à ce que le système soit capable de discuter de manière fiable avec le reste de l'infrastructure, même si celle-ci n'est pas "AI-ready".
+L'architecture d'un système agentique est un équilibre permanent. Ma mission s'arrête rarement au `predict()`. Elle continue jusqu'à ce que le système soit capable de discuter de manière fiable avec le reste de l'infrastructure, même si celle-ci n'est pas "AI-ready".
 
-Dans le [prochain article](ai_webhook_integration.md), j'aborderai un point crucial de cette intégration : comment j'utilise les **webhooks** pour connecter mon IA à des systèmes qui ne peuvent pas se permettre d'attendre.
+Dans le [prochain article](https://sawallesalfo.github.io/blog/2025/11/30/finis-les-timeouts--comment-jint%C3%A8gre-mes-moteurs-ia-via-webhooks/), j'aborderai un point crucial de cette intégration : comment j'utilise les **webhooks** pour connecter mon IA à des systèmes qui ne peuvent pas se permettre d'attendre.

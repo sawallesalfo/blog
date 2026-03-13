@@ -5,12 +5,11 @@ authors:
 categories: 
     - Architecture
     - IAGen
-    - ML-Engineering
 ---
 
 # Sous le capot du .docx : Comment j'automatise le remplissage de fiches métier avec une IA
 
-En tant que **ML Engineer**, on me demande souvent de générer des documents qui doivent s'insérer dans des processus administratifs existants. Oubliez la rédaction de longs textes libres : ici, l'enjeu est de remplir une **fiche de synthèse**, avec des cases précises, des tableaux et même des cases à cocher.
+On me demande souvent de générer des documents qui doivent s'insérer dans des processus administratifs existants. Oubliez la rédaction de longs textes libres : ici, l'enjeu est de remplir une **fiche de synthèse**, avec des cases précises, des tableaux et même des cases à cocher.
 
 Pour relever ce défi, j'ai dû arrêter de voir Word comme un éditeur de texte et commencer à le voir pour ce qu'il est réellement : une archive **ZIP remplie de fichiers XML**. Cette perspective change tout pour l'automatisation.
 
@@ -56,14 +55,8 @@ for key, value in data_json.items():
         xml_content = xml_content.replace(f"{{{{{key.upper()}}}}}", str(value))
 ```
 
-## Pourquoi cette approche est la meilleure ?
-
-1.  **Prédictibilité** : Le schéma JSON agit comme un contrat. Si l'IA ne respecte pas le schéma, le processus s'arrête avant même de toucher au fichier Word.
-2.  **Mise en page préservée** : Comme on manipule le XML d'un template existant, les polices, les logos et les marges restent parfaits.
-3.  **Performance** : Remplacer des chaînes de caractères dans un fichier XML est une opération extrêmement légère.
-
 ## Conclusion
 
-L'automatisation de documents métier ne doit pas être laissée au hasard du texte libre. En tant que ML Engineer, ma mission est de créer des systèmes fiables. En utilisant l'IA pour générer un **JSON structuré** et un moteur simple pour l'injecter dans le **XML de Word**, je garantis un résultat professionnel, conforme et auditable à chaque exécution.
+L'automatisation de documents métier ne doit pas être laissée au hasard du texte libre. Ma mission est de créer des systèmes fiables. En utilisant l'IA pour générer un **JSON structuré** et un moteur simple pour l'injecter dans le **XML de Word**, je garantis un résultat professionnel, conforme et auditable à chaque exécution.
 
 C'est ainsi que je boucle cette série : de l'extraction de connaissances à la production finale d'un document prêt à l'emploi.

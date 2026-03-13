@@ -6,12 +6,11 @@ categories:
     - Architecture
     - API
     - FastAPI
-    - ML-Engineering
 ---
 
 # Finis les Timeouts : Comment j'intègre mes Moteurs IA via Webhooks
 
-En tant que **ML Engineer**, je me concentre souvent sur la performance de mes modèles et de mes APIs. Dans un environnement technologique idéal, l'intégration de bout en bout est gérée par des équipes spécialisées et semble presque transparente. 
+On se concentre souvent sur la performance des modèles et des APIs. Dans un environnement technologique idéal, l'intégration de bout en bout est gérée par des équipes spécialisées et semble presque transparente. 
 
 Mais dans la réalité — au sein d'organisations moins tech ou d'équipes plus petites — l'enjeu se déplace. Ce n'est plus seulement une question de "modèle" ou d' "API", mais surtout de la manière dont ces composants discutent avec l'infrastructure existante. C'est là que j'ai découvert la puissance des **webhooks** et des architectures asynchrones.
 
@@ -31,7 +30,7 @@ Le webhook est l'outil parfait pour connecter des services sans complexifier inu
 
 ![Flux Webhook](ai_webhook_integration/webhook_flow.png)
 
-## Pourquoi c'est le choix du ML Engineer "Terrain" ?
+## Pourquoi c'est un choix "Terrain" ?
 
 1. **Intégration Asynchrone Simple** : Pas besoin de Kafka ou RabbitMQ si l'organisation n'est pas prête. Les `BackgroundTasks` de FastAPI font souvent l'affaire.
 2. **Découplage** : L'infrastructure de mon client n'a pas besoin d'être configurée pour l'IA ; elle doit juste savoir recevoir un POST HTTP.
@@ -39,6 +38,6 @@ Le webhook est l'outil parfait pour connecter des services sans complexifier inu
 
 ## Conclusion
 
-L'intégration de l'IA demande de sortir du cadre strict du code Python pour regarder comment l'information circule. En adoptant les webhooks, je m'assure que mon travail de ML Engineer est réellement utile et exploitable, même dans des environnements qui n'étaient pas prêts pour l'IA.
+L'intégration de l'IA demande de sortir du cadre strict du code Python pour regarder comment l'information circule. En adoptant les webhooks, je m'assure que mon travail est réellement utile et exploitable, même dans des environnements qui n'étaient pas prêts pour l'IA.
 
-Dans le [prochain article](beyond_embeddings_rag.md), je vous expliquerai pourquoi, dans ces mêmes contextes métiers exigeants (banque, droit), j'ajuste mon approche du RAG pour redonner du poids aux bons vieux mots-clés.
+Dans le [prochain article](https://sawallesalfo.github.io/blog/2025/12/30/le-rag-ne-se-limite-pas-aux-embeddings--limportance-de-la-recherche-hybride/), je vous expliquerai pourquoi, dans des contextes métiers exigeants (banque, droit), j'ajuste mon approche du RAG pour redonner du poids aux mots-clés.
