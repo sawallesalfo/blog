@@ -1127,7 +1127,7 @@
 <span class="arithmatex">\(<span class="arithmatex">\(Faithfulness = \frac{\text{Nombre d'affirmations étayées par le contexte}}{\text{Nombre total d'affirmations dans la réponse}}\)</span>\)</span></p>
 <h3 id="answer-relevancy-pertinence">Answer Relevancy (Pertinence)<a class="headerlink" href="#answer-relevancy-pertinence" title="Permanent link">&para;</a></h3>
 <p>Elle mesure à quel point la réponse répond directement à la question posée, sans fioritures ni hors-sujet. On la calcule souvent via la similarité cosinus entre le vecteur de la question et celui de la réponse générée.</p>
-<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/docs/posts/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/docs/posts/rag_evaluation_framework/evaluation_layers.png" /></a></p>
+<p><a class="glightbox" href="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Framework d'Évaluation" src="https://sawallesalfo.github.io/blog/posts/rag_evaluation_framework/evaluation_layers.png" /></a></p>
 <h2 id="pourquoi-diviser-ainsi">Pourquoi diviser ainsi ?<a class="headerlink" href="#pourquoi-diviser-ainsi" title="Permanent link">&para;</a></h2>
 <p>Cette séparation permet d'identifier immédiatement le maillon faible :
 - Si le <strong>Recall</strong> est bas mais la <strong>Faithfulness</strong> est haute : Votre base de données est mal indexée, mais votre LLM est honnête.
