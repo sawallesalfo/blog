@@ -13,7 +13,7 @@ categories:
 
 La plupart d'entre nous, ML engineers, on déploie nos modèles sur des serveurs : une API derrière FastAPI, un endpoint SageMaker, un container ECS. Mais quand on me parle "déploiement on-device", je remarque que c'est souvent un sujet flou pour mes collègues data scientists. Pourtant, depuis quelques mois, c'est devenu une vraie option, même pour des modèles d'un milliard de paramètres.
 
-J'ai monté la semaine dernière un POC de transcription audio qui tourne 100 % sur le téléphone, dans le cadre du projet DOCFIRA. Aucune donnée ne sort du device. Et j'ai passé pas mal d'heures à expliquer ce que j'ai appris à des collègues qui n'avaient jamais touché au mobile. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à faire le saut, sans avoir à devenir développeur Android ou iOS.
+J'ai monté la semaine dernière un POC de transcription audio qui tourne 100 % sur le téléphone, dans le cadre d'un projet en santé numérique. Aucune donnée ne sort du device. Et j'ai passé pas mal d'heures à expliquer ce que j'ai appris à des collègues qui n'avaient jamais touché au mobile. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à faire le saut, sans avoir à devenir développeur Android ou iOS.
 
 <!-- more -->
 
@@ -396,7 +396,7 @@ Si votre cible est en Afrique de l'Ouest, dans une mine, en zone rurale, le tél
 - Une batterie qui doit durer toute la journée sans charge.
 - Un OS plus ancien, parfois Android 11.
 
-Sur le projet DOCFIRA, je benche en parallèle sur :
+Sur le projet santé sur lequel je travaille, je benche en parallèle sur :
 
 - **Tecno Spark 20 Pro** (Helio G99, sans NPU) : pire cas représentatif.
 - **Tecno Camon 30** (Dimensity 7050, avec NPU) : cible nominale.
@@ -421,7 +421,7 @@ flowchart LR
     style F fill:#fdd,stroke:#c00,stroke-dasharray: 5 5
 ```
 
-C'est ce qu'on a mis en place pour la transcription médicale chez DOCFIRA. Le téléchargement initial du modèle se fait via une variante de l'app avec `INTERNET`. Une fois que c'est fait, l'utilisateur installe la version "production", qui ne peut plus du tout sortir vers le réseau.
+C'est l'approche qu'on a retenue pour la transcription médicale sur le projet en cours. Le téléchargement initial du modèle se fait via une variante de l'app avec `INTERNET`. Une fois que c'est fait, l'utilisateur installe la version "production", qui ne peut plus du tout sortir vers le réseau.
 
 #### Ressources utiles
 
