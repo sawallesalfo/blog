@@ -1,0 +1,1863 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../02/28/sous-le-capot-du-docx--comment-jautomatise-le-remplissage-de-fiches-m%C3%A9tier-avec-une-ia/">
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.0">
+    
+    
+      
+        <title>Deploy llm on mobile - ssawadogo-blog</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.45e1311d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deployer-un-llm-sur-mobile-un-guide-pas-a-pas-pour-ml-engineers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="ssawadogo-blog" class="md-header__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ssawadogo-blog
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deploy llm on mobile
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="ssawadogo-blog" class="md-nav__button md-logo" aria-label="ssawadogo-blog" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    ssawadogo-blog
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Personal blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2026/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2026
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/business/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Business
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/cicd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/cloud/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/data-engineering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data-Engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/edge-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Edge AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/fastapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FastAPI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/gouvernance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gouvernance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/ia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/iagen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IAGen
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/llm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/mlops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/mobile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mobile
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/open-source/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open Source
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/processing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Processing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/productivit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Productivité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/qualit%C3%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Qualité
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/rag/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/recherche/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recherche
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/%C3%A9valuation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Évaluation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deployer-un-llm-sur-mobile-un-guide-pas-a-pas-pour-ml-engineers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Déployer un LLM sur mobile : un guide pas à pas pour ML engineers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Déployer un LLM sur mobile : un guide pas à pas pour ML engineers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-sy-interesser-maintenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi s'y intéresser maintenant ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-vocabulaire-mobile-en-5-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le vocabulaire mobile en 5 minutes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-pile-hardware-a-connaitre" class="md-nav__link">
+    <span class="md-ellipsis">
+      La pile hardware à connaître
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="La pile hardware à connaître">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-est-ce-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pourquoi est-ce important ?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-quantisation-le-concept-a-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      La quantisation : le concept à retenir
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-tutoriel-pas-a-pas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le tutoriel pas à pas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Le tutoriel pas à pas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etape-1-preparer-votre-environnement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 1: Préparer votre environnement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-2-scaffolder-le-repo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 2: Scaffolder le repo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-3-ecrire-la-couche-dinference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 3: Écrire la couche d'inférence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-4-une-ui-minimale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 4: Une UI minimale
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-5-builder-lapk-avec-eas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 5: Builder l'APK avec EAS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-6-installer-sur-le-telephone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 6: Installer sur le téléphone
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-7-mesurer-la-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 7: Mesurer la performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etape-8-bencher-deux-modeles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étape 8: Bencher deux modèles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recap-des-outils-du-metier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Récap des outils du métier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-piege-classique-tester-sur-son-iphone-pro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Le piège classique : tester sur son iPhone Pro
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#langle-confidentialite" class="md-nav__link">
+    <span class="md-ellipsis">
+      L'angle confidentialité
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ressources-utiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ressources utiles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../.." class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+              <div class="md-post__authors md-typeset">
+                
+                  <div class="md-profile md-post__profile">
+                    <span class="md-author md-author--long">
+                      <img src="https://avatars.githubusercontent.com/u/96554481?s=96&v=4" alt="Salif SAWADOGO">
+                    </span>
+                    <span class="md-profile__description">
+                      <strong>
+                        
+                          Salif SAWADOGO
+                        
+                      </strong>
+                      <br>
+                      End-to-end Data Scientist
+                    </span>
+                  </div>
+                
+              </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5v-5Z"/></svg>
+                        <time datetime="2026-03-31 00:00:00" class="md-ellipsis">March 31, 2026</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3H9m3 2 4 13 3-1-4-13-3 1M5 5v13h3V5H5M3 19v2h18v-2H3Z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/llm/">LLM</a>, 
+                              <a href="../../../../category/mobile/">Mobile</a>, 
+                              <a href="../../../../category/deployment/">Deployment</a>, 
+                              <a href="../../../../category/edge-ai/">Edge AI</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7h1.5Z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              10 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+
+
+  <h1>Deploy llm on mobile</h1>
+
+<h3 id="deployer-un-llm-sur-mobile-un-guide-pas-a-pas-pour-ml-engineers">Déployer un LLM sur mobile : un guide pas à pas pour ML engineers<a class="headerlink" href="#deployer-un-llm-sur-mobile-un-guide-pas-a-pas-pour-ml-engineers" title="Permanent link">&para;</a></h3>
+<p>La plupart d'entre nous, ML engineers, on déploie nos modèles sur des serveurs : une API derrière FastAPI, un endpoint SageMaker, un container ECS. Mais quand on me parle "déploiement on-device", je remarque que c'est souvent un sujet flou pour mes collègues data scientists. Pourtant, depuis quelques mois, c'est devenu une vraie option, même pour des modèles d'un milliard de paramètres.</p>
+<p>J'ai monté la semaine dernière un POC de transcription audio qui tourne 100 % sur le téléphone, dans le cadre du projet DOCFIRA. Aucune donnée ne sort du device. Et j'ai passé pas mal d'heures à expliquer ce que j'ai appris à des collègues qui n'avaient jamais touché au mobile. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à faire le saut, sans avoir à devenir développeur Android ou iOS.</p>
+<!-- more -->
+
+<p>L'article suppose que vous n'avez jamais fait de dev mobile. On part de zéro, et on avance étape par étape jusqu'à un POC qui tourne réellement sur un téléphone Android.</p>
+<h4 id="pourquoi-sy-interesser-maintenant">Pourquoi s'y intéresser maintenant ?<a class="headerlink" href="#pourquoi-sy-interesser-maintenant" title="Permanent link">&para;</a></h4>
+<p>Trois choses ont changé en 2025-2026 :</p>
+<ol>
+<li><strong>Les NPU sont partout.</strong> Apple Neural Engine depuis 2017, Qualcomm Hexagon sur tous les Snapdragon récents, MediaTek APU sur les Dimensity. Même un Tecno milieu de gamme à 200 € peut faire tourner Whisper Small en temps réel.</li>
+<li><strong>La compression de modèles est devenue accessible.</strong> GPTQ, AWQ, GGUF, quantisation INT4/INT5 : on divise la taille d'un modèle par 4 à 8 sans vraiment perdre en qualité.</li>
+<li><strong>Les contraintes business poussent au local.</strong> RGPD, secret médical, zones sans réseau, coût d'inférence cloud : tout tire vers l'inférence locale.</li>
+</ol>
+<p>Pour comparer concrètement :</p>
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Cloud API</th>
+<th>On-device</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Latence réseau</td>
+<td>50 à 500 ms</td>
+<td>0 ms</td>
+</tr>
+<tr>
+<td>Coût marginal par requête</td>
+<td>par token</td>
+<td>0 après installation</td>
+</tr>
+<tr>
+<td>Confidentialité</td>
+<td>données chez le provider</td>
+<td>données restent sur le device</td>
+</tr>
+<tr>
+<td>Mode hors ligne</td>
+<td>impossible</td>
+<td>natif</td>
+</tr>
+<tr>
+<td>Update du modèle</td>
+<td>instantané</td>
+<td>OTA ou store</td>
+</tr>
+<tr>
+<td>Variabilité de perf</td>
+<td>nulle</td>
+<td>énorme selon device</td>
+</tr>
+</tbody>
+</table>
+<p>Aucun n'est meilleur dans l'absolu. Mais pour la santé, la finance, la défense, ou les zones rurales, l'on-device gagne presque toujours.</p>
+<h4 id="le-vocabulaire-mobile-en-5-minutes">Le vocabulaire mobile en 5 minutes<a class="headerlink" href="#le-vocabulaire-mobile-en-5-minutes" title="Permanent link">&para;</a></h4>
+<p>Avant de plonger dans le code, posons les mots qui vont revenir tout le temps. Si vous venez du backend ou du data, certains vous parleront déjà.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Code TS/JS&lt;br/&gt;React Native] --&gt; B[Bundler Metro]
+    B --&gt; C[Bundle JS&lt;br/&gt;+ assets]
+    C --&gt; D[Build natif&lt;br/&gt;Gradle / Xcode]
+    D --&gt; E[APK Android&lt;br/&gt;ou IPA iOS]
+    E --&gt; F[Téléphone&lt;br/&gt;de l'utilisateur]</code></pre>
+<p>Voici les termes essentiels :</p>
+<ul>
+<li><strong>APK</strong> : le fichier installable sur Android. Pensez à un <code>.exe</code> Windows.</li>
+<li><strong>IPA</strong> : la même chose pour iOS.</li>
+<li><strong>React Native (RN)</strong> : un framework qui permet d'écrire une app mobile en TypeScript. Comme React, mais ça produit une vraie app native.</li>
+<li><strong>Expo</strong> : un toolkit qui simplifie React Native. Il gère pour vous les permissions, l'audio, le filesystem, et surtout le build.</li>
+<li><strong>EAS Build</strong> : le service cloud d'Expo qui compile votre app à votre place. C'est un peu le GitHub Actions du mobile : vous poussez votre code, leurs serveurs Linux/macOS produisent l'APK ou l'IPA.</li>
+<li><strong>Gradle</strong> : le système de build Android. Si vous passez par EAS, vous n'aurez jamais à y toucher.</li>
+<li><strong>Xcode</strong> : l'IDE Apple, obligatoire pour iOS si vous compilez localement. Avec EAS, vous n'en avez pas besoin.</li>
+</ul>
+<blockquote>
+<p><strong>Astuce :</strong> Avec Expo et EAS, vous n'installez rien de natif sur votre PC. Vous écrivez du TypeScript, et tout le build se passe dans le cloud. Pour un data scientist sous Windows qui veut publier une app iOS, c'est une vraie libération.</p>
+</blockquote>
+<h4 id="la-pile-hardware-a-connaitre">La pile hardware à connaître<a class="headerlink" href="#la-pile-hardware-a-connaitre" title="Permanent link">&para;</a></h4>
+<h5 id="pourquoi-est-ce-important">Pourquoi est-ce important ?<a class="headerlink" href="#pourquoi-est-ce-important" title="Permanent link">&para;</a></h5>
+<p>Parce qu'un même modèle peut être 10 fois plus rapide et 10 fois moins énergivore selon où il tourne sur le téléphone. Connaître les trois unités de calcul permet de comprendre pourquoi votre POC vole sur un iPhone 15 Pro et rame sur un Tecno Spark.</p>
+<pre class="mermaid"><code>flowchart TB
+    A[Modèle ML] --&gt; B{Quel backend ?}
+    B --&gt;|Disponible| C[NPU / ANE&lt;br/&gt;0.5 à 1 W&lt;br/&gt;INT8 natif]
+    B --&gt;|Sinon| D[GPU&lt;br/&gt;2 à 4 W&lt;br/&gt;Metal / Vulkan]
+    B --&gt;|Sinon| E[CPU&lt;br/&gt;3 à 6 W&lt;br/&gt;NEON SIMD]
+    C --&gt; F[Sortie]
+    D --&gt; F
+    E --&gt; F</code></pre>
+<p>Le rôle d'un framework d'inférence mobile, c'est de router automatiquement vers le NPU si c'est dispo, sinon le GPU, sinon le CPU.</p>
+<blockquote>
+<p><strong>Note :</strong> Conséquence pratique, votre POC se comporte différemment sur un iPhone 15 Pro et sur un Tecno Spark à 150 €. Toujours tester sur le hardware réel des utilisateurs, jamais sur votre tel perso si c'est haut de gamme.</p>
+</blockquote>
+<h4 id="la-quantisation-le-concept-a-retenir">La quantisation : le concept à retenir<a class="headerlink" href="#la-quantisation-le-concept-a-retenir" title="Permanent link">&para;</a></h4>
+<p>Si vous ne deviez retenir qu'une seule notion de cet article, ce serait celle-ci.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Whisper Small FP32 : 466 Mo, lent, précision haute
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Whisper Small Q8_0 : 244 Mo, rapide, perte 0%
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Whisper Small Q5_1 : 190 Mo, très rapide, perte négligeable
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Whisper Small Q4_0 : 150 Mo, ultra rapide, perte mineure
+</code></pre></div>
+<p><code>Q5_1</code> veut dire 5 bits par poids avec une variante d'algorithme. La logique :</p>
+<ul>
+<li>Passer de FP32 à INT8 divise la mémoire par 4 et l'énergie par environ 16 sur NPU.</li>
+<li>80 % de l'énergie d'inférence vient des accès mémoire, pas du calcul lui-même. Réduire la taille des poids réduit la conso, mécaniquement.</li>
+<li><strong>GGUF</strong> est le format dominant côté mobile. Tous les modèles populaires (Llama, Mistral, Whisper, Qwen) ont des versions GGUF prêtes à l'emploi sur Hugging Face.</li>
+</ul>
+<p>À retenir : un modèle ML déployé n'est pas un seul artefact. C'est un point sur la courbe taille / qualité / latence, que vous choisissez selon vos contraintes hardware. Comme un data scientist qui choisit entre XGBoost et un MLP, vous choisissez ici entre tiny, small, base, medium.</p>
+<h4 id="le-tutoriel-pas-a-pas">Le tutoriel pas à pas<a class="headerlink" href="#le-tutoriel-pas-a-pas" title="Permanent link">&para;</a></h4>
+<p>L'objectif : faire tourner Whisper sur un téléphone Android, avec deux variantes de modèle pour bencher.</p>
+<h5 id="etape-1-preparer-votre-environnement">Étape 1: Préparer votre environnement<a class="headerlink" href="#etape-1-preparer-votre-environnement" title="Permanent link">&para;</a></h5>
+<pre class="mermaid"><code>flowchart LR
+    A[PC Windows&lt;br/&gt;ou macOS&lt;br/&gt;ou Linux] --&gt; B[Node.js 20+]
+    B --&gt; C[Compte Expo&lt;br/&gt;gratuit]
+    C --&gt; D[CLI eas-cli&lt;br/&gt;installé]</code></pre>
+<p>Voici comment procéder :</p>
+<ol>
+<li><strong>Installer Node.js 20 ou plus récent</strong> depuis <a href="https://nodejs.org">nodejs.org</a>.</li>
+<li><strong>Créer un compte gratuit</strong> sur <a href="https://expo.dev/signup">expo.dev/signup</a>. Email et password, pas de carte bancaire demandée.</li>
+<li><strong>Installer le CLI EAS</strong> :
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>eas-cli
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>eas<span class="w"> </span>login
+</code></pre></div></li>
+</ol>
+<blockquote>
+<p><strong>Astuce :</strong> Aucun outil mobile (Android Studio, Xcode) à installer. C'est exactement ce qui rend Expo intéressant pour un data scientist qui veut juste tester un modèle, sans devenir dev mobile.</p>
+</blockquote>
+<h5 id="etape-2-scaffolder-le-repo">Étape 2: Scaffolder le repo<a class="headerlink" href="#etape-2-scaffolder-le-repo" title="Permanent link">&para;</a></h5>
+<p>Créez un dossier projet et initialisez :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir<span class="w"> </span>mon-stt-mobile<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>mon-stt-mobile
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>npm<span class="w"> </span>init<span class="w"> </span>-y
+</code></pre></div>
+<p>Installez les dépendances :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>npm<span class="w"> </span>install<span class="w"> </span>expo<span class="w"> </span>expo-asset<span class="w"> </span>expo-av<span class="w"> </span>expo-file-system<span class="w"> </span>expo-status-bar
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>npm<span class="w"> </span>install<span class="w"> </span>react<span class="w"> </span>react-native<span class="w"> </span>whisper.rn
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>npm<span class="w"> </span>install<span class="w"> </span>--save-dev<span class="w"> </span>typescript<span class="w"> </span>@types/react
+</code></pre></div>
+<p>Créez un <code>app.json</code> minimal :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;expo&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mon STT Mobile&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">&quot;slug&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mon-stt-mobile&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nt">&quot;orientation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;portrait&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nt">&quot;android&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">      </span><span class="nt">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.exemple.sttmobile&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">      </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="s2">&quot;android.permission.RECORD_AUDIO&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="s2">&quot;android.permission.INTERNET&quot;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">      </span><span class="p">]</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nt">&quot;ios&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">      </span><span class="nt">&quot;bundleIdentifier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;com.exemple.sttmobile&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">      </span><span class="nt">&quot;infoPlist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="nt">&quot;NSMicrophoneUsageDescription&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Autoriser le micro pour la transcription locale.&quot;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="nt">&quot;plugins&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;expo-av&quot;</span><span class="p">]</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">}</span>
+</code></pre></div>
+<p>Et un <code>eas.json</code> pour configurer le build :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">&quot;cli&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&gt;= 12.0.0&quot;</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">&quot;preview&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">      </span><span class="nt">&quot;distribution&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;internal&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">      </span><span class="nt">&quot;android&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;buildType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;apk&quot;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">}</span>
+</code></pre></div>
+<h5 id="etape-3-ecrire-la-couche-dinference">Étape 3: Écrire la couche d'inférence<a class="headerlink" href="#etape-3-ecrire-la-couche-dinference" title="Permanent link">&para;</a></h5>
+<p>Le cœur métier tient en une trentaine de lignes. Créez <code>src/stt.ts</code> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">import</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">FileSystem</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;expo-file-system&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">initWhisper</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;whisper.rn&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">MODEL_URL</span><span class="w"> </span><span class="o">=</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="s1">&#39;https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny-q5_1.bin&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">MODEL_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">FileSystem</span><span class="p">.</span><span class="nx">documentDirectory</span><span class="si">}</span><span class="sb">ggml-tiny-q5_1.bin`</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="kd">let</span><span class="w"> </span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">Awaited</span><span class="o">&lt;</span><span class="nx">ReturnType</span><span class="o">&lt;</span><span class="ow">typeof</span><span class="w"> </span><span class="nx">initWhisper</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">ensureModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">FileSystem</span><span class="p">.</span><span class="nx">getInfoAsync</span><span class="p">(</span><span class="nx">MODEL_PATH</span><span class="p">);</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">info</span><span class="p">.</span><span class="nx">exists</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">FileSystem</span><span class="p">.</span><span class="nx">downloadAsync</span><span class="p">(</span><span class="nx">MODEL_URL</span><span class="p">,</span><span class="w"> </span><span class="nx">MODEL_PATH</span><span class="p">);</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">}</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">loadModel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">  </span><span class="nx">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">initWhisper</span><span class="p">({</span><span class="w"> </span><span class="nx">filePath</span><span class="o">:</span><span class="w"> </span><span class="kt">MODEL_PATH</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="p">}</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">transcribe</span><span class="p">(</span><span class="nx">audioPath</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">context</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Model not loaded&#39;</span><span class="p">);</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">promise</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">transcribe</span><span class="p">(</span><span class="nx">audioPath</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">language</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;fr&#39;</span><span class="w"> </span><span class="p">});</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">promise</span><span class="p">;</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="kt">result</span><span class="p">,</span><span class="w"> </span><span class="nx">durationMs</span><span class="o">:</span><span class="w"> </span><span class="kt">Date.now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">start</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="p">}</span>
+</code></pre></div>
+<p>Tout est isolé dans ce fichier. La logique métier (téléchargement, chargement, transcription) ne dépend ni de l'UI ni du build. Si demain vous voulez swapper <code>whisper.rn</code> pour Cactus ou MLC-LLM, vous ne touchez que ce fichier.</p>
+<h5 id="etape-4-une-ui-minimale">Étape 4: Une UI minimale<a class="headerlink" href="#etape-4-une-ui-minimale" title="Permanent link">&para;</a></h5>
+<p>Le but n'est pas de gagner un prix de design, juste de tester sur un vrai téléphone. Créez <code>App.tsx</code> :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>import { useState } from &#39;react&#39;;
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>import { Button, Text, View } from &#39;react-native&#39;;
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>import { Audio } from &#39;expo-av&#39;;
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>import { ensureModel, loadModel, transcribe } from &#39;./src/stt&#39;;
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>export default function App() {
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  const [text, setText] = useState(&#39;&#39;);
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  const [recording, setRecording] = useState&lt;Audio.Recording | null&gt;(null);
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>  async function start() {
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>    const perm = await Audio.requestPermissionsAsync();
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    if (!perm.granted) return;
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    const r = new Audio.Recording();
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>    await r.prepareToRecordAsync(Audio.RecordingOptionsPresets.HIGH_QUALITY);
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    await r.startAsync();
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>    setRecording(r);
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>  }
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>  async function stop() {
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>    if (!recording) return;
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    await recording.stopAndUnloadAsync();
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>    const uri = recording.getURI()!;
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>    setRecording(null);
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>    await ensureModel();
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>    await loadModel();
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>    const r = await transcribe(uri);
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>    setText(`${r.text} (${r.durationMs} ms)`);
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>  }
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>  return (
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>    &lt;View style={{ flex: 1, padding: 40, justifyContent: &#39;center&#39; }}&gt;
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>      {recording ? (
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>        &lt;Button title=&quot;Arreter&quot; onPress={stop} /&gt;
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>      ) : (
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>        &lt;Button title=&quot;Enregistrer&quot; onPress={start} /&gt;
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>      )}
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>      &lt;Text style={{ marginTop: 20 }}&gt;{text}&lt;/Text&gt;
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a>    &lt;/View&gt;
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>  );
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a>}
+</code></pre></div>
+<h5 id="etape-5-builder-lapk-avec-eas">Étape 5: Builder l'APK avec EAS<a class="headerlink" href="#etape-5-builder-lapk-avec-eas" title="Permanent link">&para;</a></h5>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Dev as Votre PC
+    participant Cloud as Cloud Expo
+    participant Phone as Téléphone
+
+    Dev-&gt;&gt;Cloud: eas build --platform android --profile preview
+    Note over Cloud: Untar projet&lt;br/&gt;npm install&lt;br/&gt;expo prebuild&lt;br/&gt;gradlew assembleRelease&lt;br/&gt;Sign APK
+    Cloud--&gt;&gt;Dev: URL + QR code
+    Dev-&gt;&gt;Phone: Scan QR code
+    Phone-&gt;&gt;Cloud: Télécharge APK
+    Phone-&gt;&gt;Phone: Installe APK</code></pre>
+<p>La commande à lancer :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>eas<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>android<span class="w"> </span>--profile<span class="w"> </span>preview
+</code></pre></div>
+<p>Le build prend 5 à 10 minutes. À la fin, vous récupérez une URL et un QR code.</p>
+<blockquote>
+<p><strong>Note :</strong> Au premier build, EAS va vous demander de générer un keystore Android. Répondez "yes", il s'en occupe pour vous. Vous n'avez aucune ligne de doc à lire pour ça.</p>
+</blockquote>
+<h5 id="etape-6-installer-sur-le-telephone">Étape 6: Installer sur le téléphone<a class="headerlink" href="#etape-6-installer-sur-le-telephone" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>Sur Android,</strong> allez dans <code>Paramètres &gt; Sécurité &gt; Sources inconnues</code> et autorisez votre navigateur.</li>
+<li><strong>Scannez le QR code</strong> avec l'appareil photo de votre tel.</li>
+<li><strong>Le téléphone télécharge l'APK.</strong></li>
+<li><strong>Ouvrez le fichier téléchargé</strong> pour installer.</li>
+<li><strong>Lancez l'app.</strong></li>
+</ol>
+<p>Au premier lancement, l'app télécharge le modèle Whisper (environ 30 Mo). Ensuite, tout tourne hors ligne.</p>
+<h5 id="etape-7-mesurer-la-performance">Étape 7: Mesurer la performance<a class="headerlink" href="#etape-7-mesurer-la-performance" title="Permanent link">&para;</a></h5>
+<p>Une transcription sur mobile, ça se mesure avec une métrique reine : le <strong>Real-Time Factor (RTF)</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>RTF = duree_audio_traite / duree_du_calcul
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>RTF = 1   : traitement aussi long que l&#39;audio
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>RTF = 5   : 5 fois plus rapide, utilisable en streaming
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>RTF = 0.5 : 2 fois plus lent, inutilisable en live
+</code></pre></div>
+<p>Si vous deviez publier un seul nombre dans votre rapport de bench mobile, ce serait celui-là.</p>
+<p>Côté outils, Android sans root vous donne tout ce qu'il faut via <code>adb</code> depuis votre PC :</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Conso batterie</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>adb<span class="w"> </span>shell<span class="w"> </span>dumpsys<span class="w"> </span>batterystats<span class="w"> </span>com.exemple.sttmobile
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># RAM en direct</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>adb<span class="w"> </span>shell<span class="w"> </span>dumpsys<span class="w"> </span>meminfo<span class="w"> </span>com.exemple.sttmobile
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># Température CPU</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>adb<span class="w"> </span>shell<span class="w"> </span>cat<span class="w"> </span>/sys/class/thermal/thermal_zone*/temp
+</code></pre></div>
+<h5 id="etape-8-bencher-deux-modeles">Étape 8: Bencher deux modèles<a class="headerlink" href="#etape-8-bencher-deux-modeles" title="Permanent link">&para;</a></h5>
+<p>Une fois que le POC tourne avec Whisper Tiny, ajoutez Whisper Small pour comparer :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Whisper Tiny Q5_1</th>
+<th>Whisper Small Q5_1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Taille fichier</td>
+<td>31 Mo</td>
+<td>190 Mo</td>
+</tr>
+<tr>
+<td>RAM runtime</td>
+<td>80 Mo</td>
+<td>250 Mo</td>
+</tr>
+<tr>
+<td>Vitesse Tecno milieu de gamme</td>
+<td>4 à 5x temps réel</td>
+<td>1.2x temps réel</td>
+</tr>
+<tr>
+<td>Qualité français</td>
+<td>Acceptable dictée</td>
+<td>Bonne</td>
+</tr>
+</tbody>
+</table>
+<p>L'écart de taille (6x) ne se traduit pas par 6x plus de qualité. C'est une décision produit. Si "assez bon" suffit, tiny est largement viable. Si la qualité est critique (médical, légal), il faut passer à small.</p>
+<h4 id="recap-des-outils-du-metier">Récap des outils du métier<a class="headerlink" href="#recap-des-outils-du-metier" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Modeles
+        A1[Hugging Face&lt;br/&gt;GGUF / GGML]
+    end
+    subgraph Inference
+        B1[whisper.rn]
+        B2[llama.cpp]
+        B3[MLC-LLM]
+        B4[ExecuTorch]
+        B5[Cactus]
+    end
+    subgraph Build
+        C1[EAS Build]
+        C2[App Center]
+        C3[Bitrise]
+        C4[Codemagic]
+    end
+    subgraph Distribution
+        D1[APK direct]
+        D2[Play Store]
+        D3[App Store]
+    end
+    A1 --&gt; B1 &amp; B2 &amp; B3 &amp; B4 &amp; B5
+    B1 &amp; B2 &amp; B3 &amp; B4 &amp; B5 --&gt; C1 &amp; C2 &amp; C3 &amp; C4
+    C1 &amp; C2 &amp; C3 &amp; C4 --&gt; D1 &amp; D2 &amp; D3</code></pre>
+<p>Mes recommandations rapides :</p>
+<ul>
+<li><strong>POC Whisper :</strong> <code>whisper.rn</code> ou <code>cactus-react-native</code>.</li>
+<li><strong>POC LLM (Llama, Qwen) :</strong> <code>llama.cpp</code> direct ou MLC-LLM.</li>
+<li><strong>Stack PyTorch officielle :</strong> ExecuTorch (Meta) à surveiller pour 2026-2027.</li>
+<li><strong>Build cloud :</strong> EAS si vous êtes en RN/Expo, App Center sinon.</li>
+</ul>
+<h4 id="le-piege-classique-tester-sur-son-iphone-pro">Le piège classique : tester sur son iPhone Pro<a class="headerlink" href="#le-piege-classique-tester-sur-son-iphone-pro" title="Permanent link">&para;</a></h4>
+<p>C'est l'erreur que je vois à chaque fois quand un data scientist découvre le mobile. On teste sur son iPhone 15 Pro, on dit "ça vole, c'est bon", et on déploie. Et en prod, sur les vrais téléphones des utilisateurs, c'est inutilisable.</p>
+<p>Si votre cible est en Afrique de l'Ouest, dans une mine, en zone rurale, le téléphone réel ressemble à ça :</p>
+<ul>
+<li>4 à 6 Go de RAM, pas 8.</li>
+<li>Pas de NPU (Helio G99, Exynos 850).</li>
+<li>Une batterie qui doit durer toute la journée sans charge.</li>
+<li>Un OS plus ancien, parfois Android 11.</li>
+</ul>
+<p>Sur le projet DOCFIRA, je benche en parallèle sur :</p>
+<ul>
+<li><strong>Tecno Spark 20 Pro</strong> (Helio G99, sans NPU) : pire cas représentatif.</li>
+<li><strong>Tecno Camon 30</strong> (Dimensity 7050, avec NPU) : cible nominale.</li>
+<li><strong>Samsung A35</strong> : référence Samsung.</li>
+<li><strong>iPhone 13</strong> : référence iOS.</li>
+</ul>
+<blockquote>
+<p><strong>Astuce :</strong> Si ça tourne sur le pire cas, ça tournera partout. C'est le seul vrai test qui compte.</p>
+</blockquote>
+<h4 id="langle-confidentialite">L'angle confidentialité<a class="headerlink" href="#langle-confidentialite" title="Permanent link">&para;</a></h4>
+<p>Pour les domaines régulés (santé, banque, défense), l'on-device offre un argument réglementaire que le cloud ne peut pas matcher.</p>
+<p>Sur Android, vous pouvez littéralement retirer la permission <code>INTERNET</code> de votre manifest. L'app devient alors techniquement incapable d'exfiltrer des données. Aucun audit, aucun pen-test, aucune politique de sécurité ne peut produire cette garantie côté serveur.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Audio micro] --&gt; B[App locale]
+    B --&gt; C[Whisper.cpp&lt;br/&gt;GGUF quantise]
+    C --&gt; D[Texte transcrit]
+    D --&gt; E[Stockage chiffre&lt;br/&gt;SQLCipher]
+    B -.-&gt;|INTERNET retire| F((Reseau))
+    style F fill:#fdd,stroke:#c00,stroke-dasharray: 5 5</code></pre>
+<p>C'est ce qu'on a mis en place pour la transcription médicale chez DOCFIRA. Le téléchargement initial du modèle se fait via une variante de l'app avec <code>INTERNET</code>. Une fois que c'est fait, l'utilisateur installe la version "production", qui ne peut plus du tout sortir vers le réseau.</p>
+<h4 id="ressources-utiles">Ressources utiles<a class="headerlink" href="#ressources-utiles" title="Permanent link">&para;</a></h4>
+<p>Pour aller plus loin, voici quelques liens et lectures, dans l'ordre où je les recommande :</p>
+<ul>
+<li><a href="https://arxiv.org/abs/2306.00978">AWQ (Lin et al., 2023)</a> : la base de la quantisation moderne.</li>
+<li><a href="https://arxiv.org/abs/2402.13449">MLC-LLM (Chen et al., 2023)</a> : le papier le plus complet sur le déploiement multi-backend.</li>
+<li><a href="https://arxiv.org/abs/2406.06282">PowerInfer-2 (SJTU, 2024)</a> : étude énergétique fine sur smartphones.</li>
+<li><a href="https://arxiv.org/abs/2402.14905">MobileLLM (Meta, 2024)</a> : design d'architecture pour modèles de moins d'un milliard de paramètres optimisés mobile.</li>
+<li>Le repo <a href="https://github.com/ggerganov/llama.cpp"><code>ggerganov/llama.cpp</code></a> : 5 000 lignes de C++ commentées qui font tourner Llama partout, du Raspberry Pi à un iPhone. Étonnamment pédagogique.</li>
+</ul>
+<h4 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h4>
+<p>Déployer un LLM sur mobile en 2026, ce n'est plus un travail réservé aux ingénieurs systèmes. Avec quelques heures, un compte Expo et un modèle GGUF, n'importe quel ML engineer peut faire tourner un modèle d'un milliard de paramètres dans la poche d'un utilisateur. Sans serveur, sans API, sans réseau.</p>
+<p>Le coût technique a vraiment baissé. Ce qui reste, c'est la décision produit : où votre modèle doit-il vivre, et pourquoi ?</p>
+<p>Essayez sur votre prochain side-project, vous verrez vite que ce n'est plus de la science-fiction !</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2026-04-26</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+  
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="sawallesalfo/blog"
+        data-repo-id="R_kgDOMoC7jQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMoC7jc4CiecW"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="fr"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    </article>
+  </div>
+
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © @sawallesalfo August 2024
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/sawallesalfo" target="_blank" rel="noopener" title="My GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://x.com/sawallesalfo" target="_blank" rel="noopener" title="My Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/salif-sawadogo-statistician" target="_blank" rel="noopener" title="My LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<salif.sawadogo.pro@gmail.com>" target="_blank" rel="noopener" title="send me an email" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M64 112c-8.8 0-16 7.2-16 16v22.1l172.5 141.6c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16h384c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "content.tabs", "content.code.annotate", "search.suggest", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
