@@ -1321,7 +1321,7 @@
 
 <h3 id="deployer-un-llm-sur-mobile-un-guide-pas-a-pas-pour-ml-engineers">Déployer un LLM sur mobile : un guide pas à pas pour ML engineers<a class="headerlink" href="#deployer-un-llm-sur-mobile-un-guide-pas-a-pas-pour-ml-engineers" title="Permanent link">&para;</a></h3>
 <p>La plupart d'entre nous, ML engineers, on déploie nos modèles sur des serveurs : une API derrière FastAPI, un endpoint SageMaker, un container ECS. Mais quand on me parle "déploiement on-device", je remarque que c'est souvent un sujet flou pour mes collègues data scientists. Pourtant, depuis quelques mois, c'est devenu une vraie option, même pour des modèles d'un milliard de paramètres.</p>
-<p>J'ai monté la semaine dernière un POC de transcription audio qui tourne 100 % sur le téléphone, dans le cadre du projet DOCFIRA. Aucune donnée ne sort du device. Et j'ai passé pas mal d'heures à expliquer ce que j'ai appris à des collègues qui n'avaient jamais touché au mobile. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à faire le saut, sans avoir à devenir développeur Android ou iOS.</p>
+<p>J'ai monté la semaine dernière un POC de transcription audio qui tourne 100 % sur le téléphone, dans le cadre d'un projet en santé numérique. Aucune donnée ne sort du device. Et j'ai passé pas mal d'heures à expliquer ce que j'ai appris à des collègues qui n'avaient jamais touché au mobile. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à faire le saut, sans avoir à devenir développeur Android ou iOS.</p>
 <!-- more -->
 
 <p>L'article suppose que vous n'avez jamais fait de dev mobile. On part de zéro, et on avance étape par étape jusqu'à un POC qui tourne réellement sur un téléphone Android.</p>
@@ -1687,7 +1687,7 @@
 <li>Une batterie qui doit durer toute la journée sans charge.</li>
 <li>Un OS plus ancien, parfois Android 11.</li>
 </ul>
-<p>Sur le projet DOCFIRA, je benche en parallèle sur :</p>
+<p>Sur le projet santé sur lequel je travaille, je benche en parallèle sur :</p>
 <ul>
 <li><strong>Tecno Spark 20 Pro</strong> (Helio G99, sans NPU) : pire cas représentatif.</li>
 <li><strong>Tecno Camon 30</strong> (Dimensity 7050, avec NPU) : cible nominale.</li>
@@ -1707,7 +1707,7 @@
     D --&gt; E[Stockage chiffre&lt;br/&gt;SQLCipher]
     B -.-&gt;|INTERNET retire| F((Reseau))
     style F fill:#fdd,stroke:#c00,stroke-dasharray: 5 5</code></pre>
-<p>C'est ce qu'on a mis en place pour la transcription médicale chez DOCFIRA. Le téléchargement initial du modèle se fait via une variante de l'app avec <code>INTERNET</code>. Une fois que c'est fait, l'utilisateur installe la version "production", qui ne peut plus du tout sortir vers le réseau.</p>
+<p>C'est l'approche qu'on a retenue pour la transcription médicale sur le projet en cours. Le téléchargement initial du modèle se fait via une variante de l'app avec <code>INTERNET</code>. Une fois que c'est fait, l'utilisateur installe la version "production", qui ne peut plus du tout sortir vers le réseau.</p>
 <h4 id="ressources-utiles">Ressources utiles<a class="headerlink" href="#ressources-utiles" title="Permanent link">&para;</a></h4>
 <p>Pour aller plus loin, voici quelques liens et lectures, dans l'ordre où je les recommande :</p>
 <ul>
