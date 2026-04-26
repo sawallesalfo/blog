@@ -11,7 +11,9 @@ categories:
 
 ### Déployer un LLM sur mobile : un guide pas à pas pour ML engineers
 
-La plupart d'entre nous, ML engineers, on déploie nos modèles sur des serveurs : une API derrière FastAPI, un endpoint SageMaker, un container ECS. Mais quand on me parle "déploiement on-device", je remarque que c'est souvent un sujet flou pour mes collègues data scientists. Pourtant, depuis quelques mois, c'est devenu une vraie option, même pour des modèles d'un milliard de paramètres.
+Sur ce blog, j'ai déjà parlé pas mal des LLM côté cloud : comment gérer plusieurs SDK avec une [LLMFactory](../2025/04/30/trop-de-sdk-pour-les-llms--passe-%C3%A0-une-llmfactory-ou-adapters-avec-litellm/), [comment construire son propre GPT](../2024/12/15/how-to-build-your-own-gpt/), ou [comment les évaluer proprement](../2024/09/08/llm-evaluation-benchmark/). Ces approches partagent toutes un point commun : le modèle vit sur un serveur, derrière une API.
+
+Cet article s'attaque à l'autre branche du métier, beaucoup moins couverte : le **déploiement on-device**. Le modèle ne vit plus dans un container ECS ou un endpoint SageMaker. Il vit dans le téléphone de l'utilisateur.
 
 J'ai monté la semaine dernière un POC de transcription audio qui tourne 100 % sur le téléphone, dans le cadre d'un projet en santé numérique. Aucune donnée ne sort du device. Et j'ai passé pas mal d'heures à expliquer ce que j'ai appris à des collègues qui n'avaient jamais touché au mobile. J'ai donc décidé de rédiger cet article pour aider un plus grand nombre de personnes à faire le saut, sans avoir à devenir développeur Android ou iOS.
 
